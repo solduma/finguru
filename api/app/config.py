@@ -26,6 +26,8 @@ class Settings(BaseSettings):
     ollama_base_url: str = "https://ollama.com"
     ollama_api_key: str = ""
     ollama_chat_model: str = "qwen3.5:cloud"
+    # Disable model "thinking" blocks by default (snappier streamed replies).
+    ollama_think: bool = False
 
     # ---- Embeddings ----
     embedding_backend: str = "local"  # "local" | "ollama"

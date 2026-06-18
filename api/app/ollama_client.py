@@ -24,6 +24,10 @@ class OllamaClient:
         self.base_url = (base_url or s.ollama_base_url).rstrip("/")
         self.api_key = api_key or s.ollama_api_key
         self.model = model or s.ollama_chat_model
+        # Reasoning models (e.g. qwen3.5) emit a long `thinking` block before any
+        # `content`. We don't surface thinking to the user, and waiting for it
+        # stalls the stream, so disable it by default for snappy tutor replies.
+        self.think = s.ollama_think
 
     @property
     def _headers(self) -> dict[str, str]:
@@ -35,7 +39,12 @@ class OllamaClient:
 
     async def chat(self, messages: list[dict[str, str]]) -> str:
         """Non-streaming chat. Returns the assistant message content."""
-        payload = {"model": self.model, "messages": messages, "stream": False}
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "stream": False,
+            "think": self.think,
+        }
         async with httpx.AsyncClient(timeout=120) as client:
             r = await client.post(
                 f"{self.base_url}/api/chat", headers=self._headers, json=payload
@@ -47,7 +56,12 @@ class OllamaClient:
         self, messages: list[dict[str, str]]
     ) -> AsyncIterator[str]:
         """Stream chat. Yields content deltas as they arrive."""
-        payload = {"model": self.model, "messages": messages, "stream": True}
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "stream": True,
+            "think": self.think,
+        }
         async with httpx.AsyncClient(timeout=None) as client:
             async with client.stream(
                 "POST",

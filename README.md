@@ -59,13 +59,39 @@ the browser talks to a single origin.
 
 ## Build status
 
-- **Phase 0 — scaffold + infra:** ✅ web builds, API streams real tutor replies.
-- **Phase 1 pilot — Dow + RSI:** in progress.
-- Phases 2–4 (RAG ingest, LangGraph agent, full content) follow.
+All phases are complete:
 
-## Adding a lesson
+- **Phase 0 — scaffold + infra:** ✅ web + API + docker-compose.
+- **Phase 1 — content:** ✅ 31 deep-researched, fact-checked lessons (17 gurus,
+  14 indicators/concepts).
+- **Phase 2 — RAG ingestion:** ✅ 422 chunks indexed in Chroma.
+- **Phase 3 — LangGraph tutor:** ✅ grounded streaming answers with lesson
+  citations and a no-financial-advice guardrail.
+- **Phase 4 — frontend:** ✅ lesson pages with TOC + prev/next, learning path,
+  guru/indicator indexes, streaming chat widget with citation chips.
 
-Drop an `.mdx` file in `web/content/gurus/` or `web/content/indicators/` with
-the frontmatter shown in existing lessons (`title, slug, kind, level, order,
-summary`). It appears on the site automatically and is picked up by the next
-`ingest` run.
+## The curriculum
+
+The lessons are sequenced beginner → pro via the `order` field (see `/path`).
+
+**Gurus:** Charles Dow · Jesse Livermore · Richard Wyckoff · Ralph Elliott ·
+W.D. Gann · William Jiler · J. Welles Wilder · Martin Pring · John Bollinger ·
+Steve Nison · Thomas DeMark · Stan Weinstein · William O'Neil · Larry Williams ·
+Linda Raschke · Alan Farley · Mark Minervini.
+
+**Indicators & concepts:** Moving Averages · MACD · RSI · Stochastics ·
+Bollinger Bands · ADX/ATR · Ichimoku · Fibonacci · Elliott Wave (applied) ·
+Candlestick Patterns · Volume/OBV · Support, Resistance & Patterns · Risk
+Management · Trading Psychology.
+
+## Adding or editing a lesson
+
+1. Drop an `.mdx` file in `web/content/gurus/` or `web/content/indicators/`,
+   copying the frontmatter from an existing lesson
+   (`title, slug, kind, level, order, summary`; gurus also use `era` /
+   `contribution`; optional `prereqs`).
+2. For highlighted boxes use only `<Callout type="key|note|warning">…</Callout>`.
+3. In prose, write comparisons as inline code (`` `<20` ``, `` `%b > 1` ``) —
+   a bare `<` before a digit/operator is parsed as JSX and breaks the MDX build.
+4. The page appears automatically. To make the tutor aware of it, re-run ingest:
+   `cd api && uv run python -m app.rag.ingest`.
