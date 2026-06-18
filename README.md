@@ -57,6 +57,11 @@ cd web && npm install && npm run dev
 The web dev server proxies `/api/*` to the API (`next.config.mjs` rewrite), so
 the browser talks to a single origin.
 
+## Roadmap
+
+- **Korean (ko) i18n** — planned, not started. See
+  [`docs/TODO-i18n-korean.md`](docs/TODO-i18n-korean.md).
+
 ## Build status
 
 All phases are complete:

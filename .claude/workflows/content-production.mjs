@@ -186,12 +186,13 @@ function frontmatter(l, summary) {
   return lines.join('\n')
 }
 
-// Build a one-line summary from the first sentence of the body if needed.
+// KNOWN BUG (fixed downstream June 2026): this regex frequently captures a
+// truncated fragment or a leaked heading (e.g. "The one-sentence version ...")
+// rather than a clean summary, producing malformed frontmatter on ~20 lessons.
+// DO NOT reuse as-is. The correct fix is to add a `summary` field to DRAFT_SCHEMA
+// /FINAL_SCHEMA so the agent authors a real one-sentence summary, and use that
+// here instead of deriving from the body. Kept only as a last-resort fallback.
 function deriveSummary(l, body) {
-  // Prefer a concise hand-style summary: first meaningful sentence under ~180 chars.
-  const text = body.replace(/<[^>]+>/g, ' ').replace(/[#*`>|]/g, ' ')
-  const m = text.match(/[A-Z][^.!?]{30,180}[.!?]/)
-  if (m) return m[0].replace(/\s+/g, ' ').trim()
   return `${l.title}: a practical, beginner-friendly lesson.`
 }
 
