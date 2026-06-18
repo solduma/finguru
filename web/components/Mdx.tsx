@@ -2,8 +2,10 @@ import { MDXRemote } from "next-mdx-remote-client/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import Callout from "./Callout";
+import LineChart from "./charts/LineChart";
+import CandleChart from "./charts/CandleChart";
 
-const components = { Callout };
+const components = { Callout, LineChart, CandleChart };
 
 export default function Mdx({ source }: { source: string }) {
   return (

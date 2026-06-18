@@ -144,6 +144,21 @@ This is the practical core you'll reuse constantly:
 - An **uptrend** is a series of **higher highs and higher lows.**
 - A **downtrend** is a series of **lower highs and lower lows.**
 
+<LineChart
+  caption="An uptrend is a staircase of higher highs (HH) and higher lows (HL). The rising line under the lows is the trend's support."
+  height={300}
+  series={[{ label: "Price", data: [20, 28, 23, 34, 29, 41, 36, 48] }]}
+  points={[
+    { x: 1, y: 28, text: "HH" },
+    { x: 2, y: 23, text: "HL" },
+    { x: 3, y: 34, text: "HH" },
+    { x: 4, y: 29, text: "HL" },
+    { x: 5, y: 41, text: "HH" },
+    { x: 6, y: 36, text: "HL" },
+  ]}
+  trendlines={[{ x1: 2, y1: 23, x2: 6, y2: 36, label: "uptrend support", dashed: true }]}
+/>
+
 A trend change is **sequential**, not instant:
 
 1. First, a **non-confirmation** appears (one average fails to match the other's
@@ -170,6 +185,21 @@ the rule above as the standard interpretation, not a mechanical formula.
 4. Both averages then **break below 32,000** (the prior reaction low). When
    *both* confirm, the primary trend is judged to have **reversed from bull to
    bear.**
+
+<LineChart
+  caption="The Industrials make a new high (35k) but the Transports fail to confirm — a non-confirmation warning. The reversal is only confirmed when both break the prior 32k reaction low."
+  height={320}
+  series={[
+    { label: "Industrials", data: [30, 32, 31.5, 35, 33, 34, 31, 30] },
+    { label: "Transports", data: [29.5, 31.8, 31, 31.5, 30.5, 31, 30, 29] },
+  ]}
+  levels={[{ y: 32, label: "prior reaction low (32k)", color: "#f59e0b" }]}
+  points={[
+    { x: 3, y: 35, text: "new high", color: "#22c55e" },
+    { x: 3, y: 31.5, text: "no confirm", color: "#ef4444" },
+    { x: 6, y: 31, text: "both break → reversal", color: "#ef4444" },
+  ]}
+/>
 
 Notice the trade-off: the signal fires near **34,000 on the way down**, not at
 the **35,000 top.** Dow Theory deliberately sacrifices the top and bottom in

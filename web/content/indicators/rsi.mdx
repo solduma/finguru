@@ -116,6 +116,19 @@ Wilder's original thresholds:
 In strong trends, many traders tighten to **80 / 20** to filter for only the
 strongest momentum and reduce signal frequency.
 
+<LineChart
+  caption="RSI oscillates 0–100. Above 70 is the 'overbought' zone, below 30 'oversold'; 50 is the bias line."
+  height={240}
+  yMin={0}
+  yMax={100}
+  series={[{ label: "RSI", data: [45, 52, 63, 72, 76, 71, 58, 44, 32, 26, 31, 48, 55] }]}
+  zones={[
+    { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" },
+    { yMin: 0, yMax: 30, color: "rgba(34,197,94,0.12)", label: "oversold" },
+  ]}
+  levels={[{ y: 50, label: "centerline (50)" }]}
+/>
+
 ### The centerline (50)
 
 The 50 level is a trend-bias divider. Persistently above 50 = bullish momentum
@@ -127,6 +140,31 @@ bias; persistently below 50 = bearish bias; hovering near 50 = no real trend.
   low.* Momentum is quietly strengthening; a reversal up may be coming.
 - **Bearish divergence** — price makes a *higher high* while RSI makes a *lower
   high.* Momentum is fading.
+
+<LineChart
+  caption="Bearish divergence: price prints a HIGHER high (second peak above the first), but RSI prints a LOWER high — momentum is fading even as price climbs."
+  height={210}
+  series={[
+    { label: "Price", data: [20, 26, 22, 30, 25, 33], color: "#e6e9ef" },
+  ]}
+  points={[
+    { x: 1, y: 26, text: "peak 1" },
+    { x: 5, y: 33, text: "higher high", color: "#ef4444" },
+  ]}
+/>
+
+<LineChart
+  caption="…the RSI panel for the same move."
+  height={190}
+  yMin={0}
+  yMax={100}
+  series={[{ label: "RSI", data: [55, 74, 60, 71, 58, 66] }]}
+  zones={[{ yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" }]}
+  points={[
+    { x: 1, y: 74, text: "peak 1" },
+    { x: 5, y: 66, text: "lower high", color: "#ef4444" },
+  ]}
+/>
 
 <Callout type="warning">
 Divergence is **unreliable on its own in a strong trend.** A powerful uptrend can
