@@ -77,7 +77,7 @@ The lessons are sequenced beginner → pro via the `order` field (see `/path`).
 **Gurus:** Charles Dow · Jesse Livermore · Richard Wyckoff · Ralph Elliott ·
 W.D. Gann · William Jiler · J. Welles Wilder · Martin Pring · John Bollinger ·
 Steve Nison · Thomas DeMark · Stan Weinstein · William O'Neil · Larry Williams ·
-Linda Raschke · Alan Farley · Mark Minervini.
+Linda Raschke · Alan Farley · Mark Minervini · Michael Huddleston (ICT).
 
 **Indicators & concepts:** Moving Averages · MACD · RSI · Stochastics ·
 Bollinger Bands · ADX/ATR · Ichimoku · Fibonacci · Elliott Wave (applied) ·
