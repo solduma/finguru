@@ -3,23 +3,234 @@ title: "Relative Strength Index (RSI)"
 slug: "rsi"
 kind: "indicator"
 level: "beginner"
-order: 100
-summary: "A momentum oscillator that measures the speed and size of recent price moves on a 0–100 scale."
-tags: ["momentum", "oscillator", "wilder"]
-prereqs: ["moving-averages"]
+order: 101
+summary: "A momentum oscillator that measures the speed and size of recent price moves on a 0–100 scale — and the indicator beginners most often misuse."
+tags: ["momentum", "oscillator", "wilder", "overbought", "divergence"]
+prereqs: ["charles-dow"]
 ---
 
-> **Placeholder lesson.** This stub proves the content pipeline renders. The
-> full, deep-researched RSI lesson is produced in the pilot slice (Task #2).
+## The one-sentence version
 
-## The intuition
+RSI asks a simple question — *"of all the price movement recently, how much of
+it was upward?"* — and squeezes the answer onto a scale from 0 to 100.
 
-RSI asks a simple question: *over the last N periods, how much of the total
-price movement was upward?* The answer is squeezed onto a 0–100 scale.
+That's it. Everything else is learning to read that number honestly.
+
+## Origin
+
+The **Relative Strength Index** was created by **J. Welles Wilder Jr.**, a
+mechanical engineer turned technical analyst, in his landmark 1978 book *New
+Concepts in Technical Trading Systems*. That one book also gave us **ATR**,
+**ADX/DMI**, and **Parabolic SAR** — so RSI was designed from the start to live
+alongside other tools, not alone.
+
+Wilder's default lookback is **14 periods**. "14-day" is just shorthand: RSI
+works on any timeframe — 14 hourly bars, 14 weekly bars, whatever your chart
+shows.
+
+<Callout type="warning">
+**RSI is not "relative strength."** Despite the name, RSI has nothing to do with
+comparing two assets.
+
+- **RSI** measures *one* security's own momentum, bounded 0–100.
+- **Relative strength** (the RS *comparison line*) divides one asset's price by
+  another — e.g. AAPL vs. the S&P 500 — and is used for ranking and rotation.
+
+They share a word and nothing else. Beginners conflate them constantly.
+</Callout>
+
+## The math
+
+Two formulas sit at the core, and they're identical across every authoritative
+source:
+
+```
+RS  = Average Gain / Average Loss     (over N periods)
+
+RSI = 100 − ( 100 / (1 + RS) )
+```
+
+Each bar contributes either a **gain** or a **loss**, both written as positive
+numbers:
+
+- Up bar → Gain = (close − prior close), Loss = 0
+- Down bar → Gain = 0, Loss = (prior close − close)
+
+### Wilder's smoothing — the part beginners get wrong
+
+The averages aren't simple averages after the first step. Wilder uses a
+**two-stage** process:
+
+- **First value (initialization)** — a *simple* average of the first N gains and
+  losses:
+  - `First Avg Gain = (sum of gains over 14 periods) / 14`
+  - `First Avg Loss = (sum of losses over 14 periods) / 14`
+- **Every value after that** — a *recursive smoothing*:
+  - `Avg Gain = (prev Avg Gain × 13 + current Gain) / 14`
+  - `Avg Loss = (prev Avg Loss × 13 + current Loss) / 14`
+
+The general form is `new = (prev × (N−1) + current) / N`.
+
+<Callout type="note">
+**Why this matters:** Wilder's smoothing is a *modified exponential moving
+average* with a small smoothing factor (α = 1/N ≈ 0.071 for 14 periods). It
+reacts more slowly and smoothly than a plain 14-period average, carrying a long,
+gently-decaying memory of past data. It also explains why two charting platforms
+can show slightly different RSI values on the first few bars — they converge as
+more data accumulates.
+</Callout>
+
+### A worked numeric example
+
+*(Illustrative numbers, built straight from the formula.)*
+
+Say over the first 14 periods, gains sum to **7.0** and losses sum to **3.5**:
+
+- First Avg Gain = 7.0 / 14 = **0.500**
+- First Avg Loss = 3.5 / 14 = **0.250**
+- RS = 0.500 / 0.250 = **2.0**
+- RSI = 100 − (100 / (1 + 2.0)) = **66.7**
+
+Now period 15 closes **up** by 0.80 (Gain = 0.80, Loss = 0):
+
+- Avg Gain = (0.500 × 13 + 0.80) / 14 = **0.5214**
+- Avg Loss = (0.250 × 13 + 0) / 14 = **0.2321**
+- RS = 0.5214 / 0.2321 = **2.246**
+- RSI = 100 − (100 / 3.246) = **69.2**
+
+The up bar lifted RSI from 66.7 toward overbought — but smoothing kept the step
+measured rather than abrupt.
+
+**Edge cases:** no losses → RSI = 100; no gains → RSI = 0; equal gains and losses
+→ RSI = 50.
 
 ## How to read it
 
-- Above **70**: often called "overbought."
-- Below **30**: often called "oversold."
+### Overbought and oversold
 
-These are starting points, not signals — context decides everything.
+Wilder's original thresholds:
+
+- Above **70** → "overbought"
+- Below **30** → "oversold"
+
+In strong trends, many traders tighten to **80 / 20** to filter for only the
+strongest momentum and reduce signal frequency.
+
+### The centerline (50)
+
+The 50 level is a trend-bias divider. Persistently above 50 = bullish momentum
+bias; persistently below 50 = bearish bias; hovering near 50 = no real trend.
+
+### Divergence
+
+- **Bullish divergence** — price makes a *lower low* while RSI makes a *higher
+  low.* Momentum is quietly strengthening; a reversal up may be coming.
+- **Bearish divergence** — price makes a *higher high* while RSI makes a *lower
+  high.* Momentum is fading.
+
+<Callout type="warning">
+Divergence is **unreliable on its own in a strong trend.** A powerful uptrend can
+flash bearish divergence many times before it finally tops. Divergence is most
+trustworthy *after* an overbought/oversold reading, and confirmed by price.
+</Callout>
+
+### Failure swings (Wilder's own signal — often overlooked)
+
+These depend only on RSI's own shape, not on price:
+
+- **Bullish failure swing:** RSI drops below 30 → bounces above 30 → pulls back
+  but **holds above 30** → then breaks above its prior RSI peak.
+- **Bearish failure swing:** RSI rises above 70 → drops below 70 → bounces but
+  **fails to reach 70 again** → then breaks below its prior RSI low.
+
+### The biggest pitfall: trends vs. ranges
+
+Overbought/oversold logic works best in **sideways, ranging markets.** In a
+strong trend it betrays you: **RSI can stay "overbought" for weeks in an uptrend**
+(and "oversold" for weeks in a downtrend). An extreme reading alone is *not* a
+reversal signal — in a trend it can be a sign of strength.
+
+## Settings
+
+**Period.** The default is 14. Shorter (7–9) = more sensitive, more signals, more
+noise. Longer (21–25) = smoother, fewer signals. Short-term traders sometimes use
+a **2-period RSI** with 90/10 extremes.
+
+**Thresholds aren't sacred.** More volatile instruments and shorter timeframes
+often justify wider 80/20 bands.
+
+### RSI's range shifts between bull and bear markets
+
+A professional-level insight: oscillators don't actually travel the full 0–100 —
+they live in narrower, trend-dependent bands.
+
+- **Constance Brown** (*Technical Analysis for the Trading Professional*):
+  - Bull market: RSI roughly **40–90**, with **40–50 acting as support.**
+  - Bear market: RSI roughly **10–60**, with **50–60 acting as resistance.**
+- **Andrew Cardwell** (Brown's mentor) framed it as uptrends trading ~**40–80**
+  and downtrends ~**20–60.**
+
+The exact bands differ by author, but the practical lesson is the same and it's
+huge: **in an uptrend, RSI rarely reaches the classic "30."** Pullbacks bottom
+near 40–50. So waiting for "oversold 30" in a bull market means **missing every
+entry.**
+
+## Strengths and common mistakes
+
+**Strengths:** normalized 0–100 (comparable across instruments and timeframes),
+catches momentum shifts early, and can even form its own trendlines and patterns
+before price does.
+
+<Callout type="warning">
+**The classic beginner mistakes:**
+
+1. **Blindly shorting "overbought" (or buying "oversold").** The single most
+   expensive error. RSI stays pinned at extremes throughout strong trends.
+2. **Using rigid 30/70 in a trending market.** See Brown/Cardwell above — the
+   operating range shifts.
+3. **Trusting divergence alone in a strong trend.**
+4. **Treating RSI as a standalone system.** It's a confirmation tool.
+</Callout>
+
+## Combining RSI with other tools
+
+- **With trend (moving averages):** the canonical fix for the overbought trap.
+  Use a long MA (e.g. the **200-day**) to set trend direction, then take only
+  trend-aligned signals — in an uptrend, buy oversold RSI pullbacks and *ignore*
+  overbought readings.
+- **With support/resistance:** an RSI extreme matters far more when price is also
+  at a key level. Confluence beats any single signal.
+- **With price action:** confirm RSI signals with candlestick reversals or
+  breakouts before acting.
+- **With other Wilder tools:** use **ADX** to judge whether the market is
+  trending (use trend logic) or ranging (use 30/70 logic), and **ATR** to size
+  stops.
+
+## Practice
+
+- Overlay 9-, 14-, and 25-period RSI on one chart to *feel* the
+  sensitivity-vs-smoothness trade-off.
+- Pull up one ranging period and one strong trending period; watch how 30/70
+  behaves in each until the difference is instinct.
+- **Build RSI yourself in a spreadsheet** with the two-stage smoothing, then
+  reconcile it against a charting platform — this cements the math.
+- In an uptrend, draw the 40 line by hand and watch pullbacks respect it.
+- Journal real failure swings and divergences: which resolved, which failed, and
+  what the trend context was.
+
+## Further reading
+
+- J. Welles Wilder, *New Concepts in Technical Trading Systems* (1978) — the
+  original source.
+- Constance Brown, *Technical Analysis for the Trading Professional.*
+
+---
+
+### Sources
+
+1. [RSI — StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/relative-strength-index-rsi) — formula, two-stage smoothing, 70/30 & 80/20, failure swings, Brown's ranges.
+2. [Relative Strength Index — Wikipedia](https://en.wikipedia.org/wiki/Relative_strength_index) — formula, SMMA/EMA equivalence, edge cases, Cardwell's range rule.
+3. [Relative strength — Wikipedia](https://en.wikipedia.org/wiki/Relative_strength) — defines the asset-vs-index ratio; warns against confusing it with RSI.
+4. [Welles Wilder — Wikipedia](https://en.wikipedia.org/wiki/Welles_Wilder) — biography; 1978 book; the family of indicators.
+5. [RSI — Fidelity Technical Indicator Guide](https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/RSI) — "momentum oscillator," adjustable thresholds, the stays-overbought-in-trends pitfall.
+6. [RSI — TradingView](https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/) — default 14, `rma` (Wilder) smoothing confirming α = 1/N, failure-swing definition.
