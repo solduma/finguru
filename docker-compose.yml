@@ -1,0 +1,32 @@
+services:
+  api:
+    build: ./api
+    env_file: .env
+    environment:
+      # Inside the container the content lives at a fixed path (mounted below).
+      CONTENT_DIR: /content
+      CHROMA_DIR: /data/chroma_db
+    volumes:
+      - ./web/content:/content:ro
+      - chroma-data:/data/chroma_db
+      - fastembed-cache:/root/.cache/fastembed
+    ports:
+      - "8000:8000"
+
+  web:
+    build: ./web
+    environment:
+      # Server-side proxy target: reach the api service over the compose network.
+      API_PROXY_TARGET: http://api:8000
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+volumes:
+  chroma-data:
+  fastembed-cache:

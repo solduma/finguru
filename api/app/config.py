@@ -1,0 +1,65 @@
+"""Central configuration, loaded from environment / .env.
+
+Everything that might change between environments (models, keys, paths) lives
+here so the rest of the code never reads os.environ directly.
+"""
+from __future__ import annotations
+
+from functools import lru_cache
+from pathlib import Path
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Repo root is two levels up from this file: api/app/config.py -> repo root.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+class Settings(BaseSettings):
+    # Load the repo-root .env; ignore unknown keys so a shared .env is fine.
+    model_config = SettingsConfigDict(
+        env_file=(_REPO_ROOT / ".env", _REPO_ROOT / ".env.local"),
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
+    # ---- Ollama Cloud (chat) ----
+    ollama_base_url: str = "https://ollama.com"
+    ollama_api_key: str = ""
+    ollama_chat_model: str = "qwen3.5:cloud"
+
+    # ---- Embeddings ----
+    embedding_backend: str = "local"  # "local" | "ollama"
+    local_embedding_model: str = "BAAI/bge-small-en-v1.5"
+    ollama_embedding_model: str = "embeddinggemma"
+
+    # ---- RAG / Chroma ----
+    chroma_dir: str = "./chroma_db"
+    chroma_collection: str = "finguru_lessons"
+    rag_top_k: int = 5
+
+    # ---- Content ----
+    content_dir: str = "../web/content"
+
+    # ---- Server ----
+    api_host: str = "0.0.0.0"
+    api_port: int = 8000
+    cors_origins: str = "http://localhost:3000"
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def content_path(self) -> Path:
+        p = Path(self.content_dir)
+        return p if p.is_absolute() else (_REPO_ROOT / "api" / p).resolve()
+
+    @property
+    def chroma_path(self) -> Path:
+        p = Path(self.chroma_dir)
+        return p if p.is_absolute() else (_REPO_ROOT / "api" / p).resolve()
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
