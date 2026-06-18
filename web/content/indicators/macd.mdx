@@ -1,0 +1,174 @@
+---
+title: "MACD (Moving Average Convergence Divergence)"
+slug: "macd"
+kind: "indicator"
+level: "beginner"
+order: 102
+summary: "If you've already learned what a moving average is, MACD is your natural next step."
+prereqs: ["moving-averages"]
+---
+
+## The one-sentence version
+
+MACD takes two moving averages, subtracts one from the other, and turns the result into a single wiggling line that tells you when a trend is gaining steam, losing it, or about to turn — all without you having to stare at the price chart and guess.
+
+If you've already learned what a moving average is, MACD is your natural next step. It's one of the most widely used indicators on the planet, it shows up by default in almost every charting app, and — crucially for a beginner — it bundles *trend* and *momentum* into one tool. Let's build it from the ground up so you understand exactly what every line is telling you.
+
+<Callout type="note">
+
+MACD stands for **Moving Average Convergence/Divergence**. "Convergence" means two moving averages drifting toward each other; "divergence" means them spreading apart. That spreading and squeezing is the whole game.
+
+</Callout>
+
+## A bit of history
+
+MACD was created by **Gerald Appel**, a New York money manager and analyst, in the **late 1970s** ([Wikipedia](https://en.wikipedia.org/wiki/MACD)). He designed it to track trend changes in stock prices using moving-average math that was practical to compute by hand at the time. Decades later it's still a fixture, partly because it's genuinely useful and partly because *so many traders watch it* that its signals can become a mild self-fulfilling prophecy.
+
+## The intuition first
+
+Before any math, here's the idea. Take a **fast** moving average (responds quickly to recent prices) and a **slow** one (sluggish, smoother).
+
+- When price is rising strongly, the fast average pulls *above* the slow one and the gap between them *widens*.
+- When momentum fades, the gap *narrows*.
+- When price turns down, the fast average crosses *below* the slow one and the gap goes negative.
+
+MACD simply measures that gap and plots it as a line. A widening positive gap = accelerating uptrend. A shrinking gap = a trend running out of fuel. That's it.
+
+<Callout type="key">
+
+MACD is a **trend-following momentum indicator**. It tells you both the *direction* of the trend (is the gap positive or negative?) and the *momentum* of it (is the gap growing or shrinking?).
+
+</Callout>
+
+## The precise definition
+
+First, the building block: an **EMA (Exponential Moving Average)** is an average of recent closing prices that gives more weight to the most recent days, so it reacts faster than a plain (simple) average. MACD uses three numbers — the classic default settings of **12, 26, 9** — which feed three outputs:
+
+```
+MACD Line   = EMA(close, 12)  −  EMA(close, 26)
+Signal Line = EMA(MACD Line, 9)
+Histogram   = MACD Line  −  Signal Line
+```
+
+Walking through each ([StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)):
+
+1. **MACD Line** — the fast 12-period EMA minus the slow 26-period EMA. This *is* the gap we described.
+2. **Signal Line** — a 9-period EMA *of the MACD line itself*. It's a smoothed, slower version of the MACD line, used as a trigger.
+3. **Histogram** — bars showing the distance between the MACD line and the signal line. Positive bars mean MACD is above its signal line; negative bars mean below. The histogram is the *first* thing to react when momentum shifts.
+
+<Callout type="note">
+
+Why 12, 26, 9? These periods trace back to an era of six-day trading weeks, where they roughly represented "two weeks, one month, and a week and a half" ([Wikipedia](https://en.wikipedia.org/wiki/MACD)). There's nothing magical about them — but because they're the default, the whole market watches the same lines.
+
+</Callout>
+
+### A small numeric example (illustrative)
+
+Suppose on a given day:
+
+- 12-day EMA of price = **101.0**
+- 26-day EMA of price = **99.5**
+
+Then:
+
+```
+MACD Line = 101.0 − 99.5 = +1.5
+```
+
+A positive MACD line means the fast average is above the slow one — a short-term uptrend. Now say the 9-day EMA of the MACD line (the signal line) currently sits at **+1.2**:
+
+```
+Histogram = 1.5 − 1.2 = +0.3
+```
+
+A positive, *growing* histogram says the uptrend's momentum is still accelerating. If on the next day the histogram shrinks to +0.1, momentum is fading even if price is still rising — an early heads-up. (The numbers above are illustrative, not from any real security.)
+
+## How to read it
+
+There are three classic reading methods, in roughly increasing subtlety.
+
+**1. Signal-line crossover** — the most common signal.
+- MACD crosses *above* the signal line → **bullish** (potential buy).
+- MACD crosses *below* the signal line → **bearish** (potential sell).
+On the chart, this is the exact moment the histogram flips from negative to positive (or vice versa).
+
+**2. Centerline (zero) crossover** — tied to the zero line.
+- MACD crosses *above zero* → bullish; the 12-EMA has just moved above the 26-EMA.
+- MACD crosses *below zero* → bearish; the 12-EMA has just moved below the 26-EMA.
+These mark broader trend changes, but give *less* immediate confirmation of momentum than a signal-line cross ([Wikipedia](https://en.wikipedia.org/wiki/MACD)).
+
+**3. Divergence** — the most interpretive.
+- **Bullish divergence:** price makes a *lower low*, but MACD makes a *higher low* — downside momentum is fading.
+- **Bearish divergence:** price makes a *higher high*, but MACD makes a *lower high* — upside momentum is waning.
+
+<Callout type="warning">
+
+Divergence is seductive but unreliable as a standalone signal. As StockCharts notes, bearish divergences are "commonplace in a strong uptrend," and bullish divergences occur often in strong downtrends — meaning a strong trend will throw off divergence signals repeatedly *while continuing in its original direction*. Treat divergence as a question, not an answer.
+
+</Callout>
+
+Here's a quick reference:
+
+| Signal | Bullish version | Bearish version | Reliability |
+|---|---|---|---|
+| Signal-line cross | MACD crosses above signal | MACD crosses below signal | Frequent, but many false ones in ranges |
+| Centerline cross | MACD crosses above 0 | MACD crosses below 0 | Slower, fewer signals, broader trend confirmation |
+| Divergence | Price lower low, MACD higher low | Price higher high, MACD lower high | Interpretive, easily wrong in strong trends |
+
+## Settings and adjustments
+
+The 12/26/9 default is a reasonable all-purpose choice. You *can* change it:
+- **Shorter periods** (e.g., 5/35/5 or 8/17/9) → more reactive, more signals, more noise. Better for faster, shorter-horizon trading.
+- **Longer periods** → smoother, fewer signals, more lag. Better for position trading.
+
+<Callout type="warning">
+
+Resist the urge to "optimize" the settings until you find numbers that would have nailed past trades. That's **curve-fitting** — tuning a tool to fit history so well it fails on the future. Start with the defaults and change them only with a clear reason.
+
+</Callout>
+
+## Strengths, and the honest weaknesses
+
+**Strengths:** It packs trend direction and momentum into one compact view, it's intuitive once you see the histogram move, and its ubiquity means its signals are widely watched.
+
+Now the weaknesses — and these are real:
+
+- **It lags.** MACD is built from moving averages, which are *averages of past prices*. By the time a crossover prints, part (sometimes most) of the move may already be over — strong trends "will already be completed or almost done" once MACD reflects them ([Wikipedia](https://en.wikipedia.org/wiki/MACD)).
+- **Whipsaws in sideways markets.** When price chops back and forth with no real trend, MACD crosses its signal line and zero line repeatedly, firing buy/sell signals that immediately reverse and bleed money on fees and bad entries ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
+- **It's unbounded — so it cannot reliably flag "overbought/oversold."** Unlike RSI (which is capped at 0–100), MACD has no ceiling or floor; it can keep over-extending past its old extremes ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
+- **Values aren't comparable across securities.** Because MACD is the *price* difference of two price-based EMAs, a \$500 stock will show much larger MACD values than a \$20 stock. To compare across instruments, use the **PPO (Percentage Price Oscillator)**, which expresses the same idea as a percentage.
+
+<Callout type="warning">
+
+The biggest beginner mistake is trading *every* crossover blindly. One common filter is requiring the MACD to stay on the new side of the signal line for a few days (the classic version is three days) before acting — this cuts false signals but, as Wikipedia notes, also increases missed profit. There's no free lunch.
+
+</Callout>
+
+## How to combine it with other tools
+
+MACD works best as one voice in a small committee, not a dictator.
+
+- **Trade with the larger trend.** Check a longer-term trend filter first (e.g., is price above its 200-day moving average?). Take MACD *buy* signals mainly when the bigger trend is up, and *sell* signals when it's down. This dramatically cuts whipsaw losses, because the worst MACD signals happen against the prevailing trend or in flat markets.
+- **Pair with a bounded oscillator like RSI.** Since MACD can't tell you "overbought," let RSI handle that while MACD handles trend and momentum.
+- **Confirm with price structure.** A MACD bullish divergence becomes more trustworthy if price is also holding a support level or breaking a small downtrend line.
+
+## Practice suggestions
+
+1. Open any charting tool, add MACD with the default 12/26/9, and just *watch* the histogram for a week on a stock you follow. Notice how it shrinks before crossovers happen.
+2. Find a clearly trending chart and a clearly sideways ("range-bound") chart. Mark every signal-line crossover on each. You'll viscerally feel why MACD shines in trends and gets shredded in ranges.
+3. Hunt for one real divergence, then look at what price did *next*. Keep a tally of how often it "worked." Your own data will make you appropriately skeptical.
+
+<Callout type="key">
+
+Master the histogram. It's the fastest-reacting part of MACD and the most honest about momentum: a positive bar that's *shrinking* is warning you the uptrend is tiring, often well before the actual crossover.
+
+</Callout>
+
+## Further reading
+
+Explore the sources below, then revisit your charts. The fastest way to internalize MACD is to annotate a dozen real charts by hand and ask, every time, "trend or range?" — because that single question determines whether MACD is your friend or your foe.
+
+### Sources
+
+1. [Wikipedia — MACD](https://en.wikipedia.org/wiki/MACD) — Confirms Gerald Appel as creator (late 1970s), the line/signal/histogram formulas, 12/26/9 origins, crossover and divergence definitions, the three-day filter, and the lag/false-signal limitations.
+2. [StockCharts ChartSchool — MACD (Moving Average Convergence/Divergence Oscillator)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md) — Detailed calculation, signal-line vs. centerline crossovers, divergence cautions, whipsaws, the unbounded limitation, and the PPO comparison point.

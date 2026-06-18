@@ -1,0 +1,184 @@
+---
+title: "Fibonacci Retracements & Extensions"
+slug: "fibonacci-retracements"
+kind: "indicator"
+level: "intermediate"
+order: 107
+summary: "If you have spent any time staring at trading charts, you have seen them: a fan of horizontal lines labeled 0."
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Fibonacci tools take a single price move, slice it up using ratios derived from a 13th-century number sequence, and give you a set of horizontal levels where a pullback might stall or a new move might end — useful as *zones to watch*, not magic lines, and famously controversial about whether they "work" at all.
+
+If you have spent any time staring at trading charts, you have seen them: a fan of horizontal lines labeled 0.236, 0.382, 0.5, 0.618. They look authoritative and mathematical. This lesson explains exactly where those numbers come from, how to draw the tool correctly, how professionals actually use it, and — just as important — the honest case for why a lot of it may be illusion.
+
+## The intuition
+
+Markets do not move in straight lines. After a strong rally, price typically gives some of it back (a **pullback** or **retracement**) before — maybe — continuing in the original direction. The practical question every trader faces is: *how deep will that pullback go before the trend resumes?*
+
+Fibonacci retracements try to answer that with a fixed menu of percentages. The idea: certain proportions of the prior move (38.2%, 61.8%, and so on) are more likely to act as **support** (a price floor where buyers step in) or **resistance** (a ceiling where sellers step in) than random levels would be.
+
+**Extensions** answer the opposite question: once a pullback ends and the trend resumes, *how far might the new move travel?* They project levels *beyond* 100% of the original move (127.2%, 161.8%) to suggest profit targets.
+
+## Where the numbers come from
+
+The **Fibonacci sequence** is a list where each number is the sum of the two before it:
+
+```
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+```
+
+As the sequence grows, the ratio of consecutive terms converges to the **golden ratio**, written φ ("phi"):
+
+```
+φ = (1 + √5) / 2 = 1.6180339887...
+Example:  89 / 55  = 1.6181...
+          144 / 89 = 1.6179...
+```
+
+φ has a unique property: its reciprocal equals itself minus one.
+
+```
+1 / φ = φ − 1 = 0.6180339887...
+```
+
+The famous retracement ratios are powers of that reciprocal:
+
+```
+0.618 = 1/φ        (one step:    Fₙ / Fₙ₊₁ → 89/144 ≈ 0.618)
+0.382 = 1/φ²       (two steps:   Fₙ / Fₙ₊₂ → 55/144 ≈ 0.382)   also ≈ 1 − 0.618
+0.236 = 1/φ³       (three steps: Fₙ / Fₙ₊₃ → 34/144 ≈ 0.236)
+0.786 = √0.618     (the square root of the golden retracement)
+```
+
+The extension ratios above 100% come from the same family:
+
+```
+1.272 = √1.618     (square root of φ)
+1.618 = φ          (the golden ratio itself)
+2.618 = φ²
+```
+
+<Callout type="warning">
+
+The **50% level is not a Fibonacci ratio at all.** It is simply the midpoint of the move. Its inclusion comes from **Dow Theory** — the old observation that the averages often retrace about half of a prior swing. StockCharts states it plainly: the 50% level "is not based on a Fibonacci number." Most charting tools quietly bundle it in with the genuine Fibonacci levels, so it is worth knowing if you want to be honest about what the math actually says.
+
+</Callout>
+
+## How to draw a retracement
+
+A retracement needs exactly **two points**: the start and end of the swing you care about.
+
+- **In an uptrend** (you expect the rally to resume after a dip): drag the tool from the **swing low to the swing high**. The levels project *downward*, showing where a pullback might find support.
+- **In a downtrend**: drag from the **swing high to the swing low**. The levels project *upward*, showing where a bounce might hit resistance.
+
+The 0% line sits at the end of the move; the 100% line sits at its start. The Fibonacci levels fall in between.
+
+### Worked example (illustrative numbers)
+
+Suppose a stock rallies from **\$100 (swing low) to \$150 (swing high)** — a \$50 move. You anchor the tool low-to-high. The retracement levels are:
+
+| Level | Math | Price |
+|-------|------|-------|
+| 0% (high) | 150 − 50×0.000 | \$150.00 |
+| 23.6% | 150 − 50×0.236 | \$138.20 |
+| 38.2% | 150 − 50×0.382 | \$130.90 |
+| 50% | 150 − 50×0.500 | \$125.00 |
+| 61.8% | 150 − 50×0.618 | \$119.10 |
+| 78.6% | 150 − 50×0.786 | \$110.70 |
+| 100% (low) | 150 − 50×1.000 | \$100.00 |
+
+So if price pulls back to roughly **\$130.90**, it is sitting at the 38.2% retracement — a spot where a trend-follower might watch for buyers to return.
+
+### Extensions on the same move
+
+Once price bounces off, say, the 61.8% level (\$119.10) and resumes upward, extensions project targets *above* the \$150 high. A common method measures the original \$50 swing and projects it from the pullback low:
+
+```
+161.8% target = 119.10 + 50 × 1.618 = 119.10 + 80.90 = $200.00 (illustrative)
+127.2% target = 119.10 + 50 × 1.272 = 119.10 + 63.60 = $182.70 (illustrative)
+```
+
+<Callout type="note">
+
+There are competing conventions for extensions. Some platforms project from the swing high (adding 127.2% / 161.8% *of the original move* on top); others use a three-point tool anchored to the swing low, swing high, and retracement low. The labels look the same but the resulting prices differ, so check what your charting software actually measures before trusting a target.
+
+</Callout>
+
+## How to read it: confluence, not prophecy
+
+A single Fibonacci level on its own is weak evidence. The professional use is **confluence** — looking for several independent signals pointing at the same price zone. StockCharts' worked examples illustrate this: a 38.2% retracement that also coincides with broken support turning into resistance, *plus* a momentum indicator turning, *plus* a candlestick reversal pattern.
+
+Things that strengthen a Fibonacci level:
+
+- A prior horizontal **support/resistance** level sitting at the same price.
+- A **moving average** (e.g. the 50- or 200-day) passing through the zone.
+- A **candlestick reversal** (hammer, engulfing) printing right at the level.
+- **Volume** spiking, or a momentum indicator (RSI, MACD) confirming.
+- A **trendline** intersecting there.
+
+As StockCharts puts it: *"The more confirming factors, the more robust the signal."*
+
+<Callout type="key">
+
+Treat Fibonacci levels as **alert zones, not hard reversal points** — StockCharts uses exactly that framing. The 38.2%–61.8% band covers the most common pullback depths; think of price entering that band as a prompt to *start looking for a setup*, not a guarantee that it will turn. Wait for confirmation before acting.
+
+</Callout>
+
+## Settings and conventions
+
+- **Levels shown:** 23.6 / 38.2 / 50 / 61.8 are universal; 78.6 and 88.6 are optional and common in harmonic-pattern trading. The 38.2–61.8 range is the heart of it.
+- **Most-watched:** 61.8% (the "golden retracement") and 38.2% draw the most attention; rounding to 62% and 38% is common.
+- **Anchoring:** use clear, significant swing highs and lows. Garbage swings produce garbage levels.
+- **Timeframe:** levels drawn on a daily or weekly chart carry more weight than levels on a 5-minute chart, because more participants see them.
+
+## The honest critique
+
+This is where intellectual honesty matters. The evidence that Fibonacci levels have genuine predictive power is weak.
+
+- **No statistical edge in the data.** Wikipedia summarizes research finding that the significance of these levels "could not be confirmed by examining the data," and that the values examined "had been no likelier to appear than any other of the possible retracement values."
+- **No standard depth exists.** Analyst Arthur Merrill, in *Filtered Waves*, concluded there is no reliably standard retracement depth.
+- **Randomness explains the appearances.** Princeton economist Burton Malkiel, in *A Random Walk Down Wall Street*, attributes apparent retracements to ordinary price volatility — patterns the human eye invents after the fact.
+- **The 50% problem** (above): a core level is not even a Fibonacci number.
+
+So why do some traders swear by it? The leading defense is the **self-fulfilling prophecy** argument: so many traders place orders at 38.2% and 61.8% that the clustering of buy and sell orders *creates* short-lived support and resistance there. If true, this is a real effect — but it is a behavioral one, not evidence that markets obey the golden ratio. And it is fragile: it works only while enough participants act on it. (Both the academic critique and the self-fulfilling defense are contested; neither is settled.)
+
+## Common beginner mistakes
+
+<Callout type="warning">
+
+**Drawing the tool to fit a story you already believe.** It is tempting to keep re-anchoring the swing points until a level lands exactly where price reversed. That is curve-fitting after the fact, and it teaches you nothing predictive. Pick the obvious swing *before* you look at where you want price to go.
+
+</Callout>
+
+- **Trading the level naked**, with no confirmation. The level is a question, not an answer.
+- **Treating it as a precise line.** Use a small zone around each level; expect overshoots and undershoots.
+- **Cherry-picking which Fibonacci tool to mention** after a move completes (retracement vs. extension vs. fans vs. time zones) so that *something* always "worked." With enough tools, something always will.
+- **Forgetting the bigger picture.** A 61.8% retracement inside a confirmed downtrend is a place to *sell*, not buy.
+
+## How to apply it today
+
+1. Identify a clear, recent swing on a meaningful timeframe.
+2. Anchor the retracement tool low-to-high (uptrend) or high-to-low (downtrend).
+3. Mark the 38.2%, 50%, and 61.8% zone as your primary watch area.
+4. Look for **confluence** — does a prior S/R level, moving average, or pattern agree?
+5. Wait for **confirmation** (candlestick, volume, momentum) before entering.
+6. Use extensions (127.2%, 161.8%) only as *potential* profit targets, never as certainties, and place a stop beyond the invalidation point.
+
+### Practice
+
+Open a chart, pick ten completed swings, draw retracements, and *record* whether price reacted near a level and what other signal (if any) was present. Keep a simple log. After 30–50 observations you will have your own evidence — and a healthy, earned skepticism — rather than someone else's marketing.
+
+## Further reading
+
+See the Sources below. The StockCharts ChartSchool article is the best free walkthrough of drawing and confluence, and the Wikipedia article is the most accessible summary of the academic criticism.
+
+### Sources
+
+1. [Wikipedia — Fibonacci retracement](https://en.wikipedia.org/wiki/Fibonacci_retracement) — definition, level derivations, and the academic criticisms (no confirmed statistical significance; Merrill's *Filtered Waves*; Malkiel).
+2. [Wikipedia — Golden ratio](https://en.wikipedia.org/wiki/Golden_ratio) — exact value of φ = (1+√5)/2, the 1/φ = φ−1 property, and how Fibonacci ratios derive from powers of φ.
+3. [StockCharts ChartSchool — Fibonacci Retracements](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-annotation-tools/fibonacci-retracements) — how to draw on uptrends/downtrends, that 50% comes from Dow Theory (not Fibonacci), confluence examples, and the "alert zones, not hard reversal points" guidance.
+4. [Fidelity — Fibonacci Retracements (Technical Indicator Guide)](https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/fibonacci-retracement) — the standard level set (0 / 23.6 / 38.2 / 50 / 61.8 / 100) and interpretation as support/resistance and price objectives.
+5. [Wikipedia — A Random Walk Down Wall Street](https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street) — Burton Malkiel's randomness critique of chart patterns, cited as a counterpoint to Fibonacci trading.

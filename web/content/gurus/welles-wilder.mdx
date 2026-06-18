@@ -1,0 +1,189 @@
+---
+title: "J. Welles Wilder — The Indicator Engineer"
+slug: "welles-wilder"
+kind: "guru"
+level: "intermediate"
+order: 7
+summary: "The one-sentence version Most legendary traders are remembered for a philosophy."
+era: "1935–2021"
+contribution: "RSI, ATR, ADX, Parabolic SAR"
+prereqs: ["charles-dow", "rsi"]
+---
+
+## The one-sentence version
+
+Most legendary traders are remembered for a philosophy. **J. Welles Wilder Jr.** is remembered for *arithmetic* — a handful of formulas, scribbled by a mechanical engineer, that still run inside almost every charting platform on Earth.
+
+Open any trading app and turn on RSI, ATR, ADX, or Parabolic SAR. You are using Wilder's code. No single person has had more of their actual *math* embedded into the daily routine of more traders. That is a strange kind of fame: you can be wildly influential and still have most people who use your work not know your name.
+
+This lesson is about the man who industrialized technical analysis — and about why his later career is a cautionary tale worth telling honestly.
+
+## Who he was
+
+**John Welles Wilder Jr.** was born on **June 11, 1935**, in Norris, Tennessee, and died on **April 18, 2021**, in Christchurch, New Zealand, at age 85 ([Wikipedia](https://en.wikipedia.org/wiki/Welles_Wilder)).
+
+His path into markets was not the usual one. He served in the U.S. Navy during the Korean War, then earned a degree in **mechanical engineering from North Carolina State University in 1962**. He worked as a mechanical engineer and later as a real estate developer before turning, in the 1970s, to the markets full-time.
+
+<Callout type="key">
+
+Wilder's background is the whole story. He approached price charts the way an engineer approaches a machine: define your inputs, write a precise formula, smooth the noise, and produce a number you can act on the same way every time. He was not looking for wisdom in the tape. He was looking for *specifications*.
+
+</Callout>
+
+That mindset produced one of the most consequential books in the field: **_New Concepts in Technical Trading Systems_**, self-published through his company Trend Research in **1978**. It is a thin, dense, almost manual-like book. In it, Wilder laid out trading systems and, in the process, introduced indicators that became standard equipment — including the **Commodity Selection Index, the Directional Movement system (DMI/ADX), Parabolic SAR, the Relative Strength Index (RSI), the Swing Index, and the Volatility Index** ([Wikipedia](https://en.wikipedia.org/wiki/Welles_Wilder)). The **Average True Range (ATR)** also comes from this book.
+
+## The core idea: a calculation you can repeat
+
+A technical indicator is just a formula applied to price (and sometimes volume) to produce a number that's easier to read than the raw chart. Wilder's gift was building indicators that were *mechanical* — fully defined, leaving no room for "it depends." Three engineering instincts run through all of them.
+
+**1. Separate the question into clean inputs.** Each Wilder indicator isolates one thing: momentum, volatility, or trend strength.
+
+**2. Smooth the noise with a consistent technique.** Wilder didn't trust raw, jumpy data. He used a specific smoothing method — now called **Wilder smoothing** or the **smoothed/modified moving average (SMMA)** — and reused it everywhere.
+
+**3. Put the answer on a readable scale.** Where possible he bounded the output (RSI runs 0–100; ADX runs 0–100) so a glance tells you where you stand.
+
+### Wilder smoothing — the engine inside everything
+
+Before the individual indicators, learn the gear that drives them. A *simple moving average* re-averages the last `n` values every period, which makes it lurch when an old value drops out. Wilder wanted something steadier. His formula:
+
+```
+SmoothedValue_today = (SmoothedValue_yesterday × (n − 1) + NewData_today) / n
+```
+
+This is mathematically an exponential moving average with a smoothing factor of **α = 1/n** ([Wikipedia: RSI](https://en.wikipedia.org/wiki/Relative_strength_index)). For the default 14-period setting, that's α = 1/14 ≈ 0.0714. Every new data point nudges the average slightly; old data fades out gradually rather than falling off a cliff.
+
+<Callout type="note">
+
+This is why Wilder's "14-period RSI" does *not* equal a textbook 14-period exponential moving average (which uses α = 2/(n+1) ≈ 0.133). Wilder's smoothing is "slower." If two platforms disagree on an RSI value, the usual culprit is one of them using a standard EMA instead of Wilder's SMMA. Always confirm the platform uses Wilder smoothing.
+
+</Callout>
+
+## The four headline indicators
+
+### RSI — momentum
+
+The **Relative Strength Index** measures *how much of recent price movement was upward*, on a 0–100 scale.
+
+```
+RS  = (Wilder-smoothed average gain) / (Wilder-smoothed average loss)
+RSI = 100 − 100 / (1 + RS)
+```
+
+Readings above 70 are traditionally "overbought," below 30 "oversold." RSI gets its own full treatment in the [RSI lesson](/indicators/rsi) — and it's also the indicator beginners most often misuse, so read that one carefully.
+
+### ATR — volatility
+
+The **Average True Range** answers: *how much does this market typically move in one bar?* It's built on the **True Range (TR)**, the largest of three distances:
+
+```
+TR = max of:
+  (1) today's High − today's Low
+  (2) | today's High − yesterday's Close |
+  (3) | today's Low  − yesterday's Close |
+```
+
+Components (2) and (3) capture overnight *gaps* — jumps between yesterday's close and today's open that a plain high-minus-low would miss. ATR is then just Wilder-smoothed TR, default 14 periods ([Wikipedia: ATR](https://en.wikipedia.org/wiki/Average_true_range)).
+
+<Callout type="key">
+
+ATR measures volatility, **not** direction. A high ATR means big moves — up *or* down. Its killer use is position sizing and stop placement: set your stop a multiple of ATR away (e.g. 2 × ATR) so your risk adapts to the market's actual choppiness instead of an arbitrary fixed number.
+
+</Callout>
+
+### ADX / DMI — trend strength
+
+The **Directional Movement Index** splits price action into upward pressure (**+DI**) and downward pressure (**−DI**). The **Average Directional Index (ADX)** then measures how *strongly trending* the market is, regardless of direction:
+
+```
++DI = 100 × Wilder-smoothed(+DM) / ATR
+−DI = 100 × Wilder-smoothed(−DM) / ATR
+DX  = 100 × | (+DI) − (−DI) | / ( (+DI) + (−DI) )
+ADX = Wilder-smoothed(DX)
+```
+
+ADX runs 0–100. Wilder's own writing and Wikipedia point to **below ~20 = weak/no trend** and **above ~40 = strong trend** ([Wikipedia: ADX](https://en.wikipedia.org/wiki/Average_directional_movement_index)), while many practitioners use **25** as the dividing line. Treat the level as a guideline, not gospel.
+
+### Parabolic SAR — trailing stops
+
+**SAR** means "**stop and reverse**." It prints a dot above or below price each bar, trailing the trend and tightening as the trend persists via an **acceleration factor (AF)** that starts at **0.02**, rises by 0.02 each time a new extreme is recorded, and caps at **0.20** ([Wikipedia: Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR)). When price crosses the dot, the system *flips* — that's both your exit and your reverse signal.
+
+## A worked example: ATR (illustrative)
+
+Suppose a stock's last five daily bars produce these True Range values (in dollars): **0.80, 1.20, 0.90, 2.00, 1.10**. *(Numbers are illustrative.)*
+
+The first ATR is just the simple average of those values to seed the calculation:
+
+```
+ATR_seed = (0.80 + 1.20 + 0.90 + 2.00 + 1.10) / 5 = 1.20
+```
+
+Now a sixth bar arrives with TR = 0.60. Using Wilder smoothing with n = 5:
+
+```
+ATR_6 = (ATR_5 × (n − 1) + TR_6) / n
+      = (1.20 × 4 + 0.60) / 5
+      = (4.80 + 0.60) / 5
+      = 1.08
+```
+
+Notice how the calm sixth bar pulls ATR down only modestly, from 1.20 to 1.08 — the smoothing keeps one quiet day from erasing the memory of that volatile $2.00 bar. If you were setting a stop at 2 × ATR, you'd place it roughly $2.16 from your entry.
+
+## How Wilder's tools fit together
+
+This is the part beginners miss: Wilder did not design these as rivals. He designed a **toolkit**, and the pieces are meant to cover each other's blind spots.
+
+| Indicator | Measures | Pairs naturally with |
+|---|---|---|
+| RSI | Momentum | ADX (is the momentum inside a real trend?) |
+| ATR | Volatility | SAR / stops (size risk to the market) |
+| ADX | Trend strength | RSI, SAR (filters out chop) |
+| Parabolic SAR | Trend-following exits | ADX (only trust SAR in trends) |
+
+The classic combination Wilder himself suggested: use **ADX to confirm a trend exists**, then trust **Parabolic SAR** for trailing stops only while it does. SAR whipsaws badly in sideways markets, so the ADX filter is what keeps it honest.
+
+## Honest criticisms
+
+Wilder's indicators are durable, but they are not magic, and intellectual honesty demands naming the weaknesses.
+
+- **They are lagging.** ADX and SAR are explicitly trend-*following*, meaning the trend must already exist before they react. They will never call a top or bottom early.
+- **They whipsaw in ranges.** Parabolic SAR is notorious for generating repeated false flips when price moves sideways. Wilder knew this and told users to filter with ADX.
+- **The defaults are not sacred.** "14 periods" was tuned to 1970s commodity markets on daily bars. There's nothing magic about 14, 70, 30, or 0.02 — they're starting points, not laws.
+- **Over-optimization is a trap.** Because the formulas are precise, it's tempting to backtest-tune every parameter until past data looks perfect. That "curve-fitting" usually fails forward.
+
+<Callout type="warning">
+
+The most expensive mistake with Wilder's tools is treating a precise *number* as a precise *prediction*. "RSI is 72, so it's overbought, so I'll short" is exactly the trade that gets run over in a strong uptrend, where RSI can pin near 80 for weeks. The math is exact; what the market does next is not.
+
+</Callout>
+
+## The Delta Phenomenon — a cautionary epilogue
+
+Here the story turns. In **1991**, Wilder published **_The Delta Phenomenon, or The Hidden Order in All Markets_** through his **Delta Society International** ([Wikipedia](https://en.wikipedia.org/wiki/Welles_Wilder)). It claimed that all markets contain a hidden, repeating time-based order tied to celestial cycles, organized into nested intervals (short-, intermediate-, medium-, long-, and super-long-term "Delta").
+
+Approach this with real skepticism. The Delta Phenomenon is a paid, partly proprietary system, and it has nothing like the transparent, falsifiable math of his 1978 indicators. It has not earned anything resembling the independent acceptance RSI or ATR enjoy.
+
+<Callout type="note">
+
+It's a useful lesson in evaluating *any* guru: judge each piece of work on its own evidence. The same person can give you the rigorously useful (RSI, ATR, ADX) and the unfalsifiable (a claimed hidden order in time). Your respect for the first should not buy a free pass for the second.
+
+</Callout>
+
+## How to apply Wilder today
+
+1. **Start with the defaults, then question them.** Use 14-period RSI/ATR/ADX to learn the tools, but check whether your market and timeframe behave better with different settings.
+2. **Use ATR for risk, not signals.** Let it size your stops and positions. This is arguably the single most practical thing in the whole 1978 book.
+3. **Filter trend tools with ADX.** Don't act on Parabolic SAR (or any trend-follower) unless ADX says a trend is actually present.
+4. **Confirm the smoothing.** When numbers don't match across platforms, verify they use true Wilder smoothing (α = 1/n).
+5. **Combine, never rely on one.** Momentum + volatility + trend strength together; never a lone indicator.
+
+## Further reading
+
+Wilder's original *New Concepts in Technical Trading Systems* (1978) remains the primary source and is surprisingly readable for its density. Pair it with the [RSI lesson](/indicators/rsi) in this guide for the indicator he's most famous for, and treat *The Delta Phenomenon* as biography rather than method.
+
+### Sources
+
+1. [Wikipedia — Welles Wilder](https://en.wikipedia.org/wiki/Welles_Wilder) — Birth/death dates, engineering background, 1978 book, full list of indicators, and 1991 Delta Phenomenon book.
+2. [Wikipedia — Relative Strength Index](https://en.wikipedia.org/wiki/Relative_strength_index) — RSI formula, RS definition, the 100−100/(1+RS) conversion, and the Wilder smoothing (α = 1/n) details.
+3. [Wikipedia — Average True Range](https://en.wikipedia.org/wiki/Average_true_range) — True Range's three components, gap handling, the simple-average seed, and the recursive Wilder-smoothed ATR with 14-period default.
+4. [Wikipedia — Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) — +DI/−DI, DX and ADX formulas, the 0–100 range, and trend-strength thresholds (~20 weak, ~40 strong).
+5. [Wikipedia — Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR) — "Stop and reverse" mechanics, acceleration factor (0.02 start, 0.20 cap), the flip on reversal, and whipsaw warning.

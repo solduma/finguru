@@ -1,0 +1,198 @@
+---
+title: "Risk Management & Position Sizing"
+slug: "risk-management"
+kind: "indicator"
+level: "beginner"
+order: 112
+summary: "The one-sentence version You can be wrong more often than you are right and still get rich; you can be right more often than you are wrong and still go broke."
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+You can be wrong more often than you are right and still get rich; you can be right more often than you are wrong and still go broke. The difference is risk management — the unglamorous discipline of deciding *how much* you can lose before you decide *what* to buy.
+
+Most beginners spend nearly all their energy hunting for the perfect entry signal. Professionals know the entry is the least important part of a trade. What keeps you in the game for the long run is controlling the size of your losses, sizing your positions correctly, and respecting the brutal arithmetic of compounding. This lesson is that arithmetic, made concrete.
+
+<Callout type="key">
+
+Survival comes first. A strategy you can't survive emotionally and mathematically is worthless, no matter how clever the entries are. The trader who is still trading next year wins.
+
+</Callout>
+
+## Why risk management beats entries
+
+Imagine two traders. Alice wins 70% of her trades; Bob wins 40%. Sounds like Alice is the better trader. But Alice risks $100 to make $30 on each trade, while Bob risks $100 to make $300. Run the numbers and Alice slowly bleeds money while Bob compounds. The *outcome* is decided not by how often you're right, but by the relationship between your wins, your losses, and your bet size.
+
+That relationship is something you control completely — unlike the market. You can't make a stock go up. You can absolutely decide that no single trade will cost you more than 1% of your account.
+
+## The risk-per-trade rule (the 1% / 2% rule)
+
+The foundation of all position sizing is a single decision made *before* you look at any chart: **how much of my account am I willing to lose if this trade goes wrong?**
+
+The widely-taught answer is the **1% rule** (or, for those with more tolerance, the **2% rule**): never risk more than 1–2% of your total account on a single trade. "Risk" here means the money you actually lose if your stop-loss is hit — not the total amount you invest.
+
+<Callout type="note">
+
+A common confusion: the 1% rule limits your *loss*, not your *position size*. You might put 25% of your account into a stock, but if your stop is only 4% below entry, your actual risk is just 1% of the account. The two numbers are different things.
+
+</Callout>
+
+## Position sizing: from stop distance to shares
+
+Once you know two things — your **risk per trade** (in dollars) and your **stop distance** (how far the price has to move against you before you exit) — the position size is pure arithmetic.
+
+```
+Risk per trade ($)     = Account size × Risk %
+Risk per share ($)     = Entry price − Stop-loss price   (for a long)
+Position size (shares) = Risk per trade ($) ÷ Risk per share ($)
+```
+
+**Worked example (illustrative):**
+
+- Account size: $25,000
+- Risk per trade: 1% → **$250**
+- You want to buy a stock at **$50.00**
+- Your stop-loss is at **$47.50** → risk per share = $50.00 − $47.50 = **$2.50**
+
+```
+Position size    = $250 ÷ $2.50 = 100 shares
+Capital deployed = 100 × $50    = $5,000  (20% of the account)
+```
+
+If the stop hits, you lose 100 × $2.50 = $250 — exactly 1% of the account. Notice what happens when the chart demands a *wider* stop:
+
+| Entry | Stop | Risk/share | Shares (for $250 risk) | Capital used |
+|-------|------|-----------|------------------------|--------------|
+| $50 | $47.50 | $2.50 | 100 | $5,000 |
+| $50 | $45.00 | $5.00 | 50 | $2,500 |
+| $50 | $49.00 | $1.00 | 250 | $12,500 |
+
+<Callout type="key">
+
+The stop comes first; the share count is *derived* from it. Beginners do it backwards — they pick a share count they "feel good about," then add a stop wherever it's convenient. That lets the position dictate your risk instead of you dictating it.
+
+</Callout>
+
+## Where to put the stop: technical vs. fixed
+
+There are two broad philosophies for placing the stop-loss (the pre-set price at which you exit a losing trade automatically).
+
+- **Fixed / percentage stop:** a flat rule, e.g. "always exit 5% below entry." Simple and consistent, but it ignores the chart — your stop may sit right where the price naturally wobbles.
+- **Technical stop:** placed at a level the market "respects" — just below a recent swing low, a support level, or a moving average. The logic: if price breaks that level, your reason for the trade is invalidated.
+
+Most experienced traders favor technical stops, then *size the position to the stop* (as above). A useful refinement is a **volatility-based stop** using a measure like Average True Range (ATR), the average size of a stock's daily price range; e.g. place the stop 2 × ATR away so calm stocks get tight stops and jumpy stocks get room to breathe.
+
+<Callout type="warning">
+
+Never widen a stop after entering "to give the trade more room." That single habit — moving the line you swore you'd respect — is how a planned 1% loss becomes a 10% disaster. Decide the stop before you click buy, and treat it as non-negotiable.
+
+</Callout>
+
+## Reward-to-risk, win rate, and expectancy
+
+**Reward-to-risk ratio (R:R)** compares what you stand to gain against what you're risking. If you risk $2.50/share to reach a target $7.50/share away, that's a 3:1 reward-to-risk.
+
+The reason R:R matters is that it works *together* with your **win rate** (the fraction of trades that win) to produce **expectancy** — the average dollar amount you expect to make per trade over many trades.
+
+```
+Expectancy = (Win% × Average win) − (Loss% × Average loss)
+```
+
+**Worked example (illustrative):** Win rate 40%, average win $300, average loss $100:
+
+```
+Expectancy = (0.40 × $300) − (0.60 × $100)
+           = $120 − $60
+           = +$40 per trade
+```
+
+A positive expectancy is the entire game. With +$40 per trade, 200 trades a year is +$8,000 *on average*, even though you lose 60% of the time. Now flip it — the high-win-rate trap:
+
+| Trader | Win rate | Avg win | Avg loss | Expectancy/trade |
+|--------|----------|---------|----------|------------------|
+| Alice  | 70% | $30 | $100 | (0.7×30) − (0.3×100) = **−$9** |
+| Bob    | 40% | $300 | $100 | (0.4×300) − (0.6×100) = **+$60** |
+
+Alice is "right" far more often and still loses money. This is why R:R is non-negotiable: a high win rate cannot save a bad reward-to-risk ratio.
+
+<Callout type="note">
+
+A handy break-even shortcut: the minimum win rate you need to avoid losing money is `1 / (1 + R:R)`. At 2:1 reward-to-risk you only need to win `1/3 ≈ 33%` of the time to break even; at 1:1 you need 50%; at 1:2 (risking more than you make) you need 67%.
+
+</Callout>
+
+## The asymmetry of losses: why drawdowns are deadly
+
+Here is the most important — and most counterintuitive — math in all of trading. A loss and the gain needed to recover it are **not symmetric**, because the recovery gain is calculated on a *smaller* base.
+
+```
+Gain needed to recover = Loss% ÷ (1 − Loss%)
+```
+
+| Loss | Gain needed just to break even |
+|------|-------------------------------|
+| 10% | 11% |
+| 20% | 25% |
+| 33% | 49% |
+| 50% | 100% |
+| 75% | 300% |
+| 90% | 900% |
+
+A 50% loss requires a 100% gain to get back to even — you must *double* your remaining money. This asymmetry is exactly why capping each trade at 1–2% matters so much: small losses recover almost effortlessly, but deep **drawdowns** (the decline from your account's peak to its trough) can be mathematically near-impossible to climb out of. As the loss grows, the required recovery accelerates viciously.
+
+<Callout type="warning">
+
+This is why "averaging down" into a losing position — buying more as it falls to lower your average cost — is so dangerous. It feels like a bargain, but it increases your risk on a trade that has already proven you wrong, and it pushes you toward the steep end of the recovery table.
+
+</Callout>
+
+## Avoiding ruin
+
+The **risk of ruin** is the probability that a string of losses wipes you out before your edge can play out. Two mathematical facts, drawn from gambler's-ruin theory, should be tattooed on every trader's mind:
+
+1. With a **negative-expectancy** strategy, ruin is eventually *certain*, no matter how clever your bet-sizing system. There is no money-management trick that fixes a losing edge.
+2. With a **positive** edge but **bet sizes too large**, you can *still* go broke — a long-enough losing streak (which is statistically inevitable) drains the account before the edge recovers it.
+
+A simple thought experiment: even a 60% win-rate strategy will occasionally produce a run of, say, 8 losses in a row. If you risk 10% per trade, eight straight losses cut you to about 43% of your account (needing a 132% gain to recover). Risk 1% per trade and the same streak barely scratches you.
+
+This is also the lesson behind the **Kelly criterion** — a formula for the mathematically "optimal" bet fraction, developed by Bell Labs researcher John L. Kelly Jr. in 1956. In practice, traders deliberately use *fractional* (often half) Kelly, because full Kelly produces stomach-churning drawdowns and assumes you know your win probability exactly, which you never do.
+
+## Diversification and correlation
+
+Spreading risk across several positions reduces the chance that one bad event sinks you — but only if those positions don't all move together. **Correlation** measures how tightly two assets move in tandem (+1 = lockstep, 0 = unrelated, −1 = opposite).
+
+<Callout type="warning">
+
+Holding five different tech stocks is *not* diversification — they're highly correlated and effectively one big bet. In a market crash, correlations notoriously spike toward 1: things that looked independent all fall at once. Count your *correlated* risk, not your number of tickers, and cap total risk across related positions (e.g. no more than 2–3% combined on one theme).
+
+</Callout>
+
+## How to apply this today: a checklist
+
+1. Pick a fixed risk per trade (start at **1%**) and never exceed it.
+2. Place your **stop** on a technical level *before* entering.
+3. Compute **shares = risk-$ ÷ risk-per-share**. Let the stop set the size.
+4. Take trades only when the **reward-to-risk is at least ~2:1**.
+5. Track every trade and compute your **expectancy** monthly. If it's negative, stop and fix the system — don't trade bigger.
+6. Cap **correlated** exposure, not just per-trade exposure.
+
+## Practice suggestions
+
+- Build a one-page position-size calculator in a spreadsheet using the three formulas above.
+- Paper-trade 30 trades, logging entry, stop, target, R:R, and outcome. Compute your real win rate and expectancy.
+- Run the recovery table against your own worst losing streak: how big a gain would it have taken to recover?
+
+## Further reading
+
+- Van K. Tharp, *Trade Your Way to Financial Freedom* — the standard reference on expectancy (measured in multiples of R) and position sizing.
+- Ralph Vince, *The Mathematics of Money Management: Risk Analysis Techniques for Traders* (Wiley, 1992) — a deeper treatment of optimal f and Kelly.
+
+### Sources
+
+1. [Kelly criterion — Wikipedia](https://en.wikipedia.org/wiki/Kelly_criterion) — origin (John L. Kelly Jr., Bell Labs, 1956), the optimal bet-fraction formula, and why practitioners use fractional Kelly to limit drawdowns.
+2. [Gambler's ruin — Wikipedia](https://en.wikipedia.org/wiki/Gambler%27s_ruin) — why negative expectancy guarantees eventual ruin and why oversized bets ruin even a positive-edge player.
+3. [Drawdown (economics) — Wikipedia](https://en.wikipedia.org/wiki/Drawdown_(economics)) — definition of drawdown and maximum drawdown, magnitude vs. duration.
+4. [Risk–reward ratio — Wikipedia](https://en.wikipedia.org/wiki/Risk%E2%80%93reward_ratio) — definition of the reward-to-risk ratio and its relationship to break-even win rate.
+5. [Investopedia: Risk Management Techniques for Active Traders](https://www.investopedia.com/articles/trading/09/risk-management.asp) — the 1%/2% rule, stop-loss placement, and reward-to-risk framing.
+6. [BabyPips: Position Sizing](https://www.babypips.com/learn/forex/position-sizing) — standard formula for deriving position size from account-risk percentage and stop distance.

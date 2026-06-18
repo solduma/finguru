@@ -1,0 +1,167 @@
+---
+title: "Larry Williams — Short-Term Timing"
+slug: "larry-williams"
+kind: "guru"
+level: "intermediate"
+order: 14
+summary: "His career is also a useful case study in survivorship, marketing, and the gap between a spectacular result and a reliable method."
+era: "b. 1942"
+contribution: "%R & short-term timing"
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+In 1987, a Montana journalist-turned-trader named Larry Williams took $10,000 in a real-money futures contest and grew it past $1 million in twelve months — and then spent the next three decades teaching, selling, and occasionally being honest about why almost nobody (including him) has done it again.
+
+Larry Williams matters not because he found a magic indicator, but because he built a complete, repeatable *style*: short-term futures timing that fuses a momentum oscillator, volatility-based entries, seasonal tendencies, and the positioning of professional hedgers. His career is also a useful case study in survivorship, marketing, and the gap between a spectacular result and a reliable method. We will take all of it seriously — the genuinely good ideas and the honest caveats.
+
+## Who he was
+
+Larry R. Williams was born **October 6, 1942**, in Miles City, Montana, and graduated from the University of Oregon's School of Journalism in **1964** ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)). He became a commodity (futures) trader and a prolific author — roughly a dozen books, most famously *How I Made One Million Dollars Last Year Trading Commodities* (1979) and *Long-Term Secrets to Short-Term Trading* (1998).
+
+He also ran twice as the Republican U.S. Senate nominee from Montana — losing to Max Baucus in **1978** and to John Melcher in **1982** — and he is the father of actress Michelle Williams. There is a financial footnote there too: Michelle Williams won the same World Cup Trading Championship about a decade after he did, a fact that cuts both ways, suggesting either a teachable edge or a family well-versed in how the contest's math works.
+
+He is not without controversy. Williams faced a long IRS dispute; on **February 5, 2010**, the felony tax-evasion charges were dropped and he pleaded guilty to three misdemeanor counts of failing to file returns on time for tax years 1999–2001 ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)). Worth knowing when weighing how much to trust any single narrative about him.
+
+<Callout type="note">
+
+"Futures" are standardized contracts to buy or sell something (oil, wheat, an index) at a set date. They are *leveraged*: you control a large contract with a small deposit ("margin"), so gains and losses are amplified. This leverage is the engine behind both Williams' contest result and the risk that comes with copying him.
+
+</Callout>
+
+## The 1987 World Cup Trading Championship
+
+The World Cup Championship of Futures Trading (run by Robbins Trading Company) is a contest scored on *percentage return* in a real, audited brokerage account. In 1987 Williams turned **$10,000 into $1,137,600 — an 11,376% return** for the year ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)).
+
+That number is real in the sense that it happened in a tracked account. But you must understand *how* it happened before you treat it as a target.
+
+<Callout type="warning">
+
+A contest scored on percentage return rewards extreme, concentrated leverage. To grow an account 100x in a year, you must risk a very large fraction of capital repeatedly and be right. The same approach that produces an 11,000% winner also produces a long tail of competitors who blow up to zero — and we mostly only hear about the winner. This is **survivorship bias**, and Williams himself has acknowledged that he traded far larger position sizes in the contest than he would recommend for a normal account.
+
+</Callout>
+
+So the honest reading is this: the *method* may have an edge; the *result* is an inseparable mix of skill, aggressive position sizing, and luck. Replicating the method is plausible. Replicating the 11,376% is, for almost everyone, not.
+
+## Core idea 1 — Williams %R
+
+This is his best-known indicator and the place to anchor the technical work. **%R** is a momentum *oscillator* — a tool that measures where today's close sits inside the recent high-low range, to gauge whether price is stretched.
+
+The intuition: in an uptrend, closes tend to cluster near the *top* of the recent range; in a downtrend, near the *bottom*. %R simply quantifies that position.
+
+```
+%R = (Highest High over N − Close today) / (Highest High over N − Lowest Low over N) × −100
+
+where:
+  Highest High over N = the highest high of the last N bars
+  Lowest Low over N   = the lowest low of the last N bars
+  Close today         = the most recent closing price
+```
+
+The result ranges from **0 to −100**:
+- **0 to −20** = overbought (close near the top of the range)
+- **−80 to −100** = oversold (close near the bottom)
+
+The default lookback is commonly **N = 14**, though Williams originally used a **10-trading-day** period ([Wikipedia](https://en.wikipedia.org/wiki/Williams_%25R)).
+
+### Worked example (illustrative)
+
+Suppose over the last 14 days a market's highest high is **110**, its lowest low is **90**, and today it closes at **104**.
+
+```
+%R = (110 − 104) / (110 − 90) × −100
+   = (6 / 20) × −100
+   = 0.30 × −100
+   = −30
+```
+
+A reading of −30 says the close is in the upper-middle of its range: firm, but not yet "overbought." If tomorrow it closed at 108 with the same range, %R = (2 / 20) × −100 = **−10**, now in overbought territory.
+
+<Callout type="key">
+
+%R is *arithmetically equivalent to the %K line of the stochastic oscillator, mirrored around the zero line.* If you already know stochastics, you know %R — it is the same range-position math, just on a 0-to-−100 scale instead of 0-to-100. Do not run both and think you are getting independent confirmation; you are not.
+
+</Callout>
+
+<Callout type="note">
+
+A sign-convention quirk: Williams' original book multiplied by **+100** (giving a 0-to-100 scale), but a widely-copied **−100** variant — possibly spread by a printing error — is now the default in most software. The interpretation is identical; just check which scale your platform uses.
+
+</Callout>
+
+**How to read it without getting chopped up:** Williams explicitly *warned against* mechanically buying every oversold reading and selling every overbought one — in a strong trend, %R can pin near an extreme for a long time. He preferred *confirmation*: for example, wait for %R to hit −100%, let several days pass, and act only when it climbs back above a threshold such as −95% or −85%. **Failure swings** — price makes a new extreme but %R does not, a *divergence* — are a stronger signal than any single reading.
+
+## Core idea 2 — Volatility breakout entries
+
+Williams popularized **volatility breakout** entries: instead of guessing a top or bottom, you let the market prove momentum by moving a set distance.
+
+The classic recipe (illustrative parameters):
+
+```
+Buy stop   = Today's open + (k × yesterday's range)
+Sell stop  = Today's open − (k × yesterday's range)
+
+where range = (High − Low) of the prior day, and k is a fraction, often ~0.5–0.8
+```
+
+If price thrusts up by, say, 60% of yesterday's range above today's open, your buy order triggers automatically. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
+
+## Core idea 3 — Commercials and the COT report
+
+This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the U.S. **CFTC**, reflecting positions as of the preceding Tuesday's close and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into:
+
+| Category | Who | Reputation |
+|---|---|---|
+| **Commercials** (hedgers) | Producers/users with real exposure (a farmer, an airline) | "Smart money" / informed |
+| **Non-commercials** (large speculators) | Funds trading for profit | Trend-following crowd |
+| **Non-reportable** (small speculators) | Positions below reporting size | Often wrong at extremes |
+
+Williams built **COT indices** that normalize commercial positioning over a lookback window. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
+
+<Callout type="warning">
+
+COT is **lagging and incomplete**: it is released three days stale, and reportable positions cover only roughly 70–90% of total open interest. It tells you *who is positioned how*, not *when* to act. Treat it as a slow-moving backdrop — a multi-week tailwind or headwind — never as a same-day entry signal.
+
+</Callout>
+
+## Putting it together: the Williams stack
+
+Williams' edge was never one indicator — it was *confluence* across independent dimensions:
+
+1. **Sentiment / context** — Are commercials leaning bullish (COT)? Is the *seasonal* tendency favorable (e.g., known recurring calendar patterns in grains, bonds, or stock indices)?
+2. **Setup** — Is %R or another oscillator showing an extreme, ideally with divergence?
+3. **Trigger** — A volatility breakout in the direction the first two layers favor.
+4. **Risk** — A pre-defined stop and position size.
+
+The deeper layers (sentiment, seasonality) tilt the odds; the breakout times the entry. That layered logic is the genuinely transferable lesson — far more than any single setting.
+
+## Honest criticisms
+
+- **The contest result oversells the method.** As discussed, extreme leverage plus survivorship bias inflate the headline. Williams deserves credit for often saying so himself.
+- **He is a heavy marketer.** Much of the bio and performance data flows through promotional channels (his own materials, the contest sponsor). Self-reported numbers warrant skepticism.
+- **Seasonality is fragile.** Calendar patterns are notoriously prone to *overfitting* — finding a pattern in past data that was really just coincidence. Many published seasonals decay once they are widely known.
+- **%R is not unique.** It is a relabeled stochastic; the "edge" is in usage, not the formula.
+
+## Common pitfalls
+
+- **Trading %R extremes blindly** in trends — the single biggest beginner error, and one Williams explicitly warned against.
+- **Stacking redundant tools** (%R + stochastics + another momentum gauge) and mistaking correlated readings for independent confirmation.
+- **Copying contest position sizing** in a real account — the fastest route to a zeroed account.
+- **Treating COT as a timing trigger** rather than as slow context.
+
+## How to apply it today
+
+Start in a *simulator* or with tiny size on a liquid market. Build the stack in order: (1) check the latest COT for commercial extremes, (2) note the seasonal lean, (3) wait for a %R divergence or extreme, (4) enter on a volatility breakout in that direction, (5) risk a fixed small percentage (1–2%) with a hard stop. Journal every trade. The goal is a *process* with positive expectancy over many trades — not one heroic year.
+
+## Further reading
+
+- Larry Williams, *Long-Term Secrets to Short-Term Trading* (Wiley) — his most complete book on this style.
+- The CFTC COT page below for the raw data you would actually use.
+
+### Sources
+
+1. [Larry R. Williams — Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams) — birth date, biography, 1987 contest result ($1,137,600 / 11,376%), books, COT indices, Senate runs, and the February 2010 tax case.
+2. [Williams %R — Wikipedia](https://en.wikipedia.org/wiki/Williams_%25R) — exact formula, 0-to-−100 range, default 14-period vs. original 10-period, overbought/oversold levels, the −100 sign-convention printing-error note, and equivalence to stochastic %K.
+3. [CFTC — Commitments of Traders](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) — official publisher, weekly Friday 3:30 p.m. ET release, Tuesday-close data, and trader categories.
+4. [Commitments of Traders — Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders) — COT history (1924/1962), commercial vs. non-commercial vs. non-reportable definitions, "smart money" contrarian theory, and the 70–90% open-interest coverage / lagging limitations.

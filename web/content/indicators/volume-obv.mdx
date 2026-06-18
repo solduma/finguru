@@ -1,0 +1,145 @@
+---
+title: "Volume and On-Balance Volume (OBV)"
+slug: "volume-obv"
+kind: "indicator"
+level: "beginner"
+order: 110
+summary: "Every bar on a price chart is the result of buyers and sellers transacting."
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Price tells you *where* a market went; volume tells you *how many people cared enough to take it there* — and when the two disagree, the disagreement is often the most useful signal on your chart.
+
+Every bar on a price chart is the result of buyers and sellers transacting. **Volume** is simply the count of how much was traded in that period — for a stock, the number of shares that changed hands; for futures, the number of contracts. It is the rawest possible measure of *participation*. A price that rises 2% on huge volume means a large crowd voted with real money. The same 2% rise on tiny volume means almost nobody showed up, and the move may be hollow. Learning to read volume — and to compress it into a single running line with **On-Balance Volume (OBV)** — is one of the highest-value skills a beginner can pick up, because it adds a second, independent dimension to everything else you study.
+
+<Callout type="key">
+
+Price is *what* happened. Volume is *how much conviction* was behind it. Technical analysis becomes far more reliable when you read the two together rather than price alone.
+
+</Callout>
+
+## Why volume matters: the Dow principle of confirmation
+
+The idea that volume should confirm price is older than almost any indicator. It traces to **Charles Dow** (1851–1902), co-founder of *The Wall Street Journal*, and the body of writing later organized into **Dow Theory**. One of its tenets is that **volume should confirm the trend** — expanding in the direction of the primary move. In a healthy uptrend, the up days should generally come on heavier volume than the down days, because the dominant crowd (buyers) is more eager. In a healthy downtrend, the reverse holds. When prices change on light volume, the cause is ambiguous; when they move on heavy volume, the action reflects the "true" market view. So a trend rising on *shrinking* volume is a warning: fewer and fewer participants are supporting it, and the move may be running out of fuel.
+
+This gives us the single most important way to read raw volume:
+
+| What you see | Interpretation |
+|---|---|
+| Price up, volume up | Healthy — the move has participation behind it |
+| Price up, volume down | Suspect — rally on thin conviction, may stall |
+| Price down, volume up | Strong selling pressure — trend likely continues |
+| Price down, volume down | Selling may be drying up — watch for a bottom |
+
+<Callout type="note">
+
+"High" and "low" volume are always *relative*. There is no universal number. Judge today's volume against this security's own recent average (say, the last 20–50 days). A 50-day volume moving average plotted over the volume bars makes "above average" and "below average" obvious at a glance.
+
+</Callout>
+
+### Volume spikes and climax volume
+
+A **volume spike** is a single bar far above the recent average — often 2x, 3x, or more. Spikes mark moments of unusual emotion or new information: earnings, news, or a forced wave of buying or selling.
+
+A special case is **climax volume**: an enormous volume spike at the *end* of a strong move, often on a sharp price extension. A **selling climax** is panic dumping near a bottom — everyone who was going to sell finally capitulates at once, which paradoxically clears the way for a bounce because there is little selling left. A **buying climax** (or "blow-off top") is the mirror image near a top: euphoric buying that exhausts the last willing buyers. The intuition: when the *maximum* number of participants act in one direction, there is nobody left to push further, so reversals often follow.
+
+<Callout type="warning">
+
+A volume spike is ambiguous in the moment. The same giant red bar can mark a *climax* (last sellers exiting, bottom near) or a *breakdown* (institutions dumping, more pain coming). You usually only know which after price confirms over the following days. Treat spikes as alerts, not signals.
+
+</Callout>
+
+You will also hear that **"volume precedes price"** — the notion that a buildup of accumulation shows up in volume before the price breakout becomes obvious. It is the theory underlying OBV's divergence signals, but it is a useful lens, not a law; treat it as a hypothesis to confirm, not a guarantee.
+
+## On-Balance Volume: turning volume into a single line
+
+Raw volume bars are noisy and hard to compare to a trending price line. The fix was a **cumulative** running total whose direction you can compare directly to price. The underlying technique was first developed by analysts named **Woods and Vignola**, who called it "continuous volume." In his 1963 book *Granville's New Key to Stock Market Profits*, market technician **Joseph "Joe" Granville** (1923–2013) renamed it **On-Balance Volume** and popularized it — and his name has been attached to it ever since.
+
+The intuition: don't measure *how much* volume there was — measure which *side* it was on, and keep a running tally. If today closed higher than yesterday, treat the whole day's volume as "buying" and add it. If it closed lower, treat it as "selling" and subtract it.
+
+### The formula
+
+```
+If Close > Previous Close:   OBV = Previous OBV + Volume
+If Close < Previous Close:   OBV = Previous OBV − Volume
+If Close = Previous Close:   OBV = Previous OBV   (unchanged)
+```
+
+The starting value is arbitrary (often just the first day's volume, or zero). The *absolute number* is meaningless — its value depends entirely on where you began the calculation. Only the **direction and shape of the OBV line** matter. OBV has no settings or look-back period to tune; it is purely cumulative.
+
+### A worked example (illustrative)
+
+Suppose we start OBV at 0 and track five days:
+
+| Day | Close | vs. Prior | Volume | OBV calculation | OBV |
+|---|---|---|---|---|---|
+| 1 | 50.00 | — | 1,000 | start | 0 |
+| 2 | 50.80 | up | 1,500 | 0 + 1,500 | +1,500 |
+| 3 | 50.40 | down | 1,200 | 1,500 − 1,200 | +300 |
+| 4 | 50.40 | flat | 900 | unchanged | +300 |
+| 5 | 51.20 | up | 2,000 | 300 + 2,000 | +2,300 |
+
+Notice Day 4: price was flat, so OBV ignored 900 shares entirely. And notice that OBV rose strongly into Day 5 — the up-days carried more volume than the down-day, so the running line trends up, confirming the price advance.
+
+## How to read OBV
+
+**1. Trend confirmation.** The most basic use: a rising OBV line *confirms* a rising price; a falling OBV confirms a falling price. When OBV moves step-for-step with price, the trend has volume behind it. OBV breaking above its own prior peak can confirm a price breakout.
+
+**2. Divergence** — the headline use. **Divergence** means price and OBV are pointing in *different* directions, hinting the price trend is weakening.
+
+- **Bearish divergence:** price makes a *higher high*, but OBV makes a *lower high* (or breaks its own support). The rally is happening on weaker net volume — buyers are thinning out. Possible top.
+- **Bullish divergence:** price makes a *lower low*, but OBV makes a *higher low*. The decline is happening on weaker net selling — sellers are exhausting. Possible bottom.
+
+This is the analytical home of the **accumulation/distribution** idea. A flat-to-falling price while OBV quietly climbs suggests *accumulation* — large ("smart money") buyers absorbing shares without pushing price up yet. A flat-to-rising price while OBV falls suggests *distribution* — big holders quietly unloading into the rally.
+
+<Callout type="warning">
+
+Divergence is a *condition*, not a trigger. Markets can diverge for a long time before — or without ever — reversing. A clean OBV divergence can persist for weeks while price keeps trending against you. Always wait for price to actually confirm (a broken trendline, a support break) before acting.
+
+</Callout>
+
+## Volume-by-Price: where the volume happened
+
+OBV tracks volume over *time*. **Volume-by-Price** (also called a volume profile) tracks volume over *price* — it draws horizontal bars showing how much volume traded within each price zone over the period on your chart. Long bars mark prices where heavy trading occurred; those zones tend to act as **support** (when below current price) or **resistance** (when above), because lots of people have positions anchored there. It is a powerful complement: OBV says *whether* pressure is building; Volume-by-Price says *at what price levels* battles will likely be fought.
+
+## Settings, strengths, and beginner mistakes
+
+- **Settings:** OBV has none — it is parameter-free. Many traders overlay a moving average of OBV (e.g., a 20-period EMA) to smooth it and define its own trend.
+- **Strengths:** Simple, intuitive, parameter-free, and adds a genuinely independent signal (volume) on top of price.
+- **Weaknesses and honest caveats:**
+  - **The "all-or-nothing" flaw.** OBV assigns the *entire* day's volume to up or down based only on the close. A day that closes up a penny adds 100% of volume as "buying"; a day that closes down a penny subtracts 100%. The magnitude of the price move is ignored. (This is why some prefer the **Accumulation/Distribution Line** or **Chaikin Money Flow**, which weight volume by *where* price closed within the day's range.)
+  - **Single spikes distort it.** One enormous-volume day permanently shifts the cumulative line and can create a false divergence afterward.
+  - **Gaps and limit moves** aren't handled gracefully.
+  - **No standalone edge.** OBV is a *confirmation/divergence* tool, not a complete system — pair it with price analysis.
+
+<Callout type="warning">
+
+Be intellectually honest about volume's biggest practical problem: **data quality**. In equities and futures, volume is reported by a central exchange and is reliable. In the *spot forex* market there is no central exchange, so the "volume" your broker shows is only *tick volume* (the number of price updates) — a rough proxy, not true traded volume. OBV on forex is therefore far less trustworthy.
+
+</Callout>
+
+A word on the man himself: Granville became a celebrity newsletter writer, publishing *The Granville Market Letter* from 1963, and at his peak in the early 1980s had over 20,000 subscribers. His calls reportedly moved the Dow on single days — a "buy" recommendation preceded a roughly 4% jump on April 22, 1980, and a "sell everything" call in early January 1981 is associated with a sharp sell-off. He was a showman who would emerge from a coffin at conferences or appear to walk across water at a swimming pool. But his sweeping market-timing predictions — including repeated calls for imminent collapse through the 1980s and 1990s — were frequently wrong, a useful reminder that a good *indicator* and a good *forecaster* are not the same thing. Use his tool; do not worship his calls.
+
+## How to combine OBV with other tools
+
+- **OBV + trend (moving averages / Dow):** use OBV to confirm a trend you've already identified, and watch for divergence as an early warning.
+- **OBV + support/resistance or chart patterns:** an OBV breakout that leads a price breakout adds conviction; a divergence into a key level warns the level may hold.
+- **OBV + momentum oscillator (e.g., RSI):** when *both* volume (OBV) and momentum (RSI) diverge from price, the warning is much stronger than either alone.
+
+## Practice suggestions
+
+1. Plot raw volume with a 50-day volume average on a few liquid stocks. For each big up- or down-day, note whether volume confirmed.
+2. Add OBV. Hand-calculate it for five days using the formula above to internalize it.
+3. Go hunting for divergences in *historical* charts and mark what happened next — including the cases where divergence "failed." Honest review of failures is where the real learning is.
+
+### Sources
+
+1. [StockCharts ChartSchool — On-Balance Volume (OBV)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/on-balance-volume-obv) — formula, trend confirmation, bullish/bearish divergence definitions, "volume precedes price," and limitations.
+2. [Wikipedia — On-balance volume](https://en.wikipedia.org/wiki/On-balance_volume) — origin (Woods and Vignola's "continuous volume," renamed by Granville), the up/down/equal formula, and the starting-point caveat.
+3. [Wikipedia — Joseph Granville](https://en.wikipedia.org/wiki/Joseph_Granville) — biography (1923–2013), *The Granville Market Letter* (from 1963), his 1980–1981 market-moving calls, showmanship, and mixed forecasting record.
+4. [StockCharts ChartSchool — Volume-by-Price](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/volume-by-price) — how volume profiles map volume to price zones and identify support/resistance.
+5. [Wikipedia — Volume (finance)](https://en.wikipedia.org/wiki/Volume_(finance)) — volume as a measure of activity/liquidity and confirmation of price moves.
+6. [Wikipedia — Dow theory](https://en.wikipedia.org/wiki/Dow_theory) — the tenet that volume confirms price trends and expands in the direction of the primary trend.
+7. [Wikipedia — Charles Dow](https://en.wikipedia.org/wiki/Charles_Dow) — biography (1851–1902) and co-founding of The Wall Street Journal.

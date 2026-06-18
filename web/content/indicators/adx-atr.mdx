@@ -1,0 +1,179 @@
+---
+title: "ADX, DMI & ATR — Trend Strength and Volatility"
+slug: "adx-atr"
+kind: "indicator"
+level: "intermediate"
+order: 105
+summary: "Directional Movement Index (DMI) , the Average Directional Index (ADX) , and the Average True Range (ATR) — exist to answer exactly that: Is there a trend?"
+prereqs: ["welles-wilder"]
+---
+
+## The one-sentence version
+
+A moving average tells you *where* price has been, but it can't tell you whether the market is **trending hard enough to follow** or **chopping sideways enough to fade** — and that single distinction is the difference between a strategy that works and the same strategy bleeding you dry. Welles Wilder's three tools — the **Directional Movement Index (DMI)**, the **Average Directional Index (ADX)**, and the **Average True Range (ATR)** — exist to answer exactly that: *Is there a trend? How strong is it? And how much room do I need to give my stop?*
+
+These all come from one source: J. Welles Wilder Jr.'s 1978 book *New Concepts in Technical Trading Systems*, the same book that gave us the RSI and Parabolic SAR. They were designed for commodities, which gap and move violently — and that origin shapes how they work.
+
+<Callout type="key">
+
+ADX measures trend **strength only**, never direction. A high ADX can mean a roaring uptrend *or* a collapsing downtrend. Direction is the job of the +DI and −DI lines; strength is the job of ADX.
+
+</Callout>
+
+## Part 1: The building block — True Range and ATR
+
+Everything here starts with one idea: a single bar's high-minus-low range *understates* volatility when price gaps. If a stock closes at \$50 and opens the next day at \$55, the high-low range of that new day might be tiny, yet \$5 of movement just happened overnight. Wilder fixed this with **True Range (TR)**.
+
+**True Range** is the *greatest* of these three distances:
+
+```
+TR = max of:
+  1. Current High  -  Current Low
+  2. | Current High  -  Previous Close |
+  3. | Current Low   -  Previous Close |
+```
+
+The previous close is used in (2) and (3) precisely to capture gaps — when yesterday's close sits outside today's range, one of those absolute values becomes the largest number. A compact equivalent: `TR = max(High, PrevClose) − min(Low, PrevClose)`.
+
+**Average True Range (ATR)** is just a smoothed average of TR. Wilder's default period is **14**. The first value is a simple average of the first 14 TRs; after that he applies his own smoothing (a flavor of exponential moving average with a smoothing factor of 1/14):
+
+```
+First ATR = average of the first 14 TR values
+Subsequent ATR = [ (Prior ATR × 13) + Current TR ] / 14
+```
+
+**Worked micro-example (illustrative).** Suppose yesterday's close was 100, and today High = 104, Low = 99.
+
+```
+1. High − Low          = 104 − 99   = 5
+2. |High − PrevClose|  = |104 − 100| = 4
+3. |Low  − PrevClose|  = |99  − 100| = 1
+TR = max(5, 4, 1) = 5
+```
+
+If the prior 14-period ATR was 3.0, the new ATR = (3.0 × 13 + 5) / 14 ≈ **3.14**.
+
+<Callout type="note">
+
+ATR is in **absolute price units** (dollars, ticks, pips), not a percentage. An ATR of 3 means very different things for a \$20 stock versus a \$2,000 one. To compare across instruments, normalize it: `ATR / Close × 100` gives an ATR-as-percent figure.
+
+</Callout>
+
+## Part 2: Directional Movement — the +DI and −DI lines
+
+Wilder asked a simple question each bar: did we make a *more extreme high* or a *more extreme low* than yesterday? That excess is **Directional Movement (DM)**.
+
+```
+UpMove   = Current High − Previous High
+DownMove = Previous Low − Current Low
+
++DM = UpMove   if (UpMove > DownMove and UpMove > 0),   else 0
+−DM = DownMove if (DownMove > UpMove and DownMove > 0), else 0
+```
+
+Only the *larger* move counts — a bar can contribute to +DM or −DM, but not both. An "inside day" (lower high *and* higher low than yesterday) produces zero for both.
+
+We then smooth +DM, −DM, and TR over 14 periods (using the same Wilder smoothing as ATR) and turn them into the **Directional Indicators**, expressed as percentages:
+
+```
++DI = 100 × (Smoothed +DM / Smoothed TR)
+−DI = 100 × (Smoothed −DM / Smoothed TR)
+```
+
+Reading them is intuitive: when **+DI is above −DI**, buyers have the edge; when **−DI is above +DI**, sellers do. A classic signal is a *crossover* — +DI crossing above −DI is bullish, the reverse is bearish.
+
+## Part 3: From DI to ADX — distilling strength
+
+The two DI lines tell you who's winning. To measure *how decisively*, Wilder computed the **Directional Index (DX)**:
+
+```
+DX = 100 × ( | +DI − −DI |  /  ( +DI + −DI ) )
+```
+
+If +DI = 30 and −DI = 10, then DX = 100 × (20 / 40) = **50** — a wide spread, meaning one side dominates. If +DI = 22 and −DI = 18, DX = 100 × (4 / 40) = **10** — the sides are evenly matched, no real trend.
+
+DX is jumpy, so **ADX is DX smoothed over 14 periods**:
+
+```
+First ADX = 14-period average of DX
+Subsequent ADX = [ (Prior ADX × 13) + Current DX ] / 14
+```
+
+Because ADX is the absolute *difference* between the DIs, it ignores direction entirely — that's why it rises in strong up- *and* down-trends alike.
+
+### Reading the ADX scale
+
+ADX ranges from 0 to 100, but in practice you'll rarely see it above 60. Common interpretation (thresholds are conventions, not laws):
+
+| ADX reading | Interpretation |
+|---|---|
+| Below 20 | Weak or no trend — ranging / choppy |
+| 20–25 | "Gray zone" — trend may be forming |
+| Above 25 | Trend is present and worth following |
+| Above 40 | Strong trend |
+| Above 50 | Very strong trend |
+
+Wilder himself treated **25** as the threshold for a present trend and **20** as the line below which there is no trend; many analysts simply use 20. What matters as much as the level is the **slope**: a *rising* ADX means the trend is strengthening; a *falling* ADX means it's losing steam (even if price still drifts the same way). Note that a steady, constant-slope trend will make ADX *flatten out* — ADX reacts to *changes* in trend strength.
+
+<Callout type="warning">
+
+ADX is a heavily smoothed, **lagging** indicator. Wilder's double smoothing means it can take around **150 periods** of data before ADX settles to consistent "true" values, and crossovers and threshold crosses arrive late. Never trade ADX in isolation — use it as a *filter*, not a *trigger*.
+
+</Callout>
+
+## Part 4: The killer application — choosing your strategy
+
+The single most valuable use of ADX is as a **regime filter**: it tells you which *kind* of strategy the market currently rewards.
+
+- **ADX above ~25 (and rising):** trend regime. Trend-following logic works — buy pullbacks, ride breakouts, trail stops. Mean-reversion will get run over.
+- **ADX below ~20:** range regime. Mean-reversion works — fade overbought/oversold extremes (e.g., RSI), sell resistance, buy support. Breakout and trend systems will get chopped to death by false signals.
+
+This solves a problem that destroys many beginners: applying a trend strategy in a range, or a fade strategy in a trend. The same RSI "overbought" signal that's a great short in a quiet market is a *terrible* short in a runaway uptrend — ADX is how you tell the two apart.
+
+### ATR for stops and position sizing
+
+ATR answers the practical question: *how much noise do I need to tolerate before admitting I'm wrong?* Setting a stop at a fixed percentage ignores how volatile the instrument currently is. ATR adapts.
+
+A popular volatility stop is the **Chandelier Exit** (created by Charles Le Beau and featured in Alexander Elder's books):
+
+```
+Chandelier Exit (long)  = Highest High over 22 periods − (ATR(22) × 3)
+Chandelier Exit (short) = Lowest Low over 22 periods   + (ATR(22) × 3)
+```
+
+The stop "hangs" three ATRs below the recent peak and ratchets up as price rises — never down. Defaults are **22 periods, 3× multiplier**; volatile names may need a larger multiplier (e.g., 5) to avoid whipsaws.
+
+ATR also drives **volatility-based position sizing**. If you risk a fixed dollar amount per trade, your share count should scale *inversely* with volatility:
+
+```
+Position size (shares) = (Account risk in $) / (ATR × stop multiplier)
+```
+
+**Illustrative example.** Risk \$500 per trade, stop = 2 × ATR, ATR = \$2.50. Stop distance = \$5.00, so size = 500 / 5 = **100 shares**. If ATR jumps to \$5, the same \$500 risk buys only 50 shares — automatically smaller positions in wilder markets.
+
+## Strengths, weaknesses, and beginner traps
+
+**Strengths.** ADX cleanly separates "trend vs. no-trend," a genuinely hard thing to eyeball. ATR is one of the few volatility measures that survives price gaps and back-adjusted futures contracts, since it works on *differences* of price.
+
+**Honest weaknesses.** ADX lags badly and its thresholds (20/25) are conventions, not fixed truths — they vary by market and timeframe, and you should backtest them rather than trust them. ATR's absolute scale makes cross-asset comparison meaningless without normalizing, and its value depends on how far back your data starts.
+
+<Callout type="warning">
+
+Common beginner mistakes: (1) reading a high ADX as *bullish* — it isn't directional. (2) Treating an ADX cross above 25 as a buy signal — it only says "a trend exists," so check the DI lines for direction. (3) Comparing raw ATR across two different-priced stocks. (4) Setting a too-tight ATR-stop multiplier (under ~1.5) and getting whipsawed out of good trades by normal noise.
+
+</Callout>
+
+## How to practice
+
+1. Put ADX, +DI, −DI, and ATR on a chart you know. For each big move, check whether ADX was above 25 *before* the move ran — build intuition for the filter.
+2. Pick one ranging period and one trending period. Apply an RSI mean-reversion rule to each and see how the ADX regime predicted which one worked.
+3. Manually compute TR and a 14-period ATR for ~20 bars in a spreadsheet, then compare to your platform's value. Discrepancies teach you how the smoothing and start-point work.
+4. Backtest your own ADX threshold — try 18, 22, 25, 30 — instead of assuming 25 is optimal for your market.
+
+### Sources
+
+1. [StockCharts ChartSchool — Average Directional Index (ADX)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-directional-index-adx) — full +DM/−DM, TR, DI, DX and ADX formulas, Wilder's smoothing, the >25 / &lt;20 thresholds, and the ~150-period settling requirement.
+2. [Wikipedia — Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) — 1978 origin in Wilder's book, the directional-movement formulas, and the "strength not direction," lagging-indicator framing with the 20/40/50 readings.
+3. [StockCharts ChartSchool — Average True Range (ATR)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-true-range-atr) — the three TR components, gap rationale, the simple-then-smoothed ATR formula, default period 14, and the absolute-vs-percent scale point.
+4. [Wikipedia — Average True Range](https://en.wikipedia.org/wiki/Average_true_range) — the max() TR formula, the smoothed-MA ATR formula with α = 1/14, futures back-adjustment validity, and ATR-based self-adjusting stops and sizing.
+5. [StockCharts ChartSchool — Chandelier Exit](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/chandelier-exit) — exact long/short formulas, the 22-period / 3× ATR defaults, Le Beau and Elder attribution, and multiplier tuning for volatile stocks.

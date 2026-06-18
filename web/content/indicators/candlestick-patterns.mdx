@@ -1,0 +1,148 @@
+---
+title: "Candlestick Patterns"
+slug: "candlestick-patterns"
+kind: "indicator"
+level: "beginner"
+order: 109
+summary: "A candlestick is a tiny picture of a battle between buyers and sellers over one slice of time, and \"candlestick patterns\" are the recurring shapes that battle leaves behind."
+prereqs: ["steve-nison"]
+---
+
+## The one-sentence version
+
+A candlestick is a tiny picture of a battle between buyers and sellers over one slice of time, and "candlestick patterns" are the recurring shapes that battle leaves behind. Learn to read the picture, and a price chart stops being a squiggly line and starts being a story.
+
+Candlesticks are probably the most popular way in the world to draw price charts. The technique originated in Japan — long associated with 18th-century rice trader Munehisa Homma, though Steve Nison, who later popularized candlesticks in the West, has cast doubt on that attribution and suggested the charts more likely took their modern form in the late 1800s. Nison brought them to Western markets in his 1991 book *Japanese Candlestick Charting Techniques*. The appeal is that a single candle packs four numbers — open, high, low, close — into one glance-able shape, and a sequence of candles often hints at what the crowd is feeling. But they are also one of the most over-hyped tools for beginners, so we will be honest about where they help and where they mislead.
+
+## Candle anatomy: the four numbers
+
+Every candle summarizes one time period (one day, one hour, one minute — whatever your chart is set to). It encodes four prices:
+
+- **Open** — the first traded price of the period.
+- **High** — the highest price reached.
+- **Low** — the lowest price reached.
+- **Close** — the last traded price of the period.
+
+These are drawn as two parts:
+
+- The **real body** — the thick rectangle between the open and the close. If the close is *above* the open, the body is hollow/green (a **bullish** candle: buyers won the period). If the close is *below* the open, the body is filled/red (a **bearish** candle: sellers won).
+- The **shadows** (also called **wicks** or **tails**) — the thin lines sticking out above and below the body. The top of the upper shadow marks the high; the bottom of the lower shadow marks the low.
+
+<Callout type="key">
+
+The body shows the *net* result (open vs. close). The shadows show the *range* the price explored but did not hold. A long shadow means one side pushed hard and then got pushed back.
+
+</Callout>
+
+What the proportions tell you ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/candlestick-charts/introduction-to-candlesticks)):
+
+- **Long body** = strong conviction; one side dominated. **Short body** = little net movement, often consolidation.
+- **Long upper shadow** = buyers reached for higher prices, but sellers forced the close back down.
+- **Long lower shadow** = sellers drove price down, but buyers recovered and bid it back up by the close.
+
+That is the entire grammar. Every named pattern below is just a sentence written in this grammar.
+
+## Single-candle patterns
+
+**Doji** — open and close are virtually equal, so the body is a thin horizontal line. It signals **indecision**: buyers and sellers fought to a draw. Variants you will hear named: the *long-legged doji* (long shadows both ways, maximum indecision), the *dragonfly* (long lower shadow, little or no upper — buyers rescued the close), and the *gravestone* (long upper shadow, little or no lower — sellers rejected higher prices). A doji is a warning flag, not a verdict.
+
+**Hammer** — a small body near the *top* of the range with a long lower shadow (roughly twice the body) and little or no upper shadow. Appearing in a downtrend, it shows sellers pushed price way down but buyers slammed it back up by the close: a potential **bullish reversal**.
+
+**Hanging Man** — the *exact same shape* as a hammer, but appearing in an *uptrend*. Now that long lower shadow means sellers were able to drive a deep dip mid-period, hinting the rally is tiring: a potential **bearish reversal**.
+
+**Shooting Star** — a small body near the *bottom* of the range with a long upper shadow, appearing in an uptrend. Buyers reached for new highs and got rejected: a potential **bearish reversal**.
+
+**Marubozu** — a long body with *no shadows at all*. A bullish marubozu opened at the low and closed at the high (relentless buying); a bearish one is the reverse. It signals strong conviction and is often read as continuation.
+
+<Callout type="note">
+
+The hammer and hanging man are physically identical candles. The *only* thing that changes their meaning is the trend that came before. This is the single most important lesson in candlestick reading: the same shape means different things in different contexts.
+
+</Callout>
+
+## Two-candle patterns
+
+**Bullish Engulfing** — in a downtrend, a small red candle is followed by a larger green candle whose body completely "engulfs" the prior body. Sellers were in control, then buyers overwhelmed them. A classic bottom-reversal signal.
+
+**Bearish Engulfing** — the mirror image at a top: a small green candle swallowed by a larger red one.
+
+**Harami** ("pregnant" in Japanese) — the *opposite* arrangement: a large body followed by a small opposite-colored body that sits *inside* it. It signals the prior trend's momentum is stalling. Bullish after a downtrend, bearish after an uptrend.
+
+**Piercing Line** — a bullish bottom signal: a long red candle, then a green candle that opens below the prior low but closes back *above the midpoint* of the red body.
+
+**Dark Cloud Cover** — the bearish top mirror: a long green candle, then a red candle that opens above the prior high but closes *below the midpoint* of the green body.
+
+## Three-candle patterns
+
+**Morning Star** — a bullish bottom reversal in three acts: (1) a long red candle, (2) a small-bodied candle (often gapping down) showing indecision, (3) a strong green candle closing well into the first candle's body. Sellers, then a standoff, then buyers take over.
+
+**Evening Star** — the bearish top mirror: long green, small indecisive body, then a strong red candle.
+
+**Three White Soldiers** — three consecutive long green candles, each closing higher: a strong bullish reversal off a bottom.
+
+**Three Black Crows** — three consecutive long red candles, each closing lower: a strong bearish reversal off a top.
+
+## A worked example (illustrative)
+
+*The numbers below are illustrative, not from a real instrument.* Suppose a stock has fallen for two weeks. Friday's candle prints:
+
+```
+Open  = 50.00
+High  = 50.20
+Low   = 47.00
+Close = 49.80
+```
+
+- **Body** = open-to-close = 50.00 down to 49.80, a tiny 0.20 red body sitting near the top of the range.
+- **Lower shadow** = body bottom (49.80) − low (47.00) = 2.80.
+- **Upper shadow** = high (50.20) − body top (50.00) = 0.20.
+
+So: a tiny body, a lower shadow about 14x the body, almost no upper shadow, *after a downtrend* — a textbook **hammer**. The story: sellers pushed price down nearly 3 points intraday, then buyers reclaimed almost all of it by the close. That is a hint the down-move may be exhausting.
+
+But notice the word *hint*. You would not buy yet.
+
+## Context and confirmation: the rules that matter most
+
+Two principles separate disciplined candle reading from guessing:
+
+1. **Trend context.** A "reversal" pattern needs something to reverse. A hammer is only meaningful after a downtrend; a shooting star only after an uptrend ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/candlestick-charts/introduction-to-candlesticks)). The same shape mid-consolidation is just noise.
+
+2. **Confirmation.** A single warning candle (doji, hammer, spinning top) signals *shifting* pressure, not a completed turn. Wait for the *next* candle to confirm — for example, a strong green close after a hammer, or a decisive break of a nearby level, ideally on expanding volume. Confirmation costs you a little entry price but filters out many false signals.
+
+<Callout type="warning">
+
+The biggest beginner mistake is trading a pattern in isolation: seeing a "doji" on a 5-minute chart and shorting immediately. Patterns are clues, not commands. Without trend context, confirmation, and a look at volume and support/resistance, you are essentially gambling on a shape.
+
+</Callout>
+
+## Honest criticisms
+
+Candlestick patterns have a real intuition — they genuinely encode buyer/seller psychology — but their *predictive edge* is hotly disputed. Academic studies have repeatedly struggled to show that classic patterns beat the market after costs. In a frequently cited study, Marshall, Young and Rose (2006) tested candlestick strategies on Dow Jones Industrial Average stocks and concluded that they did *not* create value for investors. Pattern recognition is also **subjective**: two analysts can disagree on whether a body is "small enough" to count as a doji or whether one candle truly "engulfs" another. As Wikipedia puts it, "there are some disputes on whether the K-line patterns have predictive power in academia."
+
+Other honest caveats:
+
+- **Timeframe matters.** A doji on a daily chart is far more meaningful than one on a 1-minute chart full of microstructure noise.
+- **Gaps barely exist in 24-hour markets.** Many classic patterns (morning star, dark cloud cover) were defined for gapping stock markets; in forex and crypto, the open often equals the prior close, weakening the patterns.
+- **Hindsight bias.** Patterns are easy to spot in the past and hard to act on in real time.
+
+## How to use them today
+
+- Use candles as a **timing and context tool**, not a standalone system. Let a higher-level method (trend, support/resistance, moving averages) tell you *where* to look; let candles help you decide *when*.
+- Always check the **prior trend** and wait for **confirmation**.
+- Combine with **volume** (an engulfing candle on heavy volume is far more convincing) and **key levels** (a hammer right at a known support zone is worth more than one floating in mid-air).
+- Favor **higher timeframes** when starting out — fewer, cleaner signals.
+
+## Practice suggestions
+
+1. Open any chart and, for ten random candles, write down O/H/L/C and describe the body/shadow story *before* reading any pattern name.
+2. Scroll back through history and mark every hammer and shooting star you can find — then check what happened next *with and without* confirmation. You will quickly see how often "obvious" patterns fail.
+3. Keep a log: pattern, trend context, whether you waited for confirmation, and the outcome. Your own data will teach you more than any list.
+
+### Sources
+
+1. [Wikipedia — Candlestick pattern](https://en.wikipedia.org/wiki/Candlestick_pattern) — definitions of single, double, and triple patterns, and the note on academic disputes over predictive power.
+2. [Wikipedia — Candlestick chart](https://en.wikipedia.org/wiki/Candlestick_chart) — candle anatomy (O/H/L/C, body, shadows), bullish vs. bearish coloring, the history (Homma, Nison, the 1991 book), and Nison's revised view on the patterns' origin.
+3. [StockCharts ChartSchool — Introduction to Candlesticks](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/candlestick-charts/introduction-to-candlesticks) — why prior trend and confirmation matter, and what long/short bodies and shadows reveal about buying/selling pressure.
+4. [Investopedia — Candlestick Charting: What Is It?](https://www.investopedia.com/trading/candlestick-charting-what-is-it/) — beginner overview of candle construction and major reversal and continuation patterns.
+5. [Investopedia — Doji](https://www.investopedia.com/terms/d/doji.asp) — doji types (long-legged, dragonfly, gravestone) and their limitations.
+6. [Marshall, Young & Rose (2006), "Candlestick technical trading strategies: Can they create value for investors?", *Journal of Banking & Finance*, 30(8), 2303–2323](https://www.sciencedirect.com/science/article/abs/pii/S0378426606000343) — academic study concluding that classic candlestick strategies did not create value for investors trading Dow Jones Industrial Average stocks.

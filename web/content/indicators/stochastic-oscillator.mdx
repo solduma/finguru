@@ -1,0 +1,152 @@
+---
+title: "Stochastic Oscillator"
+slug: "stochastic-oscillator"
+kind: "indicator"
+level: "intermediate"
+order: 103
+summary: "The one-sentence version The Stochastic Oscillator asks one deceptively simple question: where did today's close land inside the recent trading range?"
+prereqs: ["rsi"]
+---
+
+## The one-sentence version
+
+The Stochastic Oscillator asks one deceptively simple question: *where did today's close land inside the recent trading range?* If buyers are truly in control, the close should keep finishing near the top of the range — and when it stops doing that, momentum may be quietly fading before the price chart shows it.
+
+That single insight, popularized by a Chicago futures trader named George Lane more than sixty years ago, is why the Stochastic remains one of the most-used momentum tools on every charting platform. This lesson explains what it measures, the exact math, the three versions you'll see in menus, and — just as importantly — when it lies to you.
+
+## The intuition
+
+Imagine a stock trades in a $100–$110 band all week. If it closes at $109, buyers clearly won the day: the close is jammed against the top of the range. If it closes at $101, sellers had the upper hand. Lane's observation was that in a healthy *uptrend* (a sustained move higher), closes tend to *cluster near the period's high*, and in a *downtrend* they cluster near the low.
+
+The Stochastic turns this into a number from 0 to 100. A reading of 100 means the close was the highest point of the whole look-back range; 0 means it was the lowest. Everything else falls in between.
+
+<Callout type="key">
+
+The Stochastic does NOT track price level or volume. It tracks the *position of the close within the recent high-low range* — a proxy for momentum. Lane stressed that the oscillator follows the momentum of price, and momentum usually changes direction before price does.
+
+</Callout>
+
+## Who built it
+
+George C. Lane (1921–2004) was a Chicago-based futures trader and educator. He was part of a group of traders who developed the Stochastic Oscillator in the **late 1950s**, and he spent the following decades teaching and popularizing it — eventually as president of Investment Educators, Inc. The name "stochastic" here is a bit of a misnomer: it does not refer to random processes in the mathematical sense, but simply became the label for *where the current price sits within its range over time*. Lane repeatedly emphasized that the tool's single most valuable signal was **divergence**, not the overbought/oversold lines that most beginners fixate on.
+
+## The math
+
+The base calculation produces **%K**, and a smoothed version of %K gives the signal line **%D**.
+
+```
+%K = 100 × (Close − LowestLow_N) / (HighestHigh_N − LowestLow_N)
+
+  Close          = the most recent closing price
+  LowestLow_N    = lowest low over the last N periods
+  HighestHigh_N  = highest high over the last N periods
+  N              = look-back length (default 14)
+
+%D = 3-period simple moving average (SMA) of %K
+```
+
+**A worked example (illustrative numbers).** Suppose that over the last 14 days the highest high was 110 and the lowest low was 100, and today's close is 108:
+
+```
+range      = 110 − 100 = 10
+numerator  = 108 − 100 = 8
+%K         = 100 × (8 / 10) = 80
+```
+
+A close of 103 instead would give `100 × (3 / 10) = 30`. So 80 says the close is near the top of the range (strong); 30 says it's in the lower third (weak). Above 50 means the close is in the upper half of the range; below 50, the lower half. Lane called the 50 line the "50-yard line."
+
+## Fast, Slow, and Full — what the numbers in the menu mean
+
+This is where beginners get confused. There are three packaged versions, and they differ only in *how much smoothing* is applied.
+
+| Version | What %K is | What %D is | Typical settings |
+|---|---|---|---|
+| **Fast** | The raw formula above | 3-SMA of Fast %K | (14, 3) |
+| **Slow** | Fast %K smoothed by a 3-SMA | 3-SMA of Slow %K | (14, 3) |
+| **Full** | Fast %K smoothed by *X* periods | *Y*-SMA of Full %K | (14, 3, 3) |
+
+<Callout type="note">
+
+A key relationship: **Slow %K is identical to Fast %D** — both apply a 3-period SMA to the raw %K. The Slow version exists because raw Fast %K is jagged and whipsaw-prone, so it is smoothed once before plotting. The **Full** version just exposes every knob — look-back, %K smoothing, and %D averaging — for traders who want full control. Look-back values of 5, 9, or 14 are all common; shorter = more sensitive and noisier, longer = smoother and slower.
+
+</Callout>
+
+Practical takeaway: most traders use **Slow (14, 3)** or **Full (14, 3, 3)**. Avoid Fast unless you specifically want the most reactive (and noisiest) signal.
+
+## How to read it
+
+There are four classic ways traders use the Stochastic.
+
+**1. Overbought / oversold.** Above **80** is "overbought"; below **20** is "oversold." But read the warning below — these are not buy/sell buttons.
+
+**2. Crossovers.** When %K crosses *above* %D, it's a bullish trigger; when %K crosses *below* %D, bearish. These are most meaningful when they happen in the extreme zones (e.g., a bullish cross while below 20).
+
+**3. Divergence (Lane's favorite).**
+
+- *Bullish divergence:* price makes a **lower low**, but the Stochastic makes a **higher low** — downside momentum is fading.
+- *Bearish divergence:* price makes a **higher high**, but the Stochastic makes a **lower high** — upside momentum is fading.
+
+**4. The "stochastic pop."** Lane noted that sometimes price "breaks out and keeps going" while the oscillator pins to an extreme — a sign of trend strength, not exhaustion. It's a direct caution against fading every extreme reading.
+
+<Callout type="warning">
+
+The biggest beginner mistake: treating "above 80 = sell, below 20 = buy." In a strong uptrend the Stochastic can stay above 80 for a long time — and *staying* there is bullish, not bearish. A better rule is to wait for the oscillator to *leave* the zone: a cross back **below 80** (potential top) or back **above 20** (potential bottom), and only in the direction of the larger trend.
+
+</Callout>
+
+## Stochastic vs. RSI — they are not the same thing
+
+Both are bounded 0–100 momentum oscillators, and beginners often treat them interchangeably. They measure different things:
+
+| | Stochastic Oscillator | RSI (Relative Strength Index) |
+|---|---|---|
+| Measures | Close's position within the high-low range | Speed/magnitude of recent up-closes vs. down-closes |
+| Designed for | **Choppy, range-bound** markets | Both, but shines in **trending** markets |
+| OB/OS levels | 80 / 20 | 70 / 30 |
+| Inventor | George Lane (late 1950s) | J. Welles Wilder (1978) |
+
+A common heuristic: the **Stochastic works best when the market is oscillating in a range**, while the **RSI is steadier in trends**. Many traders watch both — agreement between them is a stronger signal than either alone.
+
+## Behavior in trends vs. ranges
+
+This is the make-or-break concept. In a **sideways range**, the Stochastic is in its element: it tops out near 80 at resistance and bottoms near 20 at support, and fading those extremes works reasonably well.
+
+In a **strong trend**, the same behavior becomes a trap. An uptrending stock will park the Stochastic in overbought territory and keep climbing; every "oversold" dip is a buying opportunity, not a sell. This is why a **trend filter** matters.
+
+## Combining it with a trend filter (a practical recipe)
+
+The single most useful upgrade is to only take signals *in the direction of the bigger trend*. An illustrative workflow:
+
+1. **Define the trend.** Use a longer moving average — e.g., the 200-day SMA. Price above it = uptrend; below = downtrend.
+2. **In an uptrend, only take bullish Stochastic signals.** Wait for the oscillator to dip below 20 (a pullback) and then cross back above it, or for a bullish %K/%D cross. Ignore overbought "sell" signals — the trend overrides them.
+3. **Confirm with price.** A staged confirmation (bullish version): (a) %K crosses %D and/or moves above 20 — earliest, riskiest entry; (b) the oscillator pushes above 50; (c) price breaks the prior resistance — slowest but most confirmed.
+4. **Add context.** Support/resistance levels, volume, and divergence all strengthen the read.
+
+<Callout type="key">
+
+Use the Stochastic for *timing within* a trend you've already identified by other means — not for picking the trend itself. Momentum oscillators answer "when," not "which direction."
+
+</Callout>
+
+## Common pitfalls and honest criticisms
+
+- **Whipsaw.** Crossovers and 20/80 crossings are frequent and noisy, especially on Fast settings. Expect false signals; size and confirm accordingly.
+- **It lags by construction.** Smoothing (the SMAs) reduces noise but delays signals. There is no free lunch — faster settings whipsaw, slower settings arrive late.
+- **It's not predictive in trends.** Divergence "predicting" reversals fails repeatedly in strong trends; price can diverge for a long time before — or without — reversing.
+- **Curve-fitting risk.** With Full Stochastics you can tune three parameters until past charts look perfect. That tells you nothing about the future. Pick sensible defaults and leave them.
+- **Not a standalone system.** Authoritative sources — including Lane himself — frame it as one input among several (trend, support/resistance, volume), never a complete strategy.
+
+## Practice suggestions
+
+- Pull up a clearly *range-bound* chart and a clearly *trending* chart side by side. Mark every time the Stochastic hit 80/20 and note how often fading it would have worked in each. The contrast is the lesson.
+- Hunt for divergences manually on historical charts, then check what price did next. Tally the hit rate honestly — including the misses.
+- Compare Fast vs. Slow vs. Full on the same chart to *feel* what smoothing does to signal count and timing.
+- Backtest a simple "trend filter + Stochastic pullback" rule on paper before risking money.
+
+### Sources
+
+1. [StockCharts ChartSchool — Stochastic Oscillator (Fast, Slow, and Full)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/stochastic-oscillator-fast-slow-and-full) — primary source for the %K/%D formulas, the default 14-period look-back, the three versions, the Slow %K = Fast %D relationship, 80/20 levels, divergence, and trend behavior.
+2. [Wikipedia — Stochastic oscillator](https://en.wikipedia.org/wiki/Stochastic_oscillator) — George Lane history (late 1950s), formula notation, common look-back periods (5/9/14), divergence as the key %D signal, the "stochastic pop," and the meaning of "stochastic."
+3. [Wikipedia — George Lane (technical analyst)](https://en.wikipedia.org/wiki/George_Lane_(technical_analyst)) — Lane's dates (1921–2004), his role as a Chicago futures trader within the group that developed the oscillator, and his presidency of Investment Educators, Inc.
+4. [Investopedia — Stochastic Oscillator](https://www.investopedia.com/terms/s/stochasticoscillator.asp) — overbought/oversold interpretation, the "momentum changes before price" rationale, and signal-line crossover usage.
+5. [Wikipedia — Relative Strength Index](https://en.wikipedia.org/wiki/Relative_strength_index) — confirms RSI was created by J. Welles Wilder (1978), its 70/30 levels, and its 0–100 bounding, used for the comparison table.

@@ -1,0 +1,172 @@
+---
+title: "Bollinger Bands"
+slug: "bollinger-bands"
+kind: "indicator"
+level: "intermediate"
+order: 104
+summary: "Most beginners misuse them on day one: they see price touch the upper band and short it, or touch the lower band and buy it."
+prereqs: ["moving-averages"]
+---
+
+## The one-sentence version
+
+Bollinger Bands draw a moving, self-adjusting "envelope" around price that widens when markets are volatile and tightens when they're calm — giving you a *relative* sense of whether price is high, low, or coiled and ready to move.
+
+Most beginners misuse them on day one: they see price touch the upper band and short it, or touch the lower band and buy it. Their creator, John Bollinger, says flatly that this is wrong. The bands were never meant to be a mechanical buy/sell trigger. They are a framework for reading volatility and confirming patterns. This lesson teaches you to use them the way the person who invented them actually intended.
+
+## Who built them and why
+
+John Bollinger is an American financial analyst who developed the bands in the early 1980s while trading options, and popularized them later as Chief Market Analyst at the Financial News Network (FNN). He holds both the CFA and CMT designations — he was the first analyst to earn both. The problem he was solving: older "trading bands" were drawn at a *fixed* percentage above and below a moving average (say, ±3%), which ignored the fact that volatility itself changes over time. Bollinger's insight was to make the band width driven by **standard deviation** — a statistical measure of how spread out price has been recently — so the envelope breathes with the market. He registered "Bollinger Bands" as a U.S. trademark in 2011. ([bollingerbands.com](https://www.bollingerbands.com/bollinger-band-rules), [Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands))
+
+## The intuition
+
+Think of the bands as a rubber band around price. When a market is quiet — small daily moves — the band squeezes in tight. When the market gets jumpy — big swings up and down — the band balloons out. The middle of the envelope is just the average price over a look-back window.
+
+Because the width adapts, the bands give you what Bollinger calls a "relative definition of high and low." Price near the upper band is *high relative to recent action*; near the lower band it's *low relative to recent action*. That word **relative** is the whole point — it's not an absolute overbought/oversold call.
+
+## The precise definition
+
+You need three quantities. First, the jargon:
+
+- **SMA (Simple Moving Average):** the plain average of the last *N* closing prices.
+- **Standard deviation (σ):** a measure of how far prices have strayed from that average. Bigger σ = more volatile.
+
+```
+Middle Band = 20-period SMA of closing price
+Upper Band  = Middle Band + (K × 20-period standard deviation)
+Lower Band  = Middle Band − (K × 20-period standard deviation)
+
+Defaults: N = 20, K = 2
+```
+
+<Callout type="note">
+
+Bollinger Bands use the **population** standard deviation (divide by *n*), not the sample version (divide by *n−1*). The standard deviation uses the same 20-period window as the SMA — that consistency is the reason a *simple* moving average is used rather than an exponential one. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands), [StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands))
+
+</Callout>
+
+### A tiny worked example (illustrative)
+
+Suppose the last 5 closes (we use 5 instead of 20 just to keep the arithmetic readable — **this is illustrative, not the real setting**) are: 10, 11, 12, 11, 16.
+
+```
+Mean (SMA)         = (10+11+12+11+16) / 5 = 12
+Deviations         = -2, -1, 0, -1, +4
+Squared deviations = 4, 1, 0, 1, 16  → sum = 22
+Variance           = 22 / 5 = 4.4        (population: divide by n)
+Std deviation σ    = √4.4 ≈ 2.10
+
+Upper Band = 12 + 2 × 2.10 = 16.20
+Lower Band = 12 − 2 × 2.10 =  7.80
+```
+
+Notice how that one big 16 close inflated σ and pushed the bands wide. As more calm closes arrive, σ shrinks and the bands pull back in. That breathing is the entire mechanism.
+
+## The two companion indicators: %b and BandWidth
+
+Bollinger added two derived measures that turn the bands into numbers you can program and compare.
+
+**%b** tells you *where price sits inside the bands*, on a 0-to-1 scale:
+
+```
+%b = (Price − Lower Band) / (Upper Band − Lower Band)
+```
+
+- %b = 1.0 → price is exactly at the upper band
+- %b = 0.5 → price is at the middle band
+- %b = 0.0 → price is at the lower band
+- %b > 1 or &lt; 0 → price has poked *outside* the bands
+
+**BandWidth** tells you *how wide the envelope is*, normalized so you can compare across time and across instruments:
+
+```
+BandWidth = (Upper Band − Lower Band) / Middle Band
+```
+
+A low BandWidth means the bands are pinched together (low volatility); a high BandWidth means they're stretched (high volatility). ([bollingerbands.com rules 15–19](https://www.bollingerbands.com/bollinger-band-rules))
+
+## How to actually read them
+
+### The Squeeze
+
+When volatility drops, the bands contract — and BandWidth falls toward a multi-month low. This is **the Squeeze**, Bollinger's most famous setup. The logic: markets cycle between quiet and active periods, and an unusually quiet period (a squeeze) tends to *precede* a volatile expansion. The catch — and this is critical — the squeeze tells you a big move is *coming*, but **not which direction**.
+
+<Callout type="warning">
+
+The squeeze has a "head fake": price often makes a brief move one way, sucks traders in, then reverses and makes the real move the other way. Bollinger explicitly warns about this. Wait for the band expansion and confirmation, and assume the first thrust may be a fake.
+
+</Callout>
+
+### Walking the bands
+
+Beginners assume a band touch means "reversal." In a strong trend, the opposite is true: price can ride along the outer band for many bars — "walking the band." During a powerful uptrend, price may hug the upper band for weeks and never come near the lower band, while the middle band (the SMA) acts as support. Repeated tags of a band are a sign of *trend strength*, not exhaustion. As rule 8 puts it, a close outside the band is initially a **continuation** signal, not a reversal signal. ([rules 6–8](https://www.bollingerbands.com/bollinger-band-rules))
+
+### W-Bottoms and M-Tops
+
+These reversal patterns come from Arthur Merrill's pattern work and are where the bands shine as a *confirmation* tool.
+
+A **W-Bottom** (bullish, forms in a downtrend) has four steps ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands)):
+
+1. A reaction low forms, often poking *below* the lower band.
+2. Price bounces back toward the middle band.
+3. A *second* low forms that holds *above* the lower band — even if price is lower in absolute terms. The key tell: less weakness on the second decline (use %b — the second low has a higher %b).
+4. Confirmation comes when price surges off the second low and breaks the interim resistance high.
+
+An **M-Top** (bearish) is the mirror image: a high pokes above the upper band, a pullback toward the middle band, then a second high that *fails to reach* the upper band — a non-confirmation warning of fading momentum — confirmed by a support break.
+
+<Callout type="key">
+
+The recurring theme is **non-confirmation by the bands**. A new price extreme that fails to reach the band it reached last time signals waning momentum. %b makes this objective: compare the %b reading at each peak or trough.
+
+</Callout>
+
+## Settings
+
+The defaults are (20, 2) — Bollinger says these are a *starting point*, not gospel. His guidance on adjusting:
+
+| Look-back | Suggested K (multiplier) |
+|-----------|--------------------------|
+| 10 periods | 1.9 |
+| 20 periods | 2.0 (default) |
+| 50 periods | 2.1 |
+
+Notice the multiplier barely changes — shortening the average needs a slightly *tighter* band and lengthening it a slightly *wider* one, to keep roughly the same containment. He also recommends the middle band describe the *intermediate-term trend* and warns against optimizing it for moving-average crossovers. ([rules 9–13](https://www.bollingerbands.com/bollinger-band-rules))
+
+## Strengths and honest weaknesses
+
+**Strengths:** adapts automatically to volatility; works across markets (stocks, forex, commodities, futures) and any timeframe with enough activity; gives you objective, programmable readings via %b and BandWidth.
+
+**Weaknesses — be honest about these:**
+
+- **The statistics don't hold.** A normal distribution would put ~95% of data inside ±2σ bands. Real markets have "fat tails" (extreme moves occur more often than the bell curve predicts), and Bollinger himself notes that only about **88–90%** of price falls inside the bands in practice, not 95%. The 20-period sample is too small, and prices are serially correlated, so textbook statistical assumptions are invalid. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands), [rule 14](https://www.bollingerbands.com/bollinger-band-rules))
+- **Mixed backtested performance.** Studies are inconsistent versus simple buy-and-hold. Notably, Lento et al. (2007) found no consistent edge for the conventional approach, but a *contrarian* version (fading the bands) produced positive returns across a variety of markets — a reminder there's no single "right" way to trade them. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands))
+- **They give no continuous advice.** Rule 22: the bands identify *setups* where the odds may be in your favor; most of the time they say nothing actionable.
+
+## Common beginner mistakes
+
+<Callout type="warning">
+
+1. **Treating a band tag as a signal.** Tags of the bands are just that — tags, not signals (rule 6). A tag of the upper band is not a sell.
+2. **Fading every trend.** Shorting the upper band during a strong uptrend — exactly when price is "walking the band" — is a classic way to get run over.
+3. **Pairing redundant indicators.** Bollinger says combine the bands with a *non-correlated* tool (volume, sentiment), not a second momentum oscillator that just repeats the same information (rule 4).
+4. **Assuming normal-distribution probabilities.** Don't bet that price "should" stay inside the bands 95% of the time.
+
+</Callout>
+
+## How to apply it today
+
+1. Put up bands at (20, 2) and just *watch* how they breathe for a few weeks before trading anything.
+2. Use **BandWidth** to spot squeezes — flag when it hits a multi-month (e.g. 6-month) low, then wait for expansion and a directional break (and respect the head-fake risk).
+3. Use **%b** to read W-bottoms / M-tops and momentum divergences objectively.
+4. **Combine, don't isolate.** Add one non-correlated confirmation — volume on a breakout, or a momentum oscillator for trade timing — and use the middle band as dynamic support/resistance and a trend reference.
+5. Journal whether band tags in *your* market behave as reversals or continuations; the answer differs by instrument and regime.
+
+## Further reading
+
+- John Bollinger, *Bollinger on Bollinger Bands* (McGraw-Hill, 2001) — the definitive book by the creator.
+
+### Sources
+
+1. [bollingerbands.com — John Bollinger's 22 Rules](https://www.bollingerbands.com/bollinger-band-rules) — the creator's official rules: tags vs. signals, walking the bands, %b and BandWidth definitions, settings guidance, ~90% containment (rule 14).
+2. [Wikipedia — Bollinger Bands](https://en.wikipedia.org/wiki/Bollinger_Bands) — history, 2011 trademark, formulas for the three bands, %b and BandWidth, population standard deviation, criticisms (fat tails, ~88% containment, Lento 2007 contrarian result).
+3. [StockCharts ChartSchool — Bollinger Bands](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands) — calculation, default (20,2), suggested (50,2.1)/(10,1.9) settings, W-Bottom and M-Top step-by-step identification, walking the bands, "tags not signals," 88–89% containment, Arthur Merrill attribution.

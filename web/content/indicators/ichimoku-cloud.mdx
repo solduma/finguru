@@ -1,0 +1,150 @@
+---
+title: "Ichimoku Kinko Hyo (The Cloud)"
+slug: "ichimoku-cloud"
+kind: "indicator"
+level: "intermediate"
+order: 106
+summary: "The one-glance chart that contains a whole trading system Most indicators answer one question."
+prereqs: ["moving-averages"]
+---
+
+## The one-glance chart that contains a whole trading system
+
+Most indicators answer one question. A moving average tells you direction. RSI tells you momentum. Bollinger Bands tell you volatility. **Ichimoku Kinko Hyo** is greedy: it tries to tell you trend, momentum, support, resistance, and even a forward-looking forecast of where support and resistance will sit — all in a single glance at the chart. That ambition is right there in the name, which translates roughly to "one-glance equilibrium chart."
+
+The catch is that "one glance" only works *after* you've put in the hours to read the picture fluently. To a newcomer, an Ichimoku chart looks like five wavy lines and a colored cloud spray-painted across the price — closer to abstract art than analysis. This lesson takes you from "abstract art" to "I know exactly what each line is saying."
+
+<Callout type="key">
+
+Ichimoku is not a single indicator you bolt onto a chart. It's a *self-contained system* of five lines designed to be read together. Reading any one line in isolation throws away most of its value.
+
+</Callout>
+
+## Who built it, and why that matters
+
+Ichimoku was developed by **Goichi Hosoda**, a Japanese journalist who published under the pen name **Ichimoku Sanjin** — a phrase usually translated as "what a man in the mountain sees" (a single, encompassing glance from above). According to the commonly repeated account, Hosoda began developing the method in the **late 1930s** and spent roughly **30 years** perfecting it before releasing it to the public in the **late 1960s**. [[1]](https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D)
+
+<Callout type="note">
+
+Some biographical specifics — an exact publication year (often cited as 1969) and the team of assistants who supposedly ran the calculations by hand — are repeated across trading sites without primary documentation in English, so treat them as the widely accepted story rather than rigorously verified history. The formulas and the published system, by contrast, are well documented.
+
+</Callout>
+
+That hand-calculated origin explains the "round" period numbers — 9, 26, 52 — which map to the rhythm of the old Japanese trading week (roughly a week and a half, a month, and two months of six-day trading weeks). You don't need to believe in that calendar to use the tool; just know that's where the defaults come from.
+
+## The five lines
+
+Every Ichimoku line is built from one humble idea: the **midpoint of the highest high and lowest low** over some window. That midpoint is treated as the "equilibrium" price for that period — the level buyers and sellers have, on average, agreed on. Here are all five.
+
+```
+1. Tenkan-sen  (Conversion Line)  = (9-period high  + 9-period low)  / 2
+2. Kijun-sen   (Base Line)        = (26-period high + 26-period low) / 2
+3. Senkou Span A (Leading Span A) = (Tenkan-sen + Kijun-sen) / 2   ... plotted 26 periods AHEAD
+4. Senkou Span B (Leading Span B) = (52-period high + 52-period low) / 2 ... plotted 26 periods AHEAD
+5. Chikou Span (Lagging Span)     = today's Close ... plotted 26 periods BEHIND
+```
+
+Two things make Ichimoku unusual. First, notice these are **midpoint-of-range** lines, *not* moving averages of closing prices like a typical MA. Second, two of the lines are deliberately **time-shifted**: Senkou A and B are pushed 26 periods into the future, and the Chikou Span is pushed 26 periods into the past. [[2]](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud)
+
+Let's give each line a plain-English job.
+
+| Line | Speed | What it tells you |
+|---|---|---|
+| Tenkan-sen (Conversion) | Fast (9) | Short-term momentum / equilibrium |
+| Kijun-sen (Base) | Medium (26) | Medium-term trend; a key support/resistance level |
+| Senkou Span A | — (shifted +26) | Faster edge of the cloud |
+| Senkou Span B | Slow (52, shifted +26) | Slower edge of the cloud; strong S/R |
+| Chikou Span (Lagging) | Close, shifted −26 | Confirms trend by comparing now vs. the past |
+
+### The Kumo (the cloud)
+
+The shaded ribbon between **Senkou Span A** and **Senkou Span B** is the **Kumo**, Japanese for "cloud." Because both spans are plotted 26 periods ahead, the cloud extends *to the right of current price* — it's a projection of where the system expects support and resistance to sit.
+
+- When Span A is **above** Span B, the cloud is **bullish** (commonly drawn green).
+- When Span A is **below** Span B, the cloud is **bearish** (commonly drawn red).
+- A **thick** cloud means the two spans are far apart — strong, hard-to-break support/resistance. A **thin** cloud is weak and easily pierced. [[2]](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud)
+
+<Callout type="key">
+
+The cloud is **dynamic, forward-projected support and resistance**. Price above the cloud → uptrend; below the cloud → downtrend; *inside* the cloud → no trend / chop, and you should generally stand aside.
+
+</Callout>
+
+## A small worked example (illustrative)
+
+Suppose a stock has, over the last 9 days, a highest high of $110 and a lowest low of $100. Over the last 26 days, the highest high is $115 and the lowest low is $95. Over the last 52 days, the highest high is $120 and the lowest low is $90. (These numbers are illustrative.)
+
+```
+Tenkan-sen = (110 + 100) / 2 = 105
+Kijun-sen  = (115 +  95) / 2 = 105
+Senkou A   = (105 + 105) / 2 = 105   -> plotted 26 days into the future
+Senkou B   = (120 +  90) / 2 = 105   -> plotted 26 days into the future
+```
+
+In this contrived case everything lands at 105 — the market is in perfect equilibrium, exactly the "balance" the name refers to. In real life the lines spread apart, and that spread is the information: a Tenkan well above a Kijun means short-term price is running hot above its medium-term equilibrium (bullish momentum).
+
+## How to read it, step by step
+
+Think of Ichimoku as a stack of filters that should agree before you act. [[3]](https://www.investopedia.com/terms/i/ichimoku-cloud.asp)
+
+1. **Where is price vs. the cloud?** Above = bullish bias, below = bearish bias, inside = no trade.
+2. **What color is the cloud (now and ahead)?** A green cloud ahead supports longs; a red one supports shorts. A cloud about to flip color is an early warning.
+3. **The TK cross.** When the fast **Tenkan-sen crosses above the Kijun-sen**, that's a bullish momentum signal (a "golden cross" of the two); crossing below is bearish. Its strength depends on *where* it happens: a bullish TK cross above a green cloud, with price above the cloud, is strong; the same cross inside the cloud is weak and easily reversed. [[2]](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud)
+4. **Kijun-sen as a level.** The Base Line acts as a magnet and as support/resistance; price tends to revert toward it and bounce off it in trends.
+5. **The Chikou Span check.** Because it's today's close shifted 26 periods back, you read it against the *price action of 26 periods ago*. If the Chikou is above that old price (and above the cloud), it confirms a clean uptrend with no overhead supply nearby; if it's tangled inside old candles, the signal is muddy.
+
+A textbook **strong bullish setup**: price above a green cloud, a bullish TK cross occurring above the cloud, and the Chikou Span floating above both old price and the old cloud. When all the filters agree, that's the "one glance" working as intended.
+
+## Settings
+
+The classic defaults are **9 / 26 / 52** (with the 26-period displacement). Hosoda chose these for the old six-day trading week; in today's five-day markets and 24/7 crypto, many traders adapt them.
+
+- Common adaptations swap in settings like **10 / 30 / 60** or **20 / 60 / 120** (with a matching displacement), reasoning that modern weeks and round numbers suit current markets. [[1]](https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D)
+- Shorter settings make the lines more sensitive — more signals, but more false ones. Longer settings lag more but filter noise.
+
+<Callout type="warning">
+
+Don't endlessly "optimize" the periods. Part of Ichimoku's edge is that thousands of traders watch the *same* default lines, making them somewhat self-fulfilling levels. Constant tweaking discards that shared-reference benefit and invites curve-fitting.
+
+</Callout>
+
+## Strengths and honest weaknesses
+
+**Strengths.** It bundles trend, momentum, and support/resistance into one view; the cloud's forward projection is genuinely distinctive; and the multiple-filter design naturally discourages low-quality trades.
+
+**Weaknesses — be honest about these:**
+
+- **Lag.** These are range midpoints and shifted lines. In fast reversals, Ichimoku is late, and a clean TK cross can be rare in a strong trend, so you may miss frequent entries. [[2]](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud)
+- **Useless in chop.** When price sits inside the cloud, every signal degrades. Ichimoku is a *trend* tool; in a range it whipsaws.
+- **No statistical magic.** Like all charting, it carries no proven predictive edge in academic terms; it's a discipline framework, not a crystal ball.
+- **Visual overload.** Five lines plus a cloud is a lot. Beginners routinely misread the time-shifts.
+
+## Common beginner mistakes
+
+<Callout type="warning">
+
+The number-one error is reading the **Chikou Span** or the **cloud** as if they were plotted at "today." The cloud is 26 periods in the *future*; the Chikou is 26 periods in the *past*. Always check what time location a line actually sits at before drawing conclusions.
+
+</Callout>
+
+Other frequent traps: trading TK crosses that happen *inside* the cloud (low quality); going long under a red cloud just because a fast signal fired; and stacking three more indicators on top, which defeats the all-in-one design. Bare TK crosses are themselves weak signals, so if you must add anything, a single momentum oscillator like RSI to gauge overbought/oversold is the standard pairing. [[3]](https://www.investopedia.com/terms/i/ichimoku-cloud.asp) [[4]](https://www.daytrading.com/ichimoku-cloud)
+
+## How to apply it today
+
+1. Start on a **daily chart** with the **default 9 / 26 / 52** and learn to name each line on sight.
+2. Trade **only with the cloud**: longs above a green cloud, shorts below a red one. Skip everything inside the cloud.
+3. Use the **Kijun-sen** for stops and the cloud's far edge for targets.
+4. Require **agreement**: price location, cloud color, TK cross, and Chikou confirmation should line up before you commit.
+
+## Practice suggestions
+
+- Pull up a trending instrument and a range-bound one side by side. Notice how cleanly Ichimoku reads the trend and how badly it whipsaws in the range.
+- Hand-calculate Tenkan and Kijun for five days from raw highs and lows to internalize the midpoint formula.
+- Backtest one rule only — "long when price closes above a green cloud, exit when it closes back inside" — and log the results before adding complexity.
+
+### Sources
+
+1. [Wikipedia — Ichimoku Kinkō Hyō](https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D) — Hosoda's biography, the pen name "Ichimoku Sanjin" ("what a man in the mountain sees"), the name's meaning, the ~30-year development and late-1960s publication, the five-line formulas, and adapted settings such as 10/30/60 and 20/60/120.
+2. [StockCharts ChartSchool — Ichimoku Cloud](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud) — precise formulas, the 26-period forward displacement, cloud color logic, TK-cross strength relative to the cloud, and the caveat that TK crosses can be rare in a strong trend.
+3. [Investopedia — Ichimoku Cloud](https://www.investopedia.com/terms/i/ichimoku-cloud.asp) — the "stack of filters/triggers" reading framework, price-vs-cloud trend rules, and pairing with momentum oscillators like RSI.
+4. [DayTrading.com — Ichimoku Cloud](https://www.daytrading.com/ichimoku-cloud) — practical interpretation of the five components, the weak-signal nature of bare TK crosses, and the advice not to use the indicator alone.

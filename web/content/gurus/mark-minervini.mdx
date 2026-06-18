@@ -1,0 +1,206 @@
+---
+title: "Mark Minervini — SEPA and the Volatility Contraction Pattern"
+slug: "mark-minervini"
+kind: "guru"
+level: "advanced"
+order: 17
+summary: "Most beginners do almost the opposite."
+era: "b. 1965"
+contribution: "SEPA & VCP"
+prereqs: ["charles-dow", "william-oneil", "stan-weinstein"]
+---
+
+## The one-sentence version
+
+Mark Minervini built a career on a deceptively simple idea: buy the strongest stocks in the strongest part of their trend, at the moment the market is offering you the least risk — and cut the trade fast if you're wrong.
+
+Most beginners do almost the opposite. They buy weak stocks because they're "cheap," they buy them while they're still falling, and they hold losers hoping to break even. Minervini's framework — SEPA, the Trend Template, and the Volatility Contraction Pattern (VCP) — is essentially a disciplined inversion of those instincts. This lesson unpacks that framework precisely, with worked numbers, and is honest about where it can mislead you.
+
+<Callout type="note">
+
+This is an advanced lesson. It assumes you already know what a moving average is, what relative strength means, and how a stop-loss works. If those are fuzzy, review the indicator lessons first.
+
+</Callout>
+
+## Who he was
+
+Mark Minervini is an American stock trader who rose to prominence in the 1990s. He is largely self-taught — he did not come up through a Wall Street training program — and he became widely known through his profile in Jack Schwager's *Stock Market Wizards*, where Schwager documented an average annual return of about **220% over a five-and-a-half-year period**, which compounds to roughly a **33,500% total return**, with only a single losing quarter across that span. That figure is striking, but it comes from Minervini's own audited statements provided to Schwager; treat it as a remarkable-but-self-reported track record rather than an independently replicated one.
+
+His two competition results are more verifiable because they came through the **U.S. Investing Championship**, a real-money trading contest:
+
+- **1997:** won with an audited **155% annual return**.
+- **2021:** won the $1M+ stock division with an audited, record-setting **334.8% return** — shattering the prior category record of 119.1% set the year before.
+
+His core books are **_Trade Like a Stock Market Wizard_ (McGraw-Hill, 2013)** and **_Think & Trade Like a Champion_ (2017)**, plus the co-authored *Momentum Masters* and *Mindset Secrets for Winning*.
+
+### His lineage
+
+Minervini's method is a synthesis, and he's open about it:
+
+- From **William O'Neil** (creator of CAN SLIM and founder of *Investor's Business Daily*): the focus on high-growth leaders with accelerating earnings, relative-strength ranking, and basing patterns before breakouts.
+- From **Stan Weinstein** (*Secrets for Profiting in Bull and Bear Markets*, 1988): the four-**stage** model of a stock's life cycle.
+- From **Jesse Livermore** and **Richard Wyckoff**: the idea of the "line of least resistance" and reading supply/demand through price and volume.
+
+## SEPA: the four-filter funnel
+
+**SEPA** stands for **Specific Entry Point Analysis** — Minervini's trademarked process. It is a funnel that narrows the entire market down to a handful of candidates. It has four components, and a stock should satisfy all of them:
+
+1. **Trend** — the stock must be in a confirmed Stage 2 uptrend (see the Trend Template below). This is non-negotiable and comes first.
+2. **Fundamentals** — accelerating earnings and sales, expanding margins. Minervini looks for strong quarterly EPS growth (often cited as 20%+ year-over-year) and improving annual numbers.
+3. **Catalyst** — a reason institutions would want to buy: a new product, a new drug approval, a sector theme, a blowout earnings report.
+4. **Timing** — the precise, low-risk entry, which is where the VCP comes in.
+
+<Callout type="key">
+
+SEPA's order matters. Trend is the gate. A cheap stock with great fundamentals but a broken chart (a Stage 4 downtrend) is disqualified before you even look at its earnings. Minervini buys strength, not value.
+
+</Callout>
+
+### The four stages (from Weinstein)
+
+| Stage | What's happening | Minervini's action |
+|-------|------------------|--------------------|
+| 1 — Accumulation | Sideways base after a decline | Watch, don't buy |
+| 2 — Advancing | Sustained uptrend, rising MAs | **Only stage he buys** |
+| 3 — Topping | Choppy, churning at highs | Take profits, tighten stops |
+| 4 — Declining | Downtrend, falling MAs | Avoid longs entirely |
+
+## The Trend Template: defining Stage 2 numerically
+
+Weinstein's stages are conceptual; Minervini makes Stage 2 measurable with a checklist (commonly stated as eight criteria). A stock should meet **all** of them:
+
+```
+Let P = current price
+MA50, MA150, MA200 = 50-, 150-, 200-day simple moving averages
+
+1.  P > MA150  AND  P > MA200
+2.  MA150 > MA200
+3.  MA200 is trending up for at least 1 month (ideally 4-5 months+)
+4.  MA50 > MA150 > MA200          (proper "stacked" alignment)
+5.  P > MA50
+6.  P is at least 30% above its 52-week low
+7.  P is within 25% of its 52-week high
+8.  Relative Strength (RS) ranking is high (Minervini wants 70+, prefers 80-90+)
+```
+
+Minervini also layers on the SEPA fundamental screens — most recent quarterly EPS up year-over-year, and annual earnings rising — though these sit alongside the template rather than inside its eight technical lines. RS ranking here means an IBD-style percentile measuring the stock's price performance versus all other stocks (80 = stronger than 80% of the market) — not the RSI oscillator, which is a different thing entirely.
+
+<Callout type="warning">
+
+Don't confuse **RS ranking** (a cross-sectional percentile of price performance) with **RSI** (J. Welles Wilder's bounded momentum oscillator). They share three letters and nothing else. Minervini means the former.
+
+</Callout>
+
+## The Volatility Contraction Pattern (VCP)
+
+This is Minervini's signature contribution. A VCP is a specific kind of base — a consolidation inside a Stage 2 uptrend — that shows a series of progressively **tighter** pullbacks on **declining** volume. The logic: each pullback shakes out weaker holders; when sellers are exhausted, the stock is coiled and ready to break out along the "line of least resistance."
+
+Minervini labels each contraction a **"T"** (for "tight"): T1, T2, T3, and so on. A textbook VCP has **2 to 4 contractions**, and each one should be both **shallower** and **shorter** than the last. The collection of these contractions is the pattern's **footprint**.
+
+### Illustrative example (numbers invented for teaching)
+
+```
+Stock building a VCP base after a Stage 2 advance:
+
+  T1:  -25%  over ~6 weeks   (deep flush; weak holders sell)
+  T2:  -12%  over ~3 weeks   (smaller; absorption continuing)
+  T3:   -6%  over ~1.5 weeks (very tight; supply nearly gone)
+
+  Each contraction's HIGH steps higher.
+  Volume in T3 dries up ~40-50% below the 50-day average.
+  Pivot (buy point) = just above the high of T3, say $105.
+```
+
+### The two-dimensional rule
+
+A real contraction shrinks in **both** magnitude (depth %) and **duration** (time) simultaneously. Magnitude-only tightening can just be slow chop; duration-only can mean selling isn't truly being absorbed.
+
+```
+VALID:    T1 -18%/4wk -> T2 -12%/3wk -> T3 -6%/1.5wk   (both shrink)
+INVALID:  T1 -12% -> T2 -15% -> T3 -8%                  (T2 deeper than T1)
+```
+
+If a later contraction is **deeper** than an earlier one, the pattern is broken — selling is increasing, not being absorbed.
+
+### Volume and the pivot
+
+Volume should fade with each successive T. The entry — the **pivot point** — is a breakout above the high of the final, tightest contraction, and it must come on **expanding volume**, commonly cited as **at least 1.4–1.5x the 50-day average**. A breakout on weak volume lacks institutional fuel and tends to fail.
+
+## A worked trade
+
+```
+Setup (illustrative):
+  Pivot/buy point      = $105.00
+  Breakout volume      = ~3x the 50-day average  (strong confirmation)
+  Stop placed just below final T low, ~7% down = $97.65
+  Risk per share       = $105.00 - $97.65 = $7.35
+
+Position sizing with a fixed $600 risk unit:
+  Shares = $600 / $7.35  ~= 81 shares
+  Position size ~= 81 x $105 = $8,505
+
+The tighter the VCP, the closer the logical stop, the MORE shares
+you can hold for the same dollar risk -> capital efficiency.
+```
+
+This is the heart of why Minervini hunts tight setups: a 6% stop lets you take a larger position for the same risk budget than a 12% stop does.
+
+## Risk control — the part beginners skip
+
+Minervini is more famous among professionals for risk management than for chart reading.
+
+- **A hard stop of 7–8% below entry, treated as non-negotiable.** His logic: keep average losses tight and even a long losing streak barely dents your capital. A string of 7% losses on a portion of capital still leaves you in the game.
+- **The "free roll":** once a position is up roughly 20%, raise the stop toward breakeven so the trade can no longer hurt you.
+- **Sell into strength:** take profits aggressively when a stock goes vertical, and watch short-term moving averages (10-day / 21-day) on heavy volume as exit signals.
+- **Market environment first:** he tracks **distribution days** (high-volume down days on the indexes) to judge whether the overall market is healthy. In a correcting market, even perfect VCPs fail at high rates, so he goes mostly to cash.
+
+<Callout type="key">
+
+Minervini's edge is asymmetry: small, fixed losses and occasional large gains. The VCP is just the tool that lets him place a tight stop near a logical level. The stop discipline is what makes the whole thing survivable.
+
+</Callout>
+
+## Honest criticisms
+
+- **Survivorship and self-reported returns.** The ~33,500% figure is audited but self-supplied, and it covers a specific, bull-friendly window. The championship wins are real, but they are short, single-account contests that reward concentration and aggression — not necessarily repeatable behavior.
+- **Subjectivity.** Counting contractions, judging whether volume has "dried up," and calling a base "tight" all involve discretion. Two skilled traders will disagree on the same chart, which makes the method hard to backtest cleanly. Mechanical VCP scanners exist but capture only a crude shadow of the discretionary read.
+- **Regime dependence.** This is a momentum/trend method. It thrives in trending bull markets with clear leadership and bleeds in choppy, mean-reverting, or sharply bearish markets. That is not a flaw he hides — "buy in the right market environment" is part of the method — but it means the strategy has long stretches of doing nothing.
+- **Whipsaw cost.** Tight stops mean you'll be stopped out frequently for small losses. Without the rare big winners, the math doesn't work, and most people lack the discipline to keep taking the small losses while waiting.
+
+## Common pitfalls and misconceptions
+
+<Callout type="warning">
+
+- **Chasing extended breakouts.** If the stock gaps more than ~5% above the pivot, the stop distance balloons and the risk/reward is gone. Don't chase.
+- **Forcing the pattern.** Not every base is a VCP. If contractions don't shrink in both dimensions, it isn't one.
+- **Ignoring the market.** Trading great setups in a Stage 4 market is the fastest way to die by a thousand small stops.
+- **Confusing RS ranking with RSI.** Flagged above, but it's the single most common beginner error with this method.
+- **Skipping the stop.** Without the 7–8% rule, SEPA becomes just another momentum-chasing scheme.
+
+</Callout>
+
+## How to apply it today
+
+1. **Screen for the Trend Template** using any modern platform (TradingView, TC2000, TrendSpider, and Finviz all support these MA / 52-week / RS filters).
+2. **Layer fundamentals:** keep only names with accelerating EPS/sales growth and a clear catalyst.
+3. **Wait for a VCP base** to form and tighten. Mark each T. Confirm both dimensions shrink and volume fades.
+4. **Buy the pivot on a volume surge**, placing your stop just below the final contraction's low (and within the 7–8% rule).
+5. **Manage:** move to breakeven after ~20%, trail with short MAs, and respect the market's overall stage.
+6. **Practice in a journal first.** Mark up 50 historical charts of past leaders, label the T's, and note where the real pivot and stop would have been — before risking money.
+
+## Further reading
+
+- Mark Minervini, *Trade Like a Stock Market Wizard* (McGraw-Hill, 2013) — the primary source for SEPA, the Trend Template, and VCP.
+- Mark Minervini, *Think & Trade Like a Champion* (2017) — risk management and psychology.
+- Jack Schwager, *Stock Market Wizards* (updated edition, 2003) — the interview that introduced Minervini publicly.
+- Stan Weinstein, *Secrets for Profiting in Bull and Bear Markets* (1988) — origin of the four-stage model.
+
+### Sources
+
+1. [Investor's Business Wire / U.S. Investing Championship coverage — Minervini's 2021 result](https://www.businesswire.com/) — the audited +334.8% 2021 stock-division win and the prior 119.1% record it broke.
+2. [TrendSpider — Minervini Trend Template](https://trendspider.com/learning-center/the-minervini-trend-template/) — the eight technical criteria, including price within 25% of the 52-week high, at least 30% above the 52-week low, RS ranking above 70, and a rising 200-day MA.
+3. [Open Library — Stock Market Wizards (Jack Schwager)](https://openlibrary.org/search?q=Stock+Market+Wizards+Schwager) — confirms the 2001 original and 2003 updated edition that featured Minervini.
+4. [Open Library — Secrets for Profiting in Bull and Bear Markets (Stan Weinstein)](https://openlibrary.org/search?q=Secrets+for+Profiting+in+Bull+and+Bear+Markets) — confirms Weinstein's 1988 four-stage source book.
+5. [quantstrategy.io — SEPA Strategy Explained](https://quantstrategy.io/blog/sepa-strategy-explained-mastering-trend-following-with-mark/) — SEPA's four components, the Trend Template criteria, VCP contraction percentages, and the 7–8% / free-roll risk rules.
+6. [profitvisionlab.com — VCP: A Complete Guide](https://profitvisionlab.com/en/sepa-e02-vcp-en/) — the "T" contraction count, the two-dimensional (magnitude + duration) rule, volume dry-up, breakout volume threshold, position sizing, and failure modes.
+7. [financialtechwiz.com — Mark Minervini Trading Strategy](https://financialtechwiz.com/post/mark-minervini-trading-strategy/) — championship results, the ~33,500% / ~220% average annual figures from Schwager, book titles, and the Weinstein/O'Neil/Livermore lineage.

@@ -1,0 +1,186 @@
+---
+title: "Linda Raschke — Professional Swing Setups"
+slug: "linda-raschke"
+kind: "guru"
+level: "advanced"
+order: 15
+summary: "If you have read a few trading books, you have probably met traders who sell mystique."
+era: "b. 1959"
+contribution: "Swing trading setups"
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Linda Raschke built a career on a deceptively simple idea: you don't need to predict the market, you need a handful of well-defined, repeatable setups and the discipline to trade them the same way every single time.
+
+If you have read a few trading books, you have probably met traders who sell mystique. Raschke sells the opposite: mechanical rules, tight risk, and an almost boring insistence on process. She was a floor options market maker, a top-ranked fund manager, and the first woman profiled in Jack Schwager's *The New Market Wizards*. Her manual *Street Smarts*, co-written with Larry Connors, is still passed around trading desks because the setups inside it are concrete enough to code and test. This lesson walks through who she is, four of her signature setups, a worked example, and an honest look at where the methods break down.
+
+## Who she is
+
+Linda Bradford Raschke was born in 1959 in Pasadena, California, and earned dual bachelor's degrees in economics and music composition from Occidental College in 1980. She began trading professionally in **1981 as a market maker in equity options**, holding memberships on the Pacific Coast Stock Exchange and later the Philadelphia Stock Exchange. Floor market making — quoting two-sided prices and capturing the bid-ask spread while managing inventory risk — taught her volatility, arbitrage, and risk control from the inside out.
+
+A *market maker* is a trader who continuously offers to both buy (the bid) and sell (the ask), earning the spread between them while holding inventory; the skill is managing the risk of that inventory as prices move.
+
+In 1992 she registered as a Commodity Trading Advisor and founded LBRGroup. She launched the Watermark Fund in 1998 and, after establishing LBR Asset Management in 2002, ran the Granat Fund trading global futures markets; the Granat Fund was reportedly ranked 17th out of roughly 4,500 hedge funds for five-year performance by BarclayHedge. She was profiled in Schwager's *The New Market Wizards* (1992) — the first woman featured in the *Market Wizards* series — and received a Lifetime Achievement Award from the International Federation of Technical Analysts (IFTA) in 2024. She also wrote the memoir *Trading Sardines* (2018).
+
+<Callout type="key">
+
+Raschke's edge was never a secret indicator. It was the combination of pattern recognition, strict risk control, and the emotional flatness of a professional who treats trading as a probabilistic process, not a series of predictions.
+
+</Callout>
+
+## The core philosophy: momentum and mean reversion
+
+Markets do two things: they trend, and they revert. Raschke's setups split cleanly along that line.
+
+- **Momentum / trend-continuation setups** assume an existing trend will resume after a pause. You buy a pullback inside an uptrend. The **Holy Grail** and the **Anti** live here.
+- **Mean-reversion / failure setups** assume a move has overextended and will snap back. You fade a breakout that fails. **Turtle Soup** and the **80-20** live here.
+
+*Mean reversion* is the tendency of price to return toward an average or prior level after stretching too far from it. *Fading* a move means betting against it.
+
+Crucially, every setup has a defined **trigger** (the condition that puts you in), a **stop** (the price that proves you wrong and gets you out), and a **target**. That structure — not the indicator settings — is the real lesson.
+
+## Setup 1 — The Holy Grail (ADX + 20-period MA)
+
+The name is a tongue-in-cheek nod to how reliable it can look in a strong trend, not a claim of perfection. It uses two tools:
+
+- **ADX (Average Directional Index)**, a Welles Wilder indicator that measures trend *strength* (not direction) on a 0–100 scale, typically with a 14-period setting.
+- A **20-period moving average**, used to mark the level where the first pullback in a trend tends to find support or resistance.
+
+```
+LONG setup (mirror for shorts):
+  1. 14-period ADX has risen above ~30  -> a strong trend is in force
+  2. Price pulls back and touches the 20-period MA
+  3. ENTRY: buy stop just above the high of the pullback bar
+  4. STOP:  just below the low of that same bar
+  5. TARGET: the most recent swing high (the high made before the pullback)
+  6. If the bar is not triggered, roll the entry down to the next lower bar's high
+```
+
+The logic: a high, rising ADX confirms the trend has real momentum; the first pullback to the 20-period MA is where dip-buyers re-enter; the prior high is a natural, low-greed objective. The stop sits where the pullback thesis is clearly wrong.
+
+<Callout type="note">
+
+Sources disagree on the exact moving average. Many write-ups use a **20-period EMA**, while others (and several published descriptions) use a 20-period SMA. The behavior is nearly identical; pick one and test it consistently rather than agonizing over the choice.
+
+</Callout>
+
+## Setup 2 — Turtle Soup (fading failed breakouts)
+
+The name mocks the famous "Turtle" traders who bought 20-day breakouts. Turtle Soup eats those breakouts when they fail.
+
+```
+LONG Turtle Soup (mirror for shorts):
+  1. Today price makes a NEW 20-day low
+  2. That prior 20-day low must be at least 4 trading sessions old
+  3. ENTRY: buy stop 5-10 ticks (or 5-10 cents) above the previous 20-day low
+  4. If filled, place a sell stop ~1 tick below today's low
+  5. Take partial profits and trail the rest; many exit within 2-6 bars
+```
+
+The "at least 4 sessions old" filter is important: it ensures the new low is a genuine probe past an established level, the kind that traps breakout buyers. There is a variant, **Turtle Soup Plus One**, where the false break is confirmed one day later — price closes at or below the prior 20-day low — before entry.
+
+## Setup 3 — The 80-20
+
+Borrowed from the rhythm ideas of trader George Taylor (author of *The Taylor Trading Technique*), this is a day-trading reversal built on a prior day that opens at one extreme of its range and closes at the other.
+
+```
+LONG 80-20 (Street Smarts version):
+  - Prior day OPENS in the bottom 20% of its range
+  - and CLOSES in the top 80% of its range
+  - Next session, if price trades BELOW the prior day's low (~5-15 ticks)
+    and then reverses back up -> buy signal
+SHORT 80-20: mirror -- prior day opens in top 20%, closes in bottom 80%,
+    next session price probes above the prior high and reverses down.
+```
+
+The premise is that a market opening at one extreme and closing at the other shows a one-sided session; the next day's probe past the prior day's low (or high) flushes out late traders and then reverses. (Some write-ups describe the pattern with the opening and closing extremes swapped — the constant is an extreme-to-extreme day followed by a failed probe that signals the snap-back.)
+
+## Setup 4 — The Anti
+
+A trend-continuation setup that uses two oscillators of different speeds (Raschke's original used a stochastic; many traders now use a 3-10-16 MACD variant).
+
+```
+The "Anti" (long version):
+  1. The SLOW oscillator points up -> trend is up
+  2. The FAST oscillator pulls back (hooks down briefly)
+  3. ENTRY when the fast line "hooks" back up, resuming the trend
+  4. STOP below the pullback low; ride the trend resumption
+```
+
+A *stochastic oscillator* measures where price closes within its recent range (0–100); fast and slow versions just smooth it differently. The Anti trades the moment a short-term pullback ends and the dominant trend reasserts itself.
+
+## A worked example (illustrative)
+
+These numbers are **illustrative**, not from a real chart, to show the mechanics of a Holy Grail long.
+
+| Item | Value |
+|---|---|
+| Stock in uptrend, 14-ADX | 34 (above 30, rising) |
+| Recent swing high (target) | $52.00 |
+| Pullback bar touches 20 MA, bar high | $50.20 |
+| Pullback bar low | $49.60 |
+| Entry (buy stop above bar high) | $50.25 |
+| Stop (below bar low) | $49.55 |
+| Risk per share | $0.70 |
+| Reward to target ($52.00 − $50.25) | $1.75 |
+| Reward : risk | 2.5 : 1 |
+
+If you risk 0.5% of a $100,000 account ($500) on this trade, position size is $500 / $0.70 ≈ **714 shares**. The trade either gets stopped for about $500 or reaches the prior high for roughly $1,250. The math, not a hunch, decides the size.
+
+<Callout type="key">
+
+Notice what drives the decision: a pre-defined trigger, a stop that defines exact risk, and position size derived from that risk. The setup is just the entry trigger. Risk management is the strategy.
+
+</Callout>
+
+## Modern implementation and legacy
+
+*Street Smarts* setups are popular precisely because they are **codeable**. ADX/MA touches, new-N-day-low conditions, and open-vs-range rules are all mechanical, so they appear as TradingView Pine scripts, MQL5 Expert Advisors, and backtest studies. Raschke herself stressed reading **market internals** — breadth measures like advancers vs. decliners, the TICK (net up-ticking vs. down-ticking stocks), and intermarket relationships — to gauge whether the broad market supports a trade. Her professional process emphasized a pre-market routine, a small set of setups traded repeatedly, journaling, and treating drawdowns as a cost of doing business.
+
+## Honest criticisms and controversies
+
+- **Discretion hides inside the "mechanical" label.** Choosing *which* trending stock, *when* a trend is "strong enough," and *where* the swing high is all involve judgment. Two traders running "the same" Holy Grail will get different results.
+- **Published edges decay.** *Street Smarts* dates to the mid-1990s. Markets are faster, more algorithmic, and arguably more mean-reverting intraday than they were then. Setups that backtested well at the time may be thinner now; some studies find Turtle Soup and 80-20 results highly sensitive to instrument, filters, and slippage.
+- **Indicator lag and whipsaw.** ADX is slow to register a turn, and the 20-period MA generates many false touches in choppy markets, producing strings of small losses.
+- **Survivorship and selection in the lore.** "Market Wizards" profiles celebrate winners; we rarely see equally disciplined traders who used similar methods and still failed.
+
+<Callout type="warning">
+
+Do not trade any of these setups live until you have personally backtested and forward-tested them on your instrument and timeframe with realistic commissions and slippage. A setup that "looks great" on a hand-picked chart is the single most common way beginners lose money.
+
+</Callout>
+
+## Common pitfalls and misconceptions
+
+- **Treating "Holy Grail" literally.** It is a high-quality setup, not a guarantee. Raschke's own win rates were not extreme; her edge came from cutting losses fast and pressing winners.
+- **Skipping the filters.** The 4-session rule in Turtle Soup and the "ADX above 30 *and rising*" condition in the Holy Grail are not optional flavor — they are what separate the signal from noise.
+- **No predefined stop.** Every Raschke setup names the exact bar that invalidates it. If you cannot state your stop before entering, you do not have the setup.
+- **Over-optimizing settings.** Endlessly tuning the MA or stochastic periods to fit past data ("curve-fitting") produces fragile strategies. Robust rules work across nearby settings.
+
+## How to apply it today
+
+1. Pick **one** setup that matches your temperament — momentum (Holy Grail, Anti) or mean-reversion (Turtle Soup, 80-20).
+2. Write the rules down as code-level precise conditions: trigger, stop, target, filters.
+3. Backtest on at least a few hundred occurrences across different market regimes; record win rate, average win, average loss, and worst drawdown.
+4. Forward-test on a demo or tiny size for several weeks.
+5. Size every trade by **fixed fractional risk** (e.g., 0.25–1% of account per trade), never by a fixed share count.
+6. Journal every trade and review weekly. Raschke's real "secret" was relentless review.
+
+## Further reading
+
+- Raschke & Connors, *Street Smarts: High Probability Short-Term Trading Strategies* (1995) — the primary source for all four setups.
+- Schwager, *The New Market Wizards* (1992) — the Raschke interview on mindset and process.
+- Raschke, *Trading Sardines* (2018) — her memoir and lessons on discipline.
+
+### Sources
+
+1. [Wikipedia — Linda Bradford Raschke](https://en.wikipedia.org/wiki/Linda_Bradford_Raschke) — birth year, education, market-maker start in 1981, fund history, *Street Smarts*, *New Market Wizards* (first woman), and the 2024 IFTA Lifetime Achievement Award.
+2. [TradingView — Turtle Soup indicator (kulturdesken)](https://www.tradingview.com/scripts/turtlesoup/) — Turtle Soup long/short rules, the 4-session filter, the 5-10 tick buy stop, the 1-tick sell stop, and the Plus One variant.
+3. [investingLive — How to trade by Holy Grail strategy](https://investinglive.com/Education/!/how-to-trade-by-holy-grail-strategy-20210329) — Holy Grail buy/sell rules (ADX above 30, MA touch, entry above bar high, stop below low, target prior high).
+4. [TradingView — Holy Grail by Linda Bradford Raschke (script)](https://www.tradingview.com/script/ptU0vveI-Holy-Grail-by-Linda-Bradford-Raschke/) — the ADX-confirms-trend / pullback-to-20-MA continuation logic.
+5. [Capital.com — Holy Grail trading strategy](https://capital.com/en-int/learn/trading-strategies/holy-grail-trading-strategy) — the 14-period ADX above-30 threshold and the EMA-vs-SMA ambiguity in published descriptions.
+6. [Worldcat — Street Smarts (Connors & Raschke)](https://search.worldcat.org/title/33665278) — 1995 copyright/publication for *Street Smarts*.
+7. [DuckDuckGo aggregated snippets — 80-20 setup and George Taylor link](https://html.duckduckgo.com/html/?q=Linda+Raschke+80-20+setup+Street+Smarts+Taylor) — 80-20 open/close-in-range mechanics (open bottom 20% / close top 80% for the long) and the link to George Taylor's trading rhythm.
+8. [DuckDuckGo aggregated snippets — the "Anti" setup](https://html.duckduckgo.com/html/?q=Linda+Raschke+%22Anti%22+setup+stochastic+slow+fast+Connors+Street+Smarts) — Anti as a stochastic-based trend-continuation "hook" entry, and the common 3-10-16 MACD variant.

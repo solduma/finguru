@@ -1,0 +1,152 @@
+---
+title: "Stan Weinstein — The Four Stages"
+slug: "stan-weinstein"
+kind: "guru"
+level: "intermediate"
+order: 12
+summary: "Act Two has clearly begun, you sidestep most of the pain that ruins beginners."
+era: "20th century"
+contribution: "Stage analysis"
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Stan Weinstein argued that almost every stock, index, and commodity moves through the same four-act play over and over — basing, advancing, topping, and declining — and that if you simply refuse to buy until Act Two has clearly begun, you sidestep most of the pain that ruins beginners.
+
+That idea sounds almost too simple. But it is one of the most durable trend-following frameworks ever published, and it solves the single biggest problem new traders have: they buy things that are going down because they "look cheap," and they sell things that are going up because they "look expensive." Weinstein's stage model flips that instinct on its head. Below, we'll cover who he was, exactly how the four stages are defined (using a specific moving average and a specific relative-strength tool), a worked example, and the honest limitations.
+
+## Who Stan Weinstein was
+
+Stan Weinstein is an American technical analyst whose career spans the 1970s to today. He is best known for two things. First, the newsletter **The Professional Tape Reader (PTR)**, which he published from the early 1970s (commonly dated to 1972) until around 2000, and which built his reputation with well-timed market calls — sources credit him with flagging the 1982 bull-market bottom and turning cautious before the October 1987 crash. Second, his 1988 book **_Stan Weinstein's Secrets for Profiting in Bull and Bear Markets_**, which packaged his method into the four-stage framework traders still use. In 1990 he launched **Global Trend Alert (GTA)**, an advisory aimed at institutional clients that he still runs today.
+
+<Callout type="note">
+
+"Tape reading" is old Wall Street slang for studying price and volume directly off the ticker tape, as opposed to studying a company's financial statements. Weinstein is squarely in that price-and-volume tradition — he cares what a stock is *doing*, not what it *should* be worth.
+
+</Callout>
+
+His core philosophy: don't try to predict, identify. Your job is to figure out which stage a stock is currently in and act accordingly — buy in Stage 2, avoid or sell everything else.
+
+## The core tool: the 30-week moving average
+
+Before the stages make sense, you need Weinstein's reference line.
+
+A **moving average (MA)** is just the average closing price over the last N periods, recalculated each period so it "moves" forward. A **30-week simple moving average (SMA)** on a weekly chart averages the last 30 weekly closes. Weinstein chose weekly charts deliberately — they filter out daily noise and reveal the big, slow tides that institutions create.
+
+```
+30-week SMA = (sum of the last 30 weekly closing prices) / 30
+```
+
+Two things about this line matter more than the line itself:
+
+1. **Where price is** relative to the MA (above or below).
+2. **The slope** of the MA (rising, flat, or falling).
+
+<Callout type="key">
+
+The whole stage model is really a two-variable grid: *price vs. the 30-week MA* and *the slope of the 30-week MA*. Memorize those two questions and you can classify almost any chart.
+
+</Callout>
+
+A practical note: many platforms and traders substitute the **200-day MA** as a daily-chart equivalent, and Weinstein himself has referenced the 200-day line for accessibility. Be aware these are not identical. Thirty weeks is roughly 150 trading days, while the 200-day MA spans about 40 weeks — so the 200-day line is actually a bit slower to react. It's a reasonable proxy, not a clone.
+
+## The four stages
+
+| Stage | Name | Price vs. 30-wk MA | MA slope | Volume signature | What to do |
+|-------|------|--------------------|----------|------------------|------------|
+| 1 | Basing / Accumulation | Crisscrossing it | Flattening | Quiet, contracting | Watch, prepare |
+| 2 | Advancing / Markup | Above | Rising | Expands on rallies | **Buy / hold** |
+| 3 | Topping / Distribution | Crisscrossing it | Flattening | Expands on *down* weeks | Tighten stops, sell |
+| 4 | Declining / Markdown | Below | Falling | Surges on declines | Avoid / short |
+
+**Stage 1 — Basing.** After a long decline, selling exhausts itself. Price stops falling and drifts sideways in a range; the 30-week MA, which had been pointing down, flattens out. Volume dries up because the panicked sellers are gone. Emotionally this is the boredom-and-disgust phase — nobody wants the stock — which is exactly why it's quietly being accumulated. You don't buy yet. You build a watchlist and mark the resistance ceiling of the range.
+
+**Stage 2 — Advancing.** This is the only stage where Weinstein wants you buying. The trigger is a **breakout**: price punches decisively above the Stage 1 resistance ceiling, the 30-week MA has turned up, and the breakout happens on a clear **expansion in volume** (loosely, weekly volume well above its recent average — a rough rule of thumb is at least double the recent average, but it's the surge that matters, not a magic number). After the breakout you can add on pullbacks that hold near the rising MA. Weinstein's mantra here is "buy right and sit tight."
+
+**Stage 3 — Topping.** The advance stalls. The MA rolls over from rising to flat, and price starts whipsawing back and forth across it. The tell is volume: it now tends to expand on the *down* weeks and shrink on the rallies — the footprint of institutions distributing shares to a still-euphoric public. Breakouts start failing. This is the time to tighten stops and take profits, not to buy the dip.
+
+**Stage 4 — Declining.** Price breaks decisively *below* the now-falling 30-week MA. Rallies are weak and fail near old support (which is now resistance), and volume surges on the down moves. This is the mirror image of Stage 2. Weinstein's rule: never buy weakness. For advanced traders this is the short-selling stage; for everyone else it's the stay-away stage.
+
+<Callout type="warning">
+
+The cycle does not always run 1→2→3→4 cleanly. A stock can fail in Stage 1 and roll straight back into Stage 4, or have several Stage 2 advances interrupted by Stage 3-like consolidations. Treat the stages as a classification of *current behavior*, not a guaranteed sequence.
+
+</Callout>
+
+## Relative strength and the Mansfield indicator
+
+Weinstein didn't buy breakouts in a vacuum — he wanted the stock to be a *leader*, outperforming the broad market. That's where **relative strength (RS)** comes in. (Important: this is *not* Wilder's RSI momentum oscillator, despite the similar name. RS here is a stock-versus-index ratio, not a single-instrument overbought/oversold gauge.)
+
+The base idea is a simple ratio:
+
+```
+Relative Performance (RP) = (stock close / index close) × 100
+```
+
+If this line is rising, the stock is beating the index; if it's falling, it's lagging — regardless of which way the overall market goes. To make extremes easier to read, Weinstein popularized the **Mansfield Relative Strength** version (named after the Mansfield chart service his work drew on), which restates the ratio as an oscillator around a zero line:
+
+```
+Mansfield RS = ( RP(today) / SMA(RP, n) − 1 ) × 100
+
+where n = 52 on weekly charts, 200 on daily charts
+```
+
+Here `SMA(RP, n)` is a moving average of the RP line (52 weeks on a weekly chart); the Mansfield version measures how far above or below that long-run average the stock's relative performance currently sits.
+
+<Callout type="key">
+
+Read the zero line as a relative-strength dividing line: **Mansfield RS above zero = the stock is outperforming its own 52-week relative trend.** Weinstein wanted Stage 2 breakouts to occur with RS already pushing above zero — confirming the breakout is in a genuine market leader, not a laggard catching a temporary bid.
+
+</Callout>
+
+## A worked example (illustrative)
+
+These numbers are made up to show the mechanics, not a real trade.
+
+A stock fell from \$80 to \$30 over a year, then spent six months chopping between \$30 and \$40. The 30-week MA, once falling, has gone flat near \$35. Volume is light. **That's Stage 1**, and \$40 is the resistance ceiling.
+
+In week 1, the stock closes at \$43 on volume of 5 million shares versus a 30-week average of 2 million — a clean breakout above \$40 on roughly 2.5× volume. The 30-week MA has just turned up. Meanwhile the S&P 500 is flat, so the RP ratio is rising and Mansfield RS has crossed above zero. **Stage 2 is confirmed.** You buy near \$43 and place a stop just under the breakout area / the rising MA (say \$38).
+
+Over the next months the stock rises to \$70, riding above its rising MA; you add on a pullback to \$55 that holds the MA. Eventually the MA flattens near \$68, the stock whips around it, and volume now spikes on down weeks. **Stage 3 warning** — you tighten the stop. When price closes below the flattening-to-falling MA, you're out, locking in the trend's gains and avoiding the Stage 4 slide.
+
+## Modern implementation and legacy
+
+Weinstein's framework is baked into how a generation of trend traders think. William O'Neil's CAN SLIM method and Investor's Business Daily's **RS Rating** (a 1–99 percentile rank, where 90+ means the top 10% of the market) are spiritual cousins — same "buy strength breaking out of a base" logic. Today most charting platforms (StockCharts, TradingView, ChartMill and others) ship built-in stage indicators and Mansfield RS scripts, so you can scan thousands of stocks for "Stage 2 breakouts with RS above zero" automatically.
+
+## Honest criticisms and common pitfalls
+
+- **It lags by design.** A moving-average / breakout system never gets you in at the bottom or out at the top — it deliberately waits for confirmation. In choppy, sideways markets it produces whipsaws (false breakouts that immediately reverse). This is the price of trend-following, not a bug you can optimize away.
+- **No hard thresholds.** "Volume expansion," "decisive break," and "flattening MA" are judgment calls. Backtests are sensitive to exactly how you define them, and discretion lets bias creep in.
+- **Survivorship in the storytelling.** The famous examples (catching a Stage 2 monster, escaping before a Stage 4 collapse) are real patterns, but books naturally showcase the wins. Plenty of clean-looking Stage 2 breakouts fail.
+
+<Callout type="warning">
+
+The most common beginner error is anticipation: buying in late Stage 1 "before the breakout" to get a better price. That's exactly the trade Weinstein warns against — most Stage 1 bases that look ready never break out, and you tie up capital (and conviction) in dead money. Wait for Stage 2 to actually confirm.
+
+</Callout>
+
+Two more misconceptions: (1) Stage 1 is *not* a buy signal just because something "stopped going down" — flat is flat. (2) Relative strength rising while *price* is still in Stage 1 or 4 is interesting but not a green light; you still need the price breakout and the rising MA.
+
+## How to apply it today
+
+1. Pull up **weekly** charts and add the **30-week SMA** plus a **Mansfield RS / relative-performance** line.
+2. Screen for stocks in tight Stage 1 bases; note the resistance ceiling.
+3. Act only on confirmed Stage 2 breakouts: price above resistance, MA turning up, volume expanding, RS above zero.
+4. Set a stop under the breakout / rising MA *before* you enter, and size the position so that stop is a small, fixed fraction of your account.
+5. Hold while the MA rises; exit on a Stage 3 → 4 transition (MA flattens/rolls over, price closes below it on rising down-volume).
+
+### Further reading
+
+- Stan Weinstein, _Stan Weinstein's Secrets for Profiting in Bull and Bear Markets_ (1988) — the primary source.
+- Practice on historical weekly charts before risking money: label past charts by stage, then check whether your "Stage 2" calls actually worked.
+
+### Sources
+
+1. [Stage Analysis — How to Create the Mansfield Relative Performance Indicator](https://stageanalysis.net/blog/4266/how-to-create-the-mansfield-relative-performance-indicator) — exact formulas for standard relative performance and the Mansfield version, the n = 52 (weekly) / n = 200 (daily) averaging, and the zero-line oscillator treatment.
+2. [ChartMill — Mansfield Relative Strength indicator](https://www.chartmill.com/documentation/technical-analysis/indicators/35-Mansfield-Relative-Strength) — the Mansfield variant's appearance in Weinstein's book and his use of weekly charts.
+3. [ChartMill — Weinstein Stage Analysis indicators](https://www.chartmill.com/documentation/technical-analysis/indicators/92-Weinstein-Stage-Analysis-Indicators) — the four stages defined relative to the 30-week SMA, with volume and relative strength.
+4. [Trading Momentum — Stan Weinstein's Stage Analysis](https://tradingmomentum.substack.com/p/stan-weinsteins-stage-analysis-the) — walkthrough of the four stages, the 30-week MA, volume signatures, and buying breakouts.
+5. [TradingView — Mansfield Relative Strength (Original Version)](https://www.tradingview.com/script/NzUBDDtb-Mansfield-Relative-Strength-Original-Version-by-stageanalysis/) — Mansfield RS as a core component of Weinstein's stage analysis.
+6. [TradingView — Weinstein Stage Analysis Toolkit](https://www.tradingview.com/script/UjVA2e7f-Weinstein-Stage-Analysis-Toolkit/) — modern automation of 30-week MA slope, Mansfield RS, and extension levels.
+7. [Aron Groups — Stage Analysis Trading](https://arongroups.co/forex-articles/stage-analysis-trading/) — Stage 2 definition (price above a rising 30-week MA, higher highs, volume confirmation).

@@ -1,0 +1,158 @@
+---
+title: "W.D. Gann — Geometry, Time, and Price"
+slug: "wd-gann"
+kind: "guru"
+level: "advanced"
+order: 5
+summary: "Gann angles, the Square of Nine, time cycles) still bolted onto every modern charting platform — and whose legendary trading riches almost certainly never existed."
+era: "1878–1955"
+contribution: "Gann angles & time/price"
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+W.D. Gann is the most mythologized figure in technical analysis: a Texas-born trader who claimed that markets move in predictable geometric and astrological patterns, who left behind a toolkit (Gann angles, the Square of Nine, time cycles) still bolted onto every modern charting platform — and whose legendary trading riches almost certainly never existed.
+
+To be a competent analyst, you have to do two things at once with Gann: understand his tools well enough to use the genuinely useful parts, and stay clear-eyed about the parts that are numerology dressed as physics. This lesson does both.
+
+<Callout type="warning">
+
+Almost everything you will read online about Gann's "$50 million in profits" or "98% win rate" is unverified promotional folklore. We will separate what is documented from what is legend, because that distinction is the single most important skill when studying Gann.
+
+</Callout>
+
+## Who he was
+
+William Delbert Gann was born **June 6, 1878, in Lufkin, Texas**, and died **June 18, 1955**, at age 77 ([Wikipedia](https://en.wikipedia.org/wiki/William_Delbert_Gann)). He worked as a cotton broker in Texarkana, moved to New York City in 1903, and founded **W.D. Gann & Company in 1908**. He built a business around forecasting, eventually running a market newsletter and trading-recommendation services.
+
+His real, documented career was as a **publisher and educator**, not a celebrated fund manager. He wrote a string of books — *Truth of the Stock Tape* (1923), the strange semi-autobiographical novel *Tunnel Thru the Air* (1927), *How to Make Profits in Commodities* (1941), and *45 Years in Wall Street* (1949) — and sold expensive trading courses.
+
+Two firsthand accounts puncture the legend. Alexander Elder, in *Trading for a Living*, reported interviewing Gann's son — a bank analyst in Boston — who said his father **"could not support his family by trading"** and earned his living **selling instructional courses**; Gann's estate was valued at **slightly over $100,000** at death — comfortable, but not the fortune of a market wizard. Larry Williams independently met Gann's son, John, and a former Gann promoter, F.B. Thatcher, who called Gann **"just a good promoter, not necessarily a good stock trader"** ([Wikipedia](https://en.wikipedia.org/wiki/William_Delbert_Gann)).
+
+<Callout type="note">
+
+This does not mean Gann's tools are worthless — plenty of useful ideas come from imperfect people. It means you should evaluate the tools on their own merits, not on a biography the evidence does not support.
+
+</Callout>
+
+## The core idea: price and time are units of the same thing
+
+Gann's central, genuinely interesting claim is that **price and time are related**, and that market structure reflects geometric and natural-number proportions. Everything else — the angles, the squares, the cycles — is machinery built on that one idea.
+
+Define the jargon up front:
+
+- **Support / resistance**: price levels where buying (support) or selling (resistance) tends to stall or reverse a move.
+- **Squaring price and time**: Gann's term for the moment when a price move and an elapsed amount of time become "equal" in his chosen units — supposedly a point where trend change becomes likely.
+
+### Gann angles and the 1x1 line
+
+A **Gann angle** is a straight line drawn from an important price pivot (a major high or low) at a *fixed rate of price per unit of time* — establishing, in Gann's words, a fixed relation between time and price. Gann described the technique in *The Basis of My Forecasting Method*, a 33-page course written in **1935** ([Wikipedia](https://en.wikipedia.org/wiki/Gann_angles)).
+
+The master angle is the **1x1**, which Gann also called the **45° line**: **one unit of price for one unit of time**. On a stock rising along its 1x1, the price gains one point per day (or per bar). Steeper and shallower angles are labeled by their price-to-time ratio:
+
+```
+Ratio   Meaning (price units : time units)   Slope vs 1x1
+8x1     8 price per 1 time                    very steep (very bullish)
+4x1     4 price per 1 time                    steep
+2x1     2 price per 1 time                    moderately steep
+1x1     1 price per 1 time                    45° baseline
+1x2     1 price per 2 time                    shallow
+1x4     1 price per 4 time                    shallower
+1x8     1 price per 8 time                    very shallow (weak)
+```
+
+Gann named several upward angles in this family — 2x1, 3x1, 4x1, 8x1, 16x1 — with the inverse ratios used for shallower lines and for declining markets. Drawn together from a single pivot, these lines form a **Gann fan**. The reading rule Gann gave:
+
+<Callout type="key">
+
+Price trading **above the 1x1** line is in a position of strength; price **below the 1x1** signals weakness. As price breaks one angle, the next angle in the fan becomes the new support or resistance target.
+
+</Callout>
+
+### The Square of Nine
+
+The **Square of Nine** is a spiral of numbers. You start with 1 at the center and wind outward — 2, 3, 4, 5... — so the integers form concentric square "rings." Numbers that line up along the **cardinal cross** (the horizontal and vertical arms) and the **diagonal cross** (the corners) are treated as significant.
+
+The geometric trick is that moving **90°** around the spiral (a quarter turn) from a value, or **180°**, or a full **360°**, lands you on numbers Gann considered harmonically related — candidate support/resistance prices. The classic mechanical rule: take the square root of a price, add an increment (0.5 for 90°, 1.0 for 180°, 2.0 for 360°), and re-square it.
+
+```
+Worked example (ILLUSTRATIVE):
+Recent significant low = 100
+sqrt(100) = 10
++ 0.5  -> 10.5  -> 10.5^2 = 110.25   (90° / "next" resistance)
++ 1.0  -> 11.0  -> 11.0^2 = 121.00   (180° resistance)
++ 2.0  -> 12.0  -> 12.0^2 = 144.00   (360° resistance)
+```
+
+So from a low of 100, the Square of Nine flags roughly 110, 121, and 144 as levels to watch. Notice these are just squares of evenly spaced numbers — there is no market data in this calculation at all, which is precisely the criticism we will get to.
+
+## A worked example: drawing a Gann fan
+
+Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
+
+1. **Anchor** the fan at the $50 low.
+2. **Set the scale.** Decide that 1 unit of price = $1 and 1 unit of time = 1 day. This choice is everything (see warning below).
+3. **Draw the 1x1**: from $50, rising $1/day. After 20 days it sits at $70.
+4. **Draw the 2x1** ($2/day, reaching $90 in 20 days) and the **1x2** ($0.50/day, reaching $60 in 20 days).
+5. **Read it.** While price stays above the 1x1, Gann would call the uptrend healthy. If price slices below the 1x1 and lands on the 1x2, the 1x2 becomes the new support; failure there implies the trend has flattened or turned.
+
+<Callout type="warning">
+
+**Scaling makes or breaks the whole method, and Gann never gave fixed rules for it.** "One point per day" is meaningless for an index near 40,000 or a stock at $3. Different analysts pick different price-per-bar units and get completely different "45° lines." Critics argue this makes angle placement *arbitrary and not scientific* — you can almost always find a scale where an angle "worked" after the fact ([Wikipedia](https://en.wikipedia.org/wiki/Gann_angles)).
+
+</Callout>
+
+## Time cycles and the esoteric side
+
+Beyond geometry, Gann claimed markets repeat on **time cycles** tied to natural and calendar numbers (anniversaries of major highs/lows, divisions of the year like 30/45/90/180/360 days) — and, more controversially, to **planetary positions**.
+
+This astrological side is not internet rumor. Wikipedia notes his forecasting was "purportedly based on geometry, astronomy, astrology, time cycle analysis, and other esoteric means," and that in a **letter to a student dated March 19, 1954**, Gann demonstrated using planetary cycles to forecast the coffee market ([Wikipedia](https://en.wikipedia.org/wiki/William_Delbert_Gann)). His deliberately obscure writing — possibly intended to conceal his true method — has fueled endless speculation that he hid his "real" technique, a claim that is, by construction, unfalsifiable.
+
+## What is empirically defensible vs. mystical
+
+| Gann concept | Defensible kernel | Problem |
+|---|---|---|
+| Price/time relationship | Trends do have measurable slopes; rate-of-change matters | "Squaring" requires arbitrary unit choices |
+| Gann angles / 1x1 | A trendline at a fixed slope is a legitimate, testable construct | The specific 45° / fan ratios have no proven edge over ordinary trendlines |
+| Square of Nine levels | Round numbers and prior swing extremes really do act as S/R | The square's outputs use no market data; it is number theory, not analysis |
+| Time cycles | Some markets show rough seasonality/periodicity | Cherry-picked anniversaries fit anything in hindsight |
+| Astrology | None | No credible mechanism or replicated evidence |
+
+The honest summary: Gann tools **conflict with even the weakest form of the Efficient Market Hypothesis** (the idea that past prices alone cannot predict future prices), and no peer-reviewed study has shown his specific methods produce a real edge ([Wikipedia](https://en.wikipedia.org/wiki/Gann_angles)). Much of their apparent success is **survivorship and hindsight**: with enough angles, squares, and date counts, *something* will line up near any turning point.
+
+## Common pitfalls and misconceptions
+
+- **Believing the legend.** "Gann turned $300 into $25,000 in days" stories are promotional, not documented. Treat them as marketing.
+- **Confusing precision with accuracy.** A level of 110.25 *looks* scientific. It is the square of an arbitrary increment.
+- **Curve-fitting the scale.** If you keep adjusting price-per-bar until the 1x1 "fits," you have learned nothing predictive.
+- **Drowning in tools.** Gann's full system has dozens of overlapping signals. Used together with no rules, they can "explain" any chart and predict none.
+
+## How to apply it today (sensibly)
+
+Modern platforms — TradingView, StockCharts, MetaTrader, NinjaTrader — ship **Gann Fan**, **Gann Square**, and **Gann Box** tools. If you want to use them as a disciplined trader rather than a believer:
+
+1. **Anchor angles only at unambiguous, significant pivots** (major swing highs/lows).
+2. **Fix your scaling rule in advance and never change it mid-analysis.** Document it.
+3. **Treat the 1x1 like any trendline** — a dynamic support/resistance reference, confirmed by price action or volume, not a prophecy.
+4. **Use Square-of-Nine outputs only where they coincide** with independently identified levels (prior swings, round numbers, volume profile). Confluence, not the square alone, is the signal.
+5. **Backtest before you trust.** If a Gann rule has an edge, you can measure it. If you cannot define it precisely enough to test, you cannot trade it rationally.
+
+<Callout type="key">
+
+The defensible takeaway from Gann is the discipline of watching *slope* (price per unit time) and *symmetry between price moves and elapsed time*. Strip away the mysticism and you are left with structured trendlines and round-number levels — useful, but not magic, and not unique to Gann.
+
+</Callout>
+
+## Further reading
+
+Study Gann the way a scientist studies a strong claim: read the primary tool descriptions, read the firsthand skepticism, and demand testable rules before risking capital.
+
+### Sources
+
+1. [W.D. Gann — Wikipedia](https://en.wikipedia.org/wiki/William_Delbert_Gann) — verified birth/death dates, career as publisher, book list, the March 19, 1954 coffee letter, and the Elder/Williams firsthand skepticism about his trading record.
+2. [Gann angles — Wikipedia](https://en.wikipedia.org/wiki/Gann_angles) — the 1x1/45° definition, the 1935 course, angle ratios, fan concept, the "arbitrary and not scientific" scaling criticism, and the EMH conflict.
+3. [Efficient-market hypothesis — Wikipedia](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) — background on the weak-form EMH that Gann methods contradict.
+4. [StockCharts — chart analysis tools](https://school.stockcharts.com/) — reference for how mainstream charting packages implement Gann Fans and angles.
+5. [TradingView — Gann tools support](https://www.tradingview.com/support/solutions/) — reference for modern Gann Fan / Square / Box implementations and settings.
+6. [Alexander Elder, *Trading for a Living*](https://www.wiley.com/en-us/Trading+for+a+Living%3A+Psychology%2C+Trading+Tactics%2C+Money+Management-p-9780471592242) — source (via Wikipedia) for the interview with Gann's son about his actual income.
