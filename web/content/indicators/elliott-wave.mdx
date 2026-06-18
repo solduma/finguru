@@ -34,6 +34,25 @@ Corrective (counter):  A - B - C
 
 Inside an impulse, waves 1, 3, and 5 are the **action waves** (with trend) and waves 2 and 4 are the **reaction waves** (counter-trend pullbacks).
 
+<LineChart
+  caption="The 5-3 structure: a five-wave impulse up, then an A-B-C correction"
+  height={320}
+  series={[
+    { label: "Price", data: [10, 16, 13, 26, 22, 32, 27, 31, 24], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 10, text: "start", color: "#94a3b8" },
+    { x: 1, y: 16, text: "1", color: "#22c55e" },
+    { x: 2, y: 13, text: "2", color: "#ef4444" },
+    { x: 3, y: 26, text: "3", color: "#22c55e" },
+    { x: 4, y: 22, text: "4", color: "#ef4444" },
+    { x: 5, y: 32, text: "5", color: "#22c55e" },
+    { x: 6, y: 27, text: "A", color: "#ef4444" },
+    { x: 7, y: 31, text: "B", color: "#a78bfa" },
+    { x: 8, y: 24, text: "C", color: "#ef4444" }
+  ]}
+/>
+
 The pattern is **fractal**: each wave is itself made of smaller waves of the same form. Wave 1 of a large move is itself a five-wave impulse on a smaller timeframe; wave 2 is itself a three-wave correction. Elliott catalogued these scale levels as **degrees** — from Grand Supercycle (multi-century) down through Supercycle, Cycle, Primary, Intermediate, Minor, Minute, Minuette, and Subminuette ([Wikipedia](https://en.wikipedia.org/wiki/Elliott_wave_principle)). In practice you only need two or three adjacent degrees: the one you trade, the one above it (context), and the one below (entry timing).
 
 ## The three inviolable rules
@@ -114,6 +133,26 @@ Suppose a stock bottoms at **$100** and rallies to **$120** — you label that w
 
 - **Wave 3 target:** 1.618 × $20 = $32.36, added to the $112 low → about **$144**.
 - **Risk definition:** by Rule 1, wave 2 cannot go below $100. If price breaks $100, the count is dead. So a long entry near $112 with a stop just under $100 risks ~$12 to target ~$32 — a roughly 2.7:1 reward-to-risk, *defined by the rules themselves*.
+
+<LineChart
+  caption="Worked example: wave 1 to $120, wave 2 to $112, wave 3 projected to ~$144"
+  height={320}
+  yMin={95}
+  yMax={150}
+  series={[
+    { label: "Price", data: [100, 120, 112, 144], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "start $100", color: "#94a3b8" },
+    { x: 1, y: 120, text: "1 ($120)", color: "#22c55e" },
+    { x: 2, y: 112, text: "2 ($112)", color: "#ef4444" },
+    { x: 3, y: 144, text: "3 target ~$144", color: "#2dd4bf" }
+  ]}
+  levels={[
+    { y: 100, label: "invalidation / stop (Rule 1)", color: "#f59e0b" },
+    { y: 144, label: "1.618× target", color: "#2dd4bf" }
+  ]}
+/>
 
 <Callout type="key">
 

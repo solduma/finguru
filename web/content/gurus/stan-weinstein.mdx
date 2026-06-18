@@ -74,6 +74,21 @@ The cycle does not always run 1→2→3→4 cleanly. A stock can fail in Stage 1
 
 </Callout>
 
+<LineChart
+  caption="The four-stage cycle: price and the 30-week MA through basing, advancing, topping, declining"
+  height={320}
+  series={[
+    { label: "Price", data: [34, 31, 35, 33, 36, 35, 43, 52, 60, 67, 70, 66, 69, 64, 67, 58, 50, 44, 40], color: "#e6e9ef", width: 2 },
+    { label: "30-week MA", data: [40, 38, 36, 35, 35, 35, 36, 39, 44, 50, 56, 61, 64, 66, 66, 65, 62, 57, 51], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 33, text: "Stage 1 — base", color: "#a78bfa" },
+    { x: 6, y: 43, text: "Stage 2 — breakout", color: "#22c55e" },
+    { x: 12, y: 69, text: "Stage 3 — top", color: "#f59e0b" },
+    { x: 17, y: 44, text: "Stage 4 — decline", color: "#ef4444" }
+  ]}
+/>
+
 ## Relative strength and the Mansfield indicator
 
 Weinstein didn't buy breakouts in a vacuum — he wanted the stock to be a *leader*, outperforming the broad market. That's where **relative strength (RS)** comes in. (Important: this is *not* Wilder's RSI momentum oscillator, despite the similar name. RS here is a stock-versus-index ratio, not a single-instrument overbought/oversold gauge.)
@@ -109,6 +124,25 @@ A stock fell from \$80 to \$30 over a year, then spent six months chopping betwe
 In week 1, the stock closes at \$43 on volume of 5 million shares versus a 30-week average of 2 million — a clean breakout above \$40 on roughly 2.5× volume. The 30-week MA has just turned up. Meanwhile the S&P 500 is flat, so the RP ratio is rising and Mansfield RS has crossed above zero. **Stage 2 is confirmed.** You buy near \$43 and place a stop just under the breakout area / the rising MA (say \$38).
 
 Over the next months the stock rises to \$70, riding above its rising MA; you add on a pullback to \$55 that holds the MA. Eventually the MA flattens near \$68, the stock whips around it, and volume now spikes on down weeks. **Stage 3 warning** — you tighten the stop. When price closes below the flattening-to-falling MA, you're out, locking in the trend's gains and avoiding the Stage 4 slide.
+
+<LineChart
+  caption="The worked example: $40 base, breakout at $43, add at $55, exit as the MA rolls over"
+  height={320}
+  series={[
+    { label: "Price", data: [36, 34, 37, 35, 43, 48, 55, 62, 70, 67, 68, 63, 60], color: "#e6e9ef", width: 2 },
+    { label: "30-week MA", data: [36, 35, 35, 35, 37, 41, 46, 52, 58, 63, 67, 68, 66], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 40, label: "$40 resistance ceiling", color: "#f59e0b" },
+    { y: 38, label: "$38 stop", color: "#ef4444" }
+  ]}
+  points={[
+    { x: 2, y: 37, text: "Stage 1 base", color: "#a78bfa" },
+    { x: 4, y: 43, text: "buy breakout $43", color: "#22c55e" },
+    { x: 6, y: 55, text: "add on pullback $55", color: "#22c55e" },
+    { x: 11, y: 63, text: "exit — MA rolls over", color: "#f59e0b" }
+  ]}
+/>
 
 ## Modern implementation and legacy
 

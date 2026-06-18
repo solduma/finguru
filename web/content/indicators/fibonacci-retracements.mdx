@@ -92,6 +92,29 @@ Suppose a stock rallies from **\$100 (swing low) to \$150 (swing high)** — a \
 
 So if price pulls back to roughly **\$130.90**, it is sitting at the 38.2% retracement — a spot where a trend-follower might watch for buyers to return.
 
+<LineChart
+  caption="$100→$150 rally, then a pullback stalling at the 38.2% retracement ($130.90)"
+  height={320}
+  yMin={95}
+  yMax={155}
+  series={[
+    { label: "Price", data: [100, 112, 124, 138, 150, 144, 137, 131, 133, 139, 146], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 150, label: "0% ($150)", color: "#a78bfa" },
+    { y: 138.2, label: "23.6% ($138.20)", color: "#a78bfa" },
+    { y: 130.9, label: "38.2% ($130.90)", color: "#f59e0b" },
+    { y: 125, label: "50% ($125)", color: "#a78bfa" },
+    { y: 119.1, label: "61.8% ($119.10)", color: "#a78bfa" },
+    { y: 100, label: "100% ($100)", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "swing low", color: "#22c55e" },
+    { x: 4, y: 150, text: "swing high", color: "#ef4444" },
+    { x: 7, y: 131, text: "38.2% support", color: "#22c55e" }
+  ]}
+/>
+
 ### Extensions on the same move
 
 Once price bounces off, say, the 61.8% level (\$119.10) and resumes upward, extensions project targets *above* the \$150 high. A common method measures the original \$50 swing and projects it from the pullback low:
@@ -100,6 +123,27 @@ Once price bounces off, say, the 61.8% level (\$119.10) and resumes upward, exte
 161.8% target = 119.10 + 50 × 1.618 = 119.10 + 80.90 = $200.00 (illustrative)
 127.2% target = 119.10 + 50 × 1.272 = 119.10 + 63.60 = $182.70 (illustrative)
 ```
+
+<LineChart
+  caption="A deeper 61.8% pullback that holds, then extends toward the 127.2% and 161.8% targets"
+  height={320}
+  yMin={110}
+  yMax={205}
+  series={[
+    { label: "Price", data: [150, 138, 126, 120, 119, 128, 142, 155, 168, 183, 195, 200], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 150, label: "prior high ($150)", color: "#a78bfa" },
+    { y: 119.1, label: "61.8% ($119.10)", color: "#f59e0b" },
+    { y: 182.7, label: "127.2% target ($182.70)", color: "#2dd4bf" },
+    { y: 200, label: "161.8% target ($200)", color: "#2dd4bf" }
+  ]}
+  points={[
+    { x: 4, y: 119, text: "61.8% holds", color: "#22c55e" },
+    { x: 9, y: 183, text: "127.2%", color: "#2dd4bf" },
+    { x: 11, y: 200, text: "161.8%", color: "#2dd4bf" }
+  ]}
+/>
 
 <Callout type="note">
 

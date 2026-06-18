@@ -71,6 +71,28 @@ RSI = 100 − 100 / (1 + RS)
 
 Readings above 70 are traditionally "overbought," below 30 "oversold." RSI gets its own full treatment in the [RSI lesson](/indicators/rsi) — and it's also the indicator beginners most often misuse, so read that one carefully.
 
+<LineChart
+  caption="RSI on a 0–100 scale: pushing into overbought, then sliding into oversold"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "RSI", data: [48, 55, 63, 71, 76, 68, 58, 45, 34, 27, 31, 42], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 70, label: "overbought", color: "#f59e0b" },
+    { y: 30, label: "oversold", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" },
+    { yMin: 0, yMax: 30, color: "rgba(34,197,94,0.12)", label: "oversold" }
+  ]}
+  points={[
+    { x: 4, y: 76, text: "overbought", color: "#ef4444" },
+    { x: 9, y: 27, text: "oversold", color: "#22c55e" }
+  ]}
+/>
+
 ### ATR — volatility
 
 The **Average True Range** answers: *how much does this market typically move in one bar?* It's built on the **True Range (TR)**, the largest of three distances:
@@ -103,9 +125,43 @@ ADX = Wilder-smoothed(DX)
 
 ADX runs 0–100. Wilder's own writing and Wikipedia point to **below ~20 = weak/no trend** and **above ~40 = strong trend** ([Wikipedia: ADX](https://en.wikipedia.org/wiki/Average_directional_movement_index)), while many practitioners use **25** as the dividing line. Treat the level as a guideline, not gospel.
 
+<LineChart
+  caption="ADX rising out of the weak-trend zone into strong-trend territory"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "ADX", data: [16, 15, 18, 22, 28, 34, 41, 47, 44, 38], color: "#a78bfa", width: 2 }
+  ]}
+  levels={[
+    { y: 20, label: "weak trend", color: "#f59e0b" },
+    { y: 40, label: "strong trend", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 0, yMax: 20, color: "rgba(239,68,68,0.12)", label: "no/weak trend" },
+    { yMin: 40, yMax: 100, color: "rgba(34,197,94,0.12)", label: "strong trend" }
+  ]}
+  points={[
+    { x: 7, y: 47, text: "strong trend", color: "#22c55e" }
+  ]}
+/>
+
 ### Parabolic SAR — trailing stops
 
 **SAR** means "**stop and reverse**." It prints a dot above or below price each bar, trailing the trend and tightening as the trend persists via an **acceleration factor (AF)** that starts at **0.02**, rises by 0.02 each time a new extreme is recorded, and caps at **0.20** ([Wikipedia: Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR)). When price crosses the dot, the system *flips* — that's both your exit and your reverse signal.
+
+<LineChart
+  caption="Parabolic SAR trailing an uptrend, then flipping above price when the trend reverses"
+  height={300}
+  series={[
+    { label: "Price", data: [20, 22, 23, 25, 27, 28, 30, 29, 27, 26], color: "#e6e9ef", width: 2 },
+    { label: "SAR", data: [18, 18.4, 19.2, 20.3, 21.6, 23.1, 24.8, 31, 30.2, 29.1], color: "#f59e0b", dashed: true, width: 2 }
+  ]}
+  points={[
+    { x: 6, y: 30, text: "trend peak", color: "#22c55e" },
+    { x: 7, y: 31, text: "SAR flips above price", color: "#ef4444" }
+  ]}
+/>
 
 ## A worked example: ATR (illustrative)
 

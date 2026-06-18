@@ -42,6 +42,22 @@ What the proportions tell you ([StockCharts](https://chartschool.stockcharts.com
 
 That is the entire grammar. Every named pattern below is just a sentence written in this grammar.
 
+<CandleChart
+  caption="The grammar of a candle: long body (conviction), long upper shadow (rejected highs), long lower shadow (recovered lows), and a tiny doji body (indecision)"
+  candles={[
+    { o: 10, h: 15.5, l: 9.5, c: 15 },
+    { o: 16, h: 18.5, l: 15.5, c: 16.3 },
+    { o: 17, h: 17.5, l: 13, c: 17.2 },
+    { o: 17.2, h: 18, l: 16.8, c: 17.3 }
+  ]}
+  points={[
+    { x: 0, y: 8.8, text: "long body", color: "#22c55e" },
+    { x: 1, y: 19.2, text: "upper shadow", color: "#ef4444" },
+    { x: 2, y: 12.3, text: "lower shadow", color: "#22c55e" },
+    { x: 3, y: 18.7, text: "doji", color: "#e6e9ef" }
+  ]}
+/>
+
 ## Single-candle patterns
 
 **Doji** — open and close are virtually equal, so the body is a thin horizontal line. It signals **indecision**: buyers and sellers fought to a draw. Variants you will hear named: the *long-legged doji* (long shadows both ways, maximum indecision), the *dragonfly* (long lower shadow, little or no upper — buyers rescued the close), and the *gravestone* (long upper shadow, little or no lower — sellers rejected higher prices). A doji is a warning flag, not a verdict.
@@ -72,6 +88,21 @@ The hammer and hanging man are physically identical candles. The *only* thing th
 
 **Dark Cloud Cover** — the bearish top mirror: a long green candle, then a red candle that opens above the prior high but closes *below the midpoint* of the green body.
 
+<CandleChart
+  caption="Bullish engulfing at the end of a downtrend: a small red body is swallowed by a larger green body that buyers drive above the prior open"
+  candles={[
+    { o: 40, h: 40.5, l: 37.5, c: 38 },
+    { o: 38, h: 38.2, l: 35.5, c: 36 },
+    { o: 36, h: 36.3, l: 34, c: 34.5 },
+    { o: 34.4, h: 34.6, l: 33.6, c: 33.8 },
+    { o: 33.6, h: 36, l: 33.3, c: 35.8 }
+  ]}
+  points={[
+    { x: 3, y: 33.1, text: "small red", color: "#ef4444" },
+    { x: 4, y: 36.6, text: "engulfing", color: "#22c55e" }
+  ]}
+/>
+
 ## Three-candle patterns
 
 **Morning Star** — a bullish bottom reversal in three acts: (1) a long red candle, (2) a small-bodied candle (often gapping down) showing indecision, (3) a strong green candle closing well into the first candle's body. Sellers, then a standoff, then buyers take over.
@@ -100,6 +131,21 @@ Close = 49.80
 So: a tiny body, a lower shadow about 14x the body, almost no upper shadow, *after a downtrend* — a textbook **hammer**. The story: sellers pushed price down nearly 3 points intraday, then buyers reclaimed almost all of it by the close. That is a hint the down-move may be exhausting.
 
 But notice the word *hint*. You would not buy yet.
+
+<CandleChart
+  caption="The worked example: two weeks of decline, then a hammer (O 50.00, H 50.20, L 47.00, C 49.80) — a 0.20 body atop a 2.80 lower shadow"
+  candles={[
+    { o: 56, h: 56.3, l: 53.5, c: 54 },
+    { o: 54, h: 54.2, l: 52, c: 52.3 },
+    { o: 52.3, h: 52.5, l: 50.5, c: 50.8 },
+    { o: 50.8, h: 51, l: 49.5, c: 50 },
+    { o: 50.0, h: 50.2, l: 47.0, c: 49.8 }
+  ]}
+  points={[
+    { x: 4, y: 50.7, text: "hammer", color: "#22c55e" },
+    { x: 4, y: 46.6, text: "long lower shadow", color: "#22c55e" }
+  ]}
+/>
 
 ## Context and confirmation: the rules that matter most
 

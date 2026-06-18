@@ -61,6 +61,24 @@ Impulse (motive):        Correction:
 (1,3,5 push; 2,4 rest)   (A,C push; B rests)
 ```
 
+<LineChart
+  caption="A complete Elliott cycle: a five-wave motive advance (1-5) followed by a three-wave A-B-C correction"
+  height={320}
+  series={[
+    { label: "Price", data: [100, 120, 108, 140, 128, 152, 138, 146, 130], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 120, text: "1", color: "#22c55e" },
+    { x: 2, y: 108, text: "2", color: "#ef4444" },
+    { x: 3, y: 140, text: "3", color: "#22c55e" },
+    { x: 4, y: 128, text: "4", color: "#ef4444" },
+    { x: 5, y: 152, text: "5", color: "#22c55e" },
+    { x: 6, y: 138, text: "A", color: "#ef4444" },
+    { x: 7, y: 146, text: "B", color: "#a78bfa" },
+    { x: 8, y: 130, text: "C", color: "#ef4444" }
+  ]}
+/>
+
 ## Fractals: the same shape at every degree
 
 Here is the idea that makes Elliott Wave both powerful and slippery. Each wave is itself made of smaller waves of the same form, and is itself part of a larger wave. Wave 1 of a big trend is, zoomed in, its own five-wave impulse. Wave 2 is its own A-B-C correction. This is **self-similarity** — the same property you see in coastlines and fractals.
@@ -118,6 +136,24 @@ Wave 3 target = 107.64 + (1.618 x 20) = 107.64 + 32.36 = 140.00
 
 These are *expectations*, not guarantees — they tell you where to watch for a reaction, not where price must go.
 
+<LineChart
+  caption="The worked example: wave 1 to $120, a 61.8% wave-2 retrace to $107.64, and a 1.618x wave-3 projection to $140"
+  height={300}
+  yMin={95}
+  yMax={150}
+  series={[
+    { label: "Price", data: [100, 120, 107.64, 140], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 120, text: "1 ($120)", color: "#22c55e" },
+    { x: 2, y: 107.64, text: "2 ($107.64)", color: "#ef4444" },
+    { x: 3, y: 140, text: "3 target ($140)", color: "#2dd4bf" }
+  ]}
+  levels={[
+    { y: 100, label: "Rule 1 invalidation (wave 1 start)", color: "#f59e0b" }
+  ]}
+/>
+
 ## Corrective patterns: where it gets hard
 
 Impulses are relatively clean. Corrections are where Elliott analysts spend most of their agony, because A-B-C waves come in several flavors and can string together. The three primary forms:
@@ -125,6 +161,23 @@ Impulses are relatively clean. Corrections are where Elliott analysts spend most
 - **Zigzag** — a sharp, deep correction subdividing **5-3-5** (wave A has five sub-waves, B has three, C has five). It looks like a clean, steep pullback.
 - **Flat** — a sideways, shallow correction subdividing **3-3-5**. The B wave often returns near the start of A, making it look like choppy, range-bound action.
 - **Triangle** — a contracting (or expanding) sideways pattern of five legs (**A-B-C-D-E**), each subdividing into threes. Triangles most often appear in **wave 4** (or wave B), rarely in wave 2, and signal a final thrust to follow.
+
+<LineChart
+  caption="Two corrective shapes: the sharp, deep zigzag versus the sideways flat whose B wave returns near A's start"
+  height={300}
+  series={[
+    { label: "Zigzag (5-3-5)", data: [100, 90, 94, 84], color: "#38bdf8", width: 2 },
+    { label: "Flat (3-3-5)", data: [100, 96, 99, 95], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 90, text: "A", color: "#38bdf8" },
+    { x: 2, y: 94, text: "B", color: "#38bdf8" },
+    { x: 3, y: 84, text: "C", color: "#38bdf8" },
+    { x: 1, y: 96, text: "A", color: "#a78bfa" },
+    { x: 2, y: 99, text: "B (near start)", color: "#a78bfa" },
+    { x: 3, y: 95, text: "C", color: "#a78bfa" }
+  ]}
+/>
 
 These can combine into **double** and **triple** corrections — which is precisely where critics say the theory becomes unfalsifiable.
 

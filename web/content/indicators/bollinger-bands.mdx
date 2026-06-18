@@ -24,6 +24,17 @@ Think of the bands as a rubber band around price. When a market is quiet — sma
 
 Because the width adapts, the bands give you what Bollinger calls a "relative definition of high and low." Price near the upper band is *high relative to recent action*; near the lower band it's *low relative to recent action*. That word **relative** is the whole point — it's not an absolute overbought/oversold call.
 
+<LineChart
+  caption="The bands breathe: tight when calm, wide when volatile, middle band = SMA"
+  height={300}
+  series={[
+    { label: "Upper Band", data: [33, 32.5, 32, 31.7, 31.5, 33, 35, 37.5, 39, 40], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "Price", data: [31, 30.5, 31, 30.2, 30, 31.5, 34, 36, 33.5, 35], color: "#e6e9ef", width: 2 },
+    { label: "Middle Band (SMA)", data: [30, 30, 30, 30, 30, 30.3, 31, 32, 32.5, 33], color: "#2dd4bf", width: 1.5 },
+    { label: "Lower Band", data: [27, 27.5, 28, 28.3, 28.5, 27.6, 27, 26.5, 26, 26], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+/>
+
 ## The precise definition
 
 You need three quantities. First, the jargon:
@@ -91,6 +102,20 @@ A low BandWidth means the bands are pinched together (low volatility); a high Ba
 
 When volatility drops, the bands contract — and BandWidth falls toward a multi-month low. This is **the Squeeze**, Bollinger's most famous setup. The logic: markets cycle between quiet and active periods, and an unusually quiet period (a squeeze) tends to *precede* a volatile expansion. The catch — and this is critical — the squeeze tells you a big move is *coming*, but **not which direction**.
 
+<LineChart
+  caption="The Squeeze: bands pinch to a low-volatility minimum, then expand on the breakout"
+  height={300}
+  series={[
+    { label: "Upper Band", data: [36, 34.5, 33, 32, 31.5, 31.4, 31.5, 33, 36, 39, 41], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "Price", data: [32, 31, 30.5, 30.2, 30.1, 30.3, 30.6, 31.5, 34, 37, 39], color: "#e6e9ef", width: 2 },
+    { label: "Lower Band", data: [28, 28.5, 29, 29.4, 29.6, 29.5, 29.4, 29, 28, 27.5, 27.5], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+  points={[
+    { x: 5, y: 30.3, text: "squeeze", color: "#f59e0b" },
+    { x: 9, y: 37, text: "expansion", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="warning">
 
 The squeeze has a "head fake": price often makes a brief move one way, sucks traders in, then reverses and makes the real move the other way. Bollinger explicitly warns about this. Wait for the band expansion and confirmation, and assume the first thrust may be a fake.
@@ -111,6 +136,21 @@ A **W-Bottom** (bullish, forms in a downtrend) has four steps ([StockCharts](htt
 2. Price bounces back toward the middle band.
 3. A *second* low forms that holds *above* the lower band — even if price is lower in absolute terms. The key tell: less weakness on the second decline (use %b — the second low has a higher %b).
 4. Confirmation comes when price surges off the second low and breaks the interim resistance high.
+
+<LineChart
+  caption="W-Bottom: second low holds above the lower band even as price dips lower (non-confirmation)"
+  height={300}
+  series={[
+    { label: "Upper Band", data: [36, 35, 34, 34.5, 35, 34.5, 34, 35, 37], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "Price", data: [33, 28, 31, 32.5, 30, 27.5, 31, 34, 36], color: "#e6e9ef", width: 2 },
+    { label: "Lower Band", data: [30, 29, 28.5, 28.8, 29, 28.6, 28.2, 28.5, 29], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+  points={[
+    { x: 1, y: 28, text: "low 1 (below band)", color: "#ef4444" },
+    { x: 5, y: 27.5, text: "low 2 (holds inside)", color: "#22c55e" },
+    { x: 7, y: 34, text: "breakout", color: "#22c55e" }
+  ]}
+/>
 
 An **M-Top** (bearish) is the mirror image: a high pokes above the upper band, a pullback toward the middle band, then a second high that *fails to reach* the upper band — a non-confirmation warning of fading momentum — confirmed by a support break.
 

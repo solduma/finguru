@@ -86,6 +86,21 @@ KST = 0.5 + 1.6 + 3.6 + 6.0 = **+11.7**. The longest, most heavily weighted comp
 - **Direction vs. position:** a KST that is still negative but turning up shows downside momentum waning; a KST still positive but turning down shows upside momentum fading.
 - **Divergence:** when price makes a new high but KST does not (a "negative divergence"), it can warn of exhaustion — but Pring stressed using only large, obvious divergences, ideally confirmed by a signal-line cross.
 
+<LineChart
+  caption="KST vs. its 9-period signal line: a negative divergence (price higher high, KST lower high) confirmed by a bearish signal-line cross"
+  height={220}
+  series={[
+    { label: "KST", data: [-6, -2, 4, 11, 14, 12, 9, 11, 8, 3, -2], color: "#2dd4bf", width: 2 },
+    { label: "Signal (9 SMA)", data: [-4, -3, 0, 5, 9, 11, 11, 10, 9, 7, 3], color: "#38bdf8", dashed: true, width: 2 }
+  ]}
+  levels={[ { y: 0, label: "centerline", color: "#f59e0b" } ]}
+  points={[
+    { x: 4, y: 14, text: "1st peak", color: "#22c55e" },
+    { x: 7, y: 11, text: "lower high (divergence)", color: "#ef4444" },
+    { x: 8, y: 8, text: "bearish cross", color: "#ef4444" }
+  ]}
+/>
+
 <Callout type="warning">
 
 The KST is *unbounded* — it has no fixed 0-to-100 ceiling like RSI. That makes it poorly suited for "overbought/oversold" calls. In a strong uptrend it can stay positive for a very long time; a signal-line cross there often just flags slowing momentum, not a reversal.
@@ -114,6 +129,23 @@ Pring's other great theme is **intermarket rotation** — the observation that b
 | 4 | Bear | Bull | Bull | Full expansion; bonds top first as inflation pressures rise |
 | 5 | Bear | Bear | Bull | Stocks top; commodities still strong |
 | 6 | Bear | Bear | Bear | Slowdown; commodities finally roll over |
+
+<LineChart
+  caption="The intermarket relay: bonds bottom and top first, stocks follow, commodities turn last — the staggered sequence behind the six stages"
+  height={300}
+  series={[
+    { label: "Bonds", data: [42, 47, 53, 58, 60, 59, 55, 50, 45, 42, 44], color: "#38bdf8", width: 2 },
+    { label: "Stocks", data: [40, 38, 41, 47, 53, 58, 60, 57, 52, 47, 45], color: "#e6e9ef", width: 2 },
+    { label: "Commodities", data: [44, 41, 39, 41, 46, 52, 57, 60, 58, 52, 47], color: "#f59e0b", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 47, text: "bonds bottom (St.1)", color: "#22c55e" },
+    { x: 2, y: 41, text: "stocks bottom (St.2)", color: "#22c55e" },
+    { x: 4, y: 60, text: "bonds top (St.4)", color: "#ef4444" },
+    { x: 6, y: 60, text: "stocks top (St.5)", color: "#ef4444" },
+    { x: 7, y: 60, text: "commodities top (St.6)", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="key">
 

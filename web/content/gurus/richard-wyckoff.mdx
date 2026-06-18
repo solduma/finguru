@@ -86,6 +86,28 @@ Inside an accumulation range, Wyckoff labels a recurring sequence of events. Lea
 
 These map onto **phases A–E**: Phase A stops the downtrend (PS, SC, AR, ST); Phase B is the long, dull "building the cause" stretch where institutions accumulate; Phase C is the decisive supply test (often the spring); Phase D shows demand winning (SOS up, LPS pullbacks); Phase E is the markup out of the range ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md)).
 
+<LineChart
+  caption="Wyckoff accumulation schematic — PS, SC, AR, ST, Spring, SOS, LPS, then markup across the resistance ('creek')"
+  height={340}
+  series={[
+    { label: "Price", data: [60, 52, 44, 38, 41, 50, 48, 45, 47, 44, 46, 43, 40, 47, 53, 50, 56, 62], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50, label: "TR resistance (AR high)", color: "#a78bfa" },
+    { y: 41, label: "TR support (SC area)", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 1, y: 52, text: "PS", color: "#38bdf8" },
+    { x: 3, y: 38, text: "SC", color: "#ef4444" },
+    { x: 5, y: 50, text: "AR", color: "#22c55e" },
+    { x: 7, y: 45, text: "ST", color: "#38bdf8" },
+    { x: 12, y: 40, text: "Spring", color: "#22c55e" },
+    { x: 14, y: 53, text: "SOS", color: "#22c55e" },
+    { x: 15, y: 50, text: "LPS", color: "#2dd4bf" },
+    { x: 17, y: 62, text: "markup", color: "#22c55e" }
+  ]}
+/>
+
 Distribution is the mirror image at a top: **PSY** (Preliminary Supply), **BC** (Buying Climax), **AR** (Automatic Reaction), **ST**, **SOW** (Sign of Weakness), **LPSY** (Last Point of Supply), and the **UTAD** (Upthrust After Distribution) — a spike *above* resistance that fails, the bull-trap counterpart to the spring.
 
 <Callout type="warning">
@@ -117,6 +139,26 @@ If the range low were, say, 30,000, the minimum objective would be 33,600. Note 
 ## A worked reading (illustrative)
 
 A stock has fallen for months. One week it gaps down on the year's heaviest volume but closes near its high — a **Selling Climax**. It bounces hard (**Automatic Rally**), then drifts sideways for two months on quietly declining volume (**Phase B accumulation**). It dips below the range low on light volume and snaps back the same week (**Spring**). A few days later it surges on big volume through the range top (**SOS**), pulls back to the old resistance on tiny volume (**LPS / back-up**), and then trends up. A Wyckoff trader buys the spring or the LPS, places a stop just under the spring low, and targets the level projected by the P&F count.
+
+<LineChart
+  caption="The worked reading — Selling Climax to markup, with the stop placed just under the spring low"
+  height={320}
+  series={[
+    { label: "Price", data: [55, 48, 36, 47, 44, 46, 43, 45, 42, 33, 48, 44, 52, 58], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 47, label: "range top (resistance)", color: "#a78bfa" },
+    { y: 31, label: "stop (under spring low)", color: "#ef4444" }
+  ]}
+  points={[
+    { x: 2, y: 36, text: "Selling Climax", color: "#ef4444" },
+    { x: 3, y: 47, text: "AR", color: "#22c55e" },
+    { x: 6, y: 43, text: "Phase B", color: "#38bdf8" },
+    { x: 9, y: 33, text: "Spring", color: "#22c55e" },
+    { x: 12, y: 52, text: "SOS", color: "#22c55e" },
+    { x: 11, y: 44, text: "LPS", color: "#2dd4bf" }
+  ]}
+/>
 
 ## Honest criticisms and pitfalls
 

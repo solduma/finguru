@@ -61,6 +61,25 @@ The trend is your default assumption. You bet that a move *in progress* will con
 
 A **pivotal point**, in Livermore's language, is a price level where the market signals that a real move is beginning — for example, a stock breaking decisively above a long-standing high, or breaking out of a sideways range on heavy volume. He did not buy "cheap." He bought *strength* — often adding as a stock made new highs — because the breakout through a pivotal point was his evidence that the trend was genuine. Buying after confirmation, not in anticipation, is central to his approach.
 
+<CandleChart
+  caption="A sideways range, then a decisive breakout above the pivotal point on heavy volume"
+  height={300}
+  candles={[
+    { o: 50, h: 52, l: 49, c: 51 },
+    { o: 51, h: 52, l: 48, c: 49 },
+    { o: 49, h: 51, l: 48, c: 51 },
+    { o: 51, h: 52, l: 49, c: 50 },
+    { o: 50, h: 52, l: 48, c: 49 },
+    { o: 49, h: 51, l: 48, c: 51 },
+    { o: 51, h: 52, l: 50, c: 52 },
+    { o: 52, h: 56, l: 52, c: 55 },
+    { o: 55, h: 59, l: 55, c: 58 },
+    { o: 58, h: 61, l: 57, c: 60 }
+  ]}
+  levels={[{ y: 52, label: "pivotal point (range high)" }]}
+  points={[{ x: 7, y: 56.6, text: "breakout — buy strength", color: "#22c55e" }]}
+/>
+
 ### 4. Probe, then scale (pyramiding done carefully)
 
 Livermore rarely put on a full position at once. He would buy a small **"probe"** to test his idea. If the market moved his way and confirmed it, he added more — a practice now called **pyramiding** (building a larger position in stages as it works). If the probe lost money, that itself was information: he was wrong, and he got out small.
@@ -107,6 +126,26 @@ Step 4 (sit):    Over six weeks price grinds from $58 to $74,
 Step 5 (exit):   Trend breaks: price closes back below your
                  raised exit level. You sell the whole position.
 ```
+
+<LineChart
+  caption="The illustrative XYZ trade: probe on the breakout, add into strength, sit through the swing, exit when the trend breaks"
+  height={300}
+  yMin={44}
+  yMax={78}
+  series={[
+    { label: "XYZ price", data: [50, 51, 49, 53, 56, 58, 62, 60, 66, 70, 68, 74, 71, 64], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 52, label: "pivotal point ($52)", color: "#a78bfa" },
+    { y: 65, label: "raised exit (trailing)", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 3, y: 53, text: "probe (buy $53)", color: "#22c55e" },
+    { x: 5, y: 58, text: "add ($58)", color: "#22c55e" },
+    { x: 11, y: 74, text: "sit through dips", color: "#2dd4bf" },
+    { x: 13, y: 64, text: "exit (trend breaks)", color: "#ef4444" }
+  ]}
+/>
 
 Notice the structure: enter on confirmation, define the loss *before* entering, add only into strength, and let the position run while a mechanical rule — not your emotions — decides when it is over.
 

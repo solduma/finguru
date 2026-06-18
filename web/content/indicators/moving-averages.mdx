@@ -26,6 +26,15 @@ Imagine you wanted to know whether a stock is "generally going up" this month. Y
 
 The longer the window you average, the smoother the line — but the more sluggishly it reacts to fresh news. That tension is the heart of everything below.
 
+<LineChart
+  caption="Jittery price vs. a smooth moving average riding under an uptrend"
+  height={300}
+  series={[
+    { label: "Price", data: [20, 22, 19, 23, 21, 25, 23, 27, 25, 29, 27, 31, 30, 34], color: "#e6e9ef", width: 2 },
+    { label: "Moving average", data: [null, null, null, 21, 21.5, 22.5, 23, 24, 24.5, 26, 26.5, 28, 29, 31], color: "#2dd4bf", width: 2 }
+  ]}
+/>
+
 ## The math, precisely
 
 ### Simple Moving Average (SMA)
@@ -120,6 +129,18 @@ Use two MAs of different lengths and watch where they cross.
 - **Death cross** — the shorter MA crosses *below* the longer one. Bearish (50-day below 200-day).
 
 Worked logic (illustrative): if the 50-day is at 102 and climbing while the 200-day sits at 100, the moment the 50-day pokes above the 200-day you have a golden cross — a signal that the medium-term trend has turned up relative to the long-term trend.
+
+<LineChart
+  caption="A golden cross: the faster 50-day rises through the slower 200-day"
+  height={300}
+  series={[
+    { label: "50-day MA", data: [95, 94, 95, 97, 99, 100, 101, 102, 104, 106, 108], color: "#38bdf8", width: 2 },
+    { label: "200-day MA", data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 101, 101], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 7, y: 101, text: "golden cross", color: "#22c55e" }
+  ]}
+/>
 
 A complete **crossover trading system** is just: *go long when the fast MA crosses above the slow MA, exit or short when it crosses below.* Simple, mechanical, and the basis of countless strategies.
 

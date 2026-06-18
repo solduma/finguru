@@ -48,6 +48,19 @@ The name is a tongue-in-cheek nod to how reliable it can look in a strong trend,
 - **ADX (Average Directional Index)**, a Welles Wilder indicator that measures trend *strength* (not direction) on a 0–100 scale, typically with a 14-period setting.
 - A **20-period moving average**, used to mark the level where the first pullback in a trend tends to find support or resistance.
 
+<LineChart
+  caption="ADX rising above 30 confirms a strong trend before the Holy Grail entry"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "14-period ADX", data: [18, 19, 21, 24, 27, 30, 32, 34, 34, 33], color: "#f59e0b", width: 2 }
+  ]}
+  levels={[ { y: 30, label: "strong-trend threshold", color: "#a78bfa" } ]}
+  zones={[ { yMin: 30, yMax: 100, color: "rgba(34,197,94,0.12)", label: "strong trend" } ]}
+  points={[ { x: 7, y: 34, text: "ADX 34, rising", color: "#22c55e" } ]}
+/>
+
 ```
 LONG setup (mirror for shorts):
   1. 14-period ADX has risen above ~30  -> a strong trend is in force
@@ -80,6 +93,27 @@ LONG Turtle Soup (mirror for shorts):
 ```
 
 The "at least 4 sessions old" filter is important: it ensures the new low is a genuine probe past an established level, the kind that traps breakout buyers. There is a variant, **Turtle Soup Plus One**, where the false break is confirmed one day later — price closes at or below the prior 20-day low — before entry.
+
+<CandleChart
+  caption="Turtle Soup long — a new 20-day low fails and snaps back above the prior low"
+  height={300}
+  candles={[
+    { o: 44, h: 45, l: 42, c: 43 },
+    { o: 43, h: 44, l: 41, c: 41.5 },
+    { o: 41.5, h: 42, l: 40, c: 40.2 },
+    { o: 40.2, h: 41, l: 39.5, c: 40.5 },
+    { o: 40.5, h: 42, l: 40, c: 41.6 },
+    { o: 41.6, h: 42, l: 39, c: 39.3 },
+    { o: 39.4, h: 41.5, l: 38.8, c: 41.2 },
+    { o: 41.2, h: 43, l: 41, c: 42.8 },
+    { o: 42.8, h: 44.5, l: 42.5, c: 44.2 }
+  ]}
+  levels={[ { y: 39.5, label: "prior 20-day low" } ]}
+  points={[
+    { x: 5, y: 38.8, text: "new low (failed probe)", color: "#ef4444" },
+    { x: 6, y: 39.6, text: "buy stop above prior low", color: "#22c55e" }
+  ]}
+/>
 
 ## Setup 3 — The 80-20
 
@@ -126,6 +160,26 @@ These numbers are **illustrative**, not from a real chart, to show the mechanics
 | Risk per share | $0.70 |
 | Reward to target ($52.00 − $50.25) | $1.75 |
 | Reward : risk | 2.5 : 1 |
+
+<LineChart
+  caption="Holy Grail long — first pullback to the 20-period MA, with entry, stop, and target"
+  height={300}
+  yMin={48}
+  yMax={53}
+  series={[
+    { label: "Price", data: [49.0, 50.2, 51.5, 52.0, 51.2, 50.4, 49.9, 50.25, 51.3, 52.0], color: "#e6e9ef", width: 2 },
+    { label: "20-period MA", data: [48.9, 49.2, 49.6, 49.9, 50.0, 50.0, 49.9, 49.95, 50.1, 50.4], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 52.0, label: "target — prior swing high", color: "#22c55e" },
+    { y: 49.55, label: "stop", color: "#ef4444" }
+  ]}
+  points={[
+    { x: 3, y: 52.0, text: "swing high", color: "#22c55e" },
+    { x: 6, y: 49.9, text: "pullback touches 20 MA", color: "#a78bfa" },
+    { x: 7, y: 50.25, text: "entry buy stop $50.25", color: "#38bdf8" }
+  ]}
+/>
 
 If you risk 0.5% of a $100,000 account ($500) on this trade, position size is $500 / $0.70 ≈ **714 shares**. The trade either gets stopped for about $500 or reaches the prior high for roughly $1,250. The math, not a hunch, decides the size.
 

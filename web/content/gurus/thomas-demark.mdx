@@ -104,9 +104,53 @@ Imagine a stock falling. We watch for a Buy Setup — nine consecutive closes ea
 
 A "9" prints — the downtrend is mature. We check perfection (is the low of bar 8 or 9 ≤ the lows of bars 6 and 7?). If yes, the setup is perfected. Now the Countdown starts: we begin counting bars whose `Close <= Low[2 bars earlier]`, possibly spread over many more bars, until we accumulate 13 — and only treat the 13 as valid if bar 13's close clears the bar-8 qualifier. *That* 13 is the exhaustion signal.
 
+<CandleChart
+  caption="Buy Setup: nine consecutive closes each below the close four bars earlier; the '9' prints and the downtrend is mature"
+  height={300}
+  candles={[
+    { o: 104.5, h: 105, l: 103.5, c: 104 },
+    { o: 104, h: 104.2, l: 102.8, c: 103 },
+    { o: 103, h: 103.3, l: 100.6, c: 101 },
+    { o: 101, h: 101.2, l: 99.6, c: 100 },
+    { o: 100.5, h: 100.8, l: 99.7, c: 100 },
+    { o: 100, h: 100.4, l: 99.6, c: 99.7 },
+    { o: 99.7, h: 100, l: 99.4, c: 99.6 },
+    { o: 100.2, h: 100.4, l: 99.8, c: 100 },
+    { o: 100, h: 100.2, l: 98.6, c: 99 },
+    { o: 99, h: 99.1, l: 97.6, c: 98 },
+    { o: 98, h: 98.2, l: 96.7, c: 97 },
+    { o: 97, h: 97.1, l: 95.8, c: 96 },
+    { o: 96, h: 96.2, l: 95.2, c: 95.5 },
+    { o: 95.5, h: 95.7, l: 94.7, c: 95 },
+    { o: 95, h: 95.2, l: 94.5, c: 94.8 },
+    { o: 94.8, h: 95, l: 94.1, c: 94.5 }
+  ]}
+  points={[
+    { x: 8, y: 100.7, text: "1", color: "#38bdf8" },
+    { x: 15, y: 95.4, text: "9", color: "#22c55e" }
+  ]}
+/>
+
 ## TD Combo and the broader toolkit
 
 **TD Combo** is DeMark's sibling to TD Sequential. It targets the same exhaustion idea but is stricter and faster: in Combo, the Countdown can begin *during* the Setup rather than only after it completes, and it imposes additional ordering conditions on each countdown bar. The practical effect is that Combo tends to fire earlier and more conservatively. Which one you prefer is a matter of how early you want to fade a move versus how many false starts you'll tolerate.
+
+The full sequence is best seen end to end: a Setup matures into a "9," the Countdown then accumulates 13 qualifying bars (not necessarily consecutive), and the "13" marks the exhaustion point where price turns. The TDST line drawn from the start of the setup is the objective level whose break would have argued the trend was resuming instead.
+
+<LineChart
+  caption="The full TD Sequential arc: downtrend matures into a Setup '9', the Countdown reaches '13' at exhaustion, then price reverses; TDST is the objective resistance"
+  height={320}
+  series={[
+    { label: "Price", data: [104, 101, 100, 99.7, 99.6, 98, 97, 96, 95.5, 95, 94.5, 94.2, 93.8, 93.4, 93.1, 92.9, 93.6, 95.2, 96.8, 98.3], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 10, y: 94.5, text: "Setup 9", color: "#22c55e" },
+    { x: 15, y: 92.9, text: "Countdown 13", color: "#2dd4bf" }
+  ]}
+  levels={[
+    { y: 100, label: "TDST resistance", color: "#a78bfa" }
+  ]}
+/>
 
 DeMark's catalogue is large — **TD Lines** (an objective, rules-based way to draw trendlines so two analysts draw the identical line), TD D-Wave (a rule-bound take on Elliott Wave), TD Range Expansion, and more — all unified by the same philosophy: replace discretion with arithmetic.
 

@@ -58,7 +58,44 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
 
 **Head and shoulders top.** Forms after an uptrend. Three peaks: a **left shoulder**, a higher **head**, and a lower **right shoulder** roughly level with the first. A **neckline** connects the two reaction lows between the peaks (it can slope up, down, or sit flat — a downward slope is considered more bearish). The pattern is *not complete* until price breaks below the neckline — ideally on rising volume. Volume tends to be heaviest on the left shoulder and lighter on the head's advance, then surges on the neckline break. The **inverse (or bottom) head and shoulders** is the mirror image at the end of a downtrend.
 
+<LineChart
+  caption="Head and shoulders top: left shoulder, higher head, lower right shoulder, and the neckline break"
+  height={320}
+  yMin={36}
+  yMax={54}
+  series={[
+    { label: "Price", data: [40, 43, 46, 44, 47, 50, 47, 44, 46, 44, 43, 40, 38], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 44, label: "neckline", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 2, y: 46, text: "left shoulder", color: "#38bdf8" },
+    { x: 5, y: 50, text: "head", color: "#22c55e" },
+    { x: 8, y: 46, text: "right shoulder", color: "#38bdf8" },
+    { x: 11, y: 40, text: "neckline break", color: "#ef4444" }
+  ]}
+/>
+
 **Double top / double bottom.** Two peaks (or troughs) at roughly the same level — an "M" or "W" shape. A double top signals the market tried twice to push higher, failed, and is rolling over. Confirmation comes only when price breaks the trough between the two peaks. StockCharts recommends requiring at least a roughly 10% decline (commonly 10–20%) between the peaks to avoid noise.
+
+<LineChart
+  caption="Double top: two peaks at a similar level (the 'M'), confirmed only on the break below the middle trough"
+  height={300}
+  yMin={36}
+  yMax={54}
+  series={[
+    { label: "Price", data: [40, 44, 50, 46, 43, 46, 50, 47, 43, 40, 37], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 43, label: "trough support", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 2, y: 50, text: "peak 1", color: "#22c55e" },
+    { x: 6, y: 50, text: "peak 2", color: "#22c55e" },
+    { x: 9, y: 40, text: "support break", color: "#ef4444" }
+  ]}
+/>
 
 **Rounding bottom (the "saucer").** A slow, bowl-shaped base where a downtrend gradually flattens and curves up into an uptrend. Volume mirrors the bowl: heavy as the decline begins, lightest at the base, and rising into the advance and breakout. StockCharts itself describes it as essentially a head-and-shoulders bottom without distinct shoulders — and it is a favorite Jiler example of patient sentiment change.
 
@@ -85,6 +122,25 @@ Downside price target        = Neckline - height
 ```
 
 So after price breaks below $44, the measured objective is about $38. Note the target is an *estimate*, not a promise. The same projection logic runs in reverse for bottoms, and for flags (project the flagpole length from the breakout). For a double top, subtract the distance from the broken support up to the peaks.
+
+<LineChart
+  caption="Measured-move target: project the $6 head-to-neckline height below the $44 break to get the ~$38 objective"
+  height={320}
+  yMin={36}
+  yMax={54}
+  series={[
+    { label: "Price", data: [40, 43, 46, 44, 47, 50, 47, 44, 46, 44, 43, 40, 38], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50, label: "head $50", color: "#22c55e" },
+    { y: 44, label: "neckline $44", color: "#a78bfa" },
+    { y: 38, label: "target $38", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 11, y: 40, text: "break below $44", color: "#ef4444" },
+    { x: 12, y: 38, text: "measured target", color: "#f59e0b" }
+  ]}
+/>
 
 <Callout type="warning">
 

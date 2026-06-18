@@ -87,6 +87,25 @@ A stock runs up, then forms a cup over four months, bottoming and recovering to 
 - You buy as the stock pushes through $52.10 on volume ~45% above average.
 - **Stop-loss** = 7-8% below your buy: $52.10 × (1 − 0.07) ≈ **$48.45**. If it closes there, you sell — no exceptions.
 
+<LineChart
+  caption="Cup-with-handle base: pivot at handle high + 10¢, breakout, and the 7-8% stop"
+  height={320}
+  series={[
+    { label: "Price", data: [49.8, 50.0, 47.5, 44.2, 42.6, 42.4, 43.8, 46.5, 49.0, 50.2, 51.6, 52.0, 51.0, 50.6, 51.4, 52.1, 54.8, 57.5, 60.5], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 50.0, text: "left-side peak ~$50", color: "#38bdf8" },
+    { x: 5, y: 42.4, text: "cup bottom", color: "#a78bfa" },
+    { x: 11, y: 52.0, text: "handle high $52.00", color: "#38bdf8" },
+    { x: 13, y: 50.6, text: "handle pullback", color: "#a78bfa" },
+    { x: 16, y: 54.8, text: "breakout on +45% vol", color: "#22c55e" }
+  ]}
+  levels={[
+    { y: 52.1, label: "pivot $52.10", color: "#f59e0b" },
+    { y: 48.45, label: "stop ~$48.45", color: "#ef4444" }
+  ]}
+/>
+
 If the stock advances 20-25% within a few weeks of the breakout, O'Neil's playbook says consider taking at least partial profits. The asymmetry is the point: you risk ~7-8% to make 20%+.
 
 ## The follow-through day (the "M" in action)
@@ -98,6 +117,19 @@ How do you know a beaten-down market has turned? O'Neil's answer is the **follow
 3. On **Day 4 or later** (commonly Day 4 through 7), watch for a major index (Nasdaq or S&P 500) to close **significantly higher** — O'Neil's classic threshold is a gain of about **1.25% or more** in a single session — on **volume heavier than the prior day**.
 
 That combination of a strong percentage gain *plus* rising volume confirms the rally as a new uptrend. The signal is invalidated if the index later falls below the low of the follow-through day. IBD's claim is that every major market bottom has been accompanied by a follow-through day — but **not every FTD leads to a sustained rally**; false signals happen, which is why the stop-loss still rules.
+
+<LineChart
+  caption="Follow-through day: rally attempt off the bottom (Day 1), then a >1.25% confirmation on Day 4"
+  height={300}
+  series={[
+    { label: "Index", data: [104.0, 101.5, 99.2, 100.6, 100.1, 100.9, 102.2, 102.0, 102.4, 104.0], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 99.2, text: "market bottom", color: "#a78bfa" },
+    { x: 3, y: 100.6, text: "Day 1: rally attempt", color: "#38bdf8" },
+    { x: 6, y: 102.2, text: "Day 4: +1.25% on rising volume", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="warning">
 

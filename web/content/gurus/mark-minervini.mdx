@@ -83,6 +83,18 @@ MA50, MA150, MA200 = 50-, 150-, 200-day simple moving averages
 8.  Relative Strength (RS) ranking is high (Minervini wants 70+, prefers 80-90+)
 ```
 
+<LineChart
+  caption="Stage 2 Trend Template: price above stacked MA50 > MA150 > MA200, all rising"
+  height={300}
+  series={[
+    { label: "Price", data: [42, 45, 44, 48, 52, 55, 58, 62, 66, 71, 75, 80], color: "#e6e9ef", width: 2 },
+    { label: "MA50", data: [40, 42, 44, 46, 49, 52, 55, 58, 61, 65, 69, 73], color: "#2dd4bf", width: 2 },
+    { label: "MA150", data: [38, 39, 40, 42, 44, 46, 48, 51, 54, 57, 60, 64], color: "#38bdf8", width: 2 },
+    { label: "MA200", data: [37, 37, 38, 39, 41, 43, 45, 47, 50, 53, 56, 59], color: "#a78bfa", width: 2 }
+  ]}
+  points={[ { x: 11, y: 80, text: "P > MA50 > MA150 > MA200", color: "#22c55e" } ]}
+/>
+
 Minervini also layers on the SEPA fundamental screens — most recent quarterly EPS up year-over-year, and annual earnings rising — though these sit alongside the template rather than inside its eight technical lines. RS ranking here means an IBD-style percentile measuring the stock's price performance versus all other stocks (80 = stronger than 80% of the market) — not the RSI oscillator, which is a different thing entirely.
 
 <Callout type="warning">
@@ -110,6 +122,34 @@ Stock building a VCP base after a Stage 2 advance:
   Volume in T3 dries up ~40-50% below the 50-day average.
   Pivot (buy point) = just above the high of T3, say $105.
 ```
+
+<CandleChart
+  caption="VCP base: T1 -25%, T2 -12%, T3 -6% contractions, then a pivot breakout near $105"
+  height={320}
+  candles={[
+    { o: 96, h: 100, l: 95, c: 99 },
+    { o: 99, h: 100, l: 90, c: 91 },
+    { o: 91, h: 92, l: 78, c: 80 },
+    { o: 80, h: 84, l: 75, c: 82 },
+    { o: 82, h: 90, l: 81, c: 89 },
+    { o: 89, h: 102, l: 88, c: 101 },
+    { o: 101, h: 102, l: 92, c: 93 },
+    { o: 93, h: 95, l: 89, c: 94 },
+    { o: 94, h: 99, l: 93, c: 98 },
+    { o: 98, h: 104, l: 97, c: 103 },
+    { o: 103, h: 104, l: 98, c: 99 },
+    { o: 99, h: 103, l: 98, c: 102 },
+    { o: 102, h: 104, l: 101, c: 103 },
+    { o: 104, h: 112, l: 104, c: 111 }
+  ]}
+  points={[
+    { x: 2, y: 74, text: "T1 -25%", color: "#ef4444" },
+    { x: 6, y: 90, text: "T2 -12%", color: "#f59e0b" },
+    { x: 10, y: 96, text: "T3 -6%", color: "#22c55e" },
+    { x: 13, y: 113, text: "pivot breakout", color: "#22c55e" }
+  ]}
+  levels={[ { y: 105, label: "pivot $105" } ]}
+/>
 
 ### The two-dimensional rule
 

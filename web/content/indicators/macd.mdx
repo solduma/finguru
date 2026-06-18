@@ -34,6 +34,19 @@ Before any math, here's the idea. Take a **fast** moving average (responds quick
 
 MACD simply measures that gap and plots it as a line. A widening positive gap = accelerating uptrend. A shrinking gap = a trend running out of fuel. That's it.
 
+<LineChart
+  caption="The fast EMA pulls away from the slow EMA in an uptrend, then converges as momentum fades"
+  height={300}
+  series={[
+    { label: "Fast EMA (12)", data: [99.5, 100.4, 101.6, 103.0, 104.1, 104.6, 104.5, 104.0], color: "#38bdf8", width: 2 },
+    { label: "Slow EMA (26)", data: [99.8, 100.0, 100.5, 101.3, 102.2, 103.1, 103.8, 104.1], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 4, y: 104.1, text: "gap widening", color: "#22c55e" },
+    { x: 7, y: 104.05, text: "converging", color: "#f59e0b" }
+  ]}
+/>
+
 <Callout type="key">
 
 MACD is a **trend-following momentum indicator**. It tells you both the *direction* of the trend (is the gap positive or negative?) and the *momentum* of it (is the gap growing or shrinking?).
@@ -92,6 +105,22 @@ There are three classic reading methods, in roughly increasing subtlety.
 - MACD crosses *below* the signal line → **bearish** (potential sell).
 On the chart, this is the exact moment the histogram flips from negative to positive (or vice versa).
 
+<LineChart
+  caption="Signal-line crossovers: MACD line crossing its slower signal line, with the zero centerline"
+  height={220}
+  series={[
+    { label: "MACD line", data: [-0.8, -1.1, -0.9, -0.3, 0.4, 1.0, 1.4, 1.2, 0.6, -0.2], color: "#2dd4bf", width: 2 },
+    { label: "Signal line", data: [-0.4, -0.7, -0.9, -0.7, -0.3, 0.3, 0.8, 1.1, 0.9, 0.4], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  levels={[
+    { y: 0, label: "zero", color: "#e6e9ef" }
+  ]}
+  points={[
+    { x: 4, y: 0.4, text: "bullish cross", color: "#22c55e" },
+    { x: 8, y: 0.6, text: "bearish cross", color: "#ef4444" }
+  ]}
+/>
+
 **2. Centerline (zero) crossover** — tied to the zero line.
 - MACD crosses *above zero* → bullish; the 12-EMA has just moved above the 26-EMA.
 - MACD crosses *below zero* → bearish; the 12-EMA has just moved below the 26-EMA.
@@ -100,6 +129,21 @@ These mark broader trend changes, but give *less* immediate confirmation of mome
 **3. Divergence** — the most interpretive.
 - **Bullish divergence:** price makes a *lower low*, but MACD makes a *higher low* — downside momentum is fading.
 - **Bearish divergence:** price makes a *higher high*, but MACD makes a *lower high* — upside momentum is waning.
+
+<LineChart
+  caption="Bearish divergence: price prints a higher high while MACD prints a lower high"
+  height={260}
+  series={[
+    { label: "Price", data: [40, 44, 42, 45, 43, 48, 46], color: "#e6e9ef", width: 2 },
+    { label: "MACD line", data: [1.0, 1.8, 1.1, 1.5, 0.9, 1.2, 0.5], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 44, text: "high", color: "#e6e9ef" },
+    { x: 5, y: 48, text: "higher high", color: "#ef4444" },
+    { x: 1, y: 1.8, text: "high", color: "#2dd4bf" },
+    { x: 5, y: 1.2, text: "lower high", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="warning">
 

@@ -44,6 +44,23 @@ Bottoms → Breakouts → Rallies → Highs → Tops → Reversals → Declines 
 
 You may recognize the skeleton of Richard Wyckoff and the older accumulation/markup/distribution/markdown idea — Farley is explicitly in that lineage. His contribution is operational: he ties each stage to (a) the crowd emotion driving it and (b) the specific setups that work *in that stage and nowhere else*.
 
+<LineChart
+  caption="Pattern Cycles: price moving from bottom to top and back, with the stages labeled"
+  height={320}
+  series={[
+    { label: "Price", data: [21, 20, 20.5, 20, 23, 28, 33, 37, 39, 40, 39.5, 40, 37, 32, 27, 23, 21], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 20, text: "Bottoms", color: "#22c55e" },
+    { x: 4, y: 23, text: "Breakouts", color: "#22c55e" },
+    { x: 6, y: 33, text: "Rallies", color: "#2dd4bf" },
+    { x: 9, y: 40, text: "Highs", color: "#e6e9ef" },
+    { x: 11, y: 40, text: "Tops", color: "#f59e0b" },
+    { x: 13, y: 32, text: "Reversals", color: "#ef4444" },
+    { x: 15, y: 23, text: "Declines", color: "#ef4444" }
+  ]}
+/>
+
 The organizing concept underneath the cycle is the **trend–range axis**. Markets are always doing one of two things: *trending* (directional movement) or *ranging* (sideways consolidation). Tradeable energy is released at the *transitions* — range giving way to trend (a breakout) or trend exhausting into a range (a top). Most of Farley's setups are bets on a specific transition.
 
 <Callout type="key">
@@ -100,6 +117,33 @@ Suppose stock XYZ has been declining for months, then goes quiet near \$20 for s
 - **60-minute:** a single **Power Spike** bar lifts off \$20 on volume 3x average. ✓
 
 Three time frames converge on \$20–\$21 as the launch zone. Setup: buy the breakout above the coil, say \$21.20.
+
+<CandleChart
+  caption="Coiled Spring at the base, then a Power Spike breakout above the coil with stop and target"
+  height={320}
+  candles={[
+    { o: 20.0, h: 21.3, l: 19.6, c: 20.8 },
+    { o: 20.8, h: 21.1, l: 19.9, c: 20.2 },
+    { o: 20.2, h: 20.9, l: 19.8, c: 20.6 },
+    { o: 20.6, h: 20.8, l: 20.0, c: 20.3 },
+    { o: 20.3, h: 20.7, l: 20.0, c: 20.5 },
+    { o: 20.5, h: 20.6, l: 20.1, c: 20.3 },
+    { o: 20.3, h: 20.5, l: 20.1, c: 20.4 },
+    { o: 20.4, h: 22.0, l: 20.3, c: 21.8 },
+    { o: 21.9, h: 23.4, l: 21.7, c: 23.1 },
+    { o: 23.1, h: 24.6, l: 22.9, c: 24.4 },
+    { o: 24.4, h: 26.1, l: 24.2, c: 25.9 }
+  ]}
+  points={[
+    { x: 5, y: 19.6, text: "Coiled Spring", color: "#2dd4bf" },
+    { x: 7, y: 22.3, text: "Power Spike breakout", color: "#22c55e" }
+  ]}
+  levels={[
+    { y: 21.2, label: "entry 21.20" },
+    { y: 19.8, label: "stop 19.80" },
+    { y: 26.0, label: "target 26.00" }
+  ]}
+/>
 
 ```
 Entry:        21.20

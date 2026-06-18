@@ -83,6 +83,19 @@ Suppose we start OBV at 0 and track five days:
 
 Notice Day 4: price was flat, so OBV ignored 900 shares entirely. And notice that OBV rose strongly into Day 5 — the up-days carried more volume than the down-day, so the running line trends up, confirming the price advance.
 
+<LineChart
+  caption="The five-day worked example: OBV (scaled) tracking the close, flat on the unchanged day"
+  height={300}
+  series={[
+    { label: "Close", data: [50.0, 50.8, 50.4, 50.4, 51.2], color: "#e6e9ef", width: 2 },
+    { label: "OBV (÷1000)", data: [0, 1.5, 0.3, 0.3, 2.3], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 0.3, text: "flat day: OBV unchanged", color: "#f59e0b" },
+    { x: 4, y: 2.3, text: "OBV confirms advance", color: "#22c55e" }
+  ]}
+/>
+
 ## How to read OBV
 
 **1. Trend confirmation.** The most basic use: a rising OBV line *confirms* a rising price; a falling OBV confirms a falling price. When OBV moves step-for-step with price, the trend has volume behind it. OBV breaking above its own prior peak can confirm a price breakout.
@@ -91,6 +104,21 @@ Notice Day 4: price was flat, so OBV ignored 900 shares entirely. And notice tha
 
 - **Bearish divergence:** price makes a *higher high*, but OBV makes a *lower high* (or breaks its own support). The rally is happening on weaker net volume — buyers are thinning out. Possible top.
 - **Bullish divergence:** price makes a *lower low*, but OBV makes a *higher low*. The decline is happening on weaker net selling — sellers are exhausting. Possible bottom.
+
+<LineChart
+  caption="Bearish divergence: price prints a higher high while OBV prints a lower high"
+  height={300}
+  series={[
+    { label: "Price", data: [40, 44, 41, 47, 43, 49], color: "#e6e9ef", width: 2 },
+    { label: "OBV", data: [40, 46, 42, 44, 39, 41], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 44, text: "high 1", color: "#e6e9ef" },
+    { x: 5, y: 49, text: "higher high", color: "#22c55e" },
+    { x: 1, y: 46, text: "OBV high 1", color: "#2dd4bf" },
+    { x: 5, y: 41, text: "lower high — divergence", color: "#ef4444" }
+  ]}
+/>
 
 This is the analytical home of the **accumulation/distribution** idea. A flat-to-falling price while OBV quietly climbs suggests *accumulation* — large ("smart money") buyers absorbing shares without pushing price up yet. A flat-to-rising price while OBV falls suggests *distribution* — big holders quietly unloading into the rally.
 

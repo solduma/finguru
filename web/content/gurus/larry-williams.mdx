@@ -92,6 +92,28 @@ A sign-convention quirk: Williams' original book multiplied by **+100** (giving 
 
 **How to read it without getting chopped up:** Williams explicitly *warned against* mechanically buying every oversold reading and selling every overbought one — in a strong trend, %R can pin near an extreme for a long time. He preferred *confirmation*: for example, wait for %R to hit −100%, let several days pass, and act only when it climbs back above a threshold such as −95% or −85%. **Failure swings** — price makes a new extreme but %R does not, a *divergence* — are a stronger signal than any single reading.
 
+<LineChart
+  caption="Williams %R: a failure-swing divergence near the oversold extreme"
+  height={220}
+  yMin={-100}
+  yMax={0}
+  series={[
+    { label: "%R", data: [-12, -28, -55, -82, -98, -100, -88, -72, -90, -83, -58, -34, -18], color: "#2dd4bf", width: 2 }
+  ]}
+  zones={[
+    { yMin: -20, yMax: 0, color: "rgba(239,68,68,0.12)", label: "overbought" },
+    { yMin: -100, yMax: -80, color: "rgba(34,197,94,0.12)", label: "oversold" }
+  ]}
+  levels={[
+    { y: -85, label: "buy trigger (−85)", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 5, y: -100, text: "1st low at −100", color: "#22c55e" },
+    { x: 8, y: -90, text: "higher %R low (divergence)", color: "#a78bfa" },
+    { x: 10, y: -58, text: "climbs back above −85", color: "#22c55e" }
+  ]}
+/>
+
 ## Core idea 2 — Volatility breakout entries
 
 Williams popularized **volatility breakout** entries: instead of guessing a top or bottom, you let the market prove momentum by moving a set distance.
@@ -106,6 +128,26 @@ where range = (High − Low) of the prior day, and k is a fraction, often ~0.5�
 ```
 
 If price thrusts up by, say, 60% of yesterday's range above today's open, your buy order triggers automatically. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
+
+<CandleChart
+  caption="Volatility breakout: buy stop set 0.6 × prior range above the open, then a continuation thrust"
+  height={300}
+  candles={[
+    { o: 100, h: 104, l: 99, c: 101 },
+    { o: 101, h: 103, l: 98, c: 99 },
+    { o: 99, h: 102, l: 97, c: 100 },
+    { o: 100, h: 107, l: 100, c: 106 },
+    { o: 106, h: 110, l: 105, c: 109 },
+    { o: 109, h: 113, l: 108, c: 112 }
+  ]}
+  levels={[
+    { y: 103, label: "buy stop = open + 0.6 × prior range" }
+  ]}
+  points={[
+    { x: 3, y: 103, text: "breakout triggers", color: "#22c55e" },
+    { x: 5, y: 113, text: "thrust continues", color: "#22c55e" }
+  ]}
+/>
 
 ## Core idea 3 — Commercials and the COT report
 

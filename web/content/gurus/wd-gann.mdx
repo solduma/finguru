@@ -87,6 +87,24 @@ sqrt(100) = 10
 
 So from a low of 100, the Square of Nine flags roughly 110, 121, and 144 as levels to watch. Notice these are just squares of evenly spaced numbers — there is no market data in this calculation at all, which is precisely the criticism we will get to.
 
+<LineChart
+  caption="Square-of-Nine resistance levels projected from a 100 low (90°/180°/360°)"
+  height={300}
+  yMin={95}
+  yMax={150}
+  series={[
+    { label: "Price", data: [100, 103, 108, 110, 116, 121, 119, 130, 144], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 110.25, label: "90° → 110.25", color: "#f59e0b" },
+    { y: 121, label: "180° → 121", color: "#f59e0b" },
+    { y: 144, label: "360° → 144", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "low = 100", color: "#22c55e" }
+  ]}
+/>
+
 ## A worked example: drawing a Gann fan
 
 Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
@@ -96,6 +114,24 @@ Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
 3. **Draw the 1x1**: from $50, rising $1/day. After 20 days it sits at $70.
 4. **Draw the 2x1** ($2/day, reaching $90 in 20 days) and the **1x2** ($0.50/day, reaching $60 in 20 days).
 5. **Read it.** While price stays above the 1x1, Gann would call the uptrend healthy. If price slices below the 1x1 and lands on the 1x2, the 1x2 becomes the new support; failure there implies the trend has flattened or turned.
+
+<LineChart
+  caption="Gann fan anchored at a $50 low: 2x1, 1x1, and 1x2 angles over 20 days"
+  height={320}
+  yMin={45}
+  yMax={95}
+  series={[
+    { label: "Price", data: [50, 54, 53, 58, 62, 60, 65, 68, 67, 72], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 50, x2: 9, y2: 90, color: "#22c55e", label: "2x1 ($2/day)", dashed: true },
+    { x1: 0, y1: 50, x2: 9, y2: 70, color: "#a78bfa", label: "1x1 (45°)" },
+    { x1: 0, y1: 50, x2: 9, y2: 60, color: "#38bdf8", label: "1x2 ($0.50/day)", dashed: true }
+  ]}
+  points={[
+    { x: 0, y: 50, text: "$50 low", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="warning">
 

@@ -53,6 +53,19 @@ TR = max(5, 4, 1) = 5
 
 If the prior 14-period ATR was 3.0, the new ATR = (3.0 × 13 + 5) / 14 ≈ **3.14**.
 
+<CandleChart
+  caption="Why True Range uses the previous close: a gap-up bar whose own high−low range is small still produced a large move overnight"
+  height={300}
+  candles={[
+    { o: 99.5, h: 100.5, l: 99.0, c: 100.0 },
+    { o: 99.8, h: 100.4, l: 99.2, c: 99.7 },
+    { o: 100.1, h: 100.6, l: 99.6, c: 100.0 },
+    { o: 102.5, h: 104.0, l: 99.0, c: 103.5 }
+  ]}
+  levels={[ { y: 100, label: "prev close" } ]}
+  points={[ { x: 3, y: 104.4, text: "TR = 5 (gap captured)", color: "#22c55e" } ]}
+/>
+
 <Callout type="note">
 
 ATR is in **absolute price units** (dollars, ticks, pips), not a percentage. An ATR of 3 means very different things for a \$20 stock versus a \$2,000 one. To compare across instruments, normalize it: `ATR / Close × 100` gives an ATR-as-percent figure.
@@ -115,6 +128,27 @@ ADX ranges from 0 to 100, but in practice you'll rarely see it above 60. Common 
 
 Wilder himself treated **25** as the threshold for a present trend and **20** as the line below which there is no trend; many analysts simply use 20. What matters as much as the level is the **slope**: a *rising* ADX means the trend is strengthening; a *falling* ADX means it's losing steam (even if price still drifts the same way). Note that a steady, constant-slope trend will make ADX *flatten out* — ADX reacts to *changes* in trend strength.
 
+<LineChart
+  caption="DMI panel: +DI crosses above −DI (bullish), then ADX climbs through 25 to confirm a strengthening trend; early bars are choppy below 20"
+  height={220}
+  yMin={0}
+  yMax={60}
+  series={[
+    { label: "+DI", data: [20, 19, 22, 26, 31, 35, 38, 36, 34], color: "#22c55e", width: 2 },
+    { label: "−DI", data: [22, 23, 21, 18, 14, 12, 11, 12, 13], color: "#ef4444", width: 2 },
+    { label: "ADX", data: [16, 15, 17, 19, 24, 30, 36, 40, 41], color: "#a78bfa", width: 2 }
+  ]}
+  levels={[
+    { y: 25, label: "trend present", color: "#f59e0b" },
+    { y: 20, label: "no trend below", color: "#f59e0b" }
+  ]}
+  zones={[ { yMin: 0, yMax: 20, color: "rgba(239,68,68,0.10)", label: "ranging" } ]}
+  points={[
+    { x: 3, y: 26, text: "+DI/−DI cross", color: "#22c55e" },
+    { x: 4, y: 24, text: "ADX > 25", color: "#a78bfa" }
+  ]}
+/>
+
 <Callout type="warning">
 
 ADX is a heavily smoothed, **lagging** indicator. Wilder's double smoothing means it can take around **150 periods** of data before ADX settles to consistent "true" values, and crossovers and threshold crosses arrive late. Never trade ADX in isolation — use it as a *filter*, not a *trigger*.
@@ -129,6 +163,25 @@ The single most valuable use of ADX is as a **regime filter**: it tells you whic
 - **ADX below ~20:** range regime. Mean-reversion works — fade overbought/oversold extremes (e.g., RSI), sell resistance, buy support. Breakout and trend systems will get chopped to death by false signals.
 
 This solves a problem that destroys many beginners: applying a trend strategy in a range, or a fade strategy in a trend. The same RSI "overbought" signal that's a great short in a quiet market is a *terrible* short in a runaway uptrend — ADX is how you tell the two apart.
+
+<LineChart
+  caption="ADX as a regime filter: below 20 the market ranges (fade extremes); once ADX rises through 25 it switches to a trend regime (follow, don't fade)"
+  height={220}
+  yMin={0}
+  yMax={50}
+  series={[
+    { label: "ADX", data: [14, 13, 15, 12, 16, 18, 23, 29, 34, 38, 36], color: "#a78bfa", width: 2 }
+  ]}
+  levels={[
+    { y: 25, label: "trend filter", color: "#f59e0b" },
+    { y: 20, label: "range filter", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 0, yMax: 20, color: "rgba(34,197,94,0.10)", label: "range regime · fade" },
+    { yMin: 25, yMax: 50, color: "rgba(239,68,68,0.10)", label: "trend regime · follow" }
+  ]}
+  points={[ { x: 6, y: 23, text: "regime flip", color: "#2dd4bf" } ]}
+/>
 
 ### ATR for stops and position sizing
 

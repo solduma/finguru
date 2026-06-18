@@ -26,6 +26,27 @@ Human brains evolved to keep us alive on a savanna, not to make rational decisio
 
 The two raw emotions underneath almost all of it are **fear** (of losing money, of being wrong, of missing out) and **greed** (the urge to make more, faster). Markets oscillate between these two moods constantly. There's even a popular sentiment gauge, CNN's **Fear & Greed Index**, that scores market mood on a 0–100 scale (0 = extreme fear, 100 = extreme greed) by combining seven inputs, such as price momentum and demand for safe-haven assets. It's a rough barometer, not a precise signal — but the fact that "fear vs. greed" is a mainstream way to describe markets tells you how central emotion is.
 
+<LineChart
+  caption="Fear & Greed-style sentiment oscillating between the two moods on a 0-100 scale"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "Sentiment", data: [78, 84, 72, 55, 38, 22, 14, 28, 47, 63, 80, 88], color: "#e6e9ef", width: 2 }
+  ]}
+  zones={[
+    { yMin: 75, yMax: 100, color: "rgba(239,68,68,0.12)", label: "extreme greed" },
+    { yMin: 0, yMax: 25, color: "rgba(34,197,94,0.12)", label: "extreme fear" }
+  ]}
+  levels={[
+    { y: 50, label: "neutral", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 84, text: "greed peak", color: "#ef4444" },
+    { x: 6, y: 14, text: "fear trough", color: "#22c55e" }
+  ]}
+/>
+
 ### Loss aversion: the master bias
 
 The single most important finding for traders comes from psychologists **Daniel Kahneman and Amos Tversky**, whose 1979 paper "Prospect Theory: An Analysis of Decision under Risk" introduced **loss aversion**: the pain of losing feels roughly *twice as strong* as the pleasure of an equivalent gain.
@@ -119,6 +140,28 @@ Risk/reward ratio    = $300 / $100 = 3 to 1
 ```
 
 Now the test of discipline. The stock drops to $48.50. Loss aversion screams: *"Move the stop to $47, it'll bounce."* The disciplined trader does nothing — the stop was set when calm. If it hits $48, you're out for a planned $100 loss. Compare that to the undisciplined version: you move the stop, the stock falls to $44, and your "small" loss is now $300 plus a knot in your stomach. Same chart, opposite outcomes — the difference was entirely psychology.
+
+<CandleChart
+  caption="The worked example: planned entry $50, stop $48, target $56 — and what happens when the stop gets moved"
+  height={300}
+  candles={[
+    { o: 49.8, h: 50.4, l: 49.5, c: 50.0 },
+    { o: 50.0, h: 50.2, l: 48.4, c: 48.5 },
+    { o: 48.5, h: 49.1, l: 47.9, c: 48.0 },
+    { o: 48.0, h: 48.2, l: 46.0, c: 46.4 },
+    { o: 46.4, h: 46.6, l: 43.8, c: 44.0 }
+  ]}
+  levels={[
+    { y: 56, label: "target $56" },
+    { y: 50, label: "entry $50" },
+    { y: 48, label: "stop $48" }
+  ]}
+  points={[
+    { x: 0, y: 50.0, text: "enter", color: "#2dd4bf" },
+    { x: 2, y: 48.0, text: "planned exit -$100", color: "#f59e0b" },
+    { x: 4, y: 44.0, text: "moved stop: -$300", color: "#ef4444" }
+  ]}
+/>
 
 ## From Livermore to behavioral finance
 

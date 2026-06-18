@@ -23,6 +23,20 @@ Let's define the two core terms.
 
 A useful way to picture it: price is a tug-of-war between **bulls** (buyers, who want higher prices) and **bears** (sellers, who want lower prices). When the rope sits still, you get a sideways "range." Support is the line bulls defend; resistance is the line bears defend ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/support-and-resistance)).
 
+<LineChart
+  caption="Price bouncing inside a range: support is the floor bulls defend, resistance the ceiling bears defend"
+  height={300}
+  yMin={90}
+  yMax={112}
+  series={[
+    { label: "Price", data: [100, 108, 102, 109, 101, 110, 100, 108, 99], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 109, label: "resistance", color: "#ef4444" },
+    { y: 100, label: "support", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="key">
 
 Support and resistance are *zones*, not exact lines. Real markets are noisy. Treat "support at 100" as roughly "the 98–101 area," not a single magic number.
@@ -53,6 +67,25 @@ Why? Because the supply/demand balance has flipped. If price punches *up* throug
 
 *Illustrative example:* An index breaks above resistance at 935. It later pulls back, touches 935 twice, and bounces. The 935 ceiling has become a 935 floor. Traders call this a *retest*, and a successful retest is one of the higher-confidence entries in technical analysis.
 
+<LineChart
+  caption="Role reversal: the 935 ceiling breaks, then holds as a floor on two retests"
+  height={300}
+  yMin={910}
+  yMax={965}
+  series={[
+    { label: "Price", data: [920, 932, 922, 933, 948, 936, 950, 935, 955, 936, 960], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 935, label: "935 — old resistance, now support", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 3, y: 933, text: "tests ceiling", color: "#ef4444" },
+    { x: 4, y: 948, text: "breakout", color: "#22c55e" },
+    { x: 5, y: 936, text: "retest", color: "#2dd4bf" },
+    { x: 7, y: 935, text: "retest holds", color: "#22c55e" }
+  ]}
+/>
+
 ## Trendlines and channels
 
 A horizontal line isn't the only kind of support/resistance.
@@ -73,6 +106,25 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
 ### Reversal patterns
 
 **Head and shoulders (top).** A bearish topping pattern with three peaks: a *left shoulder*, a higher *head*, and a lower *right shoulder*. The line connecting the lows between them is the **neckline**. The pattern is not complete until price closes below the neckline ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))). Volume typically diminishes from left shoulder to head to right shoulder — buyers are running out of fuel.
+
+<LineChart
+  caption="Head and shoulders top: left shoulder, higher head, lower right shoulder, breakdown below the neckline"
+  height={300}
+  yMin={92}
+  yMax={124}
+  series={[
+    { label: "Price", data: [100, 110, 101, 120, 100, 109, 100, 95], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 100, label: "neckline", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 110, text: "left shoulder", color: "#38bdf8" },
+    { x: 3, y: 120, text: "head", color: "#ef4444" },
+    { x: 5, y: 109, text: "right shoulder", color: "#38bdf8" },
+    { x: 7, y: 95, text: "breakdown", color: "#ef4444" }
+  ]}
+/>
 
 **Inverse head and shoulders (bottom).** The same shape flipped upside down, signaling a bullish reversal. Bottoms often take much longer to form than tops — a top can complete in a few weeks, while a major bottom may take several months or even more than a year ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))).
 
@@ -106,6 +158,25 @@ Double bottom target:
 ```
 
 *Illustrative worked example.* A stock forms a head and shoulders top. The head peaks at **$120**, the neckline sits at **$100**. Height = 120 − 100 = **$20**. Price breaks below the neckline at $100, so the measured-move target = 100 − 20 = **$80**. This is a *minimum* objective, not a promise — if the prior advance was small, the fall may be small too ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))).
+
+<LineChart
+  caption="Measured-move target: $20 head-to-neckline height projected down from the $100 breakdown gives an $80 objective"
+  height={300}
+  yMin={74}
+  yMax={124}
+  series={[
+    { label: "Price", data: [100, 110, 101, 120, 100, 109, 100, 92, 80], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 120, label: "head $120", color: "#ef4444" },
+    { y: 100, label: "neckline $100", color: "#f59e0b" },
+    { y: 80, label: "target $80", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 6, y: 100, text: "breakdown", color: "#ef4444" },
+    { x: 8, y: 80, text: "−$20 = $80", color: "#22c55e" }
+  ]}
+/>
 
 ## The role of volume
 
