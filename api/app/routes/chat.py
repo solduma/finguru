@@ -1,9 +1,8 @@
-"""POST /chat — streams the tutor's answer over SSE.
+"""POST /chat — streams the RAG tutor's answer over SSE.
 
-Phase 0: streams a direct Ollama Cloud response with a TA-tutor persona (proves
-key + streaming end-to-end). Phase 3 swaps the body for the LangGraph agent,
-which first retrieves lesson context and emits `citation` events. The SSE
-contract (token / citation / done / error events) stays the same.
+Flow: retrieve lesson context + assemble the prompt (LangGraph), emit a
+`citation` event listing the lessons drawn on, then stream `token` events from
+Ollama Cloud, and finally `done`. Errors surface as an `error` event.
 """
 from __future__ import annotations
 
@@ -13,35 +12,27 @@ import httpx
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 
-from ..ollama_client import OllamaClient
+from ..agent.graph import prepare, stream_answer
 from ..schemas import ChatRequest
 from ..sse import sse_event
 
 router = APIRouter()
 
-TUTOR_SYSTEM_PROMPT = (
-    "You are FinGuru, a patient technical-analysis tutor for beginners. "
-    "Explain concepts plainly, define jargon the first time you use it, and "
-    "prefer concrete examples. You teach analysis methods and history; you do "
-    "NOT give financial advice, price predictions, or buy/sell recommendations. "
-    "If asked for those, gently redirect to the underlying concept and risk "
-    "management. Keep answers focused and well-structured."
-)
-
-
-def _build_messages(req: ChatRequest) -> list[dict[str, str]]:
-    messages = [{"role": "system", "content": TUTOR_SYSTEM_PROMPT}]
-    for turn in req.history:
-        messages.append({"role": turn.role, "content": turn.content})
-    messages.append({"role": "user", "content": req.message})
-    return messages
-
 
 async def _stream(req: ChatRequest) -> AsyncIterator[str]:
-    client = OllamaClient()
-    messages = _build_messages(req)
+    history = [{"role": m.role, "content": m.content} for m in req.history]
     try:
-        async for delta in client.stream_chat(messages):
+        prepared = prepare(req.message, history)
+    except Exception as e:  # retrieval/index failure shouldn't 500 the stream
+        yield sse_event("error", {"message": f"Retrieval failed: {e}"})
+        yield sse_event("done", {})
+        return
+
+    # Tell the client which lessons ground this answer (citation chips).
+    yield sse_event("citations", {"items": prepared.citations})
+
+    try:
+        async for delta in stream_answer(prepared):
             yield sse_event("token", {"text": delta})
     except httpx.HTTPStatusError as e:
         detail = (

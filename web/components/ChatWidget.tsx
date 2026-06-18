@@ -2,9 +2,17 @@
 
 import { useRef, useState } from "react";
 
+interface Citation {
+  title: string;
+  slug: string;
+  kind: "guru" | "indicator";
+  section?: string;
+}
+
 interface Msg {
   role: "user" | "assistant";
   content: string;
+  citations?: Citation[];
 }
 
 export default function ChatWidget() {
@@ -51,19 +59,30 @@ export default function ChatWidget() {
           if (event === "token") {
             setMessages((prev) => {
               const next = [...prev];
+              const last = next[next.length - 1];
               next[next.length - 1] = {
+                ...last,
                 role: "assistant",
-                content: next[next.length - 1].content + data.text,
+                content: last.content + data.text,
               };
               return next;
             });
             scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+          } else if (event === "citations") {
+            setMessages((prev) => {
+              const next = [...prev];
+              const last = next[next.length - 1];
+              next[next.length - 1] = { ...last, citations: data.items };
+              return next;
+            });
           } else if (event === "error") {
             setMessages((prev) => {
               const next = [...prev];
+              const last = next[next.length - 1];
               next[next.length - 1] = {
+                ...last,
                 role: "assistant",
-                content: `⚠️ ${data.message}`,
+                content: last.content + `\n\n⚠️ ${data.message}`,
               };
               return next;
             });
@@ -120,6 +139,24 @@ export default function ChatWidget() {
                 >
                   {m.content || "…"}
                 </span>
+                {m.role === "assistant" &&
+                  m.citations &&
+                  m.citations.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {m.citations.map((c) => (
+                        <a
+                          key={c.slug}
+                          href={`/${c.kind === "guru" ? "gurus" : "indicators"}/${c.slug}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-xs text-teal-200 no-underline hover:bg-teal-400/20"
+                          title={c.section}
+                        >
+                          📖 {c.title}
+                        </a>
+                      ))}
+                    </div>
+                  )}
               </div>
             ))}
           </div>
