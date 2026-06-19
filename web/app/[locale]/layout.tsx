@@ -52,8 +52,16 @@ export default async function LocaleLayout({
             >
               {t.nav.indicators}
             </Link>
-            <div className="ml-auto">
+            <div className="ml-auto flex items-center gap-4">
               <LocaleSwitcher current={locale} />
+              {process.env.AUTH_SECRET && (
+                <a
+                  href="/logout"
+                  className="text-sm text-gray-400 no-underline hover:text-gray-200"
+                >
+                  {locale === "ko" ? "로그아웃" : "Log out"}
+                </a>
+              )}
             </div>
           </nav>
         </header>
