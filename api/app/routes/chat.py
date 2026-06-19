@@ -1,8 +1,9 @@
-"""POST /chat — streams the RAG tutor's answer over SSE.
+"""POST /chat — streams the tutor's answer over SSE.
 
-Flow: retrieve lesson context + assemble the prompt (LangGraph), emit a
-`citation` event listing the lessons drawn on, then stream `token` events from
-Ollama Cloud, and finally `done`. Errors surface as an `error` event.
+Flow: retrieve lesson context (RAG, then web fallback) + assemble the prompt,
+emit a `citations` event, stream `token` events as the answer is generated, then
+emit a `suggestions` event (up to 3 follow-up chips), and finally `done`. Errors
+surface as an `error` event.
 """
 from __future__ import annotations
 
@@ -12,7 +13,7 @@ import httpx
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 
-from ..agent.graph import prepare, stream_answer
+from ..agent.graph import prepare, stream_answer, suggest_followups
 from ..schemas import ChatRequest
 from ..sse import sse_event
 
@@ -21,18 +22,23 @@ router = APIRouter()
 
 async def _stream(req: ChatRequest) -> AsyncIterator[str]:
     history = [{"role": m.role, "content": m.content} for m in req.history]
+    page = req.page.model_dump() if req.page else None
     try:
-        prepared = prepare(req.message, history, locale=req.locale)
+        prepared = await prepare(
+            req.message, history, locale=req.locale, page=page
+        )
     except Exception as e:  # retrieval/index failure shouldn't 500 the stream
         yield sse_event("error", {"message": f"Retrieval failed: {e}"})
         yield sse_event("done", {})
         return
 
-    # Tell the client which lessons ground this answer (citation chips).
+    # Citation chips (lessons or web sources) grounding this answer.
     yield sse_event("citations", {"items": prepared.citations})
 
+    answer_parts: list[str] = []
     try:
         async for delta in stream_answer(prepared):
+            answer_parts.append(delta)
             yield sse_event("token", {"text": delta})
     except httpx.HTTPStatusError as e:
         detail = (
@@ -41,10 +47,21 @@ async def _stream(req: ChatRequest) -> AsyncIterator[str]:
             else f"Upstream error {e.response.status_code}."
         )
         yield sse_event("error", {"message": detail})
+        yield sse_event("done", {})
+        return
     except httpx.HTTPError as e:
         yield sse_event("error", {"message": f"Connection error: {e}"})
-    finally:
         yield sse_event("done", {})
+        return
+
+    # After the answer, propose up to 3 follow-up questions as chips.
+    answer = "".join(answer_parts)
+    try:
+        chips = await suggest_followups(req.message, answer, locale=req.locale)
+    except Exception:
+        chips = []
+    yield sse_event("suggestions", {"items": chips})
+    yield sse_event("done", {})
 
 
 @router.post("/chat")

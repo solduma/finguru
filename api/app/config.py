@@ -29,6 +29,11 @@ class Settings(BaseSettings):
     # Disable model "thinking" blocks by default (snappier streamed replies).
     ollama_think: bool = False
 
+    # ---- Web search fallback (used when RAG finds nothing) ----
+    # Tavily first (if key set), else DuckDuckGo (no key).
+    tavily_api_key: str = ""
+    web_search_max_results: int = 4
+
     # ---- Embeddings ----
     embedding_backend: str = "local"  # "local" | "ollama"
     # Multilingual model with strong Korean retrieval quality. e5 models REQUIRE

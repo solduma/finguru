@@ -9,6 +9,11 @@ class ChatMessage(BaseModel):
     content: str
 
 
+class PageContext(BaseModel):
+    title: str = ""
+    text: str = ""
+
+
 class ChatRequest(BaseModel):
     message: str = Field(description="The user's latest question")
     history: list[ChatMessage] = Field(
@@ -16,6 +21,9 @@ class ChatRequest(BaseModel):
     )
     locale: str = Field(
         default="en", description="UI locale, e.g. 'en' or 'ko'; sets reply language + retrieval locale"
+    )
+    page: PageContext | None = Field(
+        default=None, description="The lesson page the user is currently viewing, if any"
     )
 
 

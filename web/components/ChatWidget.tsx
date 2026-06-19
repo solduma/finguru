@@ -5,15 +5,33 @@ import { getStrings, type Locale } from "@/lib/i18n";
 
 interface Citation {
   title: string;
-  slug: string;
-  kind: "guru" | "indicator";
+  slug?: string;
+  kind: "guru" | "indicator" | "web";
   section?: string;
+  url?: string;
 }
 
 interface Msg {
   role: "user" | "assistant";
   content: string;
   citations?: Citation[];
+  suggestions?: string[];
+}
+
+// Read the lesson the user is currently viewing, straight from the DOM, so the
+// tutor can answer "what does this mean?" about the open page.
+function readCurrentPage(): { title: string; text: string } {
+  if (typeof document === "undefined") return { title: "", text: "" };
+  const h1 = document.querySelector("main h1");
+  const article = document.querySelector("main article");
+  const title = h1?.textContent?.trim() || "";
+  const text = (article?.textContent || "").replace(/\s+/g, " ").trim().slice(0, 6000);
+  return { title, text };
+}
+
+function citationHref(c: Citation, locale: Locale): string {
+  if (c.kind === "web") return c.url || "#";
+  return `/${locale}/${c.kind === "guru" ? "gurus" : "indicators"}/${c.slug}`;
 }
 
 export default function ChatWidget({ locale }: { locale: Locale }) {
@@ -24,19 +42,32 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
   const [streaming, setStreaming] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  async function send() {
-    const question = input.trim();
+  const scrollDown = () =>
+    scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+
+  async function ask(rawQuestion: string) {
+    const question = rawQuestion.trim();
     if (!question || streaming) return;
     setInput("");
-    const history = messages;
-    setMessages([...history, { role: "user", content: question }, { role: "assistant", content: "" }]);
+    // Drop any prior suggestion chips once a new turn starts.
+    const history = messages.map((m) => ({ role: m.role, content: m.content }));
+    setMessages((prev) => [
+      ...prev.map((m) => ({ ...m, suggestions: undefined })),
+      { role: "user", content: question },
+      { role: "assistant", content: "" },
+    ]);
     setStreaming(true);
 
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: question, history, locale }),
+        body: JSON.stringify({
+          message: question,
+          history,
+          locale,
+          page: readCurrentPage(),
+        }),
       });
       if (!res.body) throw new Error("No response body");
 
@@ -44,12 +75,19 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
       const decoder = new TextDecoder();
       let buffer = "";
 
+      const patchLast = (patch: Partial<Msg> | ((m: Msg) => Msg)) =>
+        setMessages((prev) => {
+          const next = [...prev];
+          const last = next[next.length - 1];
+          next[next.length - 1] =
+            typeof patch === "function" ? patch(last) : { ...last, ...patch };
+          return next;
+        });
+
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
         buffer += decoder.decode(value, { stream: true });
-
-        // SSE frames are separated by a blank line.
         const frames = buffer.split("\n\n");
         buffer = frames.pop() ?? "";
         for (const frame of frames) {
@@ -59,35 +97,19 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
           const event = eventLine?.slice(6).trim();
           const data = JSON.parse(dataLine.slice(5).trim());
           if (event === "token") {
-            setMessages((prev) => {
-              const next = [...prev];
-              const last = next[next.length - 1];
-              next[next.length - 1] = {
-                ...last,
-                role: "assistant",
-                content: last.content + data.text,
-              };
-              return next;
-            });
-            scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+            patchLast((m) => ({ ...m, role: "assistant", content: m.content + data.text }));
+            scrollDown();
           } else if (event === "citations") {
-            setMessages((prev) => {
-              const next = [...prev];
-              const last = next[next.length - 1];
-              next[next.length - 1] = { ...last, citations: data.items };
-              return next;
-            });
+            patchLast({ citations: data.items });
+          } else if (event === "suggestions") {
+            patchLast({ suggestions: data.items });
+            scrollDown();
           } else if (event === "error") {
-            setMessages((prev) => {
-              const next = [...prev];
-              const last = next[next.length - 1];
-              next[next.length - 1] = {
-                ...last,
-                role: "assistant",
-                content: last.content + `\n\n⚠️ ${data.message}`,
-              };
-              return next;
-            });
+            patchLast((m) => ({
+              ...m,
+              role: "assistant",
+              content: m.content + `\n\n⚠️ ${data.message}`,
+            }));
           }
         }
       }
@@ -105,6 +127,8 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
     }
   }
 
+  const lastIndex = messages.length - 1;
+
   return (
     <>
       <button
@@ -120,14 +144,9 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
             {t.title}
           </div>
           <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
-            {messages.length === 0 && (
-              <p className="text-gray-400">{t.empty}</p>
-            )}
+            {messages.length === 0 && <p className="text-gray-400">{t.empty}</p>}
             {messages.map((m, i) => (
-              <div
-                key={i}
-                className={m.role === "user" ? "text-right" : "text-left"}
-              >
+              <div key={i} className={m.role === "user" ? "text-right" : "text-left"}>
                 <span
                   className={
                     "inline-block whitespace-pre-wrap rounded-lg px-3 py-2 " +
@@ -136,23 +155,41 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
                       : "bg-white/5 text-gray-100")
                   }
                 >
-                  {m.content || "…"}
+                  {m.content || (streaming && i === lastIndex ? "…" : "")}
                 </span>
+
+                {m.role === "assistant" && m.citations && m.citations.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {m.citations.map((c, j) => (
+                      <a
+                        key={j}
+                        href={citationHref(c, locale)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-xs text-teal-200 no-underline hover:bg-teal-400/20"
+                        title={c.section || c.url}
+                      >
+                        {c.kind === "web" ? "🔗" : "📖"} {c.title}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {/* Suggested follow-up questions — click to ask. */}
                 {m.role === "assistant" &&
-                  m.citations &&
-                  m.citations.length > 0 && (
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {m.citations.map((c) => (
-                        <a
-                          key={c.slug}
-                          href={`/${locale}/${c.kind === "guru" ? "gurus" : "indicators"}/${c.slug}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-xs text-teal-200 no-underline hover:bg-teal-400/20"
-                          title={c.section}
+                  i === lastIndex &&
+                  !streaming &&
+                  m.suggestions &&
+                  m.suggestions.length > 0 && (
+                    <div className="mt-2 flex flex-col items-start gap-1.5">
+                      {m.suggestions.map((s, j) => (
+                        <button
+                          key={j}
+                          onClick={() => ask(s)}
+                          className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-left text-xs text-gray-200 hover:border-teal-400/50 hover:text-teal-200"
                         >
-                          📖 {c.title}
-                        </a>
+                          {s}
+                        </button>
                       ))}
                     </div>
                   )}
@@ -163,12 +200,12 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && send()}
+              onKeyDown={(e) => e.key === "Enter" && ask(input)}
               placeholder={t.placeholder}
               className="flex-1 rounded-md bg-black/30 px-3 py-2 text-sm outline-none"
             />
             <button
-              onClick={send}
+              onClick={() => ask(input)}
               disabled={streaming}
               className="rounded-md bg-teal-500 px-3 py-2 text-sm font-semibold text-black disabled:opacity-50"
             >
