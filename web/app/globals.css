@@ -7,16 +7,23 @@
   --accent: #2dd4bf;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Base styles go in @layer base so Tailwind utility classes (text-black,
+   text-teal-300, …) still win. An UNLAYERED `a { color }` rule would override
+   utilities in Tailwind v4 — that made the teal "Start the Learning Path"
+   button render teal-on-teal (invisible) text. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background: var(--bg);
-  color: #e6e9ef;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-}
+  body {
+    background: var(--bg);
+    color: #e6e9ef;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
 
-a {
-  color: var(--accent);
+  /* Default link color only for content links that don't set their own. */
+  a:not([class*="text-"]) {
+    color: var(--accent);
+  }
 }
