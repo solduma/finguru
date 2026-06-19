@@ -52,6 +52,17 @@ SmoothedValue_today = (SmoothedValue_yesterday × (n − 1) + NewData_today) / n
 
 This is mathematically an exponential moving average with a smoothing factor of **α = 1/n** ([Wikipedia: RSI](https://en.wikipedia.org/wiki/Relative_strength_index)). For the default 14-period setting, that's α = 1/14 ≈ 0.0714. Every new data point nudges the average slightly; old data fades out gradually rather than falling off a cliff.
 
+<LineChart
+  caption="Same price, three smoothers: a simple MA lurches, a textbook EMA reacts fast, Wilder's SMMA is the steadiest"
+  height={300}
+  series={[
+    { label: "Price", data: [50, 52, 49, 58, 47, 60, 51, 49, 62, 50, 53, 51], color: "#e6e9ef", width: 1 },
+    { label: "Simple MA", data: [null, null, 50.3, 53, 51.3, 55, 52.7, 53.3, 54, 53.7, 55, 51.3], color: "#38bdf8", width: 2 },
+    { label: "EMA (α=2/(n+1))", data: [50, 50.5, 50.1, 52.2, 50.9, 53.2, 52.6, 51.7, 54.4, 53.3, 53.4, 52.8], color: "#a78bfa", width: 2 },
+    { label: "Wilder SMMA (α=1/n)", data: [50, 50.4, 50.2, 51.2, 50.7, 51.7, 51.6, 51.2, 52.4, 52.0, 52.1, 51.9], color: "#2dd4bf", width: 2 }
+  ]}
+/>
+
 <Callout type="note">
 
 This is why Wilder's "14-period RSI" does *not* equal a textbook 14-period exponential moving average (which uses α = 2/(n+1) ≈ 0.133). Wilder's smoothing is "slower." If two platforms disagree on an RSI value, the usual culprit is one of them using a standard EMA instead of Wilder's SMMA. Always confirm the platform uses Wilder smoothing.
@@ -106,6 +117,25 @@ TR = max of:
 
 Components (2) and (3) capture overnight *gaps* — jumps between yesterday's close and today's open that a plain high-minus-low would miss. ATR is then just Wilder-smoothed TR, default 14 periods ([Wikipedia: ATR](https://en.wikipedia.org/wiki/Average_true_range)).
 
+<CandleChart
+  caption="A gap-up bar: high−low understates the move, so True Range measures from yesterday's close instead"
+  height={300}
+  candles={[
+    { o: 20, h: 21, l: 19.5, c: 20.5 },
+    { o: 20.6, h: 21.2, l: 20.2, c: 21 },
+    { o: 23, h: 23.8, l: 22.6, c: 23.4 },
+    { o: 23.5, h: 24, l: 23, c: 23.2 },
+    { o: 23.1, h: 23.6, l: 22.8, c: 23.3 }
+  ]}
+  points={[
+    { x: 2, y: 22.6, text: "gap up from prior close (21.0)", color: "#f59e0b" },
+    { x: 2, y: 23.8, text: "TR = high − prior close, not high − low", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 21, label: "prior close", color: "#a78bfa" }
+  ]}
+/>
+
 <Callout type="key">
 
 ATR measures volatility, **not** direction. A high ATR means big moves — up *or* down. Its killer use is position sizing and stop placement: set your stop a multiple of ATR away (e.g. 2 × ATR) so your risk adapts to the market's actual choppiness instead of an arbitrary fixed number.
@@ -114,7 +144,9 @@ ATR measures volatility, **not** direction. A high ATR means big moves — up *o
 
 ### ADX / DMI — trend strength
 
-The **Directional Movement Index** splits price action into upward pressure (**+DI**) and downward pressure (**−DI**). The **Average Directional Index (ADX)** then measures how *strongly trending* the market is, regardless of direction:
+The **Directional Movement Index** splits price action into upward pressure (**+DI**) and downward pressure (**−DI**). The **Average Directional Index (ADX)** then measures how *strongly trending* the market is, regardless of direction.
+
+The raw inputs are **+DM** and **−DM** ("directional movement"): each bar, you compare how far today's high pushed *above* yesterday's high (+DM) versus how far today's low pushed *below* yesterday's low (−DM). Only the larger of the two counts — a bar is recorded as either an up-move or a down-move, not both. Those raw moves are then Wilder-smoothed and scaled by ATR to become the readable lines below:
 
 ```
 +DI = 100 × Wilder-smoothed(+DM) / ATR
@@ -122,6 +154,20 @@ The **Directional Movement Index** splits price action into upward pressure (**+
 DX  = 100 × | (+DI) − (−DI) | / ( (+DI) + (−DI) )
 ADX = Wilder-smoothed(DX)
 ```
+
+<LineChart
+  caption="The DMI lines: +DI crossing above −DI signals upward pressure taking over"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "+DI", data: [18, 16, 20, 25, 30, 34, 38, 36], color: "#22c55e", width: 2 },
+    { label: "−DI", data: [30, 32, 28, 24, 19, 15, 14, 16], color: "#ef4444", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 24.5, text: "+DI crosses above −DI (bullish)", color: "#22c55e" }
+  ]}
+/>
 
 ADX runs 0–100. Wilder's own writing and Wikipedia point to **below ~20 = weak/no trend** and **above ~40 = strong trend** ([Wikipedia: ADX](https://en.wikipedia.org/wiki/Average_directional_movement_index)), while many practitioners use **25** as the dividing line. Treat the level as a guideline, not gospel.
 
@@ -184,6 +230,20 @@ ATR_6 = (ATR_5 × (n − 1) + TR_6) / n
 
 Notice how the calm sixth bar pulls ATR down only modestly, from 1.20 to 1.08 — the smoothing keeps one quiet day from erasing the memory of that volatile $2.00 bar. If you were setting a stop at 2 × ATR, you'd place it roughly $2.16 from your entry.
 
+<LineChart
+  caption="The worked example: a spiky $2.00 True Range bar barely moves the Wilder-smoothed ATR"
+  height={300}
+  series={[
+    { label: "True Range", data: [0.80, 1.20, 0.90, 2.00, 1.10, 0.60], color: "#38bdf8", width: 1 },
+    { label: "ATR (Wilder, n=5)", data: [null, null, null, null, 1.20, 1.08], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 2.00, text: "volatile $2.00 bar", color: "#f59e0b" },
+    { x: 4, y: 1.20, text: "seed ATR = 1.20", color: "#2dd4bf" },
+    { x: 5, y: 1.08, text: "calm bar → ATR only 1.08", color: "#22c55e" }
+  ]}
+/>
+
 ## How Wilder's tools fit together
 
 This is the part beginners miss: Wilder did not design these as rivals. He designed a **toolkit**, and the pieces are meant to cover each other's blind spots.
@@ -203,12 +263,53 @@ Wilder's indicators are durable, but they are not magic, and intellectual honest
 
 - **They are lagging.** ADX and SAR are explicitly trend-*following*, meaning the trend must already exist before they react. They will never call a top or bottom early.
 - **They whipsaw in ranges.** Parabolic SAR is notorious for generating repeated false flips when price moves sideways. Wilder knew this and told users to filter with ADX.
+
+<LineChart
+  caption="Sideways price: SAR flips back and forth repeatedly, each flip a losing whipsaw"
+  height={300}
+  series={[
+    { label: "Price", data: [30, 32, 29, 31, 28, 32, 29, 31, 30, 32], color: "#e6e9ef", width: 2 },
+    { label: "SAR", data: [28.5, 33, 27.5, 32.5, 27, 33, 27.5, 32.5, 28, 33], color: "#f59e0b", dashed: true, width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 33, text: "flip", color: "#ef4444" },
+    { x: 2, y: 27.5, text: "flip", color: "#ef4444" },
+    { x: 4, y: 27, text: "flip", color: "#ef4444" },
+    { x: 5, y: 33, text: "flip", color: "#ef4444" }
+  ]}
+/>
+
 - **The defaults are not sacred.** "14 periods" was tuned to 1970s commodity markets on daily bars. There's nothing magic about 14, 70, 30, or 0.02 — they're starting points, not laws.
 - **Over-optimization is a trap.** Because the formulas are precise, it's tempting to backtest-tune every parameter until past data looks perfect. That "curve-fitting" usually fails forward.
 
 <Callout type="warning">
 
 The most expensive mistake with Wilder's tools is treating a precise *number* as a precise *prediction*. "RSI is 72, so it's overbought, so I'll short" is exactly the trade that gets run over in a strong uptrend, where RSI can pin near 80 for weeks. The math is exact; what the market does next is not.
+
+</Callout>
+
+<LineChart
+  caption="RSI pinned in overbought for weeks while price keeps rising: 'overbought' is not 'short here'"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "RSI", data: [62, 71, 78, 80, 79, 82, 81, 83, 80, 78], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 70, label: "overbought", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" }
+  ]}
+  points={[
+    { x: 5, y: 82, text: "RSI pins ~80 in a strong uptrend", color: "#ef4444" }
+  ]}
+/>
+
+<Callout type="warning">
+
+The takeaway: in a strong trend, an "overbought" RSI is confirmation of strength, not a short signal. Wait for the trend itself to break.
 
 </Callout>
 

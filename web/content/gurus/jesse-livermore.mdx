@@ -51,6 +51,19 @@ Before charts were common, Livermore studied the raw flow of prices and volume o
 
 Livermore wanted to identify the **trend** — the prevailing direction of price — and trade *with* it, not against it. He spoke of finding the market's "line of least resistance": the direction in which price moved most easily. Once he judged a stock was trending up, he bought; if down, he sold short. He explicitly warned against trying to catch exact tops and bottoms.
 
+<LineChart
+  caption="An uptrend (buy with it) vs. a downtrend (sell short with it) — each rides its own line of least resistance"
+  height={300}
+  series={[
+    { label: "Uptrend (go long)", data: [20, 22, 21, 24, 26, 25, 28, 31, 30, 34], color: "#22c55e", width: 2 },
+    { label: "Downtrend (go short)", data: [60, 57, 58, 54, 51, 52, 48, 45, 46, 42], color: "#ef4444", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 19, x2: 9, y2: 31, color: "#22c55e", label: "line of least resistance (up)", dashed: true },
+    { x1: 0, y1: 61, x2: 9, y2: 43, color: "#ef4444", label: "line of least resistance (down)", dashed: true }
+  ]}
+/>
+
 <Callout type="key">
 
 The trend is your default assumption. You bet that a move *in progress* will continue, and you require the market to prove you wrong before you abandon the position.
@@ -84,9 +97,44 @@ A **pivotal point**, in Livermore's language, is a price level where the market 
 
 Livermore rarely put on a full position at once. He would buy a small **"probe"** to test his idea. If the market moved his way and confirmed it, he added more — a practice now called **pyramiding** (building a larger position in stages as it works). If the probe lost money, that itself was information: he was wrong, and he got out small.
 
+<LineChart
+  caption="Pyramiding: a small probe first, then add only as price proves the idea right — each add is smaller and higher"
+  height={300}
+  yMin={48}
+  yMax={78}
+  series={[
+    { label: "Price", data: [50, 53, 55, 58, 61, 65, 68, 72], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 53, text: "probe (200 sh)", color: "#22c55e" },
+    { x: 3, y: 58, text: "add (200 sh)", color: "#22c55e" },
+    { x: 5, y: 65, text: "add (100 sh)", color: "#22c55e" },
+    { x: 7, y: 72, text: "add (50 sh)", color: "#2dd4bf" }
+  ]}
+/>
+
 ### 5. Cut losses fast; let winners run
 
 His most quoted discipline is asymmetry. Small losses are the cost of doing business; large losses kill you. A rough rule attributed to him is to exit a trade once it moves about **10% against** the entry — no debating, no hoping. Meanwhile, a winning position should be held as long as the trend holds.
+
+<LineChart
+  caption="Cut losses fast, let winners run: a losing trade is cut at the ~10% stop; a winning one is allowed to keep going"
+  height={300}
+  yMin={42}
+  yMax={86}
+  series={[
+    { label: "Losing trade (cut at -10%)", data: [60, 58, 56, 54, null, null, null, null, null, null], color: "#ef4444", width: 2 },
+    { label: "Winning trade (let it run)", data: [60, 63, 62, 67, 70, 69, 74, 78, 76, 82], color: "#22c55e", width: 2 }
+  ]}
+  levels={[
+    { y: 60, label: "entry ($60)", color: "#e6e9ef" },
+    { y: 54, label: "hard exit (~10% below)", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 3, y: 54, text: "small loss taken", color: "#ef4444" },
+    { x: 9, y: 82, text: "big swing captured", color: "#22c55e" }
+  ]}
+/>
 
 ### 6. Sitting tight (the hard part)
 
@@ -95,6 +143,22 @@ The single most famous line from *Reminiscences* captures what Livermore conside
 > "It never was my thinking that made the big money for me. It always was my sitting."
 
 Finding a good trade is common; *staying in it* through the noisy wiggles long enough to capture the big move is rare, because boredom and small fluctuations tempt you to sell early. He insisted the big money is made in the big *swing*, not in jumping in and out.
+
+<LineChart
+  caption="Sitting tight: the same uptrend has many tempting wiggles to sell into, but the big money is in holding the whole swing"
+  height={300}
+  yMin={28}
+  yMax={70}
+  series={[
+    { label: "Price", data: [30, 34, 31, 38, 35, 42, 39, 47, 44, 52, 49, 57, 60, 64], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 31, text: "wiggle (tempted to sell)", color: "#f59e0b" },
+    { x: 6, y: 39, text: "wiggle (sit)", color: "#f59e0b" },
+    { x: 0, y: 30, text: "in", color: "#22c55e" },
+    { x: 13, y: 64, text: "the big swing", color: "#2dd4bf" }
+  ]}
+/>
 
 ### 7. Do not overtrade; cash is a position
 
@@ -170,6 +234,22 @@ Today you would implement his ideas with moving averages, defined chart breakout
 </Callout>
 
 - **Mistaking the probe for the strategy.** Adding to *winners* is core; adding to *losers* ("averaging down") is the road to ruin he kept rediscovering.
+
+<LineChart
+  caption="Averaging down: buying more as a falling stock drops only enlarges the position right before the big loss — the opposite of pyramiding"
+  height={300}
+  yMin={28}
+  yMax={64}
+  series={[
+    { label: "Price (falling)", data: [60, 56, 52, 47, 43, 38, 33, 30], color: "#ef4444", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 60, text: "buy (it's cheap?)", color: "#f59e0b" },
+    { x: 2, y: 52, text: "buy more (cheaper)", color: "#f59e0b" },
+    { x: 4, y: 43, text: "buy more (cheaper still)", color: "#f59e0b" },
+    { x: 7, y: 30, text: "big loss on a big position", color: "#ef4444" }
+  ]}
+/>
 - **Confusing conviction with size.** His blowups came largely from over-leverage. Being right about direction does not protect you if a temporary swing wipes out an oversized position first.
 - **Romanticizing the man.** Admire the method's logic; do not model your life on his.
 

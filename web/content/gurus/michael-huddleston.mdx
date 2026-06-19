@@ -103,9 +103,10 @@ All session times use New York (ET), ICT's reference timezone.
 Simple rule: **BOS = continue; CHoCH = possible flip.**
 
 <LineChart
-  caption="BOS continues the trend (breaking a high in an uptrend); CHoCH is the first break against it — an early reversal warning."
+  caption="BOS continues the trend (each new high breaks the prior high); CHoCH is the first break of the last higher low (25) — the early reversal warning."
   height={300}
   series={[{ label: "Price", data: [20, 24, 21, 28, 25, 31, 27, 24, 20] }]}
+  levels={[{ y: 25, label: "last higher low (break = CHoCH)", color: "#ef4444" }]}
   points={[
     { x: 3, y: 28, text: "BOS", color: "#22c55e" },
     { x: 5, y: 31, text: "BOS", color: "#22c55e" },
@@ -144,6 +145,34 @@ players want to fill against.
   price range. ICT teaches that price tends to come back to **fill** it, making
   FVGs retracement entry zones.
 
+<CandleChart
+  caption="Bullish order block = the last down-candle before a strong rally; the demand zone ICT watches for re-entry on a pullback."
+  height={300}
+  candles={[
+    { o: 24, h: 25, l: 22.5, c: 23 },
+    { o: 23, h: 23.5, l: 21, c: 21.5 },
+    { o: 22, h: 23, l: 20, c: 22.8 },
+    { o: 22.8, h: 26, l: 22.6, c: 25.6 },
+    { o: 25.6, h: 28.5, l: 25.4, c: 28 },
+    { o: 28, h: 30, l: 27.6, c: 29.5 },
+  ]}
+  levels={[{ y: 20, label: "order block low (demand)" }]}
+  points={[{ x: 2, y: 23.3, text: "last down-candle = bullish OB", color: "#22c55e" }]}
+/>
+
+<CandleChart
+  caption="Fair value gap: a fast middle candle (2) runs so far that candle 1's high and candle 3's low never overlap — the unfilled gap ICT expects price to return and fill."
+  height={300}
+  candles={[
+    { o: 20, h: 21, l: 19.5, c: 20.8 },
+    { o: 21, h: 25, l: 20.9, c: 24.7 },
+    { o: 24.7, h: 26, l: 22.5, c: 25.5 },
+    { o: 25.5, h: 26.5, l: 24, c: 26 },
+  ]}
+  zones={[{ yMin: 21, yMax: 22.5, color: "rgba(45,212,191,0.14)", label: "FVG (candle 1 high → candle 3 low)" }]}
+  points={[{ x: 1, y: 25, text: "fast candle", color: "#2dd4bf" }]}
+/>
+
 ### Premium vs. discount
 
 Take a swing high and low (the **dealing range**); the 50% midpoint is
@@ -167,10 +196,38 @@ discount, sell in premium.**
 - **Optimal Trade Entry (OTE):** after a structure break, wait for a pullback into
   the **62%–79% Fibonacci zone** before entering with the trend — strongest when an
   order block or FVG sits inside it.
-- **Killzones:** high-activity session windows (London open, NY AM, etc.) where
-  ICT expects the day's meaningful moves.
+- **Killzones:** specific high-activity session windows (in New York time) where
+  ICT expects the day's meaningful moves — e.g. the **London open ~2:00–5:00 a.m.
+  ET** and the **New York AM ~8:30–11:00 a.m. ET**. The idea is to hunt setups
+  *during* these windows and ignore the quiet hours between them.
 - **Power of Three (AMD):** **Accumulation** (range builds) → **Manipulation** (a
   false "Judas swing" sweep) → **Distribution** (the real move).
+
+<LineChart
+  caption="Optimal Trade Entry: after an impulse leg up, ICT buys only when the pullback reaches the 62–79% retracement of that leg — the deep-discount zone of the move."
+  height={300}
+  series={[{ label: "Price", data: [20, 22, 25, 28, 30, 27, 24.7, 23.8, 26, 29] }]}
+  zones={[{ yMin: 23.8, yMax: 26.2, color: "rgba(34,197,94,0.12)", label: "OTE 62–79% retracement" }]}
+  levels={[
+    { y: 30, label: "swing high (100%)", color: "#f59e0b" },
+    { y: 20, label: "swing low (0%)" },
+  ]}
+  points={[
+    { x: 4, y: 30, text: "impulse high", color: "#38bdf8" },
+    { x: 7, y: 23.8, text: "enter in OTE", color: "#22c55e" },
+  ]}
+/>
+
+<LineChart
+  caption="Power of Three (AMD): a quiet accumulation range, a false Judas-swing sweep that traps one side, then the real distribution move in the opposite direction."
+  height={300}
+  series={[{ label: "Price", data: [25, 25.4, 24.6, 25.2, 24.8, 23, 25.5, 28, 31, 34] }]}
+  zones={[{ yMin: 24.4, yMax: 25.6, color: "rgba(56,189,248,0.10)", label: "accumulation range" }]}
+  points={[
+    { x: 5, y: 23, text: "manipulation (Judas swing)", color: "#ef4444" },
+    { x: 9, y: 34, text: "distribution (real move)", color: "#22c55e" },
+  ]}
+/>
 
 ## A worked example (stylized, illustrative)
 
@@ -189,6 +246,23 @@ A textbook ICT long, presented to show the *logic*, not as a recommendation:
    obvious level where it would itself be hunted.
 7. **Target:** the buy-side liquidity above prior highs; framed around **1:2 to
    1:4** reward-to-risk.
+
+<LineChart
+  caption="The full ICT long: sweep below sell-side liquidity, snap-back, CHoCH up, entry on the discount pullback, stop beneath the sweep low, target the buy-side liquidity above — a 1:3-ish R play."
+  height={320}
+  series={[{ label: "Price", data: [30, 28, 31, 28, 24.5, 29, 32, 30, 33, 37] }]}
+  levels={[
+    { y: 28, label: "equal lows (sell-side liquidity)", color: "#f59e0b" },
+    { y: 36, label: "target: buy-side liquidity", color: "#22c55e" },
+    { y: 23.5, label: "stop (below sweep low)", color: "#ef4444" },
+  ]}
+  points={[
+    { x: 4, y: 24.5, text: "liquidity grab", color: "#ef4444" },
+    { x: 6, y: 32, text: "CHoCH up (confirm)", color: "#2dd4bf" },
+    { x: 7, y: 30, text: "entry (discount/FVG)", color: "#22c55e" },
+    { x: 9, y: 37, text: "target hit", color: "#22c55e" },
+  ]}
+/>
 
 <Callout type="warning">
 Keep this in mind even for a "perfect" setup: ICT-style win rates are frequently

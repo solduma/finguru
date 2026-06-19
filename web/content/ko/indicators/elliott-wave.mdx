@@ -65,6 +65,24 @@ prereqs: ["ralph-elliott", "fibonacci-retracements"]
 
 ([출처: Wikipedia, Elliott Wave Principle](https://en.wikipedia.org/wiki/Elliott_wave_principle))
 
+<LineChart
+  caption="카운트를 죽이는 규칙 위반: 1파 시작점 아래로 내려간 2파, 그리고 1파 영역으로 진입한 4파"
+  height={300}
+  series={[
+    { label: "규칙 1 위반", data: [10, 18, 8, null, null, null, null], color: "#ef4444", width: 2 },
+    { label: "규칙 3 위반", data: [10, 18, 13, 24, 17, 22, 19], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 18, text: "1", color: "#94a3b8" },
+    { x: 2, y: 8, text: "2가 시작점 아래 — 사망", color: "#ef4444" },
+    { x: 4, y: 17, text: "4가 1과 겹침 — 임펄스 아님", color: "#38bdf8" }
+  ]}
+  levels={[
+    { y: 10, label: "1파 시작점 (규칙 1 바닥)", color: "#f59e0b" },
+    { y: 18, label: "1파 고점 (4파에 대한 규칙 3 천장)", color: "#a78bfa" }
+  ]}
+/>
+
 <Callout type="warning">
 
 규칙 3에는 한 가지 공식적인 예외가 있다. **다이애고널(diagonal)**(아래에서 설명)에서는 4파가 1파와 *겹칠 수 있다*. 겹침이 보인다면, 그것을 표준 임펄스라고 부르는 것은 허용되지 않는다 — 다시 레이블링하거나 다이애고널 패턴으로 전환해야 한다. 겹치는 파동에 임펄스 레이블을 억지로 붙이는 것이 초보자가 가장 흔히 저지르는 단 하나의 실수다.
@@ -79,6 +97,25 @@ prereqs: ["ralph-elliott", "fibonacci-retracements"]
 - **연장(Extension):** 세 액션 파동 중 하나는 대개 다른 것들보다 눈에 띄게 길며, 가장 흔히 **3파**가 그렇다. 3파가 연장될 때, 그 길이는 흔히 1파의 약 **1.618배**가 된다.
 - **채널링(Channeling):** 1파의 끝에서 (결국 형성될) 3파의 끝까지 추세선을 그린 뒤, 2파의 끝에서 그것과 평행한 선을 그린다. 5파는 흔히 그 위쪽 평행선 근처에서 끝난다. 이는 움직임이 어디에서 "동력을 다하는지"를 투영하는 실용적인 방법이다.
 - **파동 동등성(Wave equality):** 3파가 연장된 파동일 때, 1파와 5파는 동등해지는 경향이 있다 (또는 5파 ≈ 0.618 × 1파).
+
+<LineChart
+  caption="채널링: 1파와 3파의 끝을 지나는 선, 2파에서 그은 평행선 — 5파는 위쪽 레일 근처에서 끝난다"
+  height={320}
+  series={[
+    { label: "Price", data: [10, 16, 13, 26, 22, 28], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 16, text: "1", color: "#22c55e" },
+    { x: 2, y: 13, text: "2", color: "#ef4444" },
+    { x: 3, y: 26, text: "3", color: "#22c55e" },
+    { x: 4, y: 22, text: "4", color: "#ef4444" },
+    { x: 5, y: 28, text: "5는 레일에서 끝남", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 1, y1: 16, x2: 3, y2: 26, color: "#a78bfa", label: "1→3 기준선" },
+    { x1: 2, y1: 13, x2: 5, y2: 28, color: "#2dd4bf", label: "평행 레일 (5파 구간)", dashed: true }
+  ]}
+/>
 
 ## 파동의 성격 — 군중 읽기
 
@@ -101,11 +138,65 @@ prereqs: ["ralph-elliott", "fibonacci-retracements"]
 
 </Callout>
 
+<LineChart
+  caption="5파 모멘텀 다이버전스: 5파 고점에서 가격은 더 높은 고점을 찍지만 RSI는 더 낮은 고점을 찍는다"
+  height={300}
+  series={[
+    { label: "Price", data: [13, 26, 22, 31], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 26, text: "3 고점", color: "#22c55e" },
+    { x: 3, y: 31, text: "5 — 더 높은 고점", color: "#2dd4bf" }
+  ]}
+/>
+
+<LineChart
+  caption="같은 시퀀스, RSI 패널: 5파 가격 고점 아래의 더 낮은 고점 = 약세 다이버전스"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "RSI", data: [55, 78, 60, 71], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 78, text: "3 고점", color: "#22c55e" },
+    { x: 3, y: 71, text: "5 — 더 낮은 고점", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 70, label: "과매수", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "과매수" }
+  ]}
+/>
+
 ## 패턴 카탈로그
 
 ### 추진 패턴
 - **임펄스(Impulse):** 세 가지 규칙을 모두 따르는 표준 5파 움직임. 기본형이다.
 - **다이애고널(Diagonal):** 4파가 1파와 겹치는 쐐기 모양의 5파 움직임. **종결 다이애고널(ending diagonal)**은 5파나 C파에서 나타나며 움직임이 소진되고 있음을 경고한다. **선도 다이애고널(leading diagonal)**은 1파나 A파에서 나타난다.
+
+<LineChart
+  caption="종결 다이애고널: 4파가 1파 영역과 합법적으로 겹치는, 수렴하는 5파 쐐기"
+  height={320}
+  series={[
+    { label: "Price", data: [10, 18, 14, 20, 17, 21], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 18, text: "1", color: "#22c55e" },
+    { x: 2, y: 14, text: "2", color: "#ef4444" },
+    { x: 3, y: 20, text: "3", color: "#22c55e" },
+    { x: 4, y: 17, text: "4가 1과 겹침", color: "#f59e0b" },
+    { x: 5, y: 21, text: "5", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 1, y1: 18, x2: 5, y2: 22, color: "#a78bfa", label: "위쪽 레일 (1→3, 더 천천히 상승)", dashed: true },
+    { x1: 2, y1: 14, x2: 5, y2: 18.5, color: "#a78bfa", label: "아래쪽 레일 (2→4, 더 빠르게 상승) — 레일 수렴", dashed: true }
+  ]}
+  levels={[
+    { y: 18, label: "1파 고점 — 겹침 (다이애고널에서 허용)", color: "#f59e0b" }
+  ]}
+/>
 
 ### 조정 패턴
 - **지그재그(Zigzag, 5-3-5):** B가 A를 얕게 되돌리는 날카로운 A-B-C. 가파르고 추세처럼 보인다.
@@ -113,6 +204,40 @@ prereqs: ["ralph-elliott", "fibonacci-retracements"]
 - **삼각형(Triangle, 3-3-3-3-3):** A-B-C-D-E로 표시되는, 서로 겹치며 수렴하는 다섯 개 구간. 엘리엇에 따르면 삼각형은 "보통 4파에서 형성되며, 아주 드물게 2파에서 형성된다" — 즉, 더 큰 시퀀스의 *마지막* 움직임에 선행한다 ([Wikipedia](https://en.wikipedia.org/wiki/Elliott_wave_principle)). 삼각형을 포착하는 것은 마지막 한 번의 분출이 다가오고 있다는 강한 힌트다.
 
 조정은 서로 연쇄될 수도 있는데(복합형, combinations), 이것이 조정 카운팅이 이 분야에서 가장 어려운 부분인 이유 중 하나다.
+
+<LineChart
+  caption="지그재그 대 플랫: 지그재그에서는 B가 A를 얕게 되돌리고(가파르고 추세형), 플랫에서는 B가 A의 대부분을 되돌린다(횡보형)"
+  height={300}
+  series={[
+    { label: "지그재그 (5-3-5)", data: [30, 22, 25, 16], color: "#38bdf8", width: 2 },
+    { label: "플랫 (3-3-5)", data: [30, 24, 29, 23], color: "#f59e0b", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 22, text: "A", color: "#94a3b8" },
+    { x: 2, y: 25, text: "B (얕음)", color: "#38bdf8" },
+    { x: 2, y: 29, text: "B (깊음)", color: "#f59e0b" },
+    { x: 3, y: 16, text: "C", color: "#94a3b8" }
+  ]}
+/>
+
+<LineChart
+  caption="삼각형 (A-B-C-D-E): 마지막 분출의 정점으로 수렴하는, 서로 겹치는 다섯 구간"
+  height={300}
+  series={[
+    { label: "Price", data: [30, 20, 28, 22, 26, 24], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 20, text: "A", color: "#a78bfa" },
+    { x: 2, y: 28, text: "B", color: "#a78bfa" },
+    { x: 3, y: 22, text: "C", color: "#a78bfa" },
+    { x: 4, y: 26, text: "D", color: "#a78bfa" },
+    { x: 5, y: 24, text: "E (이후 마지막 분출)", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 30, x2: 5, y2: 25, color: "#a78bfa", label: "위쪽 경계", dashed: true },
+    { x1: 1, y1: 20, x2: 5, y2: 23, color: "#a78bfa", label: "아래쪽 경계", dashed: true }
+  ]}
+/>
 
 ## 피보나치 파동 관계
 
@@ -163,6 +288,19 @@ C파  =          최소 A파, 흔히 1.618 × A파
 ## 어려운 문제: 주관성과 복수의 카운트
 
 여기 솔직한 부분이 있다. 엘리엇 파동의 규칙은 빡빡하지만, 그 **레이블링은 유일하지 않다**. 같은 흔들림 하나가 흔히 "새로운 임펄스의 3파"(강세)로도, "조정의 B파"(약세)로도 카운트될 수 있다. 비판자들은 이 점을 강하게 공격했다:
+
+<LineChart
+  caption="하나의 랠리, 두 개의 유효한 카운트: 강세 '3파 시작' 대 약세 'B파 강세 함정' — 같은 가격, 반대의 계획"
+  height={320}
+  series={[
+    { label: "Price (동일 데이터)", data: [20, 14, 16, 22], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 14, text: "저점", color: "#94a3b8" },
+    { x: 3, y: 22, text: "강세: 3파 상승", color: "#22c55e" },
+    { x: 3, y: 23.5, text: "약세: B파 (함정)", color: "#ef4444" }
+  ]}
+/>
 
 - 수학자 **브누아 망델브로(Benoit Mandelbrot)**는 "파동 예측은 매우 불확실한 사업"이라고 썼으며, 그 예측 기록은 "잘해야 들쭉날쭉하다"고 덧붙였다.
 - **데이비드 아론슨(David Aronson)**은 이 원리가 "정당한 이론이 아니라 이야기"이며, 사후에 "시장 역사의 어느 구간에도 들어맞는 듯한 놀라운 능력"을 가졌기 때문에 설득력이 있을 뿐이라고 주장했다.

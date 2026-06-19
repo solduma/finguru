@@ -39,6 +39,19 @@ Markets do two things: they trend, and they revert. Raschke's setups split clean
 
 *Mean reversion* is the tendency of price to return toward an average or prior level after stretching too far from it. *Fading* a move means betting against it.
 
+<LineChart
+  caption="The two regimes Raschke trades — a trend that resumes after a pause vs. an overextended move that snaps back"
+  height={300}
+  series={[
+    { label: "Momentum (buy the pullback)", data: [100, 102, 104, 103, 102.5, 104, 106, 108], color: "#22c55e", width: 2 },
+    { label: "Mean reversion (fade the stretch)", data: [100, 101, 99, 96, 92, 95, 98, 100], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 4, y: 102.5, text: "pullback ends, trend resumes", color: "#22c55e" },
+    { x: 4, y: 92, text: "overextended -> fade", color: "#38bdf8" }
+  ]}
+/>
+
 Crucially, every setup has a defined **trigger** (the condition that puts you in), a **stop** (the price that proves you wrong and gets you out), and a **target**. That structure — not the indicator settings — is the real lesson.
 
 ## Setup 1 — The Holy Grail (ADX + 20-period MA)
@@ -95,6 +108,27 @@ LONG Turtle Soup (mirror for shorts):
 The "at least 4 sessions old" filter is important: it ensures the new low is a genuine probe past an established level, the kind that traps breakout buyers. There is a variant, **Turtle Soup Plus One**, where the false break is confirmed one day later — price closes at or below the prior 20-day low — before entry.
 
 <CandleChart
+  caption="Turtle Soup Plus One — entry is delayed one bar until a second close at/below the prior 20-day low confirms the failed break"
+  height={300}
+  candles={[
+    { o: 44, h: 45, l: 42, c: 43 },
+    { o: 43, h: 44, l: 41, c: 41.5 },
+    { o: 41.5, h: 42, l: 40, c: 40.2 },
+    { o: 40.2, h: 41, l: 39.5, c: 40.3 },
+    { o: 40.3, h: 41, l: 39, c: 39.2 },
+    { o: 39.2, h: 40, l: 38.7, c: 39.1 },
+    { o: 39.2, h: 41.8, l: 39, c: 41.5 },
+    { o: 41.5, h: 43.5, l: 41.3, c: 43.2 }
+  ]}
+  levels={[ { y: 39.5, label: "prior 20-day low" } ]}
+  points={[
+    { x: 4, y: 38.8, text: "first close below low", color: "#ef4444" },
+    { x: 5, y: 38.5, text: "second close below = confirmation", color: "#f59e0b" },
+    { x: 6, y: 39.0, text: "entry next bar", color: "#22c55e" }
+  ]}
+/>
+
+<CandleChart
   caption="Turtle Soup long — a new 20-day low fails and snaps back above the prior low"
   height={300}
   candles={[
@@ -131,6 +165,24 @@ SHORT 80-20: mirror -- prior day opens in top 20%, closes in bottom 80%,
 
 The premise is that a market opening at one extreme and closing at the other shows a one-sided session; the next day's probe past the prior day's low (or high) flushes out late traders and then reverses. (Some write-ups describe the pattern with the opening and closing extremes swapped — the constant is an extreme-to-extreme day followed by a failed probe that signals the snap-back.)
 
+<CandleChart
+  caption="80-20 long — prior day opens near its low and closes near its high; next session probes below the prior low, then reverses up"
+  height={300}
+  candles={[
+    { o: 50.2, h: 50.4, l: 50.0, c: 50.3 },
+    { o: 50.2, h: 54.0, l: 50.0, c: 53.6 },
+    { o: 53.4, h: 53.8, l: 49.4, c: 53.3 },
+    { o: 53.3, h: 54.5, l: 53.0, c: 54.2 }
+  ]}
+  levels={[ { y: 50.0, label: "prior day low" } ]}
+  points={[
+    { x: 1, y: 49.6, text: "opens bottom 20%", color: "#a78bfa" },
+    { x: 1, y: 54.3, text: "closes top 80%", color: "#22c55e" },
+    { x: 2, y: 49.2, text: "probes below prior low", color: "#ef4444" },
+    { x: 2, y: 53.9, text: "reverses up -> buy", color: "#22c55e" }
+  ]}
+/>
+
 ## Setup 4 — The Anti
 
 A trend-continuation setup that uses two oscillators of different speeds (Raschke's original used a stochastic; many traders now use a 3-10-16 MACD variant).
@@ -144,6 +196,22 @@ The "Anti" (long version):
 ```
 
 A *stochastic oscillator* measures where price closes within its recent range (0–100); fast and slow versions just smooth it differently. The Anti trades the moment a short-term pullback ends and the dominant trend reasserts itself.
+
+<LineChart
+  caption="The Anti (long) — the slow oscillator keeps rising while the fast line hooks down then back up; the re-hook is the entry"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "Slow oscillator (trend)", data: [40, 45, 50, 55, 58, 60, 63, 66, 70], color: "#a78bfa", width: 2 },
+    { label: "Fast oscillator", data: [55, 65, 72, 60, 48, 44, 52, 68, 78], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 72, text: "fast peaks", color: "#38bdf8" },
+    { x: 5, y: 44, text: "fast hooks down (pullback)", color: "#ef4444" },
+    { x: 6, y: 52, text: "fast hooks back up -> entry", color: "#22c55e" }
+  ]}
+/>
 
 ## A worked example (illustrative)
 
@@ -182,6 +250,22 @@ These numbers are **illustrative**, not from a real chart, to show the mechanics
 />
 
 If you risk 0.5% of a $100,000 account ($500) on this trade, position size is $500 / $0.70 ≈ **714 shares**. The trade either gets stopped for about $500 or reaches the prior high for roughly $1,250. The math, not a hunch, decides the size.
+
+<LineChart
+  caption="The two outcomes of the worked Holy Grail trade around the $50.25 entry — 1R of risk down to the stop vs. 2.5R up to the target"
+  height={260}
+  yMin={49}
+  yMax={52.5}
+  series={[
+    { label: "Reaches target (+$1,250)", data: [50.25, 50.6, 51.1, 51.6, 52.0], color: "#22c55e", width: 2 },
+    { label: "Hits stop (-$500)", data: [50.25, 50.05, 49.85, 49.7, 49.55], color: "#ef4444", width: 2 }
+  ]}
+  levels={[
+    { y: 50.25, label: "entry $50.25", color: "#38bdf8" },
+    { y: 52.0, label: "target $52.00 (+2.5R)", color: "#22c55e" },
+    { y: 49.55, label: "stop $49.55 (-1R)", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="key">
 

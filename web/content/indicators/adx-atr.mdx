@@ -53,6 +53,22 @@ TR = max(5, 4, 1) = 5
 
 If the prior 14-period ATR was 3.0, the new ATR = (3.0 × 13 + 5) / 14 ≈ **3.14**.
 
+Because ATR is a smoothed average of range, it *contracts* during quiet consolidation and *expands* when a market breaks loose — a rising ATR signals volatility entering the market, a falling ATR signals it draining out.
+
+<LineChart
+  caption="ATR contracts through a quiet range, then expands sharply as a breakout injects volatility — note ATR is in price units, not direction"
+  height={220}
+  yMin={0}
+  yMax={6}
+  series={[
+    { label: "ATR(14)", data: [3.0, 2.7, 2.4, 2.1, 1.9, 1.8, 1.8, 2.6, 3.8, 4.8, 5.2, 5.0], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 6, y: 1.5, text: "volatility squeeze", color: "#f59e0b" },
+    { x: 9, y: 5.1, text: "expansion", color: "#22c55e" }
+  ]}
+/>
+
 <CandleChart
   caption="Why True Range uses the previous close: a gap-up bar whose own high−low range is small still produced a large move overnight"
   height={300}
@@ -95,6 +111,18 @@ We then smooth +DM, −DM, and TR over 14 periods (using the same Wilder smoothi
 
 Reading them is intuitive: when **+DI is above −DI**, buyers have the edge; when **−DI is above +DI**, sellers do. A classic signal is a *crossover* — +DI crossing above −DI is bullish, the reverse is bearish.
 
+<LineChart
+  caption="A bearish DI crossover: −DI crosses up through +DI as sellers take the edge — the mirror image of the bullish cross"
+  height={220}
+  yMin={0}
+  yMax={45}
+  series={[
+    { label: "+DI", data: [30, 29, 27, 24, 20, 16, 14, 13], color: "#22c55e", width: 2 },
+    { label: "−DI", data: [12, 13, 16, 22, 27, 31, 33, 34], color: "#ef4444", width: 2 }
+  ]}
+  points={[ { x: 3, y: 23, text: "−DI crosses above +DI (bearish)", color: "#ef4444" } ]}
+/>
+
 ## Part 3: From DI to ADX — distilling strength
 
 The two DI lines tell you who's winning. To measure *how decisively*, Wilder computed the **Directional Index (DX)**:
@@ -127,6 +155,22 @@ ADX ranges from 0 to 100, but in practice you'll rarely see it above 60. Common 
 | Above 50 | Very strong trend |
 
 Wilder himself treated **25** as the threshold for a present trend and **20** as the line below which there is no trend; many analysts simply use 20. What matters as much as the level is the **slope**: a *rising* ADX means the trend is strengthening; a *falling* ADX means it's losing steam (even if price still drifts the same way). Note that a steady, constant-slope trend will make ADX *flatten out* — ADX reacts to *changes* in trend strength.
+
+<LineChart
+  caption="ADX slope, not just level: it rises as the trend accelerates, flattens once the trend is steady, then falls as the trend exhausts — even while price keeps drifting"
+  height={220}
+  yMin={0}
+  yMax={50}
+  series={[
+    { label: "ADX", data: [18, 24, 31, 38, 43, 44, 44, 43, 38, 32, 27], color: "#a78bfa", width: 2 }
+  ]}
+  levels={[ { y: 25, label: "trend present", color: "#f59e0b" } ]}
+  points={[
+    { x: 2, y: 31, text: "rising · strengthening", color: "#22c55e" },
+    { x: 5, y: 44, text: "flat · steady trend", color: "#e6e9ef" },
+    { x: 9, y: 32, text: "falling · exhausting", color: "#ef4444" }
+  ]}
+/>
 
 <LineChart
   caption="DMI panel: +DI crosses above −DI (bullish), then ADX climbs through 25 to confirm a strengthening trend; early bars are choppy below 20"
@@ -196,6 +240,19 @@ Chandelier Exit (short) = Lowest Low over 22 periods   + (ATR(22) × 3)
 
 The stop "hangs" three ATRs below the recent peak and ratchets up as price rises — never down. Defaults are **22 periods, 3× multiplier**; volatile names may need a larger multiplier (e.g., 5) to avoid whipsaws.
 
+<LineChart
+  caption="Chandelier Exit (long): the stop trails 3×ATR below the highest high, ratcheting up as price rises and holding flat on the pullback — never moving down — until price closes below it"
+  height={300}
+  series={[
+    { label: "Price", data: [50, 52, 55, 54, 58, 61, 60, 63, 61, 58, 56], color: "#e6e9ef", width: 2 },
+    { label: "Chandelier stop", data: [44, 46, 49, 49, 52, 55, 55, 57, 57, 57, 57], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  points={[
+    { x: 7, y: 64, text: "new high lifts stop", color: "#22c55e" },
+    { x: 10, y: 56.8, text: "stop hit (close below)", color: "#ef4444" }
+  ]}
+/>
+
 ATR also drives **volatility-based position sizing**. If you risk a fixed dollar amount per trade, your share count should scale *inversely* with volatility:
 
 ```
@@ -203,6 +260,20 @@ Position size (shares) = (Account risk in $) / (ATR × stop multiplier)
 ```
 
 **Illustrative example.** Risk \$500 per trade, stop = 2 × ATR, ATR = \$2.50. Stop distance = \$5.00, so size = 500 / 5 = **100 shares**. If ATR jumps to \$5, the same \$500 risk buys only 50 shares — automatically smaller positions in wilder markets.
+
+<LineChart
+  caption="Volatility-based sizing: at fixed $500 risk and a 2×ATR stop, share count falls inversely as ATR rises — the same dollar risk buys fewer shares in wilder markets"
+  height={260}
+  yMin={0}
+  yMax={260}
+  series={[
+    { label: "Shares (= $500 / (2×ATR))", data: [250, 167, 125, 100, 83, 71, 50], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 100, text: "ATR $2.50 → 100 sh", color: "#22c55e" },
+    { x: 6, y: 50, text: "ATR $5.00 → 50 sh", color: "#ef4444" }
+  ]}
+/>
 
 ## Strengths, weaknesses, and beginner traps
 

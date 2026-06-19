@@ -36,6 +36,18 @@ The World Cup Championship of Futures Trading (run by Robbins Trading Company) i
 
 That number is real in the sense that it happened in a tracked account. But you must understand *how* it happened before you treat it as a target.
 
+<LineChart
+  caption="The 1987 contest: $10,000 compounding past $1M — a near-vertical curve driven by concentrated leverage"
+  height={300}
+  series={[
+    { label: "Account equity ($)", data: [10000, 22000, 18000, 41000, 78000, 65000, 150000, 310000, 270000, 560000, 880000, 1137600], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 10000, text: "$10,000 start", color: "#e6e9ef" },
+    { x: 11, y: 1137600, text: "$1,137,600 (+11,376%)", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="warning">
 
 A contest scored on percentage return rewards extreme, concentrated leverage. To grow an account 100x in a year, you must risk a very large fraction of capital repeatedly and be right. The same approach that produces an 11,000% winner also produces a long tail of competitors who blow up to zero — and we mostly only hear about the winner. This is **survivorship bias**, and Williams himself has acknowledged that he traded far larger position sizes in the contest than he would recommend for a normal account.
@@ -78,6 +90,27 @@ Suppose over the last 14 days a market's highest high is **110**, its lowest low
 
 A reading of −30 says the close is in the upper-middle of its range: firm, but not yet "overbought." If tomorrow it closed at 108 with the same range, %R = (2 / 20) × −100 = **−10**, now in overbought territory.
 
+<LineChart
+  caption="Where the close sits in the 14-day range: 104 → %R −30, then 108 → %R −10 (overbought)"
+  height={260}
+  yMin={88}
+  yMax={112}
+  series={[
+    { label: "Close", data: [104, 108], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 110, label: "highest high (110)", color: "#a78bfa" },
+    { y: 90, label: "lowest low (90)", color: "#a78bfa" }
+  ]}
+  zones={[
+    { yMin: 106, yMax: 110, color: "rgba(239,68,68,0.12)", label: "overbought zone (−20 to 0)" }
+  ]}
+  points={[
+    { x: 0, y: 104, text: "close 104 → %R −30", color: "#f59e0b" },
+    { x: 1, y: 108, text: "close 108 → %R −10", color: "#ef4444" }
+  ]}
+/>
+
 <Callout type="key">
 
 %R is *arithmetically equivalent to the %K line of the stochastic oscillator, mirrored around the zero line.* If you already know stochastics, you know %R — it is the same range-position math, just on a 0-to-−100 scale instead of 0-to-100. Do not run both and think you are getting independent confirmation; you are not.
@@ -111,6 +144,23 @@ A sign-convention quirk: Williams' original book multiplied by **+100** (giving 
     { x: 5, y: -100, text: "1st low at −100", color: "#22c55e" },
     { x: 8, y: -90, text: "higher %R low (divergence)", color: "#a78bfa" },
     { x: 10, y: -58, text: "climbs back above −85", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="Why fading extremes fails: in a strong uptrend %R pins in the overbought band for days while price keeps rising"
+  height={220}
+  yMin={-100}
+  yMax={0}
+  series={[
+    { label: "%R", data: [-65, -42, -18, -8, -5, -12, -6, -4, -9, -7], color: "#2dd4bf", width: 2 }
+  ]}
+  zones={[
+    { yMin: -20, yMax: 0, color: "rgba(239,68,68,0.12)", label: "overbought" }
+  ]}
+  points={[
+    { x: 2, y: -18, text: "enters overbought", color: "#f59e0b" },
+    { x: 8, y: -9, text: "still pinned (premature shorts stopped out)", color: "#ef4444" }
   ]}
 />
 
@@ -161,6 +211,37 @@ This is arguably his most durable contribution to *sentiment* analysis. The **Co
 
 Williams built **COT indices** that normalize commercial positioning over a lookback window. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
 
+<LineChart
+  caption="COT commercial index (0–100): a net-long extreme precedes the price bottom; a net-short extreme precedes the top"
+  height={240}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "Commercial COT index", data: [95, 88, 70, 45, 30, 20, 35, 60, 80, 92, 75, 40, 15, 8, 25], color: "#38bdf8", width: 2 }
+  ]}
+  zones={[
+    { yMin: 80, yMax: 100, color: "rgba(34,197,94,0.12)", label: "commercials net-long (bullish)" },
+    { yMin: 0, yMax: 20, color: "rgba(239,68,68,0.12)", label: "commercials net-short (bearish)" }
+  ]}
+  points={[
+    { x: 0, y: 95, text: "net-long extreme → bottom near", color: "#22c55e" },
+    { x: 9, y: 92, text: "net-long again", color: "#22c55e" },
+    { x: 13, y: 8, text: "net-short extreme → top near", color: "#ef4444" }
+  ]}
+/>
+
+<LineChart
+  caption="The underlying price the COT index above is read against — extremes lead turns by weeks"
+  height={220}
+  series={[
+    { label: "Price", data: [88, 85, 84, 86, 89, 92, 96, 101, 107, 112, 116, 119, 121, 122, 118], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 84, text: "price bottom (after net-long)", color: "#22c55e" },
+    { x: 13, y: 122, text: "price top (after net-short)", color: "#ef4444" }
+  ]}
+/>
+
 <Callout type="warning">
 
 COT is **lagging and incomplete**: it is released three days stale, and reportable positions cover only roughly 70–90% of total open interest. It tells you *who is positioned how*, not *when* to act. Treat it as a slow-moving backdrop — a multi-week tailwind or headwind — never as a same-day entry signal.
@@ -175,6 +256,12 @@ Williams' edge was never one indicator — it was *confluence* across independen
 2. **Setup** — Is %R or another oscillator showing an extreme, ideally with divergence?
 3. **Trigger** — A volatility breakout in the direction the first two layers favor.
 4. **Risk** — A pre-defined stop and position size.
+
+<Callout type="note">
+
+**What "seasonality" means here:** a *seasonal* tendency is a recurring calendar pattern — a market that has historically tended to rise or fall during a specific window of the year, usually for a structural reason. For example, heating-oil futures have often firmed heading into the Northern-Hemisphere winter as demand rises; grains can soften around harvest when supply floods in. Williams would check whether the date sat inside such a historically favorable window and let it *tilt* his bias — never act on it alone, because (see criticisms) these patterns are easy to overfit and fade once widely known.
+
+</Callout>
 
 The deeper layers (sentiment, seasonality) tilt the odds; the breakout times the entry. That layered logic is the genuinely transferable lesson — far more than any single setting.
 

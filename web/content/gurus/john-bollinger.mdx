@@ -105,6 +105,27 @@ Reading bands by eye is fine, but Bollinger built two derived numbers so you can
 
 Using our first example, a price of $103.75 gives `%b = (103.75 − 95) / (105 − 95) = 0.875`.
 
+Because %b is a single tidy number, it makes *divergences* easy to spot. A divergence is when price and the indicator disagree: for example, price drops to a new low for the move, but %b makes a *higher* low (say 0.05 the first time, then 0.20 the second). Price says "weaker," but %b says "the second drop didn't reach as deep into the band" — a hint that the selling is losing force even as price prints a new low.
+
+<LineChart
+  caption="%b maps price onto a 0–1 scale: 0 at the lower band, 0.5 at the middle, 1.0 at the upper, above 1.0 when price closes outside"
+  height={220}
+  yMin={-0.2}
+  yMax={1.4}
+  series={[
+    { label: "%b", data: [0.5, 0.3, 0.0, 0.4, 0.875, 1.0, 1.15, 0.7], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 1.0, label: "upper band", color: "#f59e0b" },
+    { y: 0.5, label: "middle band", color: "#a78bfa" },
+    { y: 0.0, label: "lower band", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 4, y: 0.875, text: "$103.75 → 0.875", color: "#2dd4bf" },
+    { x: 6, y: 1.15, text: "%b > 1: closed above band", color: "#22c55e" }
+  ]}
+/>
+
 **BandWidth** answers: *how wide are the bands right now?*
 
 ```
@@ -146,7 +167,24 @@ Here is the idea that separates people who understand Bollinger Bands from peopl
 
 In a strong trend, price will **walk the band**: it hugs and repeatedly tags the upper band on the way up (or the lower band on the way down) for an extended run. Tagging the upper band is not a sell signal — it is evidence of *strength*. This is why Rule 8 says closes outside the bands are *initially continuation signals, not reversal signals*.
 
-During an uptrend walk, the 20-day middle band often acts as support; pullbacks toward it can be buying opportunities rather than warnings.
+During an uptrend walk, the 20-day middle band often acts as support; pullbacks toward it can be buying opportunities rather than warnings. The mirror image is the trap behind "touch the lower band = buy": in a downtrend, price walks the *lower* band straight down, with the middle band acting as resistance on each bounce — every lower-band tag that a beginner reads as a "buy" is just continuation.
+
+<LineChart
+  caption="Walking the lower band: in a downtrend price hugs the lower band on the way down and the middle band acts as resistance — tags are not buys"
+  height={300}
+  yMin={65}
+  yMax={105}
+  series={[
+    { label: "Price", data: [100, 97, 98, 94, 91, 92, 88, 84, 85, 80, 76, 77], color: "#e6e9ef", width: 2 },
+    { label: "Upper band", data: [106, 106, 104, 103, 102, 100, 99, 97, 93, 93, 91, 87], color: "#38bdf8", dashed: true, width: 2 },
+    { label: "Middle band (resistance)", data: [101, 100, 99, 97, 95, 94, 92, 89, 87, 85, 82, 80], color: "#a78bfa", width: 2 },
+    { label: "Lower band", data: [96, 94, 94, 91, 88, 88, 85, 81, 81, 77, 73, 73], color: "#38bdf8", dashed: true, width: 2 }
+  ]}
+  points={[
+    { x: 4, y: 91, text: "tags = weakness, not buy", color: "#ef4444" },
+    { x: 5, y: 94, text: "bounce stalls at middle", color: "#f59e0b" }
+  ]}
+/>
 
 <LineChart
   caption="Walking the band: in a strong uptrend price hugs the upper band while the middle band acts as support"
@@ -168,6 +206,44 @@ During an uptrend walk, the 20-day middle band often acts as support; pullbacks 
 ## Pattern recognition: W-bottoms and M-tops
 
 Bollinger borrowed Arthur Merrill's W and M nomenclature. A bullish **W-bottom** forms when: (1) a reaction low pokes below the lower band; (2) price bounces toward the middle band; (3) a second low forms but holds *above* the lower band — showing the selling has less force; (4) price breaks out. The bearish **M-top** is the mirror image: a high above the upper band, a pullback, then a second high that *fails to reach* the upper band (a non-confirmation), warning that momentum is fading. Bollinger notes signals use closing prices, so brief intraday pokes outside the bands do not invalidate a pattern.
+
+<LineChart
+  caption="W-bottom: first low pokes below the lower band, the second low holds above it (less selling force), then price breaks out"
+  height={300}
+  yMin={88}
+  yMax={114}
+  series={[
+    { label: "Price", data: [104, 99, 94, 100, 103, 99, 97, 102, 108], color: "#e6e9ef", width: 2 },
+    { label: "Middle band", data: [103, 102, 101, 101, 101, 100.5, 100, 101, 103], color: "#a78bfa", width: 2 },
+    { label: "Upper band", data: [109, 109, 108, 107, 107, 106, 105, 107, 111], color: "#38bdf8", dashed: true, width: 2 },
+    { label: "Lower band", data: [97, 95, 94, 95, 95, 95, 95, 95, 95], color: "#38bdf8", dashed: true, width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 94, text: "1: low below lower band", color: "#ef4444" },
+    { x: 4, y: 103, text: "2: bounce to middle", color: "#2dd4bf" },
+    { x: 6, y: 97, text: "3: higher low, holds above band", color: "#22c55e" },
+    { x: 8, y: 108, text: "4: breakout", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="M-top: first high closes above the upper band, but the second high fails to reach it — a non-confirmation warning momentum is fading"
+  height={300}
+  yMin={86}
+  yMax={112}
+  series={[
+    { label: "Price", data: [96, 101, 106, 100, 97, 101, 103, 98, 92], color: "#e6e9ef", width: 2 },
+    { label: "Middle band", data: [97, 98, 99, 99, 99, 99.5, 100, 99, 97], color: "#a78bfa", width: 2 },
+    { label: "Upper band", data: [103, 105, 105, 105, 105, 105.5, 106, 105, 103], color: "#38bdf8", dashed: true, width: 2 },
+    { label: "Lower band", data: [91, 91, 93, 93, 93, 93.5, 94, 93, 91], color: "#38bdf8", dashed: true, width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 106, text: "1: high above upper band", color: "#22c55e" },
+    { x: 4, y: 97, text: "2: pullback to middle", color: "#2dd4bf" },
+    { x: 6, y: 103, text: "3: lower high fails to tag band", color: "#ef4444" },
+    { x: 8, y: 92, text: "4: breakdown", color: "#ef4444" }
+  ]}
+/>
 
 ## Bollinger's 22 rules (the spirit of them)
 

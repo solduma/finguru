@@ -96,6 +96,20 @@ Histogram = 1.5 − 1.2 = +0.3
 
 양(+)이면서 *커지고 있는* 히스토그램은 상승추세의 모멘텀이 아직 가속하고 있음을 말해줍니다. 만약 다음 날 히스토그램이 +0.1로 줄어든다면, 가격이 여전히 오르고 있더라도 모멘텀은 약해지고 있는 것 — 일찌감치 알려주는 경고 신호입니다. (위 숫자들은 설명용이며, 실제 종목에서 가져온 것이 아닙니다.)
 
+<LineChart
+  caption="앞의 계산 예시: MACD 선이 시그널 선 위에 있고, 히스토그램(간격)이 +0.3까지 커졌다가 모멘텀이 약해지며 +0.1로 줄어든다"
+  height={220}
+  series={[
+    { label: "MACD 선", data: [1.5, 1.55], color: "#2dd4bf", width: 2 },
+    { label: "시그널 선", data: [1.2, 1.45], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  points={[
+    { x: 0, y: 1.5, text: "MACD +1.5", color: "#2dd4bf" },
+    { x: 0, y: 1.2, text: "시그널 +1.2 → 히스토그램 +0.3", color: "#22c55e" },
+    { x: 1, y: 1.55, text: "히스토그램 +0.1 (약해짐)", color: "#f59e0b" }
+  ]}
+/>
+
 ## 읽는 방법
 
 대략 미묘함이 점점 커지는 순서로, 세 가지 고전적인 해석 방법이 있습니다.
@@ -121,14 +135,67 @@ Histogram = 1.5 − 1.2 = +0.3
   ]}
 />
 
+**히스토그램**은 바로 이 두 선 사이의 간격을 0선에서부터 막대로 그린 것입니다. 아래는 *완전히 똑같은 데이터*를 히스토그램으로 나타낸 것입니다 — 교차가 일어날 때마다 0선을 지나고, (무엇보다) 실제 선 교차가 나타나기 *한두 막대 전부터 0선을 향해 줄어들기 시작*하는 것을 눈여겨보세요.
+
+<LineChart
+  caption="같은 데이터의 히스토그램(MACD − 시그널): 교차마다 부호가 뒤집히지만, 교차가 나타나기 전부터 0선을 향해 줄어들며 — 전환을 미리 경고한다"
+  height={220}
+  series={[
+    { label: "히스토그램", data: [-0.4, -0.4, 0.0, 0.4, 0.7, 0.7, 0.6, 0.1, -0.3, -0.6], color: "#2dd4bf", width: 2, fill: true }
+  ]}
+  levels={[
+    { y: 0, label: "0선", color: "#e6e9ef" }
+  ]}
+  points={[
+    { x: 3, y: 0.4, text: "양(+)으로 전환 (강세 교차)", color: "#22c55e" },
+    { x: 6, y: 0.6, text: "정점 — 이후 줄어듦", color: "#f59e0b" },
+    { x: 7, y: 0.1, text: "+0.1: 모멘텀 일찍 약해짐", color: "#f59e0b" },
+    { x: 8, y: -0.3, text: "음(−)으로 전환 (약세 교차)", color: "#ef4444" }
+  ]}
+/>
+
 **2. 중심선(0) 교차** — 0선에 연동된 신호입니다.
 - MACD가 *0 위로* 교차 → 강세; 12-EMA가 막 26-EMA 위로 올라섰음을 의미.
 - MACD가 *0 아래로* 교차 → 약세; 12-EMA가 막 26-EMA 아래로 내려섰음을 의미.
 이는 더 큰 추세 변화를 나타내지만, 시그널선 교차에 비해 모멘텀에 대한 즉각적인 확증은 *덜* 줍니다 ([Wikipedia](https://en.wikipedia.org/wiki/MACD)).
 
+<LineChart
+  caption="중심선 교차: 12-EMA가 26-EMA 위로 올라섰다가 다시 아래로 내려가면서 MACD 선이 0선을 교차한다"
+  height={220}
+  series={[
+    { label: "MACD 선", data: [-1.2, -0.7, -0.2, 0.4, 0.9, 1.1, 0.7, 0.2, -0.3, -0.8], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 0, label: "0선 (12-EMA = 26-EMA)", color: "#e6e9ef" }
+  ]}
+  zones={[
+    { yMin: 0, yMax: 1.4, color: "rgba(34,197,94,0.10)", label: "강세 (MACD > 0)" },
+    { yMin: -1.4, yMax: 0, color: "rgba(239,68,68,0.10)", label: "약세 (MACD < 0)" }
+  ]}
+  points={[
+    { x: 3, y: 0.4, text: "0 위로 교차 → 강세", color: "#22c55e" },
+    { x: 8, y: -0.3, text: "0 아래로 교차 → 약세", color: "#ef4444" }
+  ]}
+/>
+
 **3. 다이버전스(Divergence)** — 가장 해석이 많이 필요한 방법입니다.
 - **강세 다이버전스:** 가격은 *저점을 더 낮추는데(lower low)*, MACD는 *저점을 더 높임(higher low)* — 하락 모멘텀이 약해지고 있음.
 - **약세 다이버전스:** 가격은 *고점을 더 높이는데(higher high)*, MACD는 *고점을 더 낮춤(lower high)* — 상승 모멘텀이 시들해지고 있음.
+
+<LineChart
+  caption="강세 다이버전스: 가격은 저점을 더 낮추는 반면 MACD는 저점을 더 높인다"
+  height={260}
+  series={[
+    { label: "가격", data: [60, 56, 58, 55, 57, 52, 54], color: "#e6e9ef", width: 2 },
+    { label: "MACD 선", data: [-1.0, -1.8, -1.1, -1.5, -0.9, -1.2, -0.5], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 56, text: "저점", color: "#e6e9ef" },
+    { x: 5, y: 52, text: "더 낮은 저점", color: "#22c55e" },
+    { x: 1, y: -1.8, text: "저점", color: "#2dd4bf" },
+    { x: 5, y: -1.2, text: "더 높은 저점", color: "#22c55e" }
+  ]}
+/>
 
 <LineChart
   caption="약세 다이버전스: 가격은 고점을 더 높이는 반면 MACD는 고점을 더 낮춘다"
@@ -179,6 +246,24 @@ Histogram = 1.5 − 1.2 = +0.3
 
 - **지연된다.** MACD는 이동평균으로 만들어지는데, 이동평균은 *과거 가격의 평균*입니다. 교차가 나타날 무렵이면 움직임의 일부(때로는 대부분)가 이미 끝나 있을 수 있습니다 — 강한 추세는 MACD가 이를 반영할 즈음이면 "이미 완료되었거나 거의 끝나 있을 것"입니다 ([Wikipedia](https://en.wikipedia.org/wiki/MACD)).
 - **횡보장에서의 휩쏘(whipsaw).** 가격이 뚜렷한 추세 없이 위아래로 출렁일 때, MACD는 시그널 선과 0선을 반복적으로 교차하며 매수/매도 신호를 마구 쏟아내는데, 이 신호들은 곧바로 뒤집혀 수수료와 잘못된 진입으로 돈을 까먹게 합니다 ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
+
+<LineChart
+  caption="휩쏘: 평평하고 출렁이는 시장에서 MACD 선이 시그널 선을 위아래로 반복 교차하며, 곧바로 뒤집히는 매수/매도 신호를 쏟아낸다"
+  height={220}
+  series={[
+    { label: "MACD 선", data: [0.3, -0.2, 0.2, -0.3, 0.25, -0.25, 0.3, -0.2], color: "#2dd4bf", width: 2 },
+    { label: "시그널 선", data: [0.05, 0.0, -0.05, 0.0, 0.0, -0.02, 0.02, 0.0], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  levels={[
+    { y: 0, label: "0선", color: "#e6e9ef" }
+  ]}
+  points={[
+    { x: 2, y: 0.2, text: "매수", color: "#22c55e" },
+    { x: 3, y: -0.3, text: "매도", color: "#ef4444" },
+    { x: 4, y: 0.25, text: "매수", color: "#22c55e" },
+    { x: 5, y: -0.25, text: "매도", color: "#ef4444" }
+  ]}
+/>
 - **상·하한이 없어서 — "과매수/과매도"를 신뢰성 있게 표시할 수 없다.** 0–100으로 제한된 RSI와 달리, MACD에는 천장이나 바닥이 없으며, 과거의 극단치를 넘어 계속 과도하게 확장될 수 있습니다 ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
 - **종목 간 값을 비교할 수 없다.** MACD는 가격을 기반으로 한 두 EMA의 *가격* 차이이기 때문에, \$500짜리 주식은 \$20짜리 주식보다 훨씬 큰 MACD 값을 보입니다. 종목 간 비교를 하려면, 같은 개념을 백분율로 표현하는 **PPO(Percentage Price Oscillator, 가격 백분율 오실레이터)**를 사용하세요.
 

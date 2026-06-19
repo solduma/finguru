@@ -78,7 +78,34 @@ The EMA is built in three steps:
        EMA_today = multiplier * Close_today + (1 - multiplier) * EMA_yesterday
 ```
 
-The multiplier `2/(N+1)` is the standard convention ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential); [Wikipedia: Moving average](https://en.wikipedia.org/wiki/Moving_average)). Worked numbers:
+The multiplier `2/(N+1)` is the standard convention ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential); [Wikipedia: Moving average](https://en.wikipedia.org/wiki/Moving_average)).
+
+Worked example — a 5-day EMA, picking up right where the SMA example left off. With N = 5, the multiplier is `2 / (5 + 1) = 0.3333`. We seed with the 5-day SMA (which was 13), then step forward:
+
+```
+Seed (Day 5):  EMA = SMA of first 5 = 13
+
+Day 6 (close 16):  (16 - 13) * 0.3333 + 13 = 14.00
+Day 7 (close 17):  (17 - 14.00) * 0.3333 + 14.00 = 15.00
+```
+
+Here the EMA happens to match the SMA because the prices climbed by a steady +1 each day. The difference shows up when a price jumps: feed in a Day 8 close of 22 and the EMA leaps to `(22 - 15.00) * 0.3333 + 15.00 = 17.33`, while the SMA would only reach `(14+15+16+17+22)/5 = 16.8`. The EMA reacts harder to the fresh, surprising price — exactly what the heavier recent weighting buys you.
+
+More worked numbers for the multiplier itself:
+
+<LineChart
+  caption="Same price, same period: the EMA hugs the turn while the SMA lags behind"
+  height={300}
+  series={[
+    { label: "Price", data: [20, 21, 23, 26, 30, 33, 35, 34, 31, 27, 23, 20], color: "#e6e9ef", width: 2 },
+    { label: "EMA (faster)", data: [20, 20.4, 21.4, 23.2, 25.9, 28.7, 31.2, 32.3, 31.8, 29.9, 27.1, 24.3], color: "#2dd4bf", width: 2 },
+    { label: "SMA (slower)", data: [null, null, 21.3, 23.3, 26.3, 29.7, 32.7, 34, 33.3, 30.7, 27, 23.3], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 6, y: 35, text: "price peaks", color: "#f59e0b" },
+    { x: 7, y: 32.3, text: "EMA turns first", color: "#22c55e" }
+  ]}
+/>
 
 - 10-period EMA: `2 / (10 + 1) = 0.1818` → today's close gets about 18% weight.
 - 20-period EMA: `2 / (20 + 1) = 0.0952` → today's close gets about 9.5% weight.
@@ -117,9 +144,50 @@ These aren't magic — they're conventions that became self-reinforcing because 
 
 **1. Slope = trend.** Rising MA → uptrend. Falling → downtrend. Flat → range/chop.
 
+<LineChart
+  caption="One MA, three regimes: a rising slope, a flat slope, then a falling slope"
+  height={300}
+  series={[
+    { label: "Price", data: [20, 23, 21, 26, 24, 29, 28, 27, 29, 28, 30, 27, 24, 26, 22, 19, 21, 17], color: "#e6e9ef", width: 2 },
+    { label: "Moving average", data: [null, null, 21.3, 23.3, 23.7, 26.3, 27, 28, 28.3, 28, 29, 28.3, 27, 25.7, 24, 22.3, 20.7, 19], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 23.3, text: "rising = uptrend", color: "#22c55e" },
+    { x: 9, y: 28, text: "flat = range", color: "#f59e0b" },
+    { x: 16, y: 20.7, text: "falling = downtrend", color: "#ef4444" }
+  ]}
+/>
+
 **2. Price vs. MA.** Price above the MA is generally bullish; below is generally bearish. A *price crossover* (price crossing through the line) is the simplest signal.
 
+<LineChart
+  caption="Price crossover: a close back above the MA flips the bias from bearish to bullish"
+  height={300}
+  series={[
+    { label: "Price", data: [30, 28, 25, 23, 24, 22, 23, 25, 27, 28, 30, 31], color: "#e6e9ef", width: 2 },
+    { label: "Moving average", data: [29, 28, 27, 25.5, 24.5, 24, 23.7, 24, 25, 26, 27.5, 29], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 28, text: "cross below (bearish)", color: "#ef4444" },
+    { x: 8, y: 27, text: "cross above (bullish)", color: "#22c55e" }
+  ]}
+/>
+
 **3. Dynamic support and resistance.** In an uptrend, pullbacks often stall and bounce near a rising MA (commonly the 20 or 50) — the MA acts as a moving floor, or **support**. In a downtrend it acts as a moving ceiling, or **resistance**. Treat these as *zones*, not exact prices; markets routinely overshoot by a bit before turning ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/moving-averages-simple-and-exponential)).
+
+<LineChart
+  caption="A rising 50-day MA acting as dynamic support: each pullback stalls near the line and bounces"
+  height={300}
+  series={[
+    { label: "Price", data: [22, 26, 23, 28, 25, 31, 28, 34, 31, 37, 34, 40], color: "#e6e9ef", width: 2 },
+    { label: "50-day MA (rising support)", data: [21, 22, 23, 24.5, 25.5, 27, 28.5, 30.5, 31.5, 33.5, 34.5, 36], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 23, text: "bounce", color: "#22c55e" },
+    { x: 4, y: 25, text: "bounce", color: "#22c55e" },
+    { x: 8, y: 31, text: "bounce", color: "#22c55e" }
+  ]}
+/>
 
 ## Crossover systems: golden cross & death cross
 
@@ -142,6 +210,18 @@ Worked logic (illustrative): if the 50-day is at 102 and climbing while the 200-
   ]}
 />
 
+<LineChart
+  caption="A death cross: the faster 50-day falls through the slower 200-day"
+  height={300}
+  series={[
+    { label: "50-day MA", data: [106, 105, 104, 103, 101, 100, 99, 98, 96, 94, 92], color: "#38bdf8", width: 2 },
+    { label: "200-day MA", data: [101, 101, 101, 100, 100, 100, 100, 100, 100, 99, 99], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 6, y: 99.5, text: "death cross", color: "#ef4444" }
+  ]}
+/>
+
 A complete **crossover trading system** is just: *go long when the fast MA crosses above the slow MA, exit or short when it crosses below.* Simple, mechanical, and the basis of countless strategies.
 
 <Callout type="warning">
@@ -149,6 +229,21 @@ A complete **crossover trading system** is just: *go long when the fast MA cross
 Crossovers can be highly profitable in strong, sustained trends — and brutal in sideways markets, where the two lines tangle and produce a string of **whipsaws** (signals that reverse almost immediately, each one a small loss). Golden and death crosses are also *late by construction*: by the time the 50-day crosses the 200-day, a large part of the move has already happened. They confirm trends; they don't predict them.
 
 </Callout>
+
+<LineChart
+  caption="Whipsaws in a flat market: the fast and slow MAs tangle, firing cross after cross that each reverses"
+  height={300}
+  series={[
+    { label: "Fast MA", data: [50, 51, 49, 52, 48, 51, 49, 52, 48, 51, 49, 52], color: "#38bdf8", width: 2 },
+    { label: "Slow MA", data: [50, 50.2, 50, 50.3, 49.8, 50.2, 49.9, 50.3, 49.7, 50.2, 49.9, 50.3], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 51, text: "buy", color: "#22c55e" },
+    { x: 2, y: 49, text: "sell", color: "#ef4444" },
+    { x: 3, y: 52, text: "buy", color: "#22c55e" },
+    { x: 4, y: 48, text: "sell", color: "#ef4444" }
+  ]}
+/>
 
 ## The fundamental tradeoff: lag
 
@@ -168,6 +263,20 @@ Because MAs are lagging trend tools, the standard move is to pair them with a no
 
 - **MA + RSI (Relative Strength Index).** Use the MA to define the trend's direction, then use RSI (a momentum oscillator) to time entries on pullbacks — e.g., buy when price dips to a rising 50-day MA *and* RSI is recovering from oversold.
 - **Multiple MAs (a "ribbon").** Stacking 20/50/200 lets you read trend strength at a glance: cleanly fanned out and in order = strong trend; tangled = no trend, stand aside.
+
+<LineChart
+  caption="MA ribbon: cleanly fanned (20 over 50 over 200) signals a strong uptrend; when the lines tangle, stand aside"
+  height={300}
+  series={[
+    { label: "20-day", data: [30, 33, 36, 40, 43, 42, 41, 42, 41, 42], color: "#38bdf8", width: 2 },
+    { label: "50-day", data: [28, 30, 33, 36, 39, 40, 40, 41, 41, 41.5], color: "#2dd4bf", width: 2 },
+    { label: "200-day", data: [27, 28, 30, 32, 35, 38, 40, 41, 41.5, 42], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 4, y: 43, text: "fanned = strong trend", color: "#22c55e" },
+    { x: 8, y: 41, text: "tangled = stand aside", color: "#f59e0b" }
+  ]}
+/>
 - **MA + support/resistance + volume.** A bounce off the 50-day on rising volume is more convincing than one on thin volume.
 - **MACD**, one of the most popular indicators, is *literally* built from EMAs (the difference between a 12- and 26-period EMA), so it's a natural companion.
 

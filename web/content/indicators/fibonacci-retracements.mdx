@@ -76,6 +76,29 @@ A retracement needs exactly **two points**: the start and end of the swing you c
 
 The 0% line sits at the end of the move; the 100% line sits at its start. The Fibonacci levels fall in between.
 
+<LineChart
+  caption="Downtrend anchoring: drag high→low, levels project upward, and a bounce stalls at the 38.2% retracement as resistance"
+  height={320}
+  yMin={95}
+  yMax={155}
+  series={[
+    { label: "Price", data: [150, 138, 126, 114, 100, 108, 116, 119, 116, 110, 103], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 100, label: "0% ($100)", color: "#a78bfa" },
+    { y: 111.8, label: "23.6% ($111.80)", color: "#a78bfa" },
+    { y: 119.1, label: "38.2% ($119.10)", color: "#f59e0b" },
+    { y: 125, label: "50% ($125)", color: "#a78bfa" },
+    { y: 130.9, label: "61.8% ($130.90)", color: "#a78bfa" },
+    { y: 150, label: "100% ($150)", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 0, y: 150, text: "swing high", color: "#ef4444" },
+    { x: 4, y: 100, text: "swing low", color: "#22c55e" },
+    { x: 7, y: 119, text: "38.2% resistance", color: "#ef4444" }
+  ]}
+/>
+
 ### Worked example (illustrative numbers)
 
 Suppose a stock rallies from **\$100 (swing low) to \$150 (swing high)** — a \$50 move. You anchor the tool low-to-high. The retracement levels are:
@@ -164,6 +187,24 @@ Things that strengthen a Fibonacci level:
 - A **trendline** intersecting there.
 
 As StockCharts puts it: *"The more confirming factors, the more robust the signal."*
+
+<LineChart
+  caption="Confluence: the 61.8% retracement, a prior horizontal support level, and the rising 50-day moving average all stack at the same zone — where price turns"
+  height={320}
+  yMin={110}
+  yMax={155}
+  series={[
+    { label: "Price", data: [150, 142, 134, 127, 121, 119, 124, 131, 139, 147], color: "#e6e9ef", width: 2 },
+    { label: "50-day MA", data: [128, 128.5, 129, 119.5, 119, 119, 120, 121.5, 123, 125], color: "#38bdf8", width: 2, dashed: true }
+  ]}
+  levels={[
+    { y: 119.1, label: "61.8% Fib ($119.10)", color: "#f59e0b" },
+    { y: 120, label: "prior support", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 5, y: 119, text: "3-way confluence → turn", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="key">
 

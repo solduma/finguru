@@ -46,6 +46,21 @@ Every Ichimoku line is built from one humble idea: the **midpoint of the highest
 
 Two things make Ichimoku unusual. First, notice these are **midpoint-of-range** lines, *not* moving averages of closing prices like a typical MA. Second, two of the lines are deliberately **time-shifted**: Senkou A and B are pushed 26 periods into the future, and the Chikou Span is pushed 26 periods into the past. [[2]](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud)
 
+<LineChart
+  caption="The two time-shifts: the cloud (Senkou A/B) leads price by 26 periods to the right; the Chikou Span lags by 26 to the left"
+  height={300}
+  series={[
+    { label: "Price (close)", data: [50, 52, 51, 54, 57, 59, 62, 64, null, null, null], color: "#e6e9ef", width: 2 },
+    { label: "Chikou Span (close, -26)", data: [62, 64, null, null, null, null, null, null, null, null, null], color: "#a78bfa", width: 2 },
+    { label: "Senkou A/B cloud (+26)", data: [null, null, null, null, null, null, null, null, 60, 62, 64], color: "#22c55e", dashed: true, width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 62, text: "Chikou: now's close, plotted in the past", color: "#a78bfa" },
+    { x: 7, y: 64, text: "today", color: "#e6e9ef" },
+    { x: 10, y: 64, text: "cloud projected into the future", color: "#22c55e" }
+  ]}
+/>
+
 Let's give each line a plain-English job.
 
 | Line | Speed | What it tells you |
@@ -103,8 +118,54 @@ Think of Ichimoku as a stack of filters that should agree before you act. [[3]](
 1. **Where is price vs. the cloud?** Above = bullish bias, below = bearish bias, inside = no trade.
 2. **What color is the cloud (now and ahead)?** A green cloud ahead supports longs; a red one supports shorts. A cloud about to flip color is an early warning.
 3. **The TK cross.** When the fast **Tenkan-sen crosses above the Kijun-sen**, that's a bullish momentum signal (a "golden cross" of the two); crossing below is bearish. Its strength depends on *where* it happens: a bullish TK cross above a green cloud, with price above the cloud, is strong; the same cross inside the cloud is weak and easily reversed. [[2]](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/ichimoku-cloud)
+
+<LineChart
+  caption="TK-cross quality by location: a bullish cross inside the cloud (left) chops out; the same cross above the cloud (right) holds"
+  height={300}
+  series={[
+    { label: "Tenkan-sen", data: [49, 50, 51, 49, 48, 50, 54, 58, 61, 63], color: "#2dd4bf", width: 2 },
+    { label: "Kijun-sen", data: [50, 50, 50, 50, 50, 51, 52, 54, 56, 58], color: "#38bdf8", width: 2 },
+    { label: "Cloud top", data: [52, 52, 52, 52, 52, 51, 51, 50, 50, 50], color: "#a78bfa", dashed: true, width: 1 },
+    { label: "Cloud bottom", data: [48, 48, 48, 48, 48, 48, 48, 48, 48, 48], color: "#a78bfa", dashed: true, width: 1 }
+  ]}
+  points={[
+    { x: 2, y: 50.5, text: "weak cross (inside cloud)", color: "#ef4444" },
+    { x: 6, y: 53, text: "strong cross (above cloud)", color: "#22c55e" }
+  ]}
+  zones={[
+    { yMin: 48, yMax: 52, color: "rgba(148,163,184,0.14)", label: "cloud" }
+  ]}
+/>
+
 4. **Kijun-sen as a level.** The Base Line acts as a magnet and as support/resistance; price tends to revert toward it and bounce off it in trends.
+
+<LineChart
+  caption="Kijun-sen as a magnet and support: price runs ahead, pulls back to the Base Line, and bounces off it in the uptrend"
+  height={300}
+  series={[
+    { label: "Price", data: [52, 56, 59, 55, 54, 58, 62, 59, 58, 63], color: "#e6e9ef", width: 2 },
+    { label: "Kijun-sen", data: [52, 53, 54, 54, 54, 55, 56, 57, 58, 59], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 4, y: 54, text: "pullback bounces off Kijun", color: "#22c55e" },
+    { x: 8, y: 58, text: "tags Kijun again, holds", color: "#22c55e" }
+  ]}
+/>
+
 5. **The Chikou Span check.** Because it's today's close shifted 26 periods back, you read it against the *price action of 26 periods ago*. If the Chikou is above that old price (and above the cloud), it confirms a clean uptrend with no overhead supply nearby; if it's tangled inside old candles, the signal is muddy.
+
+<LineChart
+  caption="Chikou Span confirmation: the lagging line sits clearly above the price candles from 26 periods ago — clean uptrend, no overhead supply"
+  height={300}
+  series={[
+    { label: "Old price (26 periods ago)", data: [50, 51, 49, 50, 52, 51, 50, 49, 50, 51], color: "#e6e9ef", width: 2 },
+    { label: "Chikou Span (now's close, -26)", data: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 59, text: "Chikou floats above old price = confirmed", color: "#22c55e" },
+    { x: 2, y: 49, text: "old candles", color: "#e6e9ef" }
+  ]}
+/>
 
 A textbook **strong bullish setup**: price above a green cloud, a bullish TK cross occurring above the cloud, and the Chikou Span floating above both old price and the old cloud. When all the filters agree, that's the "one glance" working as intended.
 
@@ -170,6 +231,23 @@ Other frequent traps: trading TK crosses that happen *inside* the cloud (low qua
 ## Practice suggestions
 
 - Pull up a trending instrument and a range-bound one side by side. Notice how cleanly Ichimoku reads the trend and how badly it whipsaws in the range.
+
+<LineChart
+  caption="Why Ichimoku is a trend tool: in a range, price ping-pongs across a flat cloud, firing repeated false TK crosses (whipsaw)"
+  height={300}
+  series={[
+    { label: "Price", data: [52, 48, 53, 47, 52, 48, 53, 47, 52, 48], color: "#e6e9ef", width: 2 },
+    { label: "Cloud top", data: [51, 51, 51, 51, 51, 51, 51, 51, 51, 51], color: "#ef4444", dashed: true, width: 1 },
+    { label: "Cloud bottom", data: [49, 49, 49, 49, 49, 49, 49, 49, 49, 49], color: "#ef4444", dashed: true, width: 1 }
+  ]}
+  points={[
+    { x: 2, y: 53, text: "false long", color: "#ef4444" },
+    { x: 5, y: 48, text: "false short", color: "#ef4444" }
+  ]}
+  zones={[
+    { yMin: 49, yMax: 51, color: "rgba(148,163,184,0.14)", label: "flat cloud" }
+  ]}
+/>
 - Hand-calculate Tenkan and Kijun for five days from raw highs and lows to internalize the midpoint formula.
 - Backtest one rule only — "long when price closes above a green cloud, exit when it closes back inside" — and log the results before adding complexity.
 

@@ -58,6 +58,23 @@ Everything in Wyckoff rests on three principles.
 
 **Effort vs. result, concretely (illustrative):** Suppose a stock pushes to a new high on its heaviest volume in months, but closes near the *low* of that bar and finishes the week flat. Enormous effort, almost no result. Someone large was selling into every buyer. That's a classic warning of distribution.
 
+<CandleChart
+  caption="Effort vs. result — a new high on huge effort that closes near the bar's low (long upper wick, weak close), then stalls: supply absorbing demand"
+  height={300}
+  candles={[
+    { o: 40, h: 43, l: 39, c: 42 },
+    { o: 42, h: 46, l: 41, c: 45 },
+    { o: 45, h: 49, l: 44, c: 48 },
+    { o: 48, h: 55, l: 47, c: 49 },
+    { o: 49, h: 51, l: 47, c: 48 },
+    { o: 48, h: 50, l: 46, c: 47 }
+  ]}
+  points={[
+    { x: 3, y: 55, text: "huge effort, weak close", color: "#ef4444" },
+    { x: 5, y: 46, text: "no result", color: "#ef4444" }
+  ]}
+/>
+
 ## The price cycle
 
 Wyckoff sees markets cycling through four repeating phases:
@@ -68,6 +85,20 @@ Accumulation  →  Markup  →  Distribution  →  Markdown  →  (repeat)
 ```
 
 Accumulation and distribution happen in sideways **trading ranges (TRs)** — places where the prior trend stalls and supply and demand reach rough equilibrium while the Composite Man does his quiet buying or selling. Markup and markdown are the trends in between. Wyckoff's whole edge is buying near the *end* of accumulation and selling near the *end* of distribution — when risk is lowest and the move hasn't started yet.
+
+<LineChart
+  caption="The Wyckoff price cycle — accumulation (buy) leads to markup, distribution (sell) leads to markdown, then it repeats"
+  height={300}
+  series={[
+    { label: "Price", data: [30, 31, 29, 30, 31, 30, 45, 60, 72, 80, 79, 81, 80, 79, 80, 65, 50, 38, 31, 30], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 29, text: "Accumulation", color: "#22c55e" },
+    { x: 7, y: 60, text: "Markup", color: "#2dd4bf" },
+    { x: 12, y: 80, text: "Distribution", color: "#ef4444" },
+    { x: 17, y: 38, text: "Markdown", color: "#f59e0b" }
+  ]}
+/>
 
 ## The accumulation schematic and its events
 
@@ -110,11 +141,50 @@ These map onto **phases A–E**: Phase A stops the downtrend (PS, SC, AR, ST); P
 
 Distribution is the mirror image at a top: **PSY** (Preliminary Supply), **BC** (Buying Climax), **AR** (Automatic Reaction), **ST**, **SOW** (Sign of Weakness), **LPSY** (Last Point of Supply), and the **UTAD** (Upthrust After Distribution) — a spike *above* resistance that fails, the bull-trap counterpart to the spring.
 
+<LineChart
+  caption="Wyckoff distribution schematic — the mirror of accumulation: PSY, BC, AR, ST, UTAD (failed upthrust), SOW, LPSY, then markdown"
+  height={340}
+  series={[
+    { label: "Price", data: [40, 48, 56, 61, 58, 50, 52, 55, 53, 56, 54, 57, 64, 53, 47, 50, 44, 38], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50, label: "TR support (AR low)", color: "#a78bfa" },
+    { y: 58, label: "TR resistance (BC area)", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 1, y: 48, text: "PSY", color: "#38bdf8" },
+    { x: 3, y: 61, text: "BC", color: "#ef4444" },
+    { x: 5, y: 50, text: "AR", color: "#22c55e" },
+    { x: 7, y: 55, text: "ST", color: "#38bdf8" },
+    { x: 12, y: 64, text: "UTAD (pokes above, fails)", color: "#ef4444" },
+    { x: 14, y: 47, text: "SOW", color: "#ef4444" },
+    { x: 15, y: 50, text: "LPSY", color: "#f59e0b" },
+    { x: 17, y: 38, text: "markdown", color: "#ef4444" }
+  ]}
+/>
+
 <Callout type="warning">
 
 The spring and the UTAD are *not required* events. Plenty of valid accumulation ranges never spring. Beginners force the label onto every dip, then get caught when a "spring" just keeps falling. Wait for the *reversal back inside the range on shrinking supply* to confirm it — the trap has to actually snap shut.
 
 </Callout>
+
+<LineChart
+  caption="Spring vs. failed 'spring' — a true spring stabs below support and snaps back inside (bear trap); a failed one keeps falling, proving real supply"
+  height={300}
+  series={[
+    { label: "True spring", data: [50, 48, 49, 47, 43, 49, 52, 55], color: "#22c55e", width: 2 },
+    { label: "Failed spring", data: [50, 48, 49, 47, 43, 41, 37, 33], color: "#ef4444", width: 2 }
+  ]}
+  levels={[
+    { y: 47, label: "range support", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 4, y: 43, text: "stab below support", color: "#f59e0b" },
+    { x: 6, y: 52, text: "snaps back in", color: "#22c55e" },
+    { x: 6, y: 37, text: "keeps falling", color: "#ef4444" }
+  ]}
+/>
 
 ## Cause and effect: point-and-figure counting
 
@@ -135,6 +205,26 @@ Max target  = count-line level + count
 ```
 
 If the range low were, say, 30,000, the minimum objective would be 33,600. Note the honesty here: Wyckoff gives a *range* of objectives (minimum, midpoint, maximum) to "stop, look, and listen" at — not a single magic number — and only complete P&F phases are counted.
+
+<LineChart
+  caption="Cause and effect — the wide trading range (the 'cause', ~30,000 with 3,600 count) projects up to a band of objectives (the 'effect')"
+  height={320}
+  series={[
+    { label: "Price", data: [30000, 29800, 30100, 29900, 30200, 30000, 30100, 29900, 30200, 30000, 30900, 32100, 33000, 33700], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 30000, label: "TR low (count line)", color: "#a78bfa" },
+    { y: 33600, label: "min objective (+3,600)", color: "#22c55e" },
+    { y: 35400, label: "max objective", color: "#2dd4bf" }
+  ]}
+  zones={[
+    { yMin: 33600, yMax: 35400, color: "rgba(34,197,94,0.12)", label: "objective band" }
+  ]}
+  points={[
+    { x: 5, y: 30000, text: "the cause (range)", color: "#38bdf8" },
+    { x: 13, y: 33700, text: "the effect", color: "#22c55e" }
+  ]}
+/>
 
 ## A worked reading (illustrative)
 

@@ -42,6 +42,8 @@ Farley originally called his framework the **"Traders Wheel"** — a concept he 
 Bottoms → Breakouts → Rallies → Highs → Tops → Reversals → Declines → (back to Bottoms)
 ```
 
+In plain terms, the stages are: **Bottoms** (price stops falling and goes quiet, building a base), **Breakouts** (it finally pushes up out of that base), **Rallies** (the sustained climb), **Highs** (the strong, still-trending peak), **Tops** (the climb stalls and rolls into a sideways range — the trend is exhausting), **Reversals** (price turns down and confirms the trend has flipped), and **Declines** (the sustained fall, which eventually quiets down into the next Bottom). Note the deliberate split between *Highs* (still healthy, trend intact) and *Tops* (trend stalling) — that distinction is exactly the kind of context the whole framework hangs on.
+
 You may recognize the skeleton of Richard Wyckoff and the older accumulation/markup/distribution/markdown idea — Farley is explicitly in that lineage. His contribution is operational: he ties each stage to (a) the crowd emotion driving it and (b) the specific setups that work *in that stage and nowhere else*.
 
 <LineChart
@@ -63,6 +65,24 @@ You may recognize the skeleton of Richard Wyckoff and the older accumulation/mar
 
 The organizing concept underneath the cycle is the **trend–range axis**. Markets are always doing one of two things: *trending* (directional movement) or *ranging* (sideways consolidation). Tradeable energy is released at the *transitions* — range giving way to trend (a breakout) or trend exhausting into a range (a top). Most of Farley's setups are bets on a specific transition.
 
+<LineChart
+  caption="The trend–range axis: a range resolves into a trend at the breakout, then exhausts back into a new range"
+  height={300}
+  series={[
+    { label: "Price", data: [30, 31, 29.5, 30.5, 29.8, 30.2, 30, 32, 35, 38, 40, 42, 43, 43.5, 42.8, 43.2, 43, 43.4], color: "#e6e9ef", width: 2 }
+  ]}
+  zones={[
+    { yMin: 29, yMax: 31.5, color: "rgba(56,189,248,0.12)", label: "range" }
+  ]}
+  trendlines={[
+    { x1: 6, y1: 30, x2: 12, y2: 43, color: "#a78bfa", label: "trend", dashed: false }
+  ]}
+  points={[
+    { x: 6, y: 30, text: "breakout (range→trend)", color: "#22c55e" },
+    { x: 13, y: 43.5, text: "top (trend→range)", color: "#f59e0b" }
+  ]}
+/>
+
 <Callout type="key">
 
 The practical upgrade over "just trade the pattern": before you take any setup, you first classify the stage (where in the cycle?) and the trend–range state (trending or ranging?). The setup only earns a trade if it agrees with that context.
@@ -79,6 +99,42 @@ The strongest "independent thing" is *another time frame*. A bounce on the 15-mi
 - **Divergence** = time frames disagree (daily says "up," weekly says "topping") → conflict, lower probability, stand aside or size down.
 
 A practical way Farley operationalizes this is **multi–time-frame Fibonacci retracements**: draw retracements on weekly, daily, and intraday charts and look for prices where the levels stack. Where they cluster, the crowd's memory of price is concentrated, and reversals there are more reliable.
+
+<LineChart
+  caption="Convergence: a pullback bottoms where a weekly 50% and a daily 61.8% Fibonacci retracement stack, then bounces"
+  height={300}
+  series={[
+    { label: "Price", data: [60, 57, 54, 51, 49, 50.5, 52, 54.5, 56, 58], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50.5, label: "weekly 50% retr.", color: "#38bdf8" },
+    { y: 49.5, label: "daily 61.8% retr.", color: "#2dd4bf" }
+  ]}
+  zones={[
+    { yMin: 49, yMax: 50.8, color: "rgba(34,197,94,0.12)", label: "Fib cluster" }
+  ]}
+  points={[
+    { x: 4, y: 49, text: "convergence bounce", color: "#22c55e" }
+  ]}
+/>
+
+When the time frames *disagree* instead — the daily makes a higher high while the weekly is rolling over at resistance — that conflict is **divergence**: stand aside or size down.
+
+<LineChart
+  caption="Divergence: a lower-frame uptrend pushes higher while the higher frame stalls at resistance — conflicting signals"
+  height={300}
+  series={[
+    { label: "Daily (lower frame)", data: [40, 41, 42, 43, 44, 45, 46], color: "#38bdf8", width: 2 },
+    { label: "Weekly (higher frame)", data: [40, 41, 41.5, 41.7, 41.6, 41.4, 41.2], color: "#a78bfa", width: 2 }
+  ]}
+  levels={[
+    { y: 41.8, label: "weekly resistance", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 6, y: 46, text: "daily: still up", color: "#38bdf8" },
+    { x: 6, y: 41.2, text: "weekly: topping", color: "#ef4444" }
+  ]}
+/>
 
 ## The 7 Bells
 
@@ -99,6 +155,92 @@ The "**7 Bells**" are Farley's named, original setups — each is essentially "a
 Don't trade the bells as a checklist of shapes. Each is only valid in its stage of the Pattern Cycle. A "Coiled Spring" near a mature top is a coin flip; the same spring at the end of a base is the high-probability version. The bell describes *what* to look for; the cycle tells you *whether to trust it*.
 
 </Callout>
+
+A few of the bells are worth seeing as shapes. The **Dip Trip** buys a shallow pullback against a strong uptrend, expecting a sharp rebound:
+
+<CandleChart
+  caption="Dip Trip: a brief pullback against a strong uptrend, bought as it rebounds off rising support"
+  height={300}
+  candles={[
+    { o: 30, h: 31.5, l: 29.8, c: 31.3 },
+    { o: 31.3, h: 33, l: 31.1, c: 32.8 },
+    { o: 32.8, h: 34.2, l: 32.6, c: 34 },
+    { o: 34, h: 34.3, l: 32.7, c: 33 },
+    { o: 33, h: 33.2, l: 31.9, c: 32.2 },
+    { o: 32.2, h: 33.6, l: 32, c: 33.5 },
+    { o: 33.5, h: 35.4, l: 33.3, c: 35.2 },
+    { o: 35.2, h: 37, l: 35, c: 36.8 }
+  ]}
+  points={[
+    { x: 4, y: 31.7, text: "buy the dip", color: "#22c55e" }
+  ]}
+  levels={[
+    { y: 31.9, label: "rising support" }
+  ]}
+/>
+
+The **Hole-in-the-Wall** is the bearish mirror: after a strong rally, a gap *down* opens below the prior close, signaling distribution and a likely trend change:
+
+<CandleChart
+  caption="Hole-in-the-Wall: a gap-down opens below the prior close after a rally, flagging a trend change"
+  height={300}
+  candles={[
+    { o: 40, h: 41.5, l: 39.8, c: 41.3 },
+    { o: 41.3, h: 42.8, l: 41.1, c: 42.6 },
+    { o: 42.6, h: 44, l: 42.4, c: 43.8 },
+    { o: 43.8, h: 44.4, l: 43.5, c: 44.1 },
+    { o: 42, h: 42.3, l: 40.5, c: 40.8 },
+    { o: 40.8, h: 41, l: 38.9, c: 39.1 },
+    { o: 39.1, h: 39.3, l: 37.2, c: 37.5 }
+  ]}
+  points={[
+    { x: 4, y: 43, text: "gap down", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 44.1, label: "prior close" }
+  ]}
+/>
+
+The **Bear Hug** is a short setup: a weak market rallies into overhead resistance, fails there, and drops quickly:
+
+<CandleChart
+  caption="Bear Hug: a weak rally pushes into resistance, fails, and reverses sharply lower — a short setup"
+  height={300}
+  candles={[
+    { o: 25, h: 26, l: 24.7, c: 25.8 },
+    { o: 25.8, h: 27.2, l: 25.6, c: 27 },
+    { o: 27, h: 27.9, l: 26.8, c: 27.7 },
+    { o: 27.7, h: 28.1, l: 27.4, c: 27.6 },
+    { o: 27.6, h: 27.8, l: 26.2, c: 26.4 },
+    { o: 26.4, h: 26.6, l: 24.8, c: 25 },
+    { o: 25, h: 25.1, l: 23.4, c: 23.6 }
+  ]}
+  points={[
+    { x: 3, y: 28.4, text: "fails at resistance", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 28, label: "resistance" }
+  ]}
+/>
+
+The **3rd Watch** is a breakout through a triple top — price stalls at the same ceiling three times, and the fourth push clears it into a major new uptrend:
+
+<LineChart
+  caption="3rd Watch: price is rejected at the same ceiling three times, then the breakout clears it"
+  height={300}
+  series={[
+    { label: "Price", data: [44, 49.8, 47, 50, 46.5, 49.9, 47.5, 52, 55], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50, label: "triple-top ceiling", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 49.8, text: "1", color: "#f59e0b" },
+    { x: 3, y: 50, text: "2", color: "#f59e0b" },
+    { x: 5, y: 49.9, text: "3", color: "#f59e0b" },
+    { x: 7, y: 52, text: "breakout", color: "#22c55e" }
+  ]}
+/>
 
 ## Patterns are crowd psychology, drawn
 
@@ -167,6 +309,18 @@ Timing is the whole game. Farley wants entries right at the structural inflectio
 In *The Master Swing Trader*, Farley is openly critical of J. Welles Wilder's later **"Adam Theory of Markets"** (1987) — Wilder's claim that markets are essentially symmetrical and that you can forecast future moves by reflecting past price action, discarding the very indicators (RSI, ADX, Parabolic SAR) that Wilder himself had introduced in 1978 and made famous.
 
 Farley's objection is on principle: there is no reliable symmetry to exploit, and a method that throws away confirmation tools in favor of a single mirror-image forecast contradicts the entire cross-verification philosophy. His stance is honest and worth internalizing — the lesson isn't "Wilder bad," it's that **single-tool, single–time-frame prediction is fragile**; robustness comes from convergence, not from one elegant rule.
+
+<LineChart
+  caption="Adam Theory's premise (dashed) reflects past price into a mirror-image forecast; Farley's point is that real markets rarely oblige"
+  height={300}
+  series={[
+    { label: "Past price", data: [20, 24, 22, 27, 31, 29, 34, null, null, null, null, null, null, null], color: "#e6e9ef", width: 2 },
+    { label: "Mirror forecast", data: [null, null, null, null, null, null, 34, 29, 31, 27, 22, 24, 20, 18], color: "#a78bfa", width: 2, dashed: true }
+  ]}
+  points={[
+    { x: 6, y: 34, text: "mirror axis", color: "#f59e0b" }
+  ]}
+/>
 
 ## Honest criticisms and pitfalls
 

@@ -33,6 +33,23 @@ This gives us the single most important way to read raw volume:
 | Price down, volume up | Strong selling pressure — trend likely continues |
 | Price down, volume down | Selling may be drying up — watch for a bottom |
 
+<CandleChart
+  caption="Healthy uptrend: up-days arrive on heavy volume, the pullback on light volume — participation confirms the trend"
+  height={300}
+  candles={[
+    { o: 40, h: 42, l: 39.5, c: 41.8 },
+    { o: 41.8, h: 44, l: 41.5, c: 43.7 },
+    { o: 43.7, h: 44.2, l: 42.8, c: 43.1 },
+    { o: 43.1, h: 45.5, l: 43, c: 45.3 },
+    { o: 45.3, h: 47.5, l: 45.1, c: 47.2 }
+  ]}
+  points={[
+    { x: 1, y: 44.5, text: "big up-day, heavy volume", color: "#22c55e" },
+    { x: 2, y: 42.5, text: "pullback, light volume", color: "#38bdf8" },
+    { x: 4, y: 48, text: "breakout, heavy volume", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="note">
 
 "High" and "low" volume are always *relative*. There is no universal number. Judge today's volume against this security's own recent average (say, the last 20–50 days). A 50-day volume moving average plotted over the volume bars makes "above average" and "below average" obvious at a glance.
@@ -44,6 +61,32 @@ This gives us the single most important way to read raw volume:
 A **volume spike** is a single bar far above the recent average — often 2x, 3x, or more. Spikes mark moments of unusual emotion or new information: earnings, news, or a forced wave of buying or selling.
 
 A special case is **climax volume**: an enormous volume spike at the *end* of a strong move, often on a sharp price extension. A **selling climax** is panic dumping near a bottom — everyone who was going to sell finally capitulates at once, which paradoxically clears the way for a bounce because there is little selling left. A **buying climax** (or "blow-off top") is the mirror image near a top: euphoric buying that exhausts the last willing buyers. The intuition: when the *maximum* number of participants act in one direction, there is nobody left to push further, so reversals often follow.
+
+<LineChart
+  caption="Selling climax: a sharp final plunge on a huge volume spike marks capitulation, and price bounces"
+  height={300}
+  series={[
+    { label: "Price", data: [60, 56, 51, 45, 38, 33, 40, 44], color: "#e6e9ef", width: 2 },
+    { label: "Volume (scaled)", data: [42, 45, 50, 58, 72, 95, 50, 40], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 33, text: "selling climax — panic low", color: "#22c55e" },
+    { x: 5, y: 95, text: "volume spike: last sellers capitulate", color: "#f59e0b" }
+  ]}
+/>
+
+<LineChart
+  caption="Buying climax (blow-off top): a vertical final surge on peak volume exhausts buyers, then reverses"
+  height={300}
+  series={[
+    { label: "Price", data: [40, 44, 49, 55, 62, 67, 60, 56], color: "#e6e9ef", width: 2 },
+    { label: "Volume (scaled)", data: [42, 45, 50, 58, 72, 95, 55, 45], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 67, text: "buying climax — euphoric top", color: "#ef4444" },
+    { x: 5, y: 95, text: "volume spike: last buyers exhausted", color: "#f59e0b" }
+  ]}
+/>
 
 <Callout type="warning">
 
@@ -120,7 +163,35 @@ Notice Day 4: price was flat, so OBV ignored 900 shares entirely. And notice tha
   ]}
 />
 
+<LineChart
+  caption="Bullish divergence: price prints a lower low while OBV prints a higher low — selling is exhausting"
+  height={300}
+  series={[
+    { label: "Price", data: [50, 46, 49, 43, 47, 41], color: "#e6e9ef", width: 2 },
+    { label: "OBV", data: [50, 44, 48, 45, 50, 47], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 46, text: "low 1", color: "#e6e9ef" },
+    { x: 5, y: 41, text: "lower low", color: "#ef4444" },
+    { x: 1, y: 44, text: "OBV low 1", color: "#2dd4bf" },
+    { x: 5, y: 47, text: "higher low — divergence", color: "#22c55e" }
+  ]}
+/>
+
 This is the analytical home of the **accumulation/distribution** idea. A flat-to-falling price while OBV quietly climbs suggests *accumulation* — large ("smart money") buyers absorbing shares without pushing price up yet. A flat-to-rising price while OBV falls suggests *distribution* — big holders quietly unloading into the rally.
+
+<LineChart
+  caption="Accumulation: price drifts flat-to-down while OBV quietly climbs — smart money absorbing shares"
+  height={300}
+  series={[
+    { label: "Price", data: [50, 49, 50, 48, 49, 48], color: "#e6e9ef", width: 2 },
+    { label: "OBV", data: [40, 43, 45, 49, 52, 56], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 48, text: "price flat-to-down", color: "#e6e9ef" },
+    { x: 5, y: 56, text: "OBV rising = accumulation", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="warning">
 
@@ -131,6 +202,24 @@ Divergence is a *condition*, not a trigger. Markets can diverge for a long time 
 ## Volume-by-Price: where the volume happened
 
 OBV tracks volume over *time*. **Volume-by-Price** (also called a volume profile) tracks volume over *price* — it draws horizontal bars showing how much volume traded within each price zone over the period on your chart. Long bars mark prices where heavy trading occurred; those zones tend to act as **support** (when below current price) or **resistance** (when above), because lots of people have positions anchored there. It is a powerful complement: OBV says *whether* pressure is building; Volume-by-Price says *at what price levels* battles will likely be fought.
+
+<LineChart
+  caption="Volume-by-Price: a high-volume node becomes resistance overhead and support below as price oscillates around it"
+  height={300}
+  series={[
+    { label: "Price", data: [44, 47, 50, 49, 51, 50, 47, 50], color: "#e6e9ef", width: 2 }
+  ]}
+  zones={[
+    { yMin: 49.5, yMax: 50.5, color: "rgba(167,139,250,0.18)", label: "high-volume node (most shares traded)" }
+  ]}
+  levels={[
+    { y: 50, label: "heavy-trading price = support/resistance", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 4, y: 51, text: "rejected from above", color: "#ef4444" },
+    { x: 7, y: 50, text: "supported from below", color: "#22c55e" }
+  ]}
+/>
 
 ## Settings, strengths, and beginner mistakes
 

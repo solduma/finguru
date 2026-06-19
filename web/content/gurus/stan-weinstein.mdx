@@ -64,9 +64,58 @@ A practical note: many platforms and traders substitute the **200-day MA** as a 
 
 **Stage 2 — Advancing.** This is the only stage where Weinstein wants you buying. The trigger is a **breakout**: price punches decisively above the Stage 1 resistance ceiling, the 30-week MA has turned up, and the breakout happens on a clear **expansion in volume** (loosely, weekly volume well above its recent average — a rough rule of thumb is at least double the recent average, but it's the surge that matters, not a magic number). After the breakout you can add on pullbacks that hold near the rising MA. Weinstein's mantra here is "buy right and sit tight."
 
+<LineChart
+  caption="Stage 2 breakout: price clears the resistance ceiling on a surge in weekly volume, then pulls back to the rising MA"
+  height={300}
+  series={[
+    { label: "Price", data: [38, 39, 38, 40, 39, 45, 48, 47, 51, 49, 54], color: "#e6e9ef", width: 2 },
+    { label: "30-week MA", data: [40, 39, 39, 39, 39, 40, 42, 44, 46, 48, 50], color: "#2dd4bf", width: 2 },
+    { label: "Weekly volume", data: [2, 2, 2, 2, 2, 5, 4, 3, 4, 3, 3], color: "#38bdf8", width: 2 }
+  ]}
+  levels={[
+    { y: 40, label: "resistance ceiling", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 5, y: 45, text: "breakout on 2.5× volume", color: "#22c55e" },
+    { x: 7, y: 47, text: "pullback holds MA", color: "#22c55e" }
+  ]}
+/>
+
 **Stage 3 — Topping.** The advance stalls. The MA rolls over from rising to flat, and price starts whipsawing back and forth across it. The tell is volume: it now tends to expand on the *down* weeks and shrink on the rallies — the footprint of institutions distributing shares to a still-euphoric public. Breakouts start failing. This is the time to tighten stops and take profits, not to buy the dip.
 
+<LineChart
+  caption="Stage 3 distribution footprint: volume now swells on the down weeks and shrinks on the rallies as the MA flattens"
+  height={300}
+  series={[
+    { label: "Price", data: [68, 71, 67, 70, 66, 69, 64, 67, 62], color: "#e6e9ef", width: 2 },
+    { label: "30-week MA", data: [66, 67, 67, 67, 67, 66, 66, 65, 64], color: "#2dd4bf", width: 2 },
+    { label: "Weekly volume", data: [3, 2, 5, 2, 5, 2, 6, 3, 6], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 2, y: 67, text: "heavy down week", color: "#ef4444" },
+    { x: 6, y: 64, text: "heavy down week", color: "#ef4444" },
+    { x: 5, y: 69, text: "light rally", color: "#f59e0b" }
+  ]}
+/>
+
 **Stage 4 — Declining.** Price breaks decisively *below* the now-falling 30-week MA. Rallies are weak and fail near old support (which is now resistance), and volume surges on the down moves. This is the mirror image of Stage 2. Weinstein's rule: never buy weakness. For advanced traders this is the short-selling stage; for everyone else it's the stay-away stage.
+
+<LineChart
+  caption="Stage 4 decline: price below a falling MA; weak rallies fail at old support (now resistance) and roll over"
+  height={300}
+  series={[
+    { label: "Price", data: [62, 55, 50, 53, 47, 50, 44, 39, 41, 35], color: "#e6e9ef", width: 2 },
+    { label: "30-week MA", data: [64, 62, 59, 57, 55, 53, 50, 47, 44, 42], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 52, label: "old support → now resistance", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 0, y: 62, text: "breaks below MA", color: "#ef4444" },
+    { x: 3, y: 53, text: "rally fails at old support", color: "#ef4444" },
+    { x: 5, y: 50, text: "fails again", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="warning">
 
@@ -115,6 +164,24 @@ Read the zero line as a relative-strength dividing line: **Mansfield RS above ze
 
 </Callout>
 
+<LineChart
+  caption="Mansfield RS oscillator: a lagging stock crosses above zero into market-leadership territory just as its Stage 2 breakout fires"
+  height={220}
+  series={[
+    { label: "Mansfield RS", data: [-18, -22, -15, -12, -6, 2, 9, 14, 11, 18], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 0, label: "zero line", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 0, yMax: 25, color: "rgba(34,197,94,0.12)", label: "outperforming" },
+    { yMin: -25, yMax: 0, color: "rgba(239,68,68,0.12)", label: "lagging" }
+  ]}
+  points={[
+    { x: 5, y: 2, text: "crosses above zero — leadership", color: "#22c55e" }
+  ]}
+/>
+
 ## A worked example (illustrative)
 
 These numbers are made up to show the mechanics, not a real trade.
@@ -151,6 +218,22 @@ Weinstein's framework is baked into how a generation of trend traders think. Wil
 ## Honest criticisms and common pitfalls
 
 - **It lags by design.** A moving-average / breakout system never gets you in at the bottom or out at the top — it deliberately waits for confirmation. In choppy, sideways markets it produces whipsaws (false breakouts that immediately reverse). This is the price of trend-following, not a bug you can optimize away.
+
+<LineChart
+  caption="Whipsaw: price pokes above resistance, triggers a buy, then immediately fails back into the range — the cost of a system that waits for confirmation"
+  height={300}
+  series={[
+    { label: "Price", data: [37, 40, 38, 41, 43, 39, 36, 39, 37, 35], color: "#e6e9ef", width: 2 },
+    { label: "30-week MA", data: [39, 39, 39, 39, 40, 40, 39, 39, 39, 38], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 40, label: "resistance ceiling", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 4, y: 43, text: "false breakout — buy", color: "#22c55e" },
+    { x: 6, y: 36, text: "fails back, stopped out", color: "#ef4444" }
+  ]}
+/>
 - **No hard thresholds.** "Volume expansion," "decisive break," and "flattening MA" are judgment calls. Backtests are sensitive to exactly how you define them, and discretion lets bias creep in.
 - **Survivorship in the storytelling.** The famous examples (catching a Stage 2 monster, escaping before a Stage 4 collapse) are real patterns, but books naturally showcase the wins. Plenty of clean-looking Stage 2 breakouts fail.
 

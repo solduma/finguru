@@ -93,6 +93,20 @@ prereqs: ["charles-dow"]
 - **추세선(trendline)**은 상승하는 저점들을 잇는 직선(*상승 추세선*, 대각선 지지선 역할)이거나 하락하는 고점들을 잇는 직선(*하락 추세선*, 대각선 저항선 역할)이다. 하나를 그리려면 최소 두 점이 필요하고, 세 번째 터치가 있어야 "확인(confirm)"된다.
 - **채널(channel)**은 가격을 감싸는 두 개의 평행한 추세선이다 — 하나는 저점들을 따라, 하나는 고점들을 따라 그린다. 가격은 그 사이를 오가는 경향이 있다.
 
+<LineChart
+  caption="상승 채널: 저점들 아래를 잇는 상승 추세선(대각선 지지선)과 고점들 위를 잇는 평행선(대각선 저항선)"
+  height={300}
+  yMin={94}
+  yMax={132}
+  series={[
+    { label: "가격", data: [100, 112, 104, 118, 110, 124, 116, 130], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 100, x2: 6, y2: 116, color: "#22c55e", label: "상승 추세선 (지지)" },
+    { x1: 1, y1: 112, x2: 7, y2: 130, color: "#ef4444", label: "채널 상단 (저항)", dashed: true }
+  ]}
+/>
+
 <Callout type="note">
 
 단 두 점만으로 그린 추세선은 추측에 불과하다. 버텨내는 세 번째 터치가 있어야 매매에 쓸 수 있다. 데이터에 억지로 선을 끼워 맞추는 것을 경계하라 — 스스로를 속이기 쉽다.
@@ -128,17 +142,109 @@ prereqs: ["charles-dow"]
 
 **역헤드앤숄더 바닥형(Inverse head and shoulders bottom).** 같은 모양을 위아래로 뒤집은 것으로, 상승 반전을 신호한다. 바닥은 천장보다 형성에 훨씬 오래 걸리는 경우가 많다 — 천장은 몇 주 만에 완성될 수 있지만, 큰 바닥은 몇 달, 심지어 1년 이상 걸릴 수도 있다 ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))).
 
+<LineChart
+  caption="역헤드앤숄더 바닥형: 두 어깨 사이의 더 낮은 머리, 목선 위로의 돌파로 완성"
+  height={300}
+  yMin={76}
+  yMax={108}
+  series={[
+    { label: "가격", data: [100, 90, 99, 80, 100, 91, 100, 105], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 100, label: "목선", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 90, text: "왼쪽 어깨", color: "#38bdf8" },
+    { x: 3, y: 80, text: "머리", color: "#22c55e" },
+    { x: 5, y: 91, text: "오른쪽 어깨", color: "#38bdf8" },
+    { x: 7, y: 105, text: "돌파", color: "#22c55e" }
+  ]}
+/>
+
 **이중천장 / 이중바닥(Double top / double bottom).** 이중천장은 대략 같은 가격대의 두 봉우리로, 가격이 그 사이의 골(목선) 아래로 떨어질 때 확정된다. 이중바닥은 그 거울상으로, 그 사이의 봉우리를 위로 돌파할 때 확정된다 ([Wikipedia](https://en.wikipedia.org/wiki/Double_top_and_double_bottom)). **삼중천장/삼중바닥(triple top/bottom)**은 같은 개념을 세 번 터치로 적용한 것이다.
+
+<LineChart
+  caption="이중천장: ~110에서 두 봉우리가 더 높이 돌파하지 못한 뒤, 가격이 100 목선 아래로 종가를 찍으며 확정된다"
+  height={300}
+  yMin={92}
+  yMax={116}
+  series={[
+    { label: "가격", data: [100, 110, 100, 109, 100, 94], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 110, label: "저항선 (쌍봉)", color: "#ef4444" },
+    { y: 100, label: "목선", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 110, text: "1차 천장", color: "#ef4444" },
+    { x: 3, y: 109, text: "2차 천장", color: "#ef4444" },
+    { x: 5, y: 94, text: "확정", color: "#ef4444" }
+  ]}
+/>
 
 ### 지속 패턴
 
 **삼각형(Triangles).** 가격 변동 폭이 좁아지면서 추세선들이 수렴하는 형태다. *상승(ascending)* 삼각형(평평한 윗변, 상승하는 저점 — 보통 강세), *하락(descending)* 삼각형(평평한 아랫변, 하락하는 고점 — 보통 약세), 그리고 *대칭(symmetrical)* 삼각형(양쪽 선이 모두 수렴)이 있다. 중요한 것은, "더 중요한 것은 가격이 삼각형을 벗어나 돌파할 때 시장이 움직이는 방향"이라는 점이다 — 방향을 미리 단정하지 말고 돌파를 기다려라 ([Wikipedia](https://en.wikipedia.org/wiki/Triangle_(chart_pattern))).
 
+<LineChart
+  caption="상승 삼각형: 평평한 저항 윗변에 상승하는 저점들이 좁혀 들어간 뒤, 강세 돌파가 나온다"
+  height={300}
+  yMin={88}
+  yMax={114}
+  series={[
+    { label: "가격", data: [92, 110, 96, 110, 100, 110, 104, 112], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 1, y1: 110, x2: 5, y2: 110, color: "#ef4444", label: "평평한 저항" },
+    { x1: 0, y1: 92, x2: 6, y2: 104, color: "#22c55e", label: "상승하는 저점", dashed: true }
+  ]}
+  points={[
+    { x: 7, y: 112, text: "돌파", color: "#22c55e" }
+  ]}
+/>
+
 **깃발형과 페넌트형(Flags and pennants).** 둘 다 **깃대(flagpole)**라 불리는 가파른 움직임 뒤에 짧은 휴식이 이어진다. *깃발(flag)*은 두 평행선 사이에서, *페넌트(pennant)*는 두 수렴선 사이에서 횡보한다. 그 외에는 의미가 동일하다 — 추세가 재개되기 전의 "숨 고르기"다 ([Wikipedia](https://en.wikipedia.org/wiki/Flag_and_pennant_patterns)).
+
+<LineChart
+  caption="상승 깃발형: 가파른 깃대, 약간 아래로 흐르는 횡보, 그다음 돌파에서 추세가 재개된다"
+  height={300}
+  yMin={96}
+  yMax={132}
+  series={[
+    { label: "가격", data: [100, 108, 116, 124, 121, 118, 120, 117, 128], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 3, y1: 124, x2: 7, y2: 120, color: "#a78bfa", label: "깃발 (상단)", dashed: true },
+    { x1: 4, y1: 121, x2: 7, y2: 117, color: "#a78bfa", label: "깃발 (하단)", dashed: true }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "깃대 시작", color: "#38bdf8" },
+    { x: 3, y: 124, text: "깃대 끝", color: "#22c55e" },
+    { x: 8, y: 128, text: "돌파", color: "#22c55e" }
+  ]}
+/>
 
 **사각형(Rectangle).** 가격이 수평 지지선과 저항선 사이를 오가는 명확한 박스권으로, 한쪽을 돌파할 때까지 이어진다.
 
 **컵앤핸들(Cup and handle).** **윌리엄 오닐(William O'Neil)**이 저서 *How to Make Money in Stocks*에서 정의한 강세 패턴이다. 둥근 "컵"(1~6개월, 날카로운 V자가 아님)이 형성된 뒤, 컵 상승폭의 대략 30~50%를 되돌리는 작은 하향 "핸들"(1~4주)이 이어지고, 그다음 컵의 가장자리(rim)를 위로 돌파한다 ([Wikipedia](https://en.wikipedia.org/wiki/Cup_and_handle)).
+
+<LineChart
+  caption="컵앤핸들: 가장자리까지 둥글게 회복한 컵, 얕은 핸들 되돌림, 그다음 가장자리 위로의 돌파"
+  height={300}
+  yMin={82}
+  yMax={112}
+  series={[
+    { label: "가격", data: [100, 92, 87, 86, 88, 94, 100, 96, 95, 97, 107], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 100, label: "가장자리(rim)", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 3, y: 86, text: "컵 바닥", color: "#38bdf8" },
+    { x: 8, y: 95, text: "핸들", color: "#a78bfa" },
+    { x: 10, y: 107, text: "돌파", color: "#22c55e" }
+  ]}
+/>
 
 ## 측정된 목표가(Measured-move targets)
 
@@ -198,6 +304,26 @@ prereqs: ["charles-dow"]
 
 1. 레벨을 넘어선 **확정 종가를 기다려라** (예: 장중 순간적 급등이 아니라 일봉 종가), 가급적 강한 거래량과 함께.
 2. **리테스트를 기다려라** — 가격이 돌파하고, 옛 레벨로 되돌림을 준 뒤, 버텨내는 것을 확인하고 진입하라.
+
+<LineChart
+  caption="가짜 돌파: 가격이 지지선 아래로 살짝 찔러 손절을 건드린 뒤, 추세를 이어가지 않고 박스권 안으로 다시 튕겨 돌아온다"
+  height={300}
+  yMin={88}
+  yMax={112}
+  series={[
+    { label: "가격", data: [108, 101, 109, 100, 96, 102, 108], color: "#e6e9ef", width: 2 }
+  ]}
+  zones={[
+    { yMin: 88, yMax: 100, color: "rgba(239,68,68,0.12)", label: "지지선 아래 손절 사냥 구간" }
+  ]}
+  levels={[
+    { y: 100, label: "지지선", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 4, y: 96, text: "페이크아웃 꼬리", color: "#ef4444" },
+    { x: 6, y: 108, text: "다시 튕겨 돌아옴", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="warning">
 

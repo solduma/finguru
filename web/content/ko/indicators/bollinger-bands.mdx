@@ -96,6 +96,41 @@ prereqs: ["moving-averages"]
 
 낮은 밴드폭은 밴드가 서로 좁혀져 있다는 뜻(낮은 변동성)이고, 높은 밴드폭은 밴드가 늘어나 있다는 뜻(높은 변동성)이다. ([bollingerbands.com 규칙 15–19](https://www.bollingerbands.com/bollinger-band-rules))
 
+<LineChart
+  caption="0–1 척도의 %b: 1.0 = 상단 밴드, 0.5 = 중심, 0.0 = 하단, 그리고 밴드 바깥으로의 삐져나옴"
+  height={220}
+  yMin={-0.2}
+  yMax={1.3}
+  series={[
+    { label: "%b", data: [0.5, 0.85, 1.1, 0.7, 0.4, 0.0, -0.15, 0.3, 0.6], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 1.0, label: "상단 밴드", color: "#38bdf8" },
+    { y: 0.5, label: "중심 밴드", color: "#a78bfa" },
+    { y: 0.0, label: "하단 밴드", color: "#38bdf8" }
+  ]}
+  points={[
+    { x: 2, y: 1.1, text: "상단 위로", color: "#ef4444" },
+    { x: 6, y: -0.15, text: "하단 아래로", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="밴드폭이 수개월 만의 저점(스퀴즈 신호)으로 수축한 뒤 밴드가 확장하면서 급등한다"
+  height={220}
+  yMin={0}
+  series={[
+    { label: "밴드폭", data: [0.28, 0.22, 0.16, 0.11, 0.08, 0.07, 0.09, 0.18, 0.3, 0.38], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 0.08, label: "6개월 저점", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 5, y: 0.07, text: "스퀴즈", color: "#f59e0b" },
+    { x: 8, y: 0.3, text: "확장", color: "#22c55e" }
+  ]}
+/>
+
 ## 실제로 읽는 법
 
 ### 스퀴즈
@@ -126,6 +161,21 @@ prereqs: ["moving-averages"]
 
 초보자는 밴드 터치가 "반전"을 의미한다고 가정한다. 강한 추세에서는 그 반대가 진실이다. 가격은 바깥 밴드를 따라 여러 봉 동안 미끄러져 갈 수 있다 — "밴드 타기"다. 강력한 상승 추세 동안 가격은 몇 주 내내 상단 밴드에 달라붙어 하단 밴드 근처에는 전혀 가지 않을 수 있으며, 그동안 중심 밴드(SMA)가 지지선 역할을 한다. 밴드를 반복적으로 태깅하는 것은 소진이 아니라 *추세 강도*의 신호다. 규칙 8이 말하듯, 밴드 바깥에서의 종가는 처음에는 반전 신호가 아니라 **지속(continuation)** 신호다. ([규칙 6–8](https://www.bollingerbands.com/bollinger-band-rules))
 
+<LineChart
+  caption="밴드 타기: 강한 상승 추세에서 가격은 몇 주 내내 상단 밴드에 달라붙고, 중심 밴드(SMA)가 지지선 역할을 한다"
+  height={300}
+  series={[
+    { label: "상단 밴드", data: [32, 33, 34.2, 35.5, 36.8, 38, 39.2, 40.5, 41.8], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "가격", data: [31.5, 32.8, 34, 35.2, 36.5, 37.6, 39, 40.2, 41.5], color: "#e6e9ef", width: 2 },
+    { label: "중심 밴드 (SMA)", data: [29.5, 30.3, 31.2, 32.2, 33.3, 34.4, 35.6, 36.8, 38], color: "#2dd4bf", width: 1.5 },
+    { label: "하단 밴드", data: [27, 27.6, 28.2, 28.9, 29.8, 30.8, 32, 33.1, 34.2], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+  points={[
+    { x: 4, y: 36.5, text: "상단 밴드에 달라붙음", color: "#22c55e" },
+    { x: 6, y: 35.6, text: "SMA가 지지선으로 버팀", color: "#a78bfa" }
+  ]}
+/>
+
 ### W-바닥과 M-천장
 
 이 반전 패턴들은 아서 메릴(Arthur Merrill)의 패턴 연구에서 나온 것으로, 밴드가 *확인* 도구로서 빛을 발하는 영역이다.
@@ -138,21 +188,36 @@ prereqs: ["moving-averages"]
 4. 가격이 두 번째 저점에서 솟구쳐 중간 저항 고점을 돌파할 때 확인된다.
 
 <LineChart
-  caption="W-바닥: 가격은 더 낮게 떨어져도 두 번째 저점은 하단 밴드 위에서 버틴다 (비확인, non-confirmation)"
+  caption="W-바닥: 두 번째 저점은 가격이 더 낮은데도 하단 밴드 위에서 버틴다 (비확인, non-confirmation) — 이후 돌파로 확인된다"
   height={300}
   series={[
-    { label: "상단 밴드", data: [36, 35, 34, 34.5, 35, 34.5, 34, 35, 37], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "상단 밴드", data: [36, 35, 34, 34.5, 35, 34, 33.5, 35, 37], color: "#38bdf8", dashed: true, width: 1.5 },
     { label: "가격", data: [33, 28, 31, 32.5, 30, 27.5, 31, 34, 36], color: "#e6e9ef", width: 2 },
-    { label: "하단 밴드", data: [30, 29, 28.5, 28.8, 29, 28.6, 28.2, 28.5, 29], color: "#38bdf8", dashed: true, width: 1.5 }
+    { label: "하단 밴드", data: [30, 28.5, 28, 28.3, 28, 26.5, 27, 28.5, 29], color: "#38bdf8", dashed: true, width: 1.5 }
   ]}
   points={[
     { x: 1, y: 28, text: "저점 1 (밴드 아래)", color: "#ef4444" },
-    { x: 5, y: 27.5, text: "저점 2 (안쪽에서 버팀)", color: "#22c55e" },
+    { x: 5, y: 27.5, text: "저점 2 (더 낮은 가격, 밴드 위에서 버팀)", color: "#22c55e" },
     { x: 7, y: 34, text: "돌파", color: "#22c55e" }
   ]}
 />
 
 **M-천장(M-Top)**(약세)은 거울상이다. 고점이 상단 밴드 위로 삐져나오고, 중심 밴드를 향한 되돌림이 나온 뒤, 두 번째 고점이 상단 밴드에 *닿지 못하는* 것이다 — 모멘텀이 약해지고 있다는 비확인 경고이며 — 지지선 붕괴로 확인된다.
+
+<LineChart
+  caption="M-천장: 가격이 더 높게 찍어도 두 번째 고점은 상단 밴드에 닿지 못하고(비확인, non-confirmation), 이후 지지선 붕괴로 확인된다"
+  height={300}
+  series={[
+    { label: "상단 밴드", data: [34, 35, 36, 36.5, 37, 37.6, 37, 35.5, 33.5], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "가격", data: [31, 36, 33, 31.5, 34, 36.5, 33, 30, 28], color: "#e6e9ef", width: 2 },
+    { label: "하단 밴드", data: [28, 29, 29.5, 29.2, 29, 29.4, 30, 29, 27], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+  points={[
+    { x: 1, y: 36, text: "고점 1 (밴드 위)", color: "#22c55e" },
+    { x: 5, y: 36.5, text: "고점 2 (더 높은 가격, 밴드에 닿지 못함)", color: "#ef4444" },
+    { x: 7, y: 30, text: "지지선 붕괴", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="key">
 

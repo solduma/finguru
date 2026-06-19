@@ -64,11 +64,50 @@ Ratio   Meaning (price units : time units)   Slope vs 1x1
 
 Gann named several upward angles in this family — 2x1, 3x1, 4x1, 8x1, 16x1 — with the inverse ratios used for shallower lines and for declining markets. Drawn together from a single pivot, these lines form a **Gann fan**. The reading rule Gann gave:
 
+<LineChart
+  caption="A full Gann fan from one pivot: steep (4x1, 2x1) above the 1x1 baseline, shallow (1x2, 1x4) below"
+  height={320}
+  yMin={0}
+  yMax={90}
+  series={[
+    { label: "", data: [0, null, null, null, null, null, null, null, null, 0], color: "#0b0e14", width: 1 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 0, x2: 9, y2: 81, color: "#22c55e", label: "4x1 (very steep)", dashed: true },
+    { x1: 0, y1: 0, x2: 9, y2: 54, color: "#2dd4bf", label: "2x1 (steep)", dashed: true },
+    { x1: 0, y1: 0, x2: 9, y2: 27, color: "#a78bfa", label: "1x1 (45° baseline)" },
+    { x1: 0, y1: 0, x2: 9, y2: 13.5, color: "#38bdf8", label: "1x2 (shallow)", dashed: true },
+    { x1: 0, y1: 0, x2: 9, y2: 6.75, color: "#f59e0b", label: "1x4 (very shallow)", dashed: true }
+  ]}
+  points={[
+    { x: 0, y: 0, text: "pivot", color: "#e6e9ef" }
+  ]}
+/>
+
 <Callout type="key">
 
 Price trading **above the 1x1** line is in a position of strength; price **below the 1x1** signals weakness. As price breaks one angle, the next angle in the fan becomes the new support or resistance target.
 
 </Callout>
+
+<LineChart
+  caption="Reading rule: price holds above the 1x1 (strength), breaks it, then finds support on the next shallower angle (1x2)"
+  height={320}
+  yMin={45}
+  yMax={80}
+  series={[
+    { label: "Price", data: [50, 55, 59, 64, 68, 71, 67, 63, 61, 62], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 50, x2: 9, y2: 77, color: "#a78bfa", label: "1x1 baseline" },
+    { x1: 0, y1: 50, x2: 9, y2: 63.5, color: "#38bdf8", label: "1x2 (next target)", dashed: true }
+  ]}
+  points={[
+    { x: 4, y: 68, text: "strength: above 1x1", color: "#22c55e" },
+    { x: 6, y: 67, text: "breaks 1x1", color: "#ef4444" },
+    { x: 8, y: 61, text: "holds 1x2 support", color: "#22c55e" }
+  ]}
+/>
 
 ### The Square of Nine
 
@@ -142,6 +181,20 @@ Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
 ## Time cycles and the esoteric side
 
 Beyond geometry, Gann claimed markets repeat on **time cycles** tied to natural and calendar numbers (anniversaries of major highs/lows, divisions of the year like 30/45/90/180/360 days) — and, more controversially, to **planetary positions**.
+
+<LineChart
+  caption="Time-cycle idea: each low arrives ~90 days after the last, so turns recur on the 90/180/270/360-day marks from the major high"
+  height={300}
+  series={[
+    { label: "Price", data: [100, 92, 84, 91, 97, 90, 83, 90, 96, 89, 82, 90, 95], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "major high (day 0)", color: "#ef4444" },
+    { x: 2, y: 84, text: "90d low", color: "#a78bfa" },
+    { x: 6, y: 83, text: "180d low", color: "#a78bfa" },
+    { x: 10, y: 82, text: "270d low", color: "#a78bfa" }
+  ]}
+/>
 
 This astrological side is not internet rumor. Wikipedia notes his forecasting was "purportedly based on geometry, astronomy, astrology, time cycle analysis, and other esoteric means," and that in a **letter to a student dated March 19, 1954**, Gann demonstrated using planetary cycles to forecast the coffee market ([Wikipedia](https://en.wikipedia.org/wiki/William_Delbert_Gann)). His deliberately obscure writing — possibly intended to conceal his true method — has fueled endless speculation that he hid his "real" technique, a claim that is, by construction, unfalsifiable.
 
