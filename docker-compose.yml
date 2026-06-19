@@ -11,7 +11,8 @@ services:
       - chroma-data:/data/chroma_db
       - fastembed-cache:/root/.cache/fastembed
     ports:
-      - "8000:8000"
+      # host:container — unusual host port, standard inside the container
+      - "48000:8000"
 
   web:
     build: ./web
@@ -23,7 +24,8 @@ services:
       - /app/node_modules
       - /app/.next
     ports:
-      - "3000:3000"
+      # host:container — unusual host port, standard inside the container
+      - "48080:3000"
     depends_on:
       - api
 

@@ -16,8 +16,9 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 API_DIR="$ROOT/api"
 WEB_DIR="$ROOT/web"
 
-API_PORT="${API_PORT:-8000}"
-WEB_PORT="${WEB_PORT:-3000}"
+# Unusual high ports (avoid the common 3000/8000). Override via env if needed.
+API_PORT="${API_PORT:-48000}"
+WEB_PORT="${WEB_PORT:-48080}"
 
 API_PATTERN="uvicorn app.main:app"
 WEB_PATTERN="next dev"
@@ -90,7 +91,10 @@ log "starting API on :${API_PORT} (uvicorn)…"
 API_PID=$!
 
 # --- Web ---
-log "starting web on :${WEB_PORT} (next dev)…"
+# Point the Next.js /api/* proxy at the API port we just chose, so they can't
+# desync if the ports are overridden.
+export API_PROXY_TARGET="${API_PROXY_TARGET:-http://localhost:${API_PORT}}"
+log "starting web on :${WEB_PORT} (next dev)…  proxy /api -> ${API_PROXY_TARGET}"
 (
   cd "$WEB_DIR"
   exec npm run dev -- --port "$WEB_PORT"
