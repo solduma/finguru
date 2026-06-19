@@ -21,7 +21,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      {/* Browser extensions (e.g. Grammarly) inject data-* attributes onto
+          <body> before hydration, which React flags as a mismatch.
+          suppressHydrationWarning tolerates those shallow attribute diffs on
+          this element only — it does not mask real hydration bugs elsewhere. */}
+      <body suppressHydrationWarning>
         <header className="border-b border-white/10">
           <nav className="mx-auto flex max-w-5xl items-center gap-6 px-6 py-4">
             <Link
