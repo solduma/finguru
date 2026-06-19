@@ -66,7 +66,12 @@ export default async function LocaleLayout({
           </nav>
         </header>
         <main className="mx-auto max-w-5xl px-6 py-10">{children}</main>
-        <ChatWidget locale={locale} />
+        {/* The chat tutor needs the Python RAG backend running. It's hidden
+            unless NEXT_PUBLIC_CHAT_ENABLED=1, so a frontend-only deploy
+            (e.g. Vercel) doesn't show a button that can't reach a backend. */}
+        {process.env.NEXT_PUBLIC_CHAT_ENABLED === "1" && (
+          <ChatWidget locale={locale} />
+        )}
       </body>
     </html>
   );
