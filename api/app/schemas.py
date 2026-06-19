@@ -14,6 +14,9 @@ class ChatRequest(BaseModel):
     history: list[ChatMessage] = Field(
         default_factory=list, description="Prior turns, oldest first"
     )
+    locale: str = Field(
+        default="en", description="UI locale, e.g. 'en' or 'ko'; sets reply language + retrieval locale"
+    )
 
 
 class Citation(BaseModel):

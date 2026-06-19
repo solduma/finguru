@@ -31,13 +31,21 @@ class Settings(BaseSettings):
 
     # ---- Embeddings ----
     embedding_backend: str = "local"  # "local" | "ollama"
-    local_embedding_model: str = "BAAI/bge-small-en-v1.5"
+    # Multilingual model with strong Korean retrieval quality. e5 models REQUIRE
+    # "query:"/"passage:" prefixes (added in embeddings.py). 1024-dim. Batch
+    # ingest is slow on CPU but a one-time offline cost; single-query latency at
+    # chat time is ~40ms, which is fine.
+    local_embedding_model: str = "intfloat/multilingual-e5-large"
     ollama_embedding_model: str = "embeddinggemma"
 
     # ---- RAG / Chroma ----
     chroma_dir: str = "./chroma_db"
     chroma_collection: str = "finguru_lessons"
     rag_top_k: int = 5
+
+    # ---- Content / i18n ----
+    # Locales whose lesson trees get ingested. "en" = content/, others = content/<loc>/.
+    locales: str = "en,ko"
 
     # ---- Content ----
     content_dir: str = "../web/content"
@@ -52,9 +60,18 @@ class Settings(BaseSettings):
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
 
     @property
+    def locale_list(self) -> list[str]:
+        return [l.strip() for l in self.locales.split(",") if l.strip()]
+
+    @property
     def content_path(self) -> Path:
         p = Path(self.content_dir)
         return p if p.is_absolute() else (_REPO_ROOT / "api" / p).resolve()
+
+    def content_path_for(self, locale: str) -> Path:
+        """English lives at content/; other locales at content/<locale>/."""
+        base = self.content_path
+        return base if locale == "en" else base / locale
 
     @property
     def chroma_path(self) -> Path:

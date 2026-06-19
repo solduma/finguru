@@ -16,16 +16,25 @@ class Retrieved:
     kind: str
     section: str
     score: float  # cosine similarity (1 = identical)
+    locale: str = "en"
 
 
-def retrieve(query: str, top_k: int | None = None) -> list[Retrieved]:
+def retrieve(
+    query: str, top_k: int | None = None, locale: str | None = None
+) -> list[Retrieved]:
     s = get_settings()
     k = top_k or s.rag_top_k
     embedder = get_embedder()
-    qvec = embedder.embed([query])[0]
+    qvec = embedder.embed_query(query)
 
     collection = get_collection()
-    res = collection.query(query_embeddings=[qvec], n_results=k)
+    # When a locale is given, retrieve from that locale's chunks so citations and
+    # quoted passages are in the reader's language. If that locale has no lessons
+    # indexed yet (e.g. translation pending), fall back to an unfiltered query.
+    where = {"locale": locale} if locale else None
+    res = collection.query(query_embeddings=[qvec], n_results=k, where=where)
+    if locale and not res.get("documents", [[]])[0]:
+        res = collection.query(query_embeddings=[qvec], n_results=k)
 
     out: list[Retrieved] = []
     docs = res.get("documents", [[]])[0]
@@ -40,6 +49,7 @@ def retrieve(query: str, top_k: int | None = None) -> list[Retrieved]:
                 kind=meta.get("kind", ""),
                 section=meta.get("section", ""),
                 score=1.0 - float(dist),  # cosine distance -> similarity
+                locale=meta.get("locale", "en"),
             )
         )
     return out

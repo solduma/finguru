@@ -1,0 +1,243 @@
+---
+title: "지지선, 저항선 그리고 차트 패턴"
+slug: "support-resistance-patterns"
+kind: "indicator"
+level: "beginner"
+order: 111
+summary: "시장이 기억하는 가격 레벨, 그리고 그 위에 만들어지는 고전적 차트 패턴들 — 헤드앤숄더, 이중천장, 삼각형."
+prereqs: ["charles-dow"]
+---
+
+## 한 문장으로 정리하면
+
+가격 차트를 읽는 법에 대해 단 한 가지만 배운다면, 이것을 배워라: **가격은 기억을 가진다.** 과거에 매수자와 매도자가 맞붙었던 레벨은 다시 중요해지는 경향이 있다 — 그리고 그 레벨 주변에서 가격이 그려내는 모양(이른바 "차트 패턴")은 누가 그 싸움에서 이기고 있는지에 관한 이야기일 뿐이다.
+
+지지선과 저항선은 기술적 분석에서 가장 근본적인 개념이다. 다른 거의 모든 도구 — 추세선, 돌파, 차트 패턴, 심지어 많은 지표들까지 — 가 이 위에 세워져 있다. 이 강의를 제대로 익히면 나머지 차트 분석이 훨씬 쉬워진다. 잘못 익히면 아무 의미도 없는 선을 그리며 수년을 허비하게 된다.
+
+## 지지선과 저항선이 실제로 무엇인가
+
+두 가지 핵심 용어를 정의해 보자.
+
+- **지지선(Support)**은 매수 수요가 충분히 강해서 하락하는 가격이 더 떨어지지 못하도록 막을 것으로 예상되는 가격 레벨이다. *바닥(floor)*이라고 생각하면 된다.
+- **저항선(Resistance)**은 매도 압력이 충분히 강해서 상승하는 가격이 더 오르지 못하도록 막을 것으로 예상되는 가격 레벨이다. *천장(ceiling)*이라고 생각하면 된다.
+
+이렇게 그려보면 이해하기 쉽다: 가격은 **황소(bulls, 매수자, 더 높은 가격을 원함)**와 **곰(bears, 매도자, 더 낮은 가격을 원함)** 사이의 줄다리기다. 줄이 가만히 머물러 있을 때 횡보하는 "박스권(range)"이 만들어진다. 지지선은 황소가 방어하는 선이고, 저항선은 곰이 방어하는 선이다 ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/support-and-resistance)).
+
+<LineChart
+  caption="박스권 안에서 튀어 오르내리는 가격: 지지선은 황소가 방어하는 바닥, 저항선은 곰이 방어하는 천장"
+  height={300}
+  yMin={90}
+  yMax={112}
+  series={[
+    { label: "가격", data: [100, 108, 102, 109, 101, 110, 100, 108, 99], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 109, label: "저항선", color: "#ef4444" },
+    { y: 100, label: "지지선", color: "#22c55e" }
+  ]}
+/>
+
+<Callout type="key">
+
+지지선과 저항선은 정확한 선이 아니라 *구간(zone)*이다. 실제 시장은 노이즈가 많다. "100에 지지"는 단일한 마법의 숫자가 아니라 대략 "98~101 영역" 정도로 받아들여라.
+
+</Callout>
+
+## 레벨이 형성되는 이유
+
+세 가지 힘이 이 레벨을 만들어낸다. 이를 이해하면 차트 분석을 미신처럼 다루지 않게 된다.
+
+**1. 기억과 물린 트레이더들.** 어떤 주식이 18달러까지 올랐다가 14달러로 떨어진 뒤 지금 다시 오르고 있다고 상상해 보자. 18달러 근처에서 산 사람은 모두 손실을 안고 있다. 가격이 18달러로 돌아오면 그들 중 다수가 그저 "본전에 빠져나오려고" 매도한다. 이 매도 물결이 바로 *공급 과잉(supply overhang)*이며, 18달러에 저항선을 만든다 ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/support-and-resistance)).
+
+**2. 라운드 넘버 근처의 심리.** 사람들은 깔끔한 숫자에 주문을 몰아둔다 — 50달러, 100달러, 통화쌍에서의 1.3000. 큰 손절(stop-loss) 및 익절(take-profit) 주문이 그곳에 쌓이므로, 가격은 이런 *심리적 레벨*에서 자주 멈추거나 반전한다 ([Wikipedia](https://en.wikipedia.org/wiki/Support_and_resistance)).
+
+**3. 반복된 테스트가 중요도를 키운다.** 한 레벨이 더 자주 닿고도 버틸수록, 더 많은 트레이더가 그것을 주시하게 되고, 그만큼 자기실현적(self-fulfilling)이 된다. 한 자료의 표현을 빌리면, "지지선/저항선이 더 자주 '테스트'(가격이 닿았다가 튕겨 나옴)될수록, 그 특정 레벨에 더 큰 중요성이 부여된다" ([Wikipedia](https://en.wikipedia.org/wiki/Support_and_resistance)).
+
+## 역할 전환(Role reversal): 가장 유용한 단 하나의 트릭
+
+초보자와 유능한 차트 분석가를 가르는 개념이 여기 있다:
+
+<Callout type="key">
+
+지지선이 깨지면 그것은 저항선이 되는 경향이 있다. 저항선이 깨지면 그것은 지지선이 되는 경향이 있다.
+
+</Callout>
+
+왜 그럴까? 수요/공급의 균형이 뒤집혔기 때문이다. 가격이 저항선을 *위로* 뚫고 올라갔다면, 수요가 막 공급을 압도한 것이다. 이후 그 옛 천장으로 되돌림이 일어나면, 그 움직임을 놓쳤던 매수자들이 들어온다 — 그래서 옛 천장이 새로운 바닥이 된다 ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/support-and-resistance)).
+
+*예시:* 어떤 지수가 935의 저항선을 위로 돌파한다. 이후 되돌림이 와서 935를 두 번 닿고 튀어 오른다. 935였던 천장이 935 바닥이 된 것이다. 트레이더들은 이를 *리테스트(retest)*라고 부르며, 성공적인 리테스트는 기술적 분석에서 신뢰도가 높은 진입 지점 중 하나다.
+
+<LineChart
+  caption="역할 전환: 935 천장이 돌파된 뒤, 두 번의 리테스트에서 바닥으로 버텨낸다"
+  height={300}
+  yMin={910}
+  yMax={965}
+  series={[
+    { label: "가격", data: [920, 932, 922, 933, 948, 936, 950, 935, 955, 936, 960], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 935, label: "935 — 과거 저항선, 이제는 지지선", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 3, y: 933, text: "천장 테스트", color: "#ef4444" },
+    { x: 4, y: 948, text: "돌파", color: "#22c55e" },
+    { x: 5, y: 936, text: "리테스트", color: "#2dd4bf" },
+    { x: 7, y: 935, text: "리테스트 성공", color: "#22c55e" }
+  ]}
+/>
+
+## 추세선과 채널
+
+수평선만이 지지/저항의 유일한 형태는 아니다.
+
+- **추세선(trendline)**은 상승하는 저점들을 잇는 직선(*상승 추세선*, 대각선 지지선 역할)이거나 하락하는 고점들을 잇는 직선(*하락 추세선*, 대각선 저항선 역할)이다. 하나를 그리려면 최소 두 점이 필요하고, 세 번째 터치가 있어야 "확인(confirm)"된다.
+- **채널(channel)**은 가격을 감싸는 두 개의 평행한 추세선이다 — 하나는 저점들을 따라, 하나는 고점들을 따라 그린다. 가격은 그 사이를 오가는 경향이 있다.
+
+<Callout type="note">
+
+단 두 점만으로 그린 추세선은 추측에 불과하다. 버텨내는 세 번째 터치가 있어야 매매에 쓸 수 있다. 데이터에 억지로 선을 끼워 맞추는 것을 경계하라 — 스스로를 속이기 쉽다.
+
+</Callout>
+
+## 고전적 차트 패턴
+
+차트 패턴은 가격이 이런 레벨 주변에서 만들어내는 알아볼 수 있는 모양이다. 두 가지 부류로 나뉜다: **반전(reversal)** 패턴(추세가 뒤집힐 가능성이 높음)과 **지속(continuation)** 패턴(잠시 쉰 뒤 추세가 재개될 가능성이 높음). 각 패턴은 **돌파(breakout)** — 패턴의 핵심 레벨을 결정적으로 넘어서는 종가 — 가 나와야만 "완성"된다.
+
+### 반전 패턴
+
+**헤드앤숄더 천장형(Head and shoulders top).** 세 개의 봉우리로 이루어진 하락 천장 패턴이다: *왼쪽 어깨(left shoulder)*, 더 높은 *머리(head)*, 그리고 더 낮은 *오른쪽 어깨(right shoulder)*. 그 사이의 저점들을 잇는 선이 **목선(neckline)**이다. 가격이 목선 아래로 종가를 찍기 전까지 패턴은 완성되지 않는다 ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))). 거래량은 보통 왼쪽 어깨에서 머리, 오른쪽 어깨로 갈수록 줄어든다 — 매수자들의 연료가 떨어지고 있는 것이다.
+
+<LineChart
+  caption="헤드앤숄더 천장형: 왼쪽 어깨, 더 높은 머리, 더 낮은 오른쪽 어깨, 그리고 목선 아래로의 붕괴"
+  height={300}
+  yMin={92}
+  yMax={124}
+  series={[
+    { label: "가격", data: [100, 110, 101, 120, 100, 109, 100, 95], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 100, label: "목선", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 110, text: "왼쪽 어깨", color: "#38bdf8" },
+    { x: 3, y: 120, text: "머리", color: "#ef4444" },
+    { x: 5, y: 109, text: "오른쪽 어깨", color: "#38bdf8" },
+    { x: 7, y: 95, text: "붕괴", color: "#ef4444" }
+  ]}
+/>
+
+**역헤드앤숄더 바닥형(Inverse head and shoulders bottom).** 같은 모양을 위아래로 뒤집은 것으로, 상승 반전을 신호한다. 바닥은 천장보다 형성에 훨씬 오래 걸리는 경우가 많다 — 천장은 몇 주 만에 완성될 수 있지만, 큰 바닥은 몇 달, 심지어 1년 이상 걸릴 수도 있다 ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))).
+
+**이중천장 / 이중바닥(Double top / double bottom).** 이중천장은 대략 같은 가격대의 두 봉우리로, 가격이 그 사이의 골(목선) 아래로 떨어질 때 확정된다. 이중바닥은 그 거울상으로, 그 사이의 봉우리를 위로 돌파할 때 확정된다 ([Wikipedia](https://en.wikipedia.org/wiki/Double_top_and_double_bottom)). **삼중천장/삼중바닥(triple top/bottom)**은 같은 개념을 세 번 터치로 적용한 것이다.
+
+### 지속 패턴
+
+**삼각형(Triangles).** 가격 변동 폭이 좁아지면서 추세선들이 수렴하는 형태다. *상승(ascending)* 삼각형(평평한 윗변, 상승하는 저점 — 보통 강세), *하락(descending)* 삼각형(평평한 아랫변, 하락하는 고점 — 보통 약세), 그리고 *대칭(symmetrical)* 삼각형(양쪽 선이 모두 수렴)이 있다. 중요한 것은, "더 중요한 것은 가격이 삼각형을 벗어나 돌파할 때 시장이 움직이는 방향"이라는 점이다 — 방향을 미리 단정하지 말고 돌파를 기다려라 ([Wikipedia](https://en.wikipedia.org/wiki/Triangle_(chart_pattern))).
+
+**깃발형과 페넌트형(Flags and pennants).** 둘 다 **깃대(flagpole)**라 불리는 가파른 움직임 뒤에 짧은 휴식이 이어진다. *깃발(flag)*은 두 평행선 사이에서, *페넌트(pennant)*는 두 수렴선 사이에서 횡보한다. 그 외에는 의미가 동일하다 — 추세가 재개되기 전의 "숨 고르기"다 ([Wikipedia](https://en.wikipedia.org/wiki/Flag_and_pennant_patterns)).
+
+**사각형(Rectangle).** 가격이 수평 지지선과 저항선 사이를 오가는 명확한 박스권으로, 한쪽을 돌파할 때까지 이어진다.
+
+**컵앤핸들(Cup and handle).** **윌리엄 오닐(William O'Neil)**이 저서 *How to Make Money in Stocks*에서 정의한 강세 패턴이다. 둥근 "컵"(1~6개월, 날카로운 V자가 아님)이 형성된 뒤, 컵 상승폭의 대략 30~50%를 되돌리는 작은 하향 "핸들"(1~4주)이 이어지고, 그다음 컵의 가장자리(rim)를 위로 돌파한다 ([Wikipedia](https://en.wikipedia.org/wiki/Cup_and_handle)).
+
+## 측정된 목표가(Measured-move targets)
+
+대부분의 패턴은 돌파 지점에서 패턴의 높이를 투영하여 대략적인 가격 *목표치(target)*를 제시한다.
+
+```
+헤드앤숄더 천장형 목표가:
+  height  = head peak − neckline (붕괴 지점 기준)
+  target  = neckline − height        (아래로 투영)
+
+깃발 / 페넌트 목표가:
+  target  = breakout price ± flagpole height
+
+이중바닥 목표가:
+  height  = neckline (사이의 봉우리) − 두 저점
+  target  = neckline + height        (위로 투영)
+```
+
+*예시 계산.* 어떤 주식이 헤드앤숄더 천장형을 형성한다. 머리는 **120달러**에서 정점을 찍고, 목선은 **100달러**에 있다. 높이 = 120 − 100 = **20달러**. 가격이 100달러에서 목선 아래로 돌파하므로, 측정된 목표가 = 100 − 20 = **80달러**다. 이것은 *최소* 목표이지 약속이 아니다 — 직전 상승이 작았다면 하락도 작을 수 있다 ([Wikipedia](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern))).
+
+<LineChart
+  caption="측정된 목표가: 머리에서 목선까지의 20달러 높이를 100달러 붕괴 지점에서 아래로 투영하면 80달러 목표가 나온다"
+  height={300}
+  yMin={74}
+  yMax={124}
+  series={[
+    { label: "가격", data: [100, 110, 101, 120, 100, 109, 100, 92, 80], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 120, label: "머리 $120", color: "#ef4444" },
+    { y: 100, label: "목선 $100", color: "#f59e0b" },
+    { y: 80, label: "목표 $80", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 6, y: 100, text: "붕괴", color: "#ef4444" },
+    { x: 8, y: 80, text: "−$20 = $80", color: "#22c55e" }
+  ]}
+/>
+
+## 거래량의 역할
+
+**거래량(Volume)**은 거래된 주식 수 또는 계약 수다. 이것은 돌파의 거짓말 탐지기다.
+
+<Callout type="key">
+
+진짜 돌파에는 보통 거래량 급증이 동반된다. 얇고 줄어드는 거래량 위에서 나온 돌파는 의심스럽다 — 그 뒤에 충분한 확신이 없는 것이다.
+
+</Callout>
+
+예를 들어 컵앤핸들에서는, 컵이 형성되는 동안 거래량이 줄어들다가 가격이 핸들을 돌파할 때 급격히 늘어나야 한다 ([Wikipedia](https://en.wikipedia.org/wiki/Cup_and_handle)).
+
+## 가짜 돌파(False breakouts, 페이크아웃)
+
+**가짜 돌파(false breakout)**는 가격이 한 레벨을 살짝 뚫고 — 돌파 트레이더들의 진입과 손절을 촉발한 뒤 — 다시 박스권 안으로 튕겨 돌아오는 것이다. 이는 고통스러울 정도로 흔하다. 부분적으로는 큰손들이 손절 주문이 어디에 몰려 있는지(명백한 레벨 바로 너머) 정확히 알고 있어서 가격이 그쪽으로 끌려가기 때문이다.
+
+두 가지 방어책:
+
+1. 레벨을 넘어선 **확정 종가를 기다려라** (예: 장중 순간적 급등이 아니라 일봉 종가), 가급적 강한 거래량과 함께.
+2. **리테스트를 기다려라** — 가격이 돌파하고, 옛 레벨로 되돌림을 준 뒤, 버텨내는 것을 확인하고 진입하라.
+
+<Callout type="warning">
+
+모두가 보는 "명백한" 레벨이 바로 페이크아웃이 가장 자주 일어나는 곳이다. 지지선을 넘는 단 하나의 꼬리(wick)를 붕괴로 받아들이는 것은 초보자가 가장 비싸게 치르는 실수 중 하나다.
+
+</Callout>
+
+## 강점과 흔한 초보자의 실수
+
+**강점:** 지지/저항은 직관적이고, 모든 시간대와 모든 시장에서 작동하며, **손절(stop-loss, 손실 매매를 청산하는 주문)**과 목표를 둘 구체적이고 명확한 지점을 제공한다 — 이것이 리스크 관리를 가능하게 한다.
+
+**피해야 할 실수:**
+
+- **선을 정확한 가격으로 다루기.** 그것들은 구간이다.
+- **사후 패턴 찾기(Hindsight pattern-spotting).** 패턴은 완성된 *후에야* 명백해 보인다. 실시간에서는 모호하다. 정직한 연구(예: Thomas Bulkowski의 패턴 통계)는 "좋은" 패턴조차도 상당한 비율로 실패한다는 것을 보여준다. 패턴은 확률을 바꿀 뿐, 결과를 보장하지 않는다.
+- **주관성과 확증 편향.** 같은 차트를 다섯 명의 트레이더에게 주면 다섯 개의 서로 다른 추세선이 나온다. 충분히 열심히 들여다보면 언제나 *어떤* 패턴은 찾아낼 수 있다는 점을 명심하라.
+- **큰 그림을 잊는 것.** 강한 일봉 추세 앞에서 5분봉 차트의 패턴은 거의 의미가 없다.
+
+## 다른 도구와 결합하는 법
+
+지지/저항은 토대이지 완결된 시스템이 아니다. 다음과 함께 겹쳐 쓰라:
+
+- **거래량(Volume)**으로 돌파를 확인한다.
+- **이동평균선(Moving averages)** (예: 50일선과 200일선) — 이것들 자체가 동적 지지/저항으로 *작동*하는 경우가 많다.
+- 상대강도지수(RSI) 같은 **모멘텀 오실레이터**로 가격이 레벨에 도달할 때의 소진(exhaustion)을 포착한다.
+- **여러 시간대(Multiple timeframes)** — 일봉과 주봉 차트에 *모두* 나타나는 레벨이 더 강하다.
+
+## 연습 제안
+
+1. 차트 도구(TradingView는 무료다)를 열고 일봉 차트에서 명확한 스윙 고점과 저점을 모두 표시하라. 옛 레벨이 얼마나 자주 리테스트되는지 관찰하라.
+2. 역할 전환(지지선이 저항선이 되는)의 과거 사례를 세 개 찾아보라.
+3. 각 패턴을 *과거* 데이터에서 하나씩 식별한 뒤, 측정된 목표가 계산을 연습하라.
+4. 종이 위에서 포워드 테스트(forward-test)를 하라: 돌파가 일어나기 *전에* 돌파 방향을 예측하고, 자신의 추측을 기록한 뒤, 적중률을 정직하게 점검하라.
+
+### 출처
+
+1. [StockCharts ChartSchool — Support and Resistance](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/support-and-resistance) — 정의, 공급 과잉 심리, 그리고 역할 전환 원리.
+2. [Wikipedia — Support and resistance](https://en.wikipedia.org/wiki/Support_and_resistance) — 라운드 넘버/심리적 레벨, 반복된 테스트에서 오는 중요도, 그리고 식별 방법.
+3. [Wikipedia — Head and shoulders (chart pattern)](https://en.wikipedia.org/wiki/Head_and_shoulders_(chart_pattern)) — 구조, 목선, 거래량 양상, 천장 대 바닥의 형성 기간, 그리고 측정된 목표가 공식.
+4. [Wikipedia — Double top and double bottom](https://en.wikipedia.org/wiki/Double_top_and_double_bottom) — 패턴 구조, 목선 확정, 그리고 거래량 특성.
+5. [Wikipedia — Triangle (chart pattern)](https://en.wikipedia.org/wiki/Triangle_(chart_pattern)) — 상승/하락/대칭 삼각형과 돌파 방향의 중요성.
+6. [Wikipedia — Flag and pennant patterns](https://en.wikipedia.org/wiki/Flag_and_pennant_patterns) — 깃대, 평행 대 수렴 횡보, 지속 양상.
+7. [Wikipedia — Cup and handle](https://en.wikipedia.org/wiki/Cup_and_handle) — 오닐 출처, 컵/핸들 비율과 형성 기간, 그리고 거래량 프로파일.

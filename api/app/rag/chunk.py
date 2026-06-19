@@ -21,6 +21,7 @@ class Chunk:
     kind: str  # "guru" | "indicator"
     section: str  # nearest heading
     chunk_index: int
+    locale: str = "en"
 
 
 # Rough word budget per chunk; sections longer than this are split on paragraphs.
@@ -29,9 +30,13 @@ _HEADING_RE = re.compile(r"^(#{1,4})\s+(.*)$")
 # Drop the custom <Callout ...> / </Callout> tags but keep their inner text.
 _CALLOUT_OPEN_RE = re.compile(r"<Callout[^>]*>")
 _CALLOUT_CLOSE_RE = re.compile(r"</Callout>")
+# Self-closing chart components carry data, not prose — drop them entirely so
+# their numeric props don't pollute the embedding text.
+_CHART_RE = re.compile(r"<(?:LineChart|CandleChart)\b[\s\S]*?/>", re.MULTILINE)
 
 
 def _clean(text: str) -> str:
+    text = _CHART_RE.sub("", text)
     text = _CALLOUT_OPEN_RE.sub("", text)
     text = _CALLOUT_CLOSE_RE.sub("", text)
     return text.strip()
@@ -55,7 +60,7 @@ def _split_long(text: str, max_words: int) -> list[str]:
     return out
 
 
-def chunk_file(path: Path) -> list[Chunk]:
+def chunk_file(path: Path, locale: str = "en") -> list[Chunk]:
     post = frontmatter.load(path)
     fm = post.metadata
     slug = fm.get("slug", path.stem)
@@ -82,6 +87,7 @@ def chunk_file(path: Path) -> list[Chunk]:
                         kind=kind,
                         section=current_section,
                         chunk_index=len(chunks),
+                        locale=locale,
                     )
                 )
         buf = []
@@ -97,12 +103,12 @@ def chunk_file(path: Path) -> list[Chunk]:
     return chunks
 
 
-def chunk_dir(content_dir: Path) -> list[Chunk]:
+def chunk_dir(content_dir: Path, locale: str = "en") -> list[Chunk]:
     chunks: list[Chunk] = []
     for sub in ("gurus", "indicators"):
         d = content_dir / sub
         if not d.exists():
             continue
         for f in sorted(d.glob("*.mdx")):
-            chunks.extend(chunk_file(f))
+            chunks.extend(chunk_file(f, locale=locale))
     return chunks

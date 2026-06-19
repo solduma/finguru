@@ -57,10 +57,15 @@ cd web && npm install && npm run dev
 The web dev server proxies `/api/*` to the API (`next.config.mjs` rewrite), so
 the browser talks to a single origin.
 
-## Roadmap
+## Internationalization
 
-- **Korean (ko) i18n** — planned, not started. See
-  [`docs/TODO-i18n-korean.md`](docs/TODO-i18n-korean.md).
+The site and tutor are bilingual: **English** (`/en`, default) and **Korean**
+(`/ko`). Routes live under `web/app/[locale]/`; UI strings are in
+`web/lib/i18n.ts`; all 32 lessons are translated under `web/content/ko/` (with
+English fallback if a translation is missing). The chat tutor retrieves from the
+reader's locale and answers in their language (multilingual `e5-large`
+embeddings with locale-filtered retrieval). See
+[`docs/TODO-i18n-korean.md`](docs/TODO-i18n-korean.md) for how to add a locale.
 
 ## Build status
 

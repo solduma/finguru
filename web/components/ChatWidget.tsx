@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { getStrings, type Locale } from "@/lib/i18n";
 
 interface Citation {
   title: string;
@@ -15,7 +16,8 @@ interface Msg {
   citations?: Citation[];
 }
 
-export default function ChatWidget() {
+export default function ChatWidget({ locale }: { locale: Locale }) {
+  const t = getStrings(locale).chat;
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -34,7 +36,7 @@ export default function ChatWidget() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: question, history }),
+        body: JSON.stringify({ message: question, history, locale }),
       });
       if (!res.body) throw new Error("No response body");
 
@@ -94,7 +96,7 @@ export default function ChatWidget() {
         const next = [...prev];
         next[next.length - 1] = {
           role: "assistant",
-          content: `⚠️ Could not reach the tutor: ${String(e)}`,
+          content: `⚠️ ${t.unreachable} ${String(e)}`,
         };
         return next;
       });
@@ -109,20 +111,17 @@ export default function ChatWidget() {
         onClick={() => setOpen((o) => !o)}
         className="fixed bottom-5 right-5 z-50 rounded-full bg-teal-500 px-5 py-3 font-semibold text-black shadow-lg"
       >
-        {open ? "Close" : "Ask the Tutor"}
+        {open ? t.close : t.open}
       </button>
 
       {open && (
         <div className="fixed bottom-20 right-5 z-50 flex h-[32rem] w-96 flex-col rounded-xl border border-white/10 bg-[#131722] shadow-2xl">
           <div className="border-b border-white/10 px-4 py-3 font-semibold text-teal-300">
-            FinGuru Tutor
+            {t.title}
           </div>
           <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
             {messages.length === 0 && (
-              <p className="text-gray-400">
-                Ask anything about technical analysis — the gurus, the
-                indicators, the history. I teach concepts, not trades.
-              </p>
+              <p className="text-gray-400">{t.empty}</p>
             )}
             {messages.map((m, i) => (
               <div
@@ -146,7 +145,7 @@ export default function ChatWidget() {
                       {m.citations.map((c) => (
                         <a
                           key={c.slug}
-                          href={`/${c.kind === "guru" ? "gurus" : "indicators"}/${c.slug}`}
+                          href={`/${locale}/${c.kind === "guru" ? "gurus" : "indicators"}/${c.slug}`}
                           target="_blank"
                           rel="noreferrer"
                           className="rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-xs text-teal-200 no-underline hover:bg-teal-400/20"
@@ -165,7 +164,7 @@ export default function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && send()}
-              placeholder="What is RSI divergence?"
+              placeholder={t.placeholder}
               className="flex-1 rounded-md bg-black/30 px-3 py-2 text-sm outline-none"
             />
             <button
@@ -173,7 +172,7 @@ export default function ChatWidget() {
               disabled={streaming}
               className="rounded-md bg-teal-500 px-3 py-2 text-sm font-semibold text-black disabled:opacity-50"
             >
-              Send
+              {t.send}
             </button>
           </div>
         </div>

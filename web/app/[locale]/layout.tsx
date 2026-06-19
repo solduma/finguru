@@ -1,0 +1,61 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import ChatWidget from "@/components/ChatWidget";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
+
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const t = getStrings(locale);
+
+  return (
+    <html lang={locale}>
+      <body>
+        <header className="border-b border-white/10">
+          <nav className="mx-auto flex max-w-5xl items-center gap-6 px-6 py-4">
+            <Link
+              href={`/${locale}`}
+              className="font-bold text-teal-300 no-underline"
+            >
+              {t.brand}
+            </Link>
+            <Link
+              href={`/${locale}/path`}
+              className="text-sm text-gray-300 no-underline"
+            >
+              {t.nav.path}
+            </Link>
+            <Link
+              href={`/${locale}/gurus`}
+              className="text-sm text-gray-300 no-underline"
+            >
+              {t.nav.gurus}
+            </Link>
+            <Link
+              href={`/${locale}/indicators`}
+              className="text-sm text-gray-300 no-underline"
+            >
+              {t.nav.indicators}
+            </Link>
+            <div className="ml-auto">
+              <LocaleSwitcher current={locale} />
+            </div>
+          </nav>
+        </header>
+        <main className="mx-auto max-w-5xl px-6 py-10">{children}</main>
+        <ChatWidget locale={locale} />
+      </body>
+    </html>
+  );
+}

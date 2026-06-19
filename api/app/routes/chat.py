@@ -22,7 +22,7 @@ router = APIRouter()
 async def _stream(req: ChatRequest) -> AsyncIterator[str]:
     history = [{"role": m.role, "content": m.content} for m in req.history]
     try:
-        prepared = prepare(req.message, history)
+        prepared = prepare(req.message, history, locale=req.locale)
     except Exception as e:  # retrieval/index failure shouldn't 500 the stream
         yield sse_event("error", {"message": f"Retrieval failed: {e}"})
         yield sse_event("done", {})
