@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { getStrings, type Locale } from "@/lib/i18n";
+import ChatMarkdown from "./ChatMarkdown";
 
 interface Citation {
   title: string;
@@ -149,13 +150,23 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
               <div key={i} className={m.role === "user" ? "text-right" : "text-left"}>
                 <span
                   className={
-                    "inline-block whitespace-pre-wrap rounded-lg px-3 py-2 " +
+                    "inline-block rounded-lg px-3 py-2 text-left " +
                     (m.role === "user"
-                      ? "bg-teal-600 text-black"
+                      ? "whitespace-pre-wrap bg-teal-600 text-black"
                       : "bg-white/5 text-gray-100")
                   }
                 >
-                  {m.content || (streaming && i === lastIndex ? "…" : "")}
+                  {m.role === "assistant" ? (
+                    m.content ? (
+                      <ChatMarkdown content={m.content} />
+                    ) : streaming && i === lastIndex ? (
+                      "…"
+                    ) : (
+                      ""
+                    )
+                  ) : (
+                    m.content
+                  )}
                 </span>
 
                 {m.role === "assistant" && m.citations && m.citations.length > 0 && (
