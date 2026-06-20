@@ -156,8 +156,8 @@ players want to fill against.
     { o: 25.6, h: 28.5, l: 25.4, c: 28 },
     { o: 28, h: 30, l: 27.6, c: 29.5 },
   ]}
-  levels={[{ y: 20, label: "order block low (demand)" }]}
-  points={[{ x: 2, y: 23.3, text: "last down-candle = bullish OB", color: "#22c55e" }]}
+  levels={[{ y: 21, label: "order block low (demand)" }]}
+  points={[{ x: 1, y: 23.7, text: "last down-candle = bullish OB", color: "#22c55e" }]}
 />
 
 <CandleChart
@@ -206,15 +206,17 @@ discount, sell in premium.**
 <LineChart
   caption="Optimal Trade Entry: after an impulse leg up, ICT buys only when the pullback reaches the 62–79% retracement of that leg — the deep-discount zone of the move."
   height={300}
-  series={[{ label: "Price", data: [20, 22, 25, 28, 30, 27, 24.7, 23.8, 26, 29] }]}
-  zones={[{ yMin: 23.8, yMax: 26.2, color: "rgba(34,197,94,0.12)", label: "OTE 62–79% retracement" }]}
+  series={[{ label: "Price", data: [20, 22, 25, 28, 30, 26, 23.8, 22.5, 26, 29] }]}
+  zones={[{ yMin: 22.1, yMax: 23.8, color: "rgba(34,197,94,0.12)", label: "OTE 62–79% retracement" }]}
   levels={[
     { y: 30, label: "swing high (100%)", color: "#f59e0b" },
+    { y: 23.8, label: "62% retracement", color: "#a78bfa" },
+    { y: 22.1, label: "79% retracement", color: "#a78bfa" },
     { y: 20, label: "swing low (0%)" },
   ]}
   points={[
     { x: 4, y: 30, text: "impulse high", color: "#38bdf8" },
-    { x: 7, y: 23.8, text: "enter in OTE", color: "#22c55e" },
+    { x: 7, y: 22.5, text: "enter in OTE", color: "#22c55e" },
   ]}
 />
 
@@ -250,16 +252,16 @@ A textbook ICT long, presented to show the *logic*, not as a recommendation:
 <LineChart
   caption="The full ICT long: sweep below sell-side liquidity, snap-back, CHoCH up, entry on the discount pullback, stop beneath the sweep low, target the buy-side liquidity above — a 1:3-ish R play."
   height={320}
-  series={[{ label: "Price", data: [30, 28, 31, 28, 24.5, 29, 32, 30, 33, 37] }]}
+  series={[{ label: "Price", data: [30, 28, 31, 28, 25, 29, 32, 27, 32, 37] }]}
   levels={[
     { y: 28, label: "equal lows (sell-side liquidity)", color: "#f59e0b" },
     { y: 36, label: "target: buy-side liquidity", color: "#22c55e" },
-    { y: 23.5, label: "stop (below sweep low)", color: "#ef4444" },
+    { y: 24, label: "stop (below sweep low)", color: "#ef4444" },
   ]}
   points={[
-    { x: 4, y: 24.5, text: "liquidity grab", color: "#ef4444" },
+    { x: 4, y: 25, text: "liquidity grab", color: "#ef4444" },
     { x: 6, y: 32, text: "CHoCH up (confirm)", color: "#2dd4bf" },
-    { x: 7, y: 30, text: "entry (discount/FVG)", color: "#22c55e" },
+    { x: 7, y: 27, text: "entry (discount/FVG)", color: "#22c55e" },
     { x: 9, y: 37, text: "target hit", color: "#22c55e" },
   ]}
 />

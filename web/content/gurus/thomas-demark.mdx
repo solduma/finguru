@@ -103,7 +103,7 @@ A completed Setup of 9 is *not* a trade signal. It only says the trend is stretc
 DeMark added a quality filter called **perfection**. For a buy setup, the low of bar 8 or bar 9 should be less than or equal to the lows of bars 6 and 7 (the inverse, using highs, for a sell setup). An "unperfected" 9 is considered weaker, and the signal may need another bar or two to perfect.
 
 <CandleChart
-  caption="Buy Setup perfection: the low of bar 8 or 9 dips at or below the lows of bars 6 and 7 — the '9' is perfected; if it stayed above them the 9 would be unperfected and weaker"
+  caption="Buy Setup perfection (these are bars 3-9; bars 1-2 are off-screen to the left): the low of bar 8 or 9 dips at or below the lower of bars 6 and 7 (98.0), so the '9' is perfected; had bars 8-9 stayed above 98.0 the 9 would be unperfected and weaker"
   height={280}
   candles={[
     { o: 100, h: 100.2, l: 99.4, c: 99.6 },
@@ -115,12 +115,16 @@ DeMark added a quality filter called **perfection**. For a buy setup, the low of
     { o: 98.0, h: 98.2, l: 97.4, c: 97.6 }
   ]}
   points={[
-    { x: 4, y: 98.5, text: "bar 6 low", color: "#a78bfa" },
-    { x: 5, y: 98.3, text: "bar 7 low", color: "#a78bfa" },
-    { x: 6, y: 97.2, text: "bar 9 low <= bars 6,7", color: "#22c55e" }
+    { x: 0, y: 100.4, text: "3", color: "#e6e9ef" },
+    { x: 1, y: 100.0, text: "4", color: "#e6e9ef" },
+    { x: 2, y: 99.6, text: "5", color: "#e6e9ef" },
+    { x: 3, y: 98.1, text: "6", color: "#a78bfa" },
+    { x: 4, y: 97.8, text: "7", color: "#a78bfa" },
+    { x: 5, y: 98.6, text: "8", color: "#e6e9ef" },
+    { x: 6, y: 97.2, text: "9: low <= 98.0", color: "#22c55e" }
   ]}
   levels={[
-    { y: 97.8, label: "bars 6-7 low", color: "#a78bfa" }
+    { y: 98.0, label: "lower of bars 6-7 (threshold to undercut)", color: "#a78bfa" }
   ]}
 />
 
@@ -156,21 +160,28 @@ A **Sell Countdown** uses `Close >= High[2 bars earlier]`. Note the comparison c
 
 DeMark added a famous extra qualifier on the final bar tied to **countdown bar 8**. For a buy countdown, the close of bar 13 should be at or below the *low of countdown bar 8*; if it isn't, the "13" is deferred until a later bar satisfies it. This is the detail almost everyone gets wrong.
 
-<LineChart
-  caption="Buy Countdown qualifying bars: only bars whose close <= the low two bars earlier are counted (non-consecutive), and the '13' is valid only if its close clears the bar-8 qualifier"
+<CandleChart
+  caption="Buy Countdown is NON-consecutive: a bar counts only when its close <= the low two bars earlier. Counts land on bars 2,3,5,6,8 here — bars 4 and 7 fail the test and are skipped, so the count is not a 1:1 march"
   height={300}
-  series={[
-    { label: "Close", data: [96.2, 95.8, 96.0, 95.4, 95.6, 95.0, 95.2, 94.6, 94.8, 94.2, 94.4, 93.9, 94.1, 93.6, 93.3], color: "#e6e9ef", width: 2 }
+  candles={[
+    { o: 97.0, h: 97.3, l: 96.4, c: 96.6 },
+    { o: 96.6, h: 96.9, l: 96.0, c: 96.2 },
+    { o: 96.2, h: 96.4, l: 95.6, c: 95.8 },
+    { o: 95.8, h: 96.1, l: 95.5, c: 96.0 },
+    { o: 96.1, h: 96.2, l: 95.7, c: 96.1 },
+    { o: 96.1, h: 96.2, l: 95.0, c: 95.2 },
+    { o: 95.2, h: 95.4, l: 94.8, c: 95.3 },
+    { o: 95.3, h: 95.6, l: 95.1, c: 95.5 },
+    { o: 95.5, h: 95.7, l: 94.5, c: 94.7 }
   ]}
   points={[
-    { x: 0, y: 96.6, text: "count 1", color: "#2dd4bf" },
-    { x: 3, y: 95.0, text: "count 4", color: "#2dd4bf" },
-    { x: 7, y: 94.2, text: "count 8", color: "#38bdf8" },
-    { x: 11, y: 93.5, text: "count 12", color: "#2dd4bf" },
-    { x: 14, y: 93.7, text: "13: close <= bar-8 low", color: "#22c55e" }
-  ]}
-  levels={[
-    { y: 94.6, label: "bar-8 low qualifier", color: "#f59e0b" }
+    { x: 2, y: 95.4, text: "count 1", color: "#2dd4bf" },
+    { x: 3, y: 95.3, text: "count 2", color: "#2dd4bf" },
+    { x: 4, y: 96.5, text: "not counted (close > low[2])", color: "#ef4444" },
+    { x: 5, y: 94.8, text: "count 3", color: "#2dd4bf" },
+    { x: 6, y: 94.6, text: "count 4", color: "#2dd4bf" },
+    { x: 7, y: 95.9, text: "not counted (close > low[2])", color: "#ef4444" },
+    { x: 8, y: 94.3, text: "count 5", color: "#2dd4bf" }
   ]}
 />
 
@@ -207,7 +218,7 @@ A "9" prints — the downtrend is mature. We check perfection (is the low of bar
     { o: 100.5, h: 100.8, l: 99.7, c: 100 },
     { o: 100, h: 100.4, l: 99.6, c: 99.7 },
     { o: 99.7, h: 100, l: 99.4, c: 99.6 },
-    { o: 100.2, h: 100.4, l: 99.8, c: 100 },
+    { o: 100.2, h: 100.4, l: 99.3, c: 99.5 },
     { o: 100, h: 100.2, l: 98.6, c: 99 },
     { o: 99, h: 99.1, l: 97.6, c: 98 },
     { o: 98, h: 98.2, l: 96.7, c: 97 },
@@ -218,7 +229,7 @@ A "9" prints — the downtrend is mature. We check perfection (is the low of bar
     { o: 94.8, h: 95, l: 94.1, c: 94.5 }
   ]}
   points={[
-    { x: 8, y: 100.7, text: "1", color: "#38bdf8" },
+    { x: 7, y: 100.2, text: "1", color: "#38bdf8" },
     { x: 15, y: 95.4, text: "9", color: "#22c55e" }
   ]}
 />

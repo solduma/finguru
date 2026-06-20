@@ -177,7 +177,7 @@ Sell stop  = Today's open − (k × yesterday's range)
 where range = (High − Low) of the prior day, and k is a fraction, often ~0.5–0.8
 ```
 
-If price thrusts up by, say, 60% of yesterday's range above today's open, your buy order triggers automatically. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
+A **buy stop** is an order that sits above the current price and only executes if price climbs up to it — so it fires automatically the moment a thrust confirms upward momentum (a **sell stop** is the mirror image, sitting below price and firing if price drops to it). If price thrusts up by, say, 60% of yesterday's range above today's open, your buy stop triggers automatically. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
 
 <CandleChart
   caption="Volatility breakout: buy stop set 0.6 × prior range above the open, then a continuation thrust"
@@ -201,7 +201,7 @@ If price thrusts up by, say, 60% of yesterday's range above today's open, your b
 
 ## Core idea 3 — Commercials and the COT report
 
-This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the U.S. **CFTC**, reflecting positions as of the preceding Tuesday's close and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into:
+This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the U.S. **CFTC**, reflecting positions as of the preceding Tuesday's close and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into the categories below. (**Open interest** is the total number of futures contracts still open — entered into but not yet closed out or settled — at a given time; the COT report sorts that total by who is holding it.)
 
 | Category | Who | Reputation |
 |---|---|---|
@@ -209,7 +209,7 @@ This is arguably his most durable contribution to *sentiment* analysis. The **Co
 | **Non-commercials** (large speculators) | Funds trading for profit | Trend-following crowd |
 | **Non-reportable** (small speculators) | Positions below reporting size | Often wrong at extremes |
 
-Williams built **COT indices** that normalize commercial positioning over a lookback window. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
+Williams built **COT indices** that normalize commercial positioning over a lookback window. **Net-long** means a group holds more buy (long) contracts than sell (short) ones after the two offset; **net-short** is the reverse — more shorts than longs. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
 
 <LineChart
   caption="COT commercial index (0–100): a net-long extreme precedes the price bottom; a net-short extreme precedes the top"
@@ -217,7 +217,7 @@ Williams built **COT indices** that normalize commercial positioning over a look
   yMin={0}
   yMax={100}
   series={[
-    { label: "Commercial COT index", data: [95, 88, 70, 45, 30, 20, 35, 60, 80, 92, 75, 40, 15, 8, 25], color: "#38bdf8", width: 2 }
+    { label: "Commercial COT index", data: [95, 88, 70, 45, 30, 20, 35, 60, 80, 88, 60, 12, 20, 35, 50], color: "#38bdf8", width: 2 }
   ]}
   zones={[
     { yMin: 80, yMax: 100, color: "rgba(34,197,94,0.12)", label: "commercials net-long (bullish)" },
@@ -225,8 +225,8 @@ Williams built **COT indices** that normalize commercial positioning over a look
   ]}
   points={[
     { x: 0, y: 95, text: "net-long extreme → bottom near", color: "#22c55e" },
-    { x: 9, y: 92, text: "net-long again", color: "#22c55e" },
-    { x: 13, y: 8, text: "net-short extreme → top near", color: "#ef4444" }
+    { x: 9, y: 88, text: "net-long again", color: "#22c55e" },
+    { x: 11, y: 12, text: "net-short extreme → top near", color: "#ef4444" }
   ]}
 />
 
@@ -234,11 +234,11 @@ Williams built **COT indices** that normalize commercial positioning over a look
   caption="The underlying price the COT index above is read against — extremes lead turns by weeks"
   height={220}
   series={[
-    { label: "Price", data: [88, 85, 84, 86, 89, 92, 96, 101, 107, 112, 116, 119, 121, 122, 118], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [88, 85, 84, 86, 89, 92, 96, 101, 107, 112, 116, 119, 121, 124, 120], color: "#e6e9ef", width: 2 }
   ]}
   points={[
     { x: 2, y: 84, text: "price bottom (after net-long)", color: "#22c55e" },
-    { x: 13, y: 122, text: "price top (after net-short)", color: "#ef4444" }
+    { x: 13, y: 124, text: "price top (after net-short)", color: "#ef4444" }
   ]}
 />
 
