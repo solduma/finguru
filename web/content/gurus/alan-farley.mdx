@@ -44,20 +44,20 @@ Bottoms → Breakouts → Rallies → Highs → Tops → Reversals → Declines 
 
 In plain terms, the stages are: **Bottoms** (price stops falling and goes quiet, building a base), **Breakouts** (it finally pushes up out of that base), **Rallies** (the sustained climb), **Highs** (the strong, still-trending peak), **Tops** (the climb stalls and rolls into a sideways range — the trend is exhausting), **Reversals** (price turns down and confirms the trend has flipped), and **Declines** (the sustained fall, which eventually quiets down into the next Bottom). Note the deliberate split between *Highs* (still healthy, trend intact) and *Tops* (trend stalling) — that distinction is exactly the kind of context the whole framework hangs on.
 
-You may recognize the skeleton of Richard Wyckoff and the older accumulation/markup/distribution/markdown idea — Farley is explicitly in that lineage. His contribution is operational: he ties each stage to (a) the crowd emotion driving it and (b) the specific setups that work *in that stage and nowhere else*.
+You may recognize the skeleton of Richard Wyckoff and the older accumulation/markup/distribution (large holders quietly selling near the top)/markdown idea — Farley is explicitly in that lineage. His contribution is operational: he ties each stage to (a) the crowd emotion driving it and (b) the specific setups that work *in that stage and nowhere else*.
 
 <LineChart
   caption="Pattern Cycles: price moving from bottom to top and back, with the stages labeled"
   height={320}
   series={[
-    { label: "Price", data: [21, 20, 20.5, 20, 23, 28, 33, 37, 39, 40, 39.5, 40, 37, 32, 27, 23, 21], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [21, 20, 20.5, 20, 23, 28, 33, 37, 40, 41, 41, 40.5, 37, 32, 27, 23, 21], color: "#e6e9ef", width: 2 }
   ]}
   points={[
     { x: 1, y: 20, text: "Bottoms", color: "#22c55e" },
     { x: 4, y: 23, text: "Breakouts", color: "#22c55e" },
     { x: 6, y: 33, text: "Rallies", color: "#2dd4bf" },
-    { x: 9, y: 40, text: "Highs", color: "#e6e9ef" },
-    { x: 11, y: 40, text: "Tops", color: "#f59e0b" },
+    { x: 8, y: 40, text: "Highs", color: "#e6e9ef" },
+    { x: 11, y: 40.5, text: "Tops", color: "#f59e0b" },
     { x: 13, y: 32, text: "Reversals", color: "#ef4444" },
     { x: 15, y: 23, text: "Declines", color: "#ef4444" }
   ]}
@@ -108,10 +108,10 @@ A practical way Farley operationalizes this is **multi–time-frame Fibonacci re
   ]}
   levels={[
     { y: 50.5, label: "weekly 50% retr.", color: "#38bdf8" },
-    { y: 49.5, label: "daily 61.8% retr.", color: "#2dd4bf" }
+    { y: 49.0, label: "daily 61.8% retr.", color: "#2dd4bf" }
   ]}
   zones={[
-    { yMin: 49, yMax: 50.8, color: "rgba(34,197,94,0.12)", label: "Fib cluster" }
+    { yMin: 48.8, yMax: 50.8, color: "rgba(34,197,94,0.12)", label: "Fib cluster" }
   ]}
   points={[
     { x: 4, y: 49, text: "convergence bounce", color: "#22c55e" }
@@ -146,7 +146,7 @@ The "**7 Bells**" are Farley's named, original setups — each is essentially "a
 | **Coiled Spring** | Tightly constricted price (a narrowing range / volatility squeeze) gives way to a directional move. |
 | **Finger Finder** | A single sharp candle ("finger") flags a reversal that's visible in the next-smaller time frame. |
 | **Hole-in-the-Wall** | A gap down after a strong rally signals a trend change (distribution beginning). |
-| **Power Spike** | A high-volume event prints the likely future direction of price. |
+| **Power Spike** | A burst of unusually high volume reveals — and often kicks off — the next likely direction of price. |
 | **Bear Hug** | A weak market rallies into resistance, then drops quickly — a short setup. |
 | **3rd Watch** | A breakout through a triple top signals a major new uptrend. |
 
@@ -159,7 +159,7 @@ Don't trade the bells as a checklist of shapes. Each is only valid in its stage 
 A few of the bells are worth seeing as shapes. The **Dip Trip** buys a shallow pullback against a strong uptrend, expecting a sharp rebound:
 
 <CandleChart
-  caption="Dip Trip: a brief pullback against a strong uptrend, bought as it rebounds off rising support"
+  caption="Dip Trip: a brief pullback against a strong uptrend, bought as it rebounds off support at the dip low"
   height={300}
   candles={[
     { o: 30, h: 31.5, l: 29.8, c: 31.3 },
@@ -175,14 +175,14 @@ A few of the bells are worth seeing as shapes. The **Dip Trip** buys a shallow p
     { x: 4, y: 31.7, text: "buy the dip", color: "#22c55e" }
   ]}
   levels={[
-    { y: 31.9, label: "rising support" }
+    { y: 31.9, label: "support / dip low" }
   ]}
 />
 
 The **Hole-in-the-Wall** is the bearish mirror: after a strong rally, a gap *down* opens below the prior close, signaling distribution and a likely trend change:
 
 <CandleChart
-  caption="Hole-in-the-Wall: a gap-down opens below the prior close after a rally, flagging a trend change"
+  caption="Hole-in-the-Wall: a gap-down opens below the prior close after a rally, flagging a trend change — and it usually prints on heavy (above-average) volume, which the chart can't show"
   height={300}
   candles={[
     { o: 40, h: 41.5, l: 39.8, c: 41.3 },
@@ -261,12 +261,12 @@ Suppose stock XYZ has been declining for months, then goes quiet near \$20 for s
 Three time frames converge on \$20–\$21 as the launch zone. Setup: buy the breakout above the coil, say \$21.20.
 
 <CandleChart
-  caption="Coiled Spring at the base, then a Power Spike breakout above the coil with stop and target"
+  caption="Coiled Spring at the base, then a Power Spike breakout above the coil with stop and target. The chart can't show volume, but the breakout bar prints on roughly 3x average volume — that volume surge IS the Power Spike."
   height={320}
   candles={[
-    { o: 20.0, h: 21.3, l: 19.6, c: 20.8 },
-    { o: 20.8, h: 21.1, l: 19.9, c: 20.2 },
-    { o: 20.2, h: 20.9, l: 19.8, c: 20.6 },
+    { o: 20.0, h: 21.3, l: 20.0, c: 20.8 },
+    { o: 20.8, h: 21.1, l: 20.1, c: 20.4 },
+    { o: 20.4, h: 20.9, l: 20.0, c: 20.6 },
     { o: 20.6, h: 20.8, l: 20.0, c: 20.3 },
     { o: 20.3, h: 20.7, l: 20.0, c: 20.5 },
     { o: 20.5, h: 20.6, l: 20.1, c: 20.3 },
@@ -277,8 +277,8 @@ Three time frames converge on \$20–\$21 as the launch zone. Setup: buy the bre
     { o: 24.4, h: 26.1, l: 24.2, c: 25.9 }
   ]}
   points={[
-    { x: 5, y: 19.6, text: "Coiled Spring", color: "#2dd4bf" },
-    { x: 7, y: 22.3, text: "Power Spike breakout", color: "#22c55e" }
+    { x: 5, y: 20.3, text: "Coiled Spring", color: "#2dd4bf" },
+    { x: 7, y: 22.6, text: "breakout bar: ~3x avg volume", color: "#22c55e" }
   ]}
   levels={[
     { y: 21.2, label: "entry 21.20" },
@@ -291,12 +291,12 @@ Three time frames converge on \$20–\$21 as the launch zone. Setup: buy the bre
 Entry:        21.20
 Stop:         19.80   (just under the base; structure breaks here)
 Risk/share:   1.40
-First target: 26.00   (prior congestion / measured move)
+First target: 26.00   (prior congestion: the level price fell from before the base; ~$6 decline into $20, recovered)
 Reward/share: 4.80
 Reward:risk = 4.80 / 1.40 ≈ 3.4 : 1
 ```
 
-Farley insists on this arithmetic *before* entry. A setup whose reward:risk falls much below roughly 2.5–3:1 generally isn't worth taking, because even a good win rate can't overcome a poor payoff ratio. If the stop must sit far away (wrecking reward:risk), the trade is rejected regardless of how pretty the chart looks.
+The first target 26.00 is the **prior congestion** — the price shelf near \$26 that the stock fell from before going quiet at \$20 (that roughly \$6 decline isn't on this zoomed-in chart, which starts at the base). The reasoning: a stock that reclaims its launch zone tends to run back toward the supply it last broke down from. (A related technique is the pure *measured move* — projecting the height of the base itself up from the breakout — but here we use the more conservative prior-resistance target.) Farley insists on this arithmetic *before* entry. A setup whose reward:risk falls much below roughly 2.5–3:1 generally isn't worth taking, because even a good win rate can't overcome a poor payoff ratio. If the stop must sit far away (wrecking reward:risk), the trade is rejected regardless of how pretty the chart looks.
 
 <Callout type="key">
 
@@ -306,7 +306,7 @@ Timing is the whole game. Farley wants entries right at the structural inflectio
 
 ## The Adam Theory critique
 
-In *The Master Swing Trader*, Farley is openly critical of J. Welles Wilder's later **"Adam Theory of Markets"** (1987) — Wilder's claim that markets are essentially symmetrical and that you can forecast future moves by reflecting past price action, discarding the very indicators (RSI, ADX, Parabolic SAR) that Wilder himself had introduced in 1978 and made famous.
+In *The Master Swing Trader*, Farley is openly critical of J. Welles Wilder's later **"Adam Theory of Markets"** (1987) — Wilder's claim that markets are essentially symmetrical and that you can forecast future moves by reflecting past price action, discarding the very indicators (RSI and ADX — the momentum and trend-strength gauges — and Parabolic SAR, a trailing-stop tool) that Wilder himself had introduced in 1978 and made famous.
 
 Farley's objection is on principle: there is no reliable symmetry to exploit, and a method that throws away confirmation tools in favor of a single mirror-image forecast contradicts the entire cross-verification philosophy. His stance is honest and worth internalizing — the lesson isn't "Wilder bad," it's that **single-tool, single–time-frame prediction is fragile**; robustness comes from convergence, not from one elegant rule.
 

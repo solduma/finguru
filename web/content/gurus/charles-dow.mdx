@@ -65,10 +65,11 @@ observations into a coherent body of thought **after he died**.
 These are the heart of the lesson. Read them slowly — they look simple, and that
 simplicity is exactly why they've survived for over a century.
 
-### 1. The averages discount everything
+### 1. The averages discount (already price in) everything
 
-Price already reflects all known information: every hope, fear, earnings report,
-and rumor. Dow anticipated the "efficient market" idea by decades.
+Here "discount" means price-in, not mark down: price already reflects all known
+information — every hope, fear, earnings report,
+and rumor. (You'll see this elsewhere as "the market discounts X.") Dow anticipated the "efficient market" idea by decades.
 
 > **Example:** A company reports weak earnings and the stock barely moves —
 > because the market already *expected* weakness and priced it in. Only genuine
@@ -88,15 +89,15 @@ A **secondary** reaction typically retraces **one-third to two-thirds** (often
 about half) of the prior primary move. **Minor** trends are essentially noise.
 
 <LineChart
-  caption="The primary uptrend (the tide) climbs from 100 toward 150; a secondary reaction (the waves) retraces about half of the prior leg before the tide resumes. Day-to-day jiggles are minor trends (ripples)."
+  caption="The primary uptrend (the tide) climbs from 100 toward 150; a secondary reaction (the waves) retraces about half of the prior leg before the tide resumes. Day-to-day jiggles are minor trends (ripples). The dashed line shows the tide's net direction (where price is heading overall), not a support level — price dips below it during the secondary reaction."
   height={300}
   series={[{ label: "Price", data: [100, 104, 102, 108, 112, 110, 116, 121, 119, 124, 117, 114, 110, 113, 118, 124, 130, 128, 134, 140, 138, 144, 150] }]}
   points={[
-    { x: 9, y: 124, text: "primary high", color: "#22c55e" },
+    { x: 9, y: 124, text: "high before reaction", color: "#22c55e" },
     { x: 12, y: 110, text: "secondary low (~½ retrace)", color: "#ef4444" },
     { x: 22, y: 150, text: "tide resumes", color: "#22c55e" },
   ]}
-  trendlines={[{ x1: 0, y1: 100, x2: 22, y2: 150, label: "primary trend (tide)", dashed: true }]}
+  trendlines={[{ x1: 0, y1: 100, x2: 22, y2: 150, label: "overall primary trajectory", dashed: true }]}
 />
 
 <Callout type="note">
@@ -117,7 +118,7 @@ A **bull market**:
    begins quietly selling.
 
 A **bear market** runs the same psychology in reverse: distribution → decline →
-panic/capitulation.
+panic/capitulation (a final burst of give-up selling where the last holders bail out).
 
 <LineChart
   caption="A primary bull market unfolds in three phases: a flat accumulation base, a steep public-participation advance (the biggest gains), then a choppy excess/distribution top before the trend rolls over."
@@ -157,8 +158,8 @@ that **non-confirmation** is a warning.
     { label: "Transports", data: [29, 32, 30, 34, 32, 37, 35, 41], color: "#2dd4bf" },
   ]}
   points={[
-    { x: 7, y: 42, text: "new high", color: "#22c55e" },
-    { x: 7, y: 41, text: "confirms the high", color: "#22c55e" },
+    { x: 6, y: 40, text: "Industrials new high", color: "#22c55e" },
+    { x: 6, y: 33, text: "Transports confirm", color: "#2dd4bf" },
   ]}
 />
 
@@ -172,7 +173,7 @@ in a bull market, heavier on declines in a bear market. But volume is only a
 > are carrying it.
 
 <LineChart
-  caption="Two rallies, same price path. The healthy one (volume rising with price) confirms the trend; the suspect one (volume fading as price climbs) warns that buyers are drying up."
+  caption="Two rallies, same price path (top line). The two lower lines are trading volume, not price: the healthy rally's volume rises with price (confirming), while the suspect rally's volume fades as price climbs (warning that buyers are drying up)."
   height={300}
   series={[
     { label: "Price", data: [20, 22, 24, 26, 28, 30] },
@@ -217,7 +218,6 @@ lows (LL), with the falling line over the highs acting as resistance.
   height={300}
   series={[{ label: "Price", data: [48, 40, 45, 33, 38, 27, 32, 21] }]}
   points={[
-    { x: 1, y: 40, text: "LL", color: "#ef4444" },
     { x: 2, y: 45, text: "LH", color: "#ef4444" },
     { x: 3, y: 33, text: "LL", color: "#ef4444" },
     { x: 4, y: 38, text: "LH", color: "#ef4444" },
@@ -250,22 +250,25 @@ the rule above as the standard interpretation, not a mechanical formula.
    **non-confirmation.** Warning flag raised; the trend is *not yet* broken.
 3. Both averages sell off, then bounce. The Industrials' next rally tops at
    **34,000** — a **lower high** — and the Transports also make a lower high.
-4. Both averages then **break below 32,000** (the prior reaction low). When
-   *both* confirm, the primary trend is judged to have **reversed from bull to
-   bear.**
+4. Both averages then **break their own prior reaction lows** (the Industrials
+   below 32,000, the Transports below their lower level). When *both* confirm,
+   the primary trend is judged to have **reversed from bull to bear.**
 
 <LineChart
-  caption="The Industrials make a new high (35k) but the Transports fail to confirm — a non-confirmation warning. The reversal is only confirmed when both break the prior 32k reaction low."
+  caption="The Industrials make a new high (35k) but the Transports fail to confirm (no new high) — a non-confirmation warning. The reversal is confirmed only when EACH average breaks its OWN prior reaction low on the same bar."
   height={320}
   series={[
-    { label: "Industrials", data: [30, 32, 31.5, 35, 33, 34, 31, 30] },
-    { label: "Transports", data: [29.5, 31.8, 31, 31.5, 30.5, 31, 30, 29] },
+    { label: "Industrials", data: [33, 32, 33.5, 35, 33, 34, 31, 30], color: "#38bdf8" },
+    { label: "Transports", data: [29, 31, 30, 30.5, 29, 29.8, 28, 27], color: "#2dd4bf" },
   ]}
-  levels={[{ y: 32, label: "prior reaction low (32k)", color: "#f59e0b" }]}
+  levels={[
+    { y: 32, label: "Industrials reaction low (32k)", color: "#f59e0b" },
+    { y: 29, label: "Transports reaction low (29k)", color: "#2dd4bf" },
+  ]}
   points={[
-    { x: 3, y: 35, text: "new high", color: "#22c55e" },
-    { x: 3, y: 31.5, text: "no confirm", color: "#ef4444" },
-    { x: 6, y: 31, text: "both break → reversal", color: "#ef4444" },
+    { x: 3, y: 35, text: "Industrials new high", color: "#22c55e" },
+    { x: 3, y: 30.5, text: "Transports: no new high (no confirm)", color: "#ef4444" },
+    { x: 6, y: 31, text: "each breaks its own low → reversal", color: "#ef4444" },
   ]}
 />
 
@@ -281,16 +284,18 @@ designed, not failing.
 ## Legacy and modern implementation
 
 Dow Theory is the **conceptual bedrock of technical analysis.** Trendlines,
-support and resistance, trend-following systems, and intermarket analysis all
-descend directly from it.
+support and resistance, trend-following systems, and intermarket analysis
+(reading how different markets — stocks, bonds, commodities, currencies — move
+together to confirm a signal) all descend directly from it.
 
 - **Still in use:** the Dow Jones Transportation Average is still published for
   confirmation, and the CMT Association grants the **Charles H. Dow Award.**
 - **An academic debate worth knowing:** Alfred Cowles (1934) argued Hamilton's
-  Dow Theory calls *underperformed* buy-and-hold. But Brown, Goetzmann & Kumar,
+  Dow Theory calls *underperformed* buy-and-hold (simply buying and holding
+  through the ups and downs instead of trading in and out). But Brown, Goetzmann & Kumar,
   in *The Journal of Finance* (1998), re-examined the same editorials and found
-  Hamilton's timing produced **better risk-adjusted returns** (higher Sharpe
-  ratios, lower volatility). Reasonable people still argue about it — which is
+  Hamilton's timing produced **better risk-adjusted returns** (a higher Sharpe
+  ratio — the return earned per unit of risk — and lower volatility). Reasonable people still argue about it — which is
   itself a lesson about technical analysis.
 
 ### Criticisms (be honest about these)

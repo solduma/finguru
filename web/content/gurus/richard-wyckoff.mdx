@@ -24,7 +24,7 @@ Wyckoff's central move: stop reacting to price, and start reasoning about the *c
 
 ## Who was Richard Wyckoff?
 
-Richard Demille Wyckoff was born November 2, 1873, and died March 7, 1934, aged 60 — placing his entire career in the rough-and-tumble early decades of Wall Street, before the SEC existed and when market manipulation was largely legal. He started young: by most accounts he began at age 15 as a stock runner (an errand boy carrying orders and certificates) for a New York brokerage, and rose to head his own firm while still in his twenties ([StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md)).
+Richard Demille Wyckoff was born November 2, 1873, and died March 7, 1934, aged 60 — placing his entire career in the rough-and-tumble early decades of Wall Street, before the SEC (the U.S. Securities and Exchange Commission, the federal markets regulator) existed and when market manipulation was largely legal. He started young: by most accounts he began at age 15 as a stock runner (an errand boy carrying orders and certificates) for a New York brokerage, and rose to head his own firm while still in his twenties ([StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md)).
 
 In 1907 he founded *The Magazine of Wall Street*, which he wrote and edited for nearly two decades and which reportedly reached over 200,000 subscribers ([StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md)). He also wrote *Studies in Tape Reading* and *How I Trade and Invest in Stocks and Bonds*, and crusaded against fraud — his exposés on "bucket shops" (fake brokerages that took your bet but never actually placed the trade) ran in *The Saturday Evening Post* beginning in 1922. In 1928 he lost control of his magazine to his second wife, Cecelia Shear, following a bitter dispute. Late in life he distilled his approach into a correspondence course; the school he founded later became the Stock Market Institute. That body of work is what we now call **the Wyckoff Method**.
 
@@ -40,7 +40,7 @@ Wyckoff's most famous idea is a mental model. He urged students to study the mar
 
 > "…as if they were the result of one man's operations. Let us call him the Composite Man, who, in theory, sits behind the scenes and manipulates the stocks…"
 
-Imagine a single, infinitely patient, well-capitalized operator who plans his campaigns in advance: he accumulates a position quietly while the public is bored or scared, "advertises" the stock by creating the appearance of an exciting move, sells into the public's enthusiasm, and then steps aside while the price collapses. If you can read his footprints — left in price and volume on the chart — you can align yourself *with* him instead of becoming his exit liquidity.
+Imagine a single, infinitely patient, well-capitalized operator who plans his campaigns in advance: he accumulates a position quietly while the public is bored or scared, "advertises" the stock by creating the appearance of an exciting move, sells into the public's enthusiasm, and then steps aside while the price collapses. If you can read his footprints — left in price and volume on the chart — you can align yourself *with* him instead of becoming his exit liquidity (the eager buyers he dumps onto at the top).
 
 The Composite Man isn't a conspiracy theory; he's a way to force yourself to ask "what would a smart, large operator be doing here?" That question is the engine of the whole method.
 
@@ -109,11 +109,13 @@ Inside an accumulation range, Wyckoff labels a recurring sequence of events. Lea
 | **PS** | Preliminary Support | First serious buying appears after a long decline; volume and price spread widen |
 | **SC** | Selling Climax | Panic public selling gets absorbed by big buyers; price often closes well off the low |
 | **AR** | Automatic Rally | Selling dries up, so price snaps back up; its high sets the TR's top |
-| **ST** | Secondary Test | Price revisits the SC area on *lower* volume to check if selling is exhausted |
+| **ST** | Secondary Test | Price revisits the SC area on *lower* volume to check if selling is exhausted (often holding slightly above the SC low) |
 | **Spring** | (Shakeout) | A dip *below* support that quickly reverses back inside the range — a bear trap; large players grab cheap shares and test supply |
 | **SOS** | Sign of Strength | A strong advance on widening spread and rising volume |
 | **LPS** | Last Point of Support | A higher-low pullback after an SOS on light volume — often the best long entry |
-| **BU** | Back-Up | The "back up to the creek" pullback after the breakout ("jump across the creek") |
+| **BU** | Back-Up | The pullback that retests broken resistance after the breakout. Wyckoff/Evans call the wavy resistance line across the range top the "creek": price "jumps the creek" (the SOS breakout), then "backs up to the creek" (retests it from above, usually on lighter volume) |
+
+*Note: "spread" here means the high-to-low range (height) of a single price bar — not the bid-ask spread. A widening spread = taller bars = stronger effort.*
 
 These map onto **phases A–E**: Phase A stops the downtrend (PS, SC, AR, ST); Phase B is the long, dull "building the cause" stretch where institutions accumulate; Phase C is the decisive supply test (often the spring); Phase D shows demand winning (SOS up, LPS pullbacks); Phase E is the markup out of the range ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md)).
 
@@ -121,7 +123,7 @@ These map onto **phases A–E**: Phase A stops the downtrend (PS, SC, AR, ST); P
   caption="Wyckoff accumulation schematic — PS, SC, AR, ST, Spring, SOS, LPS, then markup across the resistance ('creek')"
   height={340}
   series={[
-    { label: "Price", data: [60, 52, 44, 38, 41, 50, 48, 45, 47, 44, 46, 43, 40, 47, 53, 50, 56, 62], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [60, 52, 44, 38, 41, 50, 48, 41, 47, 44, 46, 43, 36, 47, 53, 50, 56, 62], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 50, label: "TR resistance (AR high)", color: "#a78bfa" },
@@ -131,8 +133,8 @@ These map onto **phases A–E**: Phase A stops the downtrend (PS, SC, AR, ST); P
     { x: 1, y: 52, text: "PS", color: "#38bdf8" },
     { x: 3, y: 38, text: "SC", color: "#ef4444" },
     { x: 5, y: 50, text: "AR", color: "#22c55e" },
-    { x: 7, y: 45, text: "ST", color: "#38bdf8" },
-    { x: 12, y: 40, text: "Spring", color: "#22c55e" },
+    { x: 7, y: 41, text: "ST", color: "#38bdf8" },
+    { x: 12, y: 36, text: "Spring", color: "#22c55e" },
     { x: 14, y: 53, text: "SOS", color: "#22c55e" },
     { x: 15, y: 50, text: "LPS", color: "#2dd4bf" },
     { x: 17, y: 62, text: "markup", color: "#22c55e" }
@@ -145,7 +147,7 @@ Distribution is the mirror image at a top: **PSY** (Preliminary Supply), **BC** 
   caption="Wyckoff distribution schematic — the mirror of accumulation: PSY, BC, AR, ST, UTAD (failed upthrust), SOW, LPSY, then markdown"
   height={340}
   series={[
-    { label: "Price", data: [40, 48, 56, 61, 58, 50, 52, 55, 53, 56, 54, 57, 64, 53, 47, 50, 44, 38], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [40, 48, 56, 61, 58, 50, 52, 57, 53, 56, 54, 57, 64, 53, 47, 50, 44, 38], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 50, label: "TR support (AR low)", color: "#a78bfa" },
@@ -155,7 +157,7 @@ Distribution is the mirror image at a top: **PSY** (Preliminary Supply), **BC** 
     { x: 1, y: 48, text: "PSY", color: "#38bdf8" },
     { x: 3, y: 61, text: "BC", color: "#ef4444" },
     { x: 5, y: 50, text: "AR", color: "#22c55e" },
-    { x: 7, y: 55, text: "ST", color: "#38bdf8" },
+    { x: 7, y: 57, text: "ST", color: "#38bdf8" },
     { x: 12, y: 64, text: "UTAD (pokes above, fails)", color: "#ef4444" },
     { x: 14, y: 47, text: "SOW", color: "#ef4444" },
     { x: 15, y: 50, text: "LPSY", color: "#f59e0b" },
@@ -204,21 +206,17 @@ Mid target  = half-way point + count
 Max target  = count-line level + count
 ```
 
-If the range low were, say, 30,000, the minimum objective would be 33,600. Note the honesty here: Wyckoff gives a *range* of objectives (minimum, midpoint, maximum) to "stop, look, and listen" at — not a single magic number — and only complete P&F phases are counted.
+If the range low were, say, 30,000, the minimum objective would be 33,600. Note the honesty here: Wyckoff gives a *range* of objectives (minimum, midpoint, maximum) to "stop, look, and listen" at — not a single magic number — and only complete P&F phases are counted. One subtlety: in this simplified example we count along the TR low, which serves as the count line; in practice Wyckoff takes the count at the LPS price level, while the *minimum* objective is always measured up from the trading-range low (which is why "Min target = TR low + count" above).
 
 <LineChart
-  caption="Cause and effect — the wide trading range (the 'cause', ~30,000 with 3,600 count) projects up to a band of objectives (the 'effect')"
+  caption="Cause and effect — the wide trading range (the 'cause', ~30,000 with a 3,600 count) projects up to the minimum objective at 33,600 (the 'effect')"
   height={320}
   series={[
-    { label: "Price", data: [30000, 29800, 30100, 29900, 30200, 30000, 30100, 29900, 30200, 30000, 30900, 32100, 33000, 33700], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [30000, 30100, 30050, 30000, 30200, 30050, 30100, 30000, 30200, 30000, 30900, 32100, 33000, 33700], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 30000, label: "TR low (count line)", color: "#a78bfa" },
-    { y: 33600, label: "min objective (+3,600)", color: "#22c55e" },
-    { y: 35400, label: "max objective", color: "#2dd4bf" }
-  ]}
-  zones={[
-    { yMin: 33600, yMax: 35400, color: "rgba(34,197,94,0.12)", label: "objective band" }
+    { y: 33600, label: "min objective (+3,600)", color: "#22c55e" }
   ]}
   points={[
     { x: 5, y: 30000, text: "the cause (range)", color: "#38bdf8" },
@@ -231,22 +229,25 @@ If the range low were, say, 30,000, the minimum objective would be 33,600. Note 
 A stock has fallen for months. One week it gaps down on the year's heaviest volume but closes near its high — a **Selling Climax**. It bounces hard (**Automatic Rally**), then drifts sideways for two months on quietly declining volume (**Phase B accumulation**). It dips below the range low on light volume and snaps back the same week (**Spring**). A few days later it surges on big volume through the range top (**SOS**), pulls back to the old resistance on tiny volume (**LPS / back-up**), and then trends up. A Wyckoff trader buys the spring or the LPS, places a stop just under the spring low, and targets the level projected by the P&F count.
 
 <LineChart
-  caption="The worked reading — Selling Climax to markup, with the stop placed just under the spring low"
+  caption="The worked reading — read price AND volume together: heaviest volume at the Selling Climax, volume drying up through Phase B and at the light-volume Spring, then a big-volume SOS breakout and a tiny-volume LPS back-up"
   height={320}
+  yMin={0}
   series={[
-    { label: "Price", data: [55, 48, 36, 47, 44, 46, 43, 45, 42, 33, 48, 44, 52, 58], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [55, 48, 36, 47, 44, 46, 43, 45, 42, 33, 48, 52, 49, 58], color: "#e6e9ef", width: 2 },
+    { label: "Volume (relative)", data: [22, 24, 30, 21, 14, 12, 10, 9, 8, 6, 16, 27, 5, 12], color: "#38bdf8", fill: true, width: 1 }
   ]}
   levels={[
     { y: 47, label: "range top (resistance)", color: "#a78bfa" },
+    { y: 42, label: "range support", color: "#a78bfa" },
     { y: 31, label: "stop (under spring low)", color: "#ef4444" }
   ]}
   points={[
-    { x: 2, y: 36, text: "Selling Climax", color: "#ef4444" },
+    { x: 2, y: 36, text: "Selling Climax — heaviest volume", color: "#ef4444" },
     { x: 3, y: 47, text: "AR", color: "#22c55e" },
-    { x: 6, y: 43, text: "Phase B", color: "#38bdf8" },
-    { x: 9, y: 33, text: "Spring", color: "#22c55e" },
-    { x: 12, y: 52, text: "SOS", color: "#22c55e" },
-    { x: 11, y: 44, text: "LPS", color: "#2dd4bf" }
+    { x: 6, y: 43, text: "Phase B — volume drying up", color: "#38bdf8" },
+    { x: 9, y: 33, text: "Spring — light volume", color: "#22c55e" },
+    { x: 11, y: 52, text: "SOS — big volume", color: "#22c55e" },
+    { x: 12, y: 49, text: "LPS — tiny volume", color: "#2dd4bf" }
   ]}
 />
 
@@ -255,7 +256,7 @@ A stock has fallen for months. One week it gaps down on the year's heaviest volu
 - **It's subjective.** Wyckoff himself insisted the method cannot be reduced to "mechanical" or mathematical rules. That means two skilled analysts can label the same chart differently, and it resists rigorous backtesting. Peer-reviewed evidence is scarce ([Wikipedia](https://en.wikipedia.org/wiki/Richard_Wyckoff)).
 - **Hindsight bias.** The schematics look obvious *after* the move. In real time, a "spring" and a failed breakdown are identical until later bars resolve them. The labels are easiest to apply when they no longer matter.
 - **The era gap.** Single-operator manipulation was Wyckoff's world. Today's markets are far more efficient and crowded; "smart money" is a diffuse mix of funds and algorithms, not one Composite Man.
-- **Volume ambiguity.** With dark pools, off-exchange prints, and 24-hour crypto markets, the volume Wyckoff relied on is noisier and less complete than the consolidated tape he watched.
+- **Volume ambiguity.** With dark pools (private venues where large trades execute off the public tape), off-exchange prints, and 24-hour crypto markets, the volume Wyckoff relied on is noisier and less complete than the consolidated tape (the single combined record of every exchange trade) he watched.
 
 <Callout type="warning">
 
@@ -268,8 +269,8 @@ Common beginner mistake: treating the schematic as a *prediction* ("this is accu
 1. **Identify context** — is the broad market trending up, down, or ranging? Trade in harmony with it.
 2. **Find a trading range** and try to label its phase. Mark the SC/AR (or BC/AR) boundaries.
 3. **Watch the climactic and test events** with volume. Is supply drying up on dips? Is effort failing to produce result?
-4. **Wait for the trigger** — a confirmed spring, then SOS and LPS for longs (UTAD then SOW and LPSY for shorts).
-5. **Define risk and target** — stop beyond the spring/UTAD; estimate the objective with a P&F count or a measured move.
+4. **Wait for the trigger** — a confirmed spring, then SOS and LPS for longs (bets that profit if price rises) — UTAD then SOW and LPSY for shorts (bets that profit if price falls).
+5. **Define risk and target** — stop beyond the spring/UTAD; estimate the objective with a P&F count or a measured move (project the size of the prior swing — one full up-or-down leg between turning points — onto the breakout).
 
 Start by *labeling old charts* with no money at risk. Pick liquid names, mark every PS/SC/AR/ST/spring/SOS/LPS you can find, and see how often the schematic actually fits — and how often it doesn't. That honest scorekeeping is the fastest way to internalize the method without getting fooled by hindsight.
 

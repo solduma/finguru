@@ -29,7 +29,7 @@ A useful way to picture it: price is a tug-of-war between **bulls** (buyers, who
   yMin={90}
   yMax={112}
   series={[
-    { label: "Price", data: [100, 108, 102, 109, 101, 110, 100, 108, 99], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [100, 108, 102, 109, 101, 108, 100, 109, 100], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 109, label: "resistance", color: "#ef4444" },
@@ -49,7 +49,7 @@ Three forces create these levels, and understanding them stops you from treating
 
 **1. Memory and trapped traders.** Imagine a stock that rose to $18, fell to $14, and is now climbing back. Everyone who bought near $18 is sitting on a loss. As price returns to $18, many of them sell just to "get out at breakeven." That wave of selling is a *supply overhang* — it creates resistance at $18 ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/support-and-resistance)).
 
-**2. Psychology near round numbers.** Humans cluster orders at clean figures — $50, $100, 1.3000 on a currency pair. Big stop-loss and take-profit orders pile up there, so price often pauses or reverses at these *psychological levels* ([Wikipedia](https://en.wikipedia.org/wiki/Support_and_resistance)).
+**2. Psychology near round numbers.** Humans cluster orders at clean figures — $50, $100, or 1.3000 on a currency pair (an exchange rate — here, 1.30 dollars per euro). Big stop-loss (an order that exits a losing trade) and take-profit (an order that closes a winning trade at a target price) orders pile up there, so price often pauses or reverses at these *psychological levels* ([Wikipedia](https://en.wikipedia.org/wiki/Support_and_resistance)).
 
 **3. Repeated testing builds significance.** The more often a level is touched and holds, the more traders watch it, and the more self-fulfilling it becomes. As one reference puts it, "the more often a support/resistance level is 'tested' (touched and bounced off by price), the more significance is given to that specific level" ([Wikipedia](https://en.wikipedia.org/wiki/Support_and_resistance)).
 
@@ -73,13 +73,13 @@ Why? Because the supply/demand balance has flipped. If price punches *up* throug
   yMin={910}
   yMax={965}
   series={[
-    { label: "Price", data: [920, 932, 922, 933, 948, 936, 950, 935, 955, 936, 960], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [920, 932, 922, 935, 948, 936, 950, 935, 955, 936, 960], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 935, label: "935 — old resistance, now support", color: "#a78bfa" }
   ]}
   points={[
-    { x: 3, y: 933, text: "tests ceiling", color: "#ef4444" },
+    { x: 3, y: 935, text: "tests ceiling", color: "#ef4444" },
     { x: 4, y: 948, text: "breakout", color: "#22c55e" },
     { x: 5, y: 936, text: "retest", color: "#2dd4bf" },
     { x: 7, y: 935, text: "retest holds", color: "#22c55e" }
@@ -90,8 +90,8 @@ Why? Because the supply/demand balance has flipped. If price punches *up* throug
 
 A horizontal line isn't the only kind of support/resistance.
 
-- A **trendline** is a straight line connecting a series of rising lows (an *uptrend line*, acting as diagonal support) or falling highs (a *downtrend line*, acting as diagonal resistance). You need at least two points to draw one and a third touch to "confirm" it.
-- A **channel** is two parallel trendlines bracketing price — one along the lows, one along the highs. Price tends to oscillate between them.
+- A **trendline** is a straight line connecting a series of rising lows (local troughs) — an *uptrend line*, acting as diagonal support — or falling highs (local peaks) — a *downtrend line*, acting as diagonal resistance. You need at least two points to draw one and a third touch to "confirm" it.
+- A **channel** is two parallel trendlines bracketing price — one along the lows, one along the highs. Price tends to bounce back and forth between them.
 
 <LineChart
   caption="A rising channel: an uptrend line under the lows (diagonal support) and a parallel line over the highs (diagonal resistance)"
@@ -127,7 +127,7 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
   yMin={92}
   yMax={124}
   series={[
-    { label: "Price", data: [100, 110, 101, 120, 100, 109, 100, 95], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [100, 110, 100, 120, 100, 109, 100, 95], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 100, label: "neckline", color: "#f59e0b" }
@@ -161,7 +161,7 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
   ]}
 />
 
-**Double top / double bottom.** A double top is two peaks at roughly the same price, confirmed when price falls below the valley between them (the neckline). A double bottom is the mirror image, confirmed on a break above the intervening peak ([Wikipedia](https://en.wikipedia.org/wiki/Double_top_and_double_bottom)). A **triple top/bottom** is the same idea with three touches.
+**Double top / double bottom.** A double top is two peaks at roughly the same price, confirmed when price falls below the valley between them (the neckline). A double bottom is the mirror image, confirmed on a break above the intervening peak ([Wikipedia](https://en.wikipedia.org/wiki/Double_top_and_double_bottom)). A **triple top/bottom** is the same idea with three touches — three peaks (or troughs) at roughly the same price instead of two.
 
 <LineChart
   caption="Double top: two peaks at ~110 fail to break higher, then price confirms by closing below the 100 neckline"
@@ -203,7 +203,7 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
   ]}
 />
 
-**Flags and pennants.** Both follow a sharp move called the **flagpole**, then a brief pause. A *flag* consolidates between two parallel lines; a *pennant* between two converging lines. They are otherwise identical in meaning — a "breather" before the trend resumes ([Wikipedia](https://en.wikipedia.org/wiki/Flag_and_pennant_patterns)).
+**Flags and pennants.** Both follow a sharp move called the **flagpole**, then a brief pause (price drifts sideways in a tight range — it "consolidates"). A *flag* consolidates between two parallel lines; a *pennant* between two converging lines. They are otherwise identical in meaning — a "breather" before the trend resumes ([Wikipedia](https://en.wikipedia.org/wiki/Flag_and_pennant_patterns)).
 
 <LineChart
   caption="Bull flag: a sharp flagpole, a slight downward-drifting consolidation, then the trend resumes on the breakout"
@@ -211,7 +211,7 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
   yMin={96}
   yMax={132}
   series={[
-    { label: "Price", data: [100, 108, 116, 124, 121, 118, 120, 117, 128], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [100, 108, 116, 124, 122, 120, 119, 117, 128], color: "#e6e9ef", width: 2 }
   ]}
   trendlines={[
     { x1: 3, y1: 124, x2: 7, y2: 120, color: "#a78bfa", label: "flag (upper)", dashed: true },
@@ -224,7 +224,25 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
   ]}
 />
 
-**Rectangle.** Price bouncing between horizontal support and resistance — a clear range — until it breaks one side.
+**Rectangle.** A box — flat top (resistance), flat bottom (support), price ping-ponging between them until it breaks one side.
+
+<LineChart
+  caption="Rectangle: price ping-pongs between 100 support and 110 resistance, then breaks out and runs to the measured-move target at 120 (110 resistance + the 10-point box height)"
+  height={300}
+  yMin={94}
+  yMax={124}
+  series={[
+    { label: "Price", data: [100, 110, 100, 110, 100, 116, 120], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 120, label: "measured-move target (110 + 10 box height)", color: "#22c55e" },
+    { y: 110, label: "resistance", color: "#ef4444" },
+    { y: 100, label: "support", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 5, y: 116, text: "breakout", color: "#22c55e" }
+  ]}
+/>
 
 **Cup and handle.** A bullish pattern defined by **William O'Neil** in *How to Make Money in Stocks*. A rounded "cup" (1–6 months, not a sharp V) followed by a small downward "handle" that retraces roughly 30–50% of the cup's rise (1–4 weeks), then a breakout above the rim ([Wikipedia](https://en.wikipedia.org/wiki/Cup_and_handle)).
 
@@ -248,7 +266,7 @@ Chart patterns are recognizable shapes price makes around these levels. They fal
 
 ## Measured-move targets
 
-Most patterns give a rough price *target* by projecting the pattern's height from the breakout point.
+Most patterns give a rough price *target* by projecting the pattern's height from the breakout point. All quantities below are in price units (dollars in the worked example).
 
 ```
 Head & shoulders top target:
@@ -271,7 +289,7 @@ Double bottom target:
   yMin={74}
   yMax={124}
   series={[
-    { label: "Price", data: [100, 110, 101, 120, 100, 109, 100, 92, 80], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [100, 110, 100, 120, 100, 109, 100, 92, 80], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 120, label: "head $120", color: "#ef4444" },
@@ -302,7 +320,7 @@ A **false breakout** is when price pokes through a level — triggering breakout
 
 Two defenses:
 
-1. **Wait for a confirmed close** beyond the level (e.g., a daily close, not just an intraday spike), ideally on strong volume.
+1. **Wait for a confirmed close** beyond the level (e.g., a daily close, not just an intraday spike — a brief move during the day that doesn't last to the close), ideally on strong volume.
 2. **Wait for the retest** — let price break, pull back to the old level, and hold, before entering.
 
 <LineChart
@@ -320,20 +338,20 @@ Two defenses:
     { y: 100, label: "support", color: "#22c55e" }
   ]}
   points={[
-    { x: 4, y: 96, text: "fakeout wick", color: "#ef4444" },
+    { x: 4, y: 96, text: "false break below", color: "#ef4444" },
     { x: 6, y: 108, text: "snaps back", color: "#22c55e" }
   ]}
 />
 
 <Callout type="warning">
 
-The "obvious" level everyone sees is exactly where fakeouts happen most. Treating a single wick beyond support as a breakdown is one of the most expensive beginner mistakes.
+The "obvious" level everyone sees is exactly where fakeouts happen most. Treating a single wick (the thin line above or below a candle's body, showing the highest/lowest price traded) beyond support as a breakdown is one of the most expensive beginner mistakes.
 
 </Callout>
 
 ## Strengths and common beginner mistakes
 
-**Strengths:** Support/resistance is intuitive, works across all timeframes and markets, and gives you concrete, definable places to put a **stop-loss** (an order that exits a losing trade) and a target — which makes risk management possible.
+**Strengths:** Support/resistance is intuitive, works across all timeframes and markets, and gives you concrete, definable places to put a **stop-loss** and a target — which makes risk management possible.
 
 **Mistakes to avoid:**
 
@@ -353,7 +371,7 @@ Support/resistance is a foundation, not a complete system. Layer it with:
 
 ## Practice suggestions
 
-1. Open a charting tool (TradingView is free) and mark every clear swing high and low on a daily chart. Notice how often old levels get retested.
+1. Open a charting tool (TradingView is free) and mark every clear swing high and low (a swing high is a local peak — a high with lower highs on either side; a swing low is the opposite, a local trough) on a daily chart. Notice how often old levels get retested.
 2. Find three historical examples of role reversal (support becoming resistance).
 3. Identify one of each pattern in *past* data, then practice the measured-move math.
 4. Forward-test on paper: predict the breakout direction *before* it happens, log your guesses, and review your hit rate honestly.

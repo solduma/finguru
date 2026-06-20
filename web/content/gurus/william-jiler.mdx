@@ -12,7 +12,7 @@ prereqs: ["charles-dow"]
 
 ## The one-sentence version
 
-In 1962, a markets professional named William L. Jiler wrote a slim book that took the secret-handshake craft of "reading the tape" and turned it into something an ordinary investor could actually learn — and the chart patterns he popularized are still among the first things most traders study today.
+In 1962, a markets professional named William L. Jiler wrote a slim book that took the secret-handshake craft of "reading the tape" (interpreting the live stream of price-and-volume quotes that used to print on a paper ticker-tape machine) and turned it into something an ordinary investor could actually learn — and the chart patterns he popularized are still among the first things most traders study today.
 
 If you have ever heard someone say "that stock is forming a head and shoulders" or "it bounced off support," you are speaking a dialect that Jiler helped standardize for the public. He did not invent these patterns, but he packaged them with rare clarity. This lesson covers who he was, the core patterns he taught, a worked example, and — just as importantly — where this approach is weak and how beginners get burned.
 
@@ -60,9 +60,10 @@ These are the foundation.
     { y: 41, label: "support → resistance", color: "#f59e0b" }
   ]}
   trendlines={[
-    { x1: 0, y1: 34, x2: 6, y2: 42, color: "#a78bfa", label: "uptrend line", dashed: true }
+    { x1: 0, y1: 34, x2: 4, y2: 38, color: "#a78bfa", label: "uptrend line", dashed: true }
   ]}
   points={[
+    { x: 2, y: 35, text: "higher low", color: "#a78bfa" },
     { x: 5, y: 45, text: "resistance", color: "#ef4444" },
     { x: 10, y: 38, text: "breaks support", color: "#ef4444" },
     { x: 11, y: 41, text: "old floor = new ceiling", color: "#f59e0b" }
@@ -80,12 +81,13 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
 **Head and shoulders top.** Forms after an uptrend. Three peaks: a **left shoulder**, a higher **head**, and a lower **right shoulder** roughly level with the first. A **neckline** connects the two reaction lows between the peaks (a *reaction low* is the dip price makes between two peaks — here, the low after the left shoulder and the low after the head). The neckline can slope up, down, or sit flat — a downward slope is considered more bearish. The pattern is *not complete* until price breaks below the neckline — ideally on rising volume. Volume tends to be heaviest on the left shoulder and lighter on the head's advance, then surges on the neckline break. The **inverse (or bottom) head and shoulders** is the mirror image at the end of a downtrend.
 
 <LineChart
-  caption="Head and shoulders top: left shoulder, higher head, lower right shoulder, and the neckline break"
+  caption="Head and shoulders top: volume is heaviest on the left shoulder, fades through the head, and spikes on the neckline break (volume is the lie-detector)"
   height={320}
   yMin={36}
   yMax={54}
   series={[
-    { label: "Price", data: [40, 43, 46, 44, 47, 50, 47, 44, 46, 44, 43, 40, 38], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [40, 43, 46, 44, 47, 50, 47, 44, 46, 44, 43, 40, 38], color: "#e6e9ef", width: 2 },
+    { label: "Volume (scaled)", data: [42, 46, 50, 45, 44, 47, 44, 41, 43, 42, 44, 52, 47], color: "#38bdf8", width: 1, dashed: true }
   ]}
   levels={[
     { y: 44, label: "neckline", color: "#a78bfa" }
@@ -239,7 +241,7 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
 
 ## A worked example (illustrative)
 
-Let's measure a head-and-shoulders top. The classic target rule: measure the height from the head down to the neckline, then project that distance below the neckline at the breakout point.
+Let's measure a head-and-shoulders top. The classic target rule: measure the height from the head down to the neckline, then project that distance below the neckline at the breakout point. This height-projection trick is commonly called a *measured move*.
 
 ```
 ILLUSTRATIVE — numbers chosen to show the method, not a real stock
@@ -301,7 +303,7 @@ Intellectual honesty requires saying this plainly: classical chart patterns are 
 - **Subjectivity.** Where exactly is the neckline? Is that a shoulder or just noise? Two analysts can see two patterns on the same chart. This makes patterns hard to test rigorously.
 - **Hindsight bias.** Patterns are obvious *after* they complete. The textbook examples are survivors; the failures rarely get printed.
 - **Efficient Market Hypothesis.** Academic finance has long argued that past prices cannot predict future prices, which would make patterns useless. The evidence is genuinely mixed — some studies find modest predictive value, many find none after costs.
-- **Self-fulfilling, then self-defeating.** Patterns may "work" partly because enough traders watch them — but widely known edges tend to erode as they get arbitraged away.
+- **Self-fulfilling, then self-defeating.** Patterns may "work" partly because enough traders watch them — but widely known edges tend to erode as they get arbitraged away (once everyone trades the same signal, the easy profit gets competed out of it).
 
 <Callout type="warning">
 

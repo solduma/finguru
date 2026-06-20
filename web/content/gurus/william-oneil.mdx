@@ -41,7 +41,7 @@ CAN SLIM is an acronym for seven characteristics O'Neil found in winning stocks 
 | **C** | Current quarterly earnings | EPS up at least **25%** vs. the year-ago quarter; faster acceleration is better |
 | **A** | Annual earnings growth | Annual EPS up **25%+** over each of the last 3 years; return on equity **17%+** |
 | **N** | New | A new product, service, management, or **new price high** out of a base |
-| **S** | Supply and demand | Look for **rising volume** on price advances; smaller float can help |
+| **S** | Supply and demand | Look for **rising volume** on price advances; smaller float (the number of shares actually available to trade) can help |
 | **L** | Leader or laggard | Own the **leader** in a leading industry; high relative-strength rating |
 | **I** | Institutional sponsorship | Owned by funds/banks, ideally a **growing** number of quality holders |
 | **M** | Market direction | Buy mainly in a **confirmed market uptrend** |
@@ -69,7 +69,7 @@ Let's unpack the ones beginners most often misread.
 
 **A — Annual earnings.** One great quarter can be a fluke; O'Neil wants a multi-year track record of roughly 25%+ annual growth over each of the last three years, plus a return on equity (profit generated per dollar of shareholder capital) of around 17% or more.
 
-**N — New.** Big advances are usually fueled by something genuinely new — a hit product, new management, an industry shift. The *second* meaning of "new" is technical: the stock makes a **new price high** as it breaks out of a consolidation pattern. Beginners fear buying at new highs; O'Neil argued that's precisely where winners begin.
+**N — New.** Big advances are usually fueled by something genuinely new — a hit product, new management, an industry shift. The *second* meaning of "new" is technical: the stock makes a **new price high** as it breaks out of a consolidation pattern. Beginners fear buying at new highs; O'Neil argued that's precisely where winners begin. You will see exactly what this looks like in the cup-with-handle chart below, where the breakout above the pivot is the new price high.
 
 **L — Leader or laggard.** Buy the strongest stock in a strong group, not the cheap straggler. IBD measures this with a **Relative Strength (RS) rating** comparing a stock's price performance to the rest of the market over the prior 12 months.
 
@@ -132,7 +132,7 @@ Other common bases include the **flat base** (a tight, shallow sideways range, o
     { x: 2, y: 49, text: "first low", color: "#a78bfa" },
     { x: 4, y: 53, text: "middle peak", color: "#38bdf8" },
     { x: 6, y: 47.5, text: "second low undercuts", color: "#a78bfa" },
-    { x: 9, y: 56, text: "breakout above mid-peak", color: "#22c55e" }
+    { x: 8, y: 53.4, text: "breakout above mid-peak", color: "#22c55e" }
   ]}
   levels={[
     { y: 53.1, label: "pivot (middle peak)", color: "#f59e0b" }
@@ -145,28 +145,28 @@ The **pivot** (or **buy point**) is the price that, once cleared, signals the br
 
 > *Numbers below are illustrative, not a real stock.*
 
-A stock runs up, then forms a cup over four months, bottoming and recovering to a left-side peak near $50. It then drifts into a two-week handle whose high is **$52.00**.
+A stock runs up, then forms a cup over four months, bottoming and recovering back up to roughly its left-side peak near $50. It then drifts into a two-week handle just below that peak, whose high is **$50.20**.
 
-- **Pivot / buy point** = handle high + $0.10 = **$52.10**
-- You buy as the stock pushes through $52.10 on volume ~45% above average.
-- **Stop-loss** = 7-8% below your buy: $52.10 × (1 − 0.07) ≈ **$48.45**. If it closes there, you sell — no exceptions.
+- **Pivot / buy point** = handle high + $0.10 = **$50.30**
+- You buy as the stock pushes through $50.30 on volume ~45% above average.
+- **Stop-loss** = 7-8% below your buy: $50.30 × (1 − 0.07) ≈ **$46.78**. If it closes there, you sell — no exceptions.
 
 <LineChart
-  caption="Cup-with-handle base: pivot at handle high + 10¢, breakout, and the 7-8% stop"
+  caption="Cup-with-handle base: right side recovers to ~the left peak, the handle pulls back ~35% of the cup's advance, then the breakout makes a new high — pivot at handle high + 10¢, with the 7-8% stop"
   height={320}
   series={[
-    { label: "Price", data: [49.8, 50.0, 47.5, 44.2, 42.6, 42.4, 43.8, 46.5, 49.0, 50.2, 51.6, 52.0, 51.0, 50.6, 51.4, 52.1, 54.8, 57.5, 60.5], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [49.8, 50.0, 47.5, 44.2, 42.6, 42.4, 43.8, 46.5, 48.8, 50.2, 49.0, 47.5, 48.6, 50.3, 52.6, 55.0, 57.5], color: "#e6e9ef", width: 2 }
   ]}
   points={[
     { x: 1, y: 50.0, text: "left-side peak ~$50", color: "#38bdf8" },
     { x: 5, y: 42.4, text: "cup bottom", color: "#a78bfa" },
-    { x: 11, y: 52.0, text: "handle high $52.00", color: "#38bdf8" },
-    { x: 13, y: 50.6, text: "handle pullback", color: "#a78bfa" },
-    { x: 16, y: 54.8, text: "breakout on +45% vol", color: "#22c55e" }
+    { x: 9, y: 50.2, text: "handle high $50.20", color: "#38bdf8" },
+    { x: 11, y: 47.5, text: "handle pullback (~35% retrace)", color: "#a78bfa" },
+    { x: 14, y: 52.6, text: "breakout (new high) on +45% vol", color: "#22c55e" }
   ]}
   levels={[
-    { y: 52.1, label: "pivot $52.10", color: "#f59e0b" },
-    { y: 48.45, label: "stop ~$48.45", color: "#ef4444" }
+    { y: 50.3, label: "pivot $50.30", color: "#f59e0b" },
+    { y: 46.78, label: "stop ~$46.78", color: "#ef4444" }
   ]}
 />
 
@@ -229,16 +229,16 @@ Today you can implement the framework with most screeners: filter for 25%+ quart
   caption="Failed breakout (whipsaw): price clears the pivot, reverses, and hits the 7-8% stop — a small, capped loss"
   height={280}
   series={[
-    { label: "Price", data: [50, 50.2, 49.8, 50.1, 52.3, 53.0, 51.5, 50.0, 48.0, 46.4, 45.5], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [48, 48.2, 47.8, 48.1, 50.5, 51.2, 49.7, 48.2, 47.0, 46.6, 45.8], color: "#e6e9ef", width: 2 }
   ]}
   points={[
-    { x: 4, y: 52.3, text: "breakout clears pivot", color: "#38bdf8" },
-    { x: 5, y: 53.0, text: "fails, reverses", color: "#ef4444" },
-    { x: 9, y: 46.4, text: "stop hit: out at -7-8%", color: "#ef4444" }
+    { x: 4, y: 50.5, text: "breakout clears pivot", color: "#38bdf8" },
+    { x: 5, y: 51.2, text: "fails, reverses", color: "#ef4444" },
+    { x: 9, y: 46.6, text: "stop hit: out at -7-8%", color: "#ef4444" }
   ]}
   levels={[
-    { y: 52.1, label: "pivot $52.10", color: "#f59e0b" },
-    { y: 48.45, label: "stop ~$48.45", color: "#ef4444" }
+    { y: 50.3, label: "pivot $50.30", color: "#f59e0b" },
+    { y: 46.78, label: "stop ~$46.78", color: "#ef4444" }
   ]}
 />
 - **Subjectivity.** "Is that a proper handle?" and "Is this a confirmed uptrend?" require judgment that takes screen-time to develop.

@@ -25,11 +25,11 @@ The Stochastic turns this into a number from 0 to 100. A reading of 100 means th
   height={300}
   candles={[
     { o: 104, h: 110, l: 100, c: 109 },
-    { o: 105, h: 109, l: 101, c: 102 }
+    { o: 105, h: 109, l: 101, c: 101 }
   ]}
   points={[
     { x: 0, y: 109, text: "close near high → ~90", color: "#22c55e" },
-    { x: 1, y: 102, text: "close near low → ~10", color: "#ef4444" }
+    { x: 1, y: 101, text: "close near low → ~10", color: "#ef4444" }
   ]}
   levels={[
     { y: 110, label: "range high (100)" },
@@ -101,7 +101,7 @@ This is where beginners get confused. There are three packaged versions, and the
 
 <Callout type="note">
 
-A key relationship: **Slow %K is identical to Fast %D** — both apply a 3-period SMA to the raw %K. The Slow version exists because raw Fast %K is jagged and whipsaw-prone, so it is smoothed once before plotting. The **Full** version just exposes every knob — look-back, %K smoothing, and %D averaging — for traders who want full control. Look-back values of 5, 9, or 14 are all common; shorter = more sensitive and noisier, longer = smoother and slower.
+A key relationship: **Slow %K is identical to Fast %D** — both apply a 3-period SMA to the raw %K. The Slow version exists because raw Fast %K is jagged and whipsaw-prone (it flips back and forth, firing false signals that reverse almost immediately), so it is smoothed once before plotting. The **Full** version just exposes every knob — look-back, %K smoothing, and %D averaging — for traders who want full control. Look-back values of 5, 9, or 14 are all common; shorter = more sensitive and noisier, longer = smoother and slower.
 
 </Callout>
 
@@ -116,7 +116,7 @@ There are four classic ways traders use the Stochastic.
 **2. Crossovers.** When %K crosses *above* %D, it's a bullish trigger; when %K crosses *below* %D, bearish. These are most meaningful when they happen in the extreme zones (e.g., a bullish cross while below 20).
 
 <LineChart
-  caption="%K and %D oscillating between the 20 and 80 zones; %K/%D crossovers are strongest inside the extremes"
+  caption="%K and %D oscillating between the 20 and 80 zones; %K/%D crossovers carry the most weight when they form in or just out of the 20/80 extremes"
   height={220}
   yMin={0}
   yMax={100}
@@ -181,7 +181,7 @@ There are four classic ways traders use the Stochastic.
   ]}
 />
 
-**4. The "stochastic pop."** Lane noted that sometimes price "breaks out and keeps going" while the oscillator pins to an extreme — a sign of trend strength, not exhaustion. It's a direct caution against fading every extreme reading.
+**4. The "stochastic pop."** Lane noted that sometimes price "breaks out and keeps going" while the oscillator pins to an extreme — a sign of trend strength, not exhaustion. It's a direct caution against fading (betting against) every extreme reading.
 
 <LineChart
   caption="Stochastic pop: price breaks out and keeps rising while the oscillator pins above 80 — strength, not a sell signal"
@@ -246,7 +246,7 @@ In a **strong trend**, the same behavior becomes a trap. An uptrending stock wil
 />
 
 <LineChart
-  caption="In a strong uptrend the Stochastic stays pinned near 80; every 'oversold' dip is a buy, and fading 80 loses"
+  caption="In a strong uptrend the Stochastic stays pinned near 80 and barely dips (here only to ~65) before resuming — each shallow pullback is a buy, it rarely even reaches true oversold (20), and fading 80 loses"
   height={220}
   yMin={0}
   yMax={100}
@@ -262,7 +262,7 @@ In a **strong trend**, the same behavior becomes a trap. An uptrending stock wil
     { y: 20, label: "20", color: "#f59e0b" }
   ]}
   points={[
-    { x: 7, y: 65, text: "dip = buy, not sell", color: "#22c55e" }
+    { x: 7, y: 65, text: "shallow dip = buy, not sell", color: "#22c55e" }
   ]}
 />
 
@@ -276,7 +276,7 @@ The single most useful upgrade is to only take signals *in the direction of the 
 4. **Add context.** Support/resistance levels, volume, and divergence all strengthen the read.
 
 <LineChart
-  caption="Staged bullish confirmation on the oscillator: (a) %K crosses %D / above 20, (b) push above 50; then look to price itself for step (c) — the resistance break — which is later but most confirmed"
+  caption="Staged bullish confirmation on the oscillator: (a) %K crosses %D (and shortly after rises above 20), (b) push above 50; then look to price itself for step (c) — the resistance break — which is later but most confirmed"
   height={220}
   yMin={0}
   yMax={100}
@@ -289,7 +289,7 @@ The single most useful upgrade is to only take signals *in the direction of the 
     { y: 20, label: "20", color: "#f59e0b" }
   ]}
   points={[
-    { x: 2, y: 18, text: "(a) cross above 20", color: "#22c55e" },
+    { x: 2, y: 18, text: "(a) %K crosses %D", color: "#22c55e" },
     { x: 4, y: 52, text: "(b) above 50", color: "#2dd4bf" },
     { x: 7, y: 88, text: "(c) oscillator strong; now confirm on price", color: "#22c55e" }
   ]}

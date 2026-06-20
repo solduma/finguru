@@ -84,7 +84,7 @@ Because ATR is a smoothed average of range, it *contracts* during quiet consolid
 
 <Callout type="note">
 
-ATR is in **absolute price units** (dollars, ticks, pips), not a percentage. An ATR of 3 means very different things for a \$20 stock versus a \$2,000 one. To compare across instruments, normalize it: `ATR / Close × 100` gives an ATR-as-percent figure.
+ATR is in **absolute price units** (dollars for stocks, ticks for futures — one minimum price increment — or pips for forex, where most pairs move 0.0001 per pip), not a percentage. An ATR of 3 means very different things for a \$20 stock versus a \$2,000 one. To compare across instruments, normalize it: `ATR / Close × 100` gives an ATR-as-percent figure.
 
 </Callout>
 
@@ -112,15 +112,15 @@ We then smooth +DM, −DM, and TR over 14 periods (using the same Wilder smoothi
 Reading them is intuitive: when **+DI is above −DI**, buyers have the edge; when **−DI is above +DI**, sellers do. A classic signal is a *crossover* — +DI crossing above −DI is bullish, the reverse is bearish.
 
 <LineChart
-  caption="A bearish DI crossover: −DI crosses up through +DI as sellers take the edge — the mirror image of the bullish cross"
+  caption="A bullish DI crossover: +DI crosses up through −DI as buyers take the edge — the bearish cross is the mirror image"
   height={220}
   yMin={0}
   yMax={45}
   series={[
-    { label: "+DI", data: [30, 29, 27, 24, 20, 16, 14, 13], color: "#22c55e", width: 2 },
-    { label: "−DI", data: [12, 13, 16, 22, 27, 31, 33, 34], color: "#ef4444", width: 2 }
+    { label: "+DI", data: [12, 13, 16, 22, 27, 31, 33, 34], color: "#22c55e", width: 2 },
+    { label: "−DI", data: [30, 29, 27, 24, 20, 16, 14, 13], color: "#ef4444", width: 2 }
   ]}
-  points={[ { x: 3, y: 23, text: "−DI crosses above +DI (bearish)", color: "#ef4444" } ]}
+  points={[ { x: 4, y: 23, text: "+DI crosses above −DI (bullish)", color: "#22c55e" } ]}
 />
 
 ## Part 3: From DI to ADX — distilling strength
@@ -188,8 +188,8 @@ Wilder himself treated **25** as the threshold for a present trend and **20** as
   ]}
   zones={[ { yMin: 0, yMax: 20, color: "rgba(239,68,68,0.10)", label: "ranging" } ]}
   points={[
-    { x: 3, y: 26, text: "+DI/−DI cross", color: "#22c55e" },
-    { x: 4, y: 24, text: "ADX > 25", color: "#a78bfa" }
+    { x: 2, y: 22, text: "+DI/−DI cross", color: "#22c55e" },
+    { x: 5, y: 30, text: "ADX > 25", color: "#a78bfa" }
   ]}
 />
 
@@ -224,7 +224,7 @@ This solves a problem that destroys many beginners: applying a trend strategy in
     { yMin: 0, yMax: 20, color: "rgba(34,197,94,0.10)", label: "range regime · fade" },
     { yMin: 25, yMax: 50, color: "rgba(239,68,68,0.10)", label: "trend regime · follow" }
   ]}
-  points={[ { x: 6, y: 23, text: "regime flip", color: "#2dd4bf" } ]}
+  points={[ { x: 7, y: 29, text: "regime flip", color: "#2dd4bf" } ]}
 />
 
 ### ATR for stops and position sizing
@@ -238,7 +238,7 @@ Chandelier Exit (long)  = Highest High over 22 periods − (ATR(22) × 3)
 Chandelier Exit (short) = Lowest Low over 22 periods   + (ATR(22) × 3)
 ```
 
-The stop "hangs" three ATRs below the recent peak and ratchets up as price rises — never down. Defaults are **22 periods, 3× multiplier**; volatile names may need a larger multiplier (e.g., 5) to avoid whipsaws.
+The stop "hangs" three ATRs below the recent peak and ratchets up as price rises — never down. Defaults are **22 periods, 3× multiplier**; volatile names may need a larger multiplier (e.g., 5) to avoid whipsaws — being stopped out by normal back-and-forth noise only to watch price resume in your original direction.
 
 <LineChart
   caption="Chandelier Exit (long): the stop trails 3×ATR below the highest high, ratcheting up as price rises and holding flat on the pullback — never moving down — until price closes below it"
@@ -262,10 +262,11 @@ Position size (shares) = (Account risk in $) / (ATR × stop multiplier)
 **Illustrative example.** Risk \$500 per trade, stop = 2 × ATR, ATR = \$2.50. Stop distance = \$5.00, so size = 500 / 5 = **100 shares**. If ATR jumps to \$5, the same \$500 risk buys only 50 shares — automatically smaller positions in wilder markets.
 
 <LineChart
-  caption="Volatility-based sizing: at fixed $500 risk and a 2×ATR stop, share count falls inversely as ATR rises — the same dollar risk buys fewer shares in wilder markets"
+  caption="Volatility-based sizing (x-axis = ATR in dollars): at fixed $500 risk and a 2×ATR stop, share count falls inversely as ATR rises — the same dollar risk buys fewer shares in wilder markets"
   height={260}
   yMin={0}
   yMax={260}
+  labels={['$1.00','$1.50','$2.00','$2.50','$3.00','$3.50','$5.00']}
   series={[
     { label: "Shares (= $500 / (2×ATR))", data: [250, 167, 125, 100, 83, 71, 50], color: "#2dd4bf", width: 2 }
   ]}
@@ -277,7 +278,7 @@ Position size (shares) = (Account risk in $) / (ATR × stop multiplier)
 
 ## Strengths, weaknesses, and beginner traps
 
-**Strengths.** ADX cleanly separates "trend vs. no-trend," a genuinely hard thing to eyeball. ATR is one of the few volatility measures that survives price gaps and back-adjusted futures contracts, since it works on *differences* of price.
+**Strengths.** ADX cleanly separates "trend vs. no-trend," a genuinely hard thing to eyeball. ATR is one of the few volatility measures that survives price gaps and back-adjusted futures contracts (a continuous series stitched from expiring monthly contracts, where shifting the older data up or down changes the absolute prices but not the bar-to-bar differences ATR is built on), since it works on *differences* of price.
 
 **Honest weaknesses.** ADX lags badly and its thresholds (20/25) are conventions, not fixed truths — they vary by market and timeframe, and you should backtest them rather than trust them. ATR's absolute scale makes cross-asset comparison meaningless without normalizing, and its value depends on how far back your data starts.
 

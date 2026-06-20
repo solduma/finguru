@@ -30,7 +30,7 @@ Watching prices scroll by all day, he started noticing that they tended to *move
 
 His biggest moments came in two market crashes:
 
-- **The Panic of 1907.** During a roughly three-week financial panic that began in mid-October (triggered by a failed attempt to corner the stock of the United Copper Company, with the NYSE down nearly 50% from its peak the prior year and only J.P. Morgan's privately organized rescue keeping the exchange open), Livermore was heavily **short** — meaning he had bet on prices *falling*. Accounts say he made on the order of **$1 million in a single day** and emerged worth around $3 million.
+- **The Panic of 1907.** During a roughly three-week financial panic that began in mid-October (triggered by a failed attempt to corner — buy up nearly all the available shares of, to control the price of — the stock of the United Copper Company, with the NYSE down nearly 50% from its peak the prior year and only J.P. Morgan's privately organized rescue keeping the exchange open), Livermore was heavily **short** — meaning he had bet on prices *falling*. Accounts say he made on the order of **$1 million in a single day** and emerged worth around $3 million.
 - **The Crash of 1929.** Anticipating the collapse, he again positioned short, reportedly using many brokers to disguise the size of his bets, and is said to have netted roughly **$100 million** — earning him the title "the Great Bear of Wall Street," along with public hatred and death threats.
 
 <Callout type="warning">
@@ -49,7 +49,7 @@ Before charts were common, Livermore studied the raw flow of prices and volume o
 
 ### 2. Trade with the trend (the "line of least resistance")
 
-Livermore wanted to identify the **trend** — the prevailing direction of price — and trade *with* it, not against it. He spoke of finding the market's "line of least resistance": the direction in which price moved most easily. Once he judged a stock was trending up, he bought; if down, he sold short. He explicitly warned against trying to catch exact tops and bottoms.
+Livermore wanted to identify the **trend** — the prevailing direction of price — and trade *with* it, not against it. He spoke of finding the market's "line of least resistance": the direction in which price moved most easily. Once he judged a stock was trending up, he bought (went "long"); if down, he sold short (going long simply means buying to profit if price rises; shorting is betting it falls). He explicitly warned against trying to catch exact tops and bottoms.
 
 <LineChart
   caption="An uptrend (buy with it) vs. a downtrend (sell short with it) — each rides its own line of least resistance"
@@ -75,7 +75,7 @@ The trend is your default assumption. You bet that a move *in progress* will con
 A **pivotal point**, in Livermore's language, is a price level where the market signals that a real move is beginning — for example, a stock breaking decisively above a long-standing high, or breaking out of a sideways range on heavy volume. He did not buy "cheap." He bought *strength* — often adding as a stock made new highs — because the breakout through a pivotal point was his evidence that the trend was genuine. Buying after confirmation, not in anticipation, is central to his approach.
 
 <CandleChart
-  caption="A sideways range, then a decisive breakout above the pivotal point on heavy volume"
+  caption="A sideways range, then a decisive breakout close above the pivotal point; in practice Livermore required heavy volume to confirm it (not shown here)"
   height={300}
   candles={[
     { o: 50, h: 52, l: 49, c: 51 },
@@ -107,7 +107,7 @@ Livermore rarely put on a full position at once. He would buy a small **"probe"*
   ]}
   points={[
     { x: 1, y: 53, text: "probe (200 sh)", color: "#22c55e" },
-    { x: 3, y: 58, text: "add (200 sh)", color: "#22c55e" },
+    { x: 3, y: 58, text: "add (150 sh)", color: "#22c55e" },
     { x: 5, y: 65, text: "add (100 sh)", color: "#22c55e" },
     { x: 7, y: 72, text: "add (50 sh)", color: "#2dd4bf" }
   ]}
@@ -181,10 +181,12 @@ PIVOTAL POINT: a decisive break above $52 on volume well above average.
 Step 1 (probe):  Buy 200 shares at $53 (confirmation, not a guess).
 Step 2 (rule):   Set a hard exit ~10% below = ~$47.70.
 Step 3 (add):    Price moves to $58 on continued strong volume.
-                 Trend confirmed -> add 200 shares at $58.
+                 Trend confirmed -> add 150 shares at $58.
                  Raise the protective exit (e.g., to ~$53).
 Step 4 (sit):    Over six weeks price grinds from $58 to $74,
                  with several scary 2-3 day pullbacks.
+                 (As price climbs toward $74, you keep raising
+                 the protective exit, e.g. up to ~$65.)
                  As long as the trend and your raised exit hold,
                  you SIT. You do not sell into every dip.
 Step 5 (exit):   Trend breaks: price closes back below your
@@ -206,7 +208,7 @@ Step 5 (exit):   Trend breaks: price closes back below your
   points={[
     { x: 3, y: 53, text: "probe (buy $53)", color: "#22c55e" },
     { x: 5, y: 58, text: "add ($58)", color: "#22c55e" },
-    { x: 11, y: 74, text: "sit through dips", color: "#2dd4bf" },
+    { x: 7, y: 60, text: "sit through dips", color: "#2dd4bf" },
     { x: 13, y: 64, text: "exit (trend breaks)", color: "#ef4444" }
   ]}
 />
@@ -217,12 +219,12 @@ Notice the structure: enter on confirmation, define the loss *before* entering, 
 
 Livermore's fingerprints are everywhere. **Trend-following** and **momentum** strategies, **breakout** trading, **pyramiding**, and the iron rule "cut losses, let profits run" all trace to him. Generations of traders cite *Reminiscences* as foundational. His own book, **"How to Trade in Stocks" (March 1940)**, lays out his pivotal-point and money-management system more explicitly, though it sold poorly on release — World War II was underway and public interest in the stock market was low.
 
-Today you would implement his ideas with moving averages, defined chart breakouts, average-true-range-based **stop-loss** orders (an order that automatically sells if price hits a set level), and strict **position sizing** (risking a small fixed percentage of capital per trade). The technology changed; the logic did not.
+Today you would implement his ideas with moving averages, defined chart breakouts, average-true-range-based **stop-loss** orders (an order that automatically sells if price hits a set level; average true range places the stop a multiple of the stock's typical daily price swing away, so volatile stocks get more room), and strict **position sizing** (risking a small fixed percentage of capital per trade). The technology changed; the logic did not.
 
 ## Honest criticisms and controversies
 
 - **Survivorship and legend.** We celebrate Livermore partly because his story is dramatic. The famous dollar figures are unverified and likely exaggerated, and a man who went bankrupt several times and died broke is a strange poster child for a winning method.
-- **Manipulation, not just skill.** In his era — before the **SEC** was created by the Securities Exchange Act of 1934 — large operators legally ran pools and manipulated thin stocks. Some of his edge came from tactics that are illegal today, not from pure tape-reading genius.
+- **Manipulation, not just skill.** In his era — before the **SEC** was created by the Securities Exchange Act of 1934 — large operators legally ran pools (groups secretly coordinating to pump and dump a stock) and manipulated thin stocks. Some of his edge came from tactics that are illegal today, not from pure tape-reading genius.
 - **The method did not save him.** His own rules, faithfully followed, would have prevented his ruin. The repeated blowups show that *knowing* the rules and *obeying* them are entirely different problems — arguably the most important takeaway.
 
 ## Common pitfalls and misconceptions

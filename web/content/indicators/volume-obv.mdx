@@ -33,20 +33,17 @@ This gives us the single most important way to read raw volume:
 | Price down, volume up | Strong selling pressure — trend likely continues |
 | Price down, volume down | Selling may be drying up — watch for a bottom |
 
-<CandleChart
-  caption="Healthy uptrend: up-days arrive on heavy volume, the pullback on light volume — participation confirms the trend"
+<LineChart
+  caption="Healthy uptrend: up-days carry heavy volume (the blue line peaks), the pullback comes on light volume (the line dips) — participation confirms the trend"
   height={300}
-  candles={[
-    { o: 40, h: 42, l: 39.5, c: 41.8 },
-    { o: 41.8, h: 44, l: 41.5, c: 43.7 },
-    { o: 43.7, h: 44.2, l: 42.8, c: 43.1 },
-    { o: 43.1, h: 45.5, l: 43, c: 45.3 },
-    { o: 45.3, h: 47.5, l: 45.1, c: 47.2 }
+  series={[
+    { label: "Price", data: [40, 43.7, 43.1, 45.3, 47.2], color: "#e6e9ef", width: 2 },
+    { label: "Volume (scaled)", data: [60, 90, 40, 55, 95], color: "#38bdf8", width: 2 }
   ]}
   points={[
-    { x: 1, y: 44.5, text: "big up-day, heavy volume", color: "#22c55e" },
-    { x: 2, y: 42.5, text: "pullback, light volume", color: "#38bdf8" },
-    { x: 4, y: 48, text: "breakout, heavy volume", color: "#22c55e" }
+    { x: 1, y: 90, text: "big up-day, heavy volume", color: "#22c55e" },
+    { x: 2, y: 40, text: "pullback, light volume", color: "#38bdf8" },
+    { x: 4, y: 95, text: "breakout, heavy volume", color: "#22c55e" }
   ]}
 />
 
@@ -63,7 +60,7 @@ A **volume spike** is a single bar far above the recent average — often 2x, 3x
 A special case is **climax volume**: an enormous volume spike at the *end* of a strong move, often on a sharp price extension. A **selling climax** is panic dumping near a bottom — everyone who was going to sell finally capitulates at once, which paradoxically clears the way for a bounce because there is little selling left. A **buying climax** (or "blow-off top") is the mirror image near a top: euphoric buying that exhausts the last willing buyers. The intuition: when the *maximum* number of participants act in one direction, there is nobody left to push further, so reversals often follow.
 
 <LineChart
-  caption="Selling climax: a sharp final plunge on a huge volume spike marks capitulation, and price bounces"
+  caption="Selling climax: a sharp final plunge on a huge volume spike (here ~2x the prior bars) marks capitulation, and price bounces"
   height={300}
   series={[
     { label: "Price", data: [60, 56, 51, 45, 38, 33, 40, 44], color: "#e6e9ef", width: 2 },
@@ -76,10 +73,10 @@ A special case is **climax volume**: an enormous volume spike at the *end* of a 
 />
 
 <LineChart
-  caption="Buying climax (blow-off top): a vertical final surge on peak volume exhausts buyers, then reverses"
+  caption="Buying climax (blow-off top): a vertical final surge on peak volume (here ~2x the prior bars) exhausts buyers, then reverses"
   height={300}
   series={[
-    { label: "Price", data: [40, 44, 49, 55, 62, 67, 60, 56], color: "#e6e9ef", width: 2 },
+    { label: "Price", data: [40, 43, 47, 52, 58, 67, 60, 56], color: "#e6e9ef", width: 2 },
     { label: "Volume (scaled)", data: [42, 45, 50, 58, 72, 95, 55, 45], color: "#38bdf8", width: 2 }
   ]}
   points={[
@@ -127,7 +124,7 @@ Suppose we start OBV at 0 and track five days:
 Notice Day 4: price was flat, so OBV ignored 900 shares entirely. And notice that OBV rose strongly into Day 5 — the up-days carried more volume than the down-day, so the running line trends up, confirming the price advance.
 
 <LineChart
-  caption="The five-day worked example: OBV (scaled) tracking the close, flat on the unchanged day"
+  caption="The five-day worked example: OBV (shown in thousands, so +2,300 plots as 2.3) tracking the close, flat on the unchanged day"
   height={300}
   series={[
     { label: "Close", data: [50.0, 50.8, 50.4, 50.4, 51.2], color: "#e6e9ef", width: 2 },
@@ -145,21 +142,21 @@ Notice Day 4: price was flat, so OBV ignored 900 shares entirely. And notice tha
 
 **2. Divergence** — the headline use. **Divergence** means price and OBV are pointing in *different* directions, hinting the price trend is weakening.
 
-- **Bearish divergence:** price makes a *higher high*, but OBV makes a *lower high* (or breaks its own support). The rally is happening on weaker net volume — buyers are thinning out. Possible top.
+- **Bearish divergence:** price makes a *higher high*, but OBV makes a *lower high* (or breaks below its own recent low — a support line drawn on the OBV line itself, not on price). The rally is happening on weaker net volume — buyers are thinning out. Possible top.
 - **Bullish divergence:** price makes a *lower low*, but OBV makes a *higher low*. The decline is happening on weaker net selling — sellers are exhausting. Possible bottom.
 
 <LineChart
   caption="Bearish divergence: price prints a higher high while OBV prints a lower high"
   height={300}
   series={[
-    { label: "Price", data: [40, 44, 41, 47, 43, 49], color: "#e6e9ef", width: 2 },
-    { label: "OBV", data: [40, 46, 42, 44, 39, 41], color: "#2dd4bf", width: 2 }
+    { label: "Price", data: [40, 44, 42, 45, 43, 49], color: "#e6e9ef", width: 2 },
+    { label: "OBV", data: [40, 46, 42, 44, 40, 43], color: "#2dd4bf", width: 2 }
   ]}
   points={[
     { x: 1, y: 44, text: "high 1", color: "#e6e9ef" },
     { x: 5, y: 49, text: "higher high", color: "#22c55e" },
     { x: 1, y: 46, text: "OBV high 1", color: "#2dd4bf" },
-    { x: 5, y: 41, text: "lower high — divergence", color: "#ef4444" }
+    { x: 5, y: 43, text: "lower high — divergence", color: "#ef4444" }
   ]}
 />
 
@@ -204,7 +201,7 @@ Divergence is a *condition*, not a trigger. Markets can diverge for a long time 
 OBV tracks volume over *time*. **Volume-by-Price** (also called a volume profile) tracks volume over *price* — it draws horizontal bars showing how much volume traded within each price zone over the period on your chart. Long bars mark prices where heavy trading occurred; those zones tend to act as **support** (when below current price) or **resistance** (when above), because lots of people have positions anchored there. It is a powerful complement: OBV says *whether* pressure is building; Volume-by-Price says *at what price levels* battles will likely be fought.
 
 <LineChart
-  caption="Volume-by-Price: a high-volume node becomes resistance overhead and support below as price oscillates around it"
+  caption="Volume-by-Price: the shaded band marks the high-volume node (where a long horizontal volume bar would sit) — price gets rejected from above it and supported from below"
   height={300}
   series={[
     { label: "Price", data: [44, 47, 50, 49, 51, 50, 47, 50], color: "#e6e9ef", width: 2 }
@@ -223,10 +220,10 @@ OBV tracks volume over *time*. **Volume-by-Price** (also called a volume profile
 
 ## Settings, strengths, and beginner mistakes
 
-- **Settings:** OBV has none — it is parameter-free. Many traders overlay a moving average of OBV (e.g., a 20-period EMA) to smooth it and define its own trend.
+- **Settings:** OBV has none — it is parameter-free. Many traders overlay a moving average of OBV (e.g., a 20-period EMA — an *exponential moving average*, a smoothed average that weights recent data more heavily) to smooth it and define its own trend.
 - **Strengths:** Simple, intuitive, parameter-free, and adds a genuinely independent signal (volume) on top of price.
 - **Weaknesses and honest caveats:**
-  - **The "all-or-nothing" flaw.** OBV assigns the *entire* day's volume to up or down based only on the close. A day that closes up a penny adds 100% of volume as "buying"; a day that closes down a penny subtracts 100%. The magnitude of the price move is ignored. (This is why some prefer the **Accumulation/Distribution Line** or **Chaikin Money Flow**, which weight volume by *where* price closed within the day's range.)
+  - **The "all-or-nothing" flaw.** OBV assigns the *entire* day's volume to up or down based only on the close. A day that closes up a penny adds 100% of volume as "buying"; a day that closes down a penny subtracts 100%. The magnitude of the price move is ignored. (This is why some prefer the **Accumulation/Distribution Line** or **Chaikin Money Flow** — two other volume indicators — which weight volume by *where* price closed within the day's range.)
   - **Single spikes distort it.** One enormous-volume day permanently shifts the cumulative line and can create a false divergence afterward.
   - **Gaps and limit moves** aren't handled gracefully.
   - **No standalone edge.** OBV is a *confirmation/divergence* tool, not a complete system — pair it with price analysis.
@@ -237,13 +234,13 @@ Be intellectually honest about volume's biggest practical problem: **data qualit
 
 </Callout>
 
-A word on the man himself: Granville became a celebrity newsletter writer, publishing *The Granville Market Letter* from 1963, and at his peak in the early 1980s had over 20,000 subscribers. His calls reportedly moved the Dow on single days — a "buy" recommendation preceded a roughly 4% jump on April 22, 1980, and a "sell everything" call in early January 1981 is associated with a sharp sell-off. He was a showman who would emerge from a coffin at conferences or appear to walk across water at a swimming pool. But his sweeping market-timing predictions — including repeated calls for imminent collapse through the 1980s and 1990s — were frequently wrong, a useful reminder that a good *indicator* and a good *forecaster* are not the same thing. Use his tool; do not worship his calls.
+A word on the man himself: Granville became a celebrity newsletter writer, publishing *The Granville Market Letter* from 1963, and at his peak in the early 1980s had over 20,000 subscribers. His calls are reported to have moved the Dow on single days — a "buy" recommendation is reported to have preceded a roughly 4% jump on April 22, 1980, and a "sell everything" call in early January 1981 reportedly coincided with a sharp sell-off. He was a showman who would emerge from a coffin at conferences or appear to walk across water at a swimming pool. But his sweeping market-timing predictions — including repeated calls for imminent collapse through the 1980s and 1990s — were frequently wrong, a useful reminder that a good *indicator* and a good *forecaster* are not the same thing. Use his tool; do not worship his calls.
 
 ## How to combine OBV with other tools
 
 - **OBV + trend (moving averages / Dow):** use OBV to confirm a trend you've already identified, and watch for divergence as an early warning.
 - **OBV + support/resistance or chart patterns:** an OBV breakout that leads a price breakout adds conviction; a divergence into a key level warns the level may hold.
-- **OBV + momentum oscillator (e.g., RSI):** when *both* volume (OBV) and momentum (RSI) diverge from price, the warning is much stronger than either alone.
+- **OBV + momentum oscillator (a tool that measures how *fast* price is moving, not just its direction), e.g., RSI (Relative Strength Index — a momentum gauge; see the RSI lesson):** when *both* volume (OBV) and momentum (RSI) diverge from price, the warning is much stronger than either alone.
 
 ## Practice suggestions
 

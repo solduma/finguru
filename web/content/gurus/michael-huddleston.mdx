@@ -73,7 +73,7 @@ market mechanics.
   single **Composite Operator** accumulated quietly, engineered false moves to
   trap the public, then drove price. That *is* ICT's "smart money." Wyckoff's
   **Spring** (a false break below support to grab stops) ≈ ICT's **manipulation /
-  liquidity grab**; the last candle before markup ≈ the **order block**; his
+  liquidity grab**; the last candle before markup (the trending-up advance) ≈ the **order block**; his
   **Sign of Strength** ≈ a **break of structure**.
 - **Dow Theory → market structure.** Dow defined trends by swing sequence
   (higher highs/lows vs. lower highs/lows). ICT's "break of structure" is a Dow
@@ -124,15 +124,24 @@ players want to fill against.
 - **Sell-side liquidity (SSL):** rests *below* price, pooled below swing lows.
 - **Equal highs/lows:** two swings at about the same level — an obvious spot where
   stops stack.
-- **Liquidity grab / sweep / stop hunt:** price spikes into a pool, triggers those
-  orders, then quickly reverses — the signature ICT event.
+- **Liquidity grab / sweep / stop hunt:** price spikes (up into buy-side, or down
+  into sell-side) into a pool, triggers those orders, then quickly reverses — the
+  signature ICT event.
 
-<LineChart
-  caption="A liquidity grab: price wicks below equal lows (sweeping the stops resting there), then snaps back — trapping sellers before reversing up."
+<CandleChart
+  caption="A liquidity grab: the sweep candle wicks below the equal lows (triggering the stops resting there) but closes back above the level — then price reverses up, trapping the sellers."
   height={280}
-  series={[{ label: "Price", data: [30, 27, 30, 27, 24.5, 28, 31, 34] }]}
+  candles={[
+    { o: 29, h: 30, l: 28, c: 28.3 },
+    { o: 28.3, h: 28.6, l: 27, c: 27.2 },
+    { o: 27.2, h: 30, l: 27, c: 29.8 },
+    { o: 29.8, h: 30, l: 27, c: 27.4 },
+    { o: 27.4, h: 28, l: 24.5, c: 28 },
+    { o: 28, h: 31.5, l: 27.8, c: 31 },
+    { o: 31, h: 34, l: 30.8, c: 33.6 },
+  ]}
   levels={[{ y: 27, label: "equal lows (sell-side liquidity)", color: "#f59e0b" }]}
-  points={[{ x: 4, y: 24.5, text: "grab → reverse", color: "#ef4444" }]}
+  points={[{ x: 4, y: 24.5, text: "wick sweeps lows → reverse", color: "#ef4444" }]}
 />
 
 ### Order blocks and fair value gaps
@@ -151,8 +160,8 @@ players want to fill against.
   candles={[
     { o: 24, h: 25, l: 22.5, c: 23 },
     { o: 23, h: 23.5, l: 21, c: 21.5 },
-    { o: 22, h: 23, l: 20, c: 22.8 },
-    { o: 22.8, h: 26, l: 22.6, c: 25.6 },
+    { o: 21.5, h: 24, l: 21.2, c: 23.8 },
+    { o: 23.8, h: 26, l: 23.6, c: 25.6 },
     { o: 25.6, h: 28.5, l: 25.4, c: 28 },
     { o: 28, h: 30, l: 27.6, c: 29.5 },
   ]}
@@ -194,17 +203,18 @@ discount, sell in premium.**
 ### Optimal Trade Entry and time-based concepts
 
 - **Optimal Trade Entry (OTE):** after a structure break, wait for a pullback into
-  the **62%–79% Fibonacci zone** before entering with the trend — strongest when an
-  order block or FVG sits inside it.
+  the **62%–79% Fibonacci zone** of the prior impulse leg (the strong, fast advance)
+  before entering with the trend — strongest when an order block or FVG sits inside it.
 - **Killzones:** specific high-activity session windows (in New York time) where
   ICT expects the day's meaningful moves — e.g. the **London open ~2:00–5:00 a.m.
   ET** and the **New York AM ~8:30–11:00 a.m. ET**. The idea is to hunt setups
   *during* these windows and ignore the quiet hours between them.
 - **Power of Three (AMD):** **Accumulation** (range builds) → **Manipulation** (a
-  false "Judas swing" sweep) → **Distribution** (the real move).
+  false **"Judas swing"** — a deceptive early move that traps one side — sweep) →
+  **Distribution** (the real move).
 
 <LineChart
-  caption="Optimal Trade Entry: after an impulse leg up, ICT buys only when the pullback reaches the 62–79% retracement of that leg — the deep-discount zone of the move."
+  caption="Optimal Trade Entry: after an impulse leg up (a strong, fast one-way advance), ICT buys only when the pullback reaches the 62–79% retracement of that leg — the deep-discount zone of the move."
   height={300}
   series={[{ label: "Price", data: [20, 22, 25, 28, 30, 26, 23.8, 22.5, 26, 29] }]}
   zones={[{ yMin: 22.1, yMax: 23.8, color: "rgba(34,197,94,0.12)", label: "OTE 62–79% retracement" }]}
@@ -247,10 +257,10 @@ A textbook ICT long, presented to show the *logic*, not as a recommendation:
 6. **Stop:** *below the sweep low* — beyond true invalidation, not parked on the
    obvious level where it would itself be hunted.
 7. **Target:** the buy-side liquidity above prior highs; framed around **1:2 to
-   1:4** reward-to-risk.
+   1:4** reward-to-risk, where **1R = the entry-to-stop distance** (one unit of risk).
 
 <LineChart
-  caption="The full ICT long: sweep below sell-side liquidity, snap-back, CHoCH up, entry on the discount pullback, stop beneath the sweep low, target the buy-side liquidity above — a 1:3-ish R play."
+  caption="The full ICT long: sweep below sell-side liquidity, snap-back, CHoCH up, entry on the discount pullback, stop beneath the sweep low, target the buy-side liquidity above — a roughly 1:3 reward-to-risk play."
   height={320}
   series={[{ label: "Price", data: [30, 28, 31, 28, 25, 29, 32, 27, 32, 37] }]}
   levels={[
@@ -279,7 +289,7 @@ chart — not an edge by itself.
 
 - **No verified track record.** The most serious point. No audited results or
   third-party-confirmed account history exist; the confirmable income is from
-  content, not verified trading P&L.
+  content, not verified profit/loss from trading.
 - **Largely rebranded concepts** — proprietary jargon layered over Wyckoff and
   supply/demand (see the lineage above).
 - **Jargon volume and unfalsifiability.** Critics point to hours-long videos with
@@ -294,7 +304,9 @@ chart — not an edge by itself.
 - His core **content is now free**, which undercuts the pure-scam framing.
 - The **structure/liquidity lens is genuinely useful** for organizing what you see
   on a chart, even if it isn't a guaranteed edge.
-- There's a **real kernel of microstructure truth**: peer-reviewed work by
+- There's a **real kernel of microstructure truth** (microstructure = the
+  fine-grained mechanics of how individual orders and trades actually move price):
+  peer-reviewed work by
   **Carol Osler** documents that stop-loss orders cluster (especially around round
   numbers and just beyond obvious support/resistance) and can trigger price
   cascades. The crucial nuance: the evidence supports clustering at *obvious*

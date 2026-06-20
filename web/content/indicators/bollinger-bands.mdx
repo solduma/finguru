@@ -33,6 +33,10 @@ Because the width adapts, the bands give you what Bollinger calls a "relative de
     { label: "Middle Band (SMA)", data: [30, 30, 30, 30, 30, 30.3, 31, 32, 32.5, 33], color: "#2dd4bf", width: 1.5 },
     { label: "Lower Band", data: [27, 27.5, 28, 28.3, 28.5, 27.6, 27, 26.5, 26, 26], color: "#38bdf8", dashed: true, width: 1.5 }
   ]}
+  points={[
+    { x: 4, y: 30, text: "calm: bands tight", color: "#2dd4bf" },
+    { x: 9, y: 35, text: "volatile: bands wide", color: "#f59e0b" }
+  ]}
 />
 
 ## The precise definition
@@ -166,13 +170,13 @@ Beginners assume a band touch means "reversal." In a strong trend, the opposite 
   height={300}
   series={[
     { label: "Upper Band", data: [32, 33, 34.2, 35.5, 36.8, 38, 39.2, 40.5, 41.8], color: "#38bdf8", dashed: true, width: 1.5 },
-    { label: "Price", data: [31.5, 32.8, 34, 35.2, 36.5, 37.6, 39, 40.2, 41.5], color: "#e6e9ef", width: 2 },
+    { label: "Price", data: [31.5, 32.8, 34, 35.2, 33.4, 37.6, 39, 40.2, 41.5], color: "#e6e9ef", width: 2 },
     { label: "Middle Band (SMA)", data: [29.5, 30.3, 31.2, 32.2, 33.3, 34.4, 35.6, 36.8, 38], color: "#2dd4bf", width: 1.5 },
     { label: "Lower Band", data: [27, 27.6, 28.2, 28.9, 29.8, 30.8, 32, 33.1, 34.2], color: "#38bdf8", dashed: true, width: 1.5 }
   ]}
   points={[
-    { x: 4, y: 36.5, text: "hugging upper band", color: "#22c55e" },
-    { x: 6, y: 35.6, text: "SMA holds as support", color: "#a78bfa" }
+    { x: 2, y: 34, text: "hugging upper band", color: "#22c55e" },
+    { x: 4, y: 33.4, text: "SMA holds as support", color: "#a78bfa" }
   ]}
 />
 
@@ -243,8 +247,8 @@ Notice the multiplier barely changes — shortening the average needs a slightly
 
 **Weaknesses — be honest about these:**
 
-- **The statistics don't hold.** A normal distribution would put ~95% of data inside ±2σ bands. Real markets have "fat tails" (extreme moves occur more often than the bell curve predicts), and Bollinger himself notes that only about **88–90%** of price falls inside the bands in practice, not 95%. The 20-period sample is too small, and prices are serially correlated, so textbook statistical assumptions are invalid. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands), [rule 14](https://www.bollingerbands.com/bollinger-band-rules))
-- **Mixed backtested performance.** Studies are inconsistent versus simple buy-and-hold. Notably, Lento et al. (2007) found no consistent edge for the conventional approach, but a *contrarian* version (fading the bands) produced positive returns across a variety of markets — a reminder there's no single "right" way to trade them. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands))
+- **The statistics don't hold.** A normal distribution would put ~95% of data inside ±2σ bands. Real markets have "fat tails" (extreme moves occur more often than the bell curve predicts), and Bollinger himself notes that only about **88–90%** of price falls inside the bands in practice, not 95%. The 20-period sample is too small, and prices are serially correlated (today's move tends to follow yesterday's, so the observations aren't the independent samples the bell-curve math assumes), so textbook statistical assumptions are invalid. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands), [rule 14](https://www.bollingerbands.com/bollinger-band-rules))
+- **Mixed backtested performance.** Studies are inconsistent versus simple buy-and-hold (buying once and just holding). Notably, Lento et al. (2007) found no consistent edge for the conventional approach, but a *contrarian* version (fading the bands — i.e. trading against them: selling at the upper band, buying at the lower) produced positive returns across a variety of markets — a reminder there's no single "right" way to trade them. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands))
 - **They give no continuous advice.** Rule 22: the bands identify *setups* where the odds may be in your favor; most of the time they say nothing actionable.
 
 ## Common beginner mistakes
@@ -264,7 +268,7 @@ Notice the multiplier barely changes — shortening the average needs a slightly
 2. Use **BandWidth** to spot squeezes — flag when it hits a multi-month (e.g. 6-month) low, then wait for expansion and a directional break (and respect the head-fake risk).
 3. Use **%b** to read W-bottoms / M-tops and momentum divergences objectively.
 4. **Combine, don't isolate.** Add one non-correlated confirmation — volume on a breakout, or a momentum oscillator for trade timing — and use the middle band as dynamic support/resistance and a trend reference.
-5. Journal whether band tags in *your* market behave as reversals or continuations; the answer differs by instrument and regime.
+5. Journal whether band tags in *your* market behave as reversals or continuations; the answer differs by instrument and by market regime (whether the market is trending or ranging, calm or volatile).
 
 ## Further reading
 
