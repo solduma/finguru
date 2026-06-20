@@ -15,6 +15,11 @@
 
 set -euo pipefail
 
+# launchd starts us with a bare PATH that lacks Homebrew (node/npm) and the
+# Python framework (uv). Prepend both so the tools resolve regardless of who
+# launches the script.
+export PATH="/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH:-}"
+
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 API_DIR="$ROOT/api"
 WEB_DIR="$ROOT/web"
@@ -76,12 +81,17 @@ kill_pattern "next dev"
 kill_port "$API_PORT"
 kill_port "$WEB_PORT"
 
-# --- Build the web app for production (unless told to skip) ---
-if [ "${SKIP_BUILD:-0}" != "1" ]; then
+# --- Build the web app for production ---
+# Build only when needed: a valid build leaves .next/BUILD_ID. Skipping it when
+# present makes supervisor restarts near-instant instead of a ~45s rebuild.
+# Force a rebuild with FORCE_BUILD=1 (e.g. after pulling new code).
+if [ "${SKIP_BUILD:-0}" = "1" ]; then
+  log "SKIP_BUILD=1 — using existing .next build"
+elif [ "${FORCE_BUILD:-0}" != "1" ] && [ -f "$WEB_DIR/.next/BUILD_ID" ]; then
+  log "existing production build found (.next/BUILD_ID) — skipping rebuild. FORCE_BUILD=1 to rebuild."
+else
   log "building web (next build)…"
   ( cd "$WEB_DIR" && npm run build )
-else
-  log "SKIP_BUILD=1 — using existing .next build"
 fi
 
 # --- API (production: no --reload) ---

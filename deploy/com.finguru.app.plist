@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  LaunchAgent for FinGuru (web + API) in production mode.
+
+  __REPO__ is replaced with the absolute repo path by deploy/install-launchd.sh.
+  Do not load this file directly — run the install script so the path is set.
+
+  Behaviour:
+    RunAtLoad   -> starts at login / after reboot
+    KeepAlive   -> restarts whenever start-prod.sh exits (crash or child death)
+    ThrottleInterval prevents a tight crash-restart loop.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.finguru.app</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__REPO__/start-prod.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO__</string>
+
+    <!-- Ensure Homebrew + Python-framework tools are found even though launchd
+         provides a minimal PATH. start-prod.sh also exports these. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Wait 10s between restarts so a hard failure doesn't spin the CPU. -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>StandardOutPath</key>
+    <string>__REPO__/deploy/logs/finguru.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>__REPO__/deploy/logs/finguru.err.log</string>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
+</plist>
