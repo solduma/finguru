@@ -4,10 +4,19 @@ import rehypeSlug from "rehype-slug";
 import Callout from "./Callout";
 import LineChart from "./charts/LineChart";
 import CandleChart from "./charts/CandleChart";
+import GlossaryTerm from "./GlossaryTerm";
+import { remarkGlossary } from "@/lib/glossary/remarkGlossary";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 
-const components = { Callout, LineChart, CandleChart };
+const components = { Callout, LineChart, CandleChart, GlossaryTerm };
 
-export default function Mdx({ source }: { source: string }) {
+export default function Mdx({
+  source,
+  locale = DEFAULT_LOCALE,
+}: {
+  source: string;
+  locale?: Locale;
+}) {
   return (
     <article className="prose prose-invert prose-teal max-w-none prose-headings:scroll-mt-24">
       <MDXRemote
@@ -15,7 +24,7 @@ export default function Mdx({ source }: { source: string }) {
         components={components}
         options={{
           mdxOptions: {
-            remarkPlugins: [remarkGfm],
+            remarkPlugins: [remarkGfm, [remarkGlossary, { locale }]],
             rehypePlugins: [rehypeSlug],
           },
         }}
