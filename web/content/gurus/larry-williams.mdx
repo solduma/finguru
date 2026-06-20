@@ -36,6 +36,19 @@ The World Cup Championship of Futures Trading (run by Robbins Trading Company) i
 
 That number is real in the sense that it happened in a tracked account. But you must understand *how* it happened before you treat it as a target.
 
+<LineChart
+  caption="The 1987 contest: $10,000 compounding past $1M — a near-vertical climb, but punctuated by sharp drawdowns (−17% even mid-run), the visible cost of the leverage"
+  height={300}
+  series={[
+    { label: "Account equity ($)", data: [10000, 22000, 18000, 41000, 78000, 65000, 150000, 310000, 270000, 560000, 880000, 1137600], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 10000, text: "$10,000 start", color: "#e6e9ef" },
+    { x: 5, y: 65000, text: "−17% drawdown (a peak-to-trough drop in account value) even in the winning year", color: "#ef4444" },
+    { x: 11, y: 1137600, text: "$1,137,600 (+11,376%)", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="warning">
 
 A contest scored on percentage return rewards extreme, concentrated leverage. To grow an account 100x in a year, you must risk a very large fraction of capital repeatedly and be right. The same approach that produces an 11,000% winner also produces a long tail of competitors who blow up to zero — and we mostly only hear about the winner. This is **survivorship bias**, and Williams himself has acknowledged that he traded far larger position sizes in the contest than he would recommend for a normal account.
@@ -59,6 +72,8 @@ where:
   Close today         = the most recent closing price
 ```
 
+In the worked example below we use N = 14, so "last N bars" means the last 14 daily bars — i.e. the last 14 trading days (on a daily chart, one bar is one day).
+
 The result ranges from **0 to −100**:
 - **0 to −20** = overbought (close near the top of the range)
 - **−80 to −100** = oversold (close near the bottom)
@@ -78,9 +93,30 @@ Suppose over the last 14 days a market's highest high is **110**, its lowest low
 
 A reading of −30 says the close is in the upper-middle of its range: firm, but not yet "overbought." If tomorrow it closed at 108 with the same range, %R = (2 / 20) × −100 = **−10**, now in overbought territory.
 
+<LineChart
+  caption="Where the close sits in the 14-day range: 104 → %R −30, then 108 → %R −10 (overbought)"
+  height={260}
+  yMin={88}
+  yMax={112}
+  series={[
+    { label: "Close", data: [104, 108], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 110, label: "highest high (110)", color: "#a78bfa" },
+    { y: 90, label: "lowest low (90)", color: "#a78bfa" }
+  ]}
+  zones={[
+    { yMin: 106, yMax: 110, color: "rgba(239,68,68,0.12)", label: "overbought zone (price ≥ 106 ⇒ %R ≥ −20)" }
+  ]}
+  points={[
+    { x: 0, y: 104, text: "close 104 → %R −30", color: "#f59e0b" },
+    { x: 1, y: 108, text: "close 108 → %R −10", color: "#ef4444" }
+  ]}
+/>
+
 <Callout type="key">
 
-%R is *arithmetically equivalent to the %K line of the stochastic oscillator, mirrored around the zero line.* If you already know stochastics, you know %R — it is the same range-position math, just on a 0-to-−100 scale instead of 0-to-100. Do not run both and think you are getting independent confirmation; you are not.
+%R is *arithmetically equivalent to the %K line of the stochastic oscillator* (%K is stochastics' raw range-position line, scored 0–100), *just shifted onto a negative scale* (%R = %K − 100). If you already know stochastics, you know %R — it is the same range-position math, on a 0-to-−100 scale instead of 0-to-100. Do not run both and think you are getting independent confirmation; you are not.
 
 </Callout>
 
@@ -90,15 +126,29 @@ A sign-convention quirk: Williams' original book multiplied by **+100** (giving 
 
 </Callout>
 
-**How to read it without getting chopped up:** Williams explicitly *warned against* mechanically buying every oversold reading and selling every overbought one — in a strong trend, %R can pin near an extreme for a long time. He preferred *confirmation*: for example, wait for %R to hit −100%, let several days pass, and act only when it climbs back above a threshold such as −95% or −85%. **Failure swings** — price makes a new extreme but %R does not, a *divergence* — are a stronger signal than any single reading.
+**How to read it without getting whipsawed (repeatedly stopped out by false signals in a choppy market):** Williams explicitly *warned against* mechanically buying every oversold reading and selling every overbought one — in a strong trend, %R can pin near an extreme for a long time. He preferred *confirmation*: for example, wait for %R to hit −100%, let several days pass, and act only when it climbs back above a threshold such as −95% or −85%. A **divergence** — price makes a new extreme but %R does not — is a stronger signal than any single reading. (A *failure swing*, where %R refuses to confirm a new price extreme, is one form of divergence.)
 
 <LineChart
-  caption="Williams %R: a failure-swing divergence near the oversold extreme"
-  height={220}
+  caption="Bullish divergence, panel 1 of 2 — PRICE (real scale): the second trough at x=8 (36) is a LOWER low than the first at x=5 (42)"
+  height={200}
+  yMin={32}
+  yMax={82}
+  series={[
+    { label: "Price", data: [70, 62, 55, 48, 45, 42, 48, 53, 36, 50, 62, 71, 78], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 42, text: "price 1st low (42)", color: "#e6e9ef" },
+    { x: 8, y: 36, text: "price LOWER low (36)", color: "#a78bfa" }
+  ]}
+/>
+
+<LineChart
+  caption="Bullish divergence, panel 2 of 2 — %R (−100..0 scale), same x-indices: the trough at x=8 (−90) is HIGHER than at x=5 (−100). Price lower low + %R higher low = bullish divergence."
+  height={200}
   yMin={-100}
   yMax={0}
   series={[
-    { label: "%R", data: [-12, -28, -55, -82, -98, -100, -88, -72, -90, -83, -58, -34, -18], color: "#2dd4bf", width: 2 }
+    { label: "%R", data: [-12, -28, -55, -82, -98, -100, -92, -86, -90, -83, -58, -34, -18], color: "#2dd4bf", width: 2 }
   ]}
   zones={[
     { yMin: -20, yMax: 0, color: "rgba(239,68,68,0.12)", label: "overbought" },
@@ -108,9 +158,37 @@ A sign-convention quirk: Williams' original book multiplied by **+100** (giving 
     { y: -85, label: "buy trigger (−85)", color: "#f59e0b" }
   ]}
   points={[
-    { x: 5, y: -100, text: "1st low at −100", color: "#22c55e" },
-    { x: 8, y: -90, text: "higher %R low (divergence)", color: "#a78bfa" },
-    { x: 10, y: -58, text: "climbs back above −85", color: "#22c55e" }
+    { x: 5, y: -100, text: "%R low at −100", color: "#22c55e" },
+    { x: 8, y: -90, text: "%R higher low (−90)", color: "#a78bfa" },
+    { x: 9, y: -83, text: "first close above −85 after the higher low → buy trigger", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="Why fading extremes fails, panel 1 of 2 — PRICE (real scale): a steady, strong uptrend that just keeps rising"
+  height={180}
+  series={[
+    { label: "Price", data: [100, 103, 107, 110, 113, 116, 118, 121, 124, 127], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 8, y: 124, text: "price still rising — premature shorts get stopped out", color: "#ef4444" }
+  ]}
+/>
+
+<LineChart
+  caption="Why fading extremes fails, panel 2 of 2 — %R (−100..0 scale), same x-indices: %R enters the overbought band by x=2 and then stays pinned there for the rest of the move, so shorts taken on the overbought reading get whipsawed"
+  height={200}
+  yMin={-100}
+  yMax={0}
+  series={[
+    { label: "%R", data: [-65, -42, -18, -8, -5, -12, -6, -4, -9, -7], color: "#2dd4bf", width: 2 }
+  ]}
+  zones={[
+    { yMin: -20, yMax: 0, color: "rgba(239,68,68,0.12)", label: "overbought" }
+  ]}
+  points={[
+    { x: 2, y: -18, text: "%R enters overbought (x=2)", color: "#f59e0b" },
+    { x: 8, y: -4, text: "still pinned overbought as price climbs", color: "#ef4444" }
   ]}
 />
 
@@ -127,10 +205,10 @@ Sell stop  = Today's open − (k × yesterday's range)
 where range = (High − Low) of the prior day, and k is a fraction, often ~0.5–0.8
 ```
 
-If price thrusts up by, say, 60% of yesterday's range above today's open, your buy order triggers automatically. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
+A **buy stop** is an order that sits above the current price and only executes if price climbs up to it — so it fires automatically the moment a thrust confirms upward momentum (a **sell stop** is the mirror image, sitting below price and firing if price drops to it). If price thrusts up by, say, 60% of yesterday's range above today's open, your buy stop triggers automatically. Note the stop is **recomputed every morning** from that day's open and the prior day's range — the 103 marked below is only the value on the breakout bar (x=3), not a fixed standing level. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
 
 <CandleChart
-  caption="Volatility breakout: buy stop set 0.6 × prior range above the open, then a continuation thrust"
+  caption="Volatility breakout: each morning the buy stop is recomputed as open + 0.6 × prior range (here 103 on the breakout bar), then a continuation thrust"
   height={300}
   candles={[
     { o: 100, h: 104, l: 99, c: 101 },
@@ -140,18 +218,15 @@ If price thrusts up by, say, 60% of yesterday's range above today's open, your b
     { o: 106, h: 110, l: 105, c: 109 },
     { o: 109, h: 113, l: 108, c: 112 }
   ]}
-  levels={[
-    { y: 103, label: "buy stop = open + 0.6 × prior range" }
-  ]}
   points={[
-    { x: 3, y: 103, text: "breakout triggers", color: "#22c55e" },
+    { x: 3, y: 103, text: "buy stop for THIS day = 103 (open 100 + 0.6 × prior range 5)", color: "#22c55e" },
     { x: 5, y: 113, text: "thrust continues", color: "#22c55e" }
   ]}
 />
 
 ## Core idea 3 — Commercials and the COT report
 
-This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the U.S. **CFTC**, reflecting positions as of the preceding Tuesday's close and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into:
+This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the **U.S. Commodity Futures Trading Commission (CFTC)** — the U.S. federal regulator for futures markets — reflecting positions as of the preceding Tuesday's close and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into the categories below. (**Open interest** is the total number of futures contracts still open — entered into but not yet closed out or settled — at a given time; the COT report sorts that total by who is holding it.)
 
 | Category | Who | Reputation |
 |---|---|---|
@@ -159,7 +234,39 @@ This is arguably his most durable contribution to *sentiment* analysis. The **Co
 | **Non-commercials** (large speculators) | Funds trading for profit | Trend-following crowd |
 | **Non-reportable** (small speculators) | Positions below reporting size | Often wrong at extremes |
 
-Williams built **COT indices** that normalize commercial positioning over a lookback window. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
+Williams built **COT indices** that normalize commercial positioning over a lookback window. **Net-long** means a group holds more buy (long) contracts than sell (short) ones after the two offset; **net-short** is the reverse — more shorts than longs. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
+
+<LineChart
+  caption="COT commercial index (0–100): a net-long extreme precedes the price bottom; a net-short extreme precedes the top"
+  height={240}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "Commercial COT index", data: [95, 88, 70, 45, 30, 20, 35, 60, 80, 88, 60, 12, 20, 35, 50], color: "#38bdf8", width: 2 }
+  ]}
+  zones={[
+    { yMin: 80, yMax: 100, color: "rgba(34,197,94,0.12)", label: "commercials net-long (bullish)" },
+    { yMin: 0, yMax: 20, color: "rgba(239,68,68,0.12)", label: "commercials net-short (bearish)" }
+  ]}
+  points={[
+    { x: 0, y: 95, text: "net-long extreme → bottom near", color: "#22c55e" },
+    { x: 11, y: 12, text: "net-short extreme → top near", color: "#ef4444" }
+  ]}
+/>
+
+<LineChart
+  caption="The price the COT index is read against — the COT extremes (x=0, x=11) precede the turns at x=2 and x=13 by about two weeks"
+  height={220}
+  series={[
+    { label: "Price", data: [88, 85, 84, 86, 89, 92, 96, 101, 107, 112, 116, 119, 121, 124, 120], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 88, text: "COT net-long extreme here", color: "#22c55e" },
+    { x: 2, y: 84, text: "price bottom (after net-long)", color: "#22c55e" },
+    { x: 11, y: 119, text: "COT net-short extreme here", color: "#ef4444" },
+    { x: 13, y: 124, text: "price top (after net-short)", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="warning">
 
@@ -171,10 +278,16 @@ COT is **lagging and incomplete**: it is released three days stale, and reportab
 
 Williams' edge was never one indicator — it was *confluence* across independent dimensions:
 
-1. **Sentiment / context** — Are commercials leaning bullish (COT)? Is the *seasonal* tendency favorable (e.g., known recurring calendar patterns in grains, bonds, or stock indices)?
+1. **Sentiment / context** — Are commercials leaning bullish (COT)? Is the *seasonal* tendency favorable (e.g., heating oil tends to firm into winter — see below)?
 2. **Setup** — Is %R or another oscillator showing an extreme, ideally with divergence?
 3. **Trigger** — A volatility breakout in the direction the first two layers favor.
 4. **Risk** — A pre-defined stop and position size.
+
+<Callout type="note">
+
+**What "seasonality" means here:** a *seasonal* tendency is a recurring calendar pattern — a market that has historically tended to rise or fall during a specific window of the year, usually for a structural reason. For example, heating-oil futures have often firmed heading into the Northern-Hemisphere winter as demand rises; grains can soften around harvest when supply floods in. Williams would check whether the date sat inside such a historically favorable window and let it *tilt* his bias — never act on it alone, because (see criticisms) these patterns are easy to overfit and fade once widely known.
+
+</Callout>
 
 The deeper layers (sentiment, seasonality) tilt the odds; the breakout times the entry. That layered logic is the genuinely transferable lesson — far more than any single setting.
 
@@ -194,7 +307,7 @@ The deeper layers (sentiment, seasonality) tilt the odds; the breakout times the
 
 ## How to apply it today
 
-Start in a *simulator* or with tiny size on a liquid market. Build the stack in order: (1) check the latest COT for commercial extremes, (2) note the seasonal lean, (3) wait for a %R divergence or extreme, (4) enter on a volatility breakout in that direction, (5) risk a fixed small percentage (1–2%) with a hard stop. Journal every trade. The goal is a *process* with positive expectancy over many trades — not one heroic year.
+Start in a *simulator* or with tiny size on a liquid market. Build the stack in order: (1) check the latest COT for commercial extremes, (2) note the seasonal lean, (3) wait for a %R divergence or extreme, (4) enter on a volatility breakout in that direction, (5) risk a fixed small percentage (1–2%) with a hard stop. Journal every trade. The goal is a *process* with positive expectancy (the average trade makes money once you weight wins and losses by their size and frequency) over many trades — not one heroic year.
 
 ## Further reading
 

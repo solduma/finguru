@@ -24,7 +24,7 @@ This is an advanced lesson. It assumes you already know what a moving average is
 
 ## Who he was
 
-Mark Minervini is an American stock trader who rose to prominence in the 1990s. He is largely self-taught — he did not come up through a Wall Street training program — and he became widely known through his profile in Jack Schwager's *Stock Market Wizards*, where Schwager documented an average annual return of about **220% over a five-and-a-half-year period**, with only a single losing quarter across that span. That figure is striking, but it comes from Minervini's own audited statements provided to Schwager; treat it as a remarkable-but-self-reported track record rather than an independently replicated one.
+Mark Minervini is an American stock trader who rose to prominence in the 1990s. He is largely self-taught — he did not come up through a Wall Street training program — and he became widely known through his profile in Jack Schwager's *Stock Market Wizards*, where Schwager documented an average annual return of about **220% over a five-and-a-half-year period**, with only a single losing quarter across that span. Compounded, ~220% a year for 5.5 years turns $1 into roughly $335 — the eye-catching **~33,500% total return** sometimes quoted for him. That figure is striking, but it comes from Minervini's own audited statements provided to Schwager; treat it as a remarkable-but-self-reported track record rather than an independently replicated one.
 
 His two competition results are more verifiable because they came through the **U.S. Investing Championship**, a real-money trading contest:
 
@@ -37,9 +37,9 @@ His core books are **_Trade Like a Stock Market Wizard_ (McGraw-Hill, 2013)** an
 
 Minervini's method is a synthesis, and he's open about it:
 
-- From **William O'Neil** (creator of CAN SLIM and founder of *Investor's Business Daily*): the focus on high-growth leaders with accelerating earnings, relative-strength ranking, and basing patterns before breakouts.
+- From **William O'Neil** (creator of CAN SLIM and founder of *Investor's Business Daily*): the focus on high-growth leaders with accelerating earnings, relative-strength ranking, and basing patterns (sideways consolidations) before breakouts.
 - From **Stan Weinstein** (*Secrets for Profiting in Bull and Bear Markets*, 1988): the four-**stage** model of a stock's life cycle.
-- From **Jesse Livermore** and **Richard Wyckoff**: the idea of the "line of least resistance" and reading supply/demand through price and volume.
+- From **Jesse Livermore** and **Richard Wyckoff**: the idea of the "line of least resistance" (the direction price moves most easily once buyers or sellers dominate) and reading supply/demand through price and volume.
 
 ## SEPA: the four-filter funnel
 
@@ -64,6 +64,24 @@ SEPA's order matters. Trend is the gate. A cheap stock with great fundamentals b
 | 2 — Advancing | Sustained uptrend, rising MAs | **Only stage he buys** |
 | 3 — Topping | Choppy, churning at highs | Take profits, tighten stops |
 | 4 — Declining | Downtrend, falling MAs | Avoid longs entirely |
+
+<LineChart
+  caption="Weinstein's four stages: flat base (1), advance (2), churn/top (3), decline (4) — Minervini buys only Stage 2"
+  height={300}
+  series={[
+    { label: "Price", data: [40, 39, 41, 40, 39, 41, 40, 44, 49, 55, 62, 70, 78, 84, 82, 86, 83, 87, 84, 80, 72, 63, 55, 48], color: "#e6e9ef", width: 2 },
+    { label: "MA200", data: [41, 41, 40, 40, 40, 40, 40, 41, 43, 46, 50, 55, 60, 65, 69, 72, 74, 75, 75, 74, 72, 69, 65, 61], color: "#a78bfa", width: 2 }
+  ]}
+  zones={[
+    { yMin: 38, yMax: 42, color: "rgba(56,189,248,0.10)", label: "Stage 1 base" }
+  ]}
+  points={[
+    { x: 3, y: 36, text: "1 accumulation", color: "#38bdf8" },
+    { x: 10, y: 60, text: "2 advancing", color: "#22c55e" },
+    { x: 16, y: 90, text: "3 topping", color: "#f59e0b" },
+    { x: 22, y: 50, text: "4 declining", color: "#ef4444" }
+  ]}
+/>
 
 ## The Trend Template: defining Stage 2 numerically
 
@@ -162,9 +180,42 @@ INVALID:  T1 -12% -> T2 -15% -> T3 -8%                  (T2 deeper than T1)
 
 If a later contraction is **deeper** than an earlier one, the pattern is broken — selling is increasing, not being absorbed.
 
+<LineChart
+  caption="Valid VCP (each pullback shallower) vs broken pattern (T2 deeper than T1 — selling is increasing)"
+  height={300}
+  series={[
+    { label: "Valid: T1 -18% → T2 -12% → T3 -6%", data: [100, 82, 90, 100, 88, 95, 102, 96, 100], color: "#22c55e", width: 2 },
+    { label: "Invalid: T1 -12% → T2 -15%", data: [100, 88, 96, 102, 87, 94, 100, 92, 96], color: "#ef4444", width: 2, dashed: true }
+  ]}
+  points={[
+    { x: 1, y: 80, text: "T1", color: "#a78bfa" },
+    { x: 4, y: 84, text: "T2 (valid: shallower)", color: "#22c55e" },
+    { x: 4, y: 99, text: "T2 (invalid: deeper)", color: "#ef4444" },
+    { x: 7, y: 94, text: "T3", color: "#22c55e" }
+  ]}
+/>
+
 ### Volume and the pivot
 
 Volume should fade with each successive T. The entry — the **pivot point** — is a breakout above the high of the final, tightest contraction, and it must come on **expanding volume**, commonly cited as **at least 1.4–1.5x the 50-day average**. A breakout on weak volume lacks institutional fuel and tends to fail.
+
+<LineChart
+  caption="Volume footprint: fading volume through each contraction = supply drying up, then a surge ~3x the 50-day average confirms the pivot breakout"
+  height={220}
+  series={[
+    { label: "Volume (× 50-day avg)", data: [1.4, 1.1, 0.9, 0.8, 0.65, 0.55, 3.0], color: "#38bdf8", width: 2, fill: true }
+  ]}
+  levels={[
+    { y: 1, label: "50-day average", color: "#a78bfa" },
+    { y: 1.5, label: "breakout threshold ~1.5×", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 1.1, text: "T1", color: "#ef4444" },
+    { x: 3, y: 0.8, text: "T2", color: "#f59e0b" },
+    { x: 5, y: 0.55, text: "T3 dry-up", color: "#22c55e" },
+    { x: 6, y: 3.0, text: "pivot surge", color: "#22c55e" }
+  ]}
+/>
 
 ## A worked trade
 
@@ -185,12 +236,27 @@ you can hold for the same dollar risk -> capital efficiency.
 
 This is the heart of why Minervini hunts tight setups: a 6% stop lets you take a larger position for the same risk budget than a 12% stop does.
 
+<LineChart
+  caption="Capital efficiency: for a fixed $600 risk unit, a tighter stop (smaller per-share risk) buys a far larger position"
+  height={260}
+  series={[
+    { label: "Position size $ (=$600 / stop%)", data: [5000, 6000, 7500, 10000, 15000, 30000], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 30000, text: "2% stop → big position", color: "#22c55e" },
+    { x: 2, y: 7500, text: "8% stop", color: "#f59e0b" },
+    { x: 0, y: 5000, text: "12% stop → small position", color: "#ef4444" }
+  ]}
+/>
+
+(x-axis runs from a wide 12% stop on the left to a tight 2% stop on the right; the curve steepens sharply as stops tighten — the payoff for finding a coiled VCP.)
+
 ## Risk control — the part beginners skip
 
 Minervini is more famous among professionals for risk management than for chart reading.
 
 - **A hard stop of 7–8% below entry, treated as non-negotiable.** His logic: keep average losses tight and even a long losing streak barely dents your capital. A string of 7% losses on a portion of capital still leaves you in the game.
-- **The "free roll":** once a position gains about as much as you were risking (roughly +1R — e.g. up ~8% when your stop was 8% away), sell about half and move the stop on the rest toward breakeven, so the remaining position can no longer hurt you.
+- **The "free roll":** once a position shows a solid gain, sell about half and move the stop on the rest toward breakeven, so the remaining position can no longer hurt you. Minervini commonly does this after a quick gain of about **20%** (the same trigger used in the checklist below). Your gains and losses here are measured in **R** — where **1R = your initial risk on the trade**, the dollars between entry and stop (the same $600 risk unit used in the worked trade above). A full stop-out is −1R; a winner that gains twice your risk is +2R.
 - **Sell into strength:** take profits aggressively when a stock goes vertical, and watch short-term moving averages (10-day / 21-day) on heavy volume as exit signals.
 - **Market environment first:** he tracks **distribution days** (high-volume down days on the indexes) to judge whether the overall market is healthy. In a correcting market, even perfect VCPs fail at high rates, so he goes mostly to cash.
 
@@ -199,6 +265,20 @@ Minervini is more famous among professionals for risk management than for chart 
 Minervini's edge is asymmetry: small, fixed losses and occasional large gains. The VCP is just the tool that lets him place a tight stop near a logical level. The stop discipline is what makes the whole thing survivable.
 
 </Callout>
+
+<LineChart
+  caption="The asymmetry in practice: a run of small −1R stops barely dents equity, and a couple of large winners more than make up for them"
+  height={260}
+  series={[
+    { label: "Equity (R units)", data: [0, -1, -2, -1, -3, -4, -3, 5, 4, 3, 11, 10, 18], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[ { y: 0, label: "breakeven", color: "#a78bfa" } ]}
+  points={[
+    { x: 5, y: -5, text: "string of tight losses", color: "#ef4444" },
+    { x: 7, y: 6, text: "first big winner", color: "#22c55e" },
+    { x: 12, y: 19, text: "asymmetry compounds", color: "#22c55e" }
+  ]}
+/>
 
 ## Honest criticisms
 
@@ -219,13 +299,30 @@ Minervini's edge is asymmetry: small, fixed losses and occasional large gains. T
 
 </Callout>
 
+<LineChart
+  caption="Good entry (buy at the $105 pivot, tight 7% stop) vs chasing (buy +6% extended at $111 — the stop to the same level is now ~12%)"
+  height={280}
+  series={[
+    { label: "Price", data: [100, 103, 105, 108, 111, 114], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 105, label: "pivot $105 — buy here", color: "#22c55e" },
+    { y: 97.65, label: "stop $97.65 (−7% from pivot)", color: "#ef4444" },
+    { y: 111, label: "chased entry $111 — stop now −12%", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 2, y: 105, text: "good: low risk", color: "#22c55e" },
+    { x: 4, y: 111, text: "extended: blown R/R", color: "#ef4444" }
+  ]}
+/>
+
 ## How to apply it today
 
 1. **Screen for the Trend Template** using any modern platform (TradingView, TC2000, TrendSpider, and Finviz all support these MA / 52-week / RS filters).
 2. **Layer fundamentals:** keep only names with accelerating EPS/sales growth and a clear catalyst.
 3. **Wait for a VCP base** to form and tighten. Mark each T. Confirm both dimensions shrink and volume fades.
 4. **Buy the pivot on a volume surge**, placing your stop just below the final contraction's low (and within the 7–8% rule).
-5. **Manage:** move to breakeven after ~20%, trail with short MAs, and respect the market's overall stage.
+5. **Manage:** take partial profits and move the stop to breakeven after a strong gain (Minervini cites ~20%, the free-roll rule above), then trail the rest with short MAs, and respect the market's overall stage.
 6. **Practice in a journal first.** Mark up 50 historical charts of past leaders, label the T's, and note where the real pivot and stop would have been — before risking money.
 
 ## Further reading

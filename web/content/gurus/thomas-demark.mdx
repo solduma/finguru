@@ -54,7 +54,45 @@ Sell Setup, for nine consecutive bars:
 
 A **Buy Setup** (looking for a bottom) is the mirror image — nine consecutive closes *below* the close four bars earlier. The number "9" prints above the ninth bar of a sell setup and below the ninth bar of a buy setup. If even one bar fails the four-bars-earlier test, the count resets.
 
-Setups are preceded by a **Price Flip** — a single bar whose close flips direction relative to four bars earlier — which arms the count. The four-bar lookback is the engine of the whole system; it compares the current close to the close roughly a trading "week" earlier, asking "are we still making relative progress?"
+<CandleChart
+  caption="Sell Setup (looking for a top): nine consecutive closes each ABOVE the close four bars earlier; the '9' prints above bar 9 and the uptrend is mature. The count can only begin once four prior bars exist to compare against, so bar 1 sits on the 5th candle"
+  height={300}
+  candles={[
+    { o: 94.5, h: 95.2, l: 94.3, c: 95 },
+    { o: 95, h: 96.2, l: 94.9, c: 96 },
+    { o: 96, h: 97.3, l: 95.9, c: 97 },
+    { o: 97, h: 98.2, l: 96.9, c: 98 },
+    { o: 98, h: 99.4, l: 97.9, c: 99 },
+    { o: 99, h: 100.3, l: 98.9, c: 100 },
+    { o: 100, h: 100.6, l: 99.7, c: 100.5 },
+    { o: 100.5, h: 101.2, l: 100.2, c: 101 },
+    { o: 101, h: 102.1, l: 100.9, c: 102 },
+    { o: 102, h: 103.2, l: 101.9, c: 103 },
+    { o: 103, h: 103.7, l: 102.7, c: 103.5 },
+    { o: 103.5, h: 104.3, l: 103.3, c: 104 },
+    { o: 104, h: 105.1, l: 103.9, c: 105 }
+  ]}
+  points={[
+    { x: 4, y: 99.8, text: "1", color: "#38bdf8" },
+    { x: 5, y: 100.7, text: "2", color: "#e6e9ef" },
+    { x: 8, y: 102.5, text: "5", color: "#e6e9ef" },
+    { x: 12, y: 105.5, text: "9", color: "#ef4444" }
+  ]}
+/>
+
+Setups are preceded by a **Price Flip** — a single bar whose close flips direction relative to four bars earlier — which arms the count. The four-bar lookback (lookback = how many bars back you compare the current close against) is the engine of the whole system; it compares the current close to the close roughly a trading "week" earlier, asking "are we still making relative progress?" A *Bearish* Price Flip (a close above the close-4-bars-back, immediately followed by a close below it) arms a **Buy** Setup; a *Bullish* Price Flip (the mirror image) arms a Sell Setup.
+
+<LineChart
+  caption="Bearish Price Flip: after closes above the close-4-bars-back, one bar closes below it — arming a Buy Setup whose count then begins on the next qualifying bar"
+  height={260}
+  series={[
+    { label: "Price", data: [104, 105, 106, 105.5, 106.5, 107, 107.5, 105, 104, 103.5], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 6, y: 108, text: "close > close[4]", color: "#22c55e" },
+    { x: 7, y: 105.7, text: "flip: close < close[4]", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="key">
 
@@ -66,7 +104,49 @@ A completed Setup of 9 is *not* a trade signal. It only says the trend is stretc
 
 DeMark added a quality filter called **perfection**. For a buy setup, the low of bar 8 or bar 9 should be less than or equal to the lows of bars 6 and 7 (the inverse, using highs, for a sell setup). An "unperfected" 9 is considered weaker, and the signal may need another bar or two to perfect.
 
+<CandleChart
+  caption="Buy Setup perfection (these are bars 3-9; bars 1-2 are off-screen to the left): the low of bar 8 or 9 dips at or below the lower of bars 6 and 7 (98.0), so the '9' is perfected; had bars 8-9 stayed above 98.0 the 9 would be unperfected and weaker"
+  height={280}
+  candles={[
+    { o: 100, h: 100.2, l: 99.4, c: 99.6 },
+    { o: 99.6, h: 99.8, l: 99.0, c: 99.2 },
+    { o: 99.2, h: 99.4, l: 98.7, c: 98.9 },
+    { o: 98.9, h: 99.1, l: 98.3, c: 98.5 },
+    { o: 98.5, h: 98.7, l: 98.0, c: 98.2 },
+    { o: 98.2, h: 98.4, l: 97.8, c: 98.0 },
+    { o: 98.0, h: 98.2, l: 97.4, c: 97.6 }
+  ]}
+  points={[
+    { x: 0, y: 100.4, text: "3", color: "#e6e9ef" },
+    { x: 1, y: 100.0, text: "4", color: "#e6e9ef" },
+    { x: 2, y: 99.6, text: "5", color: "#e6e9ef" },
+    { x: 3, y: 98.1, text: "6", color: "#a78bfa" },
+    { x: 4, y: 97.8, text: "7", color: "#a78bfa" },
+    { x: 5, y: 98.6, text: "8", color: "#e6e9ef" },
+    { x: 6, y: 97.2, text: "9: low <= 98.0", color: "#22c55e" }
+  ]}
+  levels={[
+    { y: 98.0, label: "lower of bars 6-7 (threshold to undercut)", color: "#a78bfa" }
+  ]}
+/>
+
 The Setup also creates **TDST lines** (TD Setup Trend support/resistance), drawn from the extreme of the bar that began the setup. These act as objective support/resistance: if price later breaks through the TDST line, it argues the trend has *resumed* rather than reversed.
+
+<LineChart
+  caption="TDST as the objective verdict: after a Buy Setup, a bounce that holds below TDST resistance supports the reversal; a close back above TDST argues the downtrend has resumed instead"
+  height={280}
+  series={[
+    { label: "Reversal holds (below TDST)", data: [100, 98.5, 97.5, 96.8, 96.2, 96.8, 97.4, 98.0, 98.6, 99.1], color: "#22c55e", width: 2 },
+    { label: "Trend resumes (breaks TDST)", data: [100, 98.5, 97.5, 96.8, 96.2, 98, 99.5, 100.6, 99.8, 99], color: "#ef4444", width: 2, dashed: true }
+  ]}
+  levels={[
+    { y: 100, label: "TDST resistance", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 4, y: 96.0, text: "Setup 9 low", color: "#38bdf8" },
+    { x: 7, y: 100.8, text: "close > TDST = resume", color: "#ef4444" }
+  ]}
+/>
 
 ### Phase 2 — TD Countdown (the 13)
 
@@ -82,6 +162,31 @@ A **Sell Countdown** uses `Close >= High[2 bars earlier]`. Note the comparison c
 
 DeMark added a famous extra qualifier on the final bar tied to **countdown bar 8**. For a buy countdown, the close of bar 13 should be at or below the *low of countdown bar 8*; if it isn't, the "13" is deferred until a later bar satisfies it. This is the detail almost everyone gets wrong.
 
+<CandleChart
+  caption="Buy Countdown is NON-consecutive: a bar counts only when its close <= the low two bars earlier. Five bars here qualify (counts 1-5); two bars in between fail the test and are skipped, so the count does not march one-for-one"
+  height={300}
+  candles={[
+    { o: 97.0, h: 97.3, l: 96.4, c: 96.6 },
+    { o: 96.6, h: 96.9, l: 96.0, c: 96.2 },
+    { o: 96.2, h: 96.4, l: 95.6, c: 95.8 },
+    { o: 95.8, h: 96.1, l: 95.5, c: 96.0 },
+    { o: 96.1, h: 96.2, l: 95.7, c: 96.1 },
+    { o: 96.1, h: 96.2, l: 95.0, c: 95.2 },
+    { o: 95.2, h: 95.4, l: 94.8, c: 95.3 },
+    { o: 95.3, h: 95.6, l: 95.1, c: 95.5 },
+    { o: 95.5, h: 95.7, l: 94.5, c: 94.7 }
+  ]}
+  points={[
+    { x: 2, y: 95.4, text: "count 1", color: "#2dd4bf" },
+    { x: 3, y: 95.3, text: "count 2", color: "#2dd4bf" },
+    { x: 4, y: 96.5, text: "not counted (close > low[2])", color: "#ef4444" },
+    { x: 5, y: 94.8, text: "count 3", color: "#2dd4bf" },
+    { x: 6, y: 94.6, text: "count 4", color: "#2dd4bf" },
+    { x: 7, y: 95.9, text: "not counted (close > low[2])", color: "#ef4444" },
+    { x: 8, y: 94.3, text: "count 5", color: "#2dd4bf" }
+  ]}
+/>
+
 A Countdown can also be **cancelled or "recycled"** — for example, if a fresh Setup forms in the same direction with greater magnitude, or price closes back beyond the TDST line, the Countdown can reset. These cancellation rules are where most of the complexity (and most of the disagreement between software vendors) lives.
 
 ## A worked example (illustrative)
@@ -92,10 +197,10 @@ Imagine a stock falling. We watch for a Buy Setup — nine consecutive closes ea
 
 | Bar | Close | Close 4 bars earlier | Below? | Setup count |
 |----:|------:|---------------------:|:------:|:-----------:|
-| 1 | 100 | 104 | yes | 1 |
-| 2 | 99  | 103 | yes | 2 |
+| 1 | 100 | 102 | yes | 1 |
+| 2 | 99  | 101.5 | yes | 2 |
 | 3 | 98  | 101 | yes | 3 |
-| 4 | 97  | 100 | yes | 4 |
+| 4 | 97  | 100.5 | yes | 4 |
 | 5 | 96  | 100 | yes | 5 |
 | 6 | 95.5| 99  | yes | 6 |
 | 7 | 95  | 98  | yes | 7 |
@@ -105,54 +210,65 @@ Imagine a stock falling. We watch for a Buy Setup — nine consecutive closes ea
 A "9" prints — the downtrend is mature. We check perfection (is the low of bar 8 or 9 ≤ the lows of bars 6 and 7?). If yes, the setup is perfected. Now the Countdown starts: we begin counting bars whose `Close <= Low[2 bars earlier]`, possibly spread over many more bars, until we accumulate 13 — and only treat the 13 as valid if bar 13's close clears the bar-8 qualifier. *That* 13 is the exhaustion signal.
 
 <CandleChart
-  caption="Buy Setup: nine consecutive closes each below the close four bars earlier; the '9' prints and the downtrend is mature"
-  height={300}
+  caption="These bars are a separate close-up of the countdown's final stretch, not a continuation of the table above. A valid 13 requires bar 13 to close at or below countdown bar 8's low (95.0). The bar that would be the 13 here closes at 95.4 — above the threshold — so the 13 is DEFERRED until a later qualifying bar closes at/below 95.0 (here, 94.8). This bar-8 qualifier is the single most-missed rule"
+  height={320}
   candles={[
-    { o: 104.5, h: 105, l: 103.5, c: 104 },
-    { o: 104, h: 104.2, l: 102.8, c: 103 },
-    { o: 103, h: 103.3, l: 100.6, c: 101 },
-    { o: 101, h: 101.2, l: 99.6, c: 100 },
-    { o: 100.5, h: 100.8, l: 99.7, c: 100 },
-    { o: 100, h: 100.4, l: 99.6, c: 99.7 },
-    { o: 99.7, h: 100, l: 99.4, c: 99.6 },
-    { o: 100.2, h: 100.4, l: 99.8, c: 100 },
-    { o: 100, h: 100.2, l: 98.6, c: 99 },
-    { o: 99, h: 99.1, l: 97.6, c: 98 },
-    { o: 98, h: 98.2, l: 96.7, c: 97 },
-    { o: 97, h: 97.1, l: 95.8, c: 96 },
-    { o: 96, h: 96.2, l: 95.2, c: 95.5 },
-    { o: 95.5, h: 95.7, l: 94.7, c: 95 },
-    { o: 95, h: 95.2, l: 94.5, c: 94.8 },
-    { o: 94.8, h: 95, l: 94.1, c: 94.5 }
+    { o: 95.6, h: 95.8, l: 95.0, c: 95.2 },
+    { o: 96.0, h: 96.3, l: 95.8, c: 96.1 },
+    { o: 96.1, h: 96.4, l: 95.7, c: 95.9 },
+    { o: 95.9, h: 96.0, l: 95.3, c: 95.4 },
+    { o: 95.4, h: 95.6, l: 95.1, c: 95.3 },
+    { o: 95.3, h: 95.5, l: 94.5, c: 94.8 }
   ]}
   points={[
-    { x: 8, y: 100.7, text: "1", color: "#38bdf8" },
-    { x: 15, y: 95.4, text: "9", color: "#22c55e" }
+    { x: 0, y: 94.8, text: "count 8 (low 95.0)", color: "#a78bfa" },
+    { x: 3, y: 96.5, text: "would-be 13: close 95.4 qualifies (<= low[2]) but 95.4 > 95.0 -> deferred", color: "#ef4444" },
+    { x: 5, y: 94.3, text: "valid 13 (close 94.8 <= 95.0)", color: "#22c55e" }
+  ]}
+  levels={[
+    { y: 95.0, label: "bar-8 low (qualifier threshold)", color: "#a78bfa" }
   ]}
 />
 
 ## TD Combo and the broader toolkit
 
-**TD Combo** is DeMark's sibling to TD Sequential. It targets the same exhaustion idea but is stricter and faster: in Combo, the Countdown can begin *during* the Setup rather than only after it completes, and it imposes additional ordering conditions on each countdown bar. The practical effect is that Combo tends to fire earlier and more conservatively. Which one you prefer is a matter of how early you want to fade a move versus how many false starts you'll tolerate.
+**TD Combo** is DeMark's sibling to TD Sequential. It targets the same exhaustion idea but is stricter and faster: in Combo, the Countdown can begin *during* the Setup rather than only after it completes, and it imposes additional ordering conditions on each countdown bar. The practical effect is that Combo tends to fire earlier and more conservatively. Which one you prefer is a matter of how early you want to fade a move (fade = trade against it, betting it reverses) versus how many false starts you'll tolerate.
+
+<LineChart
+  caption="Combo vs Sequential timing on the same decline: Combo overlaps its countdown with the setup and prints '13' earlier (higher in the move); Sequential waits for the setup to finish first and fires later"
+  height={300}
+  series={[
+    { label: "Price", data: [104, 102.5, 101, 100, 99.2, 98.5, 97.8, 97.2, 96.6, 96, 95.4, 94.9, 94.4, 94, 93.7, 93.5, 94.2, 95.5], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 8, y: 96.0, text: "Combo 13 (earlier)", color: "#2dd4bf" },
+    { x: 14, y: 93.2, text: "Sequential 13 (later)", color: "#38bdf8" }
+  ]}
+/>
 
 The full sequence is best seen end to end: a Setup matures into a "9," the Countdown then accumulates 13 qualifying bars (not necessarily consecutive), and the "13" marks the exhaustion point where price turns. The TDST line drawn from the start of the setup is the objective level whose break would have argued the trend was resuming instead.
 
 <LineChart
-  caption="The full TD Sequential arc: downtrend matures into a Setup '9', the Countdown reaches '13' at exhaustion, then price reverses; TDST is the objective resistance"
+  caption="The full TD Sequential arc, in two phases: the green span is the Setup maturing into its '9' (which began near the TDST level), the teal span is the Countdown reaching '13' at exhaustion, then price reverses; TDST is the objective resistance"
   height={320}
   series={[
     { label: "Price", data: [104, 101, 100, 99.7, 99.6, 98, 97, 96, 95.5, 95, 94.5, 94.2, 93.8, 93.4, 93.1, 92.9, 93.6, 95.2, 96.8, 98.3], color: "#e6e9ef", width: 2 }
   ]}
   points={[
+    { x: 2, y: 100.6, text: "Setup begins", color: "#38bdf8" },
     { x: 10, y: 94.5, text: "Setup 9", color: "#22c55e" },
     { x: 15, y: 92.9, text: "Countdown 13", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 2, y1: 100, x2: 10, y2: 94.5, color: "#22c55e", label: "Setup phase (the 9)", dashed: true },
+    { x1: 10, y1: 94.5, x2: 15, y2: 92.9, color: "#2dd4bf", label: "Countdown phase (the 13)", dashed: true }
   ]}
   levels={[
     { y: 100, label: "TDST resistance", color: "#a78bfa" }
   ]}
 />
 
-DeMark's catalogue is large — **TD Lines** (an objective, rules-based way to draw trendlines so two analysts draw the identical line), TD D-Wave (a rule-bound take on Elliott Wave), TD Range Expansion, and more — all unified by the same philosophy: replace discretion with arithmetic.
+DeMark's catalogue is large — **TD Lines** (an objective, rules-based way to draw trendlines so two analysts draw the identical line), TD D-Wave (a rule-bound take on Elliott Wave), TD Range Expansion (rules for flagging a breakout-sized bar), and more — all unified by the same philosophy: replace discretion with arithmetic.
 
 ## Honest criticisms
 
@@ -162,8 +278,8 @@ DeMark's full ruleset is proprietary, trademarked, and genuinely complicated. Th
 
 </Callout>
 
-- **Curve-fitting suspicion.** The number 9, the count of 13, the four-bar lookback, the bar-8 qualifier — these specific constants invite the charge that they were tuned to past data. There is little peer-reviewed, out-of-sample evidence that they generalize.
-- **Counting signals, not edges.** A completed 13 tells you a trend is stretched; it does not tell you the trade is profitable after costs. Exhaustion can persist far longer than your account can.
+- **Curve-fitting suspicion.** The number 9, the count of 13, the four-bar lookback, the bar-8 qualifier — these specific constants invite the charge that they were tuned to past data. There is little peer-reviewed, out-of-sample evidence (tested on data not used to pick the rules) that they generalize.
+- **Counting signals, not edges** (an edge = a real, positive expected return after trading costs). A completed 13 tells you a trend is stretched; it does not tell you the trade is profitable after costs. Exhaustion can persist far longer than your account can.
 - **Survivorship and selection in the marketing.** Impressive called tops circulate widely; the misses rarely do.
 - **Cost and access.** The fully specified, real-time indicators are a paid institutional product. Free versions are approximations.
 
@@ -178,9 +294,9 @@ DeMark's full ruleset is proprietary, trademarked, and genuinely complicated. Th
 ## How to apply it today
 
 1. Pick a platform and *read its documentation* on exactly which ruleset it implements (TradingView, GoCharting, and others all ship versions). Confirm whether perfection, the bar-13 qualifier, and recycling are included.
-2. Use TD Sequential as a **mean-reversion / counter-trend timing tool**, not a trend-following one — it tries to catch turns.
+2. Use TD Sequential as a **mean-reversion / counter-trend timing tool** (mean-reversion = betting that an over-stretched price will snap back toward its average rather than keep running), not a trend-following one — it tries to catch turns.
 3. **Confirm across timeframes.** A daily buy 13 is far more compelling if a weekly setup is also maturing.
-4. **Define risk independently.** Use the setup's TDST line or a recent swing as a stop; the indicator gives timing, not position sizing.
+4. **Define risk independently.** Use the setup's TDST line or a recent swing (a recent local high/low on the chart) as a stop; the indicator gives timing, not position sizing.
 5. **Backtest the exact variant you'll trade**, on the instruments and timeframe you'll trade, including costs. Do not trust generic claims.
 
 <Callout type="note">

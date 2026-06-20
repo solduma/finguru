@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Allow loading the dev server from non-localhost origins (LAN IP, 0.0.0.0)
+  // without the cross-origin /_next/* warning. Dev-only; ignored in production.
+  allowedDevOrigins: ["0.0.0.0", "127.0.0.1", "192.168.0.13", "*.local"],
+
   // Proxy /api/* to the FastAPI service so the browser hits a same-origin path
   // in dev (avoids CORS) and we can swap the upstream via env in prod.
   async rewrites() {

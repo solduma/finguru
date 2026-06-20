@@ -53,7 +53,7 @@ export default function LessonLayout({
 
         <hr className="border-white/10" />
 
-        <Mdx source={lesson.content} />
+        <Mdx source={lesson.content} locale={locale} />
 
         <hr className="border-white/10" />
 

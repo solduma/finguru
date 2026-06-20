@@ -69,12 +69,35 @@ The **50% level is not a Fibonacci ratio at all.** It is simply the midpoint of 
 
 ## How to draw a retracement
 
-A retracement needs exactly **two points**: the start and end of the swing you care about.
+A retracement needs exactly **two points**: the start and end of the swing you care about — a **swing high** is a clear local peak where price stopped rising and turned down, a **swing low** a clear local trough where it stopped falling and turned up.
 
 - **In an uptrend** (you expect the rally to resume after a dip): drag the tool from the **swing low to the swing high**. The levels project *downward*, showing where a pullback might find support.
 - **In a downtrend**: drag from the **swing high to the swing low**. The levels project *upward*, showing where a bounce might hit resistance.
 
 The 0% line sits at the end of the move; the 100% line sits at its start. The Fibonacci levels fall in between.
+
+<LineChart
+  caption="Downtrend anchoring: drag high→low, levels project upward, and a bounce stalls at the 38.2% retracement as resistance"
+  height={320}
+  yMin={115}
+  yMax={205}
+  series={[
+    { label: "Price", data: [200, 180, 160, 140, 120, 133, 146, 150.6, 144, 134, 125], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 120, label: "0% ($120)", color: "#a78bfa" },
+    { y: 138.9, label: "23.6% ($138.90)", color: "#a78bfa" },
+    { y: 150.6, label: "38.2% ($150.60)", color: "#f59e0b" },
+    { y: 160, label: "50% ($160)", color: "#a78bfa" },
+    { y: 169.4, label: "61.8% ($169.40)", color: "#a78bfa" },
+    { y: 200, label: "100% ($200)", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 0, y: 200, text: "swing high", color: "#ef4444" },
+    { x: 4, y: 120, text: "swing low", color: "#22c55e" },
+    { x: 7, y: 150.6, text: "38.2% resistance", color: "#ef4444" }
+  ]}
+/>
 
 ### Worked example (illustrative numbers)
 
@@ -160,10 +183,28 @@ Things that strengthen a Fibonacci level:
 - A prior horizontal **support/resistance** level sitting at the same price.
 - A **moving average** (e.g. the 50- or 200-day) passing through the zone.
 - A **candlestick reversal** (hammer, engulfing) printing right at the level.
-- **Volume** spiking, or a momentum indicator (RSI, MACD) confirming.
+- **Volume** spiking, or a momentum indicator — a gauge of how fast price is moving, such as RSI (Relative Strength Index) or MACD (Moving Average Convergence Divergence) — confirming.
 - A **trendline** intersecting there.
 
 As StockCharts puts it: *"The more confirming factors, the more robust the signal."*
+
+<LineChart
+  caption="Confluence: the 61.8% retracement, a prior horizontal support level, and the flattening 50-day moving average all stack at the same zone — where price turns"
+  height={320}
+  yMin={110}
+  yMax={155}
+  series={[
+    { label: "Price", data: [150, 142, 134, 127, 121, 119, 124, 131, 139, 147], color: "#e6e9ef", width: 2 },
+    { label: "50-day MA", data: [126, 124.5, 123, 121.5, 120.3, 119.5, 119.2, 119.3, 119.6, 120.1], color: "#38bdf8", width: 2, dashed: true }
+  ]}
+  levels={[
+    { y: 119.1, label: "61.8% Fib ($119.10)", color: "#f59e0b" },
+    { y: 120, label: "prior support", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 5, y: 119, text: "3-way confluence → turn", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="key">
 
@@ -173,7 +214,7 @@ Treat Fibonacci levels as **alert zones, not hard reversal points** — StockCha
 
 ## Settings and conventions
 
-- **Levels shown:** 23.6 / 38.2 / 50 / 61.8 are universal; 78.6 and 88.6 are optional and common in harmonic-pattern trading. The 38.2–61.8 range is the heart of it.
+- **Levels shown:** 23.6 / 38.2 / 50 / 61.8 are universal; 78.6 and 88.6 are optional and common in harmonic-pattern trading (a niche style that hunts for specific Fibonacci-ratio chart shapes like the "Gartley"). The 88.6 level follows the same pattern as 78.6: 0.886 = √0.786, just as 0.786 = √0.618. The 38.2–61.8 range is the heart of it.
 - **Most-watched:** 61.8% (the "golden retracement") and 38.2% draw the most attention; rounding to 62% and 38% is common.
 - **Anchoring:** use clear, significant swing highs and lows. Garbage swings produce garbage levels.
 - **Timeframe:** levels drawn on a daily or weekly chart carry more weight than levels on a 5-minute chart, because more participants see them.
@@ -193,7 +234,7 @@ So why do some traders swear by it? The leading defense is the **self-fulfilling
 
 <Callout type="warning">
 
-**Drawing the tool to fit a story you already believe.** It is tempting to keep re-anchoring the swing points until a level lands exactly where price reversed. That is curve-fitting after the fact, and it teaches you nothing predictive. Pick the obvious swing *before* you look at where you want price to go.
+**Drawing the tool to fit a story you already believe.** It is tempting to keep re-anchoring the swing points until a level lands exactly where price reversed. That is curve-fitting after the fact — bending the tool to match an outcome you already know — and it teaches you nothing predictive. Pick the obvious swing *before* you look at where you want price to go.
 
 </Callout>
 
@@ -207,9 +248,9 @@ So why do some traders swear by it? The leading defense is the **self-fulfilling
 1. Identify a clear, recent swing on a meaningful timeframe.
 2. Anchor the retracement tool low-to-high (uptrend) or high-to-low (downtrend).
 3. Mark the 38.2%, 50%, and 61.8% zone as your primary watch area.
-4. Look for **confluence** — does a prior S/R level, moving average, or pattern agree?
+4. Look for **confluence** — does a prior support/resistance level, moving average, or pattern agree?
 5. Wait for **confirmation** (candlestick, volume, momentum) before entering.
-6. Use extensions (127.2%, 161.8%) only as *potential* profit targets, never as certainties, and place a stop beyond the invalidation point.
+6. Use extensions (127.2%, 161.8%) only as *potential* profit targets, never as certainties, and place a stop beyond the invalidation point — the price (such as a close back below the swing low that anchored the tool) that would prove the setup wrong.
 
 ### Practice
 

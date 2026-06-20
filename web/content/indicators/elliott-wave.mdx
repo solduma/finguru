@@ -10,7 +10,7 @@ prereqs: ["ralph-elliott", "fibonacci-retracements"]
 
 ## The one-sentence version
 
-Elliott Wave is the claim that crowd psychology moves markets in a repeating, fractal pattern of **five waves forward and three waves back** — and the practical skill is learning to label those waves on a real chart, attach probabilities to competing interpretations, and place trades where being wrong is cheap.
+Elliott Wave is the claim that crowd psychology moves markets in a repeating, fractal (self-similar at every zoom level) pattern of **five waves forward and three waves back** — and the practical skill is learning to label those waves on a real chart, attach probabilities to competing interpretations, and place trades where being wrong is cheap.
 
 This lesson builds on the [Ralph Elliott guru lesson](#). There you met the man (Ralph Nelson Elliott, 1871–1948) and the big idea. Here we get our hands dirty: how to actually count waves, the rules you cannot break, the guidelines that tip the odds, the Fibonacci math that turns a count into price targets, and — crucially — how to survive the theory's biggest weakness, which is that two skilled analysts can look at the same chart and see two different futures.
 
@@ -65,6 +65,24 @@ If a count breaks any of these, the count is **wrong** — not "unlikely," wrong
 
 ([Source: Wikipedia, Elliott Wave Principle](https://en.wikipedia.org/wiki/Elliott_wave_principle))
 
+<LineChart
+  caption="Rule violations that kill a count: wave 2 below wave-1 start, and wave 4 into wave-1 territory"
+  height={300}
+  series={[
+    { label: "Rule 1 broken", data: [10, 18, 8, null, null, null, null], color: "#ef4444", width: 2 },
+    { label: "Rule 3 broken", data: [10, 18, 13, 24, 17, 22, 19], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 18, text: "1", color: "#94a3b8" },
+    { x: 2, y: 8, text: "2 below start — DEAD", color: "#ef4444" },
+    { x: 4, y: 17, text: "4 overlaps 1 — not an impulse", color: "#38bdf8" }
+  ]}
+  levels={[
+    { y: 10, label: "wave-1 start (Rule 1 floor)", color: "#f59e0b" },
+    { y: 18, label: "wave-1 high (Rule 3 ceiling for wave 4)", color: "#a78bfa" }
+  ]}
+/>
+
 <Callout type="warning">
 
 Rule 3 has one official exception: in a **diagonal** (described below), wave 4 *can* overlap wave 1. If you see overlap, you are not allowed to call it a standard impulse — you must either re-label or switch to the diagonal pattern. Forcing an impulse label onto overlapping waves is the single most common beginner error.
@@ -75,10 +93,29 @@ Rule 3 has one official exception: in a **diagonal** (described below), wave 4 *
 
 Guidelines bend; rules don't. But guidelines are where most of the predictive edge lives.
 
-- **Alternation:** waves 2 and 4 tend to differ. If wave 2 was a sharp, deep, quick pullback, expect wave 4 to be a shallow, sideways, time-consuming one — and vice versa. This stops you from expecting a carbon copy.
+- **Alternation:** waves 2 and 4 tend to differ. If wave 2 was a sharp, deep, quick pullback — say it retraced a deep ~62% in just a few bars — expect wave 4 to be a shallow, sideways, time-consuming one, e.g. a shallow ~38% that drags on for many bars (and vice versa). This stops you from expecting a carbon copy.
 - **Extension:** one of the three action waves is usually noticeably longer than the others, most often **wave 3**. When wave 3 extends, it is frequently about **1.618×** the length of wave 1.
-- **Channeling:** draw a trendline from the end of wave 1 to the (eventual) end of wave 3, then a parallel line off the end of wave 2. Wave 5 often ends near that upper parallel. This is a practical way to project where a move is "running out."
+- **Channeling:** draw a trendline from the end of wave 1 to the (eventual) end of wave 3, then a parallel line off the end of wave 2. Wave 5 often ends near that upper parallel. This is a practical way to project where a move is "running out" — see the chart below, where wave 5 stalls right at the dashed upper rail.
 - **Wave equality:** when wave 3 is the extended wave, waves 1 and 5 tend toward equality (or wave 5 ≈ 0.618× wave 1).
+
+<LineChart
+  caption="Channeling: a line through wave-1 and wave-3 ends, parallel off wave 2 — the two lines are parallel and the same distance apart, so together they form a channel, and wave 5 finishes near the upper rail"
+  height={320}
+  series={[
+    { label: "Price", data: [10, 16, 13, 26, 22, 28], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 16, text: "1", color: "#22c55e" },
+    { x: 2, y: 13, text: "2", color: "#ef4444" },
+    { x: 3, y: 26, text: "3", color: "#22c55e" },
+    { x: 4, y: 22, text: "4", color: "#ef4444" },
+    { x: 5, y: 28, text: "5 ends at rail", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 1, y1: 16, x2: 3, y2: 26, color: "#a78bfa", label: "1→3 baseline (reference)" },
+    { x1: 2, y1: 13, x2: 5, y2: 28, color: "#2dd4bf", label: "parallel rail — wave 5 stalls here", dashed: true }
+  ]}
+/>
 
 ## Wave personalities — reading the crowd
 
@@ -90,10 +127,10 @@ Elliott Wave is fundamentally a model of crowd psychology, and each wave has a r
 | 2 | Fear of relapse; sharp pullback; sentiment says "the bounce is over." |
 | 3 | The strongest, broadest leg. News turns good, volume surges, often extends 1.618×. |
 | 4 | Complacent, choppy, sideways consolidation; frustrating to trade. |
-| 5 | Euphoria, but narrowing participation; often shows **momentum divergence** (price makes a new high, an oscillator like RSI does not). |
+| 5 | Euphoria, but narrowing participation; often shows **momentum divergence** — when price makes a new high but a momentum gauge (an oscillator such as RSI, the Relative Strength Index, which measures how fast and far price has recently moved on a 0–100 scale) fails to, hinting the move is tiring. |
 | A | First crack; widely dismissed as a dip. |
 | B | "Bull trap" rally; sucks people back in. |
-| C | Broad, decisive decline; capitulation. |
+| C | Broad, decisive decline; capitulation (the panic flush where holders finally give up and sell). |
 
 <Callout type="note">
 
@@ -101,16 +138,104 @@ Momentum divergence on wave 5 is one of the most useful real-world confirmations
 
 </Callout>
 
+<LineChart
+  caption="Wave-5 momentum divergence: price prints a higher high at the wave-5 peak while RSI prints a lower high"
+  height={300}
+  series={[
+    { label: "Price", data: [13, 26, 22, 31], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 26, text: "3 peak", color: "#22c55e" },
+    { x: 3, y: 31, text: "5 — higher high", color: "#2dd4bf" }
+  ]}
+/>
+
+<LineChart
+  caption="Same sequence, RSI panel: lower high under the wave-5 price high = bearish divergence"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "RSI", data: [55, 78, 60, 71], color: "#38bdf8", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 78, text: "3 peak", color: "#22c55e" },
+    { x: 3, y: 71, text: "5 — lower high", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 70, label: "overbought", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" }
+  ]}
+/>
+
 ## The pattern catalogue
 
 ### Motive patterns
 - **Impulse:** the standard 5-wave move obeying all three rules. The default.
-- **Diagonal:** a wedge-shaped 5-wave move where wave 4 overlaps wave 1. **Ending diagonals** appear in wave 5 or wave C and warn that the move is exhausting; **leading diagonals** appear in wave 1 or wave A.
+- **Diagonal:** a wedge-shaped (a wedge = two trendlines squeezing together) 5-wave move where wave 4 overlaps wave 1. **Ending diagonals** appear in wave 5 or wave C and warn that the move is exhausting; **leading diagonals** appear in wave 1 or wave A.
+
+<LineChart
+  caption="Ending diagonal: a converging 5-wave wedge in which wave 4 legally overlaps wave-1 territory"
+  height={320}
+  series={[
+    { label: "Price", data: [10, 18, 14, 20, 17, 21], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 18, text: "1", color: "#22c55e" },
+    { x: 2, y: 14, text: "2", color: "#ef4444" },
+    { x: 3, y: 20, text: "3", color: "#22c55e" },
+    { x: 4, y: 17, text: "4 overlaps 1", color: "#f59e0b" },
+    { x: 5, y: 21, text: "5", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 1, y1: 18, x2: 5, y2: 22, color: "#a78bfa", label: "upper rail (1→3, rising slower)", dashed: true },
+    { x1: 2, y1: 14, x2: 5, y2: 18.5, color: "#a78bfa", label: "lower rail (2→4, rising faster) — rails converge", dashed: true }
+  ]}
+  levels={[
+    { y: 18, label: "wave-1 high — overlapped (allowed in a diagonal)", color: "#f59e0b" }
+  ]}
+/>
 
 ### Corrective patterns
-- **Zigzag (5-3-5):** a sharp A-B-C where B is a shallow retrace of A. Steep and trending-looking.
+- **Zigzag (5-3-5 — meaning leg A subdivides into 5 sub-waves, B into 3, C into 5):** a sharp A-B-C where B is a shallow retrace of A. Steep and trending-looking.
 - **Flat (3-3-5):** a sideways A-B-C where B retraces most of A. Common in wave 4 or wave B.
 - **Triangle (3-3-3-3-3):** five overlapping, converging legs labeled A-B-C-D-E. Per Elliott, a triangle "is formed usually in wave 4, but very rarely in wave 2" — i.e., it precedes the *final* move of the larger sequence ([Wikipedia](https://en.wikipedia.org/wiki/Elliott_wave_principle)). Spotting a triangle is a strong hint that one last thrust is coming.
+
+<LineChart
+  caption="Zigzag vs. flat: in a zigzag, B is a shallow retrace of A (steep, trending); in a flat, B retraces most of A (sideways)"
+  height={300}
+  series={[
+    { label: "Zigzag (5-3-5)", data: [30, 22, 25, 16], color: "#38bdf8", width: 2 },
+    { label: "Flat (3-3-5)", data: [30, 24, 29, 23], color: "#f59e0b", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 22, text: "A", color: "#94a3b8" },
+    { x: 2, y: 25, text: "B (shallow)", color: "#38bdf8" },
+    { x: 2, y: 29, text: "B (deep)", color: "#f59e0b" },
+    { x: 3, y: 16, text: "C", color: "#94a3b8" }
+  ]}
+/>
+
+<LineChart
+  caption="Triangle (A-B-C-D-E): five overlapping legs converging into a final-thrust apex"
+  height={300}
+  series={[
+    { label: "Price", data: [30, 20, 28, 22, 26, 24], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 20, text: "A", color: "#a78bfa" },
+    { x: 2, y: 28, text: "B", color: "#a78bfa" },
+    { x: 3, y: 22, text: "C", color: "#a78bfa" },
+    { x: 4, y: 26, text: "D", color: "#a78bfa" },
+    { x: 5, y: 24, text: "E (then last thrust)", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 30, x2: 5, y2: 25, color: "#a78bfa", label: "upper bound", dashed: true },
+    { x1: 1, y1: 20, x2: 5, y2: 23, color: "#a78bfa", label: "lower bound", dashed: true }
+  ]}
+/>
 
 Corrections can also chain together (combinations), which is part of why corrective counting is the hardest part of the discipline.
 
@@ -132,7 +257,7 @@ Wave C  =          at least wave A, often 1.618× wave A
 Suppose a stock bottoms at **$100** and rallies to **$120** — you label that wave 1 (length **$20**). It pulls back; Fibonacci says wave 2 likely ends near 50%–61.8%, i.e. **$110–$112.4**. It stops at **$112** and turns up. Now you have a plan:
 
 - **Wave 3 target:** 1.618 × $20 = $32.36, added to the $112 low → about **$144**.
-- **Risk definition:** by Rule 1, wave 2 cannot go below $100. If price breaks $100, the count is dead. So a long entry near $112 with a stop just under $100 risks ~$12 to target ~$32 — a roughly 2.7:1 reward-to-risk, *defined by the rules themselves*.
+- **Risk definition:** by Rule 1, wave 2 cannot go below $100. If price breaks $100, the count is dead. So a long entry near $112 with a stop just under $100 risks ~$12 to make ~$32 — about $2.70 of potential gain for every $1 risked (a 2.7-to-1 reward-to-risk ratio), *defined by the rules themselves*.
 
 <LineChart
   caption="Worked example: wave 1 to $120, wave 2 to $112, wave 3 projected to ~$144"
@@ -163,6 +288,19 @@ This is the practical payoff of Elliott Wave: the **rules hand you a stop-loss l
 ## The hard problem: subjectivity and multiple counts
 
 Here is the honest part. Elliott Wave's rules are tight, but its **labeling is not unique**. The same squiggle can often be counted as "wave 3 of a new impulse" (bullish) or "wave B of a correction" (bearish). Critics have hit this hard:
+
+<LineChart
+  caption="One rally, two valid counts: bullish 'wave 3 starting' vs. bearish 'wave B bull-trap' — the same price, opposite plans"
+  height={320}
+  series={[
+    { label: "Price (same data)", data: [20, 14, 16, 22], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 14, text: "low", color: "#94a3b8" },
+    { x: 3, y: 22, text: "bull: wave 3 up", color: "#22c55e" },
+    { x: 3, y: 23.5, text: "bear: wave B (trap)", color: "#ef4444" }
+  ]}
+/>
 
 - Mathematician **Benoit Mandelbrot** wrote that "wave prediction is a very uncertain business," adding that the forecasting record "is at best mixed."
 - **David Aronson** argued the principle "is not a legitimate theory, but a story," persuasive only because it has "the seemingly remarkable ability to fit any segment of market history" after the fact.
@@ -199,7 +337,7 @@ Beware **hindsight counting**: any completed chart can be labeled perfectly afte
 5. **Project the target** with Fibonacci extensions and confirm with an independent tool (RSI divergence, channel touch, volume).
 6. **Journal both counts** and review which one the market validated. Over time this is how you calibrate, not memorize.
 
-Elliott Wave rewards the patient and punishes the eager. Treat it as a probability map with hard edges, pair it with momentum and structure tools, and let its own rules tell you when you're wrong.
+Elliott Wave rewards the patient and punishes the eager. Treat it as a probability map with hard edges, pair it with a momentum gauge (RSI) and structure tools (support/resistance, channels), and let its own rules tell you when you're wrong.
 
 ## Further reading
 

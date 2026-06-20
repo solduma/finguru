@@ -12,7 +12,7 @@ prereqs: ["moving-averages"]
 
 MACD takes two moving averages, subtracts one from the other, and turns the result into a single wiggling line that tells you when a trend is gaining steam, losing it, or about to turn — all without you having to stare at the price chart and guess.
 
-If you've already learned what a moving average is, MACD is your natural next step. It's one of the most widely used indicators on the planet, it shows up by default in almost every charting app, and — crucially for a beginner — it bundles *trend* and *momentum* into one tool. Let's build it from the ground up so you understand exactly what every line is telling you.
+If you've already learned what a moving average is, MACD is your natural next step. It's one of the most widely used indicators on the planet, it shows up by default in almost every charting app, and — crucially for a beginner — it bundles *trend* and *momentum* into one tool. (*Momentum* here means the speed and strength of a price move — how fast it is accelerating or slowing down.) Let's build it from the ground up so you understand exactly what every line is telling you.
 
 <Callout type="note">
 
@@ -35,15 +35,15 @@ Before any math, here's the idea. Take a **fast** moving average (responds quick
 MACD simply measures that gap and plots it as a line. A widening positive gap = accelerating uptrend. A shrinking gap = a trend running out of fuel. That's it.
 
 <LineChart
-  caption="The fast EMA pulls away from the slow EMA in an uptrend, then converges as momentum fades"
+  caption="The fast EMA pulls away from the slow EMA in an uptrend, then converges (narrows back toward it) as momentum fades"
   height={300}
   series={[
-    { label: "Fast EMA (12)", data: [99.5, 100.4, 101.6, 103.0, 104.1, 104.6, 104.5, 104.0], color: "#38bdf8", width: 2 },
-    { label: "Slow EMA (26)", data: [99.8, 100.0, 100.5, 101.3, 102.2, 103.1, 103.8, 104.1], color: "#e6e9ef", width: 2 }
+    { label: "Fast EMA (12)", data: [100.4, 101.6, 103.0, 104.1, 104.6, 104.5], color: "#38bdf8", width: 2 },
+    { label: "Slow EMA (26)", data: [100.0, 100.5, 101.3, 102.2, 103.1, 103.8], color: "#e6e9ef", width: 2 }
   ]}
   points={[
-    { x: 4, y: 104.1, text: "gap widening", color: "#22c55e" },
-    { x: 7, y: 104.05, text: "converging", color: "#f59e0b" }
+    { x: 2, y: 103.0, text: "gap widening", color: "#22c55e" },
+    { x: 5, y: 104.5, text: "converging", color: "#f59e0b" }
   ]}
 />
 
@@ -66,8 +66,8 @@ Histogram   = MACD Line  −  Signal Line
 Walking through each ([StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)):
 
 1. **MACD Line** — the fast 12-period EMA minus the slow 26-period EMA. This *is* the gap we described.
-2. **Signal Line** — a 9-period EMA *of the MACD line itself*. It's a smoothed, slower version of the MACD line, used as a trigger.
-3. **Histogram** — bars showing the distance between the MACD line and the signal line. Positive bars mean MACD is above its signal line; negative bars mean below. The histogram is the *first* thing to react when momentum shifts.
+2. **Signal Line** — a 9-period EMA *of the MACD line itself*. It's a smoothed, slower version of the MACD line, used as a trigger: when the faster MACD line crosses this slower line, that crossing is the buy/sell signal you act on (covered just below).
+3. **Histogram** — the distance between the MACD line and the signal line, normally drawn as bars rising and falling from a zero line (shown here as a filled curve for clarity). A positive value means MACD is above its signal line; a negative value means below. The histogram is the *first* thing to react when momentum shifts.
 
 <Callout type="note">
 
@@ -96,28 +96,62 @@ Histogram = 1.5 − 1.2 = +0.3
 
 A positive, *growing* histogram says the uptrend's momentum is still accelerating. If on the next day the histogram shrinks to +0.1, momentum is fading even if price is still rising — an early heads-up. (The numbers above are illustrative, not from any real security.)
 
+<LineChart
+  caption="The worked example: MACD line above its signal line, with the histogram (gap) at +0.3, then narrowing to +0.1 as momentum fades"
+  height={220}
+  series={[
+    { label: "MACD line", data: [1.5, 1.35], color: "#2dd4bf", width: 2 },
+    { label: "Signal line", data: [1.2, 1.25], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  points={[
+    { x: 0, y: 1.5, text: "MACD +1.5", color: "#2dd4bf" },
+    { x: 0, y: 1.2, text: "signal +1.2 → hist +0.3", color: "#22c55e" },
+    { x: 1, y: 1.35, text: "hist +0.1 (fading)", color: "#f59e0b" }
+  ]}
+/>
+
 ## How to read it
 
 There are three classic reading methods, in roughly increasing subtlety.
 
 **1. Signal-line crossover** — the most common signal.
-- MACD crosses *above* the signal line → **bullish** (potential buy).
-- MACD crosses *below* the signal line → **bearish** (potential sell).
+- MACD crosses *above* the signal line → **bullish** (expecting price to rise) → potential buy.
+- MACD crosses *below* the signal line → **bearish** (expecting price to fall) → potential sell.
 On the chart, this is the exact moment the histogram flips from negative to positive (or vice versa).
 
 <LineChart
-  caption="Signal-line crossovers: MACD line crossing its slower signal line, with the zero centerline"
+  caption="When the MACD line crosses above its signal line it is bullish; when it crosses below, bearish — the two points marked here"
   height={220}
   series={[
-    { label: "MACD line", data: [-0.8, -1.1, -0.9, -0.3, 0.4, 1.0, 1.4, 1.2, 0.6, -0.2], color: "#2dd4bf", width: 2 },
-    { label: "Signal line", data: [-0.4, -0.7, -0.9, -0.7, -0.3, 0.3, 0.8, 1.1, 0.9, 0.4], color: "#f59e0b", width: 2, dashed: true }
+    { label: "MACD line", data: [-0.9, -1.1, -1.0, -0.3, 0.5, 1.1, 1.4, 1.2, 0.6, -0.2], color: "#2dd4bf", width: 2 },
+    { label: "Signal line", data: [-0.4, -0.8, -0.9, -0.7, -0.2, 0.4, 0.8, 1.1, 0.9, 0.4], color: "#f59e0b", width: 2, dashed: true }
   ]}
   levels={[
     { y: 0, label: "zero", color: "#e6e9ef" }
   ]}
   points={[
-    { x: 4, y: 0.4, text: "bullish cross", color: "#22c55e" },
+    { x: 3, y: -0.3, text: "bullish cross", color: "#22c55e" },
     { x: 8, y: 0.6, text: "bearish cross", color: "#ef4444" }
+  ]}
+/>
+
+The **histogram** is just the gap between those two lines, plotted from a zero line (drawn here as a filled curve; most charting apps show it as bars). Here is the *exact same data* shown as a histogram — notice it crosses zero at each signal-line cross, and (crucially) it starts *shrinking back toward zero a bar or two before* the line cross actually happens.
+
+<LineChart
+  caption="The histogram (MACD − signal) for the same data: it flips sign at each crossover, but starts shrinking toward zero — warning of the turn — before the cross prints"
+  height={220}
+  series={[
+    { label: "Histogram", data: [-0.5, -0.3, -0.1, 0.4, 0.7, 0.7, 0.6, 0.1, -0.3, -0.6], color: "#2dd4bf", width: 2, fill: true }
+  ]}
+  levels={[
+    { y: 0, label: "zero", color: "#e6e9ef" }
+  ]}
+  points={[
+    { x: 2, y: -0.1, text: "still negative but shrinking — early up-cross warning", color: "#22c55e" },
+    { x: 3, y: 0.4, text: "turns positive (bullish cross)", color: "#22c55e" },
+    { x: 5, y: 0.7, text: "peak — then shrinking", color: "#f59e0b" },
+    { x: 7, y: 0.1, text: "+0.1: momentum fading early", color: "#f59e0b" },
+    { x: 8, y: -0.3, text: "turns negative (bearish cross)", color: "#ef4444" }
   ]}
 />
 
@@ -126,16 +160,50 @@ On the chart, this is the exact moment the histogram flips from negative to posi
 - MACD crosses *below zero* → bearish; the 12-EMA has just moved below the 26-EMA.
 These mark broader trend changes, but give *less* immediate confirmation of momentum than a signal-line cross ([Wikipedia](https://en.wikipedia.org/wiki/MACD)).
 
+<LineChart
+  caption="Centerline crossovers: the MACD line crossing the zero line as the 12-EMA moves above, then back below, the 26-EMA"
+  height={220}
+  series={[
+    { label: "MACD line", data: [-1.2, -0.7, -0.2, 0.4, 0.9, 1.1, 0.7, 0.2, -0.3, -0.8], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 0, label: "zero (12-EMA = 26-EMA)", color: "#e6e9ef" }
+  ]}
+  zones={[
+    { yMin: 0, yMax: 1.4, color: "rgba(34,197,94,0.10)", label: "bullish (MACD > 0)" },
+    { yMin: -1.4, yMax: 0, color: "rgba(239,68,68,0.10)", label: "bearish (MACD < 0)" }
+  ]}
+  points={[
+    { x: 3, y: 0.4, text: "crosses above 0 → bullish", color: "#22c55e" },
+    { x: 8, y: -0.3, text: "crosses below 0 → bearish", color: "#ef4444" }
+  ]}
+/>
+
 **3. Divergence** — the most interpretive.
 - **Bullish divergence:** price makes a *lower low*, but MACD makes a *higher low* — downside momentum is fading.
 - **Bearish divergence:** price makes a *higher high*, but MACD makes a *lower high* — upside momentum is waning.
 
 <LineChart
-  caption="Bearish divergence: price prints a higher high while MACD prints a lower high"
+  caption="Bullish divergence: price prints a lower low while MACD prints a higher low — downside momentum is fading, hinting the fall may be near exhaustion"
   height={260}
   series={[
-    { label: "Price", data: [40, 44, 42, 45, 43, 48, 46], color: "#e6e9ef", width: 2 },
-    { label: "MACD line", data: [1.0, 1.8, 1.1, 1.5, 0.9, 1.2, 0.5], color: "#2dd4bf", width: 2 }
+    { label: "Price", data: [60, 56, 59, 57, 58, 52, 54], color: "#e6e9ef", width: 2 },
+    { label: "MACD line", data: [-1.0, -1.8, -0.9, -1.1, -0.7, -1.2, -0.4], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 56, text: "low", color: "#e6e9ef" },
+    { x: 5, y: 52, text: "lower low", color: "#22c55e" },
+    { x: 1, y: -1.8, text: "low", color: "#2dd4bf" },
+    { x: 5, y: -1.2, text: "higher low", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="Bearish divergence: price prints a higher high while MACD prints a lower high — upside momentum is waning, a possible early warning of a top"
+  height={260}
+  series={[
+    { label: "Price", data: [40, 44, 41, 43, 42, 48, 46], color: "#e6e9ef", width: 2 },
+    { label: "MACD line", data: [1.0, 1.8, 0.9, 1.1, 0.7, 1.2, 0.4], color: "#2dd4bf", width: 2 }
   ]}
   points={[
     { x: 1, y: 44, text: "high", color: "#e6e9ef" },
@@ -163,7 +231,7 @@ Here's a quick reference:
 
 The 12/26/9 default is a reasonable all-purpose choice. You *can* change it:
 - **Shorter periods** (e.g., 5/35/5 or 8/17/9) → more reactive, more signals, more noise. Better for faster, shorter-horizon trading.
-- **Longer periods** → smoother, fewer signals, more lag. Better for position trading.
+- **Longer periods** → smoother, fewer signals, more lag. Better for position trading (holding for weeks to months).
 
 <Callout type="warning">
 
@@ -178,9 +246,27 @@ Resist the urge to "optimize" the settings until you find numbers that would hav
 Now the weaknesses — and these are real:
 
 - **It lags.** MACD is built from moving averages, which are *averages of past prices*. By the time a crossover prints, part (sometimes most) of the move may already be over — strong trends "will already be completed or almost done" once MACD reflects them ([Wikipedia](https://en.wikipedia.org/wiki/MACD)).
-- **Whipsaws in sideways markets.** When price chops back and forth with no real trend, MACD crosses its signal line and zero line repeatedly, firing buy/sell signals that immediately reverse and bleed money on fees and bad entries ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
+- **Whipsaws (signals that reverse against you almost immediately after you act on them) in sideways markets.** When price chops back and forth with no real trend, MACD crosses its signal line and zero line repeatedly, firing buy/sell signals that immediately reverse and bleed money on fees and bad entries ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
+
+<LineChart
+  caption="Whipsaw: in a flat, choppy market the MACD line crosses its signal line back and forth, firing buy/sell signals that immediately reverse"
+  height={220}
+  series={[
+    { label: "MACD line", data: [0.3, -0.2, 0.2, -0.3, 0.25, -0.25, 0.3, -0.2], color: "#2dd4bf", width: 2 },
+    { label: "Signal line", data: [0.05, 0.0, -0.05, 0.0, 0.0, -0.02, 0.02, 0.0], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  levels={[
+    { y: 0, label: "zero", color: "#e6e9ef" }
+  ]}
+  points={[
+    { x: 2, y: 0.2, text: "buy", color: "#22c55e" },
+    { x: 3, y: -0.3, text: "sell", color: "#ef4444" },
+    { x: 4, y: 0.25, text: "buy", color: "#22c55e" },
+    { x: 5, y: -0.25, text: "sell", color: "#ef4444" }
+  ]}
+/>
 - **It's unbounded — so it cannot reliably flag "overbought/oversold."** Unlike RSI (which is capped at 0–100), MACD has no ceiling or floor; it can keep over-extending past its old extremes ([StockCharts](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/macd-moving-average-convergence-divergence-oscillator.md)).
-- **Values aren't comparable across securities.** Because MACD is the *price* difference of two price-based EMAs, a \$500 stock will show much larger MACD values than a \$20 stock. To compare across instruments, use the **PPO (Percentage Price Oscillator)**, which expresses the same idea as a percentage.
+- **Values aren't comparable across securities.** Because MACD is the *price* difference of two price-based EMAs, a \$500 stock's MACD typically sits in the single-to-double digits while a \$20 stock's barely moves off zero — for the same 2% move, the \$500 name's MACD might swing several points where the \$20 name swings only a few hundredths. (Note this is the order-of-magnitude of the MACD *scale*, not a literal equality — the MACD value is a difference of EMAs, not the price change itself.) To compare across instruments, use the **PPO (Percentage Price Oscillator)**, which expresses the same idea as a percentage.
 
 <Callout type="warning">
 
@@ -193,7 +279,7 @@ The biggest beginner mistake is trading *every* crossover blindly. One common fi
 MACD works best as one voice in a small committee, not a dictator.
 
 - **Trade with the larger trend.** Check a longer-term trend filter first (e.g., is price above its 200-day moving average?). Take MACD *buy* signals mainly when the bigger trend is up, and *sell* signals when it's down. This dramatically cuts whipsaw losses, because the worst MACD signals happen against the prevailing trend or in flat markets.
-- **Pair with a bounded oscillator like RSI.** Since MACD can't tell you "overbought," let RSI handle that while MACD handles trend and momentum.
+- **Pair with a bounded oscillator like RSI — an indicator that swings within a fixed range (here 0–100).** Since MACD can't tell you "overbought," let RSI handle that while MACD handles trend and momentum.
 - **Confirm with price structure.** A MACD bullish divergence becomes more trustworthy if price is also holding a support level or breaking a small downtrend line.
 
 ## Practice suggestions

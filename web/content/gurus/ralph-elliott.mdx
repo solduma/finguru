@@ -47,20 +47,6 @@ Elliott's foundational claim is that a complete market cycle has two phases:
 
 Within the five-wave impulse, the odd-numbered waves (1, 3, 5) advance in the trend's direction, while the even-numbered waves (2, 4) are countertrend pullbacks. So an uptrend cycle looks like: up (1), down (2), up (3), down (4), up (5), then a three-wave correction down (A-B-C). In a downtrend the whole picture flips — five waves down, three up.
 
-```
-Impulse (motive):        Correction:
-        5
-       /                      B
-   3  /                      / \
-  /\ / \4                   A   \
- /  4                            C
-1 \/2
-   2
-
-5 waves with trend       3 waves against
-(1,3,5 push; 2,4 rest)   (A,C push; B rests)
-```
-
 <LineChart
   caption="A complete Elliott cycle: a five-wave motive advance (1-5) followed by a three-wave A-B-C correction"
   height={320}
@@ -85,6 +71,21 @@ Here is the idea that makes Elliott Wave both powerful and slippery. Each wave i
 
 Elliott named the nested scales **degrees**. From largest to smallest, the standard labels are: **Grand Supercycle, Supercycle, Cycle, Primary, Intermediate, Minor, Minute, Minuette, Subminuette.** Crucially, a degree is defined by its *form and position*, not by a fixed duration or size — a Minor wave is not "X days long," it is whatever sits one level below Intermediate in the count you are building.
 
+<LineChart
+  caption="Self-similarity: zoom into wave 1 of the larger advance and it is itself a complete five-wave impulse (i-ii-iii-iv-v)"
+  height={300}
+  series={[
+    { label: "Wave 1, magnified", data: [100, 108, 104, 116, 112, 120], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 108, text: "i", color: "#22c55e" },
+    { x: 2, y: 104, text: "ii", color: "#ef4444" },
+    { x: 3, y: 116, text: "iii", color: "#22c55e" },
+    { x: 4, y: 112, text: "iv", color: "#ef4444" },
+    { x: 5, y: 120, text: "v (= top of wave 1)", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="note">
 
 This is also why the wave counts are themselves Fibonacci numbers. A complete motive-plus-corrective cycle is 5 + 3 = **8** waves. Subdivide one level and the motive phase resolves into **21** sub-waves and the corrective phase into **13**. Subdivide again and a completed motive pattern contains **89** waves and a completed corrective pattern **55** — so the full cycle totals 89 + 55 = **144**. Every one of those counts (8, 13, 21, 55, 89, 144) is a Fibonacci number.
@@ -97,7 +98,41 @@ Most of Elliott Wave is *guidelines* (tendencies that usually hold). But three s
 
 1. **Wave 2 never retraces more than 100% of wave 1.** It can give back most of wave 1's gain, but if price drops below wave 1's start, the label is invalid.
 2. **Wave 3 is never the shortest of waves 1, 3, and 5.** (It is often the longest and strongest, but the rule only forbids it from being the shortest.)
-3. **Wave 4 never enters the price territory of wave 1.** In a "standard" impulse the bottom of wave 4 stays above the top of wave 1; no overlap. (The exception is a special structure called a *diagonal*, where limited overlap is allowed.)
+3. **Wave 4 never enters the price territory of wave 1.** In a "standard" impulse the bottom of wave 4 stays above the top of wave 1; no overlap. (The exception is a special structure called a *diagonal* — a wedge-shaped impulse, usually appearing in wave 1 or wave 5, whose waves overlap inside two converging trendlines; there, limited overlap is allowed.)
+
+<LineChart
+  caption="Rule 1 violation: wave 2 drops below where wave 1 began, so the count is invalid and must be redrawn"
+  height={280}
+  series={[
+    { label: "Invalid count", data: [100, 122, 96], color: "#ef4444", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "wave 1 start", color: "#a78bfa" },
+    { x: 1, y: 122, text: "1", color: "#22c55e" },
+    { x: 2, y: 96, text: "2 (below start = illegal)", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 100, label: "100% retrace line — must hold", color: "#f59e0b" }
+  ]}
+/>
+
+<LineChart
+  caption="Rule 3 violation: the bottom of wave 4 dips into wave 1's price territory (overlap), invalidating a standard impulse"
+  height={300}
+  series={[
+    { label: "Invalid count", data: [100, 118, 110, 134, 116, 140], color: "#ef4444", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 118, text: "1", color: "#22c55e" },
+    { x: 2, y: 110, text: "2", color: "#ef4444" },
+    { x: 3, y: 134, text: "3", color: "#22c55e" },
+    { x: 4, y: 116, text: "4 (overlaps wave 1 top)", color: "#ef4444" },
+    { x: 5, y: 140, text: "5", color: "#22c55e" }
+  ]}
+  levels={[
+    { y: 118, label: "wave 1 top — wave 4 must stay above", color: "#f59e0b" }
+  ]}
+/>
 
 <Callout type="key">
 
@@ -107,16 +142,33 @@ These three rules are the spine of the method. They give you concrete, objective
 
 A fourth common principle is the **guideline of alternation**: if wave 2 is a sharp, deep pullback, wave 4 will tend to be a shallow, sideways one (and vice versa). It is a tendency, not a rule — Elliott framed it as a guide to *what not to expect* next.
 
+<LineChart
+  caption="Guideline of alternation: a sharp, deep wave 2 is typically followed by a shallow, sideways wave 4"
+  height={300}
+  series={[
+    { label: "Price", data: [100, 124, 104, 150, 142, 168], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 124, text: "1", color: "#22c55e" },
+    { x: 2, y: 104, text: "2 (sharp, deep)", color: "#ef4444" },
+    { x: 3, y: 150, text: "3", color: "#22c55e" },
+    { x: 4, y: 142, text: "4 (shallow, sideways)", color: "#ef4444" },
+    { x: 5, y: 168, text: "5", color: "#22c55e" }
+  ]}
+/>
+
 ## Fibonacci relationships
 
-Elliott noticed *after* developing his model that the wave counts matched the **Fibonacci sequence**, and in *Nature's Law* he declared that "the Fibonacci Summation Series is the basis of the Wave Principle." Practitioners use Fibonacci ratios — especially **0.618** (the inverse of the golden ratio), **0.382**, **0.500**, and **1.618** — to estimate how far waves travel. Common (illustrative) tendencies:
+Elliott noticed *after* developing his model that the wave counts matched the **Fibonacci sequence** (each number is the sum of the two before it: 1, 1, 2, 3, 5, 8, 13, 21...; dividing adjacent terms approaches 0.618 and 1.618), and in *Nature's Law* he declared that "the Fibonacci Summation Series is the basis of the Wave Principle." Practitioners use Fibonacci ratios — especially **0.618** (the inverse of the golden ratio, ~1.618 — a proportion found throughout nature and geometry), **0.382**, **0.500**, and **1.618** — to estimate how far waves travel. Common (illustrative) tendencies:
 
 | Wave | Typical Fibonacci relationship |
 |------|-------------------------------|
 | Wave 2 | Retraces 50%-61.8% of wave 1 |
-| Wave 3 | Often 1.618x the length of wave 1 (frequently the extended wave) |
+| Wave 3 | Often 1.618x the length of wave 1 (the extended wave — the one that stretches much longer than the others, usually wave 3) |
 | Wave 4 | Retraces ~38.2% of wave 3 |
-| Wave 5 | Often equal to wave 1, or 0.618x the net of waves 1-3 |
+| Wave 5 | Often equal to wave 1, or 0.618x the net distance from the start of wave 1 to the top of wave 3 |
+
+Here, *net distance* just means the total vertical move from wave 1's low to wave 3's high — ignoring the wave-2 dip in between.
 
 ### A small worked example (illustrative)
 
@@ -163,19 +215,48 @@ Impulses are relatively clean. Corrections are where Elliott analysts spend most
 - **Triangle** — a contracting (or expanding) sideways pattern of five legs (**A-B-C-D-E**), each subdividing into threes. Triangles most often appear in **wave 4** (or wave B), rarely in wave 2, and signal a final thrust to follow.
 
 <LineChart
-  caption="Two corrective shapes: the sharp, deep zigzag versus the sideways flat whose B wave returns near A's start"
-  height={300}
+  caption="Zigzag (5-3-5): a sharp, deep pullback that makes a fresh low at C"
+  height={260}
   series={[
-    { label: "Zigzag (5-3-5)", data: [100, 90, 94, 84], color: "#38bdf8", width: 2 },
-    { label: "Flat (3-3-5)", data: [100, 96, 99, 95], color: "#a78bfa", width: 2 }
+    { label: "Zigzag (5-3-5)", data: [100, 90, 94, 84], color: "#38bdf8", width: 2 }
   ]}
   points={[
     { x: 1, y: 90, text: "A", color: "#38bdf8" },
     { x: 2, y: 94, text: "B", color: "#38bdf8" },
-    { x: 3, y: 84, text: "C", color: "#38bdf8" },
+    { x: 3, y: 84, text: "C (fresh low below A)", color: "#38bdf8" }
+  ]}
+/>
+
+<LineChart
+  caption="Flat (3-3-5): sideways, with B returning near A's start"
+  height={260}
+  series={[
+    { label: "Flat (3-3-5)", data: [100, 96, 99, 95], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
     { x: 1, y: 96, text: "A", color: "#a78bfa" },
     { x: 2, y: 99, text: "B (near start)", color: "#a78bfa" },
     { x: 3, y: 95, text: "C", color: "#a78bfa" }
+  ]}
+/>
+
+<LineChart
+  caption="Contracting triangle (wave 4): five overlapping legs A-B-C-D-E whose range narrows as the trendlines converge — a final thrust typically follows the breakout"
+  height={300}
+  series={[
+    { label: "Price", data: [108, 126, 112, 122, 116, 138], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 108, text: "A", color: "#ef4444" },
+    { x: 1, y: 126, text: "B", color: "#22c55e" },
+    { x: 2, y: 112, text: "C", color: "#ef4444" },
+    { x: 3, y: 122, text: "D", color: "#22c55e" },
+    { x: 4, y: 116, text: "E", color: "#ef4444" },
+    { x: 5, y: 138, text: "breakout thrust", color: "#22c55e" }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 108, x2: 4, y2: 116, color: "#38bdf8", label: "rising support", dashed: true },
+    { x1: 1, y1: 126, x2: 3, y2: 122, color: "#f59e0b", label: "falling resistance", dashed: true }
   ]}
 />
 
@@ -200,10 +281,45 @@ The honest position: Elliott Wave is best understood as a **descriptive framewor
 
 ## How to apply it today
 
-1. **Start at a high degree.** Zoom out, identify the largest clear five-wave move, then drill down. Counting bottom-up invites overfitting.
+1. **Start at a high degree.** Zoom out, identify the largest clear five-wave move, then drill down. Counting bottom-up invites overfitting — forcing a tidy pattern onto what is really noise.
 2. **Let the three rules do the work.** Use them to *reject* counts. If you cannot find a count that obeys all three, you do not have a tradeable structure.
 3. **Trade the invalidation, not the prophecy.** The best practical use is placing a stop just beyond the level that would break the count (e.g., below wave 1's start when expecting wave 3). Your risk is defined; your reward depends on the count being right.
-4. **Combine, don't isolate.** Confirm wave counts with momentum tools (RSI divergence often appears at wave 5), volume, and Fibonacci confluence. Treat agreement across tools as a higher-probability signal.
+4. **Combine, don't isolate.** Confirm wave counts with momentum tools — for example RSI (Relative Strength Index, a 0-100 gauge of how strong recent gains are; readings above ~70 flag overbought conditions), where RSI divergence (price makes a new high but momentum does not — the two disagree, a warning the trend is tiring) often appears at wave 5 — plus volume and Fibonacci confluence (several Fib levels stacking at the same price). Treat agreement across tools as a higher-probability signal.
+
+<LineChart
+  caption="Confirming the count: price makes a higher high at wave 5 than at wave 3, but momentum does not — classic bearish RSI divergence warning the impulse is ending"
+  height={300}
+  series={[
+    { label: "Price", data: [100, 118, 110, 138, 130, 144], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 118, text: "1" },
+    { x: 2, y: 110, text: "2" },
+    { x: 3, y: 138, text: "3 (price high)", color: "#22c55e" },
+    { x: 4, y: 130, text: "4" },
+    { x: 5, y: 144, text: "5 (higher high)", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="RSI panel for the same advance: the wave-5 peak prints a LOWER RSI high than wave 3 — bearish divergence"
+  height={220}
+  yMin={0}
+  yMax={100}
+  series={[
+    { label: "RSI(14)", data: [45, 62, 52, 78, 60, 71], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 78, text: "RSI high at 3", color: "#22c55e" },
+    { x: 5, y: 71, text: "lower RSI high at 5", color: "#ef4444" }
+  ]}
+  levels={[
+    { y: 70, label: "overbought", color: "#f59e0b" }
+  ]}
+  zones={[
+    { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" }
+  ]}
+/>
 5. **Always carry an alternate count.** Professionals maintain a primary and an alternate scenario simultaneously, with clear price levels that flip one to the other.
 
 <Callout type="warning">

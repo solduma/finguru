@@ -33,6 +33,10 @@ Because the width adapts, the bands give you what Bollinger calls a "relative de
     { label: "Middle Band (SMA)", data: [30, 30, 30, 30, 30, 30.3, 31, 32, 32.5, 33], color: "#2dd4bf", width: 1.5 },
     { label: "Lower Band", data: [27, 27.5, 28, 28.3, 28.5, 27.6, 27, 26.5, 26, 26], color: "#38bdf8", dashed: true, width: 1.5 }
   ]}
+  points={[
+    { x: 4, y: 30, text: "calm: bands tight", color: "#2dd4bf" },
+    { x: 9, y: 35, text: "volatile: bands wide", color: "#f59e0b" }
+  ]}
 />
 
 ## The precise definition
@@ -96,6 +100,41 @@ BandWidth = (Upper Band − Lower Band) / Middle Band
 
 A low BandWidth means the bands are pinched together (low volatility); a high BandWidth means they're stretched (high volatility). ([bollingerbands.com rules 15–19](https://www.bollingerbands.com/bollinger-band-rules))
 
+<LineChart
+  caption="%b on a 0–1 scale: 1.0 = upper band, 0.5 = middle, 0.0 = lower, and pokes outside the bands"
+  height={220}
+  yMin={-0.2}
+  yMax={1.3}
+  series={[
+    { label: "%b", data: [0.5, 0.85, 1.1, 0.7, 0.4, 0.0, -0.15, 0.3, 0.6], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 1.0, label: "upper band", color: "#38bdf8" },
+    { y: 0.5, label: "middle band", color: "#a78bfa" },
+    { y: 0.0, label: "lower band", color: "#38bdf8" }
+  ]}
+  points={[
+    { x: 2, y: 1.1, text: "above upper", color: "#ef4444" },
+    { x: 6, y: -0.15, text: "below lower", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
+  caption="BandWidth contracts to a multi-month low (the squeeze flag) then spikes as the bands expand"
+  height={220}
+  yMin={0}
+  series={[
+    { label: "BandWidth", data: [0.28, 0.22, 0.16, 0.11, 0.08, 0.07, 0.09, 0.18, 0.3, 0.38], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[
+    { y: 0.08, label: "6-month low", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 5, y: 0.07, text: "squeeze", color: "#f59e0b" },
+    { x: 8, y: 0.3, text: "expansion", color: "#22c55e" }
+  ]}
+/>
+
 ## How to actually read them
 
 ### The Squeeze
@@ -126,6 +165,21 @@ The squeeze has a "head fake": price often makes a brief move one way, sucks tra
 
 Beginners assume a band touch means "reversal." In a strong trend, the opposite is true: price can ride along the outer band for many bars — "walking the band." During a powerful uptrend, price may hug the upper band for weeks and never come near the lower band, while the middle band (the SMA) acts as support. Repeated tags of a band are a sign of *trend strength*, not exhaustion. As rule 8 puts it, a close outside the band is initially a **continuation** signal, not a reversal signal. ([rules 6–8](https://www.bollingerbands.com/bollinger-band-rules))
 
+<LineChart
+  caption="Walking the band: in a strong uptrend price hugs the upper band for weeks; the middle band (SMA) acts as support"
+  height={300}
+  series={[
+    { label: "Upper Band", data: [32, 33, 34.2, 35.5, 36.8, 38, 39.2, 40.5, 41.8], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "Price", data: [31.5, 32.8, 34, 35.2, 33.4, 37.6, 39, 40.2, 41.5], color: "#e6e9ef", width: 2 },
+    { label: "Middle Band (SMA)", data: [29.5, 30.3, 31.2, 32.2, 33.3, 34.4, 35.6, 36.8, 38], color: "#2dd4bf", width: 1.5 },
+    { label: "Lower Band", data: [27, 27.6, 28.2, 28.9, 29.8, 30.8, 32, 33.1, 34.2], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+  points={[
+    { x: 2, y: 34, text: "hugging upper band", color: "#22c55e" },
+    { x: 4, y: 33.4, text: "SMA holds as support", color: "#a78bfa" }
+  ]}
+/>
+
 ### W-Bottoms and M-Tops
 
 These reversal patterns come from Arthur Merrill's pattern work and are where the bands shine as a *confirmation* tool.
@@ -138,21 +192,36 @@ A **W-Bottom** (bullish, forms in a downtrend) has four steps ([StockCharts](htt
 4. Confirmation comes when price surges off the second low and breaks the interim resistance high.
 
 <LineChart
-  caption="W-Bottom: second low holds above the lower band even as price dips lower (non-confirmation)"
+  caption="W-Bottom: the second low prints a lower price yet holds above the lower band (non-confirmation) — then a breakout confirms"
   height={300}
   series={[
-    { label: "Upper Band", data: [36, 35, 34, 34.5, 35, 34.5, 34, 35, 37], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "Upper Band", data: [36, 35, 34, 34.5, 35, 34, 33.5, 35, 37], color: "#38bdf8", dashed: true, width: 1.5 },
     { label: "Price", data: [33, 28, 31, 32.5, 30, 27.5, 31, 34, 36], color: "#e6e9ef", width: 2 },
-    { label: "Lower Band", data: [30, 29, 28.5, 28.8, 29, 28.6, 28.2, 28.5, 29], color: "#38bdf8", dashed: true, width: 1.5 }
+    { label: "Lower Band", data: [30, 28.5, 28, 28.3, 28, 26.5, 27, 28.5, 29], color: "#38bdf8", dashed: true, width: 1.5 }
   ]}
   points={[
     { x: 1, y: 28, text: "low 1 (below band)", color: "#ef4444" },
-    { x: 5, y: 27.5, text: "low 2 (holds inside)", color: "#22c55e" },
+    { x: 5, y: 27.5, text: "low 2 (lower price, holds above band)", color: "#22c55e" },
     { x: 7, y: 34, text: "breakout", color: "#22c55e" }
   ]}
 />
 
 An **M-Top** (bearish) is the mirror image: a high pokes above the upper band, a pullback toward the middle band, then a second high that *fails to reach* the upper band — a non-confirmation warning of fading momentum — confirmed by a support break.
+
+<LineChart
+  caption="M-Top: second high fails to reach the upper band even as price prints higher (non-confirmation), then a support break confirms"
+  height={300}
+  series={[
+    { label: "Upper Band", data: [34, 35, 36, 36.5, 37, 37.6, 37, 35.5, 33.5], color: "#38bdf8", dashed: true, width: 1.5 },
+    { label: "Price", data: [31, 36, 33, 31.5, 34, 36.5, 33, 30, 28], color: "#e6e9ef", width: 2 },
+    { label: "Lower Band", data: [28, 29, 29.5, 29.2, 29, 29.4, 30, 29, 27], color: "#38bdf8", dashed: true, width: 1.5 }
+  ]}
+  points={[
+    { x: 1, y: 36, text: "high 1 (above band)", color: "#22c55e" },
+    { x: 5, y: 36.5, text: "high 2 (higher price, fails to reach band)", color: "#ef4444" },
+    { x: 7, y: 30, text: "support break", color: "#ef4444" }
+  ]}
+/>
 
 <Callout type="key">
 
@@ -178,8 +247,8 @@ Notice the multiplier barely changes — shortening the average needs a slightly
 
 **Weaknesses — be honest about these:**
 
-- **The statistics don't hold.** A normal distribution would put ~95% of data inside ±2σ bands. Real markets have "fat tails" (extreme moves occur more often than the bell curve predicts), and Bollinger himself notes that only about **88–90%** of price falls inside the bands in practice, not 95%. The 20-period sample is too small, and prices are serially correlated, so textbook statistical assumptions are invalid. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands), [rule 14](https://www.bollingerbands.com/bollinger-band-rules))
-- **Mixed backtested performance.** Studies are inconsistent versus simple buy-and-hold. Notably, Lento et al. (2007) found no consistent edge for the conventional approach, but a *contrarian* version (fading the bands) produced positive returns across a variety of markets — a reminder there's no single "right" way to trade them. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands))
+- **The statistics don't hold.** A normal distribution would put ~95% of data inside ±2σ bands. Real markets have "fat tails" (extreme moves occur more often than the bell curve predicts), and Bollinger himself notes that only about **88–90%** of price falls inside the bands in practice, not 95%. The 20-period sample is too small, and prices are serially correlated (today's move tends to follow yesterday's, so the observations aren't the independent samples the bell-curve math assumes), so textbook statistical assumptions are invalid. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands), [rule 14](https://www.bollingerbands.com/bollinger-band-rules))
+- **Mixed backtested performance.** Studies are inconsistent versus simple buy-and-hold (buying once and just holding). Notably, Lento et al. (2007) found no consistent edge for the conventional approach, but a *contrarian* version (fading the bands — i.e. trading against them: selling at the upper band, buying at the lower) produced positive returns across a variety of markets — a reminder there's no single "right" way to trade them. ([Wikipedia](https://en.wikipedia.org/wiki/Bollinger_Bands))
 - **They give no continuous advice.** Rule 22: the bands identify *setups* where the odds may be in your favor; most of the time they say nothing actionable.
 
 ## Common beginner mistakes
@@ -199,7 +268,7 @@ Notice the multiplier barely changes — shortening the average needs a slightly
 2. Use **BandWidth** to spot squeezes — flag when it hits a multi-month (e.g. 6-month) low, then wait for expansion and a directional break (and respect the head-fake risk).
 3. Use **%b** to read W-bottoms / M-tops and momentum divergences objectively.
 4. **Combine, don't isolate.** Add one non-correlated confirmation — volume on a breakout, or a momentum oscillator for trade timing — and use the middle band as dynamic support/resistance and a trend reference.
-5. Journal whether band tags in *your* market behave as reversals or continuations; the answer differs by instrument and regime.
+5. Journal whether band tags in *your* market behave as reversals or continuations; the answer differs by instrument and by market regime (whether the market is trending or ranging, calm or volatile).
 
 ## Further reading
 

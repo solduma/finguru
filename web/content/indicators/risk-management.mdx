@@ -12,7 +12,7 @@ prereqs: ["charles-dow"]
 
 You can be wrong more often than you are right and still get rich; you can be right more often than you are wrong and still go broke. The difference is risk management — the unglamorous discipline of deciding *how much* you can lose before you decide *what* to buy.
 
-Most beginners spend nearly all their energy hunting for the perfect entry signal. Professionals know the entry is the least important part of a trade. What keeps you in the game for the long run is controlling the size of your losses, sizing your positions correctly, and respecting the brutal arithmetic of compounding. This lesson is that arithmetic, made concrete.
+Most beginners spend nearly all their energy hunting for the perfect entry signal. Professionals know the entry is the least important part of a trade. What keeps you in the game for the long run is controlling the size of your losses, sizing your positions correctly, and respecting the brutal arithmetic of compounding (each gain or loss building on the new, changed balance, not the original one). This lesson is that arithmetic, made concrete.
 
 <Callout type="key">
 
@@ -30,7 +30,7 @@ That relationship is something you control completely — unlike the market. You
 
 The foundation of all position sizing is a single decision made *before* you look at any chart: **how much of my account am I willing to lose if this trade goes wrong?**
 
-The widely-taught answer is the **1% rule** (or, for those with more tolerance, the **2% rule**): never risk more than 1–2% of your total account on a single trade. "Risk" here means the money you actually lose if your stop-loss is hit — not the total amount you invest.
+The widely-taught answer is the **1% rule** (or, for those with more tolerance, the **2% rule**): never risk more than 1–2% of your total account on a single trade. "Risk" here means the money you actually lose if your stop-loss (the pre-set exit price for a losing trade) is hit — not the total amount you invest.
 
 <Callout type="note">
 
@@ -68,6 +68,23 @@ If the stop hits, you lose 100 × $2.50 = $250 — exactly 1% of the account. No
 | $50 | $45.00 | $5.00 | 50 | $2,500 |
 | $50 | $49.00 | $1.00 | 250 | $12,500 |
 
+<LineChart
+  caption="For a fixed $250 risk, a wider stop forces a smaller position; this chart generalizes the table across a continuous range of stop widths — share count falls as stop distance grows"
+  height={300}
+  yMin={0}
+  yMax={260}
+  labels={["$1.00", "$2.00", "$3.00", "$4.00", "$5.00"]}
+  series={[
+    { label: "Shares bought", data: [250, 125, 83, 63, 50], color: "#2dd4bf", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 250, text: "$1.00 stop → 250 sh", color: "#22c55e" },
+    { x: 1.5, y: 100, text: "$2.50 stop → 100 sh (table)", color: "#f59e0b" },
+    { x: 2, y: 83, text: "$3.00 stop → 83 sh", color: "#e6e9ef" },
+    { x: 4, y: 50, text: "$5.00 stop → 50 sh", color: "#ef4444" }
+  ]}
+/>
+
 <Callout type="key">
 
 The stop comes first; the share count is *derived* from it. Beginners do it backwards — they pick a share count they "feel good about," then add a stop wherever it's convenient. That lets the position dictate your risk instead of you dictating it.
@@ -79,9 +96,32 @@ The stop comes first; the share count is *derived* from it. Beginners do it back
 There are two broad philosophies for placing the stop-loss (the pre-set price at which you exit a losing trade automatically).
 
 - **Fixed / percentage stop:** a flat rule, e.g. "always exit 5% below entry." Simple and consistent, but it ignores the chart — your stop may sit right where the price naturally wobbles.
-- **Technical stop:** placed at a level the market "respects" — just below a recent swing low, a support level, or a moving average. The logic: if price breaks that level, your reason for the trade is invalidated.
+- **Technical stop:** placed at a level the market "respects" — just below a recent swing low (a local dip where price stopped falling and bounced), a support level, or a moving average. The logic: if price breaks that level, your reason for the trade is invalidated.
 
 Most experienced traders favor technical stops, then *size the position to the stop* (as above). A useful refinement is a **volatility-based stop** using a measure like Average True Range (ATR), the average size of a stock's daily price range; e.g. place the stop 2 × ATR away so calm stocks get tight stops and jumpy stocks get room to breathe.
+
+<CandleChart
+  caption="A tight fixed % stop sits inside normal noise and gets shaken out; the technical stop below the swing low survives the wobble"
+  height={300}
+  candles={[
+    { o: 50.0, h: 50.6, l: 49.6, c: 50.4 },
+    { o: 50.4, h: 50.7, l: 49.3, c: 49.6 },
+    { o: 49.6, h: 50.0, l: 48.9, c: 49.1 },
+    { o: 49.1, h: 49.4, l: 48.4, c: 48.6 },
+    { o: 48.6, h: 49.2, l: 48.5, c: 49.0 },
+    { o: 49.0, h: 50.1, l: 48.9, c: 50.0 },
+    { o: 50.0, h: 51.2, l: 49.9, c: 51.1 },
+    { o: 51.1, h: 52.0, l: 50.9, c: 51.9 }
+  ]}
+  levels={[
+    { y: 49.0, label: "fixed 2% stop (in the noise)", color: "#ef4444" },
+    { y: 48.2, label: "technical stop (below swing low)", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 0, y: 50.0, text: "entry $50", color: "#e6e9ef" },
+    { x: 3, y: 48.4, text: "swing low", color: "#a78bfa" }
+  ]}
+/>
 
 <Callout type="warning">
 
@@ -91,7 +131,26 @@ Never widen a stop after entering "to give the trade more room." That single hab
 
 ## Reward-to-risk, win rate, and expectancy
 
-**Reward-to-risk ratio (R:R)** compares what you stand to gain against what you're risking. If you risk $2.50/share to reach a target $7.50/share away, that's a 3:1 reward-to-risk.
+**Reward-to-risk ratio (R:R)** compares what you stand to gain against what you're risking. If you risk $2.50/share to reach a target $7.50/share away, that's a 3:1 reward-to-risk. Traders call the amount risked **1R** — one unit of risk — so the $2.50 stop is 1R and the $7.50 target is 3R. Measuring trades in R lets you compare a $250 loss and a $750 win on the same scale no matter the position size.
+
+<LineChart
+  caption="3:1 reward-to-risk: $2.50 of downside risk to entry buys a $7.50 reward to target"
+  height={300}
+  yMin={46}
+  yMax={59}
+  series={[
+    { label: "Price", data: [50.0, 49.4, 50.2, 51.5, 52.8, 54.3, 55.9, 57.5], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50.0, label: "entry $50.00", color: "#38bdf8" },
+    { y: 47.5, label: "stop $47.50 (risk $2.50)", color: "#ef4444" },
+    { y: 57.5, label: "target $57.50 (reward $7.50)", color: "#22c55e" }
+  ]}
+  zones={[
+    { yMin: 47.5, yMax: 50.0, color: "rgba(239,68,68,0.12)", label: "1R risk" },
+    { yMin: 50.0, yMax: 57.5, color: "rgba(34,197,94,0.12)", label: "3R reward" }
+  ]}
+/>
 
 The reason R:R matters is that it works *together* with your **win rate** (the fraction of trades that win) to produce **expectancy** — the average dollar amount you expect to make per trade over many trades.
 
@@ -121,6 +180,22 @@ Alice is "right" far more often and still loses money. This is why R:R is non-ne
 A handy break-even shortcut: the minimum win rate you need to avoid losing money is `1 / (1 + R:R)`. At 2:1 reward-to-risk you only need to win `1/3 ≈ 33%` of the time to break even; at 1:1 you need 50%; at 1:2 (risking more than you make) you need 67%.
 
 </Callout>
+
+<LineChart
+  caption="Break-even win rate = 1/(1+R:R): better reward-to-risk lets you be wrong more often and still break even"
+  height={300}
+  yMin={0}
+  yMax={80}
+  labels={["1:2", "1:1", "1.5:1", "2:1", "3:1", "4:1"]}
+  series={[
+    { label: "Win rate needed to break even (%)", data: [67, 50, 40, 33, 25, 20], color: "#f59e0b", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 67, text: "1:2 → need 67%", color: "#ef4444" },
+    { x: 1, y: 50, text: "1:1 → need 50%", color: "#e6e9ef" },
+    { x: 3, y: 33, text: "2:1 → need 33%", color: "#22c55e" }
+  ]}
+/>
 
 ## The asymmetry of losses: why drawdowns are deadly
 
@@ -164,12 +239,12 @@ This is why "averaging down" into a losing position — buying more as it falls 
 
 ## Avoiding ruin
 
-The **risk of ruin** is the probability that a string of losses wipes you out before your edge can play out. Two mathematical facts, drawn from gambler's-ruin theory, should be tattooed on every trader's mind:
+The **risk of ruin** is the probability that a string of losses wipes you out before your edge (your statistical advantage — the positive expectancy from the last section) can play out. Two mathematical facts, drawn from gambler's-ruin theory, should be tattooed on every trader's mind:
 
 1. With a **negative-expectancy** strategy, ruin is eventually *certain*, no matter how clever your bet-sizing system. There is no money-management trick that fixes a losing edge.
 2. With a **positive** edge but **bet sizes too large**, you can *still* go broke — a long-enough losing streak (which is statistically inevitable) drains the account before the edge recovers it.
 
-A simple thought experiment: even a 60% win-rate strategy will occasionally produce a run of, say, 8 losses in a row. If you risk 10% per trade, eight straight losses cut you to about 43% of your account (needing a 132% gain to recover). Risk 1% per trade and the same streak barely scratches you.
+A simple thought experiment: even a 60% win-rate strategy will occasionally produce a run of, say, 8 losses in a row. If you risk 10% per trade, eight straight losses cut you to about 43% of your account (needing roughly a 133% gain to recover). Risk 1% per trade and the same streak barely scratches you.
 
 <LineChart
   caption="Same 8-loss streak: 1% risk barely dents the account, 10% risk halves it"
@@ -186,7 +261,7 @@ A simple thought experiment: even a 60% win-rate strategy will occasionally prod
   ]}
 />
 
-This is also the lesson behind the **Kelly criterion** — a formula for the mathematically "optimal" bet fraction, developed by Bell Labs researcher John L. Kelly Jr. in 1956. In practice, traders deliberately use *fractional* (often half) Kelly, because full Kelly produces stomach-churning drawdowns and assumes you know your win probability exactly, which you never do.
+This is also the lesson behind the **Kelly criterion** — a formula for the mathematically "optimal" bet fraction, developed by Bell Labs researcher John L. Kelly Jr. in 1956. It can suggest surprisingly large bets: a 55% win rate at even odds (a 1:1 payout — you win as much as you risk), for example, tells you to risk 10% of your account *per trade*. In practice, traders deliberately use *fractional* (often half) Kelly — so that 10% becomes 5% or less — because full Kelly produces stomach-churning drawdowns and assumes you know your win probability exactly, which you never do.
 
 ## Diversification and correlation
 
@@ -197,6 +272,21 @@ Spreading risk across several positions reduces the chance that one bad event si
 Holding five different tech stocks is *not* diversification — they're highly correlated and effectively one big bet. In a market crash, correlations notoriously spike toward 1: things that looked independent all fall at once. Count your *correlated* risk, not your number of tickers, and cap total risk across related positions (e.g. no more than 2–3% combined on one theme).
 
 </Callout>
+
+<LineChart
+  caption="Two correlated holdings (+1) fall together for a deep combined drawdown; uncorrelated holdings partly offset, smoothing the curve"
+  height={300}
+  yMin={70}
+  yMax={108}
+  series={[
+    { label: "Two correlated positions", data: [100, 103, 98, 92, 85, 79, 83, 80], color: "#ef4444", width: 2 },
+    { label: "Two uncorrelated positions", data: [100, 101, 99, 100, 97, 95, 98, 99], color: "#22c55e", width: 2 }
+  ]}
+  points={[
+    { x: 5, y: 79, text: "correlated: all fall at once", color: "#ef4444" },
+    { x: 5, y: 95, text: "uncorrelated: losses offset", color: "#22c55e" }
+  ]}
+/>
 
 ## How to apply this today: a checklist
 

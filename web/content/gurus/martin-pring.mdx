@@ -12,7 +12,7 @@ prereqs: ["charles-dow"]
 
 ## The one-sentence version
 
-Martin Pring's big idea is that momentum and the economic cycle are two sides of the same coin: if you measure how fast prices are changing across *several* time horizons at once, and you know roughly where you are in the boom-and-bust cycle, you can read the market's "bigger picture" instead of getting whipsawed by daily noise.
+Martin Pring's big idea is that momentum and the economic cycle are two sides of the same coin: if you measure how fast prices are changing across *several* time horizons at once, and you know roughly where you are in the boom-and-bust cycle, you can read the market's "bigger picture" instead of getting whipsawed (repeatedly stopped out by quick price reversals) by daily noise.
 
 Most beginners meet momentum through a single indicator like RSI or a lone rate-of-change line, then get frustrated when it screams "overbought" for months during a strong trend. Pring's contribution was to *systematize* momentum: to combine multiple speeds into one cleaner signal (the KST), and to tie all of it back to a repeatable map of the business cycle. He is less a "guru with a secret" and more an educator who organized scattered ideas into a teachable framework. That is exactly why he is worth studying.
 
@@ -38,13 +38,38 @@ ROC(n) = ((Price_today / Price_n_bars_ago) - 1) x 100
 
 A rising ROC says the trend is accelerating; a falling ROC says it is losing steam even if price is still climbing. That early warning — momentum often peaks *before* price — is the whole point of studying it.
 
+<LineChart
+  caption="Momentum peaks before price: ROC peaks early (x=3) while price keeps climbing to its top, and by the time ROC crosses zero price has already rolled over"
+  height={300}
+  series={[
+    { label: "Price", data: [100, 104, 109, 115, 120, 124, 127, 129, 131, 130, 129], color: "#e6e9ef", width: 2 },
+    { label: "ROC", data: [2, 4, 5, 6, 4.5, 3, 2, 1, 0.5, 0, -1], color: "#2dd4bf", width: 2 }
+  ]}
+  levels={[ { y: 0, label: "ROC zero", color: "#f59e0b" } ]}
+  points={[
+    { x: 3, y: 6, text: "momentum peak", color: "#ef4444" },
+    { x: 8, y: 131, text: "price peak (later)", color: "#ef4444" },
+    { x: 9, y: 0, text: "ROC crosses zero", color: "#ef4444" }
+  ]}
+/>
+
 The problem: any single ROC has a personality. A 10-day ROC is jumpy and full of false alarms; a 30-day ROC is smooth but slow. Pick the wrong length and you either get whipsawed or arrive late. Pring's insight was simple but powerful: **don't pick one, blend several.**
+
+<LineChart
+  caption="Two ROC personalities on the same price: the 10-day line is jumpy and whippy, the 30-day line is smooth but lags the turns"
+  height={300}
+  series={[
+    { label: "ROC(10) — jumpy", data: [3, -1, 5, 1, 6, 2, 7, 1, 4, -2, 3], color: "#38bdf8", width: 2 },
+    { label: "ROC(30) — smooth", data: [1.5, 1.8, 2.4, 2.8, 3.4, 3.7, 3.9, 3.6, 3.0, 2.2, 1.6], color: "#a78bfa", width: 2 }
+  ]}
+  levels={[ { y: 0, label: "zero", color: "#f59e0b" } ]}
+/>
 
 ## The KST (Know Sure Thing)
 
 The **KST** ("Know Sure Thing," a playful name) is a momentum oscillator that combines four smoothed rate-of-change calculations of different lengths into a single weighted line. Longer-term cycles get more weight, because Pring believed the dominant trend deserves the loudest vote.
 
-Each component is an ROC, smoothed with a simple moving average (SMA — the plain average of the last N values), then multiplied by a weight:
+Each component (Pring calls it an RCMA, short for Rate-of-Change Moving Average — an ROC that has been smoothed by a moving average) is an ROC, smoothed with a simple moving average (SMA — the plain average of the last N values), then multiplied by a weight:
 
 | Component | ROC period | Smoothing SMA | Weight |
 |-----------|-----------|---------------|--------|
@@ -87,16 +112,32 @@ KST = 0.5 + 1.6 + 3.6 + 6.0 = **+11.7**. The longest, most heavily weighted comp
 - **Divergence:** when price makes a new high but KST does not (a "negative divergence"), it can warn of exhaustion — but Pring stressed using only large, obvious divergences, ideally confirmed by a signal-line cross.
 
 <LineChart
+  caption="The two everyday KST triggers: a bullish signal-line cross while still below zero, then the KST clearing the centerline to confirm the turn"
+  height={220}
+  series={[
+    { label: "KST", data: [-12, -11, -9, -7, -3, 0, 3, 6, 8, 9, 10], color: "#2dd4bf", width: 2 },
+    { label: "Signal (9 SMA)", data: [-9, -9, -7, -5, -4, -4, -2, 1, 4, 6, 8], color: "#38bdf8", dashed: true, width: 2 }
+  ]}
+  levels={[ { y: 0, label: "centerline", color: "#f59e0b" } ]}
+  points={[
+    { x: 4, y: -3, text: "bullish cross", color: "#22c55e" },
+    { x: 5, y: 0, text: "clears centerline", color: "#22c55e" }
+  ]}
+/>
+
+<LineChart
   caption="KST vs. its 9-period signal line: a negative divergence (price higher high, KST lower high) confirmed by a bearish signal-line cross"
   height={220}
   series={[
+    { label: "Price", data: [40, 48, 60, 78, 90, 88, 84, 96, 92, 80, 70], color: "#e6e9ef", width: 2 },
     { label: "KST", data: [-6, -2, 4, 11, 14, 12, 9, 11, 8, 3, -2], color: "#2dd4bf", width: 2 },
     { label: "Signal (9 SMA)", data: [-4, -3, 0, 5, 9, 11, 11, 10, 9, 7, 3], color: "#38bdf8", dashed: true, width: 2 }
   ]}
   levels={[ { y: 0, label: "centerline", color: "#f59e0b" } ]}
   points={[
-    { x: 4, y: 14, text: "1st peak", color: "#22c55e" },
-    { x: 7, y: 11, text: "lower high (divergence)", color: "#ef4444" },
+    { x: 7, y: 96, text: "price higher high", color: "#22c55e" },
+    { x: 4, y: 14, text: "KST 1st peak", color: "#22c55e" },
+    { x: 7, y: 11, text: "KST lower high (divergence)", color: "#ef4444" },
     { x: 8, y: 8, text: "bearish cross", color: "#ef4444" }
   ]}
 />
@@ -115,7 +156,22 @@ Pring later built **Special K**, which extends the KST idea to *twelve* ROC comp
 - Intermediate: ROC(40, 65, 75, 100)
 - Long-term: ROC(195, 265, 390, 530)
 
-The design assumes prices revolve around a roughly **four-year business cycle**, so Special K aims to peak and trough at the same time as the primary price trend. It needs a lot of history — at least about 725 data points — to compute fully. Read it with trendline breaks (a violated trendline of nine months or more suggests the primary trend has reversed) and with a long, double-smoothed signal line (the common default is a 100-period SMA smoothed by another 100-period SMA). Note its honest limitations: in a long linear bull market it tends to *lead* turning points, and around truncated events like the 1987 crash it can arrive *late*.
+The design assumes prices revolve around a roughly **four-year business cycle**, so Special K aims to peak and trough at the same time as the primary price trend. It needs a lot of history — at least about 725 data points — to compute fully. Read it with trendline breaks (a violated trendline of nine months or more suggests the primary trend has reversed) and with a long, double-smoothed signal line (the common default is a 100-period SMA smoothed by another 100-period SMA). Note its honest limitations: in a long linear bull market it tends to *lead* turning points, and around sudden, sharply truncated moves like the 1987 crash (where the decline was largely over almost before momentum could turn down), it can arrive *late*.
+
+<LineChart
+  caption="Reading Special K: a rising trendline drawn under the advance is broken, and the line crosses its long double-smoothed signal — primary trend likely reversing down"
+  height={300}
+  series={[
+    { label: "Special K", data: [10, 16, 22, 27, 30, 31, 29, 27, 17, 9, 2], color: "#2dd4bf", width: 2 },
+    { label: "Signal (100/100 SMA)", data: [6, 9, 13, 17, 21, 24, 26, 26, 24, 21, 17], color: "#38bdf8", dashed: true, width: 2 }
+  ]}
+  levels={[ { y: 0, label: "zero", color: "#f59e0b" } ]}
+  trendlines={[ { x1: 0, y1: 9, x2: 5, y2: 29, color: "#a78bfa", label: "uptrend line", dashed: true } ]}
+  points={[
+    { x: 6, y: 29, text: "trendline break", color: "#ef4444" },
+    { x: 8, y: 17, text: "signal cross", color: "#ef4444" }
+  ]}
+/>
 
 ## The bigger picture: the six business-cycle stages
 
@@ -134,14 +190,15 @@ Pring's other great theme is **intermarket rotation** — the observation that b
   caption="The intermarket relay: bonds bottom and top first, stocks follow, commodities turn last — the staggered sequence behind the six stages"
   height={300}
   series={[
-    { label: "Bonds", data: [42, 47, 53, 58, 60, 59, 55, 50, 45, 42, 44], color: "#38bdf8", width: 2 },
-    { label: "Stocks", data: [40, 38, 41, 47, 53, 58, 60, 57, 52, 47, 45], color: "#e6e9ef", width: 2 },
-    { label: "Commodities", data: [44, 41, 39, 41, 46, 52, 57, 60, 58, 52, 47], color: "#f59e0b", width: 2 }
+    { label: "Bonds", data: [45, 42, 47, 53, 58, 60, 59, 55, 50, 45, 43], color: "#38bdf8", width: 2 },
+    { label: "Stocks", data: [44, 41, 39, 43, 49, 55, 60, 58, 53, 48, 45], color: "#e6e9ef", width: 2 },
+    { label: "Commodities", data: [46, 44, 42, 40, 44, 50, 56, 60, 59, 54, 49], color: "#f59e0b", width: 2 }
   ]}
   points={[
-    { x: 1, y: 47, text: "bonds bottom (St.1)", color: "#22c55e" },
-    { x: 2, y: 41, text: "stocks bottom (St.2)", color: "#22c55e" },
-    { x: 4, y: 60, text: "bonds top (St.4)", color: "#ef4444" },
+    { x: 1, y: 42, text: "bonds bottom (St.1)", color: "#22c55e" },
+    { x: 2, y: 39, text: "stocks bottom (St.2)", color: "#22c55e" },
+    { x: 3, y: 40, text: "commodities bottom (St.3)", color: "#22c55e" },
+    { x: 5, y: 60, text: "bonds top (St.4)", color: "#ef4444" },
     { x: 6, y: 60, text: "stocks top (St.5)", color: "#ef4444" },
     { x: 7, y: 60, text: "commodities top (St.6)", color: "#ef4444" }
   ]}
@@ -149,7 +206,7 @@ Pring's other great theme is **intermarket rotation** — the observation that b
 
 <Callout type="key">
 
-Bonds bottom first and top first; commodities bottom last and top last; stocks sit in the middle. Knowing which asset is "supposed" to be leading tells you which stage you are likely in — and which sectors (defensive vs. cyclical) tend to outperform there.
+Bonds bottom first and top first; commodities bottom last and top last; stocks sit in the middle. Knowing which asset is "supposed" to be leading tells you which stage you are likely in — and which sectors tend to outperform there. *Defensive* sectors (utilities, consumer staples, healthcare — things people buy in any economy) hold up best early in a recovery and during slowdowns; *cyclical* sectors (industrials, materials, consumer discretionary — sensitive to the business cycle) lead when the expansion is in full swing.
 
 </Callout>
 

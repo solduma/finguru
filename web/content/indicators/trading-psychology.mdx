@@ -53,6 +53,22 @@ The single most important finding for traders comes from psychologists **Daniel 
 
 This asymmetry quietly sabotages traders. Because a $100 loss hurts about as much as a $200 gain feels good, we do irrational things to avoid *realizing* (locking in) losses.
 
+<LineChart
+  caption="Prospect-theory value function (x-axis = the actual money outcome): the loss curve falls about twice as steeply as the gain curve rises, so a -$100 loss outweighs a +$100 gain"
+  height={300}
+  labels={["−$200", "−$150", "−$100", "−$50", "−$25", "$0", "+$25", "+$50", "+$100", "+$150", "+$200"]}
+  series={[
+    { label: "Felt value", data: [-130, -118, -100, -72, -40, 0, 20, 35, 47, 56, 63], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 0, label: "neutral", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 2, y: -100, text: "−$100 loss feels like −100", color: "#ef4444" },
+    { x: 8, y: 47, text: "+$100 gain feels like +47", color: "#22c55e" }
+  ]}
+/>
+
 <Callout type="note">
 
 Loss aversion is not the same as **risk aversion**. Risk aversion is the sensible preference for a sure thing over a gamble of equal expected value. Loss aversion is the irrational *overweighting* of losses specifically — it can make us take bad risks to avoid locking in a loss we've already incurred.
@@ -66,6 +82,22 @@ Loss aversion produces a measurable, well-documented trading error. In 1985, eco
 This isn't just theory. Terrance Odean's 1998 study of trading records from 10,000 brokerage accounts found that, for most of the year, a winning stock was nearly *60% more likely* to be sold than a losing one. A later study of Taiwanese investors (Barber, Lee, Liu, and Odean, 2006) found they were roughly *twice* as likely to sell winners as losers. We snatch small gains to feel the pride of "being right," and we cling to losers because selling means admitting we were wrong.
 
 This is exactly backwards. Good trading does the opposite: cut losers quickly, let winners run.
+
+<LineChart
+  caption="Disposition effect: a winner is sold for a small gain while a loser is held through a deepening loss — the wrong trades held the wrong way"
+  height={300}
+  series={[
+    { label: "Winner (sold early)", data: [100, 103, 106, 104, 108, null, null, null, null, null], color: "#22c55e", width: 2 },
+    { label: "Loser (held too long)", data: [100, 98, 96, 99, 95, 91, 87, 82, 78, 74], color: "#ef4444", width: 2 }
+  ]}
+  levels={[
+    { y: 100, label: "entry", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 4, y: 108, text: "snatch +8% gain", color: "#22c55e" },
+    { x: 9, y: 74, text: "still holding −26%", color: "#ef4444" }
+  ]}
+/>
 
 ### The rest of the lineup
 
@@ -88,7 +120,39 @@ Two behaviors deserve special attention because they blow up accounts quickly.
 
 **FOMO (Fear Of Missing Out)** is greed plus recency bias. A stock rips 20% in a day, your social feed is euphoric, and you pile in at the top — right as the people who got in early are selling to you. FOMO trades are defined by their *trigger*: you're acting because the price already moved, not because your plan told you to.
 
+<LineChart
+  caption="FOMO entry: the move has already happened, you buy near the euphoric top, and early buyers sell to you on the way down"
+  height={300}
+  series={[
+    { label: "Price", data: [100, 103, 108, 116, 122, 120, 113, 105, 99, 96], color: "#e6e9ef", width: 2 }
+  ]}
+  zones={[
+    { yMin: 118, yMax: 124, color: "rgba(239,68,68,0.12)", label: "euphoria / FOMO buy zone" }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "early buyers in", color: "#22c55e" },
+    { x: 4, y: 122, text: "you pile in (+22%)", color: "#ef4444" },
+    { x: 9, y: 96, text: "left holding the bag", color: "#ef4444" }
+  ]}
+/>
+
 **Revenge trading** is the response to a loss. You take a hit, loss aversion floods you with the urge to "make it back *right now*," and you jump into an unplanned trade with size too large. One loss becomes three. This is the path from a bad day to a catastrophic one.
+
+<LineChart
+  caption="Account equity during a revenge spiral: a single planned loss snowballs as each oversized 'make-it-back' trade digs deeper"
+  height={300}
+  series={[
+    { label: "Account equity", data: [10000, 9900, 9650, 9250, 8600], color: "#ef4444", width: 2 }
+  ]}
+  levels={[
+    { y: 10000, label: "start of day", color: "#f59e0b" }
+  ]}
+  points={[
+    { x: 1, y: 9900, text: "−$100 planned loss", color: "#f59e0b" },
+    { x: 2, y: 9650, text: "revenge trade #1", color: "#ef4444" },
+    { x: 4, y: 8600, text: "−14% by day's end", color: "#ef4444" }
+  ]}
+/>
 
 The antidote to both is the same, and it's the heart of this lesson: **a written process you follow regardless of how you feel.**
 

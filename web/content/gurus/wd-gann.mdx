@@ -62,7 +62,27 @@ Ratio   Meaning (price units : time units)   Slope vs 1x1
 1x8     1 price per 8 time                    very shallow (weak)
 ```
 
-Gann named several upward angles in this family — 2x1, 3x1, 4x1, 8x1, 16x1 — with the inverse ratios used for shallower lines and for declining markets. Drawn together from a single pivot, these lines form a **Gann fan**. The reading rule Gann gave:
+Gann named several upward angles in this family — the ones shown above, up to 8x1 (and, in his fullest fan, 3x1 and 16x1) — with the inverse ratios used for shallower lines and for declining markets. Drawn together from a single pivot, these lines form a **Gann fan**. The reading rule Gann gave:
+
+<LineChart
+  caption="A full Gann fan from one pivot: steep (4x1, 2x1) above the 1x1 baseline, shallow (1x2, 1x4) below"
+  height={320}
+  yMin={0}
+  yMax={115}
+  series={[
+    { label: "", data: [0, null, null, null, null, null, null, null, null, 0], color: "#0b0e14", width: 1 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 0, x2: 9, y2: 108, color: "#22c55e", label: "4x1 (very steep)", dashed: true },
+    { x1: 0, y1: 0, x2: 9, y2: 54, color: "#2dd4bf", label: "2x1 (steep)", dashed: true },
+    { x1: 0, y1: 0, x2: 9, y2: 27, color: "#a78bfa", label: "1x1 (45° baseline)" },
+    { x1: 0, y1: 0, x2: 9, y2: 13.5, color: "#38bdf8", label: "1x2 (shallow)", dashed: true },
+    { x1: 0, y1: 0, x2: 9, y2: 6.75, color: "#f59e0b", label: "1x4 (very shallow)", dashed: true }
+  ]}
+  points={[
+    { x: 0, y: 0, text: "pivot", color: "#e6e9ef" }
+  ]}
+/>
 
 <Callout type="key">
 
@@ -70,9 +90,29 @@ Price trading **above the 1x1** line is in a position of strength; price **below
 
 </Callout>
 
+<LineChart
+  caption="Reading rule: price holds above the 1x1 (strength), breaks it, then finds support on the next shallower angle (1x2)"
+  height={320}
+  yMin={45}
+  yMax={80}
+  series={[
+    { label: "Price", data: [50, 55, 59, 64, 68, 71, 67, 63, 62, 64], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 0, y1: 50, x2: 9, y2: 77, color: "#a78bfa", label: "1x1 baseline" },
+    { x1: 0, y1: 50, x2: 9, y2: 63.5, color: "#38bdf8", label: "1x2 (next target)", dashed: true }
+  ]}
+  points={[
+    { x: 4, y: 68, text: "strength: above 1x1", color: "#22c55e" },
+    { x: 6, y: 67, text: "breaks 1x1", color: "#ef4444" },
+    { x: 8, y: 62, text: "touches 1x2 support", color: "#38bdf8" },
+    { x: 9, y: 64, text: "bounces above", color: "#22c55e" }
+  ]}
+/>
+
 ### The Square of Nine
 
-The **Square of Nine** is a spiral of numbers. You start with 1 at the center and wind outward — 2, 3, 4, 5... — so the integers form concentric square "rings." Numbers that line up along the **cardinal cross** (the horizontal and vertical arms) and the **diagonal cross** (the corners) are treated as significant.
+The **Square of Nine** is a spiral of numbers. You start with 1 at the center and wind outward — 2, 3, 4, 5... — so the integers form concentric square "rings." Numbers that line up along the **cardinal cross** (the horizontal and vertical arms) and the **diagonal cross** (the corners) are treated as significant — Gann watched the prices that land on these arms as candidate support/resistance, the same role as the square-root-derived levels we compute next.
 
 The geometric trick is that moving **90°** around the spiral (a quarter turn) from a value, or **180°**, or a full **360°**, lands you on numbers Gann considered harmonically related — candidate support/resistance prices. The classic mechanical rule: take the square root of a price, add an increment (0.5 for 90°, 1.0 for 180°, 2.0 for 360°), and re-square it.
 
@@ -93,7 +133,7 @@ So from a low of 100, the Square of Nine flags roughly 110, 121, and 144 as leve
   yMin={95}
   yMax={150}
   series={[
-    { label: "Price", data: [100, 103, 108, 110, 116, 121, 119, 130, 144], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [100, 104, 108, 110, 116, 121, 118, 121, 116], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
     { y: 110.25, label: "90° → 110.25", color: "#f59e0b" },
@@ -116,12 +156,12 @@ Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
 5. **Read it.** While price stays above the 1x1, Gann would call the uptrend healthy. If price slices below the 1x1 and lands on the 1x2, the 1x2 becomes the new support; failure there implies the trend has flattened or turned.
 
 <LineChart
-  caption="Gann fan anchored at a $50 low: 2x1, 1x1, and 1x2 angles over 20 days"
+  caption="Price stays above the 1x1 the whole way — Gann would call this a healthy uptrend"
   height={320}
   yMin={45}
   yMax={95}
   series={[
-    { label: "Price", data: [50, 54, 53, 58, 62, 60, 65, 68, 67, 72], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [50, 54, 55, 58, 62, 62, 65, 68, 69, 72], color: "#e6e9ef", width: 2 }
   ]}
   trendlines={[
     { x1: 0, y1: 50, x2: 9, y2: 90, color: "#22c55e", label: "2x1 ($2/day)", dashed: true },
@@ -129,7 +169,8 @@ Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
     { x1: 0, y1: 50, x2: 9, y2: 60, color: "#38bdf8", label: "1x2 ($0.50/day)", dashed: true }
   ]}
   points={[
-    { x: 0, y: 50, text: "$50 low", color: "#22c55e" }
+    { x: 0, y: 50, text: "$50 low", color: "#22c55e" },
+    { x: 7, y: 68, text: "above 1x1 = healthy", color: "#22c55e" }
   ]}
 />
 
@@ -143,6 +184,22 @@ Imagine a stock makes a clear bottom at **$50** (illustrative numbers).
 
 Beyond geometry, Gann claimed markets repeat on **time cycles** tied to natural and calendar numbers (anniversaries of major highs/lows, divisions of the year like 30/45/90/180/360 days) — and, more controversially, to **planetary positions**.
 
+In this chart each bar stands for about 30 days, so each low arrives three bars (~90 days) after the previous one — which is why the lows at bars 3, 6, and 9 are labeled 90, 180, and 270 days.
+
+<LineChart
+  caption="Time-cycle idea: each low arrives ~90 days after the last, so turns recur on the 90/180/270-day marks from the major high"
+  height={300}
+  series={[
+    { label: "Price", data: [100, 94, 88, 84, 90, 86, 83, 89, 85, 82], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 0, y: 100, text: "major high (day 0)", color: "#ef4444" },
+    { x: 3, y: 84, text: "90d low", color: "#a78bfa" },
+    { x: 6, y: 83, text: "180d low", color: "#a78bfa" },
+    { x: 9, y: 82, text: "270d low", color: "#a78bfa" }
+  ]}
+/>
+
 This astrological side is not internet rumor. Wikipedia notes his forecasting was "purportedly based on geometry, astronomy, astrology, time cycle analysis, and other esoteric means," and that in a **letter to a student dated March 19, 1954**, Gann demonstrated using planetary cycles to forecast the coffee market ([Wikipedia](https://en.wikipedia.org/wiki/William_Delbert_Gann)). His deliberately obscure writing — possibly intended to conceal his true method — has fueled endless speculation that he hid his "real" technique, a claim that is, by construction, unfalsifiable.
 
 ## What is empirically defensible vs. mystical
@@ -151,11 +208,11 @@ This astrological side is not internet rumor. Wikipedia notes his forecasting wa
 |---|---|---|
 | Price/time relationship | Trends do have measurable slopes; rate-of-change matters | "Squaring" requires arbitrary unit choices |
 | Gann angles / 1x1 | A trendline at a fixed slope is a legitimate, testable construct | The specific 45° / fan ratios have no proven edge over ordinary trendlines |
-| Square of Nine levels | Round numbers and prior swing extremes really do act as S/R | The square's outputs use no market data; it is number theory, not analysis |
+| Square of Nine levels | Round numbers (prices like 50, 100, 500 that traders psychologically anchor on and cluster orders around) and prior swing extremes really do act as S/R | The square's outputs use no market data; it is number theory, not analysis |
 | Time cycles | Some markets show rough seasonality/periodicity | Cherry-picked anniversaries fit anything in hindsight |
 | Astrology | None | No credible mechanism or replicated evidence |
 
-The honest summary: Gann tools **conflict with even the weakest form of the Efficient Market Hypothesis** (the idea that past prices alone cannot predict future prices), and no peer-reviewed study has shown his specific methods produce a real edge ([Wikipedia](https://en.wikipedia.org/wiki/Gann_angles)). Much of their apparent success is **survivorship and hindsight**: with enough angles, squares, and date counts, *something* will line up near any turning point.
+The honest summary: Gann tools **conflict with even the weakest form of the Efficient Market Hypothesis** (the idea that past prices alone cannot predict future prices), and no peer-reviewed study has shown his specific methods produce a real edge ([Wikipedia](https://en.wikipedia.org/wiki/Gann_angles)). Much of their apparent success is **hindsight bias** — the tendency to see a past move as more predictable than it actually was: you remember the angles that lined up with a turn and forget the far more numerous ones that didn't. With enough angles, squares, and date counts, *something* will line up near any turning point.
 
 ## Common pitfalls and misconceptions
 
@@ -171,8 +228,8 @@ Modern platforms — TradingView, StockCharts, MetaTrader, NinjaTrader — ship 
 1. **Anchor angles only at unambiguous, significant pivots** (major swing highs/lows).
 2. **Fix your scaling rule in advance and never change it mid-analysis.** Document it.
 3. **Treat the 1x1 like any trendline** — a dynamic support/resistance reference, confirmed by price action or volume, not a prophecy.
-4. **Use Square-of-Nine outputs only where they coincide** with independently identified levels (prior swings, round numbers, volume profile). Confluence, not the square alone, is the signal.
-5. **Backtest before you trust.** If a Gann rule has an edge, you can measure it. If you cannot define it precisely enough to test, you cannot trade it rationally.
+4. **Use Square-of-Nine outputs only where they coincide** with independently identified levels (prior swings, round numbers, volume profile — where most volume traded by price). Confluence — several independent signals lining up at the same level — not the square alone, is the signal.
+5. **Backtest before you trust** (run the rule over years of past price data and check whether it actually would have made money). If a Gann rule has an edge, you can measure it. If you cannot define it precisely enough to test, you cannot trade it rationally.
 
 <Callout type="key">
 
