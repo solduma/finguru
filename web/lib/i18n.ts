@@ -17,7 +17,13 @@ export const LOCALE_LABEL: Record<Locale, string> = {
 // separately (translated MDX under content/ko/).
 type Dict = {
   brand: string;
-  nav: { path: string; gurus: string; indicators: string };
+  nav: { path: string; schools: string; gurus: string; indicators: string };
+  schoolsIndex: {
+    title: string;
+    intro: string;
+    explore: string;
+    lessonCount: (n: number) => string;
+  };
   home: {
     title: string;
     intro: string;
@@ -55,7 +61,19 @@ type Dict = {
 export const STRINGS: Record<Locale, Dict> = {
   en: {
     brand: "FinGuru",
-    nav: { path: "Learning Path", gurus: "Gurus", indicators: "Indicators" },
+    nav: {
+      path: "Learning Path",
+      schools: "Schools",
+      gurus: "Gurus",
+      indicators: "Indicators",
+    },
+    schoolsIndex: {
+      title: "The Schools of Investing",
+      intro:
+        "Four ways to read a market. Each school is a different answer to one question — what actually moves price? — and each gathers the masters who built it, grouped by the strategy they're known for.",
+      explore: "Explore the school →",
+      lessonCount: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
+    },
     home: {
       title: "Technical Analysis, from Beginner to Pro",
       intro:
@@ -117,7 +135,19 @@ export const STRINGS: Record<Locale, Dict> = {
   },
   ko: {
     brand: "FinGuru",
-    nav: { path: "학습 경로", gurus: "거장들", indicators: "지표 & 도구" },
+    nav: {
+      path: "학습 경로",
+      schools: "투자 유파",
+      gurus: "거장들",
+      indicators: "지표 & 도구",
+    },
+    schoolsIndex: {
+      title: "투자의 유파들",
+      intro:
+        "시장을 읽는 네 가지 방법. 각 유파는 ‘무엇이 진짜 가격을 움직이는가?’라는 하나의 질문에 대한 서로 다른 답이며, 그것을 세운 거장들을 각자의 대표 전략별로 묶어 보여줍니다.",
+      explore: "이 유파 살펴보기 →",
+      lessonCount: (n) => `강의 ${n}개`,
+    },
     home: {
       title: "기술적 분석, 입문자에서 프로까지",
       intro:
