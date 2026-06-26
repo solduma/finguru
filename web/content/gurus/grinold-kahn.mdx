@@ -1,0 +1,520 @@
+---
+title: "Richard Grinold & Ronald Kahn — The Engineers of Active Management"
+slug: "grinold-kahn"
+kind: "guru"
+school: "quant"
+strategy: "factors-risk"
+level: "advanced"
+order: 309
+summary: "The two researchers who reduced active investing to one equation — and proved that a little skill spread across many independent bets beats genius applied to a few."
+era: "fl. 1989–present"
+contribution: "Fundamental Law of Active Management"
+tags: ["information ratio", "breadth", "information coefficient", "active management", "quant", "transfer coefficient"]
+prereqs: ["harry-markowitz", "william-sharpe"]
+---
+
+## Why this lesson matters
+
+Most investing lessons teach you *what* to buy. This one teaches you something
+deeper and more useful: **how to think about whether your edge is real, and how
+to get the most out of whatever edge you have.**
+
+Richard Grinold and Ronald Kahn took the messy art of "beating the market" and
+turned it into engineering. They wrote down a single equation that tells you,
+before you trade a dime, how good your track record *can* be. That equation
+explains why some of the largest investment firms on earth — BlackRock among
+them — run computer models over thousands of stocks instead of betting the fund
+on ten brilliant convictions.
+
+If you've ever wondered "is my stock-picking actually skill, or just luck?", or
+"should I concentrate or diversify?", this is the lesson that answers it with
+numbers.
+
+## Who they were
+
+These two are taught as a pair because they worked side by side for decades and
+co-wrote the field's defining textbook. Their shared career — **BARRA → Barclays
+Global Investors (BGI) → BlackRock** — *is* the institutional history of modern
+systematic equity investing.
+
+**Richard C. Grinold** earned a Ph.D. in **operations research** from UC
+Berkeley. That background matters: operations research is the math of optimizing
+real-world systems (think airline scheduling or factory logistics), and it's
+exactly why his investing work reads like engineering rather than storytelling.
+He spent roughly two decades on Berkeley's business-school faculty, then about
+14 years at **BARRA** — the pioneering risk-model firm — rising to Director of
+Research and eventually President. From 1994 until his retirement in 2009 he was
+Global Director of Research at **BGI**, joining BlackRock when it absorbed BGI in
+December 2009.
+
+<Callout type="note">
+BARRA was founded by **Barr Rosenberg**, not Grinold. Grinold *led research*
+there. It's a common mix-up worth getting right.
+</Callout>
+
+**Ronald N. Kahn** is a physicist by training — an A.B. in physics *summa cum
+laude* from Princeton and a Ph.D. in physics from Harvard. (His career-change
+story appears in the 2007 essay collection *How I Became a Quant*.) He followed
+the same path — BARRA → BGI → BlackRock — where he became **Global Head of
+Systematic Equity Research**, responsible for the firm's research standards, and
+chaired its proxy-voting committees. He also teaches the equities half of a
+course in Berkeley's Master of Financial Engineering program, and wrote a later
+book, *The Future of Investment Management* (CFA Institute Research Foundation,
+2018).
+
+In **2013** both men shared the CFA Institute's **James R. Vertin Award**, given
+for a body of research of enduring value to investment professionals. Their
+textbook, *Active Portfolio Management*, is widely called the field's "bible."
+
+<ConceptDiagram
+  caption="The institutional lineage of modern systematic equity investing. Grinold and Kahn were the in-house theorists at every stop — BARRA's risk models flowed into BGI's quant funds, which became part of BlackRock, today the world's largest asset manager."
+  chart={`flowchart LR
+  A[BARRA<br/>risk models] --> B[Barclays Global<br/>Investors / BGI]
+  B --> C[BlackRock<br/>2009 merger]
+  G[Grinold &amp; Kahn] -.theorists.-> A
+  G -.theorists.-> B
+  G -.theorists.-> C`}
+/>
+
+## The core idea in one line
+
+Their famous result is the **Fundamental Law of Active Management**. Richard
+Grinold introduced it in a 1989 paper, and the pair expanded it into the
+textbook. Here it is:
+
+> **IR ≈ IC × √BR**
+
+Don't panic at the symbols — each one is a plain-English idea, and we'll define
+them all. But first, the punchline, because it's the whole point:
+
+<Callout type="key">
+**A little skill applied very broadly beats a lot of skill applied narrowly.**
+
+Because the number of bets enters as a *square root*, you can make up for weak
+skill by simply making *many independent bets*. This is the mathematical
+justification for systematic, diversified, high-volume quant investing.
+</Callout>
+
+### Decoding the three letters
+
+| Symbol | Name | Plain English |
+|--------|------|---------------|
+| **IR** | Information Ratio | How good your *risk-adjusted* track record is — your reward per unit of the risk you take *relative to a benchmark.* |
+| **IC** | Information Coefficient | Your **skill per bet** — how well your forecasts correlate with what actually happens. |
+| **BR** | Breadth | The number of **independent bets** you make per year. |
+
+Let's take them one at a time.
+
+## Everything is measured against a benchmark
+
+Before the law makes sense, absorb one mindset shift. In active management you
+are **not** judged on your raw return. You're judged *relative to a benchmark*
+(say, the S&P 500). Two quantities matter:
+
+- **Active return** = your return − the benchmark's return. (Also called *excess
+  return* or *alpha*.) If the S&P returned 10% and you returned 12%, your active
+  return is 2%.
+- **Active risk** (also called **tracking error**, written σ<sub>A</sub>) = the
+  volatility (the bounciness) of that *difference* over time. It measures how far
+  your bets stray from just hugging the index.
+
+The **Information Ratio** is simply the ratio of the two:
+
+```
+IR = active return / active risk = (your return − benchmark) / tracking error
+```
+
+It answers: *for every unit of benchmark-relative risk you take, how much
+benchmark-beating return do you earn?* Higher is better. As a yardstick, the
+textbook puts a **top-quartile** active manager at an IR of about **0.5** — that
+is genuinely hard to achieve and sustain.
+
+<Callout type="warning">
+**IR is not the Sharpe ratio — don't confuse them.** Both divide a return by a
+risk, but the *ingredients differ*:
+
+- **Sharpe ratio** = (total return − risk-free rate) ÷ *total* volatility. It
+  measures your whole portfolio against cash.
+- **Information ratio** = *active* return (vs. benchmark) ÷ *tracking error*
+  (active risk). It measures only the part of you that *differs* from the index.
+
+IR is the "Sharpe ratio of your active bets." A closet-indexer can have a great
+Sharpe ratio and a near-zero IR — because almost none of their return came from
+their own decisions.
+</Callout>
+
+## The skill term: Information Coefficient (IC)
+
+The **IC** is the correlation between your *forecasts* and the *actual realized
+returns.* Correlation runs from −1 (always wrong) through 0 (no skill, pure coin
+flip) to +1 (a crystal ball).
+
+Here's the reality check beginners always get wrong:
+
+<Callout type="warning">
+Real skill is *tiny*. For stock forecasting, an IC of **0.05 to 0.10** is
+genuinely good. An IC of **0.10** is excellent. Beginners assume they have an IC
+of 0.3 or higher — that is fantasy. A 0.05 IC means you're right just barely more
+often than a coin flip, and that's enough to build a great track record *if* you
+get breadth.
+</Callout>
+
+To put it on a chart: an IC of 0.06 looks like a faint upward tilt in a cloud of
+noise. The skill is real, but it is buried in randomness on any single bet — it
+only reveals itself across thousands of them.
+
+<ScatterChart
+  caption="What an IC of about 0.06 actually looks like: each dot is one stock — your forecast (x) vs. its realized return (y). The faint upward-tilted line is your skill. On any single bet it's swamped by noise; only across many bets does it pay off. (Illustrative data.)"
+  xLabel="Your forecast (standardized)"
+  yLabel="Realized return (%)"
+  series={[{
+    label: "Forecast vs. outcome",
+    line: true,
+    data: [
+      { x: -2.0, y: -6 }, { x: -1.8, y: 4 }, { x: -1.5, y: -8 },
+      { x: -1.2, y: 2 }, { x: -1.0, y: -3 }, { x: -0.8, y: -5 },
+      { x: -0.5, y: 3 }, { x: -0.3, y: -2 }, { x: 0.0, y: 1 },
+      { x: 0.2, y: -4 }, { x: 0.5, y: 5 }, { x: 0.7, y: -1 },
+      { x: 1.0, y: 2 }, { x: 1.3, y: 7 }, { x: 1.6, y: -2 },
+      { x: 1.9, y: 6 }, { x: 2.1, y: 9 }, { x: 2.3, y: 3 },
+    ],
+  }]}
+/>
+
+## The breadth term: BR — and why "independent" is everything
+
+**Breadth** is the number of **independent** bets you make per year. Read that
+word twice: *independent.*
+
+<Callout type="warning">
+Breadth is **not** "number of positions." Ten stocks in the same sector that all
+move together are closer to **one** bet than ten. Breadth counts *truly
+independent decisions* — separate forecasts that aren't just echoes of each
+other.
+</Callout>
+
+You raise breadth three ways:
+
+1. **More securities** — forecast 1,000 stocks instead of 50.
+2. **More frequent rebalancing** — a fresh monthly forecast on each stock gives
+   you 12× the bets of an annual one (12 months × however many stocks).
+3. **More distinct, de-correlated signals** — a value signal and a momentum
+   signal that disagree often give you two real bets, not one.
+
+Because IR scales with **√BR**, breadth has diminishing returns — but it never
+stops helping. Going from 4 bets to 100 (a 25× increase) multiplies your
+achievable IR by only **5** (√25). Still, 5× is enormous.
+
+<Callout type="note">
+The square root has a sharp practical consequence: **to double your IR you must
+quadruple your independent bets** (because √4 = 2), not merely double them. More
+breadth always helps, but each new batch of bets helps a little less than the
+last.
+</Callout>
+
+<LineChart
+  caption="How achievable Information Ratio grows with breadth, holding skill fixed at IC = 0.05. The curve is the square-root shape of the law: doubling your bets does NOT double your IR. Going from 25 to 100 independent bets (4×) only doubles IR (√4 = 2). More bets always help — just less and less each time."
+  height={280}
+  series={[{ label: "Achievable IR (IC = 0.05)", data: [0.05, 0.071, 0.112, 0.158, 0.224, 0.354, 0.5, 0.707] }]}
+  points={[
+    { x: 0, y: 0.05, text: "1 bet → IR 0.05" },
+    { x: 4, y: 0.224, text: "20 bets → 0.22" },
+    { x: 6, y: 0.5, text: "100 bets → 0.50 (top quartile)", color: "#22c55e" },
+    { x: 7, y: 0.707, text: "200 bets → 0.71" },
+  ]}
+/>
+
+## The full method — step by step
+
+Grinold and Kahn frame investing as **forecasting + risk-controlled portfolio
+construction.** Here's the whole pipeline a quant shop runs, in plain steps.
+
+<ConceptDiagram
+  caption="The Grinold-Kahn active-management pipeline. Raw signals become scaled forecasts (alphas), which an optimizer turns into a portfolio while a risk model controls unintended bets. Realized results feed back to re-estimate your true skill (IC)."
+  chart={`flowchart LR
+  S[Raw signals<br/>value, momentum...] --> A[Scale into alphas<br/>alpha = vol x IC x score]
+  A --> O[Optimizer<br/>max alpha - lambda x active variance]
+  R[Risk model<br/>factor covariance] --> O
+  O --> P[Portfolio<br/>controlled active risk]
+  P --> M[Measure realized IC & IR]
+  M -.feedback.-> S`}
+/>
+
+**Step 1 — Define benchmark, active return, and active risk.** Pick the
+benchmark you'll be judged against. Everything from here is relative to it.
+
+**Step 2 — Generate return forecasts ("alphas").** For each stock, forecast its
+above-benchmark return. Raw signals are refined by Grinold's **forecasting rule
+of thumb**:
+
+```
+alpha = volatility × IC × score
+```
+
+In words: take a standardized signal (a **score**, or z-score — how many standard
+deviations above/below average this stock looks), shrink it by your skill (IC),
+and scale it by the stock's volatility. This stops you from over-betting on a
+signal you're not actually good at reading.
+
+**Step 3 — Estimate your skill (IC).** Measure the historical correlation
+between your forecasts and outcomes. Be brutally honest; see the 0.05–0.10
+reality above.
+
+**Step 4 — Maximize breadth (BR).** Add securities, rebalance more often,
+de-correlate signals — while remembering that only *independent* bets count.
+
+**Step 5 — Build the portfolio with mean-variance optimization.** Feed the
+alphas and a **risk model** (a BARRA-style **factor covariance matrix** — a table
+estimating how every stock co-moves with every other via shared factors like
+size, value, and industry) into an optimizer that maximizes:
+
+```
+alpha  −  λ × (active variance)
+```
+
+Here **λ** (lambda) is your risk-aversion dial. The risk model's job is to kill
+*unintended* bets, so your active risk is spent only on views you actually hold —
+not on an accidental giant tilt toward tech because your favorite stocks happen
+to all be tech.
+
+**Step 6 — Apply the Transfer Coefficient (TC) reality check.** Real portfolios
+face constraints: no shorting, position limits, turnover and transaction-cost
+caps. The **Transfer Coefficient** (a number from 0 to 1) measures how much of
+your theoretical skill *survives* those constraints — formally, the correlation
+between the positions your forecasts *want* and the positions you can *actually*
+hold. The law becomes:
+
+> **IR ≈ TC × IC × √BR**
+
+This refinement isn't Grinold and Kahn's own — it came from **Clarke, de Silva &
+Thorley (2002)** — but it's essential, so we teach it together. A long-only,
+constrained portfolio often has **TC ≈ 0.4–0.6**, meaning the constraints throw
+away **40–60%** of your potential edge.
+
+**Step 7 — Choose your aggressiveness.** Set active risk to maximize your overall
+Sharpe ratio. The relationship is:
+
+```
+SR_P²  =  SR_B²  +  (TC × IR)²
+```
+
+Your information ratio adds to the benchmark's Sharpe ratio *in quadrature* (squares
+add). Translation: a good IR meaningfully lifts your total risk-adjusted return on
+top of just owning the benchmark.
+
+**Step 8 — Backtest, monitor, attribute.** Track *realized* IC and IR over time.
+Decompose every result into signal (skill) vs. noise (luck) — because a big chunk
+of any single year is luck.
+
+## Worked examples with real numbers
+
+### Example A — The headline: skill vs. breadth
+
+This single calculation is the entire case for systematic investing.
+
+- **Manager X** — high skill, IC = **0.10**, but only **4** independent bets/year:
+  IR = 0.10 × √4 = 0.10 × 2 = **0.20**
+- **Manager Y** — half the skill, IC = **0.05**, but **100** independent bets/year:
+  IR = 0.05 × √100 = 0.05 × 10 = **0.50**
+
+Manager Y is *half as skilled per bet* yet ends up with **2.5× the information
+ratio** — and an IR of 0.50 is roughly top-quartile. Breadth won. For Manager X
+to *match* Y, he'd need IC = 0.50 ÷ √4 = **0.25** — an implausibly high per-bet
+skill almost no human sustains.
+
+<BarChart
+  caption="Skill vs. breadth (Example A). Manager X has double the per-bet skill but makes only 4 bets; Manager Y has half the skill but 100 bets. Breadth wins decisively — Y's IR is 2.5× X's. This is the law's whole message in one chart."
+  yLabel="Information Ratio (IR)"
+  labels={["Manager X (IC 0.10, 4 bets)", "Manager Y (IC 0.05, 100 bets)"]}
+  series={[{ label: "Achievable IR", data: [0.20, 0.50] }]}
+/>
+
+### Example B — Turning IR into money
+
+An IR is abstract until you attach a **tracking-error budget** (how much active
+risk you're willing to run). Your expected outperformance is just:
+
+```
+expected active return (α)  =  IR × tracking error (σ_A)
+```
+
+Take Manager Y from Example A (IR = 0.50) running a tracking-error budget of
+**σ<sub>A</sub> = 5%** per year:
+
+```
+α = 0.50 × 5% = 2.5% per year above the benchmark
+```
+
+Now add real-world constraints — long-only, position caps — giving a transfer
+coefficient of **TC = 0.5**. The realized IR drops to 0.5 × 0.50 = 0.25, so:
+
+```
+realized α = 0.25 × 5% = 1.25% per year
+```
+
+**Half the value-add, lost purely to implementation friction** — not to worse
+forecasting. That gap is exactly what the TC term was invented to measure.
+
+### Example C — Why the raw law over-promises
+
+Take a monthly IC of 0.04 over a 1,050-stock universe rebalanced monthly. The raw
+law says:
+
+```
+BR = 12 months × 1,050 stocks = 12,600
+IR = 0.04 × √12,600 ≈ 0.04 × 112.2 ≈ 4.49
+```
+
+An IR of **4.49** is absurd — "even above the most optimistic manager's dreams,"
+as one CFA study source puts it. No one earns that. The lesson: those 12,600 bets
+are **nowhere near independent**, and in the real world TC `< 1`. Whenever the raw
+law spits out a fantasy number, your independence assumption is the lie.
+
+### Example D — The full law, and separating skill from luck
+
+Take a realistic constrained portfolio: TC = 0.90, IC = 0.08, BR = 96, active
+risk σ<sub>A</sub> = 5%.
+
+```
+Expected active return = TC × IC × √BR × σ_A
+                       = 0.90 × 0.08 × √96 × 5%
+                       = 0.90 × 0.08 × 9.80 × 5%
+                       ≈ 3.53%
+```
+
+So your *skill* predicts about a **3.53%** active return. If you actually earned
+**3.62%**, the extra **0.09%** is **noise — luck, not skill.** This is how the
+framework keeps you honest: it tells you how much outperformance your edge can
+*justify*, and flags the rest as random.
+
+## Key books and papers
+
+- **Grinold, R. (1989), "The Fundamental Law of Active Management,"** *Journal of
+  Portfolio Management*, Vol. 15, No. 3 (Spring 1989) — the origin of
+  IR ≈ IC × √BR.
+- **Grinold, R. & Kahn, R. (1995; 2nd ed. 1999), *Active Portfolio Management:
+  Quantitative Theory and Applications*,** McGraw-Hill — the definitive textbook;
+  the 1999 second edition is the standard reference (the top-quartile IR ≈ 0.5
+  figure is from its p. 114).
+- **Clarke, de Silva & Thorley (2002), "Portfolio Constraints and the Fundamental
+  Law of Active Management,"** *Financial Analysts Journal*, Vol. 58, No. 5 —
+  added the Transfer Coefficient (the full TC × IC × √BR law).
+- **Kahn, R. (2018), *The Future of Investment Management*,** CFA Institute
+  Research Foundation — Kahn's reflections on factors, smart beta, and where
+  active management is heading.
+- **Grinold, R. & Kahn, R. (2019), *Advances in Active Portfolio Management*,**
+  McGraw-Hill — a modern collection of their later work.
+
+## Honest criticisms and limitations
+
+<Callout type="warning">
+The Fundamental Law is a *ceiling*, not a promise. It tells you the best you could
+do under idealized assumptions — not what you'll actually get.
+</Callout>
+
+1. **Breadth is almost always overstated.** The law assumes independent bets.
+   Real signals are correlated across stocks, time, and factors, so true breadth
+   is far smaller than the position count — producing wildly optimistic IRs (see
+   Example C).
+2. **It's a single-period, static model.** It ignores transaction costs, market
+   impact, and dynamics. The TC extension only partly patches this.
+3. **IC is unstable and hard to estimate.** Skill decays; a backtested IC rarely
+   survives out-of-sample. Estimation error in IC and the covariance matrix can
+   dominate — optimizers are prone to "error maximization," loading up on whatever
+   the noisy inputs happened to overstate.
+4. **Garbage in, garbage out.** The law is an *accounting identity given your
+   forecasts.* It says nothing about whether your forecasts have any genuine
+   predictive power — or *where* skill comes from in the first place.
+5. **It assumes a mean-variance, roughly-normal world.** Fat tails, regime shifts,
+   and **crowding** (many quants holding the same bets — as in the August 2007
+   "quant quake," when crowded quant trades unwound violently all at once) break
+   the independence and risk-model assumptions exactly when it hurts most.
+6. **It can encourage over-engineering.** The framework can lure you into mining
+   ever more "signals" to inflate breadth on paper, when the new signals are just
+   repackaging the old ones.
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Confusing IR with the Sharpe ratio.** IR uses *active* return and *tracking
+   error*; Sharpe uses *total* return over the risk-free rate. Different
+   denominators, different jobs.
+2. **Confusing breadth with number of holdings.** 500 correlated tech stocks ≠
+   500 bets. Count *independent* decisions.
+3. **Believing the raw IR forecast.** Always apply the TC; real-world constraints
+   can halve your theoretical edge.
+4. **Overestimating your own IC.** An IC of 0.05 is *good.* If you think yours is
+   0.3, you're fooling yourself — and you almost certainly over-fit a backtest.
+5. **Chasing breadth by overtrading.** More frequent bets raise breadth on paper
+   but get eaten by transaction costs and noise.
+6. **Misreading √BR as linear.** Doubling IR needs *four times* the bets, not
+   twice — diminishing returns to breadth.
+7. **Ignoring the risk model.** Without controlling unintended factor exposures,
+   you waste active risk on bets you never meant to make.
+8. **Treating one good year as proof of skill.** Much of any single result is
+   noise (Example D). Outperformance ≠ high IC.
+9. **Forgetting it's all relative.** The scorecard is *vs. the benchmark*, not
+   absolute return.
+</Callout>
+
+## A beginner checklist to apply the Fundamental Law
+
+<Callout type="key">
+1. **Name your benchmark.** Decide what you're trying to beat (e.g., the S&P 500).
+   Everything is measured against it.
+2. **Estimate your honest IC.** Look back at your past calls: did your "buys"
+   actually outperform your "sells"? If you can't show a real correlation, assume
+   IC ≈ 0 and *index instead.*
+3. **Count your truly independent bets (BR).** Be ruthless: lump together
+   positions driven by the same theme. Ten oil stocks on one oil-price view = one
+   bet.
+4. **Plug into IR ≈ IC × √BR.** See what's realistic. If it lands near or above
+   0.5, double-check your independence assumption — you're probably fooling
+   yourself (Example C).
+5. **Pick a tracking-error budget and read off the payoff:** α ≈ IR × σ_A. That's
+   the outperformance your edge can justify (Example B).
+6. **Discount for your constraints (TC).** Long-only, no leverage, position caps?
+   Expect to keep only ~40–60% of the theoretical IR.
+7. **Favor breadth over conviction.** Spread a thin-but-real edge across many
+   independent bets rather than betting the house on a few.
+8. **Separate skill from luck after the fact.** Compare what you *earned* to what
+   your edge *predicted*; bank the difference as luck, not genius.
+</Callout>
+
+## Putting it to work
+
+You don't need a supercomputer or a 1,000-stock universe to use this. The Grinold-
+Kahn mindset upgrades how you think about *any* strategy:
+
+- **Audit your edge.** Before trusting a method, ask: what's my honest IC? If you
+  can't point to a real correlation between your calls and outcomes, assume it's
+  near zero.
+- **Favor breadth over conviction — within reason.** If your edge is genuine but
+  thin (and most are), spread it across more independent bets rather than betting
+  the house on a few. A diversified rules-based approach beats a concentrated hunch
+  with the same skill.
+- **Make your bets actually independent.** Don't kid yourself that ten correlated
+  names are ten bets. Seek positions whose outcomes don't all rise and fall
+  together.
+- **Respect the constraints (your TC).** If you can't short and you cap position
+  sizes, accept that you're keeping maybe half your theoretical edge — and plan
+  around it.
+- **Separate skill from luck.** After any winning stretch, estimate how much your
+  edge could *justify.* Bank the rest as luck, not genius. It keeps you humble and
+  keeps your process honest.
+
+The deepest takeaway is liberating: **you do not need to be a genius to beat the
+market.** You need a small, real, repeatable edge — and the discipline to apply it
+broadly, independently, and consistently. That is the engineering of active
+management, and it's the legacy Grinold and Kahn left the entire industry.
+
+---
+
+### Sources
+
+1. [Information ratio — Wikipedia](https://en.wikipedia.org/wiki/Information_ratio) — definition of IR; cites *Active Portfolio Management* (2nd ed., p. 114) for the top-quartile IR ≈ 0.5 figure; contrast with the Sharpe ratio.
+2. [Information coefficient — Wikipedia](https://en.wikipedia.org/wiki/Information_coefficient) — IC as the −1 to +1 correlation between forecasts and outcomes; "predictive skill of an analyst."
+3. [Ronald Kahn — UC Berkeley Haas faculty bio (PDF)](https://haas.berkeley.edu/wp-content/uploads/kahn_ronald.pdf) — Princeton/Harvard physics; BlackRock Global Head of Systematic Equity Research; the 2013 Vertin Award; co-authorship with Grinold.
+4. [The Fundamental Law of Active Portfolio Management — AnalystPrep (CFA Level II)](https://analystprep.com/study-notes/cfa-level-2/state-and-interpret-the-fundamental-law-of-active-portfolio-management-including-its-component-terms-transfer-coefficient-information-coefficient-breadth-and-active-risk-aggressiveness/) — both forms of the law (IR* = IC×√BR and IR = TC×IC×√BR); definitions of TC, IC, BR, σ_A; the worked numeric examples.
+5. [Goodwin, "The Information Ratio," *Financial Analysts Journal* (PDF)](https://tsgperformance.com/wp-content/uploads/2020/11/Goodwin-information-ratio.pdf) — academic decomposition of the IR into IC and breadth.
+6. [Richard Grinold — Portfolio Management Research](https://www.pm-research.com/richard-grinold) — publisher of the *Journal of Portfolio Management*, where the 1989 founding paper appeared.

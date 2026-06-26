@@ -1,0 +1,482 @@
+---
+title: "Jim Simons — The Mathematician Who Solved the Market"
+slug: "jim-simons"
+kind: "guru"
+school: "quant"
+strategy: "systematic-practitioners"
+level: "intermediate"
+order: 305
+summary: "A code-breaking geometer who banned human judgment from trading, hired physicists instead of financiers, and built the most profitable fund in history out of thousands of tiny, fleeting patterns."
+era: "1938–2024"
+contribution: "Systematic Quant Trading"
+tags: ["quant", "medallion", "renaissance", "machine learning", "systematic", "edge"]
+prereqs: ["charles-dow"]
+---
+
+## Why he matters
+
+Almost everyone you meet in investing tells a **story**. "I bought this stock
+because the company is great." "I sold because a recession is coming." Jim
+Simons did the opposite. He decided that stories were a trap, that human
+judgment was a bug, and that the only thing worth trusting was **data run
+through mathematics.**
+
+The result was the **Medallion Fund** — by most accounts the best-performing
+investment fund ever measured, returning roughly **66% a year before fees for
+three decades**. That is not a typo, and it is not a one-off lucky streak: it
+ran from 1988 to 2018 *without a single losing year.*
+
+This lesson does **not** claim to hand you Medallion's secret formula — that
+formula is one of the most closely guarded secrets in finance, and anyone
+selling it to you is lying. Instead it teaches the **principles** Simons
+pioneered, the ones a careful beginner can actually understand and, in a
+simplified form, follow.
+
+<Callout type="warning">
+**Read this before anything else.** Medallion is essentially impossible for an
+ordinary investor to copy (we will be very honest about why). Treat Simons as a
+*case study in disciplined, data-driven thinking* — not a get-rich blueprint.
+The most likely honest takeaway for most people is closer to "buy a low-cost
+index fund," which even Simons's opposite number, Warren Buffett, recommends.
+</Callout>
+
+## Who he was
+
+**James Harris Simons** (April 25, 1938 – May 10, 2024) was a mathematician
+*first* and an investor second. The order matters: it explains everything about
+how he ran money.
+
+- **A genuine, world-class mathematician.** He earned a BS in math from **MIT**
+  in three years (1958) and a **PhD from UC Berkeley at 23** (1961). With
+  Shiing-Shen Chern he co-discovered the **Chern–Simons form** — deep geometry
+  that later became foundational in theoretical physics and string theory. He
+  won the **Oswald Veblen Prize** (1976), geometry's highest honor.
+- **A code-breaker.** From 1964–1968 he broke codes for the NSA at the
+  **Institute for Defense Analyses**, learning to **find signal hidden inside
+  noise** — the exact skill he would later monetize. He was pushed out for
+  publicly opposing the Vietnam War.
+- **An academic leader.** He chaired the **Stony Brook University** math
+  department (1968–1978) before switching careers entirely. He was elected to the
+  **U.S. National Academy of Sciences** in 2014.
+- **The founder.** In **1978** he started the firm (first "Monemetrics,"
+  renamed **Renaissance Technologies** in 1982) and launched the **Medallion
+  Fund in 1988**, named for math medals he and colleague James Ax had won.
+- **A great philanthropist.** He gave **over $4 billion** away — the Simons
+  Foundation, Math for America, the Flatiron Institute, and a record **$500
+  million** gift to Stony Brook in 2023. An asteroid, **6618 Jimsimons**, is
+  named for him. His net worth at death was roughly **$31 billion.**
+
+<Callout type="key">
+Simons did not learn investing on Wall Street and then add math. He was a
+**mathematician who treated the market as a giant data set to be decoded** — the
+same way he had decoded enemy communications. That reversal is the whole idea.
+</Callout>
+
+### The team — scientists, not stockbrokers
+
+Renaissance's other defining choice was *who* it hired. Wall Street experience
+was treated as a **negative.** Instead Simons recruited mathematicians,
+physicists, astronomers, and statisticians — about **half of the ~150
+researchers held PhDs.** The two men who eventually succeeded him as co-CEOs,
+**Robert Mercer** and **Peter Brown**, were **speech-recognition experts from
+IBM Research.** They brought a machine-learning engine built for *language* —
+**Hidden Markov Models** — into the trading models. Other key figures: **Leonard
+Baum** (co-inventor of the Baum–Welch algorithm behind those models), **James
+Ax**, **Elwyn Berlekamp**, and **Henry Laufer.**
+
+## The core idea, in plain language
+
+Simons's belief can be stated in one paragraph:
+
+> Markets are a noisy stream of data. Hidden inside that noise are tiny,
+> fleeting, non-random **patterns**. If you collect enough clean data and let
+> statistical and machine-learning models hunt for those patterns — then trade
+> them automatically, thousands upon thousands of times — many tiny edges
+> **compound** into enormous returns.
+
+Four pillars hold it up:
+
+1. **Data over opinion.** Decisions come from models trained on mountains of
+   historical data — never from a hunch, a news headline, or a CEO's promises.
+2. **A tiny edge, repeated enormously.** Renaissance was reportedly right on only
+   about **50.75% of its trades** — barely better than a coin flip. But repeated
+   across *millions* of trades, that sliver of an edge becomes a money machine,
+   exactly like a casino's small house edge.
+3. **Scientists, not financiers.** Pattern-finding is a science problem, so you
+   hire scientists.
+4. **Automate everything.** The system finds the patterns *and* places the
+   trades, with little human intervention. Holding periods were short — intraday
+   to a few days.
+
+<ConceptDiagram
+  caption="The systematic-quant pipeline Simons pioneered: raw data is cleaned, mined for weak patterns ('signals'), tested honestly against unseen history, blended into one portfolio, sized by risk, and traded by machine — then the whole loop repeats as old edges decay. Human judgment is deliberately kept OUT of the trading decision."
+  chart={`flowchart LR
+  A[Collect &amp; clean<br/>massive data] --> B[Find many<br/>weak signals]
+  B --> C[Backtest<br/>out-of-sample]
+  C --> D[Combine signals<br/>into portfolio]
+  D --> E[Size by risk<br/>+ leverage]
+  E --> F[Automated<br/>execution]
+  F --> G[Monitor &amp;<br/>retire dead edges]
+  G --> A`}
+/>
+
+## What "a tiny edge" really means
+
+Here is the single most important intuition in the whole lesson. Most beginners
+assume a great trader must be *right most of the time.* Simons proved you can be
+right barely more than half the time and still build the greatest fortune in
+trading history — **if you bet small, bet often, and let the math do its work.**
+
+A **casino** does not win because it wins every spin of the roulette wheel. It
+wins because it has a small, fixed edge on *every* spin and the wheel turns
+thousands of times a day. The losses and the wins both happen, but over enough
+spins the edge is mathematically guaranteed to surface. That guarantee is called
+the **law of large numbers**: the more times you repeat a bet with a positive
+edge, the more certainly your actual result converges on the expected result.
+
+Medallion *is* that casino — and Renaissance was the house.
+
+## The full method, as concrete steps
+
+These are the **generalizable principles** of systematic quant investing that
+Simons pioneered. (Again: the actual Medallion signals are secret. This is the
+framework, not the recipe.)
+
+### Step 1 — Collect and obsessively clean data
+
+Renaissance gathered decades of price data plus anything else it could find —
+volumes, weather, news feeds. The unglamorous 90% of the work is **cleaning** it:
+fixing errors, gaps, and bad ticks. *Garbage in, garbage out* is not a cliché
+here; it is the whole ballgame.
+
+> **Beginner version:** download several years of clean historical price data
+> for one liquid asset (a major index ETF, say). Inspect it for obvious errors
+> before doing anything else.
+
+### Step 2 — Treat the market as a statistical process
+
+Stop asking "is this a good company?" Start asking **"what does the data say
+tends to happen *next* after a given pattern?"** You are studying behavior, not
+business quality.
+
+### Step 3 — Form a hypothesis (a "signal")
+
+A **signal** is any measurable pattern that gives a slight edge in predicting
+the next move. Two classic, beginner-friendly examples:
+
+- **Mean reversion** — "after a sharp drop, this asset tends to bounce back
+  toward its recent average." (It overshoots, then snaps back.)
+- **Trend following / momentum** — "what has been rising tends to keep rising for
+  a while."
+
+<LineChart
+  caption="Two opposite signals on the same kind of price wiggle. MEAN REVERSION (left) bets the price snaps back toward its average after an overshoot. MOMENTUM (right) bets a move keeps going. Illustrative — Renaissance ran many such signals at once, not one."
+  height={280}
+  series={[{ label: "Price", data: [50, 47, 44, 48, 50, 51, 49, 50, 53, 57, 61, 64, 66] }]}
+  levels={[{ y: 50, label: "recent average", color: "#f59e0b" }]}
+  points={[
+    { x: 2, y: 44, text: "overshoot down → mean-revert buy", color: "#22c55e" },
+    { x: 9, y: 57, text: "trend forming → momentum buy", color: "#2dd4bf" },
+  ]}
+/>
+
+### Step 4 — Backtest rigorously, after costs
+
+**Backtesting** means running the signal against historical data to see whether
+it *would have* made money. Two rules make a backtest honest:
+
+- **Subtract trading costs and slippage first.** (More on this below.)
+- **Test on data the model has never seen** — called **out-of-sample** testing.
+  If you tune a rule on 2010–2015 data, you must test it on 2016–2020 data it has
+  never touched.
+
+### Step 5 — Fear overfitting above all
+
+This is the **cardinal sin** of quant work. **Overfitting** (or "curve-fitting")
+is when a model memorizes the *random noise* in past data instead of learning a
+real, repeatable pattern. It looks brilliant on history and dies instantly in
+live trading.
+
+<ConceptDiagram
+  caption="Overfitting, the quant's deadly trap. A simple rule captures the real, repeatable pattern and survives on new data. An over-tuned rule hugs every past wiggle — including pure noise — and then collapses the moment it meets data it has never seen. Prefer simple rules that work across many periods and assets."
+  chart={`flowchart TD
+  A[A signal that looks<br/>great on past data] --> B{Does it work on<br/>UNSEEN data too?}
+  B -->|Yes| C[Real edge:<br/>simple, robust,<br/>works many periods]
+  B -->|No| D[Overfit: it memorized<br/>noise &mdash; will lose<br/>money live]`}
+/>
+
+### Step 6 — Combine many weak signals
+
+No single signal is reliable. The power comes from **blending dozens of
+slightly-better-than-random signals** into one portfolio — the way a crowd of
+mediocre forecasters, averaged together, can be surprisingly accurate. One signal
+being wrong barely dents the whole.
+
+### Step 7 — Size by risk, diversify, leverage carefully
+
+Spread your bets across many **uncorrelated** positions (ones that don't all rise
+and fall together) so no single one can sink you. Renaissance used **leverage**
+(borrowed money) to amplify its small per-trade edge — but leverage magnifies
+losses just as much as gains, so it must be controlled obsessively.
+
+### Step 8 — Automate execution and crush costs
+
+Because the edge per trade is tiny, **transaction costs and slippage** — the gap
+between the price you expected and the price you actually got — can swallow all
+your profit. Cost control is not an afterthought; it is *part of the strategy.*
+And trading by rule, not emotion, removes the human panic that wrecks discretionary
+traders.
+
+### Step 9 — Let strategies decay gracefully
+
+Every edge erodes as markets change and competitors copy it. You must
+**continuously research new signals to replace dying ones.** A quant fund is a
+treadmill, not a finish line.
+
+### Step 10 — Respect capacity limits
+
+The strategy only works at limited size. As more money chases the same tiny
+inefficiencies, the edge shrinks. Renaissance famously **capped Medallion** and
+returned profits to keep it nimble — a profound admission that more money would
+have *destroyed* the returns.
+
+## A worked example: how a coin-flip edge becomes billions
+
+Let's make Pillar #2 concrete with numbers.
+
+**Setup.** Suppose each trade risks \$1 to win \$1, you win **50.75%** of the
+time, and lose 49.25%.
+
+- Expected profit per trade = (0.5075 × \$1) − (0.4925 × \$1) = **\$0.015** —
+  one and a half cents. Almost nothing.
+- **Now scale it.** Over **1,000,000 trades**, expected profit ≈ 1,000,000 ×
+  \$0.015 = **\$15,000**. And by the law of large numbers, the *actual* result
+  clusters tightly around that expectation — the randomness averages out. That
+  is the Medallion machine in one line.
+
+Why does the randomness "average out"? Because the **edge grows faster than the
+uncertainty.** Over `n` independent trades, your expected profit grows in
+proportion to `n`, but the swing around it (the standard deviation) grows only
+like the square root of `n`. So the edge pulls ahead and the noise falls behind —
+the more you trade, the more certain the win.
+
+<LineChart
+  caption="Why a coin-flip edge becomes near-certain. With a 50.75% win rate, your expected profit (green) grows straight in proportion to the number of trades, while the random swing around it (the ± band, orange) grows only like the square root of the trade count. At 100 trades the swing dwarfs the edge — you might easily be down. By a million trades the edge is enormous and the band is a thin sliver beside it: an overall loss has become almost impossible. This is the law of large numbers, and it is the whole engine."
+  height={300}
+  labels={["100", "1k", "10k", "100k", "1M"]}
+  series={[
+    { label: "Expected profit ($)", data: [1.5, 15, 150, 1500, 15000], color: "#22c55e" },
+    { label: "Random swing (± 1 std dev, $)", data: [10, 32, 100, 316, 1000], color: "#f59e0b", dashed: true },
+  ]}
+/>
+
+<Callout type="note">
+Read that chart's flip carefully: at **100 trades** the orange swing (≈\$10) is
+*bigger* than the green edge (≈\$1.50) — over a short run you can easily lose. By
+**1,000,000 trades** the edge (≈\$15,000) towers over the swing (≈\$1,000). The
+edge needs *volume* to show up. This is exactly why a 50.75% advantage is
+worthless to someone who places ten trades and priceless to a machine that places
+millions.
+</Callout>
+
+Now the **compounding of returns** — the real, sourced figures:
+
+- Medallion's average **gross** return was about **66% per year** from 1988–2018,
+  with **no losing year.**
+- **\$100 invested in Medallion at the start of 1988 grew to roughly \$398.7
+  million by the end of 2018** — about a **63% compound annual return** over 31
+  years.
+- For comparison, **\$100 in the broad U.S. stock market** over the same span
+  grew to only about **\$1,910** (≈10%/year).
+
+The raw dollar figures are so far apart that a normal bar chart can't show
+them honestly — $1,910 next to $398.7 million would be an invisible sliver next
+to a skyscraper. Two fair ways to see it:
+
+**First, compare the *speed* of growth (annual return), where the numbers sit on
+the same scale:**
+
+<BarChart
+  caption="The fair comparison: compound annual growth rate (CAGR), not ending dollars. The broad U.S. stock market grew about 10% a year. Outside investors in Medallion averaged roughly 39% a year NET of its steep fees; the fund's GROSS engine ran near 66%. These bars are honestly to scale — and even a 10% vs 39% gap, compounded for 31 years, explains the enormous dollar gap below."
+  yLabel="Annual return (CAGR, %)"
+  labels={["U.S. stock market", "Medallion (net to outsiders)", "Medallion (gross)"]}
+  series={[{ label: "Annual return", data: [10, 39, 66] }]}
+/>
+
+**Second, see the dollars on a log scale** (each gridline is 10× the one below,
+so a 208,000× gap fits on one chart and a steady-growth line looks straight):
+
+<LineChart
+  caption="Growth of $100, 1988–2018, on a LOG scale: every step up the y-axis is ×10, so 2 means $100, 4 means $10,000, 8 means $100 million. The market line (lower) climbs to about $1,910; Medallion's gross line climbs to roughly $398.7 million. Because Medallion had NO losing year, its line rises in a near-straight, ever-upward path — the visual signature of smooth compounding. Read the fee warning below before you get excited."
+  height={300}
+  labels={[1988, 1993, 1998, 2003, 2008, 2013, 2018]}
+  yMin={2}
+  yMax={9}
+  series={[
+    { label: "Medallion (gross), log₁₀ of $", data: [2.0, 3.10, 4.20, 5.30, 6.40, 7.50, 8.60], color: "#22c55e" },
+    { label: "U.S. stock market, log₁₀ of $", data: [2.0, 2.21, 2.43, 2.64, 2.85, 3.07, 3.28], color: "#38bdf8" },
+  ]}
+  levels={[
+    { y: 4, label: "$10,000", color: "#3f3f46" },
+    { y: 6, label: "$1,000,000", color: "#3f3f46" },
+    { y: 8, label: "$100,000,000", color: "#3f3f46" },
+  ]}
+  points={[
+    { x: 6, y: 8.60, text: "≈ $398.7M", color: "#22c55e" },
+    { x: 6, y: 3.28, text: "≈ $1,910", color: "#38bdf8" },
+  ]}
+/>
+
+<Callout type="warning">
+**Gross is not what you get.** Those headline returns are *gross* (before fees)
+inside a **closed** fund. Medallion charges famously steep fees — widely reported
+as a **5% fixed management fee plus a 44% cut of profits** (vs. the industry's
+old "2 and 20"). After those fees, *outside* investors averaged roughly **39%
+net** — still extraordinary, but far from 66%. And after **1993, no outside
+investors were allowed in at all** (the last were bought out by 2005). Today
+Medallion is owned entirely by Renaissance insiders. Always ask: *"after fees and
+costs?"*
+</Callout>
+
+## The key books and sources
+
+- **Gregory Zuckerman, *The Man Who Solved the Market* (2019).** The definitive,
+  accessible account, by a *Wall Street Journal* reporter with insider access.
+  **Start here.**
+- **Scott Patterson, *The Quants* (2010).** The broader history of quantitative
+  trading and its culture.
+- **The Baum–Welch algorithm papers (Leonard Baum et al., 1966–1970).** The
+  Hidden Markov Model math — originally for codes and speech — that underpinned
+  the early models. (Foundational and technical.)
+- **Chern & Simons, "Characteristic Forms and Geometric Invariants," *Annals of
+  Mathematics* (1974).** Context for Simons the mathematician, not the investor.
+- **Eugene Fama's Efficient-Market Hypothesis work (1960s–70s)** — the academic
+  theory Simons's results appear to *defy* (see below).
+
+## The big theoretical fight: did Simons break the rules?
+
+Mainstream finance has a famous claim called the **Efficient-Market Hypothesis
+(EMH)**: prices already reflect all available information, so you *cannot*
+consistently beat the market — any apparent winners are just lucky, like the
+people who happen to flip ten heads in a row.
+
+Medallion is the hardest case against that view. A 31-year record with a **Sharpe
+ratio above 2.0** (the Sharpe ratio measures return earned per unit of risk; most
+celebrated funds are *below 1*) and **no down year** is almost impossible to
+explain as luck.
+
+<ScatterChart
+  caption="The risk/return plane. Each dot is an investment: further right = more return, higher up = better return-per-unit-of-risk (Sharpe). Cash and the market sit on a normal line. Medallion floats absurdly far above everything — the 'counterexample' that mainstream theory struggles to explain. Illustrative positions."
+  xLabel="Annual return (%)"
+  yLabel="Sharpe ratio (return per unit of risk)"
+  series={[{
+    label: "Investments",
+    data: [
+      { x: 2, y: 0, label: "Cash" },
+      { x: 10, y: 0.4, label: "Stock market" },
+      { x: 15, y: 0.8, label: "Great hedge fund" },
+      { x: 66, y: 2.5, label: "Medallion" },
+    ],
+  }]}
+/>
+
+But notice the careful conclusion: Medallion is best understood as **the
+exception almost no one can imitate**, not as proof that *you* can beat the
+market. It took proprietary data, decades of research, elite PhD talent, custom
+infrastructure, and brutal capacity discipline to produce. For nearly everyone
+else, EMH's practical advice — *don't try, just hold a low-cost index* — still
+holds.
+
+## Honest criticisms and limitations
+
+- **It is essentially not replicable.** Renaissance's own funds open to outsiders
+  — **RIEF** and **RIDA** — use *different* strategies and have **badly trailed**
+  Medallion. RIEF's long-biased fund fell roughly **20% in 2020**, and clients
+  yanked about **\$5 billion** out between December 2020 and February 2021. The
+  genius simply does **not** transfer to vehicles you can actually buy. The magic
+  is in the closed fund.
+- **It is capacity-constrained.** Beating the market this way is a *small-money*
+  game; Medallion is deliberately kept to the **low tens of billions** because its
+  high-turnover edge would vanish at, say, \$100 billion. Renaissance forces
+  profits *out* every year to keep the fund small enough to work.
+- **The methods are secret.** Anyone "teaching Medallion's strategy" in detail is
+  guessing. Learn the *principles.*
+- **Reputational and ethical baggage.** A 2014 U.S. Senate investigation found
+  Renaissance used "basket-options" trades through banks to recharacterize
+  short-term gains as lower-taxed long-term gains; in **September 2021** Simons,
+  Mercer, and others agreed to pay **up to \$7 billion** to settle with the IRS.
+  Separately, co-CEO Robert Mercer was a major political donor — controversial,
+  and unrelated to the investing method.
+- **Survivorship bias in the whole genre.** We study Simons *because he won.*
+  Thousands of quant funds with similar ideas failed and are forgotten. Don't
+  mistake the one survivor for the typical outcome.
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Thinking you can copy Medallion.** You can't. Use it as inspiration for
+   *discipline and data*, not as a blueprint.
+2. **Overfitting / curve-fitting.** Tuning a strategy until it looks perfect on
+   past data. It *will* fail live. Always test out-of-sample.
+3. **Ignoring transaction costs and slippage.** A backtest that ignores costs is
+   fiction. Tiny edges are eaten alive by fees and bad fills.
+4. **Confusing gross with net returns.** Medallion's headline 66% is *gross*;
+   outsiders got ~39% net, and now zero access. Always ask "after fees?"
+5. **Mistaking luck for skill.** A short winning streak proves nothing. An edge
+   must be statistically significant across a *large* sample.
+6. **Over-leveraging.** Leverage magnifies a small edge — and magnifies ruin.
+   Renaissance controlled risk obsessively; beginners chase returns and blow up.
+7. **Believing one strong signal is enough.** The power came from combining many
+   weak ones and constantly replacing the dead.
+8. **Story-picking dressed up as "quant."** Systematic means following rules
+   consistently, not rationalizing a hunch with a couple of indicators.
+</Callout>
+
+## Putting it to work
+
+You will not run Medallion. But you *can* absorb the Simons mindset, and even a
+beginner can practice it honestly:
+
+1. **Pick one liquid asset** and gather several years of clean price data.
+2. **Write down one simple, testable rule** before you look at recent prices
+   (e.g., "buy when price closes 5% below its 20-day average; sell when it
+   returns to the average").
+3. **Backtest it across the full history, subtracting realistic costs**, and then
+   re-test it on a later slice of data the rule never saw.
+4. **Be ruthless with yourself about overfitting.** If you had to add five
+   special exceptions to make it look good, it's probably noise.
+5. **If it survives, size it small and treat it as one of many** — never your
+   whole portfolio.
+
+Most importantly, internalize the deepest lesson Simons taught: **emotion and
+storytelling are the enemy; process, evidence, and humility are the edge.** For
+the vast majority of people, the most rational application of that lesson is not
+to build a quant fund at all — it's to follow a simple, low-cost, rules-based
+plan and stick to it without flinching.
+
+<Callout type="key">
+Simons's true legacy for a beginner is not a strategy you can run — it's a
+*standard of evidence.* Before you trust any investing idea, ask the Simons
+questions: Is this backed by data or a story? Has it been tested on data it has
+never seen? Does it survive after costs? Could this just be luck?
+</Callout>
+
+---
+
+### Sources
+
+1. [Jim Simons — Wikipedia](https://en.wikipedia.org/wiki/Jim_Simons) — biography, dates, philanthropy, returns.
+2. [Renaissance Technologies — Wikipedia](https://en.wikipedia.org/wiki/Renaissance_Technologies) — Medallion founding, Mercer/Brown/IBM, Hidden Markov Models, the basket-options tax case.
+3. [Medallion Fund — Wikipedia](https://en.wikipedia.org/wiki/Medallion_Fund) — returns by year, closed-to-outsiders, capacity limits.
+4. [Cornell Capital, "Medallion Fund: The Ultimate Counterexample?" (2020)](https://www.cornell-capital.com/blog/medallion-fund-the-ultimate-counterexample/) — the $100 → $398.7M figure, ~63% compound return, Sharpe > 2, the ~50.75% win rate, and capacity analysis.
+5. [Gregory Zuckerman, *The Man Who Solved the Market* (2019)](https://www.goodreads.com/book/show/43889703-the-man-who-solved-the-market) — the primary recommended text. (Title/author/year verified; publisher and ISBN not confirmed here.)
+6. [Efficient-market hypothesis — Wikipedia](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) — the theoretical counterweight, luck-vs-skill, and strategy decay.
+7. [Of Dollars And Data, "The Greatest Investor You've Never Heard Of"](https://ofdollarsanddata.com/medallion-fund/) — the "5 and 44" fee structure and ~62% gross / ~37% net (1988–2021).
+
+*Note on figures: Medallion's **gross ~66%** (arithmetic average) and **~63%
+compound net** returns are from Cornell and are solid; the precise "net %" to
+outside investors (~37–39%) varies with the window measured. The "5 and 44" fee
+structure is widely reported in the financial press and is treated as
+well-sourced but not officially disclosed by Renaissance. The **$7 billion** tax
+settlement (2021) is widely reported; verify against a primary source before
+teaching it as hard fact.*

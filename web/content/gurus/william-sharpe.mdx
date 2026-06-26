@@ -1,0 +1,456 @@
+---
+title: "William F. Sharpe — Pricing the One Risk You Get Paid For"
+slug: "william-sharpe"
+kind: "guru"
+school: "quant"
+strategy: "academic-foundations"
+level: "beginner"
+order: 301
+summary: "The Nobel laureate who proved you only earn a premium for risk you can't diversify away — and gave investors two tools, CAPM and the Sharpe ratio, to measure it."
+era: "b. 1934"
+contribution: "CAPM & the Sharpe Ratio"
+tags: ["capm", "sharpe ratio", "beta", "risk-adjusted return", "portfolio theory"]
+prereqs: ["charles-dow"]
+---
+
+## Why start here
+
+Most beginners chase the investment with the biggest return. Sharpe's life work
+says that's the wrong question. The right question is: **how much risk did you
+take to get that return — and was that risk even the kind that pays?**
+
+William Sharpe gave us a precise way to answer both halves of that. From him we
+inherit one of the most quoted ideas in all of finance (you only get paid for
+risk you can't diversify away) and two tools every serious investor still uses:
+**CAPM**, which tells you the fair return an asset *should* deliver, and the
+**Sharpe ratio**, which scores how much return a portfolio actually delivered
+*per unit of risk.* Learn these and you'll never again confuse "made the most
+money" with "invested well."
+
+## Who he was
+
+**William Forsyth Sharpe** (born June 16, 1934, in Boston, raised in Riverside,
+California) is an American economist. He took all three degrees — B.A. (1955),
+M.A. (1956), and Ph.D. (1961) — at **UCLA**, after first enrolling at Berkeley
+intending to study medicine, then switching to business and finally economics.
+
+His doctoral work built a simplified, single-factor model of how security prices
+relate to one another. It was formally advised by **Armen Alchian**, but his most
+important intellectual link was **Harry Markowitz**, the father of modern
+portfolio theory, who mentored him informally in a role much like a dissertation
+advisor. Markowitz had shown how to build an efficient *portfolio*; Sharpe asked
+the natural next question — **what return should a single asset earn inside such a
+world?** — and that question became CAPM.
+
+- **Career:** the RAND Corporation (from 1956, where he overlapped with
+  Markowitz), then faculty posts at the University of Washington (1961–68), UC
+  Irvine (1968–70), and from **1970 Stanford University**, where he taught until
+  retiring from teaching in 1989 (he remains Professor Emeritus of Finance). He
+  served as President of the American Finance Association.
+- **Nobel:** he shared the **1990 Nobel Memorial Prize in Economic Sciences**
+  with **Harry Markowitz** and **Merton Miller**, principally for developing
+  CAPM — the model explaining how asset prices reflect risk.
+- **In industry:** he co-founded **Sharpe-Russell Research** (1986) with the
+  Frank Russell Company, then **Financial Engines** (1996, with Joseph Grundfest
+  and Craig Johnson), a firm that pioneered algorithmic, online retirement advice
+  (acquired for roughly $3 billion in 2018).
+- **Other lasting tools:** the **single-index model** (1963), a **binomial method
+  for valuing options**, a gradient method for asset-allocation optimization, and
+  **returns-based style analysis** (inferring a fund's true asset mix from the
+  pattern of its returns).
+
+<Callout type="key">
+Sharpe didn't invent CAPM alone. **Jack Treynor** (~1962, unpublished),
+**John Lintner** (1965), and **Jan Mossin** (1966) arrived at essentially the
+same model independently and near-simultaneously. Sharpe's 1964 paper is the most
+cited, and he was the one awarded the Nobel — but credit the others too, a small
+habit that marks you as someone who actually read the history.
+</Callout>
+
+## The core idea: two kinds of risk
+
+Everything Sharpe built rests on splitting risk into two boxes.
+
+- **Unsystematic (idiosyncratic) risk** — danger specific to *one* company: a
+  CEO scandal, a product recall, a factory fire. The crucial fact is that you
+  can almost *erase* this risk by holding many different stocks. One blows up,
+  another surprises to the upside, and across a broad basket they largely cancel
+  out. Because any investor can diversify it away essentially for free, the
+  market refuses to pay you for bearing it.
+- **Systematic (market) risk** — danger that moves the *whole* market at once: a
+  recession, an interest-rate shock, a war. No amount of diversification escapes
+  it — when the tide goes out, almost every boat drops. Because it *can't* be
+  avoided, investors demand extra return to hold it. **This is the only risk
+  that earns a premium.**
+
+The single most important takeaway for a beginner: **diversification is not
+optional polish — it is how you delete the risk you'd never be paid for anyway.**
+
+<ConceptDiagram
+  caption="Total risk splits into two boxes. Diversifying across many holdings drains the idiosyncratic box toward zero (so the market pays nothing for it); the systematic box can't be diversified away, so it — and only it — earns a return premium. This split is the foundation under both CAPM and the Sharpe ratio."
+  chart={`flowchart TB
+  T[Total risk of a single stock] --> U[Unsystematic risk\n company-specific]
+  T --> S[Systematic risk\n moves with the whole market]
+  U -->|diversify across ~30-40 stocks| Z[Drains toward zero\n NO premium paid]
+  S -->|cannot be diversified away| P[Earns a risk premium\n measured by beta]`}
+/>
+
+How much diversification is "enough"? In a developed market, holding on the
+order of **30–40 well-chosen stocks** removes the great majority of
+diversifiable risk. (A low-cost index fund does this for you in one purchase.)
+
+<Callout type="note">
+The number isn't magic. The first 20–30 names do most of the work; after that
+each new holding trims a little less. The lesson is directional, not a precise
+target: a handful of stocks leaves you badly exposed to company-specific risk; a
+broad basket does not.
+</Callout>
+
+## Tool 1 — CAPM: the fair return for an asset
+
+The **Capital Asset Pricing Model** answers: *given how much market risk an asset
+carries, what return should it deliver?*
+
+**E(Rᵢ) = R_f + βᵢ × [E(R_m) − R_f]**
+
+In words: the fair expected return equals the **risk-free rate** plus a reward
+that scales with how much the asset **amplifies** overall market swings.
+
+### Beta: the one number CAPM runs on
+
+**Beta (β)** measures how much an asset moves *relative to the market.*
+Formally it's `Cov(asset, market) / Var(market)` — but you rarely compute it by
+hand. In practice you regress the stock's *excess* returns on the market's
+*excess* returns, and the slope is beta; finance data sites also publish it. Read
+it like this:
+
+- **β = 1** — moves in lockstep with the market.
+- **β > 1** — amplifies the market (a β of 1.5 tends to rise ~15% when the
+  market rises 10%, and fall harder too). More market risk, higher fair return.
+- **β < 1** — dampens the market (defensive). Less market risk, lower fair
+  return.
+- **β = 0** — uncorrelated with the market (like cash); CAPM says it should earn
+  only the risk-free rate.
+
+<BarChart
+  caption="Fair expected return rises in a straight line with beta. With a 4% risk-free rate and a 6% market premium, a defensive β=0.5 stock 'deserves' only 7%, the market (β=1) 10%, and an aggressive β=1.5 stock 13%. More non-diversifiable risk, more required reward — illustrative numbers."
+  yLabel="Fair expected return (%)"
+  labels={["β = 0 (cash)", "β = 0.5 (defensive)", "β = 1 (market)", "β = 1.5 (aggressive)", "β = 2 (very aggressive)"]}
+  series={[{ label: "CAPM required return", data: [4, 7, 10, 13, 16] }]}
+/>
+
+### The recipe — step by step
+
+1. **Get the risk-free rate (R_f).** Use the yield on a safe government bond
+   (e.g., a 3-month T-bill or 10-year U.S. Treasury). Say **4%**.
+2. **Estimate the expected market return E(R_m).** Use a broad index (the S&P
+   500) and a long-run estimate. Say **10%**.
+3. **Compute the market risk premium** = E(R_m) − R_f = 10% − 4% = **6%**. This
+   is the reward for bearing one unit of market risk (β = 1).
+4. **Find the asset's beta.** Look it up or regress its returns on the market.
+5. **Plug in:** E(Rᵢ) = R_f + β × premium. That's the return the asset *should*
+   deliver for the market risk it carries.
+6. **Compare to your own view.** If you expect *more* than CAPM's number, the
+   asset plots **above** the line and looks **undervalued**; *less*, and it plots
+   **below** the line and looks **overvalued.**
+
+### The Security Market Line
+
+Draw that equation as a graph — beta on the x-axis, expected return on the
+y-axis — and you get the **Security Market Line (SML)**. Its **y-intercept is the
+risk-free rate** and its **slope is the market premium.** In theory, every
+fairly-priced asset sits *on* the line; CAPM is literally the claim that "every
+asset lies on the SML."
+
+<ScatterChart
+  caption="The Security Market Line: fair return as a function of beta (R_f = 4%, premium = 6%). Assets ON the line are fairly priced. A point ABOVE the line offers more return than its risk warrants (undervalued — buy); a point BELOW offers too little (overvalued — avoid). Illustrative."
+  xLabel="Beta (systematic risk)"
+  yLabel="Expected return (%)"
+  series={[
+    { label: "Security Market Line", data: [{ x: 0, y: 4 }, { x: 1, y: 10 }, { x: 2, y: 16 }], line: true },
+    { label: "Undervalued (above line)", data: [{ x: 1, y: 12.5, label: "expect 12.5% vs fair 10%" }] },
+    { label: "Overvalued (below line)", data: [{ x: 1.5, y: 11, label: "expect 11% vs fair 13%" }] },
+  ]}
+/>
+
+### Worked example
+
+A stock with **β = 1.5**, R_f = 4%, expected market return = 10%:
+
+E(R) = 4% + 1.5 × (10% − 4%) = 4% + 1.5 × 6% = 4% + 9% = **13%**.
+
+So 13% is the *fair* return for its risk. If your own homework says it'll return
+**15%**, it offers 2% more than its risk warrants → it plots *above* the SML →
+looks **undervalued.** If you only expect **11%**, it's *below* the line →
+**overvalued**, and you're being underpaid for the market risk you'd take on.
+
+## Tool 2 — the Sharpe ratio: return per unit of risk
+
+CAPM looks *forward* (what return *should* an asset earn?). The **Sharpe ratio**
+looks at the *record* (how much return did a portfolio actually earn for the risk
+it took?). Sharpe introduced it in 1966, calling it the **reward-to-variability
+ratio.**
+
+**S = (R_p − R_f) / σ**
+
+That is: **excess return divided by volatility.**
+
+- **R_p − R_f** is the **excess return** (Sharpe calls it the *differential
+  return*) — what you earned *above* parking the money in cash. Beating the
+  risk-free rate is the only reward that justifies taking risk at all.
+- **σ (sigma)** is the **standard deviation** of that excess return — a measure
+  of how much it bounces around. Bigger σ = a wilder, riskier ride.
+
+A higher Sharpe ratio means you were paid more for each unit of stomach-churning
+you endured.
+
+<Callout type="note">
+In Sharpe's 1994 generalization the figure you subtract can be **any relevant
+benchmark**, not only the risk-free rate. The Sharpe ratio is then the average
+*differential* return (your return minus the benchmark's) divided by the standard
+deviation of that difference.
+</Callout>
+
+### The recipe
+
+1. **Collect periodic returns** for the portfolio (e.g., 36–60 monthly returns).
+2. **Subtract the risk-free rate (or benchmark)** each period to get the
+   "differential return."
+3. **Average** those excess returns → the numerator.
+4. **Take the standard deviation** of the excess returns → the denominator. In a
+   spreadsheet with the excess returns in cells C1:C60, Sharpe's own recipe is
+   literally `=AVERAGE(C1:C60)/STDEV(C1:C60)`.
+5. **Annualize** if your data is monthly: multiply by √12. (The mean scales with
+   time but the standard deviation scales with √time, so the *ratio* scales by
+   √T.) A monthly ratio of 0.115 becomes ~0.40 a year.
+6. **Compare two investments fairly:** the higher Sharpe ratio gave more reward
+   for the risk borne — *even if its headline return was lower.*
+
+### Worked example — why the lower return can win
+
+This is the example Sharpe himself uses to show why you *must* subtract the
+risk-free rate. Fund A *looks* like the winner: higher return, but notice it's
+also far more volatile.
+
+<BarChart
+  caption="Two funds, same 5% risk-free rate. Fund A's headline return is higher (12% vs 9%) — but it took on more than double the volatility to get there (σ=10% vs 4%). Both quantities are in percent, so the bars are directly comparable. The flashy fund is the riskier ride; the question is whether the extra return paid for the extra risk."
+  yLabel="Percent (%)"
+  labels={["Annual return", "Volatility (σ)"]}
+  series={[
+    { label: "Fund A (flashy)", data: [12, 10] },
+    { label: "Fund B (calm)", data: [9, 4] },
+  ]}
+/>
+
+Now divide each fund's excess return by its volatility:
+
+- **Fund A:** (12% − 5%) / 10% = 0.07 / 0.10 = **0.70**
+- **Fund B:** (9% − 5%) / 4% = 0.04 / 0.04 = **1.00**
+
+The ranking **flips.** Plotted on their own axis, the reversal is impossible to
+miss — the lower-return fund wins:
+
+<BarChart
+  caption="The punchline, on its own scale: dividing excess return by volatility reverses the ranking. Fund B scores 1.00 vs Fund A's 0.70 — it earned MORE return per unit of risk despite the lower headline return. This single number is what raw return alone hides."
+  yLabel="Sharpe ratio (return per unit of risk)"
+  labels={["Fund A (flashy)", "Fund B (calm)"]}
+  series={[{ label: "Sharpe ratio", data: [0.70, 1.00] }]}
+/>
+
+Fund B is the **better risk-adjusted performer** despite the lower return.
+
+<Callout type="note">
+**The proof this isn't a trick.** Take Sharpe's own example: Fund X returns 5% at
+10% σ; Fund Y returns 8% at 20% σ; risk-free = 3%. Raw return ÷ risk makes X
+(0.50) look better than Y (0.40). But the *excess-return* Sharpe ratios are
+X = (5−3)/10 = **0.20** and Y = (8−3)/20 = **0.25** — Y wins. Why does that
+matter? Put **half your money in Y and half in cash**: you get a 5.5% return at
+10% σ — beating X's 5.0% return at the *same* 10% σ. The higher Sharpe ratio
+genuinely lets you build a better portfolio.
+</Callout>
+
+### What's a "good" Sharpe ratio?
+
+You'll hear rules of thumb — above 1 is good, above 2 very good, above 3
+excellent. Treat them loosely. For perspective on what's actually achievable
+over the long run:
+
+<BarChart
+  caption="Long-run annualized Sharpe ratios are humbling. The broad U.S. stock market has run around 0.49; even Berkshire Hathaway — one of history's best records (1976–2017) — was about 0.79. Sustained ratios above ~2 over long horizons are a red flag, not a trophy. Figures are approximate."
+  yLabel="Annualized Sharpe ratio"
+  labels={["Broad U.S. market", "Berkshire Hathaway", "Rule-of-thumb 'very good'"]}
+  series={[{ label: "Sharpe ratio", data: [0.49, 0.79, 2.0] }]}
+/>
+
+<Callout type="warning">
+If someone shows you a strategy with a long-run Sharpe ratio of 3, your first
+reaction should be suspicion, not envy. Over long horizons, diversified
+portfolios simply don't sustain that. A sky-high ratio usually means a short
+sample, cherry-picked dates, hidden leverage, or a tail risk waiting to detonate
+(see the criticisms below).
+</Callout>
+
+## How the two tools fit together
+
+The two tools answer different questions with **different risk inputs** — and
+confusing those inputs is the classic beginner error.
+
+<ConceptDiagram
+  caption="CAPM and the Sharpe ratio answer different questions with different risk inputs. CAPM looks forward and uses BETA (systematic risk only) to set a fair expected return. The Sharpe ratio looks back and uses STANDARD DEVIATION (total risk = systematic + idiosyncratic) to score realized performance. Don't mix up the inputs."
+  chart={`flowchart LR
+  A[CAPM] -->|input: beta\n systematic risk only| B[Fair EXPECTED return\n forward-looking]
+  C[Sharpe ratio] -->|input: std deviation\n total risk| D[REALIZED return per unit risk\n backward-looking scorecard]`}
+/>
+
+<Callout type="key">
+There's a third tool that bridges them: the **Treynor ratio** is the
+beta-based cousin of the Sharpe ratio — excess return divided by **beta**
+(systematic risk) instead of standard deviation (total risk). Use Treynor when
+the portfolio is one slice of an already-diversified whole (idiosyncratic risk is
+gone, so only beta matters); use Sharpe when it's your *entire* portfolio.
+</Callout>
+
+## Key papers and books
+
+**Papers**
+
+- *A Simplified Model for Portfolio Analysis*, **Management Science** (1963) —
+  the single-index model, the precursor to CAPM.
+- *Capital Asset Prices: A Theory of Market Equilibrium under Conditions of
+  Risk*, **Journal of Finance** (1964) — the CAPM paper (the work cited for his
+  Nobel; famously submitted in 1962 and initially *rejected*).
+- *Mutual Fund Performance*, **Journal of Business** (1966) — introduces the
+  reward-to-variability (Sharpe) ratio.
+- *Asset Allocation: Management Style and Performance Measurement*, **Journal of
+  Portfolio Management** (1992) — returns-based style analysis.
+- *The Sharpe Ratio*, **Journal of Portfolio Management** (1994) — formally
+  renames and generalizes the measure (ex-ante vs. ex-post; benchmark-relative
+  differential return).
+
+**Books**
+
+- *Portfolio Theory and Capital Markets* (1970; reissued 2000).
+- *Asset Allocation Tools* (1987).
+- *Investments* (with Gordon Alexander & Jeffery Bailey, 1999).
+- *William F. Sharpe: Selected Works* (2012).
+
+<Callout type="note">
+A common myth dates the Sharpe ratio to 1994. It doesn't — Sharpe **introduced
+it in 1966** as the "reward-to-variability ratio." The 1994 paper is a refinement
+of an idea nearly three decades old.
+</Callout>
+
+## Honest criticisms and limitations
+
+These models are foundational, not gospel. Knowing where they break is part of
+using them well.
+
+**Of CAPM**
+
+- **It doesn't fit the data well.** The real risk-return line is *flatter* than
+  CAPM predicts — the **low-volatility anomaly** (low-beta stocks beat their
+  prediction). The **size effect** (small caps outperforming) and the **value
+  effect** (cheap stocks outperforming) also contradict it. Fama and French
+  (2004) concluded its empirical problems make "most applications of the model
+  invalid," which spurred their **three-factor model.** The **Black (1972)
+  zero-beta CAPM** patches the flatter-line problem.
+- **Roll's critique (1977):** the true "market portfolio" would include
+  *everything* — every stock, bond, house, and even human capital. That's
+  unobservable, so CAPM is arguably untestable; we only ever test a proxy.
+- **Beta isn't stable** — it's treated as fixed but drifts over time, and is a
+  noisy estimate that changes with the look-back window.
+- **The assumptions are idealized:** no taxes or trading costs, everyone can
+  borrow and lend unlimited amounts at the risk-free rate, all investors share
+  the same expectations and information and act rationally, and risk is measured
+  only by variance (ignoring downside and skew). None is strictly true.
+
+**Of the Sharpe ratio**
+
+- **It assumes returns are roughly normal.** Real markets have **fat tails and
+  skew** — rare, violent moves that σ undercounts and understates as risk.
+- **It punishes upside and downside equally.** A big *gain* raises σ and *lowers*
+  your Sharpe ratio, which feels backwards. The **Sortino ratio** fixes this by
+  counting only downside volatility.
+- **It can be gamed.** Strategies that sell deep out-of-the-money options, or
+  hold illiquid assets whose prices update slowly (stale, smoothed marks),
+  artificially lower apparent volatility and post a beautiful Sharpe ratio right
+  up until they blow up. Goetzmann et al. (2002) showed that *maximizing* the
+  Sharpe ratio perversely rewards taking hidden tail risk; Ponzi-like strategies
+  look superb — until disaster.
+- **It misleads over short samples.** The t-statistic of a Sharpe estimate is
+  **Sharpe × √T**, so few data points = weak statistical significance and an
+  overstated ratio. This is why researchers built the **deflated Sharpe ratio**
+  (Bailey & López de Prado, 2012).
+- **It ignores correlation.** As Sharpe himself stresses, "the Sharpe Ratio does
+  not take correlations into account" — so it can't tell you how an asset fits
+  *inside* an existing portfolio (that's where the Treynor ratio or full
+  portfolio math comes in).
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Thinking higher raw return = better.** Without dividing by risk you can't
+   compare. A wild 20% can be worse, risk-adjusted, than a calm 10%.
+2. **Forgetting to subtract the risk-free rate (or benchmark).** Using raw
+   return ÷ volatility gives wrong rankings — see the X-vs-Y proof above. It must
+   be a *differential* return.
+3. **Mixing time frequencies / not annualizing consistently.** Never compare a
+   monthly Sharpe to an annual one; multiply monthly figures by √12 first.
+4. **Confusing the two tools.** CAPM *predicts* a fair expected return from beta;
+   the Sharpe ratio *scores realized* return per unit of total risk. Different
+   inputs, different jobs.
+5. **Mixing up the risk measures.** CAPM/beta reward only **systematic** risk;
+   the Sharpe ratio's denominator is **total** risk (systematic + idiosyncratic).
+   They are not interchangeable — Treynor is the beta-based cousin.
+6. **Believing idiosyncratic risk pays.** It doesn't — that's *why* you
+   diversify. Betting big on one "great" stock loads you with risk you aren't
+   compensated for.
+7. **Treating a high Sharpe ratio as "safe."** A high ratio can hide catastrophic
+   tail risk (option-selling, illiquid marks). Volatility ≠ all risk.
+8. **Trusting beta as fixed and precise.** It's a noisy estimate that drifts.
+9. **Treating Sharpe rules of thumb as law.** A "3" over a few months is most
+   likely luck, manipulation, or hidden tail risk — not skill.
+10. **Using CAPM as a precise price oracle.** It's a teaching and benchmark
+    framework with documented empirical failures, not a guaranteed valuation tool.
+11. **Crediting Sharpe alone for CAPM, or dating the Sharpe ratio to 1994.** See
+    above.
+</Callout>
+
+## Putting it to work
+
+You don't need a quant desk to use Sharpe's ideas tomorrow:
+
+- **Diversify by default.** Own a broad, low-cost index fund (or 30+ varied
+  stocks) so the only risk you carry is the kind that actually pays. This is
+  Sharpe's deepest practical lesson.
+- **Judge everything risk-adjusted.** Before admiring a fund's return, ask for
+  its volatility and compute a rough Sharpe ratio (`=AVERAGE/STDEV` of the excess
+  returns in a spreadsheet). The flashy fund is often the worse buy.
+- **Sanity-check what an asset "should" earn.** Look up a stock's beta and run
+  the CAPM line in your head. If the only way the story works is by expecting far
+  more than its fair return, be skeptical.
+- **Distrust the spectacular.** A Sharpe ratio that looks too good usually is —
+  it's hiding a short track record or a buried tail risk.
+
+Sharpe didn't promise to beat the market. He gave you something more durable: a
+clear-eyed way to see how much risk you're really taking, and whether you're
+being paid for it.
+
+## Further reading
+
+- William Sharpe, *Portfolio Theory and Capital Markets* (1970).
+- William Sharpe, *The Sharpe Ratio*, Journal of Portfolio Management (1994) —
+  his own primary statement of the ratio (free at web.stanford.edu/~wfsharpe).
+- Eugene Fama & Kenneth French, *The Capital Asset Pricing Model: Theory and
+  Evidence* (2004) — the standard critique.
+
+---
+
+### Sources
+
+1. [William F. Sharpe — Wikipedia](https://en.wikipedia.org/wiki/William_F._Sharpe) — biography, career, Nobel (1990, shared with Markowitz and Miller), papers, Financial Engines, returns-based style analysis.
+2. [Capital Asset Pricing Model — Wikipedia](https://en.wikipedia.org/wiki/Capital_asset_pricing_model) — formula, beta, risk types, assumptions, Roll's critique, Black zero-beta CAPM, Fama–French.
+3. [Security Market Line — Wikipedia](https://en.wikipedia.org/wiki/Security_market_line) — SML axes, intercept = R_f, slope = premium, over/undervaluation.
+4. [Sharpe ratio — Wikipedia](https://en.wikipedia.org/wiki/Sharpe_ratio) — 1966 origin, 1994 generalization, examples, criticisms, deflated Sharpe ratio.
+5. [William F. Sharpe, *The Sharpe Ratio* (1994), author's Stanford page](https://web.stanford.edu/~wfsharpe/art/sr/sr.htm) — primary source: ex-ante/ex-post definitions, the 0.40 and X/Y examples, the correlation caveat, the spreadsheet recipe.
+6. William F. Sharpe, *Capital Asset Prices: A Theory of Market Equilibrium under Conditions of Risk*, **Journal of Finance** (1964) — the primary CAPM paper (cited via sources 1–2; full text typically gated).
