@@ -1,0 +1,402 @@
+---
+title: "John Burr Williams — The Man Who Gave a Stock a Right Price"
+slug: "john-burr-williams"
+kind: "guru"
+school: "fundamental"
+strategy: "canon"
+level: "beginner"
+order: 200
+summary: "The working analyst who proved a stock isn't worth what the crowd will pay — it's worth the cash it hands you over its lifetime, discounted back to today. Everything from the dividend discount model to modern DCF traces to his 1938 book."
+era: "1900–1989"
+contribution: "Discounted cash flow / DDM"
+tags: ["intrinsic value", "dividend discount model", "DCF", "present value", "valuation", "gordon growth"]
+prereqs: ["charles-dow"]
+---
+
+## Why he matters
+
+Ask most people what a stock is "worth" and they'll say: *whatever someone will
+pay for it.* That answer treats the market like a casino — value is just the next
+person's guess, and you win only by finding a "greater fool" to sell to.
+
+In **1938**, a Harvard graduate student named **John Burr Williams** drew a hard
+line through that idea. A stock, he argued, is not worth what the crowd will pay.
+It is worth **the cash it will actually hand you over its lifetime** — its
+dividends and, eventually, its sale price — with future cash counted as worth
+less than cash today. He called this the **"rule of present worth,"** and he gave
+investors an actual formula to compute it.
+
+That formula is the seed of nearly every valuation method in use today: the
+**dividend discount model (DDM)**, the **Gordon Growth Model**, and the broader
+**discounted cash flow (DCF)** analysis analysts run every day. More than half a
+century later, **Warren Buffett** opened his **1992 Berkshire Hathaway letter** by
+crediting Williams with setting "forth the equation for value": the worth of any
+stock, bond, or business is the cash that flows in and out over its remaining
+life, discounted at an appropriate rate. When Buffett says a business is worth
+"the cash it will generate from now until judgment day, discounted back to the
+present," he is restating Williams almost word for word.
+
+<Callout type="key">
+The whole lesson in one line: **price is what the market quotes; value is the
+discounted cash a thing will pay you.** Williams turned that distinction from a
+slogan into arithmetic you can do on a napkin.
+</Callout>
+
+## Who he was
+
+**John Burr Williams** (November 27, 1900 – September 15, 1989) was not an
+ivory-tower theorist. He was a **working security analyst** who got frustrated
+that nobody could tell him what a stock was really worth — and went back to school
+to solve the problem.
+
+- He studied **mathematics and chemistry** at Harvard, then entered **Harvard
+  Business School in 1923.**
+- From **1927** he worked as a security analyst and managed private investment
+  portfolios — living through the **1929 crash** and the Depression that followed.
+  Watching prices detach completely from any sane notion of worth is what drove
+  his life's question.
+- In **1932** he returned to Harvard for a **PhD in economics.** His thesis-adviser
+  circle included the famous economist **Joseph Schumpeter**, who suggested the
+  topic: **the intrinsic value of a common stock.**
+- The thesis became *The Theory of Investment Value*, published by **Harvard
+  University Press in 1938.** He earned the doctorate itself in **1940.**
+- He also served as a **visiting professor** at the **University of
+  Wisconsin–Madison**, and ran the family investment firm, Burr & Company.
+
+<Callout type="note">
+A telling detail: publishers initially balked at the book **because it was full of
+algebraic symbols** — too mathematical for the investing audience of the day.
+Williams agreed to help fund the printing himself. Benjamin Graham reviewed it in
+1939, and the finance theorist Mark Rubinstein later called it an "insufficiently
+appreciated classic." The founding text of intrinsic-value math was almost never
+published *because* it had equations in it.
+</Callout>
+
+## The core idea in plain language
+
+Williams's insight rests on one fact about money: **a dollar today is worth more
+than a dollar next year.** Why? Because the dollar you have today can be invested
+to earn a return. So a dollar promised in the future has to be *discounted* —
+shrunk down — to state its worth in today's money.
+
+Stack that idea up over a company's whole life and you get the rule of present
+worth:
+
+> **The value of a stock = the sum of all the cash it will ever pay you, with
+> each future payment discounted back to today.**
+
+For a stock, that cash is mainly **dividends** (and the price you eventually sell
+it for). For a bond, it's the **coupons plus the face value at maturity.** Same
+machine, different cash flows. As Buffett put it in 1992, "the formula is the same
+for stocks as for bonds" — the only difference is that a bond's coupons are
+printed on it, whereas for a stock **you** must estimate the future "coupons"
+(the dividends) yourself. That estimation, not the arithmetic, is the hard part.
+
+<Callout type="note">
+A folksy line is widely **attributed** to Williams — roughly *"A cow for her milk,
+a hen for her eggs, and a stock, by heck, for her dividends."* It captures his
+thesis perfectly (own a thing for the cash it produces, not for resale), but the
+exact wording is repeated everywhere without a verifiable source, so treat it as
+an attributed paraphrase. The verified, quotable framing is his own opening: real
+worth and market price are "separate and distinct things not to be confused."
+</Callout>
+
+<ConceptDiagram
+  caption="Williams's rule of present worth as a pipeline: forecast each year's cash to the owner, shrink every future payment back to today's money with the discount rate, then add them up. That sum is intrinsic value — compare it to the market price to decide."
+  chart={`flowchart LR
+  A[Forecast future cash flows<br/>dividends + sale price] --> B[Discount each one<br/>to today with rate r]
+  B --> C[Sum them up<br/>= intrinsic value V]
+  C --> D{Compare to<br/>market price}
+  D -->|V above price| E[Undervalued<br/>buy candidate]
+  D -->|V below price| F[Overvalued<br/>avoid / sell]`}
+/>
+
+## The full method — steps a beginner can follow
+
+### Step 1 — Forecast the cash flows to the owner
+
+List what the investment will actually pay you. For a dividend-paying stock,
+that's the expected **dividend each year** (`D₁, D₂, D₃, …`). If you plan to sell
+one day, add the expected **sale price** in the year you sell.
+
+### Step 2 — Choose a discount rate `r`
+
+This is the annual return you **demand** for taking the risk — also called the
+*required return* or *cost of equity.* A safe, boring utility might justify
+`r = 7%`; a risky startup might need `r = 15%` or more. **Higher risk → higher
+`r`.** Beginners often estimate it with **CAPM** (risk-free rate + beta × equity
+risk premium) or simply pick an honest required return like 8–10%. As a sanity
+check, `r` should sit well above what a risk-free government bond pays — you're
+being paid extra for taking on risk.
+
+### Step 3 — Discount each cash flow to today
+
+A payment `CFₜ` arriving in year *t* is worth this much in today's money:
+
+```
+present value = CFₜ / (1 + r)ᵗ
+```
+
+The further out the payment, the more those compounding `(1+r)` divisions shrink
+it. A dollar 30 years away is worth pennies today.
+
+### Step 4 — Add them all up
+
+The intrinsic value `V` is just the sum of every discounted cash flow:
+
+```
+V = D₁/(1+r)¹ + D₂/(1+r)² + D₃/(1+r)³ + … + (sale price)/(1+r)ⁿ
+```
+
+That's the whole engine. Everything below is shortcuts for doing this sum without
+forecasting infinitely many years by hand.
+
+### Step 5 — Use the shortcut when dividends grow steadily
+
+Forecasting every year out to infinity is impossible. So Williams — and later,
+more famously, **Myron Gordon** and **Eli Shapiro in 1956**, 18 years after him —
+showed that *if* dividends grow at a **constant rate `g` forever**, the infinite
+sum collapses to a tiny formula, the **Gordon Growth Model**:
+
+```
+V = D₁ / (r − g)
+```
+
+where `D₁` is **next year's** dividend = `D₀ × (1 + g)`. This only works when
+`g < r` (more on why in the criticisms). A useful rearrangement shows what your
+return actually is: `r = D₁/V + g` — that is, **total return = dividend yield +
+growth.** The zero-growth special case is just `V = D₁ / r`.
+
+<Callout type="note">
+Williams is the root; Gordon gave the famous one-line shortcut. Williams put forth
+the dividend discount model **18 years before** Gordon and Shapiro published their
+constant-growth formula in 1956.
+</Callout>
+
+### Step 6 — Handle fast-growing or no-dividend companies
+
+Many companies grow fast for a while, then settle down — and some pay no dividend
+at all yet. For those, use a **two-stage (multi-stage) model:**
+
+1. **Forecast the high-growth years explicitly** and discount each one (Step 3).
+2. Add a **"terminal value"** for the steady phase afterward — usually a
+   Gordon-style `D/(r−g)` — and discount *that* back to today too.
+
+For companies that pay no dividend, analysts swap in **earnings or free cash
+flow** in place of dividends. The logic is identical; only the cash-flow
+definition changes. (This is exactly why modern **DCF on free cash flow** largely
+superseded the strict dividend-only model.)
+
+### Step 7 — Compare to the market price, then stress-test
+
+- If `V` is **comfortably above** the price → possibly undervalued.
+- If `V` is **below** the price → possibly overvalued.
+
+Then immediately **re-run your inputs** with pessimistic and optimistic `g` and
+`r`. If the verdict flips with a tiny nudge, you don't have an edge — you have a
+guess (see pitfalls).
+
+## Worked example A — the Gordon shortcut
+
+*(The formula `V = D₁/(r−g)` is the verified Gordon form; the dollar figures below
+are illustrative numbers plugged into it to show the mechanics.)*
+
+A company pays a dividend of **D₀ = $2.00** this year. You expect it to grow at
+**g = 4%** per year forever, and you require a **9%** return (`r = 0.09`).
+
+- Next year's dividend: `D₁ = 2.00 × 1.04 =` **$2.08**
+- Intrinsic value: `V = 2.08 / (0.09 − 0.04) = 2.08 / 0.05 =` **$41.60**
+
+Now read off the verdict against different market prices:
+
+<BarChart
+  caption="Intrinsic value (computed as $41.60) versus three possible market prices. At $35 the stock trades below value — a buy candidate with a built-in cushion. At $41.60 it's fair. At $50 you'd be overpaying. The first bar is the calculated value; the others are quotes you might see on screen."
+  yLabel="Dollars per share"
+  labels={["Intrinsic value", "Price $35", "Price $41.60", "Price $50"]}
+  series={[{ label: "Per share ($)", data: [41.6, 35, 41.6, 50] }]}
+/>
+
+### The sensitivity lesson (do not skip this)
+
+Change a single assumption and watch the value lurch. Keep everything the same but
+raise growth from 4% to 5%:
+
+- `D₁ = 2.00 × 1.05 =` **$2.10**
+- `V = 2.10 / (0.09 − 0.05) = 2.10 / 0.04 =` **$52.50**
+
+A **one-percentage-point** bump in `g` swung the value from **$41.60 to $52.50** —
+about **+26%.** Nudge `g` and `r` together and the answer can double or halve.
+
+<BarChart
+  caption="Same company, only the growth assumption changes. Moving g from 3% to 5% — a 2-point spread no one could forecast confidently — swings intrinsic value from about $34 to about $52. The model's output is only as trustworthy as its most fragile input."
+  yLabel="Intrinsic value ($)"
+  labels={["g = 3%", "g = 4%", "g = 5%"]}
+  series={[{ label: "Intrinsic value ($)", data: [34.3, 41.6, 52.5] }]}
+/>
+
+<Callout type="warning">
+This fragility is the single most important practical fact about Williams's model.
+The formula is exact, but the **inputs are forecasts.** "Garbage in, garbage out"
+isn't a knock on the method — it's a warning to handle the inputs with humility and
+always think in **ranges**, never a single confident number.
+</Callout>
+
+## Worked example B — the full sum, with a sale
+
+The Gordon shortcut hides the engine. Here's the engine itself (Step 4), for an
+investor who plans to **hold three years and then sell.** You expect:
+
+- Year 1 dividend **$2.50**, Year 2 **$3.00**, Year 3 **$3.25**
+- An estimated **sale price of $125** at the end of Year 3
+- A required return of **r = 5%** (`0.05`)
+
+Discount each cash flow back to today, then add:
+
+```
+V = 2.50/1.05¹ + 3.00/1.05² + (3.25 + 125)/1.05³
+  = 2.38      + 2.72      + 110.79
+  ≈ $115.89
+```
+
+If the stock trades at **$110**, your intrinsic value ($115.89) sits *above* the
+price → it looks **undervalued.** Notice two things: the **sale price dominates**
+(it's most of the $115.89), and a pure dividends-only model would have ignored it
+entirely — which is why, if you include a sale, you must *not* also extend
+dividends to infinity for that same window (that would double-count).
+
+<BarChart
+  caption="Where the $115.89 value comes from: the present value of each year's cash flow. The Year-3 bar towers because it bundles the $125 sale price with the $3.25 dividend — the eventual sale, not the dividends, drives most of the value here."
+  yLabel="Present value today ($)"
+  labels={["Yr 1 div", "Yr 2 div", "Yr 3 div + sale"]}
+  series={[{ label: "Present value ($)", data: [2.38, 2.72, 110.79] }]}
+/>
+
+## Why the `r − g` denominator is dangerous
+
+Look again at `V = D₁ / (r − g)`. As growth `g` creeps toward the required return
+`r`, the denominator `(r − g)` shrinks toward **zero** — and dividing by a number
+near zero sends value toward **infinity.** If you ever assume `g ≥ r`, the formula
+returns a negative or infinite "value" and becomes meaningless.
+
+<LineChart
+  caption="Intrinsic value explodes as growth g approaches the required return r (here r = 9%). At g = 4% value is about $42; at g = 7% it is over $100; as g nears 9% it shoots toward infinity. This is why no real company can be assumed to grow at or above its cost of equity forever — the math forbids it."
+  height={300}
+  labels={["2%", "3%", "4%", "5%", "6%", "7%", "8%"]}
+  series={[{ label: "Intrinsic value ($)", data: [29.1, 34.3, 41.6, 52.5, 70.7, 106.9, 216], color: "#38bdf8" }]}
+  points={[
+    { x: 2, y: 41.6, text: "g = 4% → $42", color: "#22c55e" },
+    { x: 6, y: 216, text: "g = 8% → blows up", color: "#ef4444" },
+  ]}
+/>
+
+The real-world meaning is humbling: **no company can outgrow its cost of capital
+forever**, and over the very long run no company can outgrow the whole economy.
+A perpetual `g` of 4–5% is already an aggressive, mature-company assumption — keep
+it below long-run GDP growth (roughly 2–4%) and always safely below `r`.
+
+## Williams's deeper contributions
+
+Beyond the formula, *The Theory of Investment Value* introduced ideas that
+economists later made famous:
+
+- The **"Law of the Conservation of Investment Value"** — the notion that how you
+  *slice* a company's financing (more debt vs. more equity) doesn't change the
+  total value of the underlying business; it just divides the same pie
+  differently. Decades later **Franco Modigliani and Merton Miller** (1958) noted
+  that Williams had **anticipated** their celebrated capital-structure theorem —
+  though Williams never proved the arbitrage mechanism that makes it hold. M&M
+  supplied that proof.
+- A clean separation of **investment** (buying for the cash a thing produces) from
+  **speculation** (buying to resell to someone else at a higher price) — the same
+  distinction Benjamin Graham would soon hammer home.
+
+<Callout type="key">
+Williams sits at the headwaters of fundamental analysis. **Graham** built the
+*margin of safety* and *Mr. Market* on top of him; **Gordon and Shapiro** gave us
+the closed-form shortcut; **Buffett** turned discounted owner-cash into a life's
+work and credited Williams by name. Learn Williams and the rest of this school
+reads as variations on his theme.
+</Callout>
+
+## Criticisms and limitations (be honest)
+
+- **Extreme input sensitivity.** As shown above, small changes in `g` or `r` move
+  the answer enormously. The model amplifies your forecasting errors, and its
+  precise-looking output is partly an illusion.
+- **The `r − g` trap.** The formula breaks down — or returns nonsense — whenever
+  `g ≥ r`. Yet real growth firms genuinely *do* outgrow their discount rate for
+  years, so the steady-state assumption misfits exactly the exciting companies.
+- **It assumes you can forecast cash flows far into the future.** Williams modeled
+  dividends "under certainty"; in reality the future is deeply uncertain.
+  Predicting dividends decades out is heroic for all but the steadiest blue chips.
+- **It doesn't fit non-dividend payers** out of the box. Fast-growing tech firms,
+  or a company like Berkshire Hathaway that has never paid a dividend, require
+  substituting earnings or free cash flow and invoking "dividend irrelevance."
+- **The pure dividend version ignores the sale price** unless you use the
+  multi-period form (Example B).
+- **The conservation-of-value law was incomplete** — Williams stated the
+  intuition but left the rigorous arbitrage proof to Modigliani and Miller.
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Treating the output as a precise truth.** It's a *range*, not a price tag.
+   Always run a low/base/high scenario.
+2. **Picking `g` too close to `r`** to "justify" a price you already like — that's
+   mathematically explosive and intellectually dishonest.
+3. **Confusing the growth rate `g` with the discount rate `r`.** They pull in
+   opposite directions — `g` raises value, `r` lowers it.
+4. **Applying the pure dividend model to a non-dividend stock** — switch to
+   earnings or free cash flow instead.
+5. **Forecasting a single growth rate forever** instead of using a two-stage model
+   that lets fast growth *fade* to a sustainable rate.
+6. **Mistaking "the formula" for "the answer."** Buffett's caution: the equation
+   is the easy part; estimating the future "coupons" is the actual job.
+7. **Assuming a high computed value guarantees a profit.** The market can stay
+   "wrong" far longer than you can wait. Intrinsic value is a thesis, not a fact.
+8. **Confusing price with value** — the exact error Williams wrote the book to
+   destroy. And don't double-count: a sale price *or* perpetual dividends, never
+   both for the same period.
+</Callout>
+
+## Putting it to work
+
+You don't need a Bloomberg terminal to use Williams. Open a spreadsheet and do
+this on a stock you know:
+
+1. Pull its current annual dividend (`D₀`) and a few years of dividend history to
+   estimate a **conservative** growth rate `g`.
+2. Pick a required return `r` that honestly reflects the risk — and keep it safely
+   above `g`.
+3. Compute the Gordon value `V = D₀(1+g)/(r−g)` for a steady payer, or build a
+   simple two-stage model (or the explicit sum in Example B) for a grower.
+4. **Run it three times** — pessimistic, base, optimistic. Write down the range,
+   not one number.
+5. Compare the *low end* of your range to the market price. Only when price sits
+   comfortably below even your cautious estimate do you have Graham's **margin of
+   safety.**
+
+If the value only looks attractive under your rosiest assumptions, you haven't
+found a bargain — you've found a story. Williams's gift was the discipline to tell
+the difference.
+
+## Further reading
+
+- John Burr Williams, *The Theory of Investment Value* (1938) — the landmark; the
+  rule of present worth, the DDM, and the Law of the Conservation of Investment
+  Value. Reprinted by Fraser Publishing (1997); full text on archive.org and the
+  St. Louis Fed's FRASER archive.
+- John Burr Williams, *Interest, Growth and Inflation* (1964).
+- Benjamin Graham's review of Williams in the *Journal of Political Economy*
+  (1939).
+- Warren Buffett, *Berkshire Hathaway Chairman's Letter* (1992) — credits
+  Williams's "equation for value."
+
+---
+
+### Sources
+
+1. [John Burr Williams — Wikipedia](https://en.wikipedia.org/wiki/John_Burr_Williams) — biography (1900–1989), Harvard, Schumpeter, the 1938 book, "real worth vs. market price," the Conservation-of-Value law, the Modigliani–Miller anticipation, and Graham's 1939 review.
+2. [Dividend discount model — Wikipedia](https://en.wikipedia.org/wiki/Dividend_discount_model) — the present-worth and Gordon formulas, "18 years before Gordon and Shapiro," and the model's limitations.
+3. [Dividend Discount Model — Corporate Finance Institute](https://corporatefinanceinstitute.com/resources/valuation/dividend-discount-model/) — the Gordon model and the multi-period worked example with a sale price (Example B).
+4. [Warren Buffett — Berkshire Hathaway 1992 Chairman's Letter](https://www.berkshirehathaway.com/letters/1992.html) — credits Williams's "equation for value"; "the formula is the same for stocks as for bonds."

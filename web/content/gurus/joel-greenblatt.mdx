@@ -1,0 +1,455 @@
+---
+title: "Joel Greenblatt — Buying Good Companies Cheap, By the Numbers"
+slug: "joel-greenblatt"
+kind: "guru"
+school: "fundamental"
+strategy: "value-special-situations"
+level: "intermediate"
+order: 206
+summary: "The hedge-fund manager who turned 'buy a good business at a cheap price' into a two-number formula a beginner can run with a spreadsheet — and proved value investing can be made mechanical."
+era: "b. 1957"
+contribution: "The Magic Formula"
+tags: ["value", "magic formula", "earnings yield", "return on capital", "quality", "special situations"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Joel Greenblatt's entire philosophy fits in a single sentence: **buy good
+companies at cheap prices — and do it by the numbers, not by gut feeling.**
+
+The rest of this lesson is learning what "good" and "cheap" mean precisely enough
+that you could rank a thousand companies on a Saturday morning and act on the list
+on Monday — and, just as important, why staying with that list through bad years
+is the part almost nobody manages.
+
+## Who he is
+
+**Joel Greenblatt** (born December 13, 1957, in Great Neck, New York) is an
+American hedge-fund manager, author, and longtime teacher who did something
+unusual: he took the hands-on, judgment-heavy craft of value investing and
+distilled its core into a **mechanical, rules-based formula** that an ordinary
+person can follow without a finance degree.
+
+- He earned a B.S. (*summa cum laude*, 1979) and an M.B.A. (1980) from the
+  **Wharton School** at the University of Pennsylvania. He started Stanford Law
+  School, then left after a year for investing.
+
+<Callout type="note">
+A common mix-up: Greenblatt's *degrees* are from **Wharton**, not Columbia.
+Columbia is where he has *taught* value investing to MBA students for 20-plus
+years — he studied at Penn, he teaches at Columbia.
+</Callout>
+
+- In **1985 he launched Gotham Capital with about $7 million** (seed capital
+  substantially from Michael Milken). Over **1985–1994 the fund reportedly
+  compounded at roughly 50% a year before fees** (about 30% net of all fees) — an
+  extraordinary record, though it was a small, concentrated fund leaning heavily
+  on "special situations" (more on those below). In 1995 he returned most outside
+  capital and ran mostly internal money.
+- He **co-founded the Value Investors Club** (with John Petry), an
+  invitation-only, idea-driven community capped at ~250 members, and later formed
+  **Gotham Asset Management** (2008, with longtime partner Robert Goldstein),
+  which runs systematic long/short value funds.
+- A fun footnote: in 2000 he helped seed Michael Burry's Scion Capital — the same
+  Burry of *The Big Short*, who credits *You Can Be a Stock Market Genius* as
+  foundational.
+
+<Callout type="key">
+Why Greenblatt matters as a "master": he is the clearest **bridge from
+discretionary value investing to systematic, quant-style factor investing.** He
+began as a Graham-and-Buffett-style stock picker doing deep, case-by-case work,
+then packaged the core of that judgment into two numbers anyone can compute.
+</Callout>
+
+## The core idea in plain language
+
+Most investors get only *half* of value investing right: they buy good companies
+that are expensive, or cheap companies that are bad. Greenblatt's "Magic Formula"
+(his own slightly tongue-in-cheek name) insists on **both at once** — a borrowing
+straight from Warren Buffett and Charlie Munger's "a wonderful business at a fair
+price."
+
+- **"Cheap"** means the company earns a lot relative to its price — a **high
+  earnings yield.** You're getting more operating profit per dollar you pay.
+- **"Good"** means the company earns a lot relative to the capital it actually
+  needs to run the business — a **high return on capital.** That signals an
+  efficient, often competitively-advantaged business.
+
+His insight: don't try to find the single perfect stock. Instead, **rank every
+company on both dimensions, combine the ranks, and mechanically buy the
+best-scoring names.** Doing it by rule removes emotion — and emotion is exactly
+what makes most investors buy high and sell low. The deeper bet is that markets
+misprice businesses in the short run, but over the long run price converges to
+value, so a patient, rules-based buyer of cheap-and-good companies wins.
+
+<Callout type="key">
+The strategy works *because* it sometimes underperforms for uncomfortable
+stretches. Those painful periods scare most people out of it — which is precisely
+why the edge survives for the patient few who stay in their seats.
+</Callout>
+
+## The two metrics (use these exact definitions)
+
+This is the part beginners most often get wrong. Greenblatt's two metrics look
+like the familiar P/E ratio and return on equity (ROE) — but they are
+**deliberately different**, and the differences are the whole point.
+
+### Earnings Yield = EBIT ÷ Enterprise Value
+
+- **EBIT** = Earnings Before Interest and Taxes — the raw operating profit, before
+  the company's debt load and tax situation muddy the picture.
+- **Enterprise Value (EV)** = market value of the stock **plus** net
+  interest-bearing debt. It's the true "all-in" cost of buying the whole
+  business, debt and all.
+
+Why not just use the everyday **P/E** (price ÷ earnings)? Because P/E ignores
+debt. Two companies can earn the same profit, but one is loaded with debt and one
+is debt-free — and EBIT/EV reflects that, while P/E doesn't. EBIT/EV puts a
+debt-heavy and a debt-free company on the same footing, and normalizes for
+different tax rates too.
+
+### Return on Capital = EBIT ÷ (Net Working Capital + Net Fixed Assets)
+
+- **Net Working Capital** = the short-term money tied up running the business
+  (inventory and receivables, minus what suppliers extend you).
+- **Net Fixed Assets** = the long-term physical capital (factories, equipment)
+  net of depreciation.
+
+Why not just use **ROE** (return on equity)? Because ROE can be inflated by debt
+and is distorted by accounting quirks of book equity. Greenblatt's version asks a
+cleaner question: *for every dollar of real, tangible capital this business needs
+to operate, how much operating profit does it throw off?* The denominator
+deliberately excludes goodwill, so it measures the capital the business actually
+needs. A high number means a genuinely efficient, high-quality business.
+
+<ConceptDiagram
+  caption="The two engines of the formula. 'Cheap' (earnings yield) and 'good' (return on capital) are scored separately, then their ranks are added — the lowest combined score wins. Neither cheapness nor quality alone gets you there; the formula rewards the best balance of both."
+  chart={`flowchart LR
+  A[Company financials] --> B["Earnings Yield<br/>EBIT / EV<br/>(how CHEAP)"]
+  A --> C["Return on Capital<br/>EBIT / (NWC + Net Fixed Assets)<br/>(how GOOD)"]
+  B --> D[Rank: 1 = cheapest]
+  C --> E[Rank: 1 = highest quality]
+  D --> F["Add the two ranks<br/>(lowest total = best)"]
+  E --> F
+  F --> G[Buy the top 20-30]`}
+/>
+
+## The full method — concrete steps a beginner can follow
+
+Here is the complete recipe. Steps 1–5 come straight from Greenblatt's official
+free screener (magicformulainvesting.com); steps 6–9 add the portfolio-management
+detail from the book.
+
+1. **Filter the universe by size.** Set a minimum market capitalization. A common
+   floor is **$50M+**, but beginners are often better served by a higher floor
+   (say `>$100M`, even `>$1B`) for liquidity and cleaner data.
+2. **Exclude financials and utilities** (banks, insurers, utilities) — the
+   EBIT-and-capital math distorts for them — and **exclude foreign ADRs.**
+3. **Rank every remaining company by earnings yield** (1 = cheapest) and
+   **separately by return on capital** (1 = highest quality).
+4. **Add the two ranks together.** The lowest combined score is the best
+   "cheap AND good" company. (A stock ranked 20th-cheapest and 5th-best-quality
+   scores 25.)
+5. **Buy a diversified basket of the top-ranked names — typically 20–30 stocks.**
+   Concentration in just a few names turns a factor strategy into a gamble.
+6. **Build the portfolio gradually.** Greenblatt's book suggests buying roughly
+   **5–7 stocks every 2–3 months over a 12-month period**, so you're not betting
+   everything on one entry date. (The site confirms the 12-month purchase window;
+   the precise cadence is book-sourced and approximate.)
+7. **Hold each stock about one year**, then rebalance into a fresh top-ranked
+   list.
+8. **Sell tax-smart:** sell **losers just *before*** the one-year mark (to book a
+   short-term loss) and **winners just *after*** one year (to qualify for
+   lower long-term capital-gains tax). A beginner pitfall is getting this
+   backwards.
+9. **Repeat for the long haul** — a minimum of **3–5 years, ideally 5–10+.** This
+   is non-negotiable: the edge only shows up over long periods and through
+   genuinely painful drawdowns.
+
+<ConceptDiagram
+  caption="The annual cycle. The formula is a loop, not a one-time stock pick: rank, build in gradually over 12 months, hold ~a year, harvest taxes on the way out, and re-rank. The discipline of repeating it through bad years is where the returns live."
+  chart={`flowchart LR
+  A[Rank the universe] --> B[Buy 5-7 names<br/>every 2-3 months]
+  B --> C[Hold each ~1 year]
+  C --> D["Sell losers before 1yr<br/>(short-term loss)"]
+  C --> E["Sell winners after 1yr<br/>(long-term gains)"]
+  D --> F[Re-rank the universe]
+  E --> F
+  F --> A`}
+/>
+
+## A worked example
+
+*(Illustrative numbers, to show how the ranking actually decides.)*
+
+Compare three companies. Watch how being cheapest alone, or highest-quality alone,
+does **not** win — the formula rewards the best *combination.*
+
+**Company A — strong on both (cheap AND good):**
+
+- EBIT = $200M; Enterprise Value = $1,000M → **Earnings Yield = 200 / 1,000 = 20%**
+- Net Working Capital + Net Fixed Assets = $500M → **Return on Capital = 200 / 500 = 40%**
+
+**Company B — superb quality, but expensive:**
+
+- EBIT = $150M; Enterprise Value = $1,500M → **Earnings Yield = 150 / 1,500 = 10%**
+- Capital = $300M → **Return on Capital = 150 / 300 = 50%**
+
+**Company C — very cheap, but low quality:**
+
+- EBIT = $100M; Enterprise Value = $400M → **Earnings Yield = 100 / 400 = 25%**
+- Capital = $1,000M → **Return on Capital = 100 / 1,000 = 10%**
+
+Now rank each metric across the three (1 = best) and add the ranks:
+
+| Company | Earn. yield (rank) | Ret. on capital (rank) | **Combined** |
+|---------|:-:|:-:|:-:|
+| A — cheap **and** good | 20% (#2) | 40% (#2) | **4** |
+| B — good but pricey | 10% (#3) | 50% (#1) | **4** |
+| C — cheap but weak | 25% (#1) | 10% (#3) | **4** |
+
+In this tiny three-company world all three tie at 4 — and that is itself the
+lesson. **C wins the cheapness contest but is a poor business; B wins quality but
+is expensive; only A scores near the top on *both*.** In a real universe of ~3,500
+companies the combined-rank distribution spreads out, the top ~30 names are the
+rare stocks that score strongly on both axes — and a balanced name like A floats
+to the top while the one-dimensional names like B and C drift down the list.
+
+<ScatterChart
+  caption="Why you want the top-RIGHT corner. The formula's whole job is to find companies that are both cheap (high earnings yield, rightward) and good (high return on capital, upward). C is cheap but low-quality (bottom-right); B is high-quality but expensive (top-left); only A sits toward the cheap-AND-good corner. Illustrative figures."
+  xLabel="Earnings yield % (cheaper →)"
+  yLabel="Return on capital % (better →)"
+  series={[
+    { label: "Companies", data: [
+      { x: 20, y: 40, label: "A (cheap & good)" },
+      { x: 10, y: 50, label: "B (good, pricey)" },
+      { x: 25, y: 10, label: "C (cheap, weak)" }
+    ] }
+  ]}
+/>
+
+You would never buy three names in isolation — you'd compute these two metrics for
+the whole eligible market, add the ranks, and **buy the 20–30 names with the
+lowest combined scores.**
+
+In a real universe the spread is what does the work. Picture ~3,500 eligible
+companies, each given a rank on *cheapness* (1–3,500) and a rank on *quality*
+(1–3,500), with the two ranks added. Most companies are mediocre on at least one
+axis, so their combined scores pile up in the middle and high end. Only a thin
+sliver scores low on **both** — and those are the names that "float up" to the top
+of the list. The chart below shows how few companies actually land in that
+buy-worthy bucket.
+
+<BarChart
+  caption="How combined ranks spread across a ~3,500-company universe (illustrative). Each bar counts how many companies fall in a band of combined score (cheapness rank + quality rank). The vast majority cluster in the middle — strong on one axis at best. Only the leftmost sliver (~30 names) scores low on BOTH, and that is the entire buy list. This is why you need a big universe: the rare cheap-AND-good names are exactly the ones that surface at the far left."
+  yLabel="Number of companies"
+  labels={["Top ~30 (buy list)", "31–250", "251–800", "801–1,800", "1,801–2,900", "2,901–3,500"]}
+  series={[{ label: "Companies in band", data: [30, 220, 550, 1000, 1100, 600] }]}
+/>
+
+## You Can Be a Stock Market Genius — the other Greenblatt
+
+Before the Magic Formula made him famous, Greenblatt wrote a book for a very
+different audience. **You Can Be a Stock Market Genius** (1997, despite the cheesy
+title) is his playbook for **special situations** — corporate events that
+temporarily misprice a stock and that few analysts bother to study. This is a
+*separate discipline* from the formula: not a mechanical screen, but case-by-case
+detective work.
+
+- **Spin-offs** (his favorite) — when a company carves off a division as a new
+  standalone stock.
+- **Merger securities / risk arbitrage** — capturing the small, defined spread
+  between a deal price and the current price.
+- **Bankruptcies, restructurings, recapitalizations, "stub" stocks, rights
+  offerings, and LEAPS** (long-dated options to lever a thesis).
+
+**Why spin-offs tend to be mispriced** (and why he loved them):
+
+- Index funds and big institutions that hold the parent receive the small spinoff
+  shares and **dump them indiscriminately** — not because the business is bad, but
+  because it's too small, off-mandate, or not in their index. That creates
+  artificial selling pressure.
+- The new company gets **little analyst coverage** at first, so information is
+  underdigested.
+- Freed from the conglomerate, management often gets **direct equity incentives**
+  and runs the business better; a clean sum-of-the-parts value finally becomes
+  visible. Greenblatt's tell: watch for insiders loading up on the new shares.
+
+<ConceptDiagram
+  caption="The spin-off mispricing engine. A spin-off isn't cheap because it's a bad business — it's cheap because of mechanical, non-economic selling. Institutions that received the small spinoff shares dump them (off-mandate, too small, not in their index), almost no analyst covers it yet, so price falls below fair value. Then the gap closes: new equity-incentivized management runs it better and coverage arrives, re-rating the stock upward. Greenblatt's edge is buying in the trough that the forced selling creates."
+  chart={`flowchart LR
+  A[Parent spins off<br/>a division] --> B[Institutions receive<br/>small spinoff shares]
+  B --> C["Forced / indiscriminate selling<br/>(off-mandate, too small,<br/>not in the index)"]
+  A --> D[Little analyst coverage<br/>at first]
+  C --> E["Price falls BELOW<br/>fair value (mispricing)"]
+  D --> E
+  E --> F["Buy in the trough"]
+  G[Equity-incentivized mgmt<br/>+ coverage arrives] --> H["Re-rating upward<br/>toward fair value"]
+  F --> H`}
+/>
+
+This is the **deep, hands-on, case-by-case** end of Greenblatt — the opposite of
+the mechanical formula. It demands real work per situation and does **not** scale
+to large capital, but the payoff is hunting where the crowd isn't looking. The
+Magic Formula was Greenblatt's later answer to "what can someone do who *can't* do
+all that homework?"
+
+<ConceptDiagram
+  caption="Greenblatt's two modes. He works at both ends of the value spectrum: deep, discretionary special-situations analysis (the 1997 book) for the dedicated, and a hands-off mechanical formula (the 2005 book) for everyone else. The formula is the systematic distillation of the same value-and-quality instincts."
+  chart={`flowchart TB
+  A[Greenblatt's value philosophy] --> B["DISCRETIONARY<br/>Special situations<br/>(spin-offs, merger arb,<br/>restructurings)"]
+  A --> C["SYSTEMATIC<br/>The Magic Formula<br/>(rank, buy 20-30,<br/>hold a year)"]
+  B --> D["High effort,<br/>case by case"]
+  C --> E["Low effort,<br/>rules-based"]`}
+/>
+
+## The key books
+
+- **"How the Small Investor Can Beat the Market"** — *Journal of Portfolio
+  Management* (1981), co-authored with Rich Pzena and Bruce Newberg. The earliest
+  statement of his lifelong theme: ordinary investors can systematically
+  outperform.
+- **You Can Be a Stock Market Genius** (1997) — the special-situations playbook
+  described above. Despite the title, the content is advanced, not get-rich-quick.
+- **The Little Book That Beats the Market** (2005) — introduces the Magic Formula;
+  a bestseller (300,000+ copies). Updated as **The Little Book That *Still* Beats
+  the Market** (2010) with refreshed data. *This is the primary text for the
+  formula.*
+- **The Big Secret for the Small Investor** (2011) — argues for value-weighted
+  indexing over standard cap-weighted index funds for ordinary investors.
+- **Common Sense** (2020) — a broader book on the economy and opportunity, less
+  about stock selection.
+
+## Honest criticisms and limitations
+
+Be skeptical — Greenblatt himself would want you to be.
+
+<Callout type="warning">
+**The real-world returns are far below the book's headline.** The 2005 book
+reported about **30.8% annualized for 1988–2004 vs. ~12.4% for the S&P 500** in
+backtests. But that is Greenblatt's *own in-sample backtest* over a chosen window.
+**Independent replications find far less.** Backtester **Robert Andrew Martin**,
+re-running the formula on U.S. stocks, found only roughly **~3% annualized
+outperformance** over the market — genuine, but a *fraction* of the book's claim.
+The gap reflects a different period, real-world trading costs, and likely
+look-ahead/survivorship bias in the original backtest.
+</Callout>
+
+- **Long stretches of underperformance.** Even in Greenblatt's own data the
+  formula lagged the market in a large share of individual years and could trail
+  for **2–3 consecutive years** — exactly the underperformance that causes
+  investors to quit at the worst moment. The strategy's real risk is behavioral,
+  not statistical.
+- **It may not be "magic" so much as early, clean factor packaging.** Academic
+  work (à la Fama-French and Novy-Marx) suggests much of the return is explained
+  by the well-known **value** and **quality/profitability** factors. It's
+  correlated with small-cap and value exposure, which suffer in growth-led markets
+  (e.g., much of the 2010s).
+- **Small-cap and liquidity bias.** Top-ranked names skew toward smaller companies
+  where the cited returns are hardest to capture (illiquidity, trading costs,
+  market impact). Raising the market-cap floor for safety *reduces* the returns.
+- **Data quality and value traps.** Trailing EBIT can be inflated by one-time
+  gains; a cheap-and-good screen can surface declining businesses or accounting
+  distortions. The formula doesn't read the business qualitatively.
+- **Crowding and capacity.** A famous, free formula gets arbitraged away in liquid
+  large caps; "what's known doesn't pay as well."
+- **Concentration and volatility.** Holding only 20–30 names is more volatile —
+  with sharper drawdowns — than a broad index fund.
+
+The two charts below keep the **book's claim** and the **independent test**
+strictly separate — they cover different periods and methods, so comparing them
+side-by-side in one frame would be misleading. Read each on its own terms: the
+honest takeaway is the *gap between them.*
+
+<BarChart
+  caption="The book's OWN in-sample backtest (1988–2004): ~30.8% annualized for the Magic Formula vs. ~12.4% for the S&P 500. This is Greenblatt's headline number — but it is a self-reported backtest over a chosen window, with likely look-ahead/survivorship bias and no real-world trading costs. Treat it as the optimistic ceiling, not a forecast."
+  yLabel="Annualized return, 1988–2004 (%)"
+  labels={["Magic Formula", "S&P 500"]}
+  series={[{ label: "Book backtest", data: [30.8, 12.4] }]}
+/>
+
+<BarChart
+  caption="An INDEPENDENT replication (Robert Andrew Martin, a different period and dataset): the formula beat the market by only roughly ~3 percentage points a year — genuine, but a fraction of the book's gap. Exact figures are illustrative of the magnitude; the point is the outperformance shrinks dramatically once you leave the original in-sample window and add real-world frictions."
+  yLabel="Annualized return, independent test (%)"
+  labels={["Magic Formula", "Market"]}
+  series={[{ label: "Independent test", data: [11, 8] }]}
+/>
+
+The single most important visual in this whole lesson is not a return number — it
+is the *path* those returns take. The strategy's headline edge comes bundled with
+**long, demoralizing stretches where it trails the market**, and that is exactly
+what flushes most investors out at the worst time.
+
+<LineChart
+  caption="$10,000 invested in the Magic Formula vs. the S&P 500 over a multi-year window (illustrative, stylized to show the BEHAVIORAL reality). The formula ends far ahead — but look at the middle: for two-plus years it LAGS the market (the orange line sits above it), and it suffers sharper drawdowns. This trailing stretch is where almost everyone quits and locks in the underperformance without ever seeing the recovery. Compounding is the reward; sitting still through the gap is the price."
+  height={320}
+  series={[
+    { label: "Magic Formula ($10k)", data: [10000, 12500, 11200, 14800, 13100, 12000, 13800, 19500, 24000, 22000, 28500, 36000] },
+    { label: "S&P 500 ($10k)", data: [10000, 11300, 10800, 12600, 13400, 13900, 14800, 16200, 17500, 18800, 20100, 21500], color: "#f59e0b" },
+  ]}
+  points={[
+    { x: 5, y: 12000, text: "formula trailing (people quit here)", color: "#ef4444" },
+    { x: 11, y: 36000, text: "patience rewarded", color: "#22c55e" },
+  ]}
+/>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Quitting during underperformance.** The single biggest failure mode. The
+   strategy is *designed* to test your patience; bailing after one or two bad
+   years guarantees you capture the downside without the recovery.
+2. **Not holding enough stocks.** Buying 3–5 names instead of 20–30 reinvites the
+   stock-specific risk the formula is built to diversify away.
+3. **Cherry-picking from the screen.** The method is *mechanical.* Skipping the
+   "scary-looking" names — often exactly where the returns come from — breaks it.
+4. **Mis-defining the metrics.** Confusing earnings yield (EBIT/EV) with P/E, or
+   return on capital with ROE. Greenblatt's definitions are intentionally
+   different.
+5. **Including financials, utilities, or ADRs** in the ranking — the EBIT/capital
+   math misfires for them, producing garbage rankings.
+6. **Getting the tax rule backwards.** Sell losers *before* one year, winners
+   *after.*
+7. **Expecting the book's ~30%.** Anchor to a modest single-digit *outperformance*
+   (if any), not 30%.
+8. **Confusing the two strategies.** *You Can Be a Stock Market Genius* (hands-on
+   special situations) is **not** a mechanical screen like the Magic Formula.
+   They're separate disciplines requiring different skills.
+</Callout>
+
+## Putting it to work
+
+You don't need a Bloomberg terminal. A motivated beginner can:
+
+1. **Use Greenblatt's own free screener** (magicformulainvesting.com) to generate
+   a ranked list — enter a minimum market cap and choose 30 or 50 stocks — or
+   replicate the two metrics in a spreadsheet from financial statements.
+2. **Pick a market-cap floor** you're comfortable with (`>$1B` is a safe
+   beginner choice for liquidity).
+3. **Buy 20–30 of the top names**, building the basket in over ~12 months.
+4. **Hold each ~a year, rebalance, harvest taxes**, and — the hard part —
+   **keep going through the bad stretches.**
+
+The deepest lesson isn't the arithmetic; it's the temperament. Greenblatt proved
+that a *simple* value-and-quality rule, followed with *uncommon discipline*, can
+beat the market. The formula is easy. Sitting still while it underperforms for two
+years is the part almost nobody can do — and that difficulty is, paradoxically,
+the source of the reward.
+
+<Callout type="key">
+Remember the trade Greenblatt is really offering: a method that is **simple to
+understand, simple to run, and emotionally brutal to stick with.** Master the last
+part and you've understood the master.
+</Callout>
+
+---
+
+### Sources
+
+1. [Joel Greenblatt — Wikipedia](https://en.wikipedia.org/wiki/Joel_Greenblatt) — biography, Gotham Capital returns (≈50% gross / ≈30% net, 1985–1994), books and dates, Value Investors Club, Columbia teaching, MagicFormulaInvesting launch, Scion seed.
+2. [Magic Formula Investing — Wikipedia](https://en.wikipedia.org/wiki/Magic_formula_investing) — metric definitions (EBIT/EV, EBIT/(NWC + net fixed assets)), ranking method, 20–30 stocks, 2–3/month accumulation, annual rebalance with tax-timing, $50M floor, exclusions, Martin's independent backtest.
+3. [Special situation — Wikipedia](https://en.wikipedia.org/wiki/Special_situation) — taxonomy of special situations (spin-offs, arbitrage, bankruptcies, recaps, rights offerings, stub stocks).
+4. [Magic Formula Investing — official screener](https://www.magicformulainvesting.com/) — Greenblatt-controlled: minimum market cap input, choice of 30 or 50 stocks, 12-month purchase window, one-year hold, tax-timing rule, exclusions.
+5. Joel Greenblatt, *The Little Book That Still Beats the Market* (2010) — primary text for the formula and the buy/hold/rebalance cadence; the ~30.8% (1988–2004) vs S&P ~12.4% backtest.
+6. Joel Greenblatt, *You Can Be a Stock Market Genius* (1997) — primary text for special situations (spin-offs, merger arb, restructurings).
