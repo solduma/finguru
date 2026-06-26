@@ -1,0 +1,484 @@
+---
+title: "Harry Markowitz — The Free Lunch of Diversification"
+slug: "harry-markowitz"
+kind: "guru"
+school: "quant"
+strategy: "academic-foundations"
+level: "intermediate"
+order: 300
+summary: "The economist who proved, with one 1952 paper, that smart investing is about combining assets — not picking them — and turned 'don't put all your eggs in one basket' into mathematics you can run in a spreadsheet."
+era: "1927–2023"
+contribution: "Modern Portfolio Theory"
+tags: ["diversification", "efficient frontier", "mean-variance", "risk", "correlation", "portfolio theory"]
+prereqs: ["charles-dow"]
+---
+
+## Why this lesson matters
+
+Almost every other guru in this guide is trying to answer one question: *which
+asset should I buy?* Harry Markowitz asked a stranger, more powerful question:
+
+> **Given everything I might buy, how should I combine it all into one portfolio?**
+
+That shift — from picking winners to *engineering a whole portfolio* — is the
+foundation of modern finance. Index funds, target-date retirement funds,
+robo-advisors, the "60/40 portfolio," and the way every pension fund on earth
+allocates money all trace back to a single 14-page paper Markowitz published in
+1952, while still a graduate student.
+
+By the end of this lesson you'll be able to take a handful of investments,
+combine them mathematically, and find the mix that gives you the *most return
+for the least risk.* That mix has a name — the **efficient frontier** — and
+you'll build one by hand, with every number computed from one formula you can
+type into a spreadsheet.
+
+## Who he was
+
+**Harry Max Markowitz** (August 24, 1927 – June 22, 2023) was an American
+economist, born in Chicago to a Jewish family who ran a small grocery store. He
+died in San Diego at age 95. He studied entirely at the **University of
+Chicago**, earning a bachelor's, a master's in economics (1950), and a **PhD in
+economics (1954)** — with a dissertation on portfolio theory. His doctoral
+advisors included **Milton Friedman** and **Jacob Marschak**, and as a student
+he was a member of the famed **Cowles Commission**, a hothouse of mathematical
+economics.
+
+The legend of how the idea struck him is worth knowing: while reading **John
+Burr Williams'** *The Theory of Investment Value* in the university library,
+Markowitz noticed the theory implied an investor should simply buy the single
+stock with the highest expected (present) value — which is obviously absurd,
+because nobody sane bets everything on one name. The thing Williams' theory
+ignored was **risk**, and the fact that investors care about it. That gap became
+his life's work.
+
+<Callout type="key">
+Markowitz's breakthrough wasn't a stock tip or a trading rule. It was a *way of
+thinking*: judge every investment not on its own, but on what it does to the
+**risk and return of your entire portfolio.**
+</Callout>
+
+His career bridged academia, government, and Wall Street. He joined the **RAND
+Corporation** in 1952 (where he met George Dantzig, the inventor of linear
+programming), spent 1955–56 at the **Cowles Foundation at Yale** at James
+Tobin's invitation, co-founded the software firm **CACI** (1962), ran an early
+computerized hedge fund as CEO of **Arbitrage Management Company** (1970), held
+a chair at **Baruch College, CUNY** when the Nobel came, and later taught at
+**UC San Diego's Rady School**. A genuine polymath, he also invented the
+**SIMSCRIPT** simulation language, pioneered sparse-matrix methods, and devised
+the "buddy" memory-allocation algorithm — work that earned him the separate
+**John von Neumann Theory Prize (1989)**.
+
+In **1990 he won the Nobel Memorial Prize in Economic Sciences**, shared with
+**Merton Miller** and **William F. Sharpe**, "for their pioneering work in the
+theory of financial economics." Markowitz's share was specifically for the
+theory of portfolio choice — what we now call **Modern Portfolio Theory (MPT)**.
+
+## The core idea in plain language
+
+Before Markowitz, investing advice boiled down to: *find the best assets and buy
+them.* His revolutionary point was that a single asset's return and risk tell you
+almost nothing about whether you should own it. What matters is how it behaves
+**alongside everything else you hold.**
+
+Here's the magic. Imagine two assets that don't move in lockstep — when one
+zigs, the other tends to zag. Held together, their bad days partly cancel out.
+The combined portfolio bounces around *less* than either asset alone, even
+though you gave up no expected return. Markowitz called this the closest thing to
+a **"free lunch"** in all of finance.
+
+The technical name for "how much two assets move together" is **correlation**, a
+number from −1 to +1:
+
+- **+1** — they move perfectly together (a clone; no benefit from mixing).
+- **0** — they move independently.
+- **−1** — they move perfectly oppositely (the ultimate hedge).
+
+The lower the correlation between your assets, the bigger the free lunch.
+
+<ConceptDiagram
+  caption="The logic of diversification. Two imperfectly-correlated assets each have their own ups and downs, but combined their movements partly offset — so the portfolio's risk ends up LOWER than the average risk of its parts, with no loss of expected return."
+  chart={`flowchart LR
+  A["Asset A<br/>up & down swings"] --> P["Combined<br/>portfolio"]
+  B["Asset B<br/>up & down swings"] --> P
+  C["Low correlation:<br/>swings partly cancel"] --> P
+  P --> R["Same expected return,<br/>LESS risk = free lunch"]`}
+/>
+
+In Markowitz's framework, **return** is the **expected (average) return** and
+**risk** is the **variance** (or its square root, the **standard deviation**) of
+returns — how widely the returns scatter around that average. Because the whole
+method weighs *mean against variance*, it's called **mean-variance analysis.**
+
+<Callout type="note">
+**Standard deviation** is just a measure of "bounciness." A bond fund that
+returns 4% give or take 3% has a standard deviation of 3%. A tech stock that
+returns 12% give or take 30% has a standard deviation of 30%. Same idea as a
+weather forecast's margin of error.
+</Callout>
+
+## The full method — steps a beginner can follow
+
+Here is the entire recipe. Steps 1–4 are estimation, 5–7 are arithmetic, and
+8–11 are where the payoff lives.
+
+1. **List your candidate assets** — a handful of stocks, bonds, or index funds.
+2. **Estimate each asset's expected return** — the average annual return you
+   anticipate (often the long-run historical average, tempered by judgment).
+3. **Estimate each asset's risk** — its standard deviation, again usually from
+   history.
+4. **Estimate the correlation between every pair of assets.** This is the
+   crucial, most-skipped step — it's what unlocks the free lunch. (Closely
+   related is the **covariance**, `σ_AB = ρ_AB · σ_A · σ_B`; the full table of
+   pairwise covariances is the **covariance matrix** at the heart of the model.)
+5. **Choose portfolio weights** — what fraction of your money goes in each asset.
+   The weights must sum to 100%.
+6. **Compute the portfolio's expected return** — simply the weighted average of
+   the individual expected returns.
+7. **Compute the portfolio's risk** — *not* a weighted average. You must use the
+   variance formula below, which includes a correlation term. This is the
+   mathematical heart of the whole theory.
+8. **Repeat steps 5–7 for many different weight combinations** and plot each
+   resulting portfolio as a dot on a chart: risk (standard deviation) on the
+   horizontal axis, expected return on the vertical.
+9. **Find the efficient frontier** — the upper-left edge of that cloud of dots,
+   where each portfolio delivers the *highest return for its level of risk.*
+10. **Pick your spot on the frontier** based on how much risk you can stomach:
+    cautious investors sit lower-left, aggressive ones upper-right.
+11. **(Advanced)** Add a risk-free asset (like Treasury bills) and the best
+    choice becomes a single tangency portfolio plus cash — covered in *Adding a
+    risk-free asset* below, and fully in the next lesson (Sharpe and the CAPM).
+
+### The two formulas you actually need
+
+For a portfolio of two assets, A and B, with weights `w_A` and `w_B` (which add
+to 1):
+
+```
+Expected return:
+  E(R_p) = w_A · E(R_A) + w_B · E(R_B)
+
+Variance (risk²):
+  σ_p² = w_A²·σ_A² + w_B²·σ_B² + 2·w_A·w_B·σ_A·σ_B·ρ_AB
+
+Then:  risk = standard deviation = √(σ_p²)
+```
+
+The expected-return formula is an ordinary weighted average. The variance formula
+is the one that matters: that last term — `2·w_A·w_B·σ_A·σ_B·ρ_AB` — is the
+**correlation term.** When correlation `ρ` is less than 1, this term is smaller
+than it would be otherwise, which drags total risk *below* the simple weighted
+average. **That gap is the diversification benefit, made of pure math.**
+
+<Callout type="warning">
+The single biggest beginner error is treating portfolio risk as a weighted
+average of the parts' risks (like you do for return). It is **not.** Skip the
+correlation term and you erase the entire insight of the theory.
+</Callout>
+
+## A worked example, with real numbers
+
+*(Illustrative numbers, computed straight from the formulas above.)*
+
+Take two assets:
+
+| Asset | Expected return | Risk (std dev) |
+|-------|-----------------|----------------|
+| **A** (bonds) | 6% | 10% |
+| **B** (stocks) | 12% | 20% |
+
+Hold them **50/50**, and assume their correlation is `ρ = 0.3` (they move
+loosely together — typical for stocks and bonds).
+
+**Step 1 — Expected return** (the easy weighted average):
+
+```
+E(R_p) = 0.5 × 6% + 0.5 × 12% = 9%
+```
+
+**Step 2 — Variance** (plug into the formula):
+
+```
+σ_p² = (0.5²)(0.10²) + (0.5²)(0.20²) + 2(0.5)(0.5)(0.10)(0.20)(0.3)
+     = 0.0025      + 0.0100      + 0.0030
+     = 0.0155
+```
+
+**Step 3 — Standard deviation** (the square root):
+
+```
+σ_p = √0.0155 ≈ 0.1245 = 12.45%
+```
+
+**Now the punchline.** If you naively averaged the two risks, you'd expect
+`0.5 × 10% + 0.5 × 20% = 15%`. But the actual portfolio risk is only **12.45%.**
+You earned the same 9% return while shedding **2.55 percentage points of risk —
+for free**, just by combining two imperfectly-correlated assets.
+
+<BarChart
+  labels={["Asset A alone", "Asset B alone", "Naive avg (ρ=1)", "Actual (ρ=0.3)"]}
+  series={[{ label: "Risk (std dev, %)", data: [10, 20, 15, 12.45] }]}
+  caption="The free lunch in one chart. Mixing the two assets 50/50 would give 15% risk IF they moved in perfect lockstep (ρ=1). But because they're only loosely correlated (ρ=0.3), the real portfolio risk falls to 12.45% — at the very same 9% expected return. The drop from 15% to 12.45% is diversification, with no return given up."
+  yLabel="Risk (standard deviation, %)"
+/>
+
+How much you save depends entirely on correlation. Watch what happens to that
+same 50/50 portfolio's risk as we change `ρ`:
+
+<LineChart
+  caption="Same two assets, same 50/50 weights — only the correlation changes. As correlation falls from +1 (perfect lockstep, 15% risk) toward −1 (perfect hedge, 5% risk), portfolio risk collapses. Lower correlation = bigger free lunch. Each risk value is computed from the variance formula at, left to right, ρ = +1.0, +0.7, +0.3, 0, −0.3, −0.7, −1.0."
+  height={280}
+  series={[{ label: "Portfolio risk (%)", data: [15.0, 13.96, 12.45, 11.18, 9.75, 7.42, 5.0], color: "#38bdf8" }]}
+  points={[
+    { x: 0, y: 15.0, text: "ρ = +1.0 (no benefit)", color: "#ef4444" },
+    { x: 2, y: 12.45, text: "ρ = +0.3 (our example)", color: "#e6e9ef" },
+    { x: 6, y: 5.0, text: "ρ = −1.0 (max benefit)", color: "#22c55e" },
+  ]}
+/>
+
+## The efficient frontier
+
+Now imagine doing that calculation not for one weighting but for *every possible
+mix* — 100% A, 90/10, 80/20, all the way to 100% B — and plotting each as a dot
+on a risk-vs-return chart. You get a curved arc. That curve is the visual heart
+of Markowitz's theory.
+
+<ScatterChart
+  caption="The efficient frontier. Each dot is a portfolio of our two assets at different weights, plotted by its risk (horizontal) and expected return (vertical). Notice the curve bulges LEFTWARD — that bulge is diversification. The leftmost point is the Global Minimum-Variance Portfolio (GMVP), at roughly 90% A / 10% B, whose 9.79% risk is actually LOWER than Asset A's 10% — a mix beats the safest single asset. Everything on the upper arc from the GMVP to Asset B is 'efficient': you cannot get more return without taking more risk. Risk values are computed from the two-asset variance formula at ρ=0.3."
+  xLabel="Risk (standard deviation, %)"
+  yLabel="Expected return (%)"
+  series={[
+    {
+      label: "Frontier curve",
+      line: true,
+      color: "#38bdf8",
+      data: [
+        { x: 10.0, y: 6.0 },
+        { x: 9.79, y: 6.6 },
+        { x: 9.96, y: 7.2 },
+        { x: 11.35, y: 8.4 },
+        { x: 12.45, y: 9.0 },
+        { x: 15.17, y: 10.2 },
+        { x: 18.32, y: 11.4 },
+        { x: 20.0, y: 12.0 },
+      ],
+    },
+    {
+      label: "Key portfolios",
+      color: "#e6e9ef",
+      data: [
+        { x: 10.0, y: 6.0, label: "100% A (10.0%)" },
+        { x: 9.79, y: 6.6, label: "GMVP ≈90/10 (9.79%)" },
+        { x: 12.45, y: 9.0, label: "50/50 (12.45%)" },
+        { x: 20.0, y: 12.0, label: "100% B (20.0%)" },
+      ],
+    },
+  ]}
+/>
+
+Two features matter:
+
+- **The Global Minimum-Variance Portfolio (GMVP)** — the leftmost point of the
+  curve, the single mix with the lowest possible risk. Strikingly, it can have
+  *less* risk than even the safest individual asset.
+- **The efficient frontier proper** — the portion of the curve from the GMVP
+  *upward.* Any portfolio on that upper arc is "efficient": for its level of
+  risk, nothing beats it. Anything *below* the arc is "dominated" — you could get
+  more return for the same risk, so no rational investor would hold it.
+
+<Callout type="key">
+Your job as an investor, in Markowitz's world, is two decisions: (1) build the
+efficient frontier from your assets, then (2) pick the one point on it that
+matches your appetite for risk. A nervous retiree sits near the GMVP; a young
+aggressive saver sits toward the high-return end.
+</Callout>
+
+With many assets the principle is identical, just bigger. In matrix form the
+return is **wᵀμ** and the variance is **wᵀΣw**, where **Σ** is the *covariance
+matrix* holding every pairwise covariance. Markowitz invented an algorithm (the
+**critical line algorithm**) to trace the frontier across hundreds of assets —
+which is exactly what your robo-advisor's software does today.
+
+## Adding a risk-free asset (a preview of Sharpe)
+
+There's one powerful extension. Suppose you can also hold a **risk-free asset** —
+Treasury bills paying, say, 3% with essentially zero volatility. Draw a straight
+line from that 3% point on the vertical axis up to the frontier, and rotate it
+until it just *touches* the curve. The point it touches is the **tangency
+portfolio**, and the line is the **Capital Allocation Line (CAL)**, sometimes
+called the Capital Market Line.
+
+Every point on that straight line — a blend of cash and the tangency portfolio —
+beats the curved frontier for the same risk. The tangency portfolio is the one
+with the highest **Sharpe ratio** (excess return per unit of risk). This leads to
+the elegant **Two-Mutual-Fund Theorem**: every efficient investor, cautious or
+aggressive, should hold the *same* risky portfolio (the tangency one) and simply
+adjust how much cash they mix in. That's the bridge to the next lesson — Sharpe's
+CAPM is built directly on top of this.
+
+## Diversification across many assets — and where it stops
+
+The two-asset example shows the mechanism; the real power shows up as you add
+*more* imperfectly-correlated assets. A classic study by **Elton and Gruber
+(1977)**, drawing on 3,290 securities, measured how the risk of an equal-weighted
+random portfolio falls as you add holdings:
+
+| # of stocks | Portfolio std. dev. | vs. a single stock |
+|---|---|---|
+| 1 | 49.2% | 1.00 |
+| 4 | 29.7% | 0.60 |
+| 10 | 23.9% | 0.49 |
+| 30 | 20.9% | 0.42 |
+| 1,000 | 19.2% | 0.39 |
+
+<BarChart
+  labels={["1", "4", "10", "30", "1,000"]}
+  series={[{ label: "Portfolio risk (std dev, %)", data: [49.2, 29.7, 23.9, 20.9, 19.2] }]}
+  caption="Diversification has diminishing returns AND a hard floor (Elton & Gruber, 1977, 3,290 securities). Going from 1 to ~4 stocks slashes risk by 40%; 30 stocks (20.9%) already performs nearly as well as 1,000 stocks (19.2%). But the bars never reach zero — the ~19% floor is market-wide risk that no amount of diversification can remove."
+  yLabel="Risk (standard deviation, %)"
+/>
+
+Two lessons leap out:
+
+- **Most of the benefit comes fast.** Roughly 20–30 well-chosen, low-correlation
+  holdings capture nearly all the diversification available. The 1,001st stock
+  barely helps.
+- **There is a floor you can never cross.** Diversification wipes out
+  **unsystematic (company-specific) risk** — a fraud, a recall, a failed drug
+  trial at one firm. But it cannot touch **systematic (market) risk** — recessions,
+  rate shocks, wars — because those hit *everything* at once. That residual
+  market risk is the ~19% floor in the table.
+
+<Callout type="note">
+This split is one of the most important ideas in finance. **Unsystematic risk is
+free to remove** (just diversify). **Systematic risk is what you actually get
+paid to bear** — it's the foundation of Sharpe's CAPM and the concept of "beta"
+in the next lesson.
+</Callout>
+
+## Key books and papers
+
+- **"Portfolio Selection," _The Journal of Finance_, March 1952** — the founding
+  paper of MPT, and the origin point of nearly all modern quantitative finance.
+  Just 14 pages. It introduced the "E-V rule" (expected return vs. variance).
+- **"The Utility of Wealth," _Journal of Political Economy_, 1952** — a companion
+  paper on how investors weigh risk under uncertainty.
+- **_Portfolio Selection: Efficient Diversification of Investments_** (Wiley,
+  **1959**) — the full book-length treatment, including the covariance math and
+  the critical line algorithm.
+- **"The Elimination Form of the Inverse and Its Application to Linear
+  Programming," _Management Science_, 1957** — his sparse-matrix work, a reminder
+  he was as much computer scientist as economist.
+- **_Harry Markowitz: Selected Works_** (World Scientific, 2009) — a curated
+  anthology spanning finance and computer science.
+
+## Honest criticisms and limitations
+
+Markowitz's theory is the *foundation* of modern finance, not its final word.
+Every serious practitioner respects these caveats:
+
+1. **Garbage in, garbage out.** The optimizer is brutally sensitive to its
+   inputs — especially the *expected returns*. Tiny errors in your estimates can
+   produce wildly different, often absurd "optimal" portfolios (e.g. "put 130% in
+   one stock and short the rest"). This "error-maximization" problem is the single
+   biggest practical weakness.
+2. **The inputs are backward-looking.** Estimates usually come from historical
+   data, which may not describe the future.
+3. **Correlations spike in a crisis.** The cruel irony: in a market crash,
+   nearly everything falls together — correlations lurch toward +1 — so
+   diversification fails *exactly when you need it most.*
+4. **Variance punishes gains and losses equally.** Standard deviation treats a
+   surprise +20% as just as "risky" as a −20%. But investors only fear the
+   downside. This spawned alternatives like **semi-variance** and **post-modern
+   portfolio theory** — a critique Markowitz himself acknowledged.
+5. **It assumes a bell curve.** Real returns have **"fat tails"** — extreme
+   crashes happen far more often than the normal distribution predicts (as
+   Mandelbrot, Fama, and Taleb argued), so MPT *understates* the odds of disaster.
+6. **It's single-period and static.** The basic model assumes one holding period
+   and ignores transaction costs, taxes, liquidity, and changing conditions.
+7. **It assumes rational, risk-averse investors and frictionless markets** —
+   assumptions behavioral finance, and value/contrarian investors, reject.
+
+<ConceptDiagram
+  caption="Why mean-variance optimization can misbehave in practice: small estimation errors at the top cascade into extreme, untrustworthy portfolio weights. This is the 'error-maximization' critique — the optimizer over-trusts assets that merely LOOK good in noisy historical data."
+  chart={`flowchart TD
+  A["Noisy historical data"] --> B["Slightly-wrong expected returns"]
+  B --> C["Optimizer over-weights the<br/>'best-looking' asset"]
+  C --> D["Extreme, concentrated,<br/>short-heavy weights"]
+  D --> E["Fragile portfolio that<br/>fails out-of-sample"]`}
+/>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Treating portfolio risk as a weighted average.** The correlation term is
+   the whole theory. (Worth repeating.)
+2. **Over-diversifying with similar assets.** Ten tech stocks are barely
+   diversified because they're all highly correlated. It's *correlation*, not the
+   *number* of holdings, that reduces risk.
+3. **Over-diversifying, period ("diworsification").** Past roughly 20–30
+   well-chosen, low-correlation holdings, extra positions add cost and complexity
+   for almost no further risk reduction — recall the Elton & Gruber table.
+4. **Trusting the optimizer's exact weights.** Because of input sensitivity,
+   treat the output as guidance, apply sensible constraints (e.g. "no shorting,
+   max 25% per asset"), and lean toward robust, simple allocations.
+5. **Using a short, recent data window** as if it predicts the future — and
+   assuming today's correlations will hold during the next crisis.
+6. **Forgetting systematic risk can't be diversified away.** No amount of
+   stock-picking removes market-wide risk; diversification only kills
+   company-specific risk.
+7. **Believing standard deviation is the only risk.** It ignores fat tails,
+   illiquidity, and the permanent loss of capital.
+8. **Confusing MPT with CAPM.** MPT (Markowitz) tells you how to *build* an
+   efficient portfolio. The CAPM (Sharpe, built on top of Markowitz) tells you
+   how an asset *should be priced* given its market risk (beta). Related, but
+   distinct — and a frequent mix-up.
+</Callout>
+
+## Putting it to work
+
+You don't need a PhD or a Bloomberg terminal to use Markowitz. The mindset alone
+will make you a better investor:
+
+- **Think in portfolios, not picks.** Before buying anything, ask: "What does
+  this do to the risk of everything I already own?"
+- **Hunt for low correlation.** The most valuable new holding isn't the one with
+  the highest return — it's the one that behaves *differently* from what you've
+  got (which is why bonds, international stocks, and sometimes commodities or gold
+  earn a place).
+- **Diversify on correlation, not count.** A handful of genuinely different
+  assets beats a hundred clones — and past ~20–30 holdings you're mostly adding
+  clutter, not safety.
+- **Use simple, robust mixes.** A broad stock index fund plus a bond fund — the
+  classic "60/40" — is a crude but real point on an efficient frontier. Most
+  beginners are better served by that than by a precise optimizer they can't
+  audit.
+- **Match the point to your risk tolerance.** Closer to retirement, slide toward
+  the GMVP (more bonds); decades to go, slide toward higher return (more stocks).
+
+You can literally build the two-asset example in a spreadsheet in ten minutes:
+plug in returns, risks, and a correlation, vary the weights, and watch the
+frontier curve appear. Doing it once cements the intuition for life.
+
+<Callout type="key">
+Markowitz's gift to ordinary investors is permission to stop hunting for the one
+perfect stock. Combine sensibly-different assets, respect correlation, pick a
+risk level you can live with — and let the free lunch of diversification work
+quietly for you.
+</Callout>
+
+## Further reading
+
+- Harry Markowitz, *Portfolio Selection: Efficient Diversification of
+  Investments* (1959) — the book.
+- His 1952 *Journal of Finance* paper — short enough to read in an evening.
+
+---
+
+### Sources
+
+1. [Harry Markowitz — Wikipedia](https://en.wikipedia.org/wiki/Harry_Markowitz) — biography, education, RAND/Cowles, the library-insight anecdote (John Burr Williams), SIMSCRIPT/sparse-matrix work, von Neumann Prize, 1990 Nobel (shared with Miller and Sharpe).
+2. [Modern Portfolio Theory — Wikipedia](https://en.wikipedia.org/wiki/Modern_portfolio_theory) — the mean-variance framework, the variance formula, the Capital Market Line, and the standard criticisms (input sensitivity, fat tails, variance-vs-downside).
+3. [Efficient frontier — Wikipedia](https://en.wikipedia.org/wiki/Efficient_frontier) — the frontier curve, the Global Minimum-Variance Portfolio, the tangency portfolio, and the two-asset worked mechanics.
+4. [Diversification (finance) — Wikipedia](https://en.wikipedia.org/wiki/Diversification_(finance)) — correlation/variance math, the Elton & Gruber (1977) empirical table, and systematic vs. unsystematic risk.
+5. Markowitz, H. (1952), "Portfolio Selection," *The Journal of Finance* 7(1): 77–91 — the founding paper (full text behind JSTOR).
+6. [The Sveriges Riksbank Prize in Economic Sciences 1990 — NobelPrize.org](https://www.nobelprize.org/prizes/economic-sciences/1990/summary/) — the prize shared by Markowitz, Miller, and Sharpe (citation corroborated via the Wikipedia biography).

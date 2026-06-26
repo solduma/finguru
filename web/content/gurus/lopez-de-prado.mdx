@@ -1,0 +1,509 @@
+---
+title: "Marcos López de Prado — Machine Learning That Doesn't Fool You"
+slug: "lopez-de-prado"
+kind: "guru"
+school: "quant"
+strategy: "modern-ml"
+level: "advanced"
+order: 312
+summary: "The researcher who turned strategy-building into a disciplined machine-learning pipeline — and proved with hard math that most published backtests are statistically false."
+era: "fl. 2010s–present"
+contribution: "Financial Machine Learning"
+tags: ["machine learning", "backtest overfitting", "meta-labeling", "deflated sharpe", "hierarchical risk parity"]
+prereqs: ["charles-dow"]
+---
+
+## Why this lesson is different
+
+Most strategy lessons teach you a way to *make* money: a pattern, an indicator, a
+rule. This one teaches you something rarer and more valuable — a way to **stop
+fooling yourself.**
+
+Marcos López de Prado's central claim is uncomfortable: the vast majority of
+trading strategies that "work" in a backtest are statistical mirages. They worked
+on past data by luck, the way the winner of a coin-flipping contest looks skilled
+right up until you make them flip again. His life's work is a set of tools that
+let machine learning find real, durable edges in markets — while building
+mathematical tripwires to catch the fakes before they cost you money.
+
+<Callout type="key">
+A **backtest** is a simulation of how a strategy *would have* performed on
+historical data. A **machine-learning (ML) model** is an algorithm that learns
+patterns from examples instead of being given fixed rules. López de Prado's thesis
+in one line: financial ML is mostly an exercise in *not* discovering false
+patterns.
+</Callout>
+
+## Who he is
+
+**Marcos López de Prado** is a Spanish quantitative-finance researcher and
+practitioner — born in **Galicia, Spain** — widely regarded as the leading
+authority on applying machine learning to asset management. He bridges three
+worlds that rarely meet: top-tier industry, hard academic research, and
+supercomputing.
+
+What is firmly on the public record:
+
+- **Global Head of Quantitative Research & Development at the Abu Dhabi Investment
+  Authority (ADIA)** — one of the world's largest sovereign wealth funds — and a
+  founding board member of **ADIA Lab.**
+- **Professor of Practice at Cornell University** (College of Engineering, where
+  he teaches ORIE 5256) and at **Khalifa University**, plus a **Research Fellow at
+  Lawrence Berkeley National Laboratory** (U.S. Department of Energy).
+- Two doctorates, the second earning the **Extraordinary PhD Award (2013) from
+  Universidad Complutense de Madrid**, plus postdoctoral work in mathematics.
+- **Founding co-editor of _The Journal of Financial Data Science_**, named
+  inventor on 15 patents, author of 100+ peer-reviewed articles, and among the
+  10 most-read economics authors on SSRN.
+- A wall of honors: **Risk.net Buy-Side Quant of the Year (2021)**, **Quant
+  Researcher of the Year (2019)**, the **Jacobs Levy / Bernstein Fabozzi Award
+  (2024)**, and **Knight Officer of Spain's Royal Order of Civil Merit (2024)**.
+
+<Callout type="note">
+Before ADIA he ran quantitative and ML trading groups at major firms — most
+notably **Guggenheim Partners**, where he developed Hierarchical Risk Parity
+around 2016, as well as **AQR Capital Management** (Head of Machine Learning),
+**Tudor Investment Corp.**, and **PEAK6**, and he founded the advisory firm **True
+Positive Technologies**. The Guggenheim→HRP and AQR associations are widely cited,
+but the exact firm-by-firm dates are harder to verify from clean primary sources,
+so treat the longer employer timeline as "commonly cited" rather than confirmed.
+His exact birth year is not publicly established.
+</Callout>
+
+His ideas reach beginners mainly through three books — *Advances in Financial
+Machine Learning* (Wiley, 2018), *Machine Learning for Asset Managers* (Cambridge,
+2020), and *Causal Factor Investing* (Cambridge, 2023).
+
+## The core idea in plain language
+
+Picture the usual way a hobbyist builds a strategy: open a chart, add some
+indicators, tweak the settings until the backtest curve points up and to the
+right, then trade it. López de Prado argues this is almost a *machine for
+generating false discoveries*. Two forces conspire against you:
+
+1. **Financial data is treacherous.** It is noisy, it isn't independent from one
+   day to the next, and naive ways of labeling "good" and "bad" trades mislead the
+   model.
+2. **You test too much.** Try enough variations and one will look brilliant purely
+   by chance — the way that, among 1,000 monkeys flipping coins, one will flip ten
+   heads in a row and look gifted.
+
+His answer is to treat strategy research as a disciplined **supervised-learning
+pipeline** (supervised learning = teaching a model from labeled examples), with
+statistical defenses bolted on at every stage. The unifying theme is blunt:
+**rigor and honesty about overfitting is the real edge — not a fancier model.**
+
+<ConceptDiagram
+  caption="López de Prado's pipeline. Each stage has a named tool, and the whole right-hand column exists for one purpose: catching strategies that only look good by luck before you risk capital on them. (Conceptual map, not a formula.)"
+  chart={`flowchart TB
+  A[Raw prices: noisy, non-stationary] --> B[Stationary features<br/>Fractional differentiation]
+  B --> C[Honest labels<br/>Triple-barrier method]
+  C --> D[Side vs. size<br/>Meta-labeling]
+  D --> E[Leak-free validation<br/>Purged + embargoed CV]
+  E --> F[Significance test<br/>Deflated Sharpe Ratio + PBO]
+  F --> G[Robust portfolio<br/>Hierarchical Risk Parity]
+  F -.->|fails the test| H[Discard the strategy]`}
+/>
+
+## The full method, step by step
+
+This is the heart of the lesson. Each step is a tool you can name, understand, and
+eventually implement. Don't worry about coding it today — the goal is to grasp
+*why* each piece exists.
+
+### Step 1 — Make features stationary without erasing their memory
+
+Machine-learning models need **stationary** inputs: data whose statistical
+behavior (mean, variance) is stable over time. Raw prices fail this test — a stock
+at \$10 behaves differently from the same stock at \$1,000. The standard fix is to
+use **returns** (today's price minus yesterday's), which is *differencing* of
+order d = 1.
+
+But full differencing throws away the price series' **memory** — its trend and
+level information, which is exactly the part that may be predictive. López de
+Prado's fix is **fractional differentiation**: difference by a *fractional* amount
+d between 0 and 1 (a weighted sum of past values whose weights decay but never
+fully vanish) — just enough to pass a stationarity test (the Augmented
+Dickey-Fuller, or ADF, test) while keeping the most memory. The recipe: sweep d
+upward, and pick the **smallest d that passes the ADF test**.
+
+<LineChart
+  caption="The trade-off fractional differentiation solves. As the differencing order d rises from 0 (raw price) to 1 (plain returns), the series becomes stationary but its correlation with the original price collapses. On E-mini S&P 500 futures, a tiny d below 0.2 was enough to pass the stationarity test while keeping over 90% correlation — far more memory than returns (d=1) retain. (Illustrative curve of the documented pattern.)"
+  height={300}
+  series={[{ label: "Correlation with original price", data: [1.0, 0.97, 0.91, 0.78, 0.6, 0.42, 0.28, 0.18, 0.11, 0.06, 0.03] }]}
+  points={[
+    { x: 2, y: 0.91, text: "d ≈ 0.2: stationary AND >90% memory", color: "#22c55e" },
+    { x: 10, y: 0.03, text: "d = 1 (plain returns): memory gone", color: "#ef4444" },
+  ]}
+/>
+
+### Step 2 — Label trades the way they actually play out (the triple-barrier method)
+
+To train a model you must label each candidate trade as good or bad. The lazy way
+is a **fixed-horizon return**: "did price rise 5 days later?" That ignores reality
+— you would have been stopped out on day 2 if the trade went badly first.
+
+The **triple-barrier method** labels the *realistic path* instead. For each
+candidate entry, set three barriers:
+
+- An **upper horizontal barrier** = your profit-take level.
+- A **lower horizontal barrier** = your stop-loss level.
+- A **vertical barrier** = a maximum holding time.
+
+The label is whichever barrier price touches **first**: **+1** if profit-take hits,
+**−1** if stop-loss hits, **0** if time runs out in between. Crucially, the
+horizontal barriers are set as a multiple of *recent volatility* (e.g. an
+exponentially-weighted daily-return standard deviation), not a fixed percentage —
+because volatility itself changes over time, so the labels adapt to the regime.
+
+<ConceptDiagram
+  caption="The triple-barrier method labels a trade by which barrier the price path hits first — modeling what would actually happen to a position, including being stopped out. Barriers are volatility-scaled, not fixed percentages."
+  chart={`flowchart LR
+  E[Entry at time t<br/>vol = 1 std today] --> U{Hits upper<br/>+1 std first?}
+  U -->|yes| P[Label +1<br/>profit-take]
+  U -->|no| L{Hits lower<br/>-1 std first?}
+  L -->|yes| S[Label -1<br/>stop-loss]
+  L -->|no| V[Time limit reached<br/>Label 0]`}
+/>
+
+> **Worked example.** A stock sits at **\$100** with recent daily volatility
+> σ = 1.5% (≈ \$1.50). Set both horizontal barriers at **±2σ** and a **5-day**
+> vertical barrier: upper = 100 + 2(1.50) = **\$103**, lower = 100 − 2(1.50) =
+> **\$97.** If the path touches \$103 on day 3 *before* ever hitting \$97 → first
+> touch is the upper barrier → label **+1.** If instead it drifts and closes day 5
+> at \$100.40 having touched neither horizontal barrier → label **0** (the time
+> barrier).
+
+<LineChart
+  caption="A triple-barrier price path. Starting at $100 with ±2σ barriers ($103 / $97) and a 5-day time limit, this path touches the upper barrier on day 3 first — so the label is +1. The label is decided by which line the path hits first, exactly as a real position with a profit-take and a stop-loss would resolve."
+  height={300}
+  series={[{ label: "Price path", data: [100, 100.6, 101.4, 103.1, 102.6] }]}
+  levels={[
+    { y: 103, label: "upper barrier +2σ ($103)", color: "#22c55e" },
+    { y: 97, label: "lower barrier -2σ ($97)", color: "#ef4444" },
+  ]}
+  points={[
+    { x: 3, y: 103.1, text: "first touch (day 3) → label +1", color: "#22c55e" },
+    { x: 4, y: 102.6, text: "vertical (time) barrier = day 5", color: "#f59e0b" },
+  ]}
+/>
+
+### Step 3 — Separate *which way to bet* from *how big to bet* (meta-labeling)
+
+This is one of his most influential ideas, and the most useful for a beginner to
+internalize. Don't ask one model to do everything. Split the job:
+
+- **Primary model (M1) — picks the side** (long, short, or flat). This can even be
+  a simple, transparent rule you already trust: a moving-average crossover, a
+  value signal, anything. Tune it for **high recall** — catch most of the real
+  opportunities, even if it also fires a lot of false alarms.
+- **Meta-model (M2) — filters M1's calls.** It is a binary ML classifier whose
+  label is simply "was the primary signal actually right?" (1 or 0). It never picks
+  a *new* direction; it only decides whether to *act* on M1's call, raising
+  **precision.**
+- **Sizing (M3) — turns confidence into position size.** Map M2's probability to a
+  bet size: high confidence → bigger position, low confidence → no trade.
+
+Two terms, defined plainly: **recall** = of all the real opportunities, what
+fraction did you catch? **Precision** = of all the times you pulled the trigger,
+what fraction were right?
+
+<ConceptDiagram
+  caption="Meta-labeling: a primary model (even a simple non-ML rule) decides direction; a separate ML model only decides whether to trust that call and how large to size it. Because the ML layer never picks direction, it overfits far less."
+  chart={`flowchart LR
+  D[Market data] --> M1[Primary model M1<br/>picks side: long/short/flat<br/>tuned for high recall]
+  M1 --> M2[Meta-model M2<br/>'is this signal correct?'<br/>raises precision]
+  M2 --> M3[Sizing M3<br/>confidence -> bet size]
+  M3 --> T[Trade or skip]`}
+/>
+
+Why it works: it bolts an ML risk-filter onto a transparent "white-box" strategy,
+and since the ML only decides *size* (never direction), there's far less for it to
+overfit.
+
+#### Worked example: how meta-labeling improves precision
+
+Suppose the primary model is tuned for high recall. Out of 200 signals:
+
+| | Predicted trade | Predicted skip |
+|---|---|---|
+| **Actually good** | TP = 90 | FN = 10 |
+| **Actually bad** | FP = 60 | TN = 40 |
+
+- Recall = 90 / (90 + 10) = **0.90** (catches almost everything)
+- Precision = 90 / (90 + 60) = **0.60** (but 40% of trades are duds)
+- F1 (the balance of the two) = **0.72**
+
+Now the meta-model filters out most false positives — say it correctly kills 40 of
+the 60 bad trades, at the cost of a few good ones:
+
+| | Predicted trade | Predicted skip |
+|---|---|---|
+| **Actually good** | TP = 85 | FN = 15 |
+| **Actually bad** | FP = 20 | TN = 80 |
+
+- Recall = 85 / 100 = **0.85** (a small sacrifice)
+- Precision = 85 / (85 + 20) = **0.81** (a big gain)
+- F1 = **0.83**
+
+<BarChart
+  caption="Meta-labeling in action: giving up a little recall (0.90 → 0.85) buys a large jump in precision (0.60 → 0.81) and a higher overall F1 score (0.72 → 0.83). Far fewer dud trades for almost no missed opportunities. (Illustrative counts that reproduce the documented pattern.)"
+  yLabel="score (0–1)"
+  labels={["Recall", "Precision", "F1"]}
+  series={[
+    { label: "Primary model alone", data: [0.90, 0.60, 0.72] },
+    { label: "With meta-labeling", data: [0.85, 0.81, 0.83] },
+  ]}
+/>
+
+### Step 4 — Validate without leaking the future (purged + embargoed CV)
+
+**Cross-validation (CV)** is how you check a model on data it didn't train on:
+split the data into groups, train on some, test on the rest, rotate. The standard
+"k-fold" version assumes every observation is independent — which is *false* for
+financial data. Because triple-barrier labels are built from a *window* of future
+returns, a training label can overlap a test observation, secretly leaking the
+answer into the exam.
+
+López de Prado's fixes:
+
+- **Purging** — delete any training observation whose label-formation window
+  overlaps the test set.
+- **Embargoing** — also delete a small buffer (e.g. 1–5% of observations)
+  *immediately after* each test fold, to kill leakage from serial correlation
+  (today's price being related to tomorrow's).
+- **Combinatorial Purged CV (CPCV)** — test many combinations of held-out groups
+  to produce a whole *distribution* of backtest outcomes rather than one fragile
+  path.
+
+<ConceptDiagram
+  caption="Purging and embargoing. Train (T) and test (X) blocks sit on a timeline; observations whose label windows overlap the test block are purged (P), and a small buffer right after the test block is embargoed (E). Both prevent future information from leaking into training."
+  chart={`flowchart LR
+  T1[Train] --> P1[Purge<br/>overlapping labels] --> X[Test fold] --> E1[Embargo<br/>buffer] --> T2[Train]`}
+/>
+
+### Step 5 — Judge significance honestly (the Deflated Sharpe Ratio)
+
+Here is the mathematical heart of his warning. The **Sharpe ratio** measures
+return earned per unit of risk — higher is better. But there's a trap captured by
+the **False Strategy Theorem**: even with **zero** true skill, if you test many
+strategies, the *best one's* Sharpe ratio will look impressive purely by chance.
+The more you test, the higher that lucky maximum climbs.
+
+<LineChart
+  caption="The False Strategy Theorem, visualized. Even when NO strategy has any real edge (true Sharpe = 0), the highest Sharpe you'll observe rises as you test more configurations. Reporting only your best result without accounting for how many you tried is how false strategies get published. (Illustrative shape of the documented effect.)"
+  height={300}
+  series={[{ label: "Best observed Sharpe (zero true skill)", data: [0.0, 0.9, 1.4, 1.8, 2.1, 2.4, 2.6, 2.8, 3.0] }]}
+  points={[
+    { x: 0, y: 0.0, text: "1 trial: honest" },
+    { x: 8, y: 3.0, text: "1000 trials: pure luck looks elite", color: "#ef4444" },
+  ]}
+/>
+
+> **Worked example — the luck benchmark.** Say you backtested **N = 100**
+> independent variants, and the spread (standard deviation) of their Sharpe ratios
+> is √V = 0.5. The theorem says the *expected best* Sharpe from pure luck is about
+>
+> SR₀ = √V × [ (1−γ)·Z(1 − 1/N) + γ·Z(1 − 1/(N·e)) ],   γ ≈ 0.577 (Euler's constant),
+>
+> where Z(·) is the inverse normal. Plugging in: Z(0.99) ≈ 2.326 and
+> Z(0.99632) ≈ 2.680, so SR₀ ≈ 0.5 × [0.423×2.326 + 0.577×2.680] ≈ **1.27.**
+>
+> **Lesson:** with 100 trials you should *expect* a best Sharpe near 1.27 even if
+> every strategy is worthless. So a backtested Sharpe of **1.2 is not evidence of
+> skill** — it's below the noise threshold. Only a Sharpe that clears SR₀ by a wide
+> margin counts.
+
+The **Deflated Sharpe Ratio (DSR)** is the antidote. It asks: *what's the
+probability my Sharpe is genuine after correcting for how I found it?* It subtracts
+that "luck benchmark" SR₀ (the expected maximum of N noise strategies) from your
+observed Sharpe, then accounts for:
+
+- **N**, the number of (effectively independent) trials you ran,
+- **T**, the length of your track record,
+- the returns' **skewness** and **kurtosis** (fat tails) — because real financial
+  returns are not the tidy bell curve textbooks assume.
+
+A close cousin, the **Minimum Track Record Length (MinTRL)**, tells you how much
+data you'd need for a result to be significant. For example, an annualized Sharpe
+of about **0.95** needs roughly **3 years** of daily returns to be significant at
+95% confidence.
+
+<Callout type="warning">
+The DSR is only as honest as your estimate of **N**. If you secretly tried 500
+configurations but tell yourself you tried 5, the deflation is far too weak and
+the test passes a strategy that should fail. **Always count — and report — every
+trial.** A related tool, the **Probability of Backtest Overfitting (PBO)**, uses
+*combinatorially symmetric cross-validation (CSCV)* — splitting the backtest into
+sub-periods and measuring how often the in-sample best performer ranks below the
+median out of sample. A high PBO means your "winner" is likely luck. (Verify PBO's
+exact formula against his primary 2014–2016 papers and *Advances in Financial
+Machine Learning* — it lacks a single clean reference page.)
+</Callout>
+
+### Step 6 — Build the portfolio so it survives reality (Hierarchical Risk Parity)
+
+The last step is allocating capital across the assets your model likes. The
+textbook tool is **Markowitz mean-variance optimization**, which finds the
+"optimal" weights — but it must *invert the covariance matrix* (a matrix capturing
+how assets move together). When assets are highly correlated, that matrix becomes
+nearly impossible to invert reliably ("Markowitz's curse"), and tiny estimation
+errors blow up into wildly concentrated, fragile portfolios.
+
+**Hierarchical Risk Parity (HRP)** sidesteps the inversion entirely, in three
+steps:
+
+1. **Tree clustering** — convert correlations into distances and group similar
+   assets into a tree (a dendrogram), so the algorithm "sees" the market's natural
+   structure. (No matrix inversion needed — it works even on singular matrices.)
+2. **Quasi-diagonalization** — reorder the covariance matrix so similar assets sit
+   together, concentrating the big values near the diagonal. No inversion required,
+   and no change of basis (unlike PCA).
+3. **Recursive bisection** — split the tree top-down and split capital between
+   sub-clusters *inversely to their variance* (riskier clusters get less).
+
+Because HRP never inverts the matrix, it stays stable even on messy, near-singular
+data — and it diversifies across *clusters* of related assets rather than piling
+into a few names.
+
+<ConceptDiagram
+  caption="Hierarchical Risk Parity allocates by first discovering the market's cluster structure, then splitting capital down the tree — never inverting the covariance matrix. This is why it stays robust where Markowitz optimization breaks down."
+  chart={`flowchart TB
+  A[Correlation matrix] --> B[1. Tree clustering<br/>group similar assets]
+  B --> C[2. Quasi-diagonalize<br/>reorder, no inversion]
+  C --> D[3. Recursive bisection<br/>split capital by risk]
+  D --> E[Diversified weights]`}
+/>
+
+#### Worked example: HRP vs. classical optimization
+
+From his 2016 paper, on a covariance matrix with a high condition number (≈151,
+meaning it's numerically unstable):
+
+- The classical optimizer (Critical Line Algorithm) crammed **92.7%** of capital
+  into just its top five assets. HRP put **62.6%** there — far more diversified —
+  for nearly identical risk.
+- In a 10,000-run Monte Carlo simulation of out-of-sample variance: the classical
+  optimizer's variance was **0.1157**, inverse-variance weighting **0.0928**, and
+  HRP the lowest at **0.0671.** Despite CLA being *designed* to minimize variance,
+  its out-of-sample variance ran **~72% higher** than HRP's — implying roughly a
+  **31%** out-of-sample Sharpe improvement.
+
+<BarChart
+  caption="Out-of-sample portfolio variance from a 10,000-run Monte Carlo (lower is better). The classical Markowitz-style optimizer (CLA) had the highest variance; HRP the lowest, despite never inverting the covariance matrix. Robustness beats theoretical optimality on real, noisy data. (Figures from López de Prado, 2016.)"
+  yLabel="out-of-sample variance"
+  labels={["CLA (Markowitz)", "Inverse-variance", "HRP"]}
+  series={[{ label: "Variance", data: [0.1157, 0.0928, 0.0671] }]}
+/>
+
+The lesson behind every number above is the same one this whole lesson keeps
+returning to: **what looks optimal in-sample is usually fragile out-of-sample.**
+HRP wins not by being cleverer, but by being more robust.
+
+## Key books and papers
+
+- **_Advances in Financial Machine Learning_** (Wiley, 2018; ISBN 978-1-119-48208-6)
+  — the flagship; covers every method above. The single best starting point.
+- **_Machine Learning for Asset Managers_** (Cambridge University Press, 2020) — a
+  shorter, more focused companion on de-noising, clustering, and avoiding false
+  discoveries.
+- **_Causal Factor Investing_** (Cambridge University Press, 2023) — on why
+  correlation-based factor research is fragile and what causal inference adds.
+- **Hierarchical Risk Parity** — "Building Diversified Portfolios that Outperform
+  Out of Sample," *Journal of Portfolio Management*, 2016.
+- **Deflated Sharpe Ratio** — Bailey & López de Prado, *Journal of Portfolio
+  Management*, 2014; and the **False Strategy Theorem** in "Pseudo-Mathematics and
+  Financial Charlatanism," *Notices of the AMS*, 2014.
+- **Probability of Backtest Overfitting (CSCV)** — Bailey, Borwein, López de Prado
+  & Zhu, *Journal of Computational Finance*, 2015/2016.
+
+## Honest criticisms and limitations
+
+<Callout type="warning">
+No method is a free lunch — and López de Prado is more candid about this than most.
+</Callout>
+
+- **Heavy machinery for the payoff.** The full pipeline is a lot to implement, and
+  critics note that simpler, robust methods often do nearly as well. Beginners can
+  drown in detail.
+- **HRP is a heuristic, not an optimum.** It ignores expected returns entirely (it
+  is a risk-only allocator) and isn't provably mean-variance optimal. Some studies
+  find naive 1/N or inverse-variance portfolios competitive out of sample. Its edge
+  is *robustness*, not theoretical perfection or guaranteed higher returns.
+- **Estimating N is genuinely hard.** The DSR hinges on the effective number of
+  independent trials, which is itself an estimate. Get N wrong and the deflation is
+  wrong.
+- **Meta-labeling isn't automatic.** Independent replications (e.g. by Hudson &
+  Thames) find the benefit is real but data- and regime-dependent, and once a
+  primary model is already good it can add little while adding complexity.
+- **A conflict-of-interest gap.** Much of the favorable evidence for his methods
+  comes from his own publications and simulations; some summaries of his work
+  (even on Wikipedia) carry neutrality flags, and live proprietary track records
+  aren't public. Published examples are illustrative, not live-trading proof —
+  verify numbers against his primary texts.
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+These are the exact mistakes his whole program is built to prevent:
+
+1. **Multiple-testing / backtest overfitting.** Trying hundreds of variants and
+   reporting only the best Sharpe. Always count and report your trials, then deflate.
+2. **Leakage in cross-validation.** Using vanilla k-fold or shuffling on
+   time-ordered, overlapping-label data. Purge and embargo.
+3. **Over-differencing.** Defaulting to plain returns (d = 1) and throwing away
+   predictive memory. Use the minimal fractional d that passes the ADF test.
+4. **Conflating direction and size.** Training one model to do both. Let the
+   white-box primary model pick direction and let ML pick only size, via
+   meta-labeling — size is harder to overfit than direction.
+5. **Fixed-horizon labels.** Ignoring stop-outs and volatility regimes. Use
+   volatility-scaled triple barriers.
+6. **Trusting Markowitz weights.** Feeding an unstable inverted matrix into an
+   optimizer and getting concentrated, fragile weights. Prefer HRP.
+7. **Assuming returns are normal and independent.** They are serially dependent,
+   skewed, and fat-tailed — which is exactly why the DSR corrects for skew and
+   kurtosis.
+8. **Treating ML as a black box.** A pattern with no economic mechanism is
+   correlation mistaken for cause — the central warning of *Causal Factor Investing.*
+</Callout>
+
+## Putting it to work
+
+You don't need a supercomputer to start. You need a change of mindset, and you can
+practice the pieces in order:
+
+1. **Adopt the discipline first.** Before your next backtest, write down how many
+   variations you intend to try — and commit to deflating your result by that
+   count. This single habit will save you from most false discoveries.
+2. **Re-label one strategy with triple barriers.** Take any rule you already use
+   and label its trades by which volatility-scaled barrier hits first. Compare
+   against your old fixed-horizon view; you'll see trades you'd have been stopped
+   out of.
+3. **Bolt on a meta-label.** Keep your existing signal as the primary model. Train
+   a simple classifier (even logistic regression) to predict whether each signal
+   was right, and only take the high-confidence ones.
+4. **Validate with purging.** When you cross-validate, purge overlapping labels and
+   embargo a small buffer. Watch your "great" results shrink toward honesty.
+5. **Allocate with HRP.** When you hold several correlated assets, try HRP instead
+   of an optimizer and compare stability over time.
+
+The throughline: in markets, the hardest discovery to make is realizing that your
+discovery isn't real. López de Prado gives you the instruments to find out *before*
+the market charges you tuition.
+
+## Further reading
+
+- Marcos López de Prado, *Advances in Financial Machine Learning* (2018) — start here.
+- Marcos López de Prado, *Machine Learning for Asset Managers* (2020).
+- His research site and CV: [quantresearch.org](https://www.quantresearch.org/Vita.htm).
+
+---
+
+### Sources
+
+1. [Marcos López de Prado — CV / quantresearch.org](https://www.quantresearch.org/Vita.htm) — ADIA role, Cornell & Khalifa appointments, Lawrence Berkeley fellowship, awards, book list.
+2. [Hierarchical Risk Parity — Wikipedia](https://en.wikipedia.org/wiki/Hierarchical_Risk_Parity) — the three-step algorithm and the numeric CLA-vs-HRP results. (Carries a neutrality/conflict-of-interest notice; treat as a convenient summary.)
+3. [Deflated Sharpe ratio — Wikipedia](https://en.wikipedia.org/wiki/Deflated_Sharpe_ratio) — DSR formula, the False Strategy Theorem and SR₀ benchmark, the MinTRL example.
+4. [Meta-Labeling & the triple-barrier method — Hudson & Thames](https://hudsonthames.org/does-meta-labeling-add-to-signal-efficacy-triple-barrier-method/) — the side/size split and labeling mechanics.
+5. [Fractional differentiation — Hudson & Thames](https://hudsonthames.org/fractional-differentiation/) — the d &lt; 0.2 / &gt;90% correlation E-mini example.
+6. Bailey, Borwein, López de Prado & Zhu, "Pseudo-Mathematics and Financial Charlatanism," *Notices of the AMS* (2014) — the False Strategy Theorem; and "The Probability of Backtest Overfitting" (2015/2016) — CSCV/PBO.

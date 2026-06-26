@@ -2,9 +2,11 @@
 title: "William Jiler — Classical Chart Patterns"
 slug: "william-jiler"
 kind: "guru"
+school: "technical"
+strategy: "charting-patterns"
 level: "beginner"
 order: 6
-summary: "The author and Trendline founder whose 1962 primer made classical chart patterns — head and shoulders, double tops, trendlines — accessible to everyday investors."
+summary: "The Trendline chartist whose plain-English 1962 primer made classical chart patterns — head and shoulders, double tops, triangles, flags — learnable by everyday investors, framed honestly as an edge, not a crystal ball."
 era: "20th century"
 contribution: "Classical chart patterns"
 prereqs: ["charles-dow"]
@@ -14,23 +16,33 @@ prereqs: ["charles-dow"]
 
 In 1962, a markets professional named William L. Jiler wrote a slim book that took the secret-handshake craft of "reading the tape" (interpreting the live stream of price-and-volume quotes that used to print on a paper ticker-tape machine) and turned it into something an ordinary investor could actually learn — and the chart patterns he popularized are still among the first things most traders study today.
 
-If you have ever heard someone say "that stock is forming a head and shoulders" or "it bounced off support," you are speaking a dialect that Jiler helped standardize for the public. He did not invent these patterns, but he packaged them with rare clarity. This lesson covers who he was, the core patterns he taught, a worked example, and — just as importantly — where this approach is weak and how beginners get burned.
+If you have ever heard someone say "that stock is forming a head and shoulders" or "it bounced off support," you are speaking a dialect that Jiler helped standardize for the public. He did not invent these patterns, but he packaged them with rare clarity — and, just as importantly, with rare honesty about their limits. This lesson covers who he was, the core patterns he taught, exactly how to act on them (with worked numbers), and where the approach is weak and how beginners get burned.
 
 <Callout type="key">
 
-A **chart pattern** is a recognizable shape that price traces out over time, which technical analysts believe tends to precede a particular kind of move. Jiler's gift was explaining these shapes plainly enough that a beginner could spot them.
+A **chart pattern** is a recognizable shape that price traces out over time, which technical analysts believe tends to precede a particular kind of move. Jiler's gift was explaining these shapes plainly enough that a beginner could spot them — and insisting they shift the odds in your favor rather than predict the future.
 
 </Callout>
 
+## Jiler's philosophy: an edge, not a crystal ball
+
+Before any pattern, absorb the mindset, because it governs how you use everything below. Jiler's two most-quoted lines say it best:
+
+> "When a stock is found to be following a given trend line, it is more likely to continue along that line than not to. Not certain, just likely."
+
+> "It's not necessary to be right all of the time to make money in the stock market. It's only necessary to be right more often than you are wrong."
+
+That is the whole game. Charts give you a **probabilistic edge**, confirmed by **volume** and managed with a **risk plan** for the times you are wrong. A beginner who reads patterns as predictions will blow up; a beginner who reads them as "likely, not certain" can actually use them. Keep these two sentences in mind every time you see a shape you like.
+
 ## Who was William L. Jiler?
 
-William L. Jiler was an American markets professional best known as the author of *How Charts Can Help You in the Stock Market*, first published in 1962 by Commodity Research Publications Corp. (later editions carried the Trendline and McGraw-Hill imprints). The book ran roughly 200 pages — cataloged at 202 pages by Open Library and 218 by the Internet Archive's scanned copy — and became a long-running staple of beginner technical-analysis reading lists.
+William L. Jiler was an American markets professional best known as the author of *How Charts Can Help You in the Stock Market*, first published in 1962 by Commodity Research Publications Corp. (later editions carried the Trendline and McGraw-Hill imprints). The book ran roughly 200 pages — cataloged at 202 pages by Open Library and 218 by the Internet Archive's scanned copy — and became a long-running staple of beginner technical-analysis reading lists. It is often described as the first book to explain technical analysis in plain English — the "how and why" rather than a dense reference — making it the chartist's counterpart to Graham and Dodd's fundamental classic.
 
-Jiler's career straddled the **stock** and **commodities** worlds (commodities being raw goods like wheat, oil, and metals, traded as standardized contracts). In 1956 he **founded Trendline**, a financial chart service whose printed chart books were, for decades, how many investors got their charts before personal computers. He later sold Trendline to Standard & Poor's and became president of S&P's Trendline Division. He was also a former president of the **Commodity Research Bureau (CRB)**, a research firm, and is credited as the founder of the **CRB Futures Price Index**, a long-running benchmark for overall commodity-price movement. (The CRB index was first calculated in 1957 and debuted in the 1958 *CRB Commodity Year Book*.)
+Jiler's career straddled the **stock** and **commodities** worlds (commodities being raw goods like wheat, oil, and metals, traded as standardized contracts). His family is tied to the **Commodity Research Bureau (CRB)**, a commodity-research firm founded in 1934 by his brother Milton Jiler; William later led it and expanded its chart services, and is credited as an originator of the **CRB Futures Chart Service** and the **Trendline Chart Service**. Trendline's printed chart books were, for decades, how many investors got their charts before personal computers, and the stock charts in his 1962 book came straight from them. Book-jacket bios of the era describe Trendline as a division of Standard & Poor's and Jiler as its president.
 
 <Callout type="note">
 
-Some obituary-style listings give Jiler's dates as roughly 1925–2019 (Boca Raton, FL), but these appear only in directory entries and could not be confirmed against a primary biography, so treat the exact dates as unverified. The professional facts above — the 1962 book, his founding of Trendline in 1956, his CRB presidency, and the CRB Futures Price Index — are well attested.
+Some obituary-style listings give Jiler's dates as roughly 1925–2019 (born in Bridgeport, CT; later Boca Raton, FL) and his schooling as Bates College and USC, but these appear only in directory and aggregator entries that could not be confirmed against a primary biography — treat the personal dates and the "division of Standard & Poor's" tie as reported-but-unverified. The professional core — the 1962 book, his Trendline and CRB chart-service work, and the family's CRB lineage — is well attested.
 
 </Callout>
 
@@ -38,18 +50,42 @@ Jiler worked in an era — the 1950s and 60s — when charting was viewed by muc
 
 ## The core idea: supply, demand, and crowd behavior
 
-Jiler's whole method rests on one premise: a price chart is a picture of the tug-of-war between buyers (demand) and sellers (supply). When that battle produces a recognizable shape, the shape hints at who is winning. Everything below is just specific shapes.
+Jiler's whole method rests on one premise: **price already reflects everything** — every hope, fear, fact, and rumor of every buyer and seller. So instead of studying a company's earnings, you study the *picture* of supply and demand drawn on the chart. Recognizable shapes recur because **crowd psychology repeats**, and those shapes give probabilistic clues about what comes next. Everything below is just specific shapes.
+
+<ConceptDiagram
+  caption="Jiler's mental model: every pattern is just a visible record of the supply/demand tug-of-war, sorted into shapes that either reverse a trend or pause it — and confirmed only on the break, with volume."
+  chart={`flowchart LR
+  A[Supply vs demand
+tug-of-war] --> B[Price traces
+a shape]
+  B --> C{What kind?}
+  C -->|trend flips| D[Reversal patterns
+H&S, double top/bottom]
+  C -->|trend pauses| E[Continuation patterns
+triangles, flags, rectangles]
+  D --> F[Confirmed only on
+the break + volume]
+  E --> F`}
+/>
 
 ### Trendlines, support, and resistance
 
-These are the foundation.
+These are the foundation — the first things you draw.
 
-- **Trendline**: a straight line drawn along a series of higher lows (an uptrend) or lower highs (a downtrend). As long as price respects the line, the trend is presumed intact.
-- **Support**: a price level where buying has previously been strong enough to stop a decline — a "floor."
-- **Resistance**: a price level where selling has previously stopped an advance — a "ceiling."
+- **Trendline**: a straight line drawn along a series of higher lows (an **uptrend** — connect the bottoms) or lower highs (a **downtrend** — connect the tops). As long as price respects the line, the trend is presumed intact.
+- **Support**: a price area where buying (demand) tends to overwhelm selling — a "floor" where declines stop.
+- **Resistance**: a price area where selling (supply) overwhelms buying — a "ceiling" where advances stop.
+
+Jiler's practical rules for drawing and trusting them:
+
+- **Use at least 3 touch points.** A line drawn off only two points is a guess; the more times price touches and respects a line, the more reliable it is. Longer-timeframe lines (weekly, monthly) beat short daily ones.
+- **Use closing prices**, not intraday spikes, to define support and resistance — a close beyond a level means far more than a brief wick through it.
+- **The 3% break rule.** A trend is likely reversing only when price breaks the established trendline by about **3%, on increased volume** — a small filter that screens out meaningless pokes through the line.
+- **Watch for the pull-back.** After a break, price often returns to *retest* the broken line before continuing. A failure to reclaim the line confirms the break (and gives you a logical stop placement).
+- **The 50% rule.** After a move, price often retraces about **half** of it before support or resistance reasserts itself.
 
 <LineChart
-  caption="Uptrend line drawn along higher lows; a support floor that, once broken, flips into resistance overhead"
+  caption="Uptrend line drawn along higher lows; a support floor that, once broken, flips into resistance overhead — Jiler's role-reversal principle"
   height={320}
   yMin={30}
   yMax={52}
@@ -72,13 +108,23 @@ These are the foundation.
 
 <Callout type="key">
 
-A core principle Jiler emphasized: once **broken, support becomes resistance and resistance becomes support**. A ceiling that finally gives way often becomes the new floor.
+A core principle Jiler emphasized: once **broken, support becomes resistance and resistance becomes support**. A ceiling that finally gives way often becomes the new floor — which is why the pull-back retest of a broken line is such a useful confirmation (and stop) point.
 
 </Callout>
 
+### Volume — the confirming witness
+
+Volume applies to *every* pattern below, so learn it once here. Jiler's rule: **"the greater the volume, the greater the significance of a price movement."**
+
+- A healthy **uptrend** shows volume **rising on rallies and shrinking on pullbacks.**
+- A valid **upside breakout** must come with **expanding volume.** A downside breakdown can *begin* on light volume but should then be confirmed by rising volume as price falls.
+- Volume often **shifts before price** — a quiet tell of a coming reversal.
+
+A breakout without a volume surge is suspect, and often a false move. Treat volume as the lie-detector for every signal that follows.
+
 ### Reversal patterns (the trend is about to flip)
 
-**Head and shoulders top.** Forms after an uptrend. Three peaks: a **left shoulder**, a higher **head**, and a lower **right shoulder** roughly level with the first. A **neckline** connects the two reaction lows between the peaks (a *reaction low* is the dip price makes between two peaks — here, the low after the left shoulder and the low after the head). The neckline can slope up, down, or sit flat — a downward slope is considered more bearish. The pattern is *not complete* until price breaks below the neckline — ideally on rising volume. Volume tends to be heaviest on the left shoulder and lighter on the head's advance, then surges on the neckline break. The **inverse (or bottom) head and shoulders** is the mirror image at the end of a downtrend.
+**Head and shoulders top.** The most famous reversal. Forms after an uptrend. Three peaks: a **left shoulder**, a higher **head**, and a lower **right shoulder** roughly level with the first. A **neckline** connects the two reaction lows between the peaks (a *reaction low* is the dip price makes between two peaks). The neckline can slope up, down, or sit flat — a downward slope is considered more bearish. Volume typically **declines with each successive peak** (weakening demand), then surges on the break. The pattern is *not complete* until price **closes below the neckline.** If price drifts sideways and never breaks the neckline, the pattern aborts — do not act early. The **inverse (or bottom) head and shoulders** is the mirror image at the end of a downtrend.
 
 <LineChart
   caption="Head and shoulders top: volume is heaviest on the left shoulder, fades through the head, and spikes on the neckline break (volume is the lie-detector)"
@@ -119,7 +165,14 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
   ]}
 />
 
-**Double top / double bottom.** Two peaks (or troughs) at roughly the same level — an "M" or "W" shape. A double top signals the market tried twice to push higher, failed, and is rolling over. Confirmation comes only when price breaks the trough between the two peaks. StockCharts recommends requiring at least a roughly 10% decline (commonly 10–20%) between the peaks to avoid noise.
+**Double top.** Two peaks at roughly the same level — an "M" shape. A double top signals the market tried twice to push higher, failed, and is rolling over. Confirmation comes only when price breaks **below the trough** between the two peaks. True double tops are *rare*, so Jiler offered a reality-check before you trust one:
+
+- Did price fall a meaningful amount (Jiler's rule of thumb: roughly **5% or more**, and modern references such as StockCharts often want 10–20%) between the two peaks?
+- Was there unusual volume at the peaks?
+- Is this happening at a major turning point, not mid-trend?
+- Is the broad market neutral-to-down (for a top)?
+
+If it does not pass the checklist, you are probably forcing a pattern onto noise.
 
 <LineChart
   caption="Double top: two peaks at a similar level (the 'M'), confirmed only on the break below the middle trough"
@@ -139,7 +192,27 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
   ]}
 />
 
-**Rounding bottom (the "saucer").** A slow, bowl-shaped base where a downtrend gradually flattens and curves up into an uptrend. Volume mirrors the bowl: heavy as the decline begins, lightest at the base, and rising into the advance and breakout. StockCharts itself describes it as essentially a head-and-shoulders bottom without distinct shoulders — and it is a favorite Jiler example of patient sentiment change.
+**Double bottom.** The mirror image — two troughs at roughly the same level, tracing a "W" at the end of a downtrend. The market tested the same floor twice, found buyers both times, and the middle bounce sets a ceiling. The pattern is *not* a buy signal until price closes **above that intervening peak** (the middle of the "W"); the same size guideline filters out noise. The upside target is the height of the pattern projected up from the breakout — the reverse of the double-top measurement. (A **triple top/bottom** adds a third peak or trough before the break; rarer still, and rarer yet on weekly or monthly charts.)
+
+<LineChart
+  caption="Double bottom: two troughs at a similar level (the 'W'), confirmed only on the break ABOVE the middle peak — the mirror of the double top"
+  height={300}
+  yMin={26}
+  yMax={44}
+  series={[
+    { label: "Price", data: [44, 40, 34, 38, 41, 38, 34, 37, 41, 44, 47], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 41, label: "middle-peak resistance", color: "#a78bfa" }
+  ]}
+  points={[
+    { x: 2, y: 34, text: "trough 1", color: "#ef4444" },
+    { x: 6, y: 34, text: "trough 2", color: "#ef4444" },
+    { x: 9, y: 44, text: "resistance break", color: "#22c55e" }
+  ]}
+/>
+
+**Rounding bottom (the "saucer").** A slow, bowl-shaped base where a downtrend gradually flattens and curves up into an uptrend. Volume mirrors the bowl: heavy as the decline begins, lightest at the base, and rising into the advance and breakout. StockCharts describes it as essentially a head-and-shoulders bottom without distinct shoulders — and it is a favorite Jiler example of patient sentiment change.
 
 <LineChart
   caption="Rounding bottom (saucer): a slow bowl from downtrend to uptrend, with volume lightest at the base and rising into the breakout"
@@ -161,10 +234,10 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
 
 ### Continuation patterns (the trend pauses, then resumes)
 
-**Triangles.** Converging trendlines as price coils into a narrowing range. A **symmetrical triangle** (lower highs and higher lows) is neutral; an **ascending triangle** (flat top, rising bottoms) leans bullish; a **descending triangle** (flat bottom, falling tops) leans bearish. The breakout direction is what matters.
+**Triangles (Jiler's "coil").** Converging trendlines as price coils into a narrowing range. A **symmetrical triangle** (lower highs and higher lows) is neutral — direction is undecided until the breakout; volume **dries up** as it narrows, the quiet before the storm. An **ascending triangle** (flat top, rising lows) means buyers are strengthening → leans **bullish**. A **descending triangle** (flat bottom, falling highs) means sellers are strengthening → leans **bearish**. **Measuring rule:** take the triangle's **widest vertical height** and project it from the breakout point — added above for ascending/upside breaks, subtracted below for descending/downside breaks.
 
 <LineChart
-  caption="Symmetrical triangle: lower highs and higher lows coil to a point — neutral until the breakout picks a side"
+  caption="Symmetrical triangle (the 'coil'): lower highs and higher lows coil to a point as volume dries up — neutral until the breakout picks a side"
   height={300}
   yMin={36}
   yMax={54}
@@ -218,10 +291,29 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
   ]}
 />
 
-**Flags and pennants.** Short pauses after a sharp move (the **flagpole**). A flag is a small rectangle tilted against the trend; a pennant is a tiny symmetrical triangle. Volume is heavy on the flagpole, contracts during the pause, and expands on the breakout. They usually mark the *midpoint* of a move.
+**Rectangle (trading range).** Price bounces sideways between a flat ceiling and a flat floor, repeatedly testing the same support and resistance — a horizontal box. As a *continuation* pattern it usually resolves in the direction of the trend that entered it, and the measuring rule is familiar: project the height of the box from the breakout point. (The same box at the *end* of a long trend can instead be a reversal — context decides, so wait for the break.)
 
 <LineChart
-  caption="Bull flag: a sharp flagpole, a small downward-tilted rectangle pause, then a breakout that marks the move's midpoint"
+  caption="Rectangle (trading range): price oscillates between a flat floor and flat ceiling, then resolves on the breakout — target = box height projected from the break"
+  height={300}
+  yMin={36}
+  yMax={58}
+  series={[
+    { label: "Price", data: [38, 44, 50, 44, 50, 44, 50, 44, 50, 54], color: "#e6e9ef", width: 2 }
+  ]}
+  levels={[
+    { y: 50, label: "ceiling (resistance)", color: "#ef4444" },
+    { y: 44, label: "floor (support)", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 9, y: 54, text: "breakout", color: "#f59e0b" }
+  ]}
+/>
+
+**Flags and pennants.** Short, sharp pauses after a steep move (the **flagpole**). A flag is a small rectangle tilted against the trend; a pennant is a tiny symmetrical triangle (converging highs and lows). Volume is heavy on the flagpole, **contracts sharply** during the pause, then **expands** on the breakout that resumes the trend. They "fly at half-mast" — tending to form near the **midpoint** of the whole move. **Measuring rule (measured move):** measure the flagpole (from the move's start to the flag), then project that same length from the breakout point — up for bull flags, down for bear flags.
+
+<LineChart
+  caption="Bull flag: a sharp flagpole, a small downward-tilted rectangle pause on shrinking volume, then a breakout — target = flagpole length projected from the break"
   height={300}
   yMin={36}
   yMax={62}
@@ -239,6 +331,42 @@ A core principle Jiler emphasized: once **broken, support becomes resistance and
   ]}
 />
 
+<LineChart
+  caption="Bull pennant: the same sharp flagpole, but the pause is a tiny symmetrical triangle (converging highs and lows) instead of a tilted box — then a breakout that resumes the move"
+  height={300}
+  yMin={36}
+  yMax={62}
+  series={[
+    { label: "Price", data: [38, 41, 45, 49, 50, 46, 49, 47, 48, 47.5, 52, 58], color: "#e6e9ef", width: 2 }
+  ]}
+  trendlines={[
+    { x1: 4, y1: 50, x2: 9, y2: 48, color: "#ef4444", label: "lower highs", dashed: true },
+    { x1: 5, y1: 46, x2: 9, y2: 47.5, color: "#22c55e", label: "higher lows", dashed: true }
+  ]}
+  points={[
+    { x: 2, y: 45, text: "flagpole", color: "#22c55e" },
+    { x: 10, y: 52, text: "breakout", color: "#22c55e" },
+    { x: 11, y: 58, text: "≈ flagpole projected", color: "#f59e0b" }
+  ]}
+/>
+
+<Callout type="note">
+
+**Gaps.** A *gap* is an empty space on the chart where price jumps from one bar's range to the next with no trading in between — often on news. Jiler-era charting treats them as clues: a **breakaway gap** launches a new move out of a pattern, a **runaway (measuring) gap** appears mid-trend and roughly marks the halfway point, and an **exhaustion gap** near the end often signals the move is running out of steam. Most ordinary gaps eventually get "filled" as price trades back over them, but breakaway gaps on heavy volume frequently do not.
+
+</Callout>
+
+## The beginner workflow (do these in order)
+
+Jiler's method is a checklist, not a hunch. Run these six steps every time:
+
+1. **Identify the trend** and draw the trendline — connect the lows (uptrend) or highs (downtrend), using **3+ touches** and closing prices.
+2. **Mark support and resistance** zones, again using closing prices.
+3. **Spot the pattern** forming, and classify it: reversal or continuation?
+4. **Wait for confirmation** — the neckline/boundary break on a **closing** basis, **with a volume surge** (and, for a trendline, the ~3% filter). Do *not* anticipate.
+5. **Compute the measuring objective** to set a price target (see the worked example below).
+6. **Manage risk** — accept you will be wrong sometimes; place a logical stop just beyond the broken line or neckline, and aim to be right *more often* than wrong. That, not prediction, is Jiler's edge.
+
 ## A worked example (illustrative)
 
 Let's measure a head-and-shoulders top. The classic target rule: measure the height from the head down to the neckline, then project that distance below the neckline at the breakout point. This height-projection trick is commonly called a *measured move*.
@@ -246,39 +374,56 @@ Let's measure a head-and-shoulders top. The classic target rule: measure the hei
 ```
 ILLUSTRATIVE — numbers chosen to show the method, not a real stock
 
-Head (highest peak)          = $50
-Neckline level at breakout   = $44
-Pattern height               = $50 - $44 = $6
+Left shoulder  = $50
+Head           = $60   (highest peak)
+Right shoulder = $51
+Neckline       = $45   (drawn under the two reaction lows)
 
-Downside price target        = Neckline - height
-                             = $44 - $6
-                             = $38
+Step 1 — CONFIRM: price closes below $45 on rising volume.
+         (Before this close, do nothing.)
+
+Step 2 — MEASURE the height:  Head - Neckline = $60 - $45 = $15
+
+Step 3 — PROJECT the objective: Neckline - height = $45 - $15 = $30
+         → minimum downside target ≈ $30
+
+Step 4 — PULL-BACK: price may bounce back to retest ~$45 (old
+         support, now resistance). Failure to reclaim $45 confirms
+         the breakdown; a stop just above $45 caps the risk.
 ```
 
-So after price breaks below $44, the measured objective is about $38. Note the target is an *estimate*, not a promise. The same projection logic runs in reverse for bottoms, and for flags (project the flagpole length from the breakout). For a double top, subtract the distance from the broken support up to the peaks.
+So once price closes below $45, the measured objective is about $30 — a *minimum* estimate, not a promise. The same projection logic runs in reverse for bottoms (project up), for rectangles (project the box height from the break), for triangles (project the widest height from the break), and for flags and pennants (project the flagpole length from the breakout).
+
+**Continuation cross-check (bull flag).** If a stock ran from $20 to $32 — a **$12 flagpole** — then paused in a small downward-sloping flag near $30 and broke out at **$31** on rising volume, the target is $31 + $12 = **$43**.
 
 <LineChart
-  caption="Measured-move target: project the $6 head-to-neckline height below the $44 break to get the ~$38 objective"
-  height={320}
-  yMin={36}
-  yMax={54}
+  caption="Measured-move target: the head-to-neckline drop (bracket A) is projected the SAME distance below the neckline break (bracket B). The two equal brackets make the projection visible — the target is a minimum, not a guarantee."
+  height={340}
+  yMin={28}
+  yMax={64}
   series={[
-    { label: "Price", data: [40, 43, 46, 44, 47, 50, 47, 44, 46, 44, 43, 40, 38], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [48, 50, 55, 50, 56, 60, 54, 47, 51, 47, 46, 43, 41], color: "#e6e9ef", width: 2 }
   ]}
   levels={[
-    { y: 50, label: "head $50", color: "#22c55e" },
-    { y: 44, label: "neckline $44", color: "#a78bfa" },
-    { y: 38, label: "target $38", color: "#f59e0b" }
+    { y: 60, label: "head $60", color: "#22c55e" },
+    { y: 45, label: "neckline $45 (break)", color: "#a78bfa" },
+    { y: 30, label: "target $30", color: "#f59e0b" }
+  ]}
+  trendlines={[
+    { x1: 12, y1: 60, x2: 12, y2: 45, color: "#22c55e", label: "A: height $15", dashed: false },
+    { x1: 12, y1: 45, x2: 12, y2: 30, color: "#f59e0b", label: "B: projected $15", dashed: true }
   ]}
   points={[
-    { x: 11, y: 40, text: "break below $44", color: "#ef4444" },
-    { x: 12, y: 38, text: "measured target", color: "#f59e0b" }
+    { x: 2, y: 55, text: "left shoulder $50", color: "#38bdf8" },
+    { x: 5, y: 60, text: "head $60", color: "#22c55e" },
+    { x: 8, y: 51, text: "right shoulder $51", color: "#38bdf8" },
+    { x: 11, y: 43, text: "close below $45", color: "#ef4444" }
   ]}
 />
 
 <Callout type="warning">
 
-The neckline break is the trigger — not the formation of the right shoulder. Acting before the break means you are guessing. Many promising head-and-shoulders patterns never break and simply resume the uptrend.
+The neckline break **on a closing basis, with volume** is the trigger — not the formation of the right shoulder. Acting before the break means you are guessing. Many promising head-and-shoulders patterns never break and simply resume the uptrend.
 
 </Callout>
 
@@ -287,23 +432,26 @@ The neckline break is the trigger — not the formation of the right shoulder. A
 | Element | What to check | Why it matters |
 |---|---|---|
 | Prior trend | Is there a real trend to reverse or continue? | A "reversal" needs something to reverse |
-| The break | Did price actually breach the neckline/support? | The pattern is incomplete until then |
+| The break | Did price *close* beyond the neckline/boundary? | The pattern is incomplete until then |
 | Volume | Does it confirm (surge on breakout)? | Volume is the lie-detector for price |
-| Measured target | Height projected from the break | A rough, not exact, objective |
-| Filters | A ~3% move or a few days holding | Reduces false breakouts |
+| Filter | A ~3% break, or it holding 2–3 days | Reduces false breakouts |
+| Measured target | Height projected from the break | A *minimum* objective, not exact |
+| Risk plan | Stop just beyond the broken line | You *will* be wrong sometimes |
 
 ## Modern implementation and legacy
 
-Jiler's patterns are baked into nearly every charting platform — TradingView, StockCharts, thinkorswim — and into the standard curriculum of the **CMT (Chartered Market Technician)** program. Robert Edwards and John Magee's *Technical Analysis of Stock Trends* is the heavyweight reference, but Jiler's book remains a gentler on-ramp, and his Trendline chart services trained a generation of investors. The vocabulary — neckline, breakout, support/resistance — is now universal.
+Jiler's patterns are baked into nearly every charting platform — TradingView, StockCharts, thinkorswim — and into the standard curriculum of the **CMT (Chartered Market Technician)** program. Robert Edwards and John Magee's *Technical Analysis of Stock Trends* (1948) is the heavyweight reference, and Richard Schabacker's *Technical Analysis and Stock Market Profits* (1932) the earlier source of much pattern theory, but Jiler's book remains the gentler on-ramp, and his Trendline chart services trained a generation of investors. The vocabulary — neckline, breakout, support/resistance, the coil — is now universal.
 
 ## Honest criticisms
 
 Intellectual honesty requires saying this plainly: classical chart patterns are controversial.
 
 - **Subjectivity.** Where exactly is the neckline? Is that a shoulder or just noise? Two analysts can see two patterns on the same chart. This makes patterns hard to test rigorously.
-- **Hindsight bias.** Patterns are obvious *after* they complete. The textbook examples are survivors; the failures rarely get printed.
-- **Efficient Market Hypothesis.** Academic finance has long argued that past prices cannot predict future prices, which would make patterns useless. The evidence is genuinely mixed — some studies find modest predictive value, many find none after costs.
-- **Self-fulfilling, then self-defeating.** Patterns may "work" partly because enough traders watch them — but widely known edges tend to erode as they get arbitraged away (once everyone trades the same signal, the easy profit gets competed out of it).
+- **Hindsight bias.** Patterns are obvious *after* they complete. The textbook examples are survivors; the failures rarely get printed. In real time, a "head and shoulders" can still morph into a continuation.
+- **Weak empirical support.** Academic finance (and the efficient-market hypothesis) has long argued that past prices cannot predict future prices. Many studies find chart patterns offer little to no edge once trading costs and data-snooping are accounted for; the evidence is mixed at best.
+- **Self-fulfilling, then self-defeating.** Patterns may "work" partly because enough traders watch them — but widely known edges tend to erode as they get arbitraged away, and false breakouts are common.
+- **Targets are guidelines, not guarantees.** Every measuring rule is a *minimum projection*; Jiler himself framed everything as "likely, not certain."
+- **No fundamentals.** The method ignores valuation, earnings, and macro entirely — a stock can be technically perfect and fundamentally rotten.
 
 <Callout type="warning">
 
@@ -313,32 +461,42 @@ Beginners routinely mistake pattern recognition for a crystal ball. A pattern is
 
 ## Common pitfalls and misconceptions
 
-1. **Trading before confirmation.** No neckline/support break, no trade.
-2. **Ignoring volume.** A breakout on weak volume is suspect.
-3. **Forcing patterns.** If you have to squint, it isn't there.
-4. **Treating the target as a guarantee.** It's a guide; price may overshoot or fall well short.
-5. **Skipping the prior trend.** A "reversal" pattern in a sideways market is meaningless.
+1. **Trading before confirmation.** No *closing* break of the neckline/boundary, on volume, no trade.
+2. **Ignoring volume.** A breakout on weak volume is suspect and often false.
+3. **Forcing patterns.** Seeing an "M" or a "head and shoulders" in random noise. True double tops/bottoms are *rare* — run Jiler's checklist (≥5% move, unusual volume, major turning point, market context).
+4. **Too few trendline touches.** Drawing a "trend" off only two points.
+5. **Treating the target as a guarantee** rather than a minimum probabilistic objective.
+6. **No stop / no risk plan** — forgetting that you *will* be wrong; survival depends on small losses and being right *more often* than wrong.
+7. **Using intraday spikes instead of closing prices** for support/resistance.
+8. **Confusing reversal vs. continuation** — e.g., trading a triangle as a reversal when it is usually a continuation.
 
 ## How to apply it today
 
 - Start on **daily or weekly charts**; intraday charts are noisier and pattern-failure rates are higher.
-- **Wait for the break and a confirming volume surge** before acting.
-- Use a **filter** (e.g., a 3% break, or the break holding for 2–3 days) to dodge false signals.
-- Always set a **stop-loss** just beyond the pattern's invalidation point (e.g., back above a broken neckline).
+- **Wait for the close beyond the boundary plus a volume surge** before acting.
+- Use a **filter** (the ~3% break, or the break holding for 2–3 days) to dodge false signals.
+- Always set a **stop-loss** just beyond the pattern's invalidation point (e.g., back above a broken neckline, where the pull-back would prove you wrong).
 - **Backtest by eye**: pull up 30 historical examples, mark each pattern *before* the outcome, and tally how often it actually worked for you. This builds judgment and humility at once.
 
 ## Further reading
 
 - William L. Jiler, *How Charts Can Help You in the Stock Market* (1962) — the source text.
-- Edwards, Magee & Bassetti, *Technical Analysis of Stock Trends* — the deeper classic.
+- Robert Edwards & John Magee, *Technical Analysis of Stock Trends* (1948) — the deeper classic Jiler popularized for laypeople.
+- Richard W. Schabacker, *Technical Analysis and Stock Market Profits* (1932) — an earlier source of pattern theory.
 - StockCharts ChartSchool — free, well-illustrated pattern references.
+
+---
 
 ### Sources
 
 1. [Internet Archive — *How Charts Can Help You in the Stock Market*](https://archive.org/details/howchartscanhelp0000will) — confirms 1962 publication, ~218-page scanned copy, and authorship by William L. Jiler.
 2. [Open Library record](https://openlibrary.org/books/OL5854128M/How_charts_can_help_you_in_the_stock_market) — confirms 1962 publication, 202 pages, and the publisher Commodity Research Publications Corp.
-3. [StockCharts ChartSchool — Head and Shoulders Top](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/head-and-shoulders-top.md) — structure, neckline, volume, and the measured price-target method.
-4. [StockCharts ChartSchool — Double Top Reversal](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/double-top-reversal.md) — double top structure, the ~10% decline guideline, confirmation, filters, and target.
-5. [StockCharts ChartSchool — Flags and Pennants](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/flag-pennant.md) — continuation behavior, flagpole, volume, midpoint, and target.
-6. [StockCharts ChartSchool — Rounding Bottom (Saucer)](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/rounding-bottom.md) — saucer structure, volume behavior, and the comparison to a head-and-shoulders bottom.
-7. [Wikipedia — Thomson Reuters/CoreCommodity CRB Index](https://en.wikipedia.org/wiki/Thomson_Reuters/CoreCommodity_CRB_Index) — confirms the CRB index was first calculated by Commodity Research Bureau, Inc. in 1957 and appeared in the 1958 CRB Commodity Year Book.
+3. [WorldCat — *How Charts Can Help You in the Stock Market*](https://search.worldcat.org/title/776627594) — original publisher (Commodity Research Publications Corp.) and 1962 year.
+4. [StockCharts ChartSchool — Head and Shoulders Top](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/head-and-shoulders-top.md) — structure, neckline, volume, and the measured price-target method.
+5. [StockCharts ChartSchool — Double Top Reversal](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/double-top-reversal.md) — double top structure, the decline guideline, confirmation, filters, and target.
+6. [StockCharts ChartSchool — Double Bottom Reversal](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/double-bottom-reversal.md) — double bottom ('W') structure, confirmation on the break above the middle peak, and the projected target.
+7. [StockCharts ChartSchool — Symmetrical / Ascending / Descending Triangle](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/symmetrical-triangle.md) — triangle structure, volume contraction, and the widest-height projection target.
+8. [StockCharts ChartSchool — Flags and Pennants](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/flag-pennant.md) — continuation behavior, flagpole, volume, midpoint ("half-mast"), and the measured-move target.
+9. [StockCharts ChartSchool — Rectangle](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/rectangle.md) — trading-range structure, continuation vs. reversal, and the height-projection target.
+10. [StockCharts ChartSchool — Rounding Bottom (Saucer)](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/rounding-bottom.md) — saucer structure, volume behavior, and the comparison to a head-and-shoulders bottom.
+11. [StockCharts ChartSchool — Gaps](https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/gaps-and-gap-analysis.md) — breakaway, runaway/measuring, and exhaustion gaps, and gap-filling behavior.

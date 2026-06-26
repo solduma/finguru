@@ -2,21 +2,24 @@
 title: "Ralph Nelson Elliott — The Wave Principle"
 slug: "ralph-elliott"
 kind: "guru"
+school: "technical"
+strategy: "waves-cycles"
 level: "advanced"
 order: 4
-summary: "The accountant who claimed markets move in repeating five-wave fractal patterns — one of technical analysis's most influential and most criticized ideas."
+summary: "The bedridden accountant who claimed markets move in repeating five-up, three-down fractal patterns — one of technical analysis's most influential and most criticized ideas."
 era: "1871–1948"
 contribution: "Elliott Wave Theory"
 prereqs: ["charles-dow"]
+tags: ["elliott wave", "waves", "fractals", "fibonacci", "market structure", "corrections"]
 ---
 
 ## The one-sentence version
 
-Ralph Nelson Elliott claimed that crowd psychology moves markets in a repeating, fractal rhythm of five waves up and three waves down — and that if you can correctly label where you are in that rhythm, you can anticipate what comes next. It is one of the most influential, most ambitious, and most criticized ideas in all of technical analysis. This lesson teaches the machinery honestly: how it works, where it shines, and why even careful practitioners disagree about it.
+Ralph Nelson Elliott claimed that crowd psychology moves markets in a repeating, fractal rhythm of **five waves up and three waves down** — and that if you can correctly label where you are in that rhythm, you can anticipate what comes next. It is one of the most influential, most ambitious, and most criticized ideas in all of technical analysis. This lesson teaches the machinery honestly: how to count waves step by step, where the method shines, and why even careful practitioners disagree about it.
 
 <Callout type="key">
 
-The Wave Principle is a *theory of market structure*, not a single indicator. Its central claim is that price action at every timescale is built from the same recurring building blocks, driven by swings in mass psychology.
+The Wave Principle is a *theory of market structure*, not a single indicator. Its central claim is that price action at every timescale is built from the same recurring building blocks, driven by swings in mass psychology. You don't "buy when it crosses a line" — you build a *count*, then trade the level that would prove the count wrong.
 
 </Callout>
 
@@ -34,9 +37,11 @@ He published his findings in three stages:
 
 <Callout type="note">
 
-Collins reportedly likened Elliott's contribution to that of **Charles Dow**, the founder of Dow Theory. The lineage is real: Elliott built on Dow's insight that markets trend in identifiable phases, but Elliott made the structure far more specific and, crucially, *self-similar* across timeframes.
+Elliott's theory nearly died with him. It was kept alive and codified by a lineage of analysts — Charles Collins, **Hamilton Bolton** (*Elliott Wave Principle – A Critical Appraisal*, 1960), **A.J. Frost**, and above all **Robert Prechter**, whose 1978 book with Frost (*Elliott Wave Principle: Key to Market Behavior*) is the text most modern practitioners actually learn from. Of Prechter it has been said he "has done more to popularize and spread Elliott's philosophy than anyone else." So the "Elliott Wave" you read about today is really *Frost & Prechter's* systematized version of Elliott's raw observations.
 
 </Callout>
+
+Collins reportedly likened Elliott's contribution to that of **Charles Dow**, the founder of Dow Theory. The lineage is real: Elliott built on Dow's insight that markets trend in identifiable phases, but Elliott made the structure far more specific and, crucially, *self-similar* across timeframes.
 
 ## The core theory: the 5-3 wave
 
@@ -48,7 +53,7 @@ Elliott's foundational claim is that a complete market cycle has two phases:
 Within the five-wave impulse, the odd-numbered waves (1, 3, 5) advance in the trend's direction, while the even-numbered waves (2, 4) are countertrend pullbacks. So an uptrend cycle looks like: up (1), down (2), up (3), down (4), up (5), then a three-wave correction down (A-B-C). In a downtrend the whole picture flips — five waves down, three up.
 
 <LineChart
-  caption="A complete Elliott cycle: a five-wave motive advance (1-5) followed by a three-wave A-B-C correction"
+  caption="A complete Elliott cycle: a five-wave motive advance (1-5) followed by a three-wave A-B-C correction. Notice the rhythm — three steps forward (1, 3, 5), two pauses (2, 4), then a three-wave giveback."
   height={320}
   series={[
     { label: "Price", data: [100, 120, 108, 140, 128, 152, 138, 146, 130], color: "#e6e9ef", width: 2 }
@@ -65,14 +70,51 @@ Within the five-wave impulse, the odd-numbered waves (1, 3, 5) advance in the tr
   ]}
 />
 
+### Each wave has a personality
+
+This is what makes the count more than geometry — each wave matches a recognizable mood in the crowd. Learn these and you can often *feel* which wave you're in before you can prove it.
+
+| Wave | Personality (in an uptrend) |
+|------|------------------------------|
+| **1** | The quiet start. News is still bad, most people are bearish; the move looks like just another bounce. |
+| **2** | A sharp, often scary pullback. Bears feel vindicated. But it holds above wave 1's start. |
+| **3** | Usually the **longest and strongest** — heaviest volume, breakouts, the trend becomes undeniable and the news turns good. |
+| **4** | A shallow, sideways, often boring consolidation while the crowd digests wave 3's gains. |
+| **5** | The final push on the *best* news and the most optimism — but often on **fading momentum** (a classic spot for bearish RSI divergence). |
+
+Volume tells the same story as the personalities, and it is one of the most reliable cross-checks on a count. The trend legs (1, 3, 5) should trade on heavier volume than the countertrend pullbacks (2, 4), and **wave 3 should be the volume peak.** A telltale warning sign sits at the end: wave 5 typically makes a new price high on *lighter* volume than wave 3 — the same exhaustion that shows up as bearish RSI divergence.
+
+<BarChart
+  caption="Illustrative volume profile across a five-wave impulse. Wave 3 is the heaviest (the crowd piles in); wave 1 is modest (few believe yet); waves 2 and 4 are light countertrend pauses; wave 5 makes a higher price high but on fading volume — the classic exhaustion tell that pairs with bearish RSI divergence."
+  labels={["Wave 1", "Wave 2", "Wave 3", "Wave 4", "Wave 5"]}
+  series={[
+    { label: "Relative volume", data: [55, 30, 100, 35, 65] },
+  ]}
+  yLabel="Relative volume (wave 3 = 100)"
+/>
+
 ## Fractals: the same shape at every degree
 
 Here is the idea that makes Elliott Wave both powerful and slippery. Each wave is itself made of smaller waves of the same form, and is itself part of a larger wave. Wave 1 of a big trend is, zoomed in, its own five-wave impulse. Wave 2 is its own A-B-C correction. This is **self-similarity** — the same property you see in coastlines and fractals.
 
 Elliott named the nested scales **degrees**. From largest to smallest, the standard labels are: **Grand Supercycle, Supercycle, Cycle, Primary, Intermediate, Minor, Minute, Minuette, Subminuette.** Crucially, a degree is defined by its *form and position*, not by a fixed duration or size — a Minor wave is not "X days long," it is whatever sits one level below Intermediate in the count you are building.
 
+<ConceptDiagram
+  caption="The nine degrees, nested largest-to-smallest. Each box is one wave of its degree — and is itself built from a full 5-3 cycle of the degree below it. That nesting IS the self-similarity: zoom in anywhere and you see the same pattern again."
+  height={420}
+  chart={`flowchart TD
+  A[Grand Supercycle] --> B[Supercycle]
+  B --> C[Cycle]
+  C --> D[Primary]
+  D --> E[Intermediate]
+  E --> F[Minor]
+  F --> G[Minute]
+  G --> H[Minuette]
+  H --> I[Subminuette]`}
+/>
+
 <LineChart
-  caption="Self-similarity: zoom into wave 1 of the larger advance and it is itself a complete five-wave impulse (i-ii-iii-iv-v)"
+  caption="Self-similarity: zoom into wave 1 of the larger advance and it is itself a complete five-wave impulse (i-ii-iii-iv-v)."
   height={300}
   series={[
     { label: "Wave 1, magnified", data: [100, 108, 104, 116, 112, 120], color: "#e6e9ef", width: 2 }
@@ -94,14 +136,14 @@ This is also why the wave counts are themselves Fibonacci numbers. A complete mo
 
 ## The three unbreakable rules
 
-Most of Elliott Wave is *guidelines* (tendencies that usually hold). But three statements are treated as hard **rules** — if a count violates any of them, the count is wrong and must be redrawn. This is the part that makes the theory falsifiable in real time.
+Most of Elliott Wave is *guidelines* (tendencies that usually hold). But three statements are treated as hard **rules** — if a count violates any of them, the count is wrong and must be redrawn. This is the part that makes the theory falsifiable in real time, and it is the single most useful thing a beginner can take away. Memorize these three sentences:
 
 1. **Wave 2 never retraces more than 100% of wave 1.** It can give back most of wave 1's gain, but if price drops below wave 1's start, the label is invalid.
 2. **Wave 3 is never the shortest of waves 1, 3, and 5.** (It is often the longest and strongest, but the rule only forbids it from being the shortest.)
 3. **Wave 4 never enters the price territory of wave 1.** In a "standard" impulse the bottom of wave 4 stays above the top of wave 1; no overlap. (The exception is a special structure called a *diagonal* — a wedge-shaped impulse, usually appearing in wave 1 or wave 5, whose waves overlap inside two converging trendlines; there, limited overlap is allowed.)
 
 <LineChart
-  caption="Rule 1 violation: wave 2 drops below where wave 1 began, so the count is invalid and must be redrawn"
+  caption="Rule 1 violation: wave 2 drops below where wave 1 began, so the count is invalid and must be redrawn."
   height={280}
   series={[
     { label: "Invalid count", data: [100, 122, 96], color: "#ef4444", width: 2 }
@@ -117,7 +159,7 @@ Most of Elliott Wave is *guidelines* (tendencies that usually hold). But three s
 />
 
 <LineChart
-  caption="Rule 3 violation: the bottom of wave 4 dips into wave 1's price territory (overlap), invalidating a standard impulse"
+  caption="Rule 3 violation: the bottom of wave 4 dips into wave 1's price territory (overlap), invalidating a standard impulse."
   height={300}
   series={[
     { label: "Invalid count", data: [100, 118, 110, 134, 116, 140], color: "#ef4444", width: 2 }
@@ -136,14 +178,20 @@ Most of Elliott Wave is *guidelines* (tendencies that usually hold). But three s
 
 <Callout type="key">
 
-These three rules are the spine of the method. They give you concrete, objective conditions that *invalidate* a forecast — which is more discipline than most chart patterns offer.
+These three rules are the spine of the method. They give you concrete, objective conditions that *invalidate* a forecast — which is more discipline than most chart patterns offer. Each rule doubles as a **stop-loss level**: the price at which you admit the count is dead.
 
 </Callout>
 
-A fourth common principle is the **guideline of alternation**: if wave 2 is a sharp, deep pullback, wave 4 will tend to be a shallow, sideways one (and vice versa). It is a tendency, not a rule — Elliott framed it as a guide to *what not to expect* next.
+## The guidelines (tendencies, not laws)
+
+Beyond the three rules sit a handful of *guidelines*. They are usually true and enormously useful for picking targets — but a count that bends one of them is still legal. Never treat these as hard rules.
+
+- **Alternation.** If wave 2 is a sharp, deep pullback, wave 4 will tend to be a shallow, sideways one (and vice versa). Elliott framed it as a guide to *what not to expect* next.
+- **Equality.** Of the three impulse waves (1, 3, 5), two tend to be roughly equal in size and time — most often waves **1 and 5**, especially when wave 3 is the extended (longest) one. This is the basis for projecting wave 5.
+- **Channeling.** Draw a trendline connecting the *ends* of waves 2 and 4, then draw a parallel line off the end of wave 1 (or wave 3). Wave 5 often terminates near that parallel upper channel line — a handy way to project where the impulse runs out of steam.
 
 <LineChart
-  caption="Guideline of alternation: a sharp, deep wave 2 is typically followed by a shallow, sideways wave 4"
+  caption="Guideline of alternation: a sharp, deep wave 2 is typically followed by a shallow, sideways wave 4 (and vice versa)."
   height={300}
   series={[
     { label: "Price", data: [100, 124, 104, 150, 142, 168], color: "#e6e9ef", width: 2 }
@@ -157,65 +205,125 @@ A fourth common principle is the **guideline of alternation**: if wave 2 is a sh
   ]}
 />
 
+<LineChart
+  caption="Channeling: a line through the ends of waves 2 and 4, with a parallel off wave 1, projects where wave 5 is likely to terminate (near the upper rail)."
+  height={300}
+  series={[
+    { label: "Price", data: [100, 120, 108, 140, 128, 150], color: "#e6e9ef", width: 2 }
+  ]}
+  points={[
+    { x: 1, y: 120, text: "1", color: "#22c55e" },
+    { x: 2, y: 108, text: "2", color: "#ef4444" },
+    { x: 3, y: 140, text: "3", color: "#22c55e" },
+    { x: 4, y: 128, text: "4", color: "#ef4444" },
+    { x: 5, y: 150, text: "5 (near upper rail)", color: "#2dd4bf" }
+  ]}
+  trendlines={[
+    { x1: 2, y1: 108, x2: 4, y2: 128, color: "#38bdf8", label: "2-4 base line", dashed: true },
+    { x1: 1, y1: 120, x2: 5, y2: 150, color: "#f59e0b", label: "parallel rail (wave-5 target)", dashed: true }
+  ]}
+/>
+
 ## Fibonacci relationships
 
 Elliott noticed *after* developing his model that the wave counts matched the **Fibonacci sequence** (each number is the sum of the two before it: 1, 1, 2, 3, 5, 8, 13, 21...; dividing adjacent terms approaches 0.618 and 1.618), and in *Nature's Law* he declared that "the Fibonacci Summation Series is the basis of the Wave Principle." Practitioners use Fibonacci ratios — especially **0.618** (the inverse of the golden ratio, ~1.618 — a proportion found throughout nature and geometry), **0.382**, **0.500**, and **1.618** — to estimate how far waves travel. Common (illustrative) tendencies:
 
 | Wave | Typical Fibonacci relationship |
 |------|-------------------------------|
-| Wave 2 | Retraces 50%-61.8% of wave 1 |
-| Wave 3 | Often 1.618x the length of wave 1 (the extended wave — the one that stretches much longer than the others, usually wave 3) |
+| Wave 2 | Retraces 50%–61.8% of wave 1 |
+| Wave 3 | Often 1.618× the length of wave 1 (the extended wave — the one that stretches much longer than the others, usually wave 3) |
 | Wave 4 | Retraces ~38.2% of wave 3 |
-| Wave 5 | Often equal to wave 1, or 0.618x the net distance from the start of wave 1 to the top of wave 3 |
+| Wave 5 | Often equal to wave 1, or 0.618× the net distance from the start of wave 1 to the top of wave 3 |
+| Wave C | Often equal to, or 1.618× the length of, wave A |
 
 Here, *net distance* just means the total vertical move from wave 1's low to wave 3's high — ignoring the wave-2 dip in between.
 
-### A small worked example (illustrative)
+<Callout type="warning">
 
-Suppose a stock bottoms at $100 and rallies to $120 (wave 1 = $20 up). Then it pulls back. A typical wave 2 retraces ~61.8% of that move:
+Fibonacci levels are **clustering zones, not exact prices.** "Wave 2 retraces 61.8%" really means "expect a reaction somewhere in the 50%–61.8% band," not "price will touch $107.64 to the cent." Treat them as places to watch, not promises.
+
+</Callout>
+
+### A full worked example (illustrative)
+
+Let's count an entire 5-wave impulse with numbers, checking every rule as we go. A stock bottoms at **$100** and begins an uptrend.
+
+**Wave 1** rises from $100 to **$120** — a $20 advance.
+
+**Wave 2** pulls back. A typical wave 2 retraces ~61.8% of wave 1:
 
 ```
-Wave 1 size       = 120 - 100 = 20
-Wave 2 retrace    = 0.618 x 20 = 12.36
-Projected wave 2  = 120 - 12.36 = 107.64
+Wave 1 size       = 120 − 100 = 20
+Wave 2 retrace    = 0.618 × 20 = 12.36
+Projected wave 2  = 120 − 12.36 = 107.64
 ```
 
-As long as wave 2 holds above $100 (Rule 1), the count survives. Now project wave 3 as 1.618x wave 1, measured from the wave 2 low:
+Rule 1 check: $107.64 is above $100, so wave 2 retraced less than 100%. **Valid.** Your invalidation level is now $100 — if price breaks below it, the count is dead.
+
+**Wave 3** typically extends wave 1 by 1.618×, measured from the wave-2 low:
 
 ```
-Wave 3 target = 107.64 + (1.618 x 20) = 107.64 + 32.36 = 140.00
+Wave 3 size   = 1.618 × 20 = 32.36
+Wave 3 target = 107.64 + 32.36 = 140.00
 ```
 
-These are *expectations*, not guarantees — they tell you where to watch for a reaction, not where price must go.
+Rule 2 check: wave 3 ($32.36) is longer than wave 1 ($20), so wave 3 is not the shortest. **Valid.**
+
+**Wave 4** retraces ~38.2% of wave 3 (alternation suggests it'll be shallow, since wave 2 was deep):
+
+```
+Wave 4 size   = 0.382 × 32.36 = 12.36
+Wave 4 low    = 140 − 12.36 = 127.64
+```
+
+Rule 3 check: wave 4's low ($127.64) stays above wave 1's high ($120) — no overlap. **Valid.**
+
+**Wave 5**, by the equality guideline, often roughly equals wave 1 ($20), projected from the wave-4 low:
+
+```
+Wave 5 target = 127.64 + 20 = 147.64
+```
+
+Then a **three-wave A-B-C correction** begins from ~$147.64. Wave C is frequently equal to or 1.618× wave A, often dragging price back down toward the old wave-4 area near $127.
 
 <LineChart
-  caption="The worked example: wave 1 to $120, a 61.8% wave-2 retrace to $107.64, and a 1.618x wave-3 projection to $140"
-  height={300}
+  caption="The full worked example: $100 → wave 1 $120 → wave 2 $107.64 (61.8% retrace) → wave 3 $140 (1.618× extension) → wave 4 $127.64 (38.2% retrace, no overlap) → wave 5 $147.64 (≈ wave 1). The dashed line is the Rule 1 invalidation."
+  height={320}
   yMin={95}
-  yMax={150}
+  yMax={155}
   series={[
-    { label: "Price", data: [100, 120, 107.64, 140], color: "#e6e9ef", width: 2 }
+    { label: "Price", data: [100, 120, 107.64, 140, 127.64, 147.64], color: "#e6e9ef", width: 2 }
   ]}
   points={[
     { x: 1, y: 120, text: "1 ($120)", color: "#22c55e" },
     { x: 2, y: 107.64, text: "2 ($107.64)", color: "#ef4444" },
-    { x: 3, y: 140, text: "3 target ($140)", color: "#2dd4bf" }
+    { x: 3, y: 140, text: "3 ($140)", color: "#22c55e" },
+    { x: 4, y: 127.64, text: "4 ($127.64)", color: "#ef4444" },
+    { x: 5, y: 147.64, text: "5 target ($147.64)", color: "#2dd4bf" }
   ]}
   levels={[
     { y: 100, label: "Rule 1 invalidation (wave 1 start)", color: "#f59e0b" }
   ]}
 />
 
+These are *expectations*, not guarantees — they tell you where to watch for a reaction, not where price must go.
+
 ## Corrective patterns: where it gets hard
 
 Impulses are relatively clean. Corrections are where Elliott analysts spend most of their agony, because A-B-C waves come in several flavors and can string together. The three primary forms:
 
 - **Zigzag** — a sharp, deep correction subdividing **5-3-5** (wave A has five sub-waves, B has three, C has five). It looks like a clean, steep pullback.
-- **Flat** — a sideways, shallow correction subdividing **3-3-5**. The B wave often returns near the start of A, making it look like choppy, range-bound action.
-- **Triangle** — a contracting (or expanding) sideways pattern of five legs (**A-B-C-D-E**), each subdividing into threes. Triangles most often appear in **wave 4** (or wave B), rarely in wave 2, and signal a final thrust to follow.
+- **Flat** — a sideways, shallow correction subdividing **3-3-5**. The B wave often returns near the start of A, making it look like choppy, range-bound action. (In an *expanded* flat — very common — B actually pushes *past* the start of A before C drops.)
+- **Triangle** — a contracting (or expanding) sideways pattern of five legs (**A-B-C-D-E**), each subdividing into threes (**3-3-3-3-3**). Triangles most often appear in **wave 4** (or wave B), rarely in wave 2, and signal a final thrust to follow.
+
+<Callout type="warning">
+
+Beginner trap hiding here: **wave C and the A-leg of a zigzag are themselves five-wave impulses.** Beginners expect corrections to be simple three-step affairs and get whipsawed when a "pullback" subdivides into five. A correction is three waves *at its own degree*, but its pieces are not all simple.
+
+</Callout>
 
 <LineChart
-  caption="Zigzag (5-3-5): a sharp, deep pullback that makes a fresh low at C"
+  caption="Zigzag (5-3-5): a sharp, deep pullback that makes a fresh low at C."
   height={260}
   series={[
     { label: "Zigzag (5-3-5)", data: [100, 90, 94, 84], color: "#38bdf8", width: 2 }
@@ -228,7 +336,7 @@ Impulses are relatively clean. Corrections are where Elliott analysts spend most
 />
 
 <LineChart
-  caption="Flat (3-3-5): sideways, with B returning near A's start"
+  caption="Flat (3-3-5): sideways, with B returning near A's start."
   height={260}
   series={[
     { label: "Flat (3-3-5)", data: [100, 96, 99, 95], color: "#a78bfa", width: 2 }
@@ -241,7 +349,7 @@ Impulses are relatively clean. Corrections are where Elliott analysts spend most
 />
 
 <LineChart
-  caption="Contracting triangle (wave 4): five overlapping legs A-B-C-D-E whose range narrows as the trendlines converge — a final thrust typically follows the breakout"
+  caption="Contracting triangle (wave 4): five overlapping legs A-B-C-D-E whose range narrows as the trendlines converge — a final thrust typically follows the breakout."
   height={300}
   series={[
     { label: "Price", data: [108, 126, 112, 122, 116, 138], color: "#a78bfa", width: 2 }
@@ -260,7 +368,7 @@ Impulses are relatively clean. Corrections are where Elliott analysts spend most
   ]}
 />
 
-These can combine into **double** and **triple** corrections — which is precisely where critics say the theory becomes unfalsifiable.
+These simple patterns can chain into **double** and **triple** corrections (linked by connecting "X" waves, e.g. W-X-Y) — which is precisely where critics say the theory becomes unfalsifiable.
 
 ## Honest criticisms and controversies
 
@@ -275,19 +383,25 @@ The central, unavoidable criticism is **subjectivity**. Because every wave subdi
 - **Benoit Mandelbrot**, the mathematician who pioneered fractal geometry (ironic given Elliott's fractal claims), wrote that "wave prediction is a very uncertain business," and that "the record of this, as of most technical analysis, is at best mixed."
 - **David Aronson**, in *Evidence-Based Technical Analysis*, argued that "the Elliott wave principle, as popularly practiced, is not a legitimate theory, but a story," faulting its loosely defined rules for letting it bend to fit any observation.
 - Academic researchers **Roy Batchelor and Richard Ramyar** found that Fibonacci ratios appear in the Dow Jones no more often than random chance would predict, concluding the Fibonacci-retracement idea "clearly lacks any scientific rationale."
-- Even sympathetic practitioners like **Glenn Neely** have argued the original rules are too loose, prompting him to formalize a stricter variant ("NEoWave").
+- Even sympathetic practitioners like **Glenn Neely** have argued the original rules are too loose — "Markets have evolved, but Elliott has not" — prompting him to formalize a stricter variant ("NEoWave").
 
 The honest position: Elliott Wave is best understood as a **descriptive framework and risk-management discipline**, not a crystal ball. Its rules give you objective invalidation points, but its *forecasting* power is contested and hard to verify.
 
-## How to apply it today
+## How to apply it today: a beginner's starter recipe
 
-1. **Start at a high degree.** Zoom out, identify the largest clear five-wave move, then drill down. Counting bottom-up invites overfitting — forcing a tidy pattern onto what is really noise.
-2. **Let the three rules do the work.** Use them to *reject* counts. If you cannot find a count that obeys all three, you do not have a tradeable structure.
-3. **Trade the invalidation, not the prophecy.** The best practical use is placing a stop just beyond the level that would break the count (e.g., below wave 1's start when expecting wave 3). Your risk is defined; your reward depends on the count being right.
-4. **Combine, don't isolate.** Confirm wave counts with momentum tools — for example RSI (Relative Strength Index, a 0-100 gauge of how strong recent gains are; readings above ~70 flag overbought conditions), where RSI divergence (price makes a new high but momentum does not — the two disagree, a warning the trend is tiring) often appears at wave 5 — plus volume and Fibonacci confluence (several Fib levels stacking at the same price). Treat agreement across tools as a higher-probability signal.
+Here is a concrete, repeatable routine. Do it in this order every time.
+
+1. **Start at a high degree (zoom out first).** Identify the largest clear five-wave move on a weekly or daily chart, *then* drill down. Counting bottom-up from tiny wiggles invites overfitting — forcing a tidy pattern onto what is really noise.
+2. **Find the most obvious wave 3.** It's usually the longest, steepest leg with the heaviest volume. If you can anchor wave 3, waves 1, 2, 4, and 5 fall into place around it.
+3. **Label tentatively, then test against the three rules.** Wave 2 above wave 1's start? Wave 3 not the shortest? Wave 4 not overlapping wave 1? If any rule fails, your labels are wrong — re-count. Use the rules to *reject*, not to confirm.
+4. **Stay within one degree.** Don't mix a daily-chart count with a weekly one. Count one degree cleanly, then nest the smaller waves inside.
+5. **Trade the invalidation, not the prophecy.** Place a stop just beyond the level that would break the count — e.g., just below wave 1's start when you expect a wave 3. Your *risk* is defined by the rule; your *reward* depends on the count being right.
+6. **Project targets with Fibonacci, but hold them loosely.** Use the table above for where to expect reactions, and treat 50%–61.8% as a *zone*.
+7. **Confirm with other tools.** Check momentum — for example RSI (Relative Strength Index, a 0–100 gauge of how strong recent gains are; above ~70 is "overbought"), where **RSI divergence** (price makes a new high but momentum does not — a warning the trend is tiring) often appears at wave 5 — plus volume and Fibonacci confluence (several Fib levels stacking at one price). Agreement across tools is a higher-probability setup.
+8. **Always carry an alternate count.** Professionals maintain a primary *and* an alternate scenario at once, with the price level that flips one to the other written down in advance.
 
 <LineChart
-  caption="Confirming the count: price makes a higher high at wave 5 than at wave 3, but momentum does not — classic bearish RSI divergence warning the impulse is ending"
+  caption="Confirming the count: price makes a higher high at wave 5 than at wave 3, but momentum does not — classic bearish RSI divergence warning the impulse is ending."
   height={300}
   series={[
     { label: "Price", data: [100, 118, 110, 138, 130, 144], color: "#e6e9ef", width: 2 }
@@ -302,7 +416,7 @@ The honest position: Elliott Wave is best understood as a **descriptive framewor
 />
 
 <LineChart
-  caption="RSI panel for the same advance: the wave-5 peak prints a LOWER RSI high than wave 3 — bearish divergence"
+  caption="RSI panel for the same advance: the wave-5 peak prints a LOWER RSI high than wave 3 — bearish divergence, a clue the fifth wave is exhausting."
   height={220}
   yMin={0}
   yMax={100}
@@ -320,22 +434,31 @@ The honest position: Elliott Wave is best understood as a **descriptive framewor
     { yMin: 70, yMax: 100, color: "rgba(239,68,68,0.12)", label: "overbought" }
   ]}
 />
-5. **Always carry an alternate count.** Professionals maintain a primary and an alternate scenario simultaneously, with clear price levels that flip one to the other.
+
+## Common beginner pitfalls
 
 <Callout type="warning">
 
-Beginner trap: forcing the chart to fit a count you *want*. If you find yourself relabeling repeatedly to keep a forecast alive, the market is telling you the count is wrong. Respect the invalidation levels.
+1. **Forcing the count to fit a bias.** If you keep relabeling to keep a forecast alive, the market is telling you the count is wrong. Respect the invalidation levels.
+2. **Treating guidelines as rules.** Alternation, equality, channeling, and "wave 3 is longest" are *tendencies*. Only the three hard rules are absolute.
+3. **Ignoring wave degree.** Mixing a daily count with a weekly one is the fastest way to mislabel. Count within one degree, then nest.
+4. **Over-precision on Fibonacci.** Ratios are clustering zones, not exact price guarantees.
+5. **Hindsight relabeling.** It's easy to "see" the count after the move. The honest test is whether you'd have called it live, before the fact.
+6. **Forgetting C-waves (and zigzag A-waves) are five-wave impulses.** Beginners expect corrections to be simple and get caught when they subdivide.
+7. **No invalidation, no stop.** The rules hand you exact "this count is dead" prices. Not using them throws away Elliott Wave's single biggest practical benefit: defined risk.
 
 </Callout>
 
 ## Further reading
 
-Elliott's original works (*The Wave Principle*, 1938; *Nature's Law*, 1946) are still in print and worth reading for historical context. The modern standard reference is Frost & Prechter's *Elliott Wave Principle: Key to Market Behavior*. For the skeptical side, read Aronson's *Evidence-Based Technical Analysis* — holding both in your head at once is the mark of a competent analyst.
+Elliott's original works (*The Wave Principle*, 1938; *Nature's Law*, 1946) are still in print and worth reading for historical context. The modern standard reference is **Frost & Prechter's *Elliott Wave Principle: Key to Market Behavior* (1978)** — the book most practitioners actually learn from. For the skeptical side, read **Aronson's *Evidence-Based Technical Analysis*** — holding both in your head at once is the mark of a competent analyst.
+
+---
 
 ### Sources
 
-1. [Wikipedia — Elliott wave principle](https://en.wikipedia.org/wiki/Elliott_wave_principle) — wave structure, the three rules, degrees, alternation, Fibonacci wave counts (8/55/89/144), corrective patterns, and the Mandelbrot/Aronson/Batchelor-Ramyar/Neely criticisms with verified quotations.
+1. [Wikipedia — Elliott wave principle](https://en.wikipedia.org/wiki/Elliott_wave_principle) — wave structure, the three rules, degrees, alternation, wave personalities, Fibonacci wave counts (8/55/89/144), corrective patterns (zigzag/flat/triangle), and the Mandelbrot/Aronson/Batchelor-Ramyar/Neely criticisms with verified quotations.
 2. [Wikipedia — Ralph Nelson Elliott](https://en.wikipedia.org/wiki/Ralph_Nelson_Elliott) — verified birth/death dates, accounting career, 1924 Nicaragua appointment, the 75-year data study, and publication dates (August 1938, June 1946) with Charles J. Collins.
-3. [Investopedia — Elliott Wave Theory](https://www.investopedia.com/terms/e/elliottwavetheory.asp) — general overview of the 5-3 structure, motive vs. corrective waves, and Fibonacci usage.
-4. [Elliott Wave International — educational resources](https://www.elliottwave.com/) — practitioner descriptions of degrees, alternation, diagonals, and corrective patterns (publisher founded by Robert Prechter).
-5. [StockCharts ChartSchool — Introduction to Elliott Wave Theory](https://school.stockcharts.com/doku.php?id=market_analysis:introduction_to_elliott_wave_theory) — standard summary of rules, guidelines, Fibonacci retracement/extension ratios, and the zigzag (5-3-5) / flat (3-3-5) / triangle correction taxonomy.
+3. [Wikipedia — Robert Prechter](https://en.wikipedia.org/wiki/Robert_Prechter) — Prechter's role as the chief modern popularizer of Elliott's work.
+4. [Investopedia — Elliott Wave Theory](https://www.investopedia.com/terms/e/elliottwavetheory.asp) — general overview of the 5-3 structure, motive vs. corrective waves, and Fibonacci usage.
+5. [StockCharts ChartSchool — Introduction to Elliott Wave Theory](https://school.stockcharts.com/doku.php?id=market_analysis:introduction_to_elliott_wave_theory) — standard summary of rules, guidelines, Fibonacci retracement/extension ratios, and the zigzag (5-3-5) / flat (3-3-5) / triangle (3-3-3-3-3) correction taxonomy.

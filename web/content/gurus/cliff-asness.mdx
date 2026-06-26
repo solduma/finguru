@@ -1,0 +1,477 @@
+---
+title: "Cliff Asness — The Factor Zoo, Tamed Into a Portfolio"
+slug: "cliff-asness"
+kind: "guru"
+school: "quant"
+strategy: "systematic-practitioners"
+level: "intermediate"
+order: 307
+summary: "The Fama student who turned academic factors — value, momentum, quality, carry — into a real-money, multi-asset machine, and proved that combining negatively-correlated factors beats any one of them alone."
+era: "b. 1966"
+contribution: "Multi-factor investing"
+tags: ["factors", "value", "momentum", "quality", "smart beta", "long-short", "AQR"]
+prereqs: ["charles-dow"]
+---
+
+## The one idea to hold onto
+
+Markets quietly and repeatedly **pay you for owning certain characteristics** —
+not for being clever about one company, but for tilting toward a handful of
+patterns that show up across countries *and* across asset classes. Cliff
+Asness's life's work is finding those patterns ("factors"), proving they are
+real, and — crucially — **combining the ones that take turns working** so the
+slump in one is cushioned by the strength of another.
+
+If you remember nothing else: **buy cheap things, buy things that are already
+going up, prefer high-quality businesses, hold things that pay you to wait — and
+hold several of these at once, because they zig and zag at different times.**
+
+## Who he is
+
+**Clifford Scott Asness** (born **October 17, 1966**, in Queens, New York) is a
+hedge-fund manager and one of the most influential figures in **quantitative,
+factor-based investing.**
+
+His résumé is, in a sense, the bridge from the ivory tower to the trading desk:
+
+- **University of Pennsylvania (1988)** — a dual degree in **computer science and
+  finance** (the Jerome Fisher M&T program), graduating *summa cum laude.*
+- **University of Chicago Booth (MBA 1991, PhD in finance 1994)** — where his
+  doctoral adviser was Nobel laureate **Eugene Fama**, the father of the
+  "efficient market" idea, with **Kenneth French** also on his committee. (Fama
+  and French are the "Fama–French" of the famous three-factor model.) The twist
+  worth savoring: Asness's dissertation was on **momentum** — the empirical fact
+  that recent winners keep winning — an effect that *appears to violate* the
+  efficient markets his own adviser had built his career on.
+- **Goldman Sachs Asset Management (from ~1990)** — he built and ran the
+  quantitative research desk and helped launch the systematic **Global Alpha
+  Fund.**
+- **AQR Capital Management** — in **January 1998** he co-founded AQR ("Applied
+  **Q**uantitative **R**esearch") in Greenwich, Connecticut, with **David
+  Kabiller, John Liew, and Robert Krail** (all Chicago/Goldman colleagues),
+  launching with roughly **$1 billion.** He is co-founder, Managing Principal,
+  and **Chief Investment Officer.** AQR was among the **first hedge-fund managers
+  to voluntarily register with the SEC** at inception.
+
+<Callout type="note">
+AQR's assets under management swing dramatically *because the strategies
+themselves are sensitive to factor performance.* It grew from roughly $750M
+(2001) to a peak near **$224B (2017)**, fell to about **$143B by 2020** during a
+long factor slump (the "quant winter"), and sat near **$128B in 2025**. That
+volatility is not a side note — it *is* the lesson about what factor investing
+feels like to live through. Asness's net worth is roughly **$2.9 billion**
+(Forbes, 2025).
+</Callout>
+
+He is also famous as a blunt, prolific writer and online commentator (the blog
+"Cliff's Perspectives"). Before AQR he wrote a 2000 piece, **"Bubble Logic,"**
+warning that dot-com valuations were insane — a value investor's cry right
+before value endured one of its worst stretches, then was vindicated when the
+bubble burst.
+
+## From "the market" to "factors": the core idea
+
+Older finance said: the only thing you get paid to bear is **market risk**
+(captured by *beta* — how much a stock moves with the overall market). Own the
+market, earn the market's return.
+
+Fama and French broke that open. They showed that, historically, two extra
+characteristics also earned excess return:
+
+- **Value** — cheap stocks (low price relative to book value or earnings) beat
+  expensive ones.
+- **Size** — smaller companies beat larger ones (a weaker, more contested
+  effect).
+
+Then academics found **momentum** (recent winners keep winning for a while), and
+later **quality**, **low-risk**, and **carry**. Each of these is a **factor**: a
+measurable trait that has, on average, been **rewarded with extra return.**
+
+<ConceptDiagram
+  caption="The evolution of what investors believe they get paid for. Each step adds a rewarded characteristic ('factor') on top of plain market exposure. Asness's contribution sits on the right: don't just find factors — combine the ones that move oppositely, across every asset class."
+  chart={`flowchart LR
+  A["Market only<br/>(CAPM: just beta)"] --> B["+ Value<br/>+ Size<br/>(Fama-French)"]
+  B --> C["+ Momentum<br/>+ Quality<br/>+ Low-risk + Carry"]
+  C --> D["Asness:<br/>combine the<br/>NEGATIVELY-correlated<br/>ones, across<br/>EVERY asset class"]`}
+/>
+
+Asness's signature claim, from his most famous paper **"Value and Momentum
+Everywhere" (Asness, Moskowitz & Pedersen, *Journal of Finance*, 2013)**, is
+twofold:
+
+1. **Value and momentum work almost everywhere** — the paper tests **eight
+   markets/asset classes**: U.S., U.K., continental-European and Japanese
+   individual stocks, plus country equity-index futures, government bonds,
+   currencies, and commodity futures. Both premia show up in *all* of them.
+2. **They are negatively correlated.** When value is having a bad year, momentum
+   often has a good one, and vice versa. So a portfolio holding *both* is
+   **smoother** and has a **higher risk-adjusted return** than either alone.
+
+<Callout type="key">
+The deepest practical insight of Asness's work is not "value is good" or
+"momentum is good." It is that **diversifying across factors is as powerful as
+diversifying across stocks.** Cheap-and-going-up beats cheap, and beats
+going-up, because the two patterns rescue each other at different times. The
+paper's headline: a simple **50/50 value + momentum** mix earned an annual
+**Sharpe ratio of about 1.45** — roughly three times the U.S. stock market's
+own long-run Sharpe (~0.4–0.5).
+</Callout>
+
+He later helped formalize **"Quality Minus Junk" (QMJ)**: profitable, stable,
+growing, well-run ("quality") companies tend to beat unprofitable, volatile,
+junky ones — and, strikingly, investors pay only a **"puzzlingly modest"**
+premium for that quality (the price of quality bottomed during the late-1990s
+internet bubble, then predicted strong quality returns afterward).
+
+## Defining the factors in plain language
+
+A **factor** needs a **signal** — a number you can compute for every security so
+you can rank them. Here are the workhorses, with the everyday version of each
+signal. Note how deliberately *plain* AQR's choices are — the paper uses "the
+simplest and most standard measures," not over-tuned ones.
+
+| Factor | Plain-English question | Standard signal | Higher score = |
+|--------|------------------------|-----------------|----------------|
+| **Value** | Is it cheap? | Stocks: **book-to-market (BE/ME)**. Other assets: **negative of the past ~5-yr return** | cheaper → better |
+| **Momentum** | Has it been going up? | Return over the **past 12 months, skipping the last 1** (MOM₂₋₁₂) | stronger → better |
+| **Quality (QMJ)** | Is it a good business? | Profitability + growth + safety + payout | better → better |
+| **Low-risk (BAB)** | Is it calm? | Low beta / low volatility | calmer → better |
+| **Carry** | Does it pay me to hold? | Return *if prices don't move* — yield / roll (esp. bonds, FX, commodities) | higher → better |
+
+<Callout type="warning">
+The **"12 minus 1" (MOM₂₋₁₂) momentum window** trips up beginners. You measure
+return over the **past 12 months but drop the most recent month**, because the
+very latest month tends to *reverse* in the short term (microstructure noise).
+Including it works against you.
+</Callout>
+
+A subtle but important point on **value for non-stock assets**: bonds,
+currencies and commodities have no "book value," so AQR proxies cheapness with
+the **negative of the long-run (~5-year) past return** — "it has fallen a lot,
+so it's cheap." Fama and French showed this proxy tracks book-to-market closely,
+which is what lets the *same* value idea travel across all eight markets.
+
+<BarChart
+  labels={["Value", "Momentum", "Quality", "Low-risk", "Carry"]}
+  series={[{ label: "Illustrative long-run premium (% / yr)", data: [4, 5, 4, 3, 3] }]}
+  caption="Illustrative, not a forecast: a rough sketch of the kind of annual 'premium' (extra return) each well-documented factor has historically earned in a long/short form. Exact numbers vary wildly by study, market, and period — the point is only that several distinct, modest premia exist to be combined."
+  yLabel="approx. % per year"
+/>
+
+### Quality, defined precisely (the four pillars of QMJ)
+
+"Quality" sounds vague, so AQR pinned it to four measurable pillars; a stock's
+quality score is the average of these:
+
+- **Profitability** — high gross profits, ROE, ROA, fat margins, low accruals
+  (real *cash* earnings, not accounting fluff).
+- **Growth** — those profitability measures actually *rising* over the prior
+  ~5 years.
+- **Safety** — **low risk**: low market beta, low leverage, stable earnings, low
+  bankruptcy risk. (This pillar links directly to AQR's **Betting Against Beta**
+  factor — Frazzini & Pedersen, 2014 — the idea that leverage-constrained
+  investors overpay for high-beta names, so low-beta wins risk-adjusted.)
+- **Payout** — shareholder-friendly: returns cash, doesn't dilute shareholders.
+
+QMJ then goes **long high-quality, short "junk,"** and has earned risk-adjusted
+returns in the **U.S. and 23 other countries (24 total).**
+
+## The full method, step by step
+
+This is the AQR-style **long/short, multi-factor** recipe, written so you can see
+exactly what a quant desk does. We'll use stocks as the example.
+
+**Step 1 — Pick a universe.** For example, the **1,000 largest US stocks** — big
+enough to trade cheaply, broad enough to diversify. (AQR also runs this on
+country-index futures, government bonds, currencies, and commodities.)
+
+**Step 2 — Compute each factor's signal for every asset.** Value (book-to-market
+for stocks; negative 5-year return elsewhere), momentum (MOM₂₋₁₂), quality (the
+four-pillar blend). Now every name has a raw score per factor.
+
+**Step 3 — Rank and standardize.** Convert each raw score to a **z-score** — how
+many standard deviations above or below the average it is. This makes the factors
+comparable and combinable (a "cheapness" z-score and a "momentum" z-score now
+speak the same language). Simpler academic versions instead just sort assets into
+**terciles** (low / middle / high thirds).
+
+**Step 4 — Build each factor's long/short leg.** For one factor at a time:
+
+- Go **long** the top group (say, the top third).
+- Go **short** the bottom group.
+
+This **long-minus-short** ("high minus low," P3 − P1) portfolio cancels out the
+overall market and isolates *just the factor.* (These are the academic portfolios
+you'll hear named: **HML** for value, **UMD** for momentum, **QMJ** for quality,
+**BAB** for low-risk.)
+
+**Step 5 — Combine the negatively-correlated factors.** Blend the value,
+momentum, and quality sleeves together — roughly **equal risk weight**. Because
+value and momentum are negatively correlated, the combined volatility is *lower*
+than the average of the parts. **This is the magic step** — the entire engine of
+the approach.
+
+**Step 6 — Target a risk level and size positions.** Scale total exposure so the
+book runs at a chosen volatility (say **10% annualized**). Weight sleeves and
+positions by **volatility** (risk-parity-style) rather than by dollars, so no
+single market dominates — calmer names get bigger weights.
+
+**Step 7 — Rebalance on a schedule.** Recompute signals monthly or quarterly and
+trade back toward target — but **watch turnover.** Momentum especially demands
+frequent trading, and trading costs money.
+
+**Step 8 — Go "everywhere."** Apply the same value + momentum (+ quality, carry)
+logic to **country indices, government bonds, currencies, and commodities,** then
+combine those too. This cross-asset diversification is what makes the AQR
+approach distinctive versus a single-market factor fund.
+
+<ConceptDiagram
+  caption="The systematic pipeline as a process, not a hunch. Data flows left to right: raw signals are standardized, turned into long/short factor sleeves, blended (where the negative correlation does its work), risk-scaled, and rebalanced. Every box is a rule a computer can follow — no discretionary stock-picking."
+  chart={`flowchart LR
+  U[Universe:<br/>1000 stocks] --> S[Compute signals:<br/>value, momentum, quality]
+  S --> Z[Rank to z-scores]
+  Z --> L[Long top /<br/>short bottom<br/>per factor]
+  L --> C[Blend factors<br/>equal risk]
+  C --> R[Risk-target<br/>+ size positions]
+  R --> RB[Rebalance<br/>monthly]
+  RB --> S`}
+/>
+
+<Callout type="note">
+**Beginner-accessible shortcut.** Most individuals can't easily short stocks or
+trade five asset classes. The practical analog is a **long-only "smart-beta" /
+multi-factor ETF** that *tilts* toward value, momentum, and quality. It captures
+*part* of the premium without shorting — but understand the trade-off: you keep
+full market risk, and you give up the clean, market-neutral isolation that the
+long/short version provides.
+</Callout>
+
+## Worked example: why combining beats either alone
+
+This is the numerical heart of Asness's thesis. Suppose, within one asset class,
+you've built two long/short factor sleeves with realistic, modest properties:
+
+- **Value sleeve:** expected return **5%/yr**, volatility **10%**
+- **Momentum sleeve:** expected return **5%/yr**, volatility **10%**
+- **Correlation between them:** **−0.40** (negative, as documented)
+
+Each one alone has a **Sharpe ratio** (return earned per unit of risk) of
+5% / 10% = **0.50.**
+
+Now blend them 50/50.
+
+- Combined return = (0.5 × 5%) + (0.5 × 5%) = **5%** (unchanged — it's just the
+  average).
+- Combined variance:
+
+```
+σ² = (0.5²·10²) + (0.5²·10²) + 2·(0.5)(0.5)(10)(10)(−0.40)
+σ² = 25 + 25 + (2 · 0.25 · 100 · −0.40)
+σ² = 50 − 20 = 30
+σ  = √30 ≈ 5.48%
+```
+
+- Combined Sharpe = 5% / 5.48% ≈ **0.91.**
+
+**Same 5% return, but the Sharpe ratio nearly doubled** — from 0.50 to ~0.91 —
+purely by combining two negatively correlated factors. (If their correlation
+were 0 instead of −0.4, the Sharpe would only reach ~0.71. The *negative*
+correlation is what supercharges the result.)
+
+<Callout type="key">
+This isn't just a toy. It is **exactly the mechanism behind the paper's headline
+result.** In real data the 50/50 value + momentum combination produced a Sharpe
+near **1.45**, and the paper notes the value-vs-momentum correlation grew *more*
+negative over time (from about **−0.44 to −0.63**) — which kept the combination's
+Sharpe high even as markets globalized.
+</Callout>
+
+<BarChart
+  labels={["Value alone", "Momentum alone", "Combined 50/50"]}
+  series={[{ label: "Sharpe ratio (illustrative)", data: [0.50, 0.50, 0.91] }]}
+  caption="The free lunch of factor diversification (illustrative numbers from the worked example). Two factors each with a Sharpe of 0.50, combined, jump to ~0.91 — not because either earns more, but because their bad stretches don't line up. This single picture is the reason AQR holds many factors at once."
+  yLabel="Sharpe ratio"
+/>
+
+To see *why* they rescue each other, picture their year-by-year returns: value
+zigs while momentum zags.
+
+<LineChart
+  caption="Illustrative year-by-year returns for the two sleeves. Notice they tend to move oppositely — value's worst years (e.g. years 3 and 7) are often momentum's better ones. The negative correlation means the blended line (not shown) is far smoother than either, which is exactly what lifts the Sharpe ratio."
+  height={280}
+  series={[
+    { label: "Value", data: [8, -3, 12, -6, 4, 14, -8, 10], color: "#38bdf8" },
+    { label: "Momentum", data: [-4, 9, -2, 11, 6, -5, 13, 1], color: "#a78bfa" },
+  ]}
+  levels={[{ y: 0, label: "break-even", color: "#f59e0b" }]}
+/>
+
+## Is the premium risk or a mistake? (Why factors should persist)
+
+There are two competing explanations for why factors pay — and which one you
+believe shapes how much you trust them to keep working:
+
+- **Risk-based (Asness's mentor Fama):** you earn the premium because you're
+  *bearing a real danger.* Cheap (value) stocks are cheap because they're
+  genuinely riskier or in distress; you're compensated for holding them through
+  the pain. If true, the premium should persist because the risk doesn't go away.
+- **Behavioral:** investors **systematically misprice** things — they overpay for
+  glamorous, expensive, story stocks and underprice boring cheap ones; they
+  underreact to news (which creates momentum). If true, the premium persists only
+  as long as the human bias does.
+
+Asness leans somewhat **behavioral**, a friendly intellectual tension with the
+efficient-markets Fama. The honest answer is unresolved — the *Value and Momentum
+Everywhere* paper explicitly says its results "challenge existing behavioral,
+institutional, and rational asset pricing theories." The practical takeaway: a
+factor you can explain by *both* a risk story *and* a behavioral story, that shows
+up across many markets, is more trustworthy than one that only appeared in a
+single backtest.
+
+## Key papers and writings
+
+Asness is famous for **prolific journal and blog writing rather than one
+signature trade book** — there is no "Asness's *Intelligent Investor*." His canon
+is the research:
+
+- **"Do Hedge Funds Hedge?" (2001)**, *Journal of Portfolio Management* (with
+  Krail & Liew) — showed many hedge funds carry hidden market exposure.
+- **"Fight the Fed Model" (2003)**, *Journal of Portfolio Management* — challenged
+  a popular stock-vs-bond valuation rule of thumb.
+- **"Value and Momentum Everywhere" (2013)**, *The Journal of Finance* (with
+  Moskowitz & Pedersen) — his most cited paper; value + momentum across **eight
+  markets/asset classes**, negatively correlated, the **~1.45 Sharpe**
+  combination dominating.
+- **"Quality Minus Junk" (QMJ)** — Asness, Frazzini & Pedersen; circulated as a
+  working paper (2013) and later published in the *Review of Accounting Studies*
+  (2019). Defines quality as **profitability + growth + safety + payout** across
+  24 countries.
+- **"Betting Against Beta" (2014)**, *Journal of Financial Economics* (AQR's
+  Frazzini & Pedersen) — the foundation of the low-risk/defensive factor and the
+  "safety" pillar of QMJ.
+- **"Carry"** — Koijen, Moskowitz, Pedersen & Vrugt, *Journal of Financial
+  Economics* (~2018). Generalizes "carry" beyond currencies to stocks, bonds and
+  commodities; carry predicts returns everywhere but shares a common downside in
+  global recessions. (Asness is *not* an author here, but it's core
+  AQR-affiliated research underpinning the carry factor.)
+- **"Fact, Fiction, and Value Investing" (2015)** and **"Fact, Fiction, and
+  Momentum Investing" (2014)**, *Journal of Portfolio Management* — excellent,
+  beginner-readable myth-busting. Start here if you read only two.
+
+<Callout type="note">
+A couple of dates here come from general knowledge rather than a primary-source
+re-check: the **QMJ** *Review of Accounting Studies* year (2019) and the **Carry**
+JFE year (2018). Treat them as approximate if precision matters. Asness has **no
+authored book** — he features prominently in Scott Patterson's *The Quants*
+(2010), but that's about him, not by him.
+</Callout>
+
+## Honest criticisms and limitations
+
+<Callout type="warning">
+Factor investing is real on average, but it is **not** a smooth ride. Take these
+seriously before committing money.
+</Callout>
+
+- **Factors can underperform for *years* (the "quant winter").** Value in
+  particular suffered a brutal drawdown from roughly **2018 to 2020**: AQR's
+  profits fell ~34% in 2018, the firm cut jobs in January 2019, and AUM fell from
+  ~$224B (2017) to ~$143B (2020). Many investors abandoned the strategy near the
+  bottom — right before the 2021+ value rebound. Premia are real *on average* but
+  can vanish for the better part of a decade.
+- **Data-mining / p-hacking.** Critics (Harvey, Liu, Arnott) note that *hundreds*
+  of "factors" have been published — a so-called **"factor zoo"** — and many are
+  statistical flukes that won't survive out of sample. Even the QMJ authors
+  concede their returns are "either an anomaly, data mining, or a
+  still-to-be-identified risk factor." Only a handful (value, momentum, quality,
+  low-risk, carry) are widely accepted as robust.
+- **Costs and capacity.** Momentum has high turnover; transaction costs and market
+  impact eat into paper returns. Real funds capture only a fraction of the
+  textbook momentum premium after costs.
+- **Crowding.** Once a factor is famous, money floods in, valuations rise, and
+  future returns may shrink.
+- **Leverage and shorting risk.** True market-neutral factor portfolios (and BAB,
+  risk parity) use shorting and leverage; shorts can squeeze, financing isn't
+  free, and leverage amplifies losses and can force selling at the worst moment.
+  These are *not* cheaply replicable by a small retail investor.
+- **Common tail risk.** Carry-type strategies (and to a degree the others) all do
+  badly *together* in global recessions and funding crises — the diversification
+  can fail exactly when you need it. "Smooth until it isn't."
+- **Unresolved theory.** As above — risk or behavioral? — the debate is genuinely
+  open, even between Asness and his own mentor.
+
+<ScatterChart
+  caption="Risk vs. reward, illustrative. Each factor sleeve sits at modest risk and modest return on its own (the scattered points). The 'combined' portfolio (upper-left, on the dashed efficient line) earns a similar return at much lower risk — pushing toward the top-left, where every investor wants to be. The quant-winter warning: any single point can sink far below the line for years."
+  xLabel="Risk (volatility, %)"
+  yLabel="Return (% / yr)"
+  series={[
+    { label: "Single factors", data: [
+      { x: 10, y: 5, label: "Value" },
+      { x: 10, y: 5, label: "Momentum" },
+      { x: 9, y: 4, label: "Quality" },
+    ] },
+    { label: "Combined", data: [
+      { x: 5.5, y: 5, label: "Value+Mom+Qual" },
+    ] },
+  ]}
+/>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Confusing factor "value" with Buffett/Graham value.** Factor value is a
+   **statistical, diversified, often long/short tilt** toward cheap stocks — not
+   deep fundamental analysis of one company's intrinsic worth. Same word,
+   different method. And don't confuse **value** (cheap) with **quality** (good):
+   a stock can be cheap *and* junk — QMJ is a *separate* dimension.
+2. **Bailing out during a drawdown.** The single most expensive mistake: selling
+   after a bad multi-year stretch — exactly when the premium is most likely to
+   snap back. The strategy only pays the investor who can sit through the winter.
+3. **Holding only one factor.** The entire point is the *combination.* A
+   value-only or momentum-only book throws away the negative-correlation benefit.
+4. **Over-engineering the signal.** Beginners chase exotic value/momentum
+   definitions; AQR deliberately used the **simplest standard measures**
+   (book-to-market; MOM₂₋₁₂).
+5. **Ignoring costs and turnover,** especially with momentum.
+6. **Chasing exotic factors** found in a backtest. Stay in the small, well-vetted
+   zoo: value, momentum, quality, low-risk, carry.
+7. **Thinking you must short.** You don't — use long-only multi-factor ETFs, but
+   know they capture only part of the premium and still carry full market risk.
+8. **Botching momentum's lookback.** Use **12-1 (MOM₂₋₁₂)**, not plain 12-month —
+   forgetting to skip the most recent month buys short-term reversals.
+9. **Judging factors over 1–2 years.** These premia are documented over
+   *decades*; a short window proves nothing either way.
+</Callout>
+
+## Putting it to work
+
+You don't have to run a billion-dollar long/short book to use Asness's insight.
+The portable lessons are:
+
+- **Tilt, don't bet the farm.** Add deliberate exposure to a few rewarded factors
+  rather than chasing a single hot one.
+- **Combine on purpose.** Pair a value tilt with a momentum tilt and a quality
+  screen; let them take turns carrying the portfolio.
+- **For most people, the cleanest implementation is one or two broad
+  multi-factor ETFs** layered on a low-cost market index — value + momentum +
+  quality in a single, long-only wrapper.
+- **Decide your holding period before you start,** and write down that you will
+  *not* sell during a multi-year factor slump. That pre-commitment is the real
+  edge, because the math only pays the patient.
+- **Respect the costs.** Lower turnover, broad diversification, and cheap
+  vehicles keep more of the premium in your pocket.
+
+The grand idea is humble: you don't need to outsmart every company. You need
+**disciplined, diversified, rules-based exposure to several patterns the market
+has long rewarded — and the temperament to hold them when one is broken.**
+
+---
+
+### Sources
+
+1. ["Value and Momentum Everywhere" — Asness, Moskowitz & Pedersen (full journal PDF)](https://w4.stern.nyu.edu/facdir/lpederse/papers/ValMomEverywhere.pdf) — eight asset classes; BE/ME and MOM₂₋₁₂ signal definitions; ~1.45 Sharpe of the 50/50 combination; the −0.44→−0.63 correlation drift.
+2. [AQR — Quality Minus Junk Factors dataset](https://www.aqr.com/Insights/Datasets/Quality-Minus-Junk-Factors-Monthly) — the four quality pillars (profitability, growth, safety, payout), the size×quality construction, and the U.S. + 23-country result.
+3. [AQR — Betting Against Beta dataset](https://www.aqr.com/Insights/Datasets/Betting-Against-Beta-Equity-Factors-Monthly) — BAB construction and the leverage-constraint mechanism behind the "safety" pillar.
+4. [Cliff Asness — Wikipedia](https://en.wikipedia.org/wiki/Clifford_S._Asness) — birth, Penn/Chicago degrees, Fama advisorship, Goldman, AQR founding (1998), net worth.
+5. [AQR Capital Management — Wikipedia](https://en.wikipedia.org/wiki/AQR_Capital) — founders, AUM peak ~$224B (2017) → ~$143B (2020), 2018 profit drop, job cuts.
+6. [Carry (investment) — Wikipedia](https://en.wikipedia.org/wiki/Carry_(investment)) — carry defined as the return/cost of holding; currency carry-trade mechanics; the Koijen-Moskowitz-Pedersen-Vrugt "Carry" paper.

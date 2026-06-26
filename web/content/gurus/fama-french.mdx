@@ -1,0 +1,555 @@
+---
+title: "Eugene Fama & Kenneth French — Efficient Markets and the Factor Revolution"
+slug: "fama-french"
+kind: "guru"
+school: "quant"
+strategy: "academic-foundations"
+level: "intermediate"
+order: 302
+summary: "The economists who showed you probably can't out-pick the market — then mapped exactly which risks (size, value, profitability, investment) you can tilt toward to earn more, if you wait. They also handed you the free data to check any fund yourself."
+era: "Fama b. 1939 · French b. 1954"
+contribution: "Efficient Markets & Factor Models"
+tags: ["efficient markets", "emh", "factors", "value", "size", "smart beta"]
+prereqs: ["charles-dow", "benjamin-graham"]
+---
+
+## Why this pair matters to you
+
+Almost every piece of modern investing advice you've ever heard — *"just buy a
+low-cost index fund," "you can't time the market," "tilt toward value and small
+caps for higher long-run returns"* — traces back to the work of two economists.
+Together, **Eugene Fama** and **Kenneth French** answered two questions that sit
+at the very center of how to invest:
+
+1. **Can you beat the market by being clever?** (Mostly no.)
+2. **If not, how do you still earn higher returns?** (By deliberately bearing
+   specific, well-understood risks — and waiting.)
+
+These two answers look like they contradict each other. A huge part of this
+lesson is showing you why they fit together perfectly. Get that, and you've
+absorbed the intellectual foundation of index investing and "smart beta" alike.
+
+<Callout type="key">
+We teach Fama and French as **one unit** on purpose. Their most famous work — the
+factor models — is jointly authored, and their reputations are intertwined.
+Fama supplied the theory of efficient markets; together they supplied the
+empirical machinery that explains where returns actually come from.
+</Callout>
+
+## Who they were
+
+**Eugene F. Fama** — often called *"the father of modern finance"* and *"the
+father of the efficient-market hypothesis."*
+
+- Born **February 14, 1939, in Boston, Massachusetts** (his grandparents
+  emigrated from Italy). A common mix-up: Chicago is where he built his entire
+  career, not where he was born.
+- Undergrad at Tufts (Romance Languages, *magna cum laude*, 1960); MBA and PhD
+  from the **University of Chicago Booth School of Business** (advised by Nobel
+  laureate Merton Miller and Harry Roberts). His doctoral thesis showed that
+  short-term stock prices are very nearly unpredictable — a **"random walk."**
+- Spent his **whole career at the University of Chicago.**
+- Won the **Nobel Memorial Prize in Economic Sciences in 2013** (shared with
+  Robert Shiller and Lars Peter Hansen) for the empirical analysis of asset
+  prices.
+
+**Kenneth R. French**
+
+- Born **March 10, 1954, in Franklin, New Hampshire.** (Dartmouth is where he
+  *teaches* today — not his birthplace.)
+- B.S. in mechanical engineering (Lehigh, 1975); MBA, M.S., and **PhD in finance
+  from the University of Rochester (1983).**
+- Now the **Roth Family Distinguished Professor of Finance at the Tuck School of
+  Business, Dartmouth College** (he previously taught at MIT, Yale, and Chicago
+  Booth). Past president of the American Finance Association.
+- He maintains the free, public **"Kenneth R. French Data Library"** — the
+  canonical place where academics and professionals download the actual factor
+  return series. We'll come back to it and *use* it; it's the closest thing
+  investing has to a public utility.
+
+Both have long been affiliated with **Dimensional Fund Advisors (DFA)**, the fund
+company built explicitly to harvest the factors they discovered.
+
+## The two big ideas, in plain language
+
+### Idea A — The Efficient Market Hypothesis (EMH), 1970
+
+The core claim is simple: **a stock's price already reflects all the information
+available to investors.** The instant news appears, thousands of traders pounce
+and the price adjusts almost immediately. So by the time *you* hear the
+"information" and act on it, the price already moved.
+
+The practical punchline for you as a beginner:
+
+> You cannot reliably beat the market by picking stocks or timing trades. On a
+> risk-adjusted basis, **after costs**, the average active investor will **not**
+> consistently outperform a cheap index fund.
+
+This is the intellectual bedrock of index investing.
+
+### Idea B — The Fama-French factor models, 1992–2015
+
+If markets are efficient, here's a puzzle: why have some *groups* of stocks
+reliably earned higher long-run returns than others? Fama and French's answer is
+the heart of the factor revolution:
+
+> Higher return is **compensation for bearing certain risks (called factors)** —
+> not evidence that someone is "beating" the market.
+
+Beyond the overall market, they found two extra characteristics that historically
+predicted returns: being a **small company (the size factor)** and being a
+**cheap, "value" stock (the value factor)**. Later they added two more,
+**profitability** and **investment.**
+
+<Callout type="note">
+**The bridge between A and B.** EMH says *don't try to outsmart the market.*
+Factor models say *you can still expect higher returns — but only by deliberately
+and patiently taking on more of these specific risks, not by stock-picking
+genius.* They are complementary, not contradictory: the factors are the **risks
+that earn return inside an efficient market.**
+</Callout>
+
+## EMH — the full method
+
+EMH isn't one claim; it comes in **three forms**, each defined by *what
+information is already baked into the price.* The more information that's
+priced in, the harder it is to win. Read it as a checklist — pick the form, and
+it tells you which style of analysis it says can't reliably beat the market:
+
+| Form | What's already in the price | What it says can't reliably win |
+|------|------------------------------|--------------------------------|
+| **Weak** | All past price & volume data | Technical analysis (chart-reading) |
+| **Semi-strong** | All *public* information (news, filings, earnings) | Fundamental analysis on public data |
+| **Strong** | Even *private/insider* information | Anyone at all — even insiders |
+
+The strong form is generally **rejected** (insiders clearly *can* profit). The
+real debate lives around the semi-strong form.
+
+<ConceptDiagram
+  caption="The three forms of EMH nest inside one another like Russian dolls: each larger set of priced-in information swallows the smaller one. If the strong form held, all three would be true; in practice most evidence supports the weak and semi-strong forms while rejecting the strong."
+  chart={`flowchart LR
+  subgraph Strong["STRONG: + private/insider info"]
+    subgraph Semi["SEMI-STRONG: + all public info"]
+      Weak["WEAK: all past prices/volume"]
+    end
+  end
+  Weak --> T["beats technical analysis"]
+  Semi --> F["beats public fundamental analysis"]
+  Strong --> I["beats even insiders"]`}
+/>
+
+How Fama and his co-authors actually *built* the case for EMH, step by step — so
+you see it's evidence, not just an assertion:
+
+1. **Show prices are nearly a random walk** (Fama's 1965 thesis): tomorrow's move
+   is mostly unrelated to today's, so past prices give little edge → supports the
+   **weak** form.
+2. **Run an "event study"** (Fama, Fisher, Jensen & Roll, 1969 — the first of its
+   kind): track exactly how fast prices adjust around a known public event. They
+   adjust *fast*, often before you could trade → supports the **semi-strong**
+   form.
+3. **Test the strong form** by checking whether insiders earn abnormal returns.
+   They do → the strong form is **rejected.**
+
+### The joint-hypothesis problem (teach this honestly)
+
+Here is the deepest and most slippery point about EMH, and it matters because
+critics use it constantly. **You can never test market efficiency by itself.**
+
+To say a return is *"abnormal"* (proof of inefficiency), you first need a model of
+what the *normal*, fair return should have been. So every test of efficiency is
+secretly testing **two things at once**: market efficiency AND your pricing
+model. When you find an apparent anomaly, you genuinely can't tell whether:
+
+- the market was inefficient, **or**
+- your model of "fair return" was simply wrong.
+
+<ConceptDiagram
+  caption="The joint-hypothesis problem: any test of 'is the market efficient?' is really a test of a bundle — efficiency together with a chosen pricing model. A surprising result could mean either link failed, so a clean verdict on efficiency alone is impossible. This is why EMH is so hard to disprove."
+  chart={`flowchart TD
+  A["Observed return looks 'abnormal'"] --> B{Which assumption broke?}
+  B --> C["Market is inefficient"]
+  B --> D["Pricing model was wrong"]
+  C --> E["Can't tell which — they're tested together"]
+  D --> E`}
+/>
+
+## The factor models — the full method
+
+### The three-factor formula (1993)
+
+This is the model that overturned the old **Capital Asset Pricing Model (CAPM)**,
+which had used only *one* factor (the market). Written for a portfolio or fund:
+
+```
+Expected return − Risk-free rate
+   =  β · (Market − Risk-free)        ← the market factor
+   +  bₛ · SMB                        ← the size factor
+   +  bᵥ · HML                        ← the value factor
+   ( + α )                            ← leftover "alpha"
+```
+
+Decoding the three factors:
+
+- **Market (Rm − Rf):** the excess return of the *whole* stock market over the
+  risk-free rate (e.g. Treasury bills). The only factor CAPM ever had.
+- **SMB ("Small Minus Big"):** the historical extra return of small-cap stocks
+  over large-cap stocks → the **size premium.**
+- **HML ("High Minus Low"):** the extra return of high book-to-market
+  (cheap "value") stocks over low book-to-market (expensive "growth") stocks →
+  the **value premium.**
+
+The coefficients β, bₛ, bᵥ are the **loadings** — how strongly your portfolio is
+tilted toward each factor, estimated by regression. They can be positive *or*
+negative (a growth fund has a *negative* HML loading). In-sample, the three-factor
+model explained roughly **90%+** of the return variation of diversified
+portfolios, versus about **70%** for the one-factor CAPM.
+
+<Callout type="warning">
+**Memorize the direction of HML.** Value = **HIGH** book-to-market = *cheap*
+stocks (lots of accounting book value per dollar of price). Growth = low
+book-to-market = *expensive*. Beginners constantly flip this sign and conclude
+the opposite of what the data says.
+</Callout>
+
+<Callout type="note">
+**This "value" is the same value you met in the fundamental school.** When Fama
+and French call high book-to-market stocks "value," they mean exactly the
+cheap-relative-to-fundamentals companies that **Benjamin Graham** and Warren
+Buffett hunt for by hand. The big difference is *method*: a Graham-style
+fundamental investor reads each company's statements and buys the bargains one by
+one; Fama and French simply *sort every stock by one cheapness ratio and buy the
+whole cheap basket.* Same underlying bet — cheap beats expensive over the long
+run — captured mechanically instead of by judgment. If you've read the
+[Benjamin Graham lesson](/gurus/benjamin-graham), think of HML as Graham's
+margin-of-safety instinct turned into a downloadable spreadsheet column.
+</Callout>
+
+### The five-factor formula (2015)
+
+Fama and French later added two more factors, both motivated by the idea that a
+firm's fundamentals predict returns:
+
+```
+Expected return − Rf
+   =  β·(Market − Rf) + bₛ·SMB + bᵥ·HML + b_r·RMW + b_c·CMA   ( + α )
+```
+
+- **RMW ("Robust Minus Weak"):** firms with strong (robust) operating
+  profitability minus firms with weak profitability → the **profitability
+  factor.**
+- **CMA ("Conservative Minus Aggressive"):** firms that invest conservatively
+  (grow assets slowly) minus those that invest aggressively → the **investment
+  factor.**
+
+Notably, in US data **1963–2013 the value factor (HML) became largely
+redundant** — its return was well explained by the other four, especially CMA
+(≈0.7 correlation with HML). And **momentum was deliberately left out** (more on
+that in the criticisms).
+
+Here's roughly how the five factors have historically *ranked* as average annual
+premiums — small, positive, and won't show up every year.
+
+<BarChart
+  caption="Illustrative ordering of the long-run factor premiums (the historical extra return for tilting toward each). The market premium is the biggest; size, value, profitability, and investment are smaller, noisier add-ons. These exact heights are sample- and period-dependent, not fixed truths: which factor 'wins' shuffles by era and country, and the size premium in particular has been weak or statistically insignificant in many post-1980 samples. Real, exact values are free to download from the French Data Library — read these bars as relative scale, not a ranking to bank on."
+  yLabel="Approx. long-run annual premium (%)"
+  labels={["Market (Rm−Rf)", "Value (HML)", "Profitability (RMW)", "Investment (CMA)", "Size (SMB)"]}
+  series={[{ label: "Premium", data: [6.5, 4.0, 3.0, 3.0, 2.5] }]}
+/>
+
+<Callout type="warning">
+Those bars are **long-run averages** — and an average hides a brutal truth. A
+factor can be *negative* for years on end before its average shows up. This is
+the single hardest thing about factor investing, so let's see it.
+</Callout>
+
+Imagine putting \$100 into the value premium (a "long value, short growth" bet)
+and tracking its cumulative growth. The average says it drifts up. The *actual
+path* does this:
+
+<LineChart
+  caption="The value premium does NOT pay out smoothly. This illustrative cumulative-growth line climbs early, then suffers a long, demoralizing drawdown lasting roughly a decade (think value's painful 2007–2020 stretch) — falling well below where it started — before finally recovering. An investor who bailed during the flat-to-falling middle would have locked in the loss and missed the rebound. The dashed line is the starting \$100, not a support level. Illustrative, but the shape is real."
+  height={300}
+  series={[{ label: "Cumulative value-premium ($)", data: [100, 112, 121, 118, 130, 126, 119, 110, 104, 97, 92, 95, 90, 96, 103, 112, 124, 133] }]}
+  levels={[{ y: 100, label: "starting $100", color: "#94a3b8" }]}
+  points={[
+    { x: 4, y: 130, text: "early payoff", color: "#22c55e" },
+    { x: 10, y: 92, text: "decade-long drought (below start!)", color: "#ef4444" },
+    { x: 17, y: 133, text: "premium finally returns", color: "#22c55e" },
+  ]}
+/>
+
+<Callout type="key">
+That long red valley is why factor investing demands patience measured in
+**decades, not quarters.** The premium is *risk* — and if cheap stocks never went
+through gut-wrenching stretches like this, there'd be no reason they'd pay more
+than expensive ones in the first place. The discomfort *is* the source of the
+return.
+</Callout>
+
+### How the factors are actually built (the "2×3 sort")
+
+This is the concrete recipe Fama and French use — and it's worth understanding so
+you know these aren't mystery numbers:
+
+1. Take all stocks on the **NYSE, AMEX, and NASDAQ.**
+2. **Split by size** into "Small" vs. "Big," using the **median NYSE market cap**
+   as the dividing line.
+3. **Split by value** into Low (bottom 30%), Medium (middle 40%), High (top 30%)
+   book-to-market, using NYSE breakpoints. Drop firms with negative book value.
+4. Cross those splits into **six value-weighted portfolios** (S/L, S/M, S/H, B/L,
+   B/M, B/H).
+5. **SMB** = average return of the 3 small portfolios − average return of the 3
+   big portfolios. **HML** = average of the 2 high-B/M portfolios − the 2 low-B/M
+   portfolios. (Portfolios are rebuilt once a year.)
+6. To analyze *your* fund, run a **linear regression** of its excess returns on
+   these factor series. The resulting coefficients (the loadings) tell you how
+   strongly the fund is *tilted* toward each factor. Whatever return is left over
+   is **alpha (α)** — the part NOT explained by factors.
+
+<ConceptDiagram
+  caption="The factor-construction pipeline: every stock is sorted on two axes (size and book-to-market) into a 2x3 grid of six portfolios. SMB compares the two size rows; HML compares the value and growth columns. Running a fund's returns against these series reveals its tilts — and its true alpha."
+  chart={`flowchart LR
+  U["All NYSE/AMEX/NASDAQ stocks"] --> S{Size:\nabove/below\nNYSE median?}
+  S -->|Small| SM["3 small portfolios\n(Low / Med / High B/M)"]
+  S -->|Big| BG["3 big portfolios\n(Low / Med / High B/M)"]
+  SM --> SMB["SMB = avg Small − avg Big"]
+  BG --> SMB
+  SM --> HML["HML = avg High B/M − avg Low B/M"]
+  BG --> HML`}
+/>
+
+The flowchart shows the *logic*; the scatter below shows what the sort actually
+looks like. Every dot is one company, placed by its **size** (left–right) and its
+**book-to-market** (bottom–top). The vertical line is the NYSE median that splits
+Small from Big; the horizontal lines are the 30% / 70% book-to-market breakpoints.
+The dots simply fall into whichever box they land in.
+
+<ScatterChart
+  caption="The 2x3 sort, made concrete. Each dot is a stock placed by size (x-axis) and book-to-market (y-axis, higher = cheaper 'value'). The vertical line is the NYSE median (Small to its left, Big to its right); the two horizontal lines are the 30%/70% value breakpoints. SMB averages every stock left of the line minus every stock right of it; HML averages every stock above the top line minus every stock below the bottom line. Illustrative dots, not real data."
+  xLabel="Size (market cap) →"
+  yLabel="Book-to-market (value) →"
+  series={[
+    { label: "Small Value (Small + High B/M)", data: [{ x: 1.2, y: 8.5 }, { x: 1.8, y: 9.2 }, { x: 2.4, y: 8.0 }, { x: 1.5, y: 7.6 }] },
+    { label: "Big Value (Big + High B/M)", data: [{ x: 7.0, y: 8.2 }, { x: 8.1, y: 9.0 }, { x: 8.8, y: 7.7 }] },
+    { label: "Small Growth (Small + Low B/M)", data: [{ x: 1.4, y: 2.2 }, { x: 2.1, y: 1.5 }, { x: 1.7, y: 2.9 }, { x: 2.6, y: 1.9 }] },
+    { label: "Big Growth (Big + Low B/M)", data: [{ x: 7.3, y: 2.0 }, { x: 8.4, y: 1.4 }, { x: 9.0, y: 2.7 }, { x: 7.8, y: 3.1 }] },
+    { label: "NYSE size median", data: [{ x: 5, y: 0 }, { x: 5, y: 11 }], line: true },
+    { label: "value breakpoints (30% / 70%)", data: [{ x: 0, y: 4 }, { x: 10, y: 4 }], line: true },
+    { label: "value breakpoints ", data: [{ x: 0, y: 7 }, { x: 10, y: 7 }], line: true },
+  ]}
+/>
+
+<Callout type="note">
+See it now? Building a factor is just **sorting stocks into boxes and subtracting
+one box's return from another's.** There's no forecasting, no stock-picking
+hunch — just a recipe anyone with the data could repeat. That repeatability is
+exactly why the premiums count as *risk compensation* rather than skill.
+</Callout>
+
+## A worked example — is this manager skilled, or just tilted?
+
+This is the single most useful thing the model does for an everyday investor:
+**it separates genuine skill (alpha) from a mere factor tilt.**
+
+Suppose a small-cap value fund, over one period, faces these conditions:
+
+- Risk-free rate **Rf = 2%**
+- Market return **Rm = 8%** → market excess = **6%**
+- Size premium that period **SMB = 3%**; value premium **HML = 4%**
+
+A regression of the fund's past returns gives these tilts (loadings):
+
+- Market β = **1.1**
+- Size bₛ = **0.7**  (positive → it leans toward small caps)
+- Value bᵥ = **0.5**  (positive → it leans toward value)
+
+Plug into the three-factor formula:
+
+```
+Expected return = Rf + β·(Rm−Rf) + bₛ·SMB + bᵥ·HML
+                = 2% + (1.1 × 6%) + (0.7 × 3%) + (0.5 × 4%)
+                = 2%  + 6.6%       + 2.1%       + 2.0%
+                = 12.7%
+```
+
+Now compare what each model would have *expected* against what the fund actually
+delivered (say it returned **13.0%**):
+
+<BarChart
+  caption="What explains the fund's 13.0% return? Old CAPM (market only) expected just 8.6%. The three-factor model expected 12.7% — the extra 4.1% is pure size + value tilt, not skill. The genuine alpha is only the sliver above 12.7%: about +0.3%."
+  yLabel="Return (%)"
+  labels={["CAPM expects", "3-factor expects", "Fund actually returned"]}
+  series={[{ label: "Return", data: [8.6, 12.7, 13.0] }]}
+/>
+
+**The interpretation that changes how you judge funds:** a plain CAPM would have
+predicted only `2% + 6.6% = 8.6%`. The extra **4.1%** above that comes entirely
+from the fund's deliberate small-cap and value tilts — exposures you could have
+bought cheaply yourself in an index. Since the fund actually returned 13.0%, its
+**alpha is only about +0.3%.** Almost all its "outperformance" was factor
+exposure, not manager genius. *(Figures illustrative; the real factor series are
+downloadable from the French Data Library — see the next section.)*
+
+<Callout type="key">
+This is why factor models matter even if you never run a regression: they let you
+ask of *any* fund or "guru," **"Is this skill, or is it just a tilt I could buy
+for 0.05% a year?"** Most of the time, it's the tilt.
+</Callout>
+
+## Do it yourself — the Kenneth R. French Data Library
+
+Here is the genuinely beginner-followable part: the actual factor returns Fama and
+French use are **free to download**, and you can run the analysis above in a
+spreadsheet. This is what separates "I read about factors" from "I can check a
+fund myself."
+
+1. **Go to the Data Library** (Tuck/Dartmouth) and pick a dataset — e.g.
+   *"Fama/French 3 Factors"* or *"Fama/French 5 Factors (2×3)."* Choose your
+   frequency (monthly is the standard starting point).
+2. **Download and unzip** the file. The columns are **Mkt-RF, SMB, HML** (plus
+   **RMW, CMA**, and **Mom** in the larger sets) and a separate **RF** column for
+   the risk-free rate.
+3. **Compute your portfolio's *excess* return** for each period:
+   `your return − RF`. (You subtract RF because the factors are measured as excess
+   returns too — Mkt-RF is already net of the risk-free rate.)
+4. **Regress** your excess returns on the factor columns. The slopes are your
+   loadings (β, bₛ, bᵥ, …); the intercept is your **alpha.** A near-zero alpha
+   means everything you earned was explained by known risk exposures.
+
+<Callout type="warning">
+**The three Data-Library gotchas that wreck a beginner's regression:**
+
+1. **Values are in *percent per period.*** A `2.0` means **2%**, i.e. 0.02 — not
+   2.0 in decimal. Mixing the two destroys your numbers.
+2. **The factors are *excess* returns.** Mkt-RF already has the risk-free rate
+   removed, so you must compare it to *your* excess return (`return − RF`), not
+   your raw return.
+3. **Missing data is coded as `-99.99` (or `-999`).** These are placeholders, not
+   real returns. Feeding them in raw will badly skew the regression — filter them
+   out first.
+</Callout>
+
+## The key books and papers
+
+- **1965** — *"The Behavior of Stock Market Prices,"* Journal of Business
+  (Fama's dissertation; the random-walk evidence).
+- **1969** — *"The Adjustment of Stock Prices to New Information"* (Fama, Fisher,
+  Jensen, Roll), International Economic Review — the first major **event study.**
+- **1970** — **"Efficient Capital Markets: A Review of Theory and Empirical
+  Work,"** Journal of Finance — defines the weak/semi-strong/strong forms. The
+  EMH cornerstone.
+- **1992** — Fama & French, **"The Cross-Section of Expected Stock Returns,"**
+  Journal of Finance — the empirical case that size and value beat CAPM beta.
+- **1993** — Fama & French, **"Common Risk Factors in the Returns on Stocks and
+  Bonds,"** Journal of Financial Economics — the **three-factor model.**
+- **2015** — Fama & French, **"A Five-Factor Asset Pricing Model,"** Journal of
+  Financial Economics — adds RMW and CMA.
+- Books: *Foundations of Finance* (Fama, 1976); *The Fama Portfolio: Selected
+  Papers* (2017).
+
+## Honest criticisms and limitations
+
+No serious lesson on Fama and French hides the pushback — there's a lot of it,
+and some of it comes from people who won Nobels of their own.
+
+- **The joint-hypothesis problem makes EMH nearly unfalsifiable.** Because you can
+  always blame "the wrong model," critics like Philip Pilkington have called EMH
+  *"a tautology masquerading as a theory."*
+- **Behavioral finance.** Kahneman, Tversky, and Richard Thaler showed investors
+  are systematically biased (overconfidence, overreaction, loss aversion). After
+  2008, critics like Jeremy Grantham and Paul Volcker blamed "faith in efficient
+  markets" for missing the bubble. Fama maintained EMH *"held up well."*
+- **Skeptical great investors.** Warren Buffett pointed to a cluster of
+  consistently successful value investors as evidence skill is real, not luck;
+  defenders dismiss them as lucky outliers — which critics say turns EMH into an
+  un-losable argument.
+- **HML became redundant.** In US data (1963–2013), the value factor (HML) turned
+  out to be fully *explained by the other four factors* — the investment factor
+  (CMA) alone has roughly 0.7 correlation with it. The five-factor model also
+  still **fails the formal Gibbons-Ross-Shanken (1989) test**, mainly because of
+  small firms that invest heavily despite weak profitability.
+- **No momentum factor.** A well-documented momentum premium is deliberately left
+  out; Cliff Asness argued it belongs, and the Carhart (1997) four-factor model
+  adds it.
+- **Data-mining / "factor zoo."** Factors found in US 1963–2013 data may weaken,
+  vanish, or reverse in other periods and regions; hundreds of factors have since
+  been proposed, most likely spurious. Griffin (2002) found local factors beat
+  global ones — the premiums are country-specific.
+- **Micro vs. macro efficiency (Samuelson's quip).** Individual stocks may be
+  priced fairly while the *whole market* still swings on sentiment.
+
+<Callout type="note">
+None of this means the models are useless — they remain the standard benchmark in
+academic finance and the backbone of trillions in "smart-beta" assets. It means
+you should treat factors as *useful, imperfect descriptions of risk*, not as laws
+of physics.
+</Callout>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Thinking "efficient" means "always correctly priced."** EMH says prices
+   reflect *available information* and are hard to *beat after costs* — not that
+   they're always right in hindsight. Fama himself doubts anyone can reliably spot
+   bubbles in real time.
+2. **Confusing a size/value tilt with skill.** Factor returns are *risk premiums
+   earned by exposure over long periods* — not alpha. A manager who beat the
+   market with a value tilt captured a factor; they did not prove skill.
+3. **Expecting the premiums every year.** Size and value can underperform for a
+   *decade.* They are long-run, risk-based, and demand patience.
+4. **Flipping the factor letters.** SMB = size (small−big), HML = value
+   (high−low B/M, i.e. cheap), RMW = profitability, CMA = investment.
+5. **Mishandling the Data Library files.** Values are *percent*, are *excess*
+   returns, and use `-99.99` for missing data — feeding them in raw wrecks a
+   regression.
+6. **Forgetting the joint-hypothesis problem.** "I found an anomaly, so the market
+   is inefficient" ignores that your risk model might simply be wrong.
+7. **Chasing the newest factor.** More factors ≠ better; most don't survive
+   out-of-sample. And **ignoring costs and taxes**, which erode most apparent
+   edges.
+8. **Biography slip-ups.** Fama was born in **Boston** (career in Chicago);
+   French was born in **New Hampshire** (teaches at **Dartmouth**).
+</Callout>
+
+## Putting it to work
+
+You don't need a PhD or a regression package to act on this. Concretely:
+
+1. **Default to low-cost, broad index funds.** EMH's honest conclusion is that
+   the average active bet is a loser after fees. Start from the index.
+2. **Decide, deliberately, whether you want factor tilts.** If you can stomach
+   long stretches of underperformance, you might tilt a *portion* of your
+   portfolio toward small-cap and value (and now profitability/investment) funds
+   to chase the premiums — knowing they're risk, not free money.
+3. **Hold the tilts for a decade-plus.** The premiums are long-run averages.
+   Bailing after three bad years is the surest way to capture all the risk and
+   none of the reward.
+4. **Audit any fund or guru with the factor lens.** Before paying for
+   "outperformance," ask whether a cheap value/small-cap index would have
+   delivered the same thing. Usually it would.
+5. **Download the real data and check it yourself.** The French Data Library gives
+   you the actual factor series for free — run the regression from the worked
+   example in a spreadsheet, exactly the way professionals do.
+
+<Callout type="key">
+The one-line takeaway: **Don't try to be smarter than the market. Be more patient
+than it, and be deliberate about which risks you take on.**
+</Callout>
+
+## Further reading
+
+- Eugene Fama, *"Efficient Capital Markets"* (1970) — the EMH cornerstone.
+- Fama & French, *"Common Risk Factors..."* (1993) — the three-factor model.
+- Fama & French, *"A Five-Factor Asset Pricing Model"* (2015).
+- *The Fama Portfolio: Selected Papers of Eugene F. Fama* (2017).
+
+---
+
+### Sources
+
+1. [Eugene Fama — Wikipedia](https://en.wikipedia.org/wiki/Eugene_Fama) — biography, Boston birthplace, Nobel 2013, key papers (1965, 1969, 1970, 1993, 2015).
+2. [Kenneth French — Wikipedia](https://en.wikipedia.org/wiki/Kenneth_French) — biography, New Hampshire birthplace, Dartmouth/Tuck, Rochester PhD, DFA role.
+3. [Efficient-market hypothesis — Wikipedia](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) — the three forms, the joint-hypothesis problem, criticisms.
+4. [Fama–French three-factor model — Wikipedia](https://en.wikipedia.org/wiki/Fama%E2%80%93French_three-factor_model) — formula, 2×3 factor construction, the five-factor extension, HML redundancy.
+5. [Kenneth R. French Data Library — Dartmouth/Tuck](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html) — the free factor return series; column layout (Mkt-RF, SMB, HML, RMW, CMA, Mom, RF), percent units, and the -99.99 missing-data convention.

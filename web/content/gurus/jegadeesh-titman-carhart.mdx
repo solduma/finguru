@@ -1,0 +1,502 @@
+---
+title: "Jegadeesh, Titman & Carhart — The Momentum Anomaly"
+slug: "jegadeesh-titman-carhart"
+kind: "guru"
+school: "quant"
+strategy: "factors-risk"
+level: "intermediate"
+order: 308
+summary: "The academics who proved yesterday's winners keep winning — turning a 'shouldn't-exist' anomaly into the momentum factor every quant now uses to judge fund managers."
+era: "1993–1997 (key papers)"
+contribution: "The Momentum Factor"
+tags: ["momentum", "factor investing", "anomaly", "four-factor model", "UMD", "market efficiency"]
+prereqs: ["rsi"]
+---
+
+## The idea that broke the textbook
+
+For most of the 20th century, finance had a tidy belief called the **Efficient
+Market Hypothesis (EMH)**: prices already reflect everything knowable, so a
+stock's *past* price moves tell you nothing about its *future* ones. Looking at
+last year's chart to guess next year's was supposed to be like reading tea
+leaves.
+
+Then in 1993, two professors — **Narasimhan Jegadeesh** and **Sheridan
+Titman** — published a result that should have been impossible. They showed
+that if you simply **buy the stocks that went up the most over the last several
+months and short-sell the ones that fell the most**, you earn about **1% per
+month** — and you keep earning it for *decades*, across thousands of stocks.
+
+That effect is **momentum**. It is one of the most stubborn, best-documented
+anomalies in all of finance, and it is the subject of this lesson. The economist
+Robert Shiller reportedly called the finding **"a bombshell"** — because a
+strategy built purely on past prices was not supposed to work at all.
+
+<Callout type="key">
+**Momentum** is the empirical tendency for assets that have recently performed
+well to keep performing well — and recent losers to keep losing — over the next
+**3 to 12 months**. It directly contradicts the EMH claim that past returns
+can't predict future returns.
+</Callout>
+
+## The three people behind it
+
+These three are taught as one unit because their work forms a chain: two of them
+**discovered** the effect, and the third **packaged it** into a standard tool
+the whole industry now uses.
+
+### Narasimhan Jegadeesh
+A finance professor who holds the **Dean's Distinguished Chair of Finance at
+Emory University's Goizueta Business School**, with a **PhD in Finance from
+Columbia University**. He taught at UCLA and the University of Illinois at
+Urbana-Champaign along the way. His career-defining research asks whether stock
+markets are predictable — and momentum is the answer he and Titman found.
+
+### Sheridan Titman
+A professor at the **University of Texas at Austin (McCombs School of
+Business)**, where he holds the McAllister Centennial Chair in Financial
+Services, with a **PhD from Carnegie Mellon (1981)**. His career spans UCLA and
+Boston College, a founding role at HKUST's business school (1992–94), and a stint
+as a special assistant at the U.S. Treasury (1988–89). He was **President of the
+American Finance Association in 2012** and won the **Smith Breeden Prize** for the
+best *Journal of Finance* paper (1997). He co-authored the 1993 momentum paper
+with Jegadeesh.
+
+### Mark M. Carhart
+A practitioner-academic who earned his **PhD at the University of Chicago**,
+advised by Eugene Fama — the architect of the efficient-market view. His 1997
+paper grew straight out of that dissertation. He then built a quant career on
+factor research: he co-headed **Goldman Sachs' Quantitative Investment
+Strategies** group and later co-founded the hedge fund **Kepos Capital**. He is
+the one who turned momentum from an *observation* into a *model*.
+
+<ConceptDiagram
+  caption="The chain of contribution: Jegadeesh & Titman established that momentum exists and is profitable; Carhart standardized it into a reusable factor and folded it into a model the whole industry uses to judge fund managers."
+  chart={`flowchart LR
+  A["Jegadeesh & Titman 1993<br/>momentum EXISTS<br/>(~1%/month)"] --> B["Carhart 1997<br/>momentum FACTOR (UMD)<br/>+ four-factor model"]
+  B --> C["Modern practice<br/>factor investing<br/>fund performance attribution"]`}
+/>
+
+## Why this is intellectually explosive
+
+Under a strict reading of the EMH, a stock that has already risen "should not
+warrant further increase" — the good news is supposedly already in the price.
+Momentum says otherwise. The leading explanation is **behavioral
+underreaction**: when good news arrives, investors are slow to fully believe it,
+so the price drifts upward over months as the truth sinks in, rather than
+jumping all at once. The mirror happens for bad news.
+
+There is also a minority "rational" camp that argues momentum can arise even
+among fully rational traders, and a separate argument that the returns are
+**compensation for a rare crash risk** — more on that later. Notably, even
+Eugene Fama and Kenneth French — the architects of the efficient-market view —
+have acknowledged momentum as the anomaly their models most stubbornly fail to
+explain.
+
+<ConceptDiagram
+  caption="The behavioral story for momentum: good news arrives, but investors underreact and only price it in gradually. That slow diffusion is the drift a momentum strategy harvests — and it eventually overshoots and reverses, which is why momentum decays after ~12 months."
+  chart={`flowchart LR
+  A["Good news<br/>arrives"] --> B["Investors<br/>UNDERREACT"]
+  B --> C["Price drifts up<br/>over months"]
+  C --> D["Momentum traders<br/>capture the drift"]
+  C --> E["Eventual overshoot<br/>then reversal (~24mo)"]`}
+/>
+
+## The full method, Part A — the original 1993 "J/K" strategy
+
+Jegadeesh & Titman didn't test one strategy; they tested a **grid**. They crossed
+a **formation period (J)** — how far back you look — with a **holding period
+(K)** — how long you hold — trying J and K of 3, 6, 9, and 12 months each. Here
+is the recipe a beginner can actually follow.
+
+1. **Pick a universe.** They used all NYSE/AMEX stocks. You might use, say, the
+   S&P 500.
+2. **Measure past performance (formation).** At the end of each month, compute
+   every stock's **total return over the past J months** (e.g. the last 6).
+3. **Rank and sort into 10 deciles** by that past return — best 10% ("Winners")
+   down to worst 10% ("Losers").
+4. **Build a zero-cost long-short book.** Go **long the top decile** and
+   **short the bottom decile**, equal-weighted. "Zero-cost" (or "self-financing")
+   means the cash you raise shorting the losers funds the longs — so it's
+   roughly market-neutral.
+5. **Skip a little.** The original paper left a **one-week gap** between ranking
+   and buying, to dodge short-term noise (the bid-ask bounce). The modern
+   convention — which you should learn — is to **skip the most recent full
+   month**; we'll explain why in the pitfalls.
+6. **Hold for K months, then rebalance.** They used *overlapping* portfolios: each
+   month you refresh **1/K** of the book, so the strategy always holds a
+   staggered set of cohorts rather than turning over all at once.
+7. **Measure the spread.** Return of Winners minus return of Losers = your
+   momentum return. It was profitable across nearly the whole grid; the headline
+   6-month-formation / 6-month-holding ("6/6") portfolio earned roughly **1% per
+   month** over 1965–1989.
+
+The single most important picture to hold in your head is the **decile sort** in
+steps 3–4: line every stock up by its past return, chop the line into ten equal
+buckets, then **buy the top bucket and short the bottom bucket** while ignoring
+everything in between.
+
+<BarChart
+  caption="The core momentum mechanic (steps 2–4): rank every stock by its past return and split into 10 equal-sized deciles. You go LONG the top decile (D10, the strongest 'winners') and SHORT the bottom decile (D1, the weakest 'losers'); the middle eight deciles get NO position. Bars show each decile's average past (formation) return — the variable you sort on. Illustrative."
+  yLabel="Average past return of the decile (%)"
+  labels={["D1 SHORT", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10 LONG"]}
+  series={[
+    { label: "Past return (sorted)", data: [-42, -25, -14, -6, 1, 8, 16, 27, 40, 58] }
+  ]}
+/>
+
+<Callout type="note">
+The widely-cited figure for the 6/6 strategy is about **12% per year** (you'll
+often see the precise "12.01%" quoted). The **~1%-per-month magnitude** is
+well-established across many sources; treat the exact decimal as the commonly
+reported number rather than something to bank on to the basis point.
+</Callout>
+
+<BarChart
+  caption="Illustrative monthly long-short returns across the J/K grid (formation × holding), echoing the 1993 paper's finding that momentum was profitable across almost the whole grid, peaking around the 6–12 month windows. Numbers are stylized to show the shape, not exact paper values."
+  yLabel="Approx. monthly long-short return (%)"
+  labels={["3-month hold", "6-month hold", "9-month hold", "12-month hold"]}
+  series={[
+    { label: "3-mo formation", data: [0.32, 0.55, 0.70, 0.74] },
+    { label: "6-mo formation", data: [0.70, 0.95, 1.00, 0.85] },
+    { label: "9-mo formation", data: [0.78, 1.00, 0.92, 0.74] },
+    { label: "12-mo formation", data: [0.74, 0.88, 0.78, 0.55] },
+  ]}
+/>
+
+## The full method, Part B — Carhart's standardized "UMD" factor
+
+Carhart's 1997 contribution was to turn the messy, choose-your-own-parameters
+momentum strategy into **one standard, reusable number** anyone can compute
+identically. He called it **UMD** — "**Up Minus Down**" — also written **MOM**
+(or PR1YR). This is the exact version published on **Kenneth French's data
+library** and used by quants today.
+
+1. **Look-back window:** the prior **2-to-12-month** return — that is, from month
+   **t-12 to t-2**, deliberately **excluding the most recent month (t-1)**.
+2. **Form 6 value-weighted portfolios** = 2 size groups × 3 prior-return groups:
+   - **Size split** at the **median NYSE market cap** (Small vs. Big).
+   - **Prior-return splits** at the **30th and 70th NYSE percentiles** (Low /
+     Neutral / High).
+   - This yields Small-High, Small-Low, Big-High, Big-Low (the two Neutral
+     buckets are unused).
+3. **The factor formula:**
+
+```
+Mom (UMD) = ½ (Small-High + Big-High) − ½ (Small-Low + Big-Low)
+```
+
+In words: average the two *winner* portfolios, average the two *loser*
+portfolios, and take the difference. Reconstitute **monthly**. Splitting by size
+first keeps the factor from being secretly a bet on small caps.
+
+<ConceptDiagram
+  caption="How the UMD (momentum) factor is built: rank by prior 2–12 month return, split independently by size, then take winners-minus-losers. The double sort isolates pure momentum from the size effect."
+  chart={`flowchart TB
+  U["All stocks"] --> S{"Split by size<br/>(median NYSE)"}
+  U --> R{"Split by prior 2-12mo return<br/>(30th / 70th pct)"}
+  S --> P["6 portfolios"]
+  R --> P
+  P --> W["Winners: SmallHigh, BigHigh"]
+  P --> L["Losers: SmallLow, BigLow"]
+  W --> F["UMD = avg(Winners) − avg(Losers)"]
+  L --> F`}
+/>
+
+## The full method, Part C — what UMD is *for*: the four-factor model
+
+Carhart added UMD to the famous **Fama-French three-factor model** (Market, Size,
+Value), producing the **Carhart four-factor model**:
+
+```
+EXR = αc + βmkt·EXMKT + βSMB·SMB + βHML·HML + βUMD·UMD + ε
+```
+
+- **EXR** — a fund's return *above* the risk-free (T-bill) rate.
+- **EXMKT** — the market's excess return.
+- **SMB** ("small minus big") — the size factor.
+- **HML** ("high minus low") — the value factor (cheap vs. expensive stocks).
+- **UMD** — momentum (winners minus losers).
+- **αc** ("alpha") — the intercept: the return left over *after* accounting for
+  all four exposures.
+
+You estimate this with a **regression** of the fund's monthly excess returns on
+the four factors. The βs are the fund's "factor recipe" (a high βUMD means it's
+effectively running momentum); the intercept α is what's unexplained.
+
+This model became the **workhorse of mutual-fund performance attribution.** The
+question it answers: *did this manager actually have skill, or were they just
+unknowingly riding the market, small caps, cheap stocks, and momentum?* A
+**positive, statistically significant alpha** (you must check its t-statistic)
+means genuine skill *beyond* those four well-known bets. Carhart's own headline
+finding was deflating: most fund "outperformance" and short-run performance
+persistence (the "hot hands" of funds that keep beating peers) **vanished** once
+you controlled for the momentum factor plus differences in expenses and trading
+costs. The only robust persistence he found was that the *worst* funds reliably
+stayed bad — dragged down by high costs.
+
+## A worked example, step by step
+
+### Part 1 — a simple momentum long-short
+
+Imagine a 10-stock universe. Rank by past-12-month return (skipping the latest
+month). The top 2 are Winners (go long), the bottom 2 are Losers (go short).
+
+| Rank | Stock | Past return | Position |
+|------|-------|-------------|----------|
+| 1 | AAA | +60% | LONG (winner) |
+| 2 | BBB | +45% | LONG (winner) |
+| … | … | … | (no position) |
+| 9 | III | −30% | SHORT (loser) |
+| 10 | JJJ | −50% | SHORT (loser) |
+
+Put **\$100 long** the winners (\$50 each) and **\$100 short** the losers (\$50
+each) — a zero-net-cash book. Over the next month, say winners return **+3%** and
+losers return **+1%**:
+
+- Long leg: \$100 × 3% = **+\$3.00**
+- Short leg: −(\$100 × 1%) = **−\$1.00**
+- **Net = +\$2.00**
+
+That's **+2% on \$100 of gross exposure** — and notice it had nothing to do with
+the market going up or down. The edge is the **spread**: winners beat losers by
+2 percentage points. Even though the losers *rose*, you still profited because
+you were short the weaker group.
+
+<Callout type="key">
+The famous "~1% per month" is a **long-winners-minus-short-losers spread**, not
+the return of a long-only basket of winners. Forgetting this is the single most
+common misreading of the research.
+</Callout>
+
+### Part 2 — why a "small" edge is a bombshell
+
+One percent a month doesn't sound dramatic, but it compounds:
+
+```
+(1.01)^12 − 1 ≈ 12.7% per year
+```
+
+A reliable 12–13% annual spread, market-neutral, sustained for decades, is
+exactly why the 1993 paper landed like a bombshell.
+
+### Part 3 — reading a four-factor alpha
+
+A fund returns 14%/year; T-bills pay 4%, so its **excess** return is 10%. A
+regression gives these loadings (β), and we multiply each by its factor's premium.
+
+**First, what *is* the regression?** Strip away the jargon and one factor — say
+momentum — is just a scatter plot. Each dot is one month: the momentum factor's
+return that month on the horizontal axis, the fund's excess return on the
+vertical. Fit the best straight line through the cloud. The **slope of that line
+is βUMD** (how hard the fund moves when momentum moves), and the **point where the
+line crosses x = 0 is the alpha** for that single-factor view — the fund's return
+in a month when momentum did nothing. The full four-factor model just does this
+in four dimensions at once.
+
+<ScatterChart
+  caption="What the regression actually is, shown for ONE factor (momentum). Each dot = one month: UMD's return (x) vs. the fund's excess return (y). The fitted line's SLOPE is βUMD ≈ 0.5 (the fund rises ~0.5% for every 1% of UMD), and where the line crosses x = 0 is the single-factor intercept (alpha) — the fund's return when momentum contributed nothing. A positive slope means the fund leans WITH momentum; a negative slope would mean it's contrarian. Illustrative monthly points."
+  xLabel="UMD (momentum factor) monthly return (%)"
+  yLabel="Fund excess return (%)"
+  series={[
+    {
+      label: "Monthly observations",
+      data: [
+        { x: -4, y: -1.2 },
+        { x: -2, y: 0.3 },
+        { x: -1, y: 1.1 },
+        { x: 0, y: 0.6 },
+        { x: 1, y: 1.4 },
+        { x: 2, y: 1.3 },
+        { x: 3, y: 2.4 },
+        { x: 5, y: 2.9 },
+        { x: 6, y: 4.0 },
+        { x: 8, y: 4.3 },
+      ],
+    },
+    {
+      label: "Fitted line (slope = βUMD)",
+      data: [
+        { x: -4, y: -1.4 },
+        { x: 8, y: 4.6 },
+      ],
+      line: true,
+    },
+  ]}
+/>
+
+Now the full attribution. We multiply each β by its factor's premium:
+
+<BarChart
+  caption="Attribution of a fund's 10% excess return. The four factors together 'explain' 10.4% — more than the fund actually delivered — so the leftover alpha is NEGATIVE (≈ −0.4%). The manager's apparent edge was really just a momentum tilt. Illustrative numbers."
+  yLabel="Contribution to return (%)"
+  labels={["Market", "Size (SMB)", "Value (HML)", "Momentum (UMD)", "Alpha (leftover)"]}
+  series={[
+    { label: "Contribution", data: [6.0, 0.4, 0.0, 4.0, -0.4] }
+  ]}
+/>
+
+- Market: β 1.0 × 6% = **6.0%**
+- Size: β 0.2 × 2% = **0.4%**
+- Value: β 0.0 × premium = **0.0%**
+- Momentum: β 0.5 × 8% = **4.0%**
+- Factors explain **10.4%**, but the fund only earned **10%** excess →
+  **α ≈ −0.4%**.
+
+The lesson: the manager's "skill" was actually a **momentum bet** (the 4.0% from
+UMD), and after accounting for all four factors they slightly *underperformed*.
+That is precisely the kind of verdict the four-factor model was built to deliver:
+control for momentum *before* crediting a manager.
+
+## Honest criticisms and limitations
+
+<Callout type="warning">
+Momentum is real and robust, but it is **not** free money. Respect these.
+</Callout>
+
+- **No agreed theory.** Behavioral underreaction is the leading story, but it
+  isn't settled. Some economists worry that an unexplained effect could be
+  data-mining — though momentum has survived out-of-sample and across the globe
+  (see AQR's work below), which is the best defense against that charge.
+- **Momentum crashes.** The strategy suffers rare but **brutal** drawdowns. In
+  2009 the momentum factor fell roughly **−73%** over a few months. These crashes
+  hit in violent market rebounds: the beaten-down "loser" stocks you're short
+  snap back hardest. Returns are **negatively skewed** — long calm stretches
+  punctuated by violent reversals — which has led some to argue momentum's
+  premium is partly **payment for bearing crash risk.**
+- **High turnover, real trading costs.** Constant rebalancing means lots of
+  trading, and critics argue costs erode the paper profit — especially in small,
+  illiquid stocks. Much of the loser-side profit also requires **shorting**, which
+  is expensive and sometimes impossible. Defenders (AQR) show it survives
+  realistic costs at reasonable scale, but cost sensitivity is genuine.
+- **Long-horizon reversal.** Returns fade after ~12 months and the same stocks
+  tend to **reverse** over a 3–5 year horizon (the DeBondt-Thaler overreaction
+  effect). Momentum is a *medium-horizon* phenomenon only. Crowding since
+  publication may also have shrunk the premium.
+- **The factor is descriptive, not causal.** A high four-factor alpha doesn't
+  *prove* skill — it just means returns aren't explained by *these four* factors.
+  Newer models (Fama-French five-factor, q-factor) capture things a
+  momentum-augmented model misses.
+
+<LineChart
+  caption="The 2009 'momentum crash,' stylized. After a long steady climb, the long-short momentum strategy collapsed ~70% in a few months as crushed 'loser' stocks (which momentum is short) violently rebounded. The premium is real, but it is not smooth."
+  height={300}
+  series={[{ label: "Momentum strategy value", data: [100, 108, 116, 123, 131, 138, 142, 120, 88, 64, 70, 78, 85] }]}
+  points={[
+    { x: 6, y: 142, text: "long calm uptrend", color: "#22c55e" },
+    { x: 9, y: 64, text: "~70% crash in a rebound", color: "#ef4444" },
+  ]}
+/>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Confusing momentum with "chasing hot tips."** Academic momentum is a
+   disciplined, rules-based **relative (cross-sectional) ranking** with fixed
+   look-back and holding periods — not gut-feel performance chasing, and not
+   "buy whatever has a high price."
+2. **Forgetting to skip the most recent month.** Last month's return is dominated
+   by short-term **reversal** (microstructure noise, bid-ask bounce). The standard
+   factor uses **t-12 to t-2** for a reason; including t-1 hurts results.
+3. **Misreading the "1%/month."** It's a long-short *spread*, not a long-only
+   return (see the worked example).
+4. **Underestimating drawdowns.** People see "1%/month" and forget the −70%-style
+   crashes. Momentum needs risk management.
+5. **Ignoring trading costs and shorting frictions** in a backtest — frictionless
+   assumptions inflate paper returns wildly, and many real "momentum" products are
+   long-only because shorting losers is so costly.
+6. **Sign/direction errors in UMD.** UMD = winners *minus* losers (long winners,
+   short losers). A **negative βUMD** means the fund is *contrarian*, not bad.
+7. **Mixing up the two momentums.** *Cross-sectional* momentum (Jegadeesh-Titman:
+   rank stocks against *each other*) differs from *time-series* momentum (an asset
+   against its *own* past, i.e. trend-following). Carhart's UMD is cross-sectional.
+8. **Mixing up the models.** Three-factor = Fama-French (Market / SMB / HML).
+   Four-factor = Carhart (adds UMD). Don't credit Carhart with size/value, or
+   Fama-French with momentum.
+9. **Confusing momentum with RSI.** RSI (see the prerequisite lesson) is a
+   short-horizon *oscillator* on one stock; the momentum factor is a months-long
+   *cross-sectional* ranking. They share the word "momentum" and little else.
+10. **Treating positive returns as alpha.** Alpha is what's left *after* removing
+    market, size, value, and momentum — *and* it must be statistically significant
+    (check the t-stat). Many "star" funds have zero true alpha once UMD is added.
+</Callout>
+
+The two distinctions in pitfalls 7 and 8 trip up almost every beginner. Keep
+these two maps handy.
+
+<ConceptDiagram
+  caption="Pitfall 7 — two different 'momentums.' Cross-sectional momentum (Jegadeesh-Titman, Carhart's UMD) ranks stocks AGAINST EACH OTHER and is always long-short. Time-series momentum compares an asset to ITS OWN past and can be long-only (classic trend-following). Same word, different machinery."
+  chart={`flowchart TB
+  M["'Momentum'"] --> X["Cross-sectional<br/>(relative)"]
+  M --> T["Time-series<br/>(absolute / trend)"]
+  X --> X1["Rank stocks vs. EACH OTHER<br/>long winners, short losers<br/>= J&T 1993, Carhart UMD"]
+  T --> T1["Asset vs. ITS OWN past<br/>up vs. flat/down<br/>= trend-following / CTAs"]`}
+/>
+
+<ConceptDiagram
+  caption="Pitfall 8 — three- vs. four-factor. Fama-French (1993) explains returns with Market, Size, and Value. Carhart (1997) adds ONE thing: the momentum factor (UMD). Don't credit Carhart with size/value, or Fama-French with momentum."
+  chart={`flowchart LR
+  A["Fama-French 3-factor (1993)<br/>Market + SMB + HML"] -->|"Carhart adds UMD"| B["Carhart 4-factor (1997)<br/>Market + SMB + HML + UMD"]`}
+/>
+
+## Putting it to work
+
+You don't need to short anything to use this. The practical, beginner-friendly
+takeaways:
+
+- **Tilt toward strength.** When choosing among comparable holdings, the
+  evidence says recent relative winners tend to keep leading over the next
+  3–12 months. A simple rule: rank candidates by trailing 12-month return
+  (skipping the last month), and lean toward the top.
+- **Rebalance on a schedule** (e.g. monthly or quarterly) rather than reacting to
+  every wiggle — momentum is a months-long effect, not a day-trading signal.
+  Daily chasing produces ruinous turnover.
+- **Size for the crash.** Because momentum can fall ~70% in a rebound, never bet
+  the farm; momentum pairs well with other factors (especially **value**, which
+  tends to do well exactly when momentum suffers).
+- **Use the four-factor lens on funds.** Before paying for a "skilled" manager,
+  ask whether their returns are just a momentum (or size/value) tilt you could
+  get cheaply through a factor ETF.
+- **The honest path for most people:** buy a low-cost **momentum factor ETF** (or
+  a multi-factor fund) rather than running the long-short book yourself.
+
+<Callout type="key">
+The deepest lesson here isn't a trading recipe — it's intellectual. Jegadeesh,
+Titman & Carhart showed that markets are **not perfectly efficient**, that
+investor psychology leaves measurable footprints in prices, and that those
+footprints can be captured systematically. That insight underpins the entire
+modern field of **factor investing.**
+</Callout>
+
+## Further reading
+
+- **Jegadeesh & Titman (1993),** "Returns to Buying Winners and Selling Losers,"
+  *Journal of Finance* 48(1):65–91 — the foundational momentum paper (~1%/month).
+- **Jegadeesh & Titman (2001),** "Profitability of Momentum Strategies,"
+  *Journal of Finance* 56(2):699–720 — the major follow-up: out-of-sample
+  confirmation in the 1990s, plus evidence that momentum profits partly *reverse*
+  later (consistent with the overreaction story). (Note: the canonical J&T
+  momentum follow-up is the **2001** paper, not a 1997 one that is sometimes
+  mis-cited; Carhart's 1997 paper is the correctly-dated 1997 item.)
+- **Carhart (1997),** "On Persistence in Mutual Fund Performance,"
+  *Journal of Finance* 52(1):57–82 — introduces the four-factor model.
+- **Fama & French (1993),** "Common Risk Factors in the Returns on Stocks and
+  Bonds," *Journal of Financial Economics* 33(1):3–56 — the three-factor base
+  Carhart extends.
+- **Asness, Moskowitz & Pedersen (2013),** "Value and Momentum Everywhere,"
+  *Journal of Finance* — momentum across countries and asset classes.
+- **AQR,** "Fact, Fiction, and Momentum Investing" — myth-busting with
+  long-horizon, global evidence.
+
+---
+
+### Sources
+
+1. [Carhart four-factor model — Wikipedia](https://en.wikipedia.org/wiki/Carhart_four-factor_model) — the four factors, UMD construction, the model formula, the 1997 *JoF* citation (52:1, 57–82), and the Fama-French extension.
+2. [Momentum (finance) — Wikipedia](https://en.wikipedia.org/wiki/Momentum_(finance)) — the 1993 paper, ~1%/month result, anomaly status, behavioral-vs-rational debate.
+3. [Momentum investing — Wikipedia](https://en.wikipedia.org/wiki/Momentum_investing) — 3–12 month horizon, decay/reversal after 12–24 months, the 2009 crash (~−73%).
+4. [Kenneth French Data Library — Momentum factor detail](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_mom_factor.html) — primary source for the exact UMD construction (prior 2–12 return, median-NYSE size and 30th/70th return breakpoints, the ½(SmallHigh+BigHigh) − ½(SmallLow+BigLow) formula, monthly reconstitution).
+5. [Narasimhan Jegadeesh — Emory Goizueta faculty profile](https://goizueta.emory.edu/faculty/profiles/narasimhan-jegadeesh) — Emory chair, Columbia PhD, prior UCLA/Illinois posts.
+6. [Sheridan Titman — Wikipedia](https://en.wikipedia.org/wiki/Sheridan_Titman) — UT Austin chair, CMU PhD (1981), the 1993 paper, AFA presidency (2012), Smith Breeden Prize (1997), the Shiller "bombshell" quote.
+7. [Mark Carhart — Wikipedia](https://en.wikipedia.org/wiki/Mark_Carhart) — Chicago PhD (advised by Fama), Goldman Sachs QIS, Kepos Capital, the 1997 paper.
+8. [AQR — "Fact, Fiction, and Momentum Investing"](https://www.aqr.com/Insights/Research/Journal-Article/Fact-Fiction-and-Momentum-Investing) — global and long-horizon evidence; rebuttals to the cost and small-cap criticisms.

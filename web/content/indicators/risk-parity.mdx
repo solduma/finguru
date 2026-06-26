@@ -1,0 +1,446 @@
+---
+title: "Risk Parity — Balance Your Risk, Not Your Money"
+slug: "risk-parity"
+kind: "indicator"
+school: "quant"
+strategy: "factors-risk"
+level: "intermediate"
+order: 310
+summary: "Why a '60/40' portfolio is secretly a ~90%-stock bet — and how balancing by risk instead of dollars, then levering the calm result, fixes it."
+contribution: "Equal Risk Contribution"
+tags: ["risk parity", "all weather", "diversification", "volatility targeting", "leverage", "asset allocation"]
+prereqs: ["ray-dalio"]
+---
+
+## The one-sentence version
+
+Most portfolios split your **money** — say 60% in stocks, 40% in bonds. Risk
+parity says that's the wrong yardstick: what you should split is **risk**, so
+that every holding pulls its own weight in the portfolio's ups and downs.
+
+That one shift turns out to change almost everything about how you build a
+portfolio.
+
+## The idea has more than one parent
+
+Risk parity is a *concept*, not one person's invention — and it arrived from
+three directions at once: a practitioner who built it, a quant who named it, and
+academics who explained *why* it works.
+
+- **Ray Dalio built it first.** In **1996**, Dalio and colleagues at
+  **Bridgewater Associates** (Bob Prince among them) launched the **All Weather**
+  strategy, originally just to manage Dalio's own family trust. It is recognized
+  as the **first commercial risk-parity strategy** — though nobody called it that
+  yet. Dalio had founded Bridgewater in 1975 in his New York apartment; it grew
+  into the world's largest hedge fund. (His macro philosophy gets its own lesson;
+  see the [Ray Dalio](/gurus/ray-dalio) page.)
+- **Edward Qian named and formalized it.** In a **2005** white paper, *"Risk
+  Parity Portfolios: Efficient Portfolios Through True Diversification,"* Qian — a
+  quantitative researcher at **PanAgora Asset Management** — coined the term
+  **"risk parity"** and introduced the **risk-contribution accounting** at the
+  heart of this lesson. He famously showed that a 60/40 portfolio's risk is
+  dominated by equities. He later wrote the textbook *Risk Parity Fundamentals*
+  (2016).
+- **AQR explained why it should work.** Cliff Asness, Andrea Frazzini, and Lasse
+  Pedersen, in *"Leverage Aversion and Risk Parity"* (*Financial Analysts
+  Journal*, **2012**), gave the strategy a theory: because many investors **avoid
+  borrowing**, they overpay for high-risk assets — so a *leveraged* portfolio of
+  safer assets earns superior risk-adjusted returns. That is precisely the edge
+  risk parity tries to harvest.
+
+<Callout type="key">
+Qian *named* risk parity (2005). Dalio *built* it nearly a decade earlier
+(1996). AQR later explained *why* it works (2012). The practice came first; the
+theory caught up. That is why this is a lesson about an **idea**, not a single
+person.
+</Callout>
+
+## Why "60/40" is a lie your eyes tell you
+
+Picture the classic "balanced" portfolio: 60% of your dollars in stocks, 40% in
+high-quality bonds. It *looks* diversified. It isn't — not in the way that
+matters.
+
+The reason is **volatility** — how much an asset bounces around. Volatility is
+measured as the **standard deviation** of returns: a rough yardstick for "how
+big are this asset's typical swings?" And stocks swing **3 to 4 times harder**
+than high-quality government bonds.
+
+So even though bonds get 40% of your *money*, they contribute almost none of
+your *risk*. The stock sleeve dominates the ride. Run the numbers (we will,
+below) and a real-world 60/40 portfolio gets **roughly 90% of its risk from
+stocks alone** — the figure most commonly cited by practitioners and by Qian's
+original paper.
+
+<Callout type="note">
+Where does "~90%" come from, when the simple math below gives ~82%? Two things
+push it higher in the real world: (1) stocks have historically swung closer to
+**4×** as hard as high-quality bonds, not just 3×; and (2) stocks and bonds carry
+a **low but positive** correlation on average, which adds more to the stock
+sleeve's share. We'll show the simple ~82% calculation first because it's easy to
+follow by hand, then explain how those two effects carry it toward ~90%.
+</Callout>
+
+<BarChart
+  caption="Illustrative. The same 60/40 portfolio split two ways: by the money you put in (left pair) it looks balanced; by the risk each sleeve actually contributes (right pair) it's almost entirely a stock bet. This uses the real-world ~90% figure (4:1 vol ratio plus positive correlation); the simpler standalone-vol pass below lands at ~82%."
+  labels={["Stocks", "Bonds"]}
+  series={[
+    { label: "Share of money (capital)", data: [60, 40] },
+    { label: "Share of risk", data: [90, 10] },
+  ]}
+  yLabel="Percent of portfolio"
+/>
+
+<Callout type="note">
+This is the single most important idea in the whole lesson. You think you own a
+balanced portfolio. You actually own a concentrated bet on equities with a thin
+bond cushion. Everything risk parity does flows from fixing this.
+</Callout>
+
+## The core move: split risk, not dollars
+
+Risk parity flips the question. Instead of *"How do I split my money?"* it asks:
+
+> *"How do I split my **risk** so each piece contributes equally?"*
+
+This is called **equal risk contribution (ERC)**: every asset class supplies the
+same slice of the portfolio's total volatility. To get there you do something
+that feels backwards at first — you hold **more** of the calm assets (bonds) and
+**less** of the wild ones (stocks).
+
+The result is a portfolio that is genuinely balanced across its return engines.
+But it has a side effect: because it's now bond-heavy, its expected **return** is
+low. Risk parity fixes that with a second move — **leverage** — which we'll get
+to in Step 4.
+
+<ConceptDiagram
+  caption="The risk-parity pipeline: pick assets that win in different conditions, measure each one's risk, weight them so the risks are equal, then scale the whole balanced mix up or down to hit your chosen risk level — and keep it there as markets drift."
+  chart={`flowchart LR
+  A[Pick distinct return drivers] --> B[Measure each asset's volatility]
+  B --> C[Weight inversely to risk: equal risk contribution]
+  C --> D[Lever or de-lever to hit a risk target]
+  D --> E[Rebalance as vols and correlations drift]`}
+/>
+
+## The full method, step by step
+
+### Step 1 — Pick a few genuinely different return drivers
+
+Classic risk-parity sleeves:
+
+- **Equities** (stocks) — win when growth surprises to the upside.
+- **Long-duration government (nominal) bonds** — win when growth disappoints and
+  rates fall.
+- **Inflation hedges** — commodities and/or **inflation-linked bonds (TIPS)** —
+  win when inflation surprises upward.
+- Sometimes **credit** (corporate bonds, EM debt).
+
+The point isn't to own *many* things. It's to own things that win in
+**different** conditions, so something in the portfolio is always working.
+
+### Step 2 — Measure each asset's risk (volatility *and* correlation)
+
+Volatility (annualized standard deviation) is your risk yardstick. Rough
+beginner numbers to anchor on:
+
+| Asset | Typical annual volatility |
+|---|---|
+| Stocks | ~15% |
+| Long government bonds | ~5% |
+| Commodities | ~15% |
+
+Stocks at 15% vs. bonds at 5% is the **3:1 ratio** that drives everything. You
+also need the **correlations** between assets — how they move together — which we
+fold in at Step 5.
+
+### Step 3 — Compute each asset's *risk contribution*, then equalize it
+
+Instead of asking how many *dollars* go into each asset, compute how much *risk*
+each one adds. An asset's total risk contribution is roughly **its weight × its
+volatility** (more precisely, weight × its marginal contribution to portfolio
+volatility — and by a result from calculus, **Euler's theorem**, those
+contributions sum *exactly* to total portfolio volatility).
+
+**Equal Risk Contribution (ERC)** sets the weights so every asset contributes the
+same share — `1/N` of total risk. The simple rule that captures the intuition:
+**weight each asset in proportion to 1 ÷ its volatility.** The calmer the asset,
+the more of it you hold. With two assets it means: if bonds are 1/3 as volatile
+as stocks, you hold roughly 3× as many bond-dollars as stock-dollars.
+
+### Step 4 — Pick a risk target, then lever (or de-lever) to hit it
+
+The balanced portfolio from Step 3 is bond-heavy and therefore **low-volatility
+and low-return.** To restore return potential you scale the **whole balanced
+mix** up with **leverage** (borrowing at the cash rate, or via futures) until its
+volatility equals your chosen target — say 10% or 12%. This is called
+**volatility targeting.**
+
+<Callout type="warning">
+The crucial detail: you lever the **balanced** portfolio, not just the stocks.
+Leverage here is a *dial to set the risk level*, applied evenly so the equal-risk
+split is preserved. It is **not** a way to juice returns by piling into
+equities. Bridgewater's framing: "a moderately-levered, highly-diversified
+portfolio is less risky than an unleveraged, un-diversified portfolio." Getting
+this backwards is how people blow up.
+</Callout>
+
+### Step 5 — (The real version) use correlations, not just standalone vols
+
+The 1/volatility rule in Step 3 is an approximation that is exactly right *only*
+when assets are uncorrelated (or all equally correlated). The proper method uses
+the full **covariance matrix** (every asset's volatility *and* every pair's
+correlation). Formally, portfolio volatility is:
+
+```
+σ(w) = √( wᵀ Σ w )
+```
+
+where `w` is the vector of weights and `Σ` is the covariance matrix. You break
+that total down (via Euler's theorem) into each asset's **marginal risk
+contribution**, then solve so all contributions are equal. It's a well-behaved
+(convex) optimization — typically solved by cyclical coordinate descent — with
+open-source solvers in Python, R, and JavaScript.
+
+For understanding the *idea*, the 1/vol approximation is plenty. Just know the
+real thing also accounts for correlations — and that ignoring them gives the
+wrong weights.
+
+### Step 6 — Rebalance on a schedule, and keep cash for margin
+
+Volatilities and correlations drift over time, so weights and leverage are
+re-estimated and reset periodically (e.g., monthly or quarterly). Keep
+**unencumbered cash** on hand to meet margin calls. Risk parity is a maintained
+process, not a set-and-forget allocation.
+
+## A worked example: stocks vs. long bonds
+
+*(Illustrative numbers, built straight from the rules. Stock vol = 15%, bond vol
+= 5% — a clean 3:1 ratio. We ignore correlation on the first pass.)*
+
+**First, see the problem in the 60/40 baseline.** Each sleeve's risk
+contribution is roughly weight × volatility:
+
+- Stock risk = 0.60 × 15% = **9.0**
+- Bond risk = 0.40 × 5% = **2.0**
+- Equity share of risk = 9.0 ÷ 11.0 ≈ **82%**
+
+So on the simplest possible pass — a 3:1 vol ratio, correlation ignored — stocks
+already supply **~82%** of the risk. Two real-world adjustments push that higher:
+swap the 3:1 ratio for a more historically typical **4:1** (stock risk = 0.60 ×
+20% = 12.0, bond risk = 0.40 × 5% = 2.0 → **~86%**), then fold in the low but
+**positive** stock–bond correlation in a full covariance calculation, and it
+lands near the commonly cited **~90%**. The progression is consistent — 82% → 86%
+→ ~90% — and the lesson is the same at every step: a "60/40" portfolio is really
+a **~90% risk bet on stocks.**
+
+**Now fix it with equal risk contribution.** Weight each asset ∝ 1/vol:
+
+- Stock weight ∝ 1/15 = 0.0667
+- Bond weight ∝ 1/5 = 0.20
+- Normalize (divide by their sum, 0.2667):
+  - Stocks = 0.0667 / 0.2667 = **25%**
+  - Bonds = 0.20 / 0.2667 = **75%**
+
+**Check the risk split:**
+
+- Stock risk = 0.25 × 15% = **3.75**
+- Bond risk = 0.75 × 5% = **3.75**
+- Each contributes **50% of risk.** Balanced. ✓
+
+<BarChart
+  caption="Illustrative, using the simple 3:1 standalone-vol pass from the worked example (so ~82% stocks, not the ~90% real-world figure). Left: the lopsided 60/40 risk split. Right: the risk-parity 25/75 mix delivers a true 50/50 risk balance — by holding far more of the calm asset."
+  labels={["Stocks", "Bonds"]}
+  series={[
+    { label: "60/40 risk split", data: [82, 18] },
+    { label: "Risk-parity risk split", data: [50, 50] },
+  ]}
+  yLabel="Share of portfolio risk (%)"
+/>
+
+**Finally, add leverage to restore return.** With the two sleeves uncorrelated,
+that 25/75 mix has a portfolio volatility of only:
+
+```
+√( 3.75² + 3.75² ) = √28.1 ≈ 5.3%
+```
+
+— far too tame to deliver equity-like returns, and well below the ~9% volatility
+of the 60/40 baseline (`√(9.0² + 2.0²) ≈ 9.2%`). To raise the balanced mix to the
+60/40 risk level you apply leverage of:
+
+```
+9.2% ÷ 5.3% ≈ 1.7×
+```
+
+You borrow cash to scale **both** sleeves up by ~1.7×, keeping their 50/50 risk
+balance intact. Now you have a portfolio with the *same* risk level as 60/40 —
+but whose risk is genuinely diversified across **two** engines instead of riding
+entirely on stocks. The thesis (per AQR) is that it earns a better return per
+unit of risk.
+
+<ScatterChart
+  caption="Illustrative risk/return map. The unlevered 25/75 risk-parity mix (bottom left, ~5.3% vol) is balanced but tame. Levering it ~1.7× pushes it up the same line to a 60/40-like risk level — but now the risk is split 50/50 across two engines, not concentrated in stocks."
+  series={[{
+    label: "Portfolios",
+    line: true,
+    data: [
+      { x: 5.3, y: 4, label: "Risk parity, unlevered" },
+      { x: 9.2, y: 7, label: "Risk parity, 1.7× levered" },
+      { x: 9.2, y: 6, label: "60/40 (risk in stocks)" },
+    ],
+  }]}
+  xLabel="Portfolio volatility (risk) %"
+  yLabel="Expected return %"
+/>
+
+## The All Weather variant: balance across *environments*
+
+Dalio's All Weather applies the same logic but balances across **economic
+environments** instead of asset labels. The origin story is instructive: Dalio
+was shaped by the 1971 "Nixon shock" (the end of dollar-gold convertibility),
+which taught him to *expect surprises he couldn't forecast.* So instead of
+betting on a forecast, you balance across all the scenarios — and collect the
+long-run risk premium.
+
+Bridgewater's insight: asset values are driven by two things — **growth** and
+**inflation** — and each can come in **above or below** what the market expected.
+That makes a **2×2 grid of four environments**, and each box has assets that tend
+to win in it:
+
+| | **Growth surprises up** | **Growth surprises down** |
+|---|---|---|
+| **Inflation surprises up** | Commodities, inflation-linked bonds | Commodities, inflation-linked bonds |
+| **Inflation surprises down** | Equities, corporate credit, EM debt | Nominal government bonds |
+
+Roughly: **equities** win when growth surprises up; **nominal bonds** win in
+disinflationary recessions; **commodities** win in 1970s-style inflation;
+**inflation-linked bonds** win when inflation surprises up. All Weather holds four
+sub-portfolios, one tuned to each box, with **equal risk on each box** — so
+whatever the future brings, ~25% of the risk is positioned to do well.
+
+<ConceptDiagram
+  caption="All Weather in one picture: two drivers (growth, inflation) each surprising up or down create four boxes. You put EQUAL RISK in each box, so whichever environment arrives, a balanced quarter of your risk is positioned to win. What's left to collect is the underlying risk premium."
+  chart={`flowchart TB
+  R[Two drivers: growth and inflation, each up or down vs. expectations] --> A[Growth up: stocks, credit, EM debt]
+  R --> B[Growth down: long nominal government bonds]
+  R --> C[Inflation up: commodities, inflation-linked bonds]
+  R --> D[Inflation down: stocks, nominal bonds]
+  A --> E[Equal risk in each box]
+  B --> E
+  C --> E
+  D --> E`}
+/>
+
+In Bridgewater's own words: *"The key was to put equal risk on each scenario to
+achieve balance,"* because investors *"have equal odds of being right about any
+one scenario."* When the environmental exposures offset, *"that leaves just the
+risk premium to collect."*
+
+## Honest criticisms and limitations
+
+Risk parity is elegant, but it is not free money. The skeptics have real points.
+
+<Callout type="warning">
+**1. It depends on leverage.** To earn competitive returns you *must* borrow.
+Leverage adds funding costs, margin-call risk, and the danger of forced selling
+in a crunch. Anderson, Bianchi & Goldberg (*"Will My Risk Parity Strategy
+Outperform?"*, 2012) argue the levered portfolio may offer **slight or no
+advantage over plain 60/40** once realistic borrowing costs and turnover are
+included.
+
+**2. It's a big bet on bonds — built in a bond bull market.** Risk parity is
+bond-heavy and was largely backtested across the 30+ year falling-rate era
+(1980s–2020). Ben Inker of **GMO** (in *"The Hidden Risk of Risk Parity
+Portfolios,"* 2010) argues bonds have **"negative skew"** — a small chance of
+large losses — which makes levering them dangerous, especially when yields are
+low.
+
+**3. It relies on stable correlations.** Diversification breaks down when
+everything falls together. **2022** is the canonical failure case: as rates rose
+disorderly, stocks *and* bonds dropped at once and many risk-parity funds had
+sharp losses. The Q1 2020 COVID sell-off stung too.
+
+**4. Volatility ≠ true risk, and it ignores valuation.** The method uses *past*
+volatility as the risk yardstick — backward-looking, and it can understate tail
+and regime risk. It also deliberately ignores valuations, so it will hold
+expensive bonds simply because they're calm.
+</Callout>
+
+**The academic defense.** Asness, Frazzini & Pedersen's *"Leverage Aversion and
+Risk Parity"* (AQR, 2012) argues that because many investors *avoid* leverage,
+the safe assets you *can* lever up are systematically underpriced — which is
+exactly the edge risk parity harvests. The honest verdict on the live record is
+mixed: strong relative results in some windows, weak in others, and a clear
+warning in 2022.
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Confusing capital weights with risk weights.** "I'm 60/40, so I'm balanced"
+   — no, you're ~90% equity *risk*. This single confusion is the entire reason
+   the strategy exists.
+2. **Skipping the leverage step, then being disappointed.** Unlevered risk
+   parity is bond-heavy and low-return *by design*. If you refuse leverage,
+   don't expect equity-like returns.
+3. **Over-levering, or levering without a vol target.** Leverage is a dial to
+   reach a chosen risk level — not a way to blindly amplify gains. 2022 punished
+   the careless.
+4. **Treating it as "can't lose."** The stock–bond correlation is not reliably
+   negative; in inflation shocks (2022) both fall together. Risk parity is not
+   crash-proof.
+5. **Using the 1/vol shortcut blindly.** It only equals true ERC when
+   correlations are equal. Ignoring correlations gives the wrong weights.
+6. **Treating historical volatility/correlation as permanent.** They drift and
+   must be re-estimated; the portfolio needs rebalancing and cash for margin.
+7. **Conflating Dalio with the whole idea.** All Weather is *one*
+   implementation. Qian's ERC, AQR's version, and others all differ.
+</Callout>
+
+## Putting it to work
+
+You don't need a Bloomberg terminal to use the core insight. A motivated
+beginner can:
+
+1. **Audit your real risk split.** For any portfolio you hold, multiply each
+   sleeve's weight by its rough volatility (stocks ~15%, bonds ~5%). You'll
+   almost certainly find your "balanced" portfolio is a stock bet in disguise.
+2. **Rebalance toward equal risk contribution** — using the 1/vol rule — if you
+   want a genuinely diversified ride. Expect a calmer, lower-returning portfolio.
+3. **Decide consciously about leverage.** Many individuals reasonably choose to
+   run risk parity *unlevered* and simply accept the lower, steadier return —
+   that's a valid trade. If you do lever (e.g., via a fund or modest margin),
+   size it to a **risk target**, never to a return wish, and keep cash for margin.
+4. **Diversify the drivers, not just the tickers.** Add a real inflation hedge
+   (commodities or TIPS) so you're covered in the environment that crushes both
+   stocks and nominal bonds.
+5. **Rebalance on a schedule** and re-check your vol and correlation estimates.
+
+The mindset is the lasting lesson: **diversification is about balancing risk
+contributions, not dollar amounts.** Once you see that, you can never look at a
+"60/40" the same way again.
+
+## Further reading
+
+- Edward Qian, *Risk Parity Portfolios: Efficient Portfolios Through True
+  Diversification* (PanAgora white paper, 2005) — coined the term; introduced
+  risk-contribution accounting. Expanded into the textbook *Risk Parity
+  Fundamentals* (2016).
+- Maillard, Roncalli & Teiletche, *"On the Properties of Equally-Weighted Risk
+  Contributions Portfolios"* (2008/2010) — the canonical ERC math: existence,
+  uniqueness, and the inverse-volatility result.
+- Asness, Frazzini & Pedersen, *"Leverage Aversion and Risk Parity"* (*Financial
+  Analysts Journal*, 2012) — the leverage-aversion theory of *why* it works.
+- Ben Inker / GMO, *"The Hidden Risk of Risk Parity Portfolios"* (2010) — the
+  best-known skeptic's case.
+- Ray Dalio, *Principles: Life & Work* (2017) — the engineering-of-balance
+  mindset behind All Weather.
+
+---
+
+### Sources
+
+1. [Risk parity — Wikipedia](https://en.wikipedia.org/wiki/Risk_parity) — Qian coined the term (2005); All Weather as the first risk-parity fund (1996); ERC math; 60/40 ≈ 90% equity risk; the Inker, Anderson, and AQR debates; key papers.
+2. [Ray Dalio — Wikipedia](https://en.wikipedia.org/wiki/Ray_Dalio) — Bridgewater founded 1975; All Weather launched 1996; the 1971 Nixon-shock influence; *Principles* (2017).
+3. [Bridgewater, "The All Weather Story"](https://www.bridgewater.com/research-and-insights/the-all-weather-story) — primary source: the four growth × inflation environments; "equal risk on each scenario"; the moderately-levered, diversified rationale; the 1996 family-trust launch.
+4. [AQR — Asness, Frazzini & Pedersen, "Leverage Aversion and Risk Parity" (2012)](https://www.aqr.com/Insights/Research/Journal-Article/Leverage-Aversion-and-Risk-Parity) — equities carry ~3–4× the risk of bonds; the leverage-aversion defense.
+5. [Edward Qian, *Risk Parity Fundamentals* (2016), Routledge/CRC](https://www.routledge.com/Risk-Parity-Fundamentals/Qian/p/book/9781498738798) — the textbook (title, year, publisher).

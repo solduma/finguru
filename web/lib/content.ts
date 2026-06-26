@@ -17,6 +17,10 @@ export interface LessonFrontmatter {
   // Guru-specific (optional)
   era?: string;
   contribution?: string;
+  // Investment-school taxonomy (optional; see lib/schools.ts). Lessons without
+  // these still appear in /gurus and /path — they're just absent from /schools.
+  school?: string; // SchoolId: "technical" | "fundamental" | "quant" | "macro"
+  strategy?: string; // sub-strategy id within that school
 }
 
 export interface Lesson {
@@ -152,4 +156,12 @@ export function getNeighbors(
 export function lessonHref(l: Lesson, locale: Locale): string {
   const sub = l.frontmatter.kind === "guru" ? "gurus" : "indicators";
   return `/${locale}/${sub}/${l.frontmatter.slug}`;
+}
+
+/** Every lesson (gurus + indicators) that declares the given school, in path
+ * order. Used by the /schools pages, which group these by `strategy`. */
+export function getLessonsForSchool(school: string, locale: Locale): Lesson[] {
+  return getLearningPath(locale).filter(
+    (l) => l.frontmatter.school === school,
+  );
 }

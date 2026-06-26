@@ -1,0 +1,411 @@
+---
+title: "Paul Tudor Jones II — Defense First, Then Win Big"
+slug: "paul-tudor-jones"
+kind: "guru"
+school: "macro"
+strategy: "legendary-traders"
+level: "intermediate"
+order: 402
+summary: "The trader who shorted Black Monday and roughly tripled his fund that year — by obsessing not over being right, but over losing small and winning big. His edge is a 5-to-1 payoff that lets him be wrong most of the time and still get rich."
+era: "b. 1954"
+contribution: "Asymmetric Risk/Reward"
+tags: ["global macro", "risk management", "asymmetric reward", "trend following", "capital preservation"]
+prereqs: ["charles-dow"]
+---
+
+## The one idea that matters most
+
+Most beginners think great traders are great because they're **right** most of
+the time. Paul Tudor Jones is famous for the opposite belief:
+
+> "Don't focus on making money; focus on protecting what you have."
+
+He does not try to win often. He tries to **lose small when he's wrong and win
+big when he's right.** Get that asymmetry right and you can be wrong on *most* of
+your trades and still get rich. Get it wrong — by letting losers run — and you
+will blow up no matter how clever your market calls are.
+
+That is the whole lesson. Everything below is the machinery that makes it work.
+
+<Callout type="key">
+Jones's edge is **not** prediction. It's the *structure* of his bets: small,
+pre-defined risk on every trade, and a payoff several times larger when he's
+right. Survival first; profit second. As he put it: *"Five to one means I'm
+risking one dollar to make five. I can be wrong 80% of the time and still not
+lose."*
+</Callout>
+
+## Who he was
+
+**Paul Tudor Jones II** was born September 28, 1954, in Memphis, Tennessee. He
+earned a BA in economics from the University of Virginia in 1976 — where he was
+also a welterweight boxer, a detail that fits the disciplined, combative
+temperament he brought to trading. He was accepted to Harvard Business School
+but chose not to attend, heading to the trading floor instead.
+
+He learned the craft on the floor. His mentor was **Eli Tullis**, a legendary
+cotton-futures broker who traded at the New York Cotton Exchange. Tullis drilled
+into him **emotional control** — the ability to sit through brutal pressure
+without panicking. Jones then worked as a commodities broker at **E.F. Hutton &
+Co.** in his mid-twenties.
+
+In **1980** he founded **Tudor Investment Corporation** (today based in Stamford,
+Connecticut), starting with roughly $30,000 to trade. It grew into one of the
+world's best-known **global macro** hedge funds, reported at around $12 billion
+in assets in the early 2020s, charging fees well above the standard "2 and 20."
+Forbes has placed his personal net worth in the multi-billion-dollar range
+(roughly $5–8 billion across recent years).
+
+Two years built the legend:
+
+- **1987:** the fund returned roughly **125.9% after fees** — Jones had
+  positioned short ahead of the October crash, a year that reportedly earned him
+  around $100 million personally.
+- **1990:** roughly **87.4%**, in part by shorting the bursting Japanese stock
+  bubble.
+
+<Callout type="note">
+Jones **never wrote a book.** His method survives through two primary sources:
+the 1987 PBS documentary *Trader*, which filmed him during the Black Monday
+period (he later had it pulled from circulation, which only added to its
+legend), and his chapter in Jack Schwager's *Market Wizards* (1989). Tony
+Robbins's *MONEY: Master the Game* (2014) also contains an interview where Jones
+lays out his 200-day rule and the 5:1 framework in plain language. Be skeptical
+of anything claiming to be "Paul Tudor Jones's book."
+</Callout>
+
+He is also a major philanthropist: he co-founded the **Robin Hood Foundation**
+(1988) to fight poverty in New York City, founded the Excellence Charter School,
+co-founded JUST Capital, and signed the Giving Pledge in 2019.
+
+## What "global macro" means
+
+A quick definition, because it frames everything. A **global macro** trader bets
+on the big picture — interest rates, currencies, commodities, and stock indices
+— rather than on individual companies. The view is **top-down**: "rates are
+going to fall," "the yen is overvalued," "this stock market is a bubble."
+
+Jones is a **discretionary** macro trader (he uses judgment, not a fixed
+computer formula). But here is the twist that makes him useful to a beginner. He
+splits every trade into three questions:
+
+- **What** to trade — his macro thesis: rates, inflation, central-bank policy,
+  intermarket links. The story tells him *which market is stretched.*
+- **When** to act — price action, momentum, support/resistance, and the trend
+  filter. *"I am a slave to the tape and proud of it."*
+- **When he's wrong** — the price level that kills the thesis. This is decided
+  *before* he enters.
+
+The macro story chooses the battlefield; **price** controls the actual trade and
+gets the final word. He never lets a beautiful narrative override a stop.
+
+<ConceptDiagram
+  caption="Jones's process pipeline: a top-down macro view picks the market (the WHAT), price and momentum time the entry (the WHEN), but a strict, pre-set risk level controls the trade. The story never overrides the stop."
+  chart={`flowchart LR
+  A[Top-down macro view\nrates / FX / indices] --> B[Find a stretched market\nat an inflection]
+  B --> C[Time entry with price\ntrend + momentum]
+  C --> D[Define risk FIRST\nwhere am I wrong?]
+  D --> E{Reward >= ~5x risk?}
+  E -- no --> F[Skip the trade]
+  E -- yes --> G[Enter with small\nfixed risk]
+  G --> H[Re-evaluate daily\nas if flat]
+  H --> I{Still want it on?}
+  I -- no --> J[Exit]
+  I -- yes --> H`}
+/>
+
+## The core principle: asymmetric risk and reward
+
+"Reward-to-risk" is the ratio of how much you stand to gain if you're right to
+how much you'll lose if you're wrong. Jones is famous for targeting roughly
+**5:1** — risk one dollar to make five.
+
+Why does that ratio change everything? Because it **decouples profit from being
+right.** Watch what a 5:1 payoff does to your win-rate requirement:
+
+<BarChart
+  caption="Illustrative. With a 5:1 reward-to-risk structure, you only need to win about 1 trade in 6 to break even. Most traders chase a high win rate; Jones engineered a system that thrives on a LOW one. (Break-even win rate = 1 / (1 + reward-to-risk).)"
+  yLabel="Break-even win rate (%)"
+  labels={["1:1 payoff", "2:1 payoff", "3:1 payoff", "5:1 payoff"]}
+  series={[{ label: "Win rate needed just to break even", data: [50, 33, 25, 17] }]}
+/>
+
+At 1:1 you must be right more than half the time merely to stay even. At 5:1 you
+break even winning roughly **1 trade in 6** (about 17%) — so even being right
+just **20% of the time turns a profit.** That is exactly what Jones means by
+"wrong 80% of the time and still not losing." Being right is almost *optional*;
+cutting losers fast is *mandatory.*
+
+<Callout type="key">
+The asymmetry only works if the **loss side stays small and fixed.** The whole
+edifice collapses the moment you let one loser grow past its planned size. That
+is why the risk rules below are not optional decoration — they *are* the strategy.
+</Callout>
+
+## The full method, step by step
+
+These principles come mainly from the *Market Wizards* interview, the Tony
+Robbins interview, and the *Trader* documentary. A beginner can follow them
+literally.
+
+### 1. Identify the dominant trend — and don't fight it
+
+Jones's first teaching rule: *"Always want to be with whatever the predominant
+trend is."* His primary trend filter is the **200-day moving average (200-DMA)**.
+A **moving average** is just the average closing price over the last N days,
+recalculated each day so it glides along the chart.
+
+- Price **above** the 200-DMA → bullish bias; only hunt for **longs.**
+- Price **below** the 200-DMA → bearish bias; only hunt for **shorts** (or step
+  aside).
+
+The goal isn't a precise buy/sell trigger — it's to **never be holding a large
+position while fighting the primary trend.** When an asset breaks below its
+200-DMA, you *"play defense, and you get out."* This is the very signal that
+flagged 1987 for him.
+
+<LineChart
+  caption="The 200-day moving average as a regime filter. While price (white) holds above the slow average (orange), Jones leans long. The decisive break below it flips him defensive — he's not trying to catch the exact top, just to avoid riding the big trend down."
+  height={300}
+  series={[
+    { label: "Price", data: [100, 108, 104, 114, 120, 116, 124, 122, 116, 108, 102, 96, 92, 88], color: "#e6e9ef" },
+    { label: "200-day MA", data: [99, 101, 103, 106, 109, 111, 114, 115, 115, 114, 112, 110, 108, 105], color: "#f59e0b" },
+  ]}
+  points={[
+    { x: 6, y: 124, text: "above MA → lean long", color: "#22c55e" },
+    { x: 10, y: 102, text: "breaks below MA → get defensive", color: "#ef4444" },
+  ]}
+/>
+
+### 2. Define your risk BEFORE you enter
+
+For every trade, decide in advance the exact price at which you'll admit you're
+wrong — your **stop** — and translate that into a dollar amount. Jones is
+constantly asking, *"Where will I be wrong?"* before the trade, not during it. If
+you can't answer that before clicking buy, you have no trade. Place the stop at a
+**structural level** (just below a recent swing low, or below the 200-DMA), not
+at an arbitrary round number.
+
+### 3. Demand an asymmetric payoff (aim ~5:1)
+
+Only take trades where the realistic profit target is a large multiple of the
+amount risked — ideally about five times. If the upside isn't several times the
+downside, **skip it.** Most ideas won't qualify — that's the point. The ratio is
+a filter that forces patience and rejects mediocre setups.
+
+### 4. Size positions small — by the loss, not the hope
+
+Risk only a small, fixed fraction of capital per trade and size by **the dollar
+you can lose**, never by the profit you're dreaming of. *"I always size my
+positions so that I can sleep at night."* Be aggressive only when you're already
+right and winning; stay small when uncertain.
+
+### 5. Cut losses fast — "losers average losers"
+
+Jones's most quoted rule, the note famously taped above his desk. **Never add to
+a losing position** to lower your average price. "Averaging down" *feels* smart
+(you're buying cheaper) but it quietly turns a small, planned loss into an
+account-killer. The traders who blow up almost always blew up adding to losers.
+
+### 6. De-risk during drawdowns — size down when losing, up when winning
+
+When your equity is falling, **shrink** your position sizes and trade small until
+you're back in sync with the market. Press harder only when things are going your
+way. This is the exact opposite of the beginner instinct to "make it back fast"
+by sizing up after a loss. Trade biggest when winning, smallest when losing.
+
+### 7. Re-evaluate every position daily, as if you were flat
+
+Each morning ask: *"Knowing only what I know right now, would I put this trade on
+today?"* If the answer is no, get out. Your **entry price is irrelevant** — the
+market doesn't know or care what you paid. This kills *anchoring*, the beginner
+habit of holding a loser just because of where you bought.
+
+### 8. Have no ego — protect capital above all
+
+The market is right; your opinion is not. Jones will flip from bullish to bearish
+the moment price proves him wrong — but only after a *confirmed* failure, not on
+a hunch. Survival outranks profit. You cannot compound if you blow up. Every rule
+above serves this one.
+
+## A worked example: the 5:1 math in action
+
+*(Illustrative numbers, built straight from the rules. The 1% risk figure is a
+standard conservative convention — what Jones actually fixes is the 5:1 ratio and
+"sleep at night" sizing.)*
+
+Start with a **$50,000 account** and risk a fixed **1% ($500) per trade**,
+targeting **5:1**.
+
+**The trade.** Stock XYZ trades at **$100** and is **above** its 200-day MA (the
+trend filter passes — Step 1). You set your stop at **$95**, just below a recent
+swing low — below that, your thesis is wrong. Your risk is **$5 per share.** To
+risk exactly $500 you buy **100 shares** ($500 ÷ $5 = a $10,000 position).
+
+- **Target:** 5 × the $5 risk = +$25, so you exit near **$125.**
+- **If it works:** 100 × $25 = **+$2,500** (a "5R" win — five times the risk;
+  +5% of the account).
+- **If you're stopped out:** 100 × $5 = **–$500** (a "1R" loss; –1% of the
+  account).
+
+Now run **10 such trades** where you are *wrong 80% of the time* — right on only
+2:
+
+<BarChart
+  caption="Illustrative 10-trade run at 1% risk and a 5:1 target, winning only 2 of 10 (a 20% win rate). The two winners (+$2,500 each) outweigh the eight small, fixed losses (-$500 each). Net result: +$1,000 — profit while being WRONG on 80% of trades. That is the asymmetry engine."
+  yLabel="Profit / loss ($)"
+  labels={["8 losers (1R each)", "2 winners (5R each)", "Net result"]}
+  series={[{ label: "P/L", data: [-4000, 5000, 1000] }]}
+/>
+
+- 8 losers × (–$500) = **–$4,000**
+- 2 winners × (+$2,500) = **+$5,000**
+- **Net = +$1,000**
+
+A **20% win rate** still produced a profit. That is the entire Jones edge in one
+table — and it is why he can shrug off being wrong four times out of five.
+
+<Callout type="warning">
+Now break one rule — **average down** on a losing trade instead of stopping out
+at $95. Buy 100 more shares at $90 to "improve your average," and the stock keeps
+falling to $85. Your single loss balloons toward **–$2,500+**, erasing an entire
+5R winner. One broken rule wipes out the math. This is exactly the behavior
+"losers average losers" forbids.
+</Callout>
+
+## Black Monday, 1987: the strategy's most famous day
+
+On **Monday, October 19, 1987**, the Dow Jones Industrial Average fell **508
+points — 22.6% in a single day**, still the largest one-day percentage drop in
+its history (the S&P 500 fell about 20.5%). A feedback loop called **portfolio
+insurance** — automated programs that sold futures as prices fell, which pushed
+prices lower, which triggered more selling — amplified the collapse.
+
+Jones and his research head **Peter Borish** had been bearish for months. Borish
+famously overlaid the mid-1980s market onto the run-up to the 1929 crash and saw
+the same shape. Tudor was **positioned short**, and the crash delivered the
+fund's roughly **125.9% year** — Jones personally is reported to have made around
+$100 million.
+
+<LineChart
+  caption="Stylized sketch of the 1987 setup: a steep, euphoric run-up (Jones reads the trend topping and price breaking below its average) gives way to the Black Monday cliff. Being positioned SHORT into that break — with risk already defined — is the asymmetric payoff in its purest form."
+  height={300}
+  series={[
+    { label: "Stock index", data: [100, 112, 124, 138, 150, 158, 162, 155, 148, 140, 108, 104], color: "#e6e9ef" },
+  ]}
+  points={[
+    { x: 6, y: 162, text: "euphoric top", color: "#ef4444" },
+    { x: 9, y: 140, text: "trend breaks down", color: "#f59e0b" },
+    { x: 10, y: 108, text: "Black Monday: -22.6%", color: "#ef4444" },
+  ]}
+/>
+
+The lesson for a beginner is **not** "try to short the next crash." It's that
+when a high-conviction asymmetric setup appears — defined risk, enormous upside —
+Jones bets it hard. Most days he is playing tight defense, waiting for that rare
+pitch.
+
+<Callout type="note">
+**Treat the exact percentages as approximate.** "Roughly tripled," "+125.9%
+after fees for 1987," and "~200% for the crash month" all circulate in different
+sources. The *direction* and *scale* of the win are well-established; the precise
+figure is source-dependent.
+</Callout>
+
+## Honest criticisms and limitations
+
+<Callout type="warning">
+No method is a money machine. Be clear-eyed about these.
+</Callout>
+
+- **It's discretionary — hard to replicate.** Jones's real edge is judgment,
+  feel for crowd psychology, and decades on the floor. The 200-DMA and 5:1 rules
+  are real, but *which* macro theme and *which* technical signal to act on is not
+  a formula a beginner can copy from a book.
+- **Survivorship bias / one-trade fame.** The 1987 home run is legendary *because*
+  it's rare. Many who tried to "short the crash" were wrong (and bleeding) for
+  months first. One spectacular year doesn't validate the approach for everyone,
+  and Tudor's later returns have been far more pedestrian.
+- **The 200-day MA whipsaws.** In choppy, range-bound markets the trend filter
+  flips you in and out repeatedly — you sell low, buy back higher. It's a *coarse,
+  lagging* filter that shines in strong trends, not sideways ones.
+- **5:1 is aspirational, not a guarantee.** Many good real trades offer only 2:1
+  or 3:1. Forcing 5:1 can leave you with very few qualifying trades — or tempt you
+  to set the stop *too tight* just to fake the ratio (and get whipsawed out). The
+  number is a *discipline*, not a promise markets will hand you 5R moves.
+- **Cost and access asymmetry.** Tudor charged premium fees and traded leveraged
+  futures and FX with institutional information flow, leverage, and liquidity a
+  retail beginner doesn't — and shouldn't — access the same way.
+- **Macro forecasting is humbling.** Even Jones has had flat, mediocre stretches,
+  and global macro as a category has endured long lean periods. His record is
+  uneven *outside* the famous peaks.
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Averaging down on losers** to "fix" a bad trade — the single biggest account
+   killer, and the exact thing Jones forbids.
+2. **Moving or removing the stop** to avoid being stopped out. Jones's stops are
+   respected and never widened.
+3. **Sizing for the win instead of the loss** — size by the *dollar you can lose*,
+   not the profit you hope for.
+4. **Chasing the trend at exhaustion** — buying after a parabolic move with no
+   stop, mistaking momentum for safety.
+5. **Faking 5:1 with a too-tight stop** — setting an arbitrarily close stop just
+   to make the ratio look good, then getting whipsawed out.
+6. **Adding risk during a losing streak** ("I'll win it back") — the opposite of
+   Jones, who *cuts* size in drawdowns.
+7. **Ignoring the trend filter** — fighting the 200-DMA on a personal opinion.
+   Jones trades *with* the dominant trend; contrarian entries come only after a
+   confirmed failure, never on a hunch.
+8. **Treating it as pure technicals** — skipping the macro "why" and trading lines
+   on a chart with no context.
+</Callout>
+
+## Putting it to work
+
+You don't need a hedge fund to trade like Jones. You need a checklist and the
+discipline to obey it:
+
+1. **Check the regime first.** Is price above or below its 200-day MA? Trade
+   *with* the primary trend; don't fight it.
+2. **Write down your stop and your dollar risk before every entry.** Put the stop
+   at a structural level and risk a small, fixed fraction of your account (1% is a
+   sensible start).
+3. **Score the reward-to-risk.** If it's not at least ~3:1 (aim 5:1), pass — and
+   don't tighten the stop just to fake the ratio.
+4. **Size by the loss.** Shares = dollar risk ÷ per-share risk. Size so you can
+   sleep at night.
+5. **Never add to a loser.** If you're stopped, you're out — no exceptions.
+6. **Each morning, re-decide every position as if you held cash.** Would you put
+   it on today? If not, exit.
+7. **Size down when you're cold; size up only when you're hot.**
+8. **Keep a journal** of win rate *and* average reward-to-risk. The second number
+   matters far more than the first — that realization is the entire point of this
+   lesson.
+
+The mindset, in one line: **be wrong small, be right big, and never let a single
+trade threaten your survival.**
+
+## Further reading
+
+- Jack D. Schwager, *Market Wizards: Interviews with Top Traders* (1989) — the
+  canonical Paul Tudor Jones interview; the primary source for his risk-first
+  principles and "losers average losers."
+- Tony Robbins, *MONEY: Master the Game* (2014) — the interview where Jones lays
+  out the 200-day-MA rule and the 5:1 ("wrong 80% of the time") framework in plain
+  language.
+- *Trader: The Documentary* (PBS, 1987) — Jones filmed around Black Monday (hard
+  to find legally; he had it pulled from circulation).
+
+---
+
+### Sources
+
+1. [Paul Tudor Jones — Wikipedia](https://en.wikipedia.org/wiki/Paul_Tudor_Jones) — biography (b. Sept 28, 1954, Memphis; UVA economics 1976; Eli Tullis mentorship; E.F. Hutton; Tudor founded 1980); 1987 return of ~125.9% after fees; ~87.4% in 1990; technical/momentum global-macro style; Robin Hood Foundation (1988); Giving Pledge (2019); the *Trader* (1987) documentary.
+2. [Black Monday (1987) — Wikipedia](https://en.wikipedia.org/wiki/Black_Monday_(1987)) — Dow fell 508 points / 22.6% on Oct 19, 1987 (largest one-day % drop); S&P 500 about −20.5%; the role of portfolio insurance.
+3. [Paul Tudor Jones and the 200-day moving average — BlueChipDaily](https://bluechipdaily.com/paul-tudor-jones-the-200-day-moving-average/) — the 200-DMA trend filter and the 5:1 / "wrong 80% of the time" framing from the Tony Robbins interview.
+4. [Paul Tudor Jones trading philosophy — DayTrading.com](https://www.daytrading.com/paul-tudor-jones-trading-philosophy) — full philosophy, defense-first capital preservation, "slave to the tape," and 1987 context.
+5. [Paul Tudor Jones: contrarian trading — QuantStrategy.io](https://quantstrategy.io/blog/paul-tudor-jones-mastering-the-art-of-contrarian-trading/) — 200-DMA rules, never-average-down, sizing down in drawdowns, position sizing.
+6. ["Losers average losers" — TrendFollowing](https://www.trendfollowing.com/losers_average_losers/) — origin of the note taped above his desk.
+7. [Jack D. Schwager, *Market Wizards* (1989) — Wikipedia](https://en.wikipedia.org/wiki/Market_Wizards) — primary text for the ~5:1 reward-to-risk target, "losers average losers," daily "would I enter this today?" re-evaluation, and defense-before-offense. (Treat the 5:1 figure and the 200-day-MA rule as documented rules of thumb from the interviews and the *Trader* documentary, not fixed mechanical formulas. The 1% risk-per-trade figure in the worked example is a standard conservative convention, not a number Jones publicly fixes.)

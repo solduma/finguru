@@ -41,6 +41,12 @@ export default async function LocaleLayout({
               {t.nav.path}
             </Link>
             <Link
+              href={`/${locale}/schools`}
+              className="text-sm text-gray-300 no-underline"
+            >
+              {t.nav.schools}
+            </Link>
+            <Link
               href={`/${locale}/gurus`}
               className="text-sm text-gray-300 no-underline"
             >

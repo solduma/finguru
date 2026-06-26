@@ -1,0 +1,468 @@
+---
+title: "Edward O. Thorp — Beat the Dealer, Beat the Market"
+slug: "edward-thorp"
+kind: "guru"
+school: "quant"
+strategy: "systematic-practitioners"
+level: "intermediate"
+order: 304
+summary: "The math professor who broke blackjack with a card-counting system, then turned the same three moves — find an edge, hedge it, size it with Kelly — into the first market-neutral quant hedge fund."
+era: "born 1932"
+contribution: "Edge + Hedge + Kelly Sizing"
+tags: ["kelly criterion", "card counting", "convertible arbitrage", "market neutral", "bet sizing", "quant"]
+prereqs: ["charles-dow"]
+---
+
+## The one idea behind everything he did
+
+Most people think you make money in markets by being *right about direction* —
+buy the thing that goes up, sell the thing that goes down. Edward Thorp built a
+career proving you don't need that at all.
+
+His entire method — at the blackjack table and on Wall Street — is the same
+three moves:
+
+1. **Find a quantifiable edge** — a situation where the odds are *measurably*
+   in your favor (positive expected value). No edge, no bet.
+2. **Hedge away the risk you don't want** — keep only the part of the bet you
+   actually have an edge on; neutralize the rest.
+3. **Size the bet by the Kelly criterion** — bet bigger when the edge is bigger,
+   smaller when it's smaller, never enough to risk going broke.
+
+<Callout type="key">
+Thorp's lesson in one sentence: **you don't need to predict the market's
+direction to make money — you need a measurable mispricing plus disciplined
+bet-sizing.** Everything below is a way of doing those two things.
+</Callout>
+
+<ConceptDiagram
+  caption="Thorp's repeatable pipeline. The same three stages run whether the 'bet' is a rich blackjack deck, a mispriced warrant, or a basket of statistically cheap stocks. Notice the loop: as the bankroll and the edge change, you recompute the bet size — it is never a fixed dollar amount."
+  chart={`flowchart LR
+  A[Find a quantifiable<br/>EDGE] --> B[HEDGE away<br/>unwanted risk]
+  B --> C[SIZE the bet<br/>by Kelly]
+  C --> D[Place bet /<br/>hold position]
+  D --> E{Bankroll &<br/>edge changed?}
+  E -- yes --> C
+  E -- edge gone --> F[Stop / move on]`}
+/>
+
+## Who he was
+
+**Edward Oakley Thorp** was born August 14, 1932, in Chicago and raised in
+southern California. He was trained as a **pure mathematician**, not a financier
+— he earned a **Ph.D. in mathematics from UCLA in 1958** (a thesis on compact
+linear operators) and taught at MIT (1959–1961), New Mexico State, and finally
+UC Irvine, where he became a professor of mathematics and, later, of mathematics
+*and finance*.
+
+A pure mathematician is someone who works with abstract structures — operators,
+probability spaces — for their own sake. Thorp's twist was to point that
+machinery at two places nobody respectable did: the casino, and the stock
+market. In both, he found that the "experts" were leaving measurable money on
+the table. He is the rare figure who beat *both*.
+
+- **Blackjack (late 1950s–1962).** Using the **IBM 704** mainframe at MIT — and
+  learning to program in Fortran to do it — Thorp computed how the odds in
+  blackjack shift as cards are dealt. He turned that into a practical
+  **card-counting** system and field-tested it with a backer, reportedly
+  growing about $10,000 into ~$11,000 over a single weekend. The result was the
+  bestseller **_Beat the Dealer_ (1962)**, which sold 700,000+ copies, forced
+  casinos to change their rules, and made Thorp an inaugural member of the
+  Blackjack Hall of Fame.
+- **The first wearable computer (1960–61).** With **Claude Shannon** — the
+  father of information theory — Thorp co-built what's often called the first
+  wearable computer, a cigarette-pack-sized device to predict roulette.
+- **Wall Street.** He co-founded **Princeton/Newport Partners** (active
+  ~1969–1989), generally regarded as the **first market-neutral quantitative
+  hedge fund**, and later ran **Ridgeline Partners** (Aug 1994 – Sep 2002) using
+  statistical arbitrage. His own and contemporary accounts put his long-run
+  results in the **mid-to-high teens annualized, net of fees** (see the figures
+  note below) — earned with **no losing year** over long stretches.
+- **The Madoff call.** As early as **1991**, hired to evaluate Bernie Madoff's
+  reported returns, Thorp concluded they were almost certainly fraudulent — a
+  verdict vindicated when the scheme collapsed in 2008.
+
+<Callout type="note">
+Thorp never set out to be an investor. He was a mathematician who noticed that
+the same tool — careful probability plus disciplined sizing — worked anywhere
+the odds could be measured. That transferability *is* the lesson.
+</Callout>
+
+## Step 1 — Card counting: the training-wheels version of the edge
+
+Start at the blackjack table, because it's where Thorp's idea is easiest to see.
+
+In blackjack you want hands close to 21 without going over. The key fact:
+**high cards (10s, face cards, aces) favor the player; low cards favor the
+dealer.** When a lot of high cards remain in the undealt deck, the *player's*
+odds are temporarily better than normal.
+
+A **card counter** doesn't memorize every card — they keep a simple **running
+count** (the popular Hi-Lo system):
+
+- Add **+1** for each low card dealt (2–6).
+- Subtract **−1** for each high card dealt (10s, faces, aces).
+- A neutral card (7–9) counts as 0.
+
+A high running count means lots of low cards have *already left* the deck — so
+what remains is **rich in high cards**, and your edge is now positive.
+
+<LineChart
+  caption="The running count over a shoe. When the count climbs into positive territory (green zone), the remaining deck is rich in high cards and the player's edge is positive — that's when you bet big. When it's negative or zero, you bet the table minimum. The bet size tracks the edge."
+  height={280}
+  series={[{ label: "Running count", data: [0, 1, 2, 1, 3, 4, 3, 5, 2, 0, -1, -2, -1, 1, 3, 5] }]}
+  zones={[{ yMin: 2, yMax: 6, color: "rgba(34,197,94,0.12)", label: "edge positive — bet big" }]}
+  levels={[{ y: 0, label: "neutral", color: "#f59e0b" }]}
+  points={[
+    { x: 7, y: 5, text: "count high → bet big", color: "#22c55e" },
+    { x: 11, y: -2, text: "count low → bet minimum", color: "#ef4444" },
+  ]}
+/>
+
+The discipline is the whole point: **bet the table minimum when the edge is
+zero or negative, and bet large only when the count says the odds favor you.**
+The edge is small and intermittent — the skill is folding most of the time and
+betting big only when it's really there. That is Thorp's pipeline in miniature:
+find the edge (high count), and size the bet to it. Card counting has no "hedge"
+leg, because the casino game has no offsetting bet to make; that piece arrives on
+Wall Street.
+
+## Step 2 — On Wall Street: find the edge in a mispriced warrant
+
+Thorp's bridge from casino to market was the book **_Beat the Market_ (1967)**,
+written with economist **Sheen Kassouf**. The instrument at the center was the
+**warrant** (and its close cousin, the **convertible bond**).
+
+A **warrant** is the right to buy a stock at a fixed price (the *strike*) before
+some expiry — essentially a long-dated call option the company issues. A
+**convertible bond** is a bond that you can swap for a fixed number of shares;
+it's a bond with a stock option baked inside.
+
+Here is the edge:
+
+- Thorp could **compute a warrant's fair value mathematically** — what it
+  *should* cost given the stock price, the strike, the time left, and how much
+  the stock bounces around (its volatility).
+- Often the market price was **wrong** — a warrant trading well above its fair
+  value, or a convertible trading well below.
+- A gap between market price and computed fair value is a **quantifiable edge**:
+  the same thing as a rich blackjack deck.
+
+The picture below is the whole game in one chart. The smooth curve is what a
+warrant *should* be worth at each possible stock price — it rises faster as the
+stock climbs above the strike, because the right to buy becomes more valuable.
+The single red dot is where the warrant *actually* trades. The vertical gap
+between the dot and the curve **is the edge** — and it's the exact analogue of a
+rich blackjack deck.
+
+<LineChart
+  caption="Warrant fair value vs. the market (illustrative). The blue curve is Thorp's computed fair value of the warrant at each stock price — flat and near zero below the $50 strike, then curving upward as the option gains worth. The red dot shows the warrant trading at $4 when the curve says it's worth $9 at today's $60 stock price: a $5 gap. That gap is the measurable edge. (When a warrant trades ABOVE the curve instead, the edge runs the other way — short it.)"
+  height={300}
+  series={[{ label: "Fair value of warrant", data: [0.3, 0.6, 1.2, 2.5, 5, 9, 14, 19.5, 25.2, 31], color: "#38bdf8" }]}
+  points={[
+    { x: 5, y: 9, text: "fair value at $60 stock = $9", color: "#38bdf8" },
+    { x: 5, y: 4, text: "market price = $4 → $5 edge", color: "#ef4444" },
+  ]}
+  levels={[{ y: 0, label: "strike $50 is at x=4 below", color: "#f59e0b" }]}
+/>
+
+<Callout type="note">
+The x-axis here is the **stock price** (rising left to right from about \$40 to
+\$85), not time — each point asks "if the stock were *this* price, what should
+the warrant be worth?" The dot sits at today's stock price. A beginner's whole
+job in Thorp's world is to find dots that sit *off* the curve.
+</Callout>
+
+<Callout type="note">
+Thorp derived a practical option-/warrant-valuation method and traded on it
+**before** the famous Black–Scholes–Merton option-pricing formula was published
+in 1973. The precise claim that he pre-derived the Black–Scholes formula itself
+is well attested in finance histories and his own memoir, but treat the exact
+formula-equivalence as "strongly reported," not airtight — what's certain is
+that he was valuing options mathematically and trading the gaps years before it
+was mainstream.
+</Callout>
+
+## Step 3 — Hedge: become market-neutral so direction stops mattering
+
+Finding a cheap convertible isn't enough. If you just *buy* it, you're now
+exposed to the stock crashing — you'd be back to betting on direction, which is
+exactly what Thorp refused to do.
+
+So he **hedged**. The classic trade:
+
+1. **Take the cheap side** — e.g., buy the underpriced convertible bond (which
+   behaves partly like the stock and partly like a bond).
+2. **Short the underlying stock** — sell borrowed shares — in a carefully chosen
+   ratio called **delta-neutral**.
+
+**Delta** (the *hedge ratio*) is how much your position's value moves when the
+stock moves \$1. Delta-neutral means you've shorted *just enough* shares that a
+small move in the stock — up or down — **barely changes the value of the whole
+package**. You've cancelled out the direction bet.
+
+<ConceptDiagram
+  caption="The market-neutral convertible-arbitrage hedge. The long convertible and the short stock are sized so their directional moves cancel (delta-neutral). What's left over is the actual edge: the mispricing closing, plus profit harvested by re-hedging as the stock swings."
+  chart={`flowchart TB
+  A[LONG underpriced<br/>convertible bond] --> C[Delta-neutral<br/>package]
+  B[SHORT the<br/>underlying stock] --> C
+  C --> D[Stock moves up or down:<br/>package value ~ unchanged]
+  C --> E[Profit source 1:<br/>mispricing converges]
+  C --> F[Profit source 2:<br/>re-hedge the short as<br/>stock swings 'gamma']`}
+/>
+
+Now you are **market-neutral**: you genuinely don't care whether the stock rises
+or falls. Your profit comes from two places that have nothing to do with
+direction:
+
+- The **mispricing converging** — the cheap convertible drifting back toward its
+  fair value.
+- **Dynamic re-hedging** — as the stock moves, the right number of shares to be
+  short keeps changing. Rebalancing the short (buy back some shares after a drop,
+  short more after a rise) mechanically harvests money from the stock's swings.
+  Traders call this capturing **gamma**.
+
+<Callout type="warning">
+A delta-neutral hedge **does not stay neutral.** As the stock moves, your delta
+drifts, and if you don't **rebalance** you've quietly turned a hedged position
+back into a directional bet — the exact risk you were trying to remove. Routine
+rebalancing isn't optional housekeeping; it's where part of the profit comes
+from and where the risk control lives.
+</Callout>
+
+## Step 4 — Size the bet with the Kelly criterion
+
+You've found an edge and hedged it. The last question is the one that ruins most
+people: **how much do you bet?** Thorp's answer, borrowed from a 1956 paper by
+Bell Labs scientist **John L. Kelly Jr.**, is the **Kelly criterion**.
+
+For a simple win-or-lose bet, Kelly says bet this fraction of your bankroll:
+
+> **f\* = (b·p − q) ÷ b**
+
+where **f\*** is the fraction of your bankroll to wager, **p** is your
+probability of winning, **q = 1 − p** is the probability of losing, and **b** is
+the net amount you win per \$1 staked when you win. (An equivalent way to write
+it is `f* = p − q/b`.)
+
+### Worked example — the 60/40 coin
+
+Suppose you find a biased coin that lands heads **60%** of the time, paying
+even money (win \$1 for every \$1 bet). So `p = 0.60`, `q = 0.40`, `b = 1`:
+
+> f\* = (1 × 0.60 − 0.40) ÷ 1 = (0.60 − 0.40) ÷ 1 = **0.20**
+
+Bet **20% of your bankroll** each flip to maximize long-run growth.
+
+- Bankroll \$1,000 → bet \$200.
+- It wins, bankroll is now \$1,200 → next bet is 20% of \$1,200 = **\$240**.
+- It loses, bankroll is \$800 → next bet is 20% of \$800 = **\$160**.
+
+The bet is **always a fraction of your *current* bankroll**, never a fixed
+dollar amount. That self-scaling is what makes it mathematically impossible to
+go fully broke (you bet a fraction of whatever's left) and what compounds wealth
+fastest in the long run.
+
+<LineChart
+  caption="Long-run growth rate vs. how much Kelly you bet (60/40 coin). The x-axis is your bet as a multiple of full Kelly: 1x = the full 20%, 0.5x = half-Kelly (10%), 2x = double Kelly (40%). Growth peaks exactly at full Kelly, then FALLS as you bet more — and past about 2x it goes NEGATIVE: you compound yourself broke even though every single bet still has a real edge. Crucially, half-Kelly (0.5x) keeps about three-quarters of the peak growth, so giving up a sliver of growth buys a lot of safety. This is why over-betting is the cardinal sin."
+  height={300}
+  series={[{ label: "Growth rate per bet (%)", data: [0, 0.88, 1.5, 1.89, 2.01, 1.88, 1.48, 0.78, -0.25, -1.62] }]}
+  levels={[{ y: 0, label: "break-even (no growth)", color: "#f59e0b" }]}
+  points={[
+    { x: 4, y: 2.01, text: "peak: full Kelly (1x)", color: "#22c55e" },
+    { x: 2, y: 1.5, text: "half-Kelly (0.5x): ~¾ the growth", color: "#a78bfa" },
+    { x: 8, y: -0.25, text: "2x Kelly: growth turns negative", color: "#ef4444" },
+  ]}
+/>
+
+The x-axis runs in steps of a quarter-Kelly: x=0 is betting nothing, x=4 is full
+Kelly (the 20% we computed), x=8 is double Kelly (40%), x=9 is 2.25x. Notice the
+shape — a hill that **peaks at full Kelly and rolls off on both sides.** Betting
+*more* than full Kelly is the worst of both worlds: more volatility *and* less
+growth.
+
+### Why almost everyone overbets
+
+A famous behavioral experiment let people bet on a coin they were *told* was 60%
+heads — a clear, known edge. Despite that gift, about **28% of participants went
+broke**, and average winnings were a measly ~\$91. They overbet, misjudged the
+edge, and couldn't stomach the swings.
+
+<Callout type="key">
+This is the single most important practical takeaway. **Even with a real,
+known edge, people lose money by betting too big.** Thorp's discipline isn't the
+edge — lots of people find edges. It's the *sizing*. In practice he and most
+serious practitioners use **fractional Kelly** (a half or a quarter of the
+full amount) to cut volatility and protect against the fact that your estimate
+of the edge is never perfect. (A Thorp analysis once pegged full Kelly for the
+S&P 500 at roughly **117%** of capital — i.e. *levered* — exactly the kind of
+figure you'd scale down toward half-Kelly in real life.)
+</Callout>
+
+<LineChart
+  caption="Two paths, ONE identical 60/40 coin (illustrative). Both lines bet on the exact same sequence of 18 flips — 12 wins, 6 losses — so they share every turning point; the ONLY difference is bet size. Full Kelly (blue, 20%) finishes higher but lurches: each loss knocks it down hard (e.g. the drop from 191 to 153). Half-Kelly (purple, 10%) climbs more gently and is far easier to actually stick with. Same edge, same luck — different sizing, very different ride. The bankroll you can live with beats the one you abandon mid-drawdown."
+  height={300}
+  series={[
+    { label: "Full Kelly (20%)", data: [100, 120, 144, 115.2, 138.2, 165.9, 132.7, 159.3, 191.1, 152.9, 183.5, 146.8, 176.1, 211.3, 169.1, 202.9, 243.5, 194.8, 233.7], color: "#38bdf8" },
+    { label: "Half-Kelly (10%)", data: [100, 110, 121, 108.9, 119.8, 131.8, 118.6, 130.5, 143.5, 129.1, 142.1, 127.9, 140.6, 154.7, 139.2, 153.2, 168.5, 151.6, 166.8], color: "#a78bfa" },
+  ]}
+/>
+
+## Step 5 — Industrialize it: from one trade to a hedge-fund engine
+
+A single arbitrage is a coin flip with an edge. A *fund* is thousands of them
+running at once — and that is where Thorp's career actually went.
+
+- **Princeton/Newport Partners (1969–1989).** Co-founded with **James "Jay"
+  Regan** (originally "Convertible Hedge Associates," renamed in 1974), it
+  systematized convertible/warrant arbitrage and market-neutral derivatives
+  hedging into the **first market-neutral quant hedge fund.**
+- **Statistical arbitrage (from the early 1980s).** Thorp moved into "stat arb":
+  rank hundreds of stocks, **buy the relative losers and short the relative
+  winners**, betting on **mean reversion** (prices that have stretched too far
+  from the pack tend to snap back). The basket is balanced by sector so that the
+  broad market's direction nets out — market-neutral again, just spread across
+  hundreds of tiny bets instead of one.
+- **Ridgeline Partners (1994–2002).** A later stat-arb fund, closed in 2002
+  precisely because the edge had thinned as competitors copied it.
+
+<ScatterChart
+  caption="Statistical arbitrage, the core idea (illustrative). Each dot is a stock plotted by recent performance. The basket is built market-neutral: SHORT the relative winners that have run up too far (red, right) and BUY the relative losers that have fallen too far (green, left), betting both snap back toward the middle. No view on the market overall — only on the gap between each stock and the pack."
+  xLabel="Recent relative performance (%)"
+  yLabel="Position the model takes"
+  height={300}
+  series={[
+    { label: "Buy (relative losers)", data: [{ x: -9, y: 1, label: "buy" }, { x: -6, y: 1 }, { x: -4, y: 1 }, { x: -3, y: 1 }], color: "#22c55e" },
+    { label: "Short (relative winners)", data: [{ x: 3, y: -1 }, { x: 4, y: -1 }, { x: 7, y: -1 }, { x: 10, y: -1, label: "short" }], color: "#ef4444" },
+  ]}
+/>
+
+The principle never changes across all three businesses: **isolate a measurable
+edge, hedge out everything else, size with Kelly, and diversify across many
+small independent bets so the law of large numbers works for you.**
+
+## Putting the whole machine together — a stylized trade
+
+*(Illustrative numbers, to show the mechanics — not a real position.)*
+
+1. **Edge.** Your model says a convertible bond is worth \$1,050 but it trades
+   at \$1,000 — a 5% mispricing. The embedded option also looks cheap relative
+   to the stock's volatility.
+2. **Hedge.** You buy the convertible and short the stock delta-neutral — say
+   the convertible's delta means you short 30 shares per bond. Now a \$1 wiggle
+   in the stock leaves your package roughly flat.
+3. **Size.** Your model estimates a modest, reliable edge with low odds of a
+   bad outcome on the hedged package. Full Kelly might say put 25% of capital
+   here; you use **half-Kelly** and commit ~12%, leaving room for many such
+   independent trades and for your edge estimate being a little off.
+4. **Manage.** The stock drifts; you **rebalance the short** to stay neutral,
+   harvesting a little gamma each time. As the bond converges toward \$1,050,
+   you book the convergence profit and recycle the capital into the next
+   mispricing.
+
+No view on whether the stock goes up or down ever entered the trade. That is
+the entire point.
+
+## Key books and sources
+
+- **John L. Kelly Jr., "A New Interpretation of Information Rate" (1956)** — the
+  bet-sizing foundation. (Kelly's, not Thorp's, but essential.)
+- **Edward O. Thorp, _Beat the Dealer_ (1962; rev. 1966)** — card counting.
+- **Edward O. Thorp & Sheen Kassouf, _Beat the Market_ (1967)** — warrant and
+  convertible hedging; the seed of market-neutral quant investing.
+- **Edward O. Thorp, _The Mathematics of Gambling_ (1984)**.
+- **Edward O. Thorp, _A Man for All Markets_ (2017)** — the autobiography that
+  ties the casino and Wall Street together; his own figures, firsthand.
+
+## Honest criticisms and limitations
+
+Be clear-eyed about where this breaks:
+
+- **Kelly assumes you know the true probabilities.** It's optimal only when `p`
+  and `b` are *exactly* right. In real markets you only *estimate* them — and
+  **overestimating your edge pushes you past optimal and toward ruin.** Garbage
+  in, garbage out. This is the chief reason to bet a *fraction* of Kelly.
+- **Full Kelly is brutally volatile.** Even *correct* Kelly bets produce
+  drawdowns most humans can't psychologically tolerate.
+- **Market-neutral is not risk-free.** In the **1987 crash**, convertible/warrant
+  hedges broke down: as liquidity vanished, convertibles sometimes fell *more*
+  than the stocks they were hedged against, so "market-neutral" arbitrageurs
+  took real losses on *both* legs. Neutral on paper is not neutral in a panic.
+- **Edges decay.** Thorp's blackjack edge forced rule changes; his arbitrage
+  edges narrowed as computers and copycats arrived. **Ridgeline closed in 2002**
+  precisely because the returns had thinned out. No edge is permanent.
+- **The legal episode.** In **1987**, Rudy Giuliani's U.S. Attorney's office
+  raided Princeton/Newport's Princeton office (run by Regan) amid the Milken-era
+  investigations, bringing **RICO and tax/"stock-parking" charges** (*U.S. v.
+  Regan*, 2nd Cir. 1988). The misconduct allegations centered on the Princeton
+  (Regan) office, not Thorp's Newport quant operation — but the fallout
+  precipitated the firm's **wind-down (1988–89)** anyway. A reminder that
+  partners and operational risk can sink even a sound strategy.
+- **An economist's objection.** Pure growth-maximization (Kelly) ignores an
+  individual's particular goals and risk tolerance; the conventional alternative
+  is expected-utility theory, which sizes bets by personal preference, not just
+  growth rate.
+
+<Callout type="note">
+**On the return figures:** sources legitimately disagree, because they measure
+different funds over different windows. Contemporary accounts cite roughly
+**~15% net of fees over Princeton/Newport's life**, up to **~19.6% gross** in one
+*LA Times* report (citing Thorp), with some secondary sources quoting 20%+ for
+the stat-arb sleeve. Treat the long-run record as **mid-to-high teens, net** —
+a *range*, not a single official number. The headline that's solid: a long run
+of years with **no losing year.**
+</Callout>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+1. **Overbetting / using full Kelly.** The most dangerous mistake. Start at a
+   quarter to a half of Kelly, always.
+2. **Overstating your edge.** A small overestimate of your win probability can
+   silently turn a winning system into a ruin machine.
+3. **Confusing edge with prediction.** Beginners try to forecast direction;
+   Thorp's whole point is to stay neutral and profit from *mispricing*.
+4. **Confusing "hedged" with "safe."** Market-neutral kills *direction* risk —
+   not liquidity, leverage, or correlation-breakdown risk.
+5. **Forgetting to rebalance the hedge.** A delta-neutral position drifts; skip
+   the rebalancing and you've reintroduced directional risk.
+6. **Thinking card counting or arbitrage is easy money today.** These specific
+   edges have largely been competed away. The *method* (edge → hedge → size) is
+   the lesson, not the literal trades.
+7. **Ignoring costs and liquidity.** Commissions, the cost to borrow shares for
+   shorting, and crashes (1987) can erase a thin edge entirely.
+8. **Betting a fixed dollar amount** instead of a fraction of your *current*
+   bankroll — which breaks the math that protects you from ruin.
+9. **Risk of ruin from one heroic bet.** Thorp's success came from *many small,
+   diversified, repeatable* bets, not a single big position.
+</Callout>
+
+## Putting it to work
+
+You won't run a convertible-arbitrage book tomorrow, and you shouldn't try. But
+Thorp's *mindset* is usable immediately, in any decision with a payoff and odds:
+
+- **Insist on a measurable edge.** If you can't say *why* the odds favor you and
+  roughly by how much, you're gambling, not investing.
+- **Strip out the risk you have no edge on.** Diversify, hedge, or simply don't
+  take the part of the bet you can't justify.
+- **Size by a fraction of Kelly.** Risk more when the edge is bigger and you're
+  more confident; risk little when it's thin. Never bet so much that one bad run
+  takes you out of the game.
+- **Recompute as things change.** The edge, your bankroll, and the odds all
+  move. So should your bet.
+
+The casino and Wall Street taught Thorp the same lesson, and it's the one to
+carry away: **survival first, then growth — find the edge, hedge what you can't
+justify, and let bet-sizing, not prediction, do the work.**
+
+---
+
+### Sources
+
+1. [Edward O. Thorp — Wikipedia](https://en.wikipedia.org/wiki/Edward_O._Thorp) — biography; UCLA Ph.D. (1958); IBM 704 and Fortran; Shannon and the wearable computer; *Beat the Dealer*; Princeton/Newport, statistical arbitrage, and Ridgeline; the Madoff call.
+2. [Kelly criterion — Wikipedia](https://en.wikipedia.org/wiki/Kelly_criterion) — the formula `f* = (bp − q)/b`, the worked example, fractional/half-Kelly, the ~117% S&P figure, the behavioral coin-flip study, and the "known probabilities" and over-betting criticisms.
+3. [Convertible arbitrage — Wikipedia](https://en.wikipedia.org/wiki/Convertible_arbitrage) — long-convertible/short-stock, delta-neutral hedging, market-neutral, and the breakdown of these hedges in the 1987 crash.
+4. [Statistical arbitrage — Wikipedia](https://en.wikipedia.org/wiki/Statistical_arbitrage) — mean-reversion baskets (buy relative losers, short relative winners); Thorp's early-1980s stat-arb work.
+5. [John L. Kelly Jr., "A New Interpretation of Information Rate" (1956)](https://en.wikipedia.org/wiki/Kelly_criterion) — the bet-sizing foundation Thorp built on.
+6. *U.S. v. Regan*, 858 F.2d 115 (2nd Cir. 1988) — the RICO/tax matter that precipitated Princeton/Newport's wind-down (allegations centered on the Princeton office, not Thorp's Newport operation).

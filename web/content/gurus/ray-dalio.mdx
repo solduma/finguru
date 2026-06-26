@@ -1,0 +1,540 @@
+---
+title: "Ray Dalio — The Economic Machine and the All-Weather Portfolio"
+slug: "ray-dalio"
+kind: "guru"
+school: "macro"
+strategy: "modern-practitioners"
+level: "intermediate"
+order: 406
+summary: "The hedge-fund founder who, after one catastrophic wrong forecast nearly destroyed him, stopped predicting and built a portfolio engineered to survive every economic season instead."
+era: "born 1949"
+contribution: "Risk parity / All Weather"
+tags: ["global macro", "risk parity", "all weather", "debt cycles", "diversification", "bridgewater"]
+prereqs: ["charles-dow"]
+---
+
+## Why Ray Dalio matters
+
+Most investors, when they think about the economy, picture a forecast: *will the
+Fed cut rates? is a recession coming?* They place a bet on their answer and hope
+they're right.
+
+Ray Dalio built one of the most successful investment firms in history on the
+opposite instinct — and he learned it the hard way (more on the 1982 disaster
+that taught it to him below). His two big ideas are:
+
+1. **The economy is a machine** — a knowable system driven mostly by **credit
+   and debt**, not by mood or magic. Learn how the machine works and the booms
+   and busts stop looking random.
+2. **Don't predict — prepare.** Because nobody reliably forecasts which economic
+   "season" is coming next, build a portfolio that holds up across *all* of them.
+
+That second idea became the **All Weather** strategy and popularized an approach
+called **risk parity.** This lesson teaches both the worldview and the
+buildable portfolio.
+
+<Callout type="key">
+The through-line of everything Dalio teaches: **balance beats brilliance.**
+Engineer a portfolio so balanced that no single economic surprise can sink it,
+and you no longer need to be right about the future.
+</Callout>
+
+## Who he was
+
+**Raymond Dalio** was born August 8, 1949, in Jackson Heights, Queens, New York.
+He bought his first stock — Northeast Airlines — at age 12. He earned a finance
+degree from C.W. Post College and an MBA from Harvard Business School in 1973.
+After a brief, bumpy stint at a brokerage, he **founded Bridgewater Associates in
+1975** out of his two-bedroom Manhattan apartment, at first just advising
+corporate clients on currency and interest-rate risk.
+
+Bridgewater grew from that markets-advisory shop into the **world's largest hedge
+fund**, managing well over **$150 billion** at its peak (around $90 billion as of
+2025). Its two famous strategies are **Pure Alpha** (an active, discretionary
+macro fund, launched around 1990) and **All Weather** (launched **1996**, the
+risk-parity strategy this lesson is built on — it began as Dalio's own family
+trust). Dalio stepped back in stages, handing over voting control in 2022 and
+selling his last shares and leaving the board in 2025; he now runs the **Dalio
+Family Office.**
+
+He is the standard-bearer for **systematic global macro** investing: trading the
+big picture (currencies, rates, bonds, commodities, whole economies) using
+repeatable, rule-based logic rather than gut calls. He is equally famous as a
+**public educator**, having given away his frameworks in free videos and books.
+
+### The 1982 disaster that created the whole philosophy
+
+This is the origin story, and it's the most important thing to understand about
+Dalio. In **1982** he became convinced a depression was coming. He didn't hedge
+the view — he went all-in on it, testified before Congress, and declared it on
+television. **The opposite happened:** 1982 marked the bottom, and stocks began
+an 18-year bull run.
+
+The wrong call **nearly destroyed Bridgewater.** He had to lay off everyone —
+the firm shrank to just himself — and he reportedly borrowed **$4,000 from his
+father** to make ends meet. He has called it the most painful and the most
+valuable experience of his life. It is the direct source of his core question —
+**"How do I know I'm right?"** — and of his pivot away from betting on a single
+conviction toward **balanced, diversified, rules-based investing.** Every idea in
+this lesson is, in a sense, Dalio's answer to never being blown up by his own
+forecast again.
+
+<Callout type="note">
+A useful caveat up front: how *systematic* Bridgewater's actual trading really
+was is contested (see Criticisms). For learning purposes, treat the "machine" as
+Dalio's **teaching framework** — a genuinely clarifying way to understand
+economies — rather than a literal description of every trade the firm placed.
+</Callout>
+
+---
+
+## Part 1 — How the economic machine works
+
+Before the portfolio, the worldview. Dalio's free ~30-minute animated video
+**"How the Economic Machine Works"** (released 2013; the underlying essay dates
+to roughly 2007–08) is the single best free macro primer ever made. Here is its
+core in plain terms.
+
+### Three forces, always acting at once
+
+Dalio says the whole economy is the sum of three forces stacked on top of each
+other:
+
+| Force | What it is | Speed |
+|-------|-----------|-------|
+| **Productivity growth** | We learn to make more with less; the real, lasting driver of living standards. | Slow, steady (decades) |
+| **Short-term debt cycle** | The familiar business cycle of expansion and recession. | ~5–8 years |
+| **Long-term debt cycle** | The slow buildup of debt across generations until it must be reckoned with. | ~75–100 years |
+
+Productivity is a gently rising line. The two debt cycles are waves of different
+length riding on top of it. Add them together and you get the real economy's
+jagged path.
+
+<LineChart
+  caption="Illustrative. Productivity (the smooth dashed line) rises slowly and steadily. Real output (solid) is that trend PLUS two debt cycles riding on top — a long, slow swell and a faster short cycle — which is why the economy booms and busts around a rising long-run trend."
+  height={300}
+  series={[
+    { label: "Real output (sum)", data: [100, 108, 104, 114, 122, 116, 126, 136, 130, 140, 132, 128, 138, 150, 158, 152, 162, 172] },
+    { label: "Productivity trend", data: [100, 103, 106, 109, 112, 115, 118, 121, 124, 127, 130, 133, 136, 139, 142, 145, 148, 151], color: "#a78bfa", dashed: true },
+  ]}
+  trendlines={[]}
+/>
+
+### Why credit is the engine of the swings
+
+Here is the one insight that makes the whole machine click. **One person's
+spending is another person's income.** When I spend more, your income rises —
+and the easiest way for me to spend more than I earn is to **borrow.**
+
+- **Credit** = a promise to pay later. The moment a lender extends credit,
+  spending (and therefore someone else's income) jumps *today*.
+- More spending → higher incomes → higher asset prices → lenders feel safe
+  lending more → even more spending. A **self-reinforcing boom.**
+- But credit creates **debt**, and debt must be serviced. Eventually debt
+  payments grow faster than incomes. Borrowers pull back, spending falls,
+  incomes fall, asset prices fall, lenders retreat — the machine runs in
+  **reverse.** This is a **deleveraging.**
+
+<ConceptDiagram
+  caption="The credit feedback loop — the heart of the machine. Easy credit lifts spending, which (because your spending is my income) lifts incomes and asset prices, which makes lenders confident enough to extend still more credit. The same loop runs in reverse once debt-service costs outgrow incomes."
+  chart={`flowchart LR
+  A[Easy credit] --> B[More spending]
+  B --> C[Higher incomes<br/>your spending = my income]
+  C --> D[Rising asset prices]
+  D --> E[Lenders feel safe]
+  E --> A
+  C -.debt must be serviced.-> F[Debt service grows<br/>faster than income]
+  F -.triggers.-> G[Deleveraging:<br/>loop runs in reverse]`}
+/>
+
+### The four levers of a deleveraging
+
+The short-term debt cycle is easy to end: the central bank cuts interest rates,
+borrowing restarts, the boom resumes. But in a **long-term** deleveraging,
+rates are already near **0%** — the bank is out of room. Now policymakers must
+pull four other levers. Knowing the *mix* tells you whether to expect
+**inflation** or **deflation** — which in turn drives which assets win:
+
+1. **Austerity** — cut spending. (Deflationary, painful.)
+2. **Debt restructuring / default** — write debts down. (Deflationary.)
+3. **Wealth redistribution** — tax the top, transfer to the rest.
+4. **Money printing** — the central bank creates money to buy assets.
+   (Inflationary.)
+
+A "**beautiful deleveraging**," in Dalio's phrase, balances these so that growth
+slowly resumes without runaway inflation or a deflationary collapse.
+
+### Dalio's three rules of thumb
+
+The video boils its whole framework down to three takeaways. They apply to a
+country and, scaled down, to your own finances:
+
+1. **Don't let debt rise faster than income** — or debt burdens eventually crush
+   you.
+2. **Don't let income rise faster than productivity** — or you price yourself out
+   and become uncompetitive.
+3. **Do all you can to raise productivity** — it's what matters most over the
+   long run.
+
+<Callout type="warning">
+The macro framework explains **why** cycles happen — it is *not* a market-timing
+buy/sell signal. Don't mistake "we're late in the debt cycle" for "sell
+everything Tuesday." Its job is to tell you what *environment* you're in so you
+can stay balanced, not to time entries. Ironically, trying to *trade* the machine
+is exactly the single-conviction forecasting that ruined Dalio in 1982.
+</Callout>
+
+---
+
+## Part 2 — The All-Weather portfolio (the buildable strategy)
+
+This is the part a beginner can actually act on. It flows directly from the
+machine: since you can't reliably predict the next environment, **own a
+portfolio balanced to survive all of them.**
+
+### The four economic environments
+
+Dalio reduces "the future" to two questions, each with two answers:
+
+- Is **growth** rising or falling (vs. what the market expected)?
+- Is **inflation** rising or falling (vs. what the market expected)?
+
+Two questions × two answers = **four boxes**, four "economic seasons." Crucially,
+**each season has assets that tend to do well in it:**
+
+<ConceptDiagram
+  caption="The four environments. Any economic surprise lands in one of these four boxes, and each box has natural winners. All Weather puts roughly equal RISK in each box, so whichever season actually arrives, a chunk of the portfolio is built to thrive in it."
+  chart={`flowchart TB
+  subgraph Inflation
+  RG_RI[Rising growth + rising inflation<br/>commodities, gold, IL bonds, EM debt]
+  FG_RI[Falling growth + rising inflation<br/>commodities, gold, IL bonds]
+  end
+  subgraph Disinflation
+  RG_FI[Rising growth + falling inflation<br/>stocks, corporate credit]
+  FG_FI[Falling growth + falling inflation<br/>nominal Treasury bonds]
+  end`}
+/>
+
+The classic mapping:
+
+- **Rising growth** → stocks, corporate credit, emerging-market debt.
+- **Falling growth** → long-term **nominal Treasury bonds** (the safe-haven).
+- **Rising inflation** → **inflation-linked bonds (TIPS), commodities, gold.**
+- **Falling inflation** → bonds and stocks both benefit.
+
+### The big idea: balance by *risk*, not by dollars
+
+This is the part most people get wrong, so go slow.
+
+A famous "balanced" portfolio is **60% stocks / 40% bonds.** It *looks* balanced
+— a healthy chunk in each. But stocks are roughly **three times as volatile** as
+bonds, so the stock sleeve does almost all the moving. Measured by **risk**
+(how much each piece contributes to the portfolio's ups and downs), a 60/40 is
+about **85% a bet on stocks.** It only *feels* diversified.
+
+**Risk parity** fixes this. Instead of equal *dollars*, you give each piece an
+equal share of the **risk.** Volatile assets (stocks) get *small* dollar weights;
+stable assets (bonds) get *large* dollar weights — so each contributes a similar
+slice of the portfolio's total wobble.
+
+<Callout type="note">
+This lesson teaches risk parity intuitively. For the full quant/portfolio-
+construction mechanics of **equal-risk-contribution weighting** — the actual
+formulas, how correlation enters the math, and how practitioners solve for the
+weights — see the dedicated [risk-parity lesson](/indicators/risk-parity)
+(and [Marcos López de Prado](/gurus/lopez-de-prado) for the modern machine-
+learning take on robust portfolio construction).
+</Callout>
+
+<BarChart
+  caption="Illustrative. The same 60/40 portfolio shown two ways. By DOLLARS it looks balanced (60 vs 40). By RISK CONTRIBUTION, stocks supply ~85% of the portfolio's volatility — so a 'balanced' fund is really an almost-pure stock bet. Risk parity is the move to the right column."
+  yLabel="Share of portfolio (%)"
+  labels={["Stocks", "Bonds"]}
+  series={[
+    { label: "By dollars (60/40)", data: [60, 40] },
+    { label: "By risk contribution", data: [85, 15] },
+  ]}
+/>
+
+---
+
+## A worked example: building risk parity from scratch
+
+*(Illustrative numbers, built straight from the definition of volatility.)*
+
+**Setup.** Two assets, assumed roughly uncorrelated for simplicity:
+
+- **Stocks:** volatility ≈ **15%** per year.
+- **Bonds:** volatility ≈ **4%** per year.
+
+We'll measure each asset's risk contribution as `weight × volatility` ("risk
+units").
+
+### Step 1 — Show that 60/40 is lopsided
+
+- Stocks: 60% × 15% = **9.0** risk units
+- Bonds: 40% × 4% = **1.6** risk units
+- Stocks' share of risk = 9.0 / (9.0 + 1.6) ≈ **85%.**
+
+So 60% of the *money* buys 85% of the *risk*. Not balanced.
+
+### Step 2 — Solve for equal risk contribution
+
+We want each asset to contribute the same risk: set
+`w_stock × 15% = w_bond × 4%`, with the weights summing to 1.
+
+Because stocks are ~3.75× as volatile, bonds must carry ~3.75× the stock weight,
+giving roughly:
+
+- **w_stock ≈ 21%, w_bond ≈ 79%.**
+- Check: 21% × 15% ≈ **3.15**; 79% × 4% ≈ **3.15.** Each now supplies
+  **half the risk.** Balanced at last.
+
+<BarChart
+  caption="Illustrative. Equal risk contribution forces the dollar weights to be UNequal: ~21% stocks / ~79% bonds. Both bars on the right are equal height (~3.15 risk units each) — that equality is the entire point of risk parity."
+  yLabel="Risk units (weight × volatility)"
+  labels={["Stocks", "Bonds"]}
+  series={[
+    { label: "60/40 (by dollars)", data: [9.0, 1.6] },
+    { label: "Risk parity (~21/79)", data: [3.15, 3.15] },
+  ]}
+/>
+
+### Step 3 — The leverage step (where it gets controversial)
+
+That risk-balanced portfolio is beautifully diversified — but **low-volatility,
+and therefore low-return** (its overall volatility is far below a 60/40's
+~9–10%).
+
+Dalio's real All Weather fund adds the final move: **leverage.** You borrow cash
+to scale the *whole* balanced portfolio up — lifting its expected return toward
+equity-like levels **while keeping the balance.** You get a stock-like return
+without a stock-dominated risk profile. This levered, equal-risk construction —
+*not* the fixed retail weights below — is what "All Weather" actually means at
+Bridgewater.
+
+<Callout type="warning">
+Leverage is the engine *and* the Achilles' heel. It amplifies losses as well as
+gains and adds financing/margin-call risk. **A beginner should use the
+*unleveraged* version below** and simply accept a lower expected return —
+never lever a portfolio you don't fully understand. Trying to replicate true risk
+parity with leveraged ETFs at home adds volatility-decay and margin-call risk
+most beginners don't grasp.
+</Callout>
+
+### The whole process at a glance
+
+<ConceptDiagram
+  caption="The All Weather pipeline end to end: map the four seasons, find each season's winning assets, weight them so every asset contributes equal RISK (not equal dollars), optionally lever the balanced mix up to your target return, then rebalance back to target weights forever."
+  chart={`flowchart LR
+  A[Map 4 environments<br/>growth x inflation] --> B[Pick assets that win<br/>in each box]
+  B --> C[Weight by equal<br/>risk contribution]
+  C --> D[Optional: modest<br/>leverage to target return]
+  D --> E[Rebalance periodically<br/>back to target risk]
+  E --> C`}
+/>
+
+---
+
+## A beginner's All-Weather portfolio you can actually hold
+
+You don't need a hedge fund or leverage to use the idea. A widely cited
+**unleveraged** version — popularized by Tony Robbins as the "**All Seasons**"
+portfolio in *MONEY: Master the Game* (2014), reporting advice Dalio gave him —
+uses plain, low-cost index funds:
+
+<BarChart
+  caption="The 'All Seasons' retail allocation popularized by Tony Robbins. Note how bond-heavy it is — that's risk balancing in action: the long Treasury sleeve is large in DOLLARS precisely because bonds are low in RISK. This is an approximation, not Bridgewater's actual leveraged fund."
+  yLabel="Allocation (%)"
+  labels={["US stocks", "Long-term Treasuries", "Intermediate Treasuries", "Gold", "Commodities"]}
+  series={[{ label: "Weight", data: [30, 40, 15, 7.5, 7.5] }]}
+/>
+
+- **30%** US stocks (a total-market or S&P 500 index fund)
+- **40%** long-term Treasury bonds
+- **15%** intermediate-term Treasury bonds
+- **7.5%** gold
+- **7.5%** broad commodities
+
+Then **rebalance** (e.g. once a year, or when a holding drifts ~5%+ off target)
+back to these weights. That's the entire mechanical routine. The design assumes
+you do **not** forecast or time markets — you just hold and reset.
+
+How it pays off: in a deflationary recession, falling stocks are offset by rising
+long and intermediate Treasuries; in a 1970s-style inflation shock, falling
+stocks and bonds are offset by gold and commodities. In backtests (e.g.
+2003–2022) this delivered returns **close to a 60/40 but with roughly half the
+volatility and much smaller drawdowns** — a higher risk-adjusted (Sharpe) return.
+The trade-off: in a long stock bull market, it **lags** a stock-heavy portfolio.
+That underperformance is the strategy working as designed, not breaking.
+
+<Callout type="note">
+This retail allocation is an **approximation** attributed to Robbins's reporting,
+not an official Bridgewater publication. The actual institutional All Weather
+uses leverage and dynamic, equal-*risk* weights, not these fixed percentages.
+Treat the 30/40/15/7.5/7.5 mix as a faithful *teaching* version of the idea, not
+"the fund."
+</Callout>
+
+---
+
+## Part 3 — Principles: running yourself like a machine
+
+The same "machine" instinct shapes how Dalio makes decisions, set out in
+**Principles: Life & Work** (2017, a #1 *New York Times* bestseller). The idea:
+treat your life and your organization as a machine you can observe, diagnose, and
+improve. His **5-step loop** is the engine:
+
+<ConceptDiagram
+  caption="Dalio's 5-step loop for getting what you want. It runs continuously: each painful problem you hit becomes data that feeds back into better goals and solutions — the machine improves with every turn."
+  chart={`flowchart LR
+  A[1. Set clear goals] --> B[2. Identify problems<br/>that block them]
+  B --> C[3. Diagnose root causes]
+  C --> D[4. Design solutions]
+  D --> E[5. Execute]
+  E -.results become data.-> A`}
+/>
+
+He pairs the loop with three habits:
+
+- **Radical transparency** — record meetings, give blunt feedback in the open, so
+  decisions are based on facts rather than politics.
+- **Radical open-mindedness** — assume you might be wrong and **stress-test** your
+  views against credible people (the direct antidote to his 1982 overconfidence).
+- **Believability-weighted decisions** — weight each person's opinion by their
+  demonstrated track record in that area, not by seniority or volume.
+
+The goal is to turn an organization into an **"idea meritocracy"** — a machine
+that surfaces the best thinking and gets better over time. For an individual
+investor, the takeaway is humbler but real: **write your rules down, treat your
+mistakes as data, and don't trust a conviction you haven't pressure-tested.**
+
+---
+
+## The books — where to learn it from the source
+
+- **How the Economic Machine Works** — essay (~2007–08), famous free ~30-min
+  animated video (2013). *Start here.* The best free macro intro that exists.
+- **Principles: Life & Work** (2017) — his decision-making philosophy (the 5-step
+  loop, "radical transparency," "believability-weighted" decisions).
+- **Principles for Navigating Big Debt Crises** (2018) — the debt-cycle template
+  applied to real historical crises; a free PDF is on economicprinciples.org.
+- **Principles for Dealing with the Changing World Order** (2021) — the long
+  cycle of empires and reserve currencies.
+- **How Countries Go Broke: The Big Cycle** (2025) — extends the debt-cycle work
+  to sovereign solvency.
+
+<Callout type="note">
+The term **"risk parity"** itself was coined not by Dalio but by **Edward Qian**
+(PanAgora) in a 2005 white paper. Dalio launched All Weather in **1996**, years
+before the label existed. The idea and the name have separate parents.
+</Callout>
+
+---
+
+## Honest criticisms and limitations
+
+A complete picture has to include the case against.
+
+- **Is it really "systematic"?** A November 2023 *New York Times* report by Rob
+  Copeland, and his book *The Fund* (2023), alleged Bridgewater's investing was
+  driven far more by Dalio's own **discretionary calls** than the rules-based
+  "machine" the firm's branding implied, and that "radical transparency" in
+  practice fostered surveillance and public shaming. **Dalio strongly disputed
+  this**, calling the book "fiction, created as fact." No lawsuit was filed.
+  Treat this as a **contested claim**, not a settled fact — but it's a reason for
+  humility about "the system."
+- **Risk parity leans on leverage.** Critics (e.g. Ben Inker of GMO) argue it
+  needs *too much* borrowing to match conventional returns, and that the levered
+  version offers "slight or no advantage" over a plain 60/40.
+- **It rode a 30-year bond bull market.** Risk parity's stellar long-run record
+  coincided with decades of *falling* interest rates (rising bond prices) — a
+  hidden bet on falling rates. In a regime of **disorderly rising rates**, it
+  tends to struggle.
+- **Correlation-regime risk — the 2022 problem.** The strategy assumes stocks
+  and bonds zig when the other zags. When that correlation flips positive —
+  as in **2022's inflation shock**, when stocks *and* bonds fell together (and as
+  in the 2013 "taper tantrum" before it) — the balance breaks down and the whole
+  portfolio drops at once.
+- **Flagship performance has been uneven.** Bridgewater's discretionary-macro
+  Pure Alpha fund has, per press reports, annualized only in the low single
+  digits since the mid-2000s and **lost money in 2020** — well behind a simple
+  index for long stretches, even though it has had strong individual years. The
+  takeaway for a beginner isn't the precise number (press figures differ) but the
+  shape: long stretches of underperformance are a real part of the honest
+  picture.
+
+<Callout type="warning">
+"All Weather" is a **goal, not a guarantee.** The name promises resilience across
+seasons — but 2022 proved that when inflation surges and central banks hike
+hard, *every* season's asset can fall together. No portfolio is truly all-weather.
+</Callout>
+
+### Systematic vs. discretionary — the honest middle
+
+Worth holding both views at once:
+
+- **The case for systematic/passive (Dalio's framing):** All Weather deliberately
+  *avoids forecasting* — equal risk on each environment so no single human call
+  dominates. It removes emotion and single-bet error. That is the direct lesson
+  of 1982.
+- **The case for discretion:** even risk parity needs judgment — picking the
+  assets, setting the volatility target, rebalancing, adjusting leverage — and
+  Pure Alpha is openly discretionary. Critics say the line between "systematic
+  machine" and "Dalio's instincts" is blurrier than the marketing.
+- **Beginner takeaway:** neither pure approach is provably superior, and most real
+  strategies (Bridgewater's included) are a **blend.** Systematic rules protect
+  you from your own emotions; discretion lets a skilled manager adapt — but
+  reintroduces exactly the forecasting error that nearly destroyed Dalio.
+
+## Common beginner pitfalls
+
+1. **Copying the leveraged fund without understanding leverage.** Use the
+   unleveraged version or accept lower returns. Leverage adds margin-call and
+   financing risk a beginner can't manage.
+2. **Confusing the simplified "All Seasons" mix with the real All Weather.** The
+   retail version uses fixed weights and no leverage; the institutional version
+   targets equal *risk* and uses leverage. They are not the same thing.
+3. **"Set and forget" with no rebalancing.** Without rebalancing, the volatile
+   sleeve quietly grows and the portfolio drifts *back* toward being
+   stock-dominated — the very thing risk parity exists to prevent.
+4. **Confusing risk parity with "more bonds = safer."** It's about **equal risk
+   contribution**, not maximum bonds or minimum risk.
+5. **Assuming it always beats stocks.** It's designed to *lower risk*, not
+   maximize return. Over long bull markets it *will* lag — that's expected.
+6. **Using the macro "machine" as a timing signal.** It explains cycles; it does
+   not call tops and bottoms.
+7. **Cargo-culting "radical transparency."** Blunt feedback without the trust and
+   culture behind it just becomes abrasive.
+8. **Mixing up the artifacts.** The ~2007–08 essay, the 2013 video, and the 2017
+   *Principles* book are three different things — cite years carefully.
+
+## Putting it to work
+
+You can adopt Dalio's approach in three concrete moves:
+
+1. **Watch "How the Economic Machine Works"** once, slowly. After it, headlines
+   about debt, rates, and the Fed will read like parts of a system rather than
+   noise.
+2. **Build the unleveraged All-Seasons portfolio** (30 / 40 / 15 / 7.5 / 7.5) in
+   cheap index funds, and **rebalance annually.** That is a complete, hold-able
+   strategy — not a demo.
+3. **Internalize the mindset:** balance by *risk*, not dollars; diversify across
+   *environments*, not just across tickers; and prepare for every season instead
+   of forecasting one. Then accept, honestly, that even this can have a bad year.
+
+The deepest lesson Dalio teaches isn't an allocation — it's a stance toward the
+future, paid for in full in 1982: **assume you'll be wrong about what comes next,
+and build something that survives anyway.**
+
+---
+
+### Sources
+
+1. [Ray Dalio — Wikipedia](https://en.wikipedia.org/wiki/Ray_Dalio) — biography, education, first stock at 12, Bridgewater founding (1975), Pure Alpha / All Weather, net worth, separation from the firm.
+2. [Bridgewater Associates — Wikipedia](https://en.wikipedia.org/wiki/Bridgewater_Associates) — world's-largest-hedge-fund status, AUM, the 1982 prediction, Pure Alpha record, the Copeland dispute.
+3. [Risk parity — Wikipedia](https://en.wikipedia.org/wiki/Risk_parity) — equal-risk-contribution definition, the leverage step, Edward Qian's 2005 coinage, 2013 taper-tantrum losses, criticisms.
+4. [Principles: Life and Work — Wikipedia](https://en.wikipedia.org/wiki/Principles:_Life_and_Work) — the 5-step loop, radical transparency / open-mindedness, bestseller status, criticism.
+5. [How the Economic Machine Works (Dalio's site, free ~30-min video)](https://www.economicprinciples.org/how-the-economic-machine-works/) — the three forces, credit/spending loop, short- and long-term debt cycles, four levers, the three rules of thumb.
+6. [Bridgewater — The All Weather Story](https://www.bridgewater.com/research-and-insights/the-all-weather-story) — the four environments, risk balance, and the leverage rationale (primary source).
+7. [The All Weather / "All Seasons" portfolio](https://www.optimizedportfolio.com/all-weather-portfolio/) — the 30/40/15/7.5/7.5 weights and volatility/drawdown comparison vs. 60/40.
