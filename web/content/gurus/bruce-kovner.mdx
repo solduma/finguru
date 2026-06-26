@@ -1,0 +1,414 @@
+---
+title: "Bruce Kovner — Survive First, Profit Second"
+slug: "bruce-kovner"
+kind: "guru"
+school: "macro"
+strategy: "legendary-traders"
+level: "intermediate"
+order: 403
+summary: "The cab driver turned multi-billion-dollar macro trader who proved you get rich not by being right, but by surviving the times you're wrong — by letting the exit, never your confidence, decide how much you bet."
+era: "b. 1945"
+contribution: "Risk-First Position Sizing"
+tags: ["global macro", "risk management", "position sizing", "stop loss", "trading psychology"]
+prereqs: ["charles-dow"]
+---
+
+## The one idea that matters
+
+Most beginners think professional traders are professional *predictors* — people
+with a sharper crystal ball. Bruce Kovner spent three decades building one of the
+world's great macro hedge funds, and his message is almost the opposite:
+
+> You do not get rich by predicting markets correctly. You get rich by
+> **surviving** when you are wrong — which is often — and staying solvent long
+> enough for your good bets to compound.
+
+Everything in this lesson is a tool for *surviving being wrong.* Kovner decides
+where he'll quit a trade **before** he enters it, and that exit point — not his
+level of conviction — decides how much he bets. Master that one reversal of
+logic and you've absorbed the core of his method. In his own ranking, forecasting
+is the *least* reliable part of trading; bet-sizing and loss control are what
+compound over decades.
+
+<Callout type="key">
+Kovner's most-quoted line is **"I know where I'm getting out before I get in."**
+The second is **"Undertrade, undertrade, undertrade"** — whatever size you think
+is right, cut it. Risk management isn't a footnote to his strategy. It *is* the
+strategy.
+</Callout>
+
+## Who he was
+
+**Bruce Stanley Kovner** (born February 1945, Brooklyn; raised from 1953 in
+suburban Los Angeles) is one of the most successful **global macro** traders in
+history. "Global macro" means trading the big picture — currencies (FX), interest
+rates, government bonds, and commodities — based on how economies, central-bank
+policy, and politics push those markets around.
+
+His path there was anything but straight:
+
+- **Harvard College** (from 1962), where he studied political economy at the
+  Kennedy School and started, but never finished, a Ph.D.
+- A decade of drift — political campaigns, studying the harpsichord, writing, and
+  famously **driving a New York City taxi.**
+- **1977 — his first trade.** He borrowed about **$3,000 against his MasterCard**
+  to buy soybean futures. The position ran up toward roughly **$40,000**, then
+  collapsed back toward **$23,000** before he got out. He later said he was
+  "physically sick for a week." That terror became his founding lesson in risk.
+- **Commodities Corporation** — he trained under **Michael Marcus** (himself a
+  famous trader), earning a reputation as unusually objective and disciplined.
+  Lore credits him with averaging on the order of **~90% a year** over roughly a
+  decade there — a striking figure, but a secondhand one (see the caveat below).
+- **1983 — founded Caxton Associates** in New York. Caxton grew to a peak of
+  roughly **$12–14 billion** in assets and closed to new investors in 1992.
+- **2011 — retired as CEO** of Caxton (succeeded by Andrew Law) and, in January
+  2012, formed **CAM Capital** to manage his own money. He is a major
+  philanthropist (the Kovner Foundation; chairman of the Juilliard School board
+  since 2001) with a net worth estimated around **$7.7 billion** (2024).
+
+<Callout type="note">
+**Kovner never wrote a book or a paper.** Essentially everything we "know" about
+his method comes from a single interview in Jack Schwager's *Market Wizards*
+(1989) — widely cited as the opening interview of the book — plus secondhand
+profiles. There is no primary-source treatise. Be wary of any product marketed as
+"Kovner's trading system"; none is authoritative.
+</Callout>
+
+## Why the soybean trade matters
+
+That first trade is worth dwelling on, because it contains the whole philosophy
+in miniature. Look at what actually happened to his account equity:
+
+<LineChart
+  caption="Kovner's 1977 soybean trade (approximate figures — sources disagree on the exact dollars). A ~$3,000 stake ran up toward ~$40,000, then collapsed toward ~$23,000 before he exited. He kept a profit — but the round-trip from the peak is what scarred him, and it's why 'where do I get out?' became his first question on every trade since."
+  height={300}
+  series={[{ label: "Account equity ($)", data: [3000, 9000, 18000, 28000, 36000, 40000, 31000, 23000] }]}
+  points={[
+    { x: 5, y: 40000, text: "peak ~$40k", color: "#22c55e" },
+    { x: 7, y: 23000, text: "exited ~$23k (sick for a week)", color: "#ef4444" },
+  ]}
+/>
+
+He made money — yet the experience frightened him, because he realized he'd had
+**no plan for the downside.** The gain was luck; the near-round-trip was the
+lesson. From then on, the first question on every trade was not "how high can
+this go?" but **"where will I admit I'm wrong, and how much will that cost me?"**
+
+## The core idea in plain language
+
+Picture two traders. Both are right 50% of the time — coin-flip forecasters.
+
+- **Trader A** sizes by feeling. When she's *sure*, she bets huge. A few of those
+  high-conviction bets go wrong in a row, and she's wiped out. Being right half
+  the time never gets a chance to pay off.
+- **Trader B** decides in advance the most she'll lose on any trade — say 1% of
+  her account — and never risks more, no matter how sure she feels. A losing
+  streak dents her; it can't kill her. She's still in the game when her winners
+  arrive.
+
+Same forecasting skill. Wildly different outcomes. Kovner is Trader B. His edge
+isn't a better crystal ball — it's that **he's still standing.**
+
+<ConceptDiagram
+  caption="The logic most beginners use (top) versus Kovner's (bottom). Beginners let conviction drive size, so a wrong high-conviction bet is catastrophic. Kovner reverses the arrows: he fixes the exit and the risk budget FIRST, and those mechanically determine the size."
+  chart={`flowchart LR
+  subgraph Beginner
+    C1[How sure<br/>am I?] --> S1[Position<br/>size] --> E1[Hope it<br/>works]
+  end
+  subgraph Kovner
+    X[Where's my<br/>exit/stop?] --> R[Risk budget<br/>1-2%] --> S2[Position<br/>size]
+  end`}
+/>
+
+### Why survival is *arithmetic*, not bravado
+
+This isn't a personality trait — it's math. The smaller each bet, the longer a
+losing streak you can absorb before you're finished. Kovner warns that beginners
+typically risk **5–10%** per trade and "trade three to five times too big." Watch
+what that does to how many losses in a row you can survive:
+
+<ScatterChart
+  caption="How many consecutive losing trades it takes to halve a $100k account, by risk-per-trade. Risk 1% and a normal cold streak barely dents you (~69 losers to lose half); risk 10% and roughly seven losers in a row cut your account in half. Kovner's 1–2% zone (left) is the difference between a bad month and a blown-up account."
+  xLabel="Risk per trade (% of equity)"
+  yLabel="Losing trades to halve the account"
+  series={[
+    { label: "Trades survived to a 50% drawdown", line: true, data: [
+      { x: 1, y: 69 },
+      { x: 2, y: 34 },
+      { x: 5, y: 14 },
+      { x: 10, y: 7 }
+    ] },
+    { label: "Risk level", color: "#ef4444", data: [
+      { x: 1, y: 69, label: "1% → ~69 losers" },
+      { x: 2, y: 34, label: "2% → ~34" },
+      { x: 5, y: 14, label: "5% → ~14" },
+      { x: 10, y: 7, label: "10% → ~7 losers" }
+    ] }
+  ]}
+/>
+
+A trader risking 1% can be wrong almost seventy times in a row and still have half
+the account; a trader risking 10% is finished after about seven. Forecasting
+skill never enters this chart. Survival is purely a function of bet size.
+
+## The full method — step by step
+
+Here is Kovner's process translated into something a beginner can actually
+execute.
+
+### 1. Form a thesis you can explain — and look for a non-consensus
+
+Kovner almost never traded charts alone; he traded a *view* of why a market should
+move — a policy error, a macro imbalance. He hunts for "a consensus the market is
+not confirming," disequilibria he attributed to "stupid governments" (policy
+mistakes). His first rule: **never get into a position where you can lose a lot
+for reasons you don't understand.**
+
+*Beginner version:* before entering, write down (a) your clear reason for the
+trade and (b) the competing scenario — what specifically would prove you wrong.
+If you can't articulate the bear case for your own bull trade, you're not ready.
+
+### 2. Decide the EXIT first — at a meaningful level, not the obvious one
+
+Pick the price at which you'll admit the trade has failed *before* you enter.
+Crucially, put it at a **meaningful technical level** — a price the market
+*shouldn't reach if you're right* — and **not at the obvious level where everyone
+else clusters their stops.** Those obvious clusters get deliberately run by larger
+players, shaking you out right before your thesis pays. A stop placed just past a
+crowded level is information; a stop at "I'll risk $200" is arbitrary. Kovner:
+*"It's the only way I can sleep."*
+
+<Callout type="note">
+**Why "not the obvious level"?** If hundreds of traders all put a stop at the same
+round number or the same visible support line, that price becomes a magnet: a
+brief spike trips every stop at once, then price snaps back. Placing yours a step
+beyond the herd costs a little extra risk but keeps you in trades that are
+actually working.
+</Callout>
+
+### 3. Let the stop determine position size — not the other way around
+
+This is the crux of the whole lesson, so go slowly.
+
+1. Choose how much of your capital you'll risk on this trade. Kovner says
+   beginners should risk **1–2% of equity** — not the 5–10% they typically do.
+2. Measure the distance from your entry to your stop (the risk *per share* or per
+   contract).
+3. Size the position so that *distance × size = your risk budget.*
+
+**Risk drives size. Conviction does not.** The worked examples below make this
+concrete.
+
+### 4. Undertrade
+
+Whatever size that calculation gives you, **cut it at least in half.** Kovner's
+literal advice was "whatever you think your position ought to be, cut it at least
+in half," and most blow-ups come from traders being **"three to five times too
+big."** Cutting size costs you a little upside and buys you enormous
+survivability.
+
+### 5. Check correlation across your whole book
+
+A subtle killer. If several of your positions secretly rise and fall together,
+they aren't separate bets — they're **one big bet in disguise.** Kovner: "If you
+have eight highly correlated positions, then you are really trading one position
+eight times as large." Sum your risk across correlated trades *before* sizing them
+— don't budget each one independently.
+
+<ConceptDiagram
+  caption="The hidden-correlation trap. Four 'separate' trades that all depend on the same driver (here, the US dollar) are really one concentrated bet. Add up correlated exposures BEFORE sizing, or your true risk is several times what you think."
+  chart={`flowchart LR
+  USD[One driver:<br/>US dollar falls] --> A[Long EUR/USD]
+  USD --> B[Long gold]
+  USD --> C[Long oil]
+  USD --> D[Long emerging<br/>market stocks]
+  A & B & C & D --> R[= ONE bet,<br/>4x the size]`}
+/>
+
+### 6. Use charts as a thermometer, not a forecast
+
+Kovner is a fundamentals-driven trader who still respects the chart. His analogy:
+a fundamentalist who ignores charts is like "a doctor who won't take the
+patient's temperature." A chart tells you *where the market is now*, helps you
+**place the stop**, and flags abnormal behavior — but it tracks the past; it does
+not predict the future. Use it to time and to locate your exit, not as a prophecy.
+
+### 7. Manage emotion as a system — exit mechanically, without ego
+
+When the stop is hit, you're out — calmly. Kovner: *"If you personalize losses,
+you can't trade."* The market "is totally impersonal." He even advised closing any
+position tied to an event that "disrupts your emotional equilibrium." Eliminate
+the words **"I hope"** and **"I wish"** from your trading vocabulary — they divert
+you away from the *diagnostic process* of deciding what to actually do.
+
+### 8. Stay quiet, and work hard
+
+Two quieter Kovner rules round out the picture. First, the less-crowded a setup,
+the cleaner its signal — he liked a Heisenberg analogy: "the less observed, the
+better the trade." Second, there is no shortcut: *"If you don't work very hard, it
+is extremely unlikely that you will be a good trader."* The risk framework is
+teachable in an afternoon; the judgment that finds the trade is a lifetime of
+work.
+
+<ConceptDiagram
+  caption="Kovner's trade lifecycle as a loop. Notice the exit is defined at step 2 — before any money is committed — and the only emotional discipline required at the end is to obey the plan you already made."
+  chart={`flowchart LR
+  T[1. Thesis +<br/>bear case] --> S[2. Set exit at<br/>meaningful level]
+  S --> B[3. Size from<br/>risk budget]
+  B --> U[4. Undertrade]
+  U --> M[5. Monitor:<br/>chart as thermometer]
+  M -->|stop hit| X[Exit calmly]
+  M -->|thesis intact| M
+  X --> T`}
+/>
+
+## A worked example: sizing a stock trade from the stop
+
+*(Illustrative numbers, built straight from the method.)*
+
+Suppose you have a **$50,000** account and follow Kovner's "risk 1%" rule on a
+stock trade.
+
+- **Risk budget per trade** = 1% × $50,000 = **$500.** That's the most you'll
+  lose if stopped out.
+- You want to buy at **$100.** You identify genuine technical support at **$95**;
+  below it, your thesis is wrong. So your **stop = $95**, meaning **$5 of risk per
+  share.**
+- **Position size** = risk budget ÷ risk per share = $500 ÷ $5 = **100 shares.**
+- **Capital deployed** = 100 × $100 = **$10,000** (20% of the account) — but only
+  **$500 (1%) is actually at risk.**
+
+Now apply the **undertrade** rule: cut it to **50 shares**, risking about **$250
+(0.5%).**
+
+Notice the logic runs *backwards from the exit:* the stop ($95) and the risk
+budget ($500) **produce** the size. The wider your stop, the smaller your
+position — because the same $500 has to stretch across more dollars of risk per
+share:
+
+<BarChart
+  caption="Same $500 risk budget, three different stop distances. A tight stop ($98, $2/share risk) allows a big 250-share position; a wide stop ($90, $10/share) forces a small 50-share position. The risk in dollars is identical in all three — only the share count changes. This is 'I know where I'm getting out before I get in' as arithmetic."
+  labels={["Stop $98 ($2 risk/sh)", "Stop $95 ($5 risk/sh)", "Stop $90 ($10 risk/sh)"]}
+  series={[{ label: "Shares the $500 budget allows", data: [250, 100, 50] }]}
+  yLabel="Shares"
+/>
+
+The beginner instinct — "I'm really confident, so I'll buy more" — never enters
+this calculation. Confidence doesn't appear anywhere in the math. Only the exit
+and the risk budget do.
+
+## A second worked example: Kovner's home turf (an FX trade)
+
+Currencies were Kovner's bread and butter, so here is the same machinery on an FX
+position. Account equity **$100,000**, risk budget at 1% = **$1,000.**
+
+1. **Thesis:** a currency should fall. You **short at 1.2000.**
+2. **Stop, placed *past* an obvious resistance cluster** (not right at it): **1.2100**
+   → risk = **100 pips.**
+3. On a standard lot, 100 pips ≈ **$1,000** of loss. So the raw size that uses the
+   whole budget is **1 standard lot.**
+4. **Undertrade:** cut it in half → **0.5 lot**, risking about **$500 (0.5%).**
+5. **Correlation check:** if you also short two *other* currencies that move
+   together with this one, those aren't three independent 0.5% bets — combined
+   they behave like roughly one **~1.5%** bet. So you scale each one *down* further
+   to keep the *total* near your 1–2% budget.
+
+If you're wrong on the half-lot, you lose about $500 — you survive easily. Contrast
+the beginner error: risking 5–10% ($5,000–$10,000) on the same trade. A perfectly
+ordinary cold streak of five to seven losers would cut the account in half — the
+exact opposite of survival, and exactly the scenario the scatter chart above maps.
+
+## Key sources
+
+- **Jack D. Schwager — *Market Wizards: Interviews with Top Traders* (1989).** The
+  primary source; Kovner is widely cited as the opening interview, and nearly
+  every quote in this lesson traces here.
+- **Jack D. Schwager — *The Little Book of Market Wizards* (2014).** Distills the
+  risk and position-sizing lessons (Kovner included) into a beginner-friendly form.
+- **Sebastian Mallaby — *More Money Than God: Hedge Funds and the Making of a New
+  Elite* (2010).** A reputable secondary history covering Commodities Corporation
+  and the macro-trading lineage Kovner came from.
+- **No book by Kovner himself** — he has never written one.
+
+## Honest criticisms and limitations
+
+Kovner's method is powerful, but a beginner should know exactly where it stops
+being a free lunch.
+
+- **The risk rules are necessary, not sufficient.** They are teachable; the *macro
+  thesis* — the part where the edge actually lives — is largely tacit. Many
+  disciplined traders follow identical risk rules and still fail, because copying
+  the framework doesn't give you the judgment.
+- **It's discretionary, not mechanical.** "Imagine an alternative world
+  configuration" can't be coded or backtested the way a trend system can. You can
+  replicate his *survival*; you can't replicate his *insight.*
+- **The numbers are largely unaudited.** The ~90% at Commodities Corporation, and
+  even Caxton's headline returns, come from secondary sources and *conflict*:
+  trader lore cites ~21% over 28 years, while one industry tally (LCH Investments)
+  puts Caxton nearer **~14% a year at about half the volatility of the S&P 500.**
+  The soybean dollars differ across retellings too. **Teach the principle; flag
+  the figures.**
+- **Macro regime dependence.** Kovner thrived amid the big policy dislocations of
+  the 1980s–2000s. Crowded, central-bank-anchored, low-volatility regimes erode
+  the very disequilibria he exploited.
+- **"Half the S&P's volatility" is not zero risk.** Caxton still had a losing year
+  (1994) and saw roughly **27% in redemptions in 2008–2009** even while staying
+  positive. Survival rules *reduce* drawdowns; they never eliminate them.
+- **Stops aren't free protection.** The worked examples assume a *clean fill.* In
+  fast or gapping markets a stop at $95 can fill at $90 — your real loss exceeds
+  the budget. Size with that slippage in mind.
+
+<Callout type="warning">
+A stop-loss is a plan, not a guarantee. It caps your *intended* loss, but in a
+gap or a flash crash the market can leap straight past your level. Treat the 1%
+budget as a best case, not a hard floor.
+</Callout>
+
+## Common beginner pitfalls (the things Kovner explicitly warns against)
+
+<Callout type="warning">
+1. **Sizing by conviction instead of by risk** — the single biggest error, and the
+   exact reversal of his method. "How sure am I?" must not set position size; the
+   stop does.
+2. **Trading 3–5× too big** — risking 5–10% per trade when it should be 1–2%.
+3. **Entering with no predetermined exit**, then "hoping" — "if you personalize
+   losses, you can't trade."
+4. **Placing stops at the obvious level** where everyone clusters, and getting run
+   out before the thesis plays.
+5. **Ignoring correlation** — stacking trades that are secretly the same bet.
+6. **Trading without an articulable thesis** — losing money for reasons you don't
+   understand.
+7. **Treating charts as prediction** rather than as a thermometer of conditions.
+8. **Copying his macro views without the risk discipline** — the inverse of what
+   made him durable.
+</Callout>
+
+## Putting it to work
+
+You don't need a global macro fund to trade like Kovner. You need a checklist you
+run *before* every position:
+
+1. **Write the thesis and the bear case.** What is your reason, and what proves
+   you wrong?
+2. **Place the stop at a meaningful level** — just past, not on top of, the
+   obvious one everyone watches.
+3. **Set your risk budget** at 1–2% of equity.
+4. **Compute size from the stop:** budget ÷ (distance to stop).
+5. **Halve it.** Undertrade.
+6. **Sum your correlated exposure** across the whole account before you commit.
+7. **When the stop hits, leave** — calmly, no "I hope."
+
+Do this on every trade and you will have internalized the one lesson that
+separates traders who last from traders who flame out: *manage the loss, and the
+profits will manage themselves.*
+
+---
+
+### Sources
+
+1. [Bruce Kovner — Wikipedia](https://en.wikipedia.org/wiki/Bruce_Kovner) — biography; the 1977 MasterCard soybean trade; Caxton; CAM Capital (2012); net worth; philanthropy.
+2. [Caxton Associates — Wikipedia](https://en.wikipedia.org/wiki/Caxton_Associates) — founded 1983; ~$12–14B peak; return/volatility figures; 2011 succession to Andrew Law; 1994 loss and 2008–09 redemption context.
+3. [Market Wizards — Wikipedia](https://en.wikipedia.org/wiki/Market_Wizards) — confirms *Market Wizards: Interviews with Top Traders*, Jack D. Schwager, 1989.
+4. [Bruce Kovner — TurtleTrader](https://www.turtletrader.com/trader-kovner/) — "I know where I'm getting out before I get in," "undertrade, undertrade, undertrade," predetermined stops placed away from obvious levels, the correlation lesson, the chart-as-thermometer analogy.
+5. [Lessons from Market Wizard: Bruce Kovner — New Trader U](https://www.newtraderu.com/2016/09/15/lessons-market-wizard-bruce-kovner/) — the 1–2% rule, stop-sizes-the-position, correlation, the Heisenberg "less observed" point, and the figure caveats.
+6. [Market Wizard Bruce Kovner Trading Quotes — New Trader U](https://www.newtraderu.com/2020/08/04/market-wizard-bruce-kovner-trading-quotes/) — verbatim quotes on risk, undertrading, fundamentals-vs-technicals, "if you personalize losses you can't trade," and "work very hard."
