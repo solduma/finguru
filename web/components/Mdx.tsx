@@ -4,11 +4,22 @@ import rehypeSlug from "rehype-slug";
 import Callout from "./Callout";
 import LineChart from "./charts/LineChart";
 import CandleChart from "./charts/CandleChart";
+import BarChart from "./charts/BarChart";
+import ScatterChart from "./charts/ScatterChart";
+import ConceptDiagram from "./charts/ConceptDiagram";
 import GlossaryTerm from "./GlossaryTerm";
 import { remarkGlossary } from "@/lib/glossary/remarkGlossary";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 
-const components = { Callout, LineChart, CandleChart, GlossaryTerm };
+const components = {
+  Callout,
+  LineChart,
+  CandleChart,
+  BarChart,
+  ScatterChart,
+  ConceptDiagram,
+  GlossaryTerm,
+};
 
 export default function Mdx({
   source,

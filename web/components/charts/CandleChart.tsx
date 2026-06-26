@@ -2,7 +2,7 @@
 
 import { Chart } from "react-chartjs-2";
 import { ensureRegistered } from "./register";
-import { COLORS, levelLine, pointLabel } from "./theme";
+import { COLORS, levelLine, zoneBox, pointLabel } from "./theme";
 import ChartFrame from "./ChartFrame";
 
 ensureRegistered();
@@ -21,6 +21,7 @@ export interface CandleChartProps {
   height?: number;
   points?: { x: number; y: number; text: string; color?: string }[];
   levels?: { y: number; label: string; color?: string }[];
+  zones?: { yMin: number; yMax: number; color?: string; label?: string }[];
 }
 
 export default function CandleChart({
@@ -30,6 +31,7 @@ export default function CandleChart({
   height = 300,
   points = [],
   levels = [],
+  zones = [],
 }: CandleChartProps) {
   const xLabels =
     labels ?? candles.map((_, i) => i + 1);
@@ -61,6 +63,14 @@ export default function CandleChart({
   };
 
   const annotations: Record<string, unknown> = {};
+  zones.forEach((z, i) => {
+    annotations[`zone${i}`] = zoneBox(
+      z.yMin,
+      z.yMax,
+      z.color ?? COLORS.zoneNeutral,
+      z.label,
+    );
+  });
   levels.forEach((l, i) => {
     annotations[`level${i}`] = levelLine(l.y, l.label, l.color ?? COLORS.axis);
   });

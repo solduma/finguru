@@ -31,11 +31,24 @@ _HEADING_RE = re.compile(r"^(#{1,4})\s+(.*)$")
 _CALLOUT_OPEN_RE = re.compile(r"<Callout[^>]*>")
 _CALLOUT_CLOSE_RE = re.compile(r"</Callout>")
 # Self-closing chart components carry data, not prose — drop them entirely so
-# their numeric props don't pollute the embedding text.
-_CHART_RE = re.compile(r"<(?:LineChart|CandleChart)\b[\s\S]*?/>", re.MULTILINE)
+# their numeric props don't pollute the embedding text. Covers the price charts
+# (LineChart/CandleChart) and the school-fit visuals (BarChart/ScatterChart).
+_CHART_RE = re.compile(
+    r"<(?:LineChart|CandleChart|BarChart|ScatterChart)\b[\s\S]*?/>",
+    re.MULTILINE,
+)
+# ConceptDiagram is a block component (<ConceptDiagram ...> … </ConceptDiagram>)
+# whose body is a Mermaid definition — pure diagram syntax, never prose.
+_DIAGRAM_RE = re.compile(
+    r"<ConceptDiagram\b[\s\S]*?</ConceptDiagram>", re.MULTILINE
+)
+# Belt-and-suspenders: strip any stray fenced ```mermaid blocks too.
+_MERMAID_FENCE_RE = re.compile(r"```mermaid[\s\S]*?```", re.MULTILINE)
 
 
 def _clean(text: str) -> str:
+    text = _DIAGRAM_RE.sub("", text)
+    text = _MERMAID_FENCE_RE.sub("", text)
     text = _CHART_RE.sub("", text)
     text = _CALLOUT_OPEN_RE.sub("", text)
     text = _CALLOUT_CLOSE_RE.sub("", text)
