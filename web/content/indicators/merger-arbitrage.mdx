@@ -1,0 +1,223 @@
+---
+title: "Merger Arbitrage — Betting on the Deal Closing"
+slug: "merger-arbitrage"
+kind: "indicator"
+school: "fundamental"
+level: "intermediate"
+order: 124
+summary: "When one company agrees to buy another, the target's stock jumps — but stops just short of the offer price. That stubborn little gap is a bet on whether the deal actually closes. This is how arbitrageurs harvest it, why the payoff is lopsided, and how it occasionally runs them over."
+tags: ["merger arbitrage", "risk arbitrage", "event-driven", "M&A", "spread", "Warren Buffett", "MAC clause", "deal break"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+**Merger arbitrage** — also called **risk arbitrage** — is a strategy that bets on whether an *already-announced* takeover will actually close. When Company A agrees to buy Company B, B's stock leaps toward the offer price but stops a little short. That leftover gap, the **spread**, is your pay for two things: waiting until the deal closes, and bearing the risk that it falls apart. Collect the spread when deals close; lose much more on the rare deal that breaks.
+
+The defining feature, and the thing that makes it dangerous, is that the payoff is **lopsided**. You make a small, fairly predictable gain most of the time, and suffer a large, sudden loss once in a while. The trade has a famous nickname for exactly this reason: *"picking up pennies in front of a steamroller."*
+
+<Callout type="key">
+
+This is educational content, not financial advice. The numbers in the examples and charts are illustrative teaching aids — chosen to make the mechanics clear — not forecasts or recommendations.
+
+</Callout>
+
+## Why this matters
+
+Most strategies on this site try to guess where a stock *price* is going. Merger arbitrage is different: it tries to guess whether a specific *corporate event* will happen — a merger completing — and it deliberately tries to make money "regardless of the behavior of the stock market," as Warren Buffett put it in his 1988 Berkshire Hathaway letter.
+
+That independence from the market is the appeal. If you buy a takeover target at the right spread, your return depends on lawyers, regulators, and shareholder votes — not on whether the S&P 500 rises or falls. Buffett called these positions **"workouts"** — trades whose return depends on a corporate action working out, not on the market's mood. As we'll see, that independence is mostly real, but it has a cruel exception: the correlation comes roaring back at the worst possible moment.
+
+## The core mechanic: the spread
+
+Start with the cleanest case, a **cash deal** — the acquirer offers cash for each share of the target.
+
+Imagine a company whose stock trades quietly at **$40**. One morning an acquirer announces it will buy the company for **$80 a share in cash.** The stock immediately rockets — but watch where it lands. It does *not* jump to $80. It jumps to, say, **$70.**
+
+Why the gap? Two reasons:
+
+- **Time.** The deal won't close for months. Regulators must approve it, shareholders must vote, paperwork must clear. Your money is tied up the whole time, so the price reflects a discount for waiting.
+- **Risk.** The deal might *not* close at all. If it collapses, the stock falls back toward where it started — roughly $40.
+
+So after announcement, the **gross spread** is:
+
+`Gross spread = Offer price − Target market price = $80 − $70 = $10`
+
+If you buy at $70 and the deal closes at $80, you make **+$10 per share**. If the deal breaks and the stock falls back to $40, you lose **−$30 per share.** That asymmetry — small gain, large loss — is the heart of the strategy, and we'll keep returning to it.
+
+<Callout type="note">
+
+A subtle point: if a target ever trades *above* the announced offer price, the market expects a **higher competing bid** — a rival acquirer to jump in. The spread isn't just a probability of *this* deal closing; it also embeds the chance of a better one.
+
+</Callout>
+
+## The spread as a market-implied probability
+
+That $10 spread isn't arbitrary — it encodes the market's collective guess about the odds of the deal closing. We can back out an implied probability with a simple formula:
+
+`P(complete) = (Current price − Break price) ÷ (Offer price − Break price)`
+
+Three terms:
+
+- **Current price** — what the target trades at now ($70).
+- **Offer price** — the announced takeover price ($80).
+- **Break price** — where the stock would fall *if the deal collapses.* This is usually estimated as the **unaffected pre-announcement price** ($40).
+
+Plug in the numbers:
+
+`P(complete) = ($70 − $40) ÷ ($80 − $40) = $30 ÷ $40 = 0.75`
+
+The market is pricing in a **75% chance the deal closes** and a 25% chance it breaks. The spread, in other words, *is* a probability in disguise. A wide spread means the market is nervous; a razor-thin spread means the market is nearly certain.
+
+<BarChart
+  caption="Illustrative, not real data: the same announced deal at different traded prices implies different completion odds (break price assumed at $40)."
+  labels={["Trades $79", "Trades $76", "Trades $70", "Trades $60"]}
+  series={[
+    { label: "Implied P(complete) %", data: [98, 90, 75, 50] }
+  ]}
+  yLabel="Implied probability of close (%)"
+/>
+
+<Callout type="warning">
+
+The implied probability is only as honest as the **break price** you assume — and that number is a *guess*, not an observed fact. The bad news that killed a deal might push the stock even *lower* than where it started, so treat the "75%" as a useful framing, never a measured certainty.
+
+</Callout>
+
+## Cash deals vs. stock deals
+
+The $80-cash example is the simple case: you just **buy the target** and wait. No hedge needed.
+
+But many takeovers pay in the acquirer's *own shares* — a **stock deal.** Here the acquirer says, in effect, "for every 1 share of the target you own, we'll give you 0.5 of our shares" — that ratio (0.5) is the **exchange ratio**, fixed in the merger agreement.
+
+This creates a problem. If you simply buy the target, your eventual payoff depends on the *acquirer's* share price, which bounces around for reasons that have nothing to do with the deal closing. You wanted to bet on the deal, not on the acquirer's stock. So the arbitrageur **hedges**:
+
+- **Buy** the target's shares.
+- **Short** the acquirer's shares in the exact exchange ratio (short 0.5 acquirer shares for every 1 target share).
+
+This is called **"setting a spread."** When the deal closes, your target shares convert into acquirer shares, which you use to cover the short. Moves in the acquirer's price wash out — what you lose on one leg you make on the other — and you're left capturing the spread regardless of where the acquirer's stock went. You've isolated the bet down to the one thing you care about: *does the deal close?*
+
+<ConceptDiagram
+  caption="The two deal types. A cash deal needs no hedge; a stock deal is hedged by shorting the acquirer at the exchange ratio so the bet is purely on completion."
+  chart={`flowchart TD
+  A[Deal announced] --> B{Cash or stock?}
+  B -->|Cash deal| C[Buy the target]
+  C --> D[Earn the spread when it closes]
+  B -->|Stock deal| E[Buy the target AND short the acquirer at the exchange ratio]
+  E --> F[Acquirer price moves cancel out: bet is purely on completion]
+  F --> D`}
+/>
+
+Some stock deals add a **collar** — a variable exchange ratio that adjusts if the acquirer's stock moves too far — which makes the simple fixed-ratio hedge more complicated.
+
+## Annualizing the spread: small numbers, big-looking returns
+
+A $10 spread on a $70 stock is about 14%. But that's not the right way to think about it, because you don't hold it for a year — you hold it until the deal closes, maybe three or four months. To compare deals fairly, arbitrageurs **annualize**:
+
+`Annualized return = (Gross spread ÷ Target price) × (365 ÷ Days to close)`
+
+Here's the trap. **Tiny spreads can annualize to attractive-looking numbers purely because the holding period is short.** When **Microsoft agreed to buy LinkedIn**, the offer was roughly **$196 a share**; LinkedIn traded just under that on announcement and crept closer as closing approached. The spread was small — a few dollars — but because the deal closed in a few months, the play has been described as roughly a **4% annualized** return. Respectable for a near-certain deal, but notice that the *whole* return depends on the deal closing *on schedule.*
+
+<Callout type="warning">
+
+A small spread looks like a fine annualized yield *only* because you divided by a short holding period. If the timeline slips — antitrust review drags on, a court date is set — the annualized return drops *and* the stock often falls, because a delay signals trouble. The math that flattered you on the way in punishes you on the way out.
+
+</Callout>
+
+## The deal-break risk and the asymmetric payoff
+
+Most announced deals close. But the ones that don't are where the strategy's whole risk lives. Buffett, in that 1988 letter, laid out the four questions he asks before any arbitrage position — still the best checklist there is:
+
+> "How likely is it that the promised event will indeed occur? How long will your money be tied up? What chance is there that something still better will transpire — a competing takeover bid, for example? What will happen if the event does not take place because of anti-trust action, financing glitches, etc.?"
+
+Those last items name the main ways deals die:
+
+- **Antitrust / regulatory denial** — a competition authority blocks the merger.
+- **Financing failure** — the acquirer can't raise the money.
+- **Shareholder-vote rejection** — the target's (or acquirer's) owners vote no.
+- **MAC / MAE clause invocation** — the buyer invokes a contract clause to walk away (more below).
+
+How often do deals break? The academic record (Baker and Savasoglu, summarized on Wikipedia) varies a lot by era and deal type: **8.0%** of deals failed across 2,182 mergers in **1990–2007**, but **22.7%** failed across 1,901 mergers in **1981–1996.** And **hostile** deals (where the target's board resists) succeed only about **38%** of the time, versus about **82%** for **friendly** deals.
+
+<BarChart
+  caption="Real, attributable break/success rates (Baker & Savasoglu, via Wikipedia), showing how much outcomes vary by era and by friendly vs. hostile."
+  labels={["Break rate 1990–2007", "Break rate 1981–1996", "Hostile success", "Friendly success"]}
+  series={[
+    { label: "Percent", data: [8.0, 22.7, 38.0, 82.0] }
+  ]}
+  yLabel="Percent (%)"
+/>
+
+Now combine the two facts we've built up — a small gain on success, a large loss on a break — and you get the strategy's signature shape. The **HFRI Merger Arbitrage Index** from 1990–2005 had a maximum one-month gain of only **+2.9%**, but a maximum one-month loss of **−6.5%.** The downside was more than twice the upside — *"picking up pennies in front of a steamroller"* in a single statistic.
+
+<ScatterChart
+  caption="Illustrative shape, not real data: many small wins (the spread, collected over and over) against rare large losses (deal breaks)."
+  xLabel="Outcome (loss ← → gain) →"
+  yLabel="How often it happens →"
+  series={[{
+    label: "Stylized payoff distribution",
+    line: true,
+    color: "#38bdf8",
+    data: [{ x: -7, y: 0.3 }, { x: -4, y: 0.6 }, { x: -1, y: 2.5 }, { x: 1, y: 8 }, { x: 3, y: 5 }, { x: 4, y: 1 }]
+  }]}
+/>
+
+Worse, the diversification benefit is treacherous. Merger arbitrage normally has a **beta near zero** — it barely moves with the stock market, which is the whole point. But in months when the market falls **4% or more**, merger-arb's beta has **spiked toward roughly 0.5.** The strategy looks independent of the market in calm times, then becomes correlated exactly when stocks crash and you most wanted that independence. Deals break in clusters during financial stress — financing dries up, nerves fray — so your "market-neutral" book takes losses precisely when everything else is falling.
+
+## MAC / MAE clauses: the buyer's escape hatch
+
+A **MAC** (Material Adverse Change) or **MAE** (Material Adverse Effect) clause is a negotiated condition that lets a buyer walk away if something happens before closing that "significantly reduces the value" of the target — a contractual way to say "the company I agreed to buy is no longer the company in front of me."
+
+A few things matter for arbitrageurs:
+
+- **Definitions are unique to each contract.** There is no universal MAC; what counts as "material" is hammered out deal by deal. You have to read the actual agreement.
+- **Disputes land in the Delaware Court of Chancery** — the specialized business court where most large U.S. corporate fights are settled.
+- **The party trying to escape bears the burden of proof.** Historically this burden has been very hard to meet, which is *good* for the arbitrageur: courts have been reluctant to let buyers off the hook over ordinary bad news, so MAC invocations rarely succeed.
+
+<Callout type="warning">
+
+Two cases are often cited here. **Akorn v. Fresenius (2018)** is widely described as the first time a Delaware court let an acquirer terminate a merger by successfully invoking a MAC. The **LVMH / Tiffany (2020)** dispute is a good modern illustration of MAC *brinkmanship*, though it was ultimately renegotiated to a lower price rather than decided in court. Verify the specifics against a primary source before relying on either detail — but the broad lesson is reliable: MAC clauses are a real deal-break risk, litigated in Delaware, and historically hard for buyers to win on.
+
+</Callout>
+
+## The lineage: Graham, Buffett, and "workouts"
+
+This is one of the oldest disciplined ways to make money in markets, and it sits squarely in the value-investing tradition this school is built on.
+
+In his 1988 letter, Buffett pointed to the **"continuous 63-year arbitrage experience of Graham-Newman Corp., Buffett Partnership, and Berkshire."** Benjamin Graham's firm, Graham-Newman, earned **unleveraged arbitrage returns averaging about 20% a year over 1926–1956**, and Buffett's own arbitrage results from 1956 onward "averaged well over 20%."
+
+<Callout type="note">
+
+Handle that "20%" figure precisely: it refers specifically to **unleveraged arbitrage returns over 1926–1956** for Graham-Newman — not the firm's overall results, and not some other period.
+
+</Callout>
+
+Buffett's favorite illustration is **Arcata Corp. (1981).** KKR offered $37 a share; Berkshire bought even above the offer, judging a higher price likely. The deal wobbled exactly as Buffett's four questions anticipate — offers were cut, then a rival group won the company at $37.50 — yet Berkshire still netted roughly **15% annualized over about six months.** Then came a bonus: Arcata's disputed legal claim over government-taken redwood timber, which Buffett "coolly evaluated at somewhere between zero and a whole lot," later settled for an extra **$29.48 per share.** A well-chosen workout can deliver its steady return *and* an occasional free option — the upside mirror image of the steamroller.
+
+## Putting it to work
+
+- **Read the actual merger agreement and estimate the break price honestly.** The break risk lives in the conditions — financing, regulatory, MAC clauses, votes — and your implied probability is only as good as your guess of where the stock falls if the deal dies.
+- **Respect the asymmetry.** You collect small spreads against a rare large loss; one badly-sized position in a broken deal can erase many successful trades.
+- **Remember the correlation trap.** This strategy is market-neutral until it isn't: in a crash, deals break in clusters and beta jumps just as everything else sells off.
+
+## Key takeaways
+
+- **Merger (risk) arbitrage** bets on an *announced* deal closing. After announcement the target trades *below* the offer; the leftover **gross spread** (offer − market price) is your pay for time and deal risk.
+- The spread is a **market-implied probability:** `P(complete) = (Current − Break) ÷ (Offer − Break)`. In the worked case, ($70 − $40) ÷ ($80 − $40) = **75%** — but the **break price is an assumption, not a fact.**
+- **Cash deals** just need you to buy the target. **Stock deals** are hedged by going long the target and **short the acquirer at the exchange ratio**, isolating the bet on completion.
+- **Annualizing** a spread (`(spread ÷ price) × (365 ÷ days)`) makes small gaps look attractive only because holding periods are short — and a timeline slip hurts twice. The **Microsoft/LinkedIn** deal annualized to roughly **4%.**
+- The payoff is **asymmetric and occasionally brutal:** HFRI Merger Arbitrage 1990–2005 had a max monthly gain of **+2.9%** but a max monthly loss of **−6.5%.** Beta is near zero but **spikes toward ~0.5 in market crashes**, exactly when you don't want it.
+- Deals break via **antitrust, financing failure, vote rejection, or MAC/MAE clauses** (litigated in the **Delaware Court of Chancery**, burden on the party escaping). Break rates ran **8.0%** (1990–2007) and **22.7%** (1981–1996); **hostile** deals succeed ~38% vs **friendly** ~82%.
+- The strategy is old and respectable: Buffett called these **"workouts,"** citing Graham-Newman's ~20% unleveraged arbitrage returns (1926–1956). The **Arcata (1981)** case shows both the steady ~15% workout return and the occasional free-option bonus.
+
+## Further reading
+
+- **Berkshire Hathaway 1988 Chairman's Letter** (berkshirehathaway.com/letters/1988.html) — the four questions, the "workouts" framing, the Graham-Newman 63-year arbitrage record, and the Arcata Corp. case, all in Buffett's own words.
+- Benjamin Graham, *The Intelligent Investor* — the value-investing foundation from which "workouts" and the demand for a margin of safety descend.
+
+### Sources
+
+1. [Risk arbitrage — Wikipedia](https://en.wikipedia.org/wiki/Risk_arbitrage) — the core mechanic and the $40→$80 offer / $70 traded worked example; the implied-probability framing; cash vs. stock deals, exchange ratios, "setting a spread," and collars; the HFRI Merger Arbitrage Index max gain +2.9% / max loss −6.5% (1990–2005) and the near-zero beta spiking to ~0.5 in down markets; the Baker & Savasoglu break-rate studies (8.0% over 1990–2007; 22.7% over 1981–1996; hostile ~38% vs friendly ~82%).
+2. [Berkshire Hathaway 1988 Chairman's Letter](https://www.berkshirehathaway.com/letters/1988.html) — Buffett's four arbitrage questions (quoted directly); profit "regardless of the behavior of the stock market"; the "63-year arbitrage experience" and ~20% unleveraged Graham-Newman returns (1926–1956); the "workouts" terminology; and the Arcata Corp. case including the redwood-claim "zero and a whole lot" line and the +$29.48-per-share settlement.
+3. [Material adverse change — Wikipedia](https://en.wikipedia.org/wiki/Material_adverse_change) — MAC/MAE clauses as a buyer's walk-away condition; disputes settled in the Delaware Court of Chancery; the escaping party bearing the burden of proof; per-contract definitions. (Akorn v. Fresenius (2018) as the widely-cited "first Delaware MAC" ruling, and the LVMH/Tiffany (2020) dispute, are flagged in the text as requiring independent verification — a primary source could not be confirmed in this session.)
+4. [Merger arbitrage — WallStreetPrep](https://www.wallstreetprep.com/knowledge/merger-arbitrage/) — the annualized-return convention `(gross spread ÷ target price) × (365 ÷ days to close)` and the Microsoft/LinkedIn worked example (offer ~$196; ~4% annualized).

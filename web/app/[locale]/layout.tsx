@@ -35,10 +35,10 @@ export default async function LocaleLayout({
               {t.brand}
             </Link>
             <Link
-              href={`/${locale}/path`}
+              href={`/${locale}/strategies`}
               className="text-sm text-gray-300 no-underline"
             >
-              {t.nav.path}
+              {t.nav.strategies}
             </Link>
             <Link
               href={`/${locale}/schools`}

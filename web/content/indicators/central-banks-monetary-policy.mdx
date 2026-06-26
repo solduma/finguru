@@ -1,0 +1,335 @@
+---
+title: "Central Banks & Policy Regimes"
+slug: "central-banks-monetary-policy"
+kind: "indicator"
+school: "macro"
+level: "intermediate"
+order: 123
+summary: "Currencies and bonds don't trade on the economy — they trade on what the central bank is expected to do next. This is the macro investor's most important driver: the policy regime."
+tags: ["central banks", "monetary policy", "interest rates", "inflation targeting", "quantitative easing", "forward guidance", "macro"]
+prereqs: ["charles-dow"]
+---
+
+## Why this matters
+
+Here is the single most useful idea in global macro: **markets don't trade the
+economy — they trade the central bank's expected response to the economy.**
+
+A currency rallies not because growth is good, but because good growth makes the
+central bank more likely to *raise rates*. A bond rallies not because inflation
+fell, but because falling inflation makes the bank more likely to *cut*. The
+economy is the input; the **policy regime** — the set of rules and tools a
+central bank is currently using — is the machine that turns that input into the
+prices you actually trade.
+
+So before you take a view on the dollar, the euro, or a 10-year government bond,
+you have to answer one question: *what regime is the central bank in, and what is
+it expected to do next?* This lesson builds that map.
+
+<Callout type="key">
+
+The professional shortcut: **the level of rates matters less than the *surprise*
+versus what was already expected.** Central banks tell you their plan in advance
+(forward guidance), markets price that plan, and the big moves happen when
+reality forces the bank *off* its stated path.
+
+</Callout>
+
+## The policy rate: the one lever everything hangs on
+
+The Federal Reserve's main tool is the **federal funds rate** — the interest
+rate banks charge each other to borrow reserves (the cash banks park at the Fed)
+overnight. Since **December 2008** the Fed doesn't pick a single number; it sets
+a **25-basis-point-wide target range** — a "basis point" is one-hundredth of a
+percent, so a range looks like "5.25%–5.50%."
+
+A common beginner misconception is that the Fed hits this target by buying and
+selling small amounts of bonds each day. It doesn't. In today's system there are
+trillions of reserves sloshing around, so the Fed instead steers the rate with
+two administered rates that act like a **floor**:
+
+- **Interest on Reserve Balances (IORB)** — the rate the Fed *pays* banks on
+  their reserves. No bank will lend to another for less than it can earn risk-free
+  at the Fed, so this sets the floor.
+- **The overnight reverse repo (ON RRP) rate** — a slightly lower floor for money
+  market funds and others that can't earn IORB.
+
+### How a rate change reaches your life
+
+The Fed's own framing describes a chain of transmission. A rate change ripples
+outward with **"long and variable lags"** — a phrase popularly attributed to
+economist Milton Friedman (worth flagging that the attribution is conventional
+rather than a precise quote). Central banks generally reckon it takes **roughly
+one to two years** for a rate change to fully show up in inflation.
+
+<ConceptDiagram
+  caption="The Fed's transmission chain: the policy rate is the only lever the bank pulls directly; everything to the right of it is a knock-on effect that arrives with long and variable lags."
+  chart={`flowchart LR
+  A[Policy rate<br/>fed funds] --> B[Short-term<br/>market rates]
+  A --> C[Long-term rates<br/>via expectations]
+  B --> D[Credit cost,<br/>asset prices,<br/>FX rate]
+  C --> D
+  D --> E[Spending: housing,<br/>durables, investment]
+  E --> F[Employment<br/>& inflation]`}
+/>
+
+The plain-English version: cheaper money makes borrowing, houses, and stocks
+more attractive, so people and firms spend more, which lifts employment and —
+eventually — inflation. Tighter money does the reverse. As the Fed puts it, when
+demand slows, unemployment tends to rise and inflation tends to decline.
+
+## The dual mandate and the 2% target
+
+The **Federal Reserve Act** instructs the Fed to pursue "maximum employment,
+stable prices, and moderate long-term interest rates." That's technically three
+goals, but the third is treated as a by-product of the first two, so it's
+universally called the **dual mandate** — jobs and prices.
+
+What is "stable prices"? Since **January 25, 2012** (under Chair Ben Bernanke),
+the Fed has defined it as **2% inflation**. Two details that catch people out:
+
+- The target is measured by the **PCE price index** (Personal Consumption
+  Expenditures), *not* the more famous CPI (Consumer Price Index). News headlines
+  quote CPI; the Fed steers by PCE, which usually runs a touch lower.
+- 2% is not "as low as possible." A small, predictable positive number gives the
+  economy room to adjust and keeps a safety buffer above zero, where deflation —
+  a damaging spiral of falling prices — becomes a risk.
+
+<Callout type="note">
+
+Inflation targeting itself was a foreign import. **New Zealand's** Reserve Bank
+pioneered an explicit numerical inflation target around **1990** (sources
+disagree on whether to date it to the 1989 legislation or the March 1990 Policy
+Targets Agreement). The idea spread worldwide: the **UK targets 2% on CPI**, the
+**ECB** targets **2% symmetrically** on its HICP measure.
+
+</Callout>
+
+### When the regime itself changes: FAIT and its reversal
+
+This is where "regime" stops being abstract. On **August 27, 2020**, at the
+Jackson Hole conference, Chair Jerome Powell announced **Flexible Average
+Inflation Targeting (FAIT)**. Two changes mattered:
+
+1. The Fed would aim for inflation that **"averages 2 percent over time"** —
+   meaning after a period *below* 2%, it would deliberately allow inflation
+   **"moderately above 2 percent for some time"** to make up the shortfall.
+2. On employment it would respond only to **"shortfalls"** from maximum
+   employment (too few jobs), not to a hot labor market on its own — an
+   intentionally asymmetric stance, more tolerant of running the economy hot.
+
+Then on **August 22, 2025**, the FOMC **unanimously** updated the framework
+again. The Fed's press release confirms it reaffirmed maximum employment and
+stable prices "across a broad range of economic conditions," and that the 2%
+goal itself was *not* under review (the target is unchanged).
+
+<Callout type="warning">
+
+**A flag on the 2025 change.** It is *widely reported* that the 2025 review
+**dropped FAIT's "averages 2 percent" makeup language and the asymmetric
+"shortfalls" wording**, reverting to a more traditional, symmetric approach. The
+press release confirms a unanimous update but does not spell out that substance
+in plain words. Treat the "FAIT was scrapped" framing as the strong consensus
+read, and verify the exact wording against the revised framework document and
+Powell's 2025 Jackson Hole remarks before stating it as settled fact.
+
+</Callout>
+
+The lesson for a trader: a framework change is a *regime* change. After 2020,
+markets had to price a Fed that would sit on its hands longer. The 2025 reversal
+flips that intuition back. Same economy, different machine.
+
+## Forward guidance: talking the market into doing your work
+
+Because long-term rates are really the market's *average expectation* of future
+short rates, a central bank can move long rates today simply by changing
+expectations — without touching the policy rate at all. That tool is **forward
+guidance**: communicating the likely future path of policy on purpose.
+
+It comes in flavors worth knowing:
+
+- **Delphic** guidance is a soft *forecast* ("we expect rates to stay low") — the
+  bank reserves the right to change its mind.
+- **Odyssean** guidance is a *commitment* to a path, named for Odysseus tying
+  himself to the mast — harder to renege on, and therefore more powerful when
+  believed.
+- **Time-based** guidance pins to a date ("low through mid-2015"); **state- or
+  threshold-based** guidance pins to data. The canonical example is the **2012
+  "Evans rule,"** which committed to low rates at least until unemployment fell
+  below `6.5%` (subject to an inflation ceiling). *(These textbook examples are
+  standard; flagged here because they came from general knowledge, not a single
+  cited page.)*
+
+Guidance only works if the bank is credible — which is recent. The Fed only
+began **announcing its rate decisions publicly in 1994**; before that, markets
+literally had to guess from open-market operations.
+
+<Callout type="warning">
+
+**The failure mode: the 2013 "taper tantrum."** When Bernanke merely *hinted*
+the Fed might slow its bond buying, long-term yields spiked violently and
+emerging-market currencies sold off. Nothing had actually changed in policy — a
+*communication* moved markets more than an *action*. Guidance is a loaded
+weapon; it can fire when you only meant to clear your throat.
+
+</Callout>
+
+## QE and QT: the balance sheet as a second lever
+
+When the policy rate is already near zero — the **zero lower bound (ZLB)** —
+cutting further isn't possible. So central banks reach for a second tool:
+**quantitative easing (QE)**, buying large quantities of longer-term bonds
+(government bonds and mortgage-backed securities) to push *long-term* yields down
+directly and inject reserves into the system. The reverse — letting those
+holdings mature without replacing them, or selling them — is **quantitative
+tightening (QT)**, which shrinks the balance sheet.
+
+The scale is the story. The Fed's balance sheet went from roughly **$870–900
+billion before 2008** to about **$4.5 trillion** by 2014 after the financial
+crisis, then COVID-era buying pushed it to a **peak of about $8.9 trillion in
+April 2022**.
+
+<BarChart
+  caption="Illustrative, drawn from widely reported figures (the April-2022 peak is reported from FRED's WALCL series and should be verified directly). The Fed balance sheet ballooned roughly tenfold in 14 years — QE and QT are about moving this line, not the overnight rate."
+  yLabel="Fed balance sheet (US$ trillions)"
+  labels={["Pre-2008", "2014 (post-QE)", "Apr 2022 (peak)"]}
+  series={[
+    { label: "Total assets", data: [0.9, 4.5, 8.9] },
+  ]}
+/>
+
+**QT began in June 2022**, with the Fed initially capping the monthly runoff at
+**$95 billion** (the standard reported split is **$60bn of Treasuries + $35bn of
+mortgage-backed securities**, though the single source checked confirmed only the
+$95bn total). Those caps were tapered to roughly **$50 billion** a month by
+September 2024. Other banks tightened too: the **ECB** accelerated its QT through
+2023 (over €30bn/month of non-reinvestment), and the **Bank of England** began
+winding down its holdings in early 2022 *(BoE/ECB start dates flagged for direct
+verification)*.
+
+<Callout type="note">
+
+**Why a macro trader watches the balance sheet.** QE tends to lift asset prices
+and weaken the currency (more of it sloshing around); QT does the reverse, and —
+crucially — it drains the system's plumbing of reserves, which can break things
+when it goes too far. The balance sheet is a slow-moving regime variable that
+sets the *backdrop* against which rate moves land.
+
+</Callout>
+
+## Monetary vs. fiscal: two hands, ideally separate
+
+It's easy to lump "government policy" together. Don't. Two distinct institutions
+are at work:
+
+- **Monetary policy** is run by the **central bank** — ideally *independent* of
+  day-to-day politics. Its tools are the policy rate, the balance sheet, and
+  guidance; its targets are inflation and employment.
+- **Fiscal policy** is run by the **government and legislature** (treasury +
+  parliament/congress). Its tools are **taxes and spending**, which affect demand
+  directly — a tax cut or stimulus check puts money in pockets immediately.
+
+<ConceptDiagram
+  caption="The two policy hands. Independence is the firewall between them — and 'fiscal dominance,' where debt forces the central bank's hand, is what happens when that firewall fails."
+  chart={`flowchart TB
+  subgraph Monetary["Monetary — Central Bank (independent)"]
+    M1[Policy rate]
+    M2[Balance sheet QE/QT]
+    M3[Forward guidance]
+  end
+  subgraph Fiscal["Fiscal — Government + Legislature"]
+    F1[Taxes]
+    F2[Spending]
+  end
+  Monetary --> G[Inflation &<br/>employment]
+  Fiscal --> G`}
+/>
+
+The key teaching point is **independence**. When a central bank can set rates
+free of political pressure, its inflation promise is credible and guidance works.
+The dangerous failure case is **fiscal dominance** — when government debt and
+deficits grow so large that the central bank effectively *can't* raise rates (it
+would bankrupt the treasury), so it's forced to keep money loose and let
+inflation run. Spotting the early signs of fiscal dominance is one of the highest
+forms of the macro craft.
+
+## Why the regime drives FX and rate trades
+
+Now we can close the loop from the opening. Currency and bond prices hinge on
+**expected policy paths and the rate differential between countries** — the
+intuition behind *uncovered interest parity*, which says money should flow toward
+where it expects higher returns. Markets price the *anticipated* regime in
+advance, so the biggest moves come from **surprises versus guidance**.
+
+You can see it in the tape: the dollar's strength in 2014–15 and again its surge
+in 2022 both tracked expectations of Fed *tightening*. The currency moved with
+the expected regime, often ahead of the actual rate hikes.
+
+<ConceptDiagram
+  caption="The macro feedback loop you actually trade: data shifts the expected policy path, the gap between that and current guidance moves rates and FX, and the central bank then reacts — feeding back into the next round."
+  chart={`flowchart LR
+  A[New economic data] --> B[Expected policy path<br/>shifts]
+  B --> C{Surprise vs.<br/>existing guidance?}
+  C -->|Yes| D[Rates & FX<br/>move sharply]
+  C -->|No| E[Little reaction]
+  D --> F[Central bank<br/>reacts / re-guides]
+  F --> B`}
+/>
+
+## The honest part: where central banking falls short
+
+This is education, not a sales pitch for the omnipotence of central banks. The
+tools have real, documented limits and failure modes.
+
+- **QE can inflate assets and worsen inequality.** A **2012 Bank of England**
+  study estimated that around **40% of the wealth gains** from QE accrued to the
+  richest 5% of households — because QE works by lifting asset prices, and the
+  wealthy own the assets. And **Alan Greenspan (July 2012)** flatly said QE had
+  "very little impact on the economy." QE can simply fail to reach the real
+  economy if banks won't lend the new reserves out.
+- **Lags make fine-tuning impossible.** With effects arriving over one to two
+  *years*, a bank is always steering by a rear-view mirror — hence the constant
+  risk of over-tightening into a recession or under-tightening into runaway
+  inflation.
+- **Guidance can backfire and faces a credibility trap.** The taper tantrum
+  showed words can overshoot; more deeply, **time-inconsistency** means a bank
+  may *promise* to stay easy, then break the promise when it's tempting to —
+  which markets anticipate, blunting the tool.
+- **QT can break market plumbing.** Two episodes are sobering: the **September
+  2019 repo spike**, when reserves got so scarce that overnight funding rates
+  jumped and the Fed had to inject emergency liquidity; and the **September 2022
+  UK gilt crisis**, when a pension-fund ("LDI") fire-sale forced the Bank of
+  England to *buy* gilts in the middle of its own tightening campaign. Shrinking
+  a balance sheet is not the clean mirror-image of growing it. *(These episodes
+  are well documented but were not in the cited primary pages — verify framing.)*
+
+<Callout type="key">
+
+The takeaway is not "central banks are useless" — they are the single most
+important force in macro. It's that they are powerful, lagged, and fallible
+*all at once.* That combination is exactly why expected-vs-actual policy is where
+the trading edge lives.
+
+</Callout>
+
+## Key takeaways
+
+- Markets trade the **central bank's expected reaction** to the economy, not the
+  economy itself. Regime first, data second.
+- The **policy rate** (a 25bp-wide target range since 2008) is steered via
+  **IORB** and **ON RRP** in a floor system, and transmits to the real economy
+  with **long and variable lags** of roughly **1–2 years**.
+- The Fed's **dual mandate** is maximum employment and stable prices, defined as
+  **2% on PCE** (not CPI) since 2012. The **FAIT** regime of 2020 was, by strong
+  consensus, **reverted in 2025** — but verify the exact 2025 wording.
+- **Forward guidance** moves long rates by moving expectations; it only works
+  with credibility, and the **2013 taper tantrum** shows it can backfire.
+- **QE/QT** is the second lever — the balance sheet rose from `~$0.9T` pre-2008
+  to a peak `~$8.9T` in April 2022, with **QT** running it down from June 2022.
+- **Monetary policy** (independent central bank, rates/balance sheet/guidance) is
+  distinct from **fiscal policy** (government, taxes/spending); the failure case
+  is **fiscal dominance**.
+- Honest limits: QE skews wealth upward and can fail to reach the economy, lags
+  prevent fine-tuning, guidance faces credibility traps, and QT can break market
+  plumbing (2019 repo spike, 2022 UK gilt crisis).
+- This is educational material, not financial advice.

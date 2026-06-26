@@ -21,7 +21,7 @@ export default async function Home({
         <p className="max-w-2xl text-lg text-gray-300">{t.home.intro}</p>
         <div className="flex gap-4 pt-2">
           <Link
-            href={`/${locale}/path`}
+            href={`/${locale}/strategies`}
             className="rounded-md bg-teal-500 px-5 py-2 font-semibold text-black no-underline"
           >
             {t.home.startPath}

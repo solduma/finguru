@@ -1,0 +1,232 @@
+---
+title: "PEG Ratio & Growth at a Reasonable Price (GARP)"
+slug: "peg-ratio-garp"
+kind: "indicator"
+school: "fundamental"
+level: "beginner"
+order: 119
+summary: "A plain P/E can't tell you whether a fast-growing stock is cheap or expensive. The PEG ratio divides the P/E by the growth rate to find out — the signature tool of the 'Growth at a Reasonable Price' style. Here's how to read it, where it shines, and the many ways it lies."
+tags: ["PEG ratio", "GARP", "Peter Lynch", "valuation", "P/E ratio", "growth investing", "value investing", "dot-com bubble"]
+prereqs: ["charles-dow"]
+---
+
+## Why this matters
+
+Imagine two stocks. The first trades at a **P/E ratio of 30** — the price-to-earnings ratio, meaning you pay 30 dollars for every 1 dollar of the company's annual profit. The second trades at a P/E of 15, half as much. The cheap-looking one is the second, right?
+
+Not so fast. What if the first company's profits are growing 30% a year and the second's are barely growing at all? Suddenly the "expensive" stock might be the better deal, because you're paying a high price for a profit stream that's expanding fast. A bare P/E can't settle this. It tells you how expensive a stock is *today* but says nothing about how fast the underlying earnings are climbing.
+
+The **PEG ratio** was built to close that gap. It takes the P/E and divides it by the growth rate, producing a single number that lets you compare a racehorse and a tortoise on the same scale. It is the signature screen of an investing style called **GARP — Growth At a Reasonable Price** — which refuses to overpay even for a wonderful growth story. This lesson explains the formula, the famous "1 = fair value" rule of thumb, who really invented it (not who you think), and — most importantly — the long list of ways the PEG ratio can quietly mislead you.
+
+<Callout type="key">
+
+This is educational content, not financial advice. The numbers in the charts and examples are illustrative teaching aids, not forecasts or recommendations. The goal is to make you understand *how* the PEG ratio works — and where it breaks — so you can think clearly for yourself.
+
+</Callout>
+
+## The formula
+
+The PEG ratio is one short division:
+
+`PEG = (P/E ratio) ÷ (annual EPS growth rate)`
+
+A few definitions, since every term matters:
+
+- **P/E ratio (price-to-earnings)** — the share price divided by **earnings per share (EPS)**, the company's annual profit chopped up per share. A P/E of 30 means the price is 30 times one year's per-share profit.
+- **EPS growth rate** — how fast that per-share profit is expected to grow each year, expressed as a percentage.
+
+The one catch that trips up beginners: you enter the growth rate as a **plain number, not a decimal**. A company growing 20% a year is divided by **20**, not by 0.20. Get this wrong and your PEG comes out 100 times too small.
+
+Let's work two examples:
+
+- A stock with a **P/E of 30** growing **30%** a year: `30 ÷ 30 = 1.0`.
+- A stock with a **P/E of 15** growing **30%** a year: `15 ÷ 30 = 0.5`.
+
+The second stock has the same growth but half the price tag relative to that growth — a PEG of 0.5 versus 1.0. By the PEG yardstick, it's the cheaper buy. Notice how the ratio rescued us: judged on P/E alone we'd just say "15 is cheaper than 30," but the PEG quantifies *how much growth you get for the price* in both cases.
+
+<BarChart
+  caption="Illustrative, not a recommendation. The PEG normalizes the P/E for growth. The first two stocks have very different P/E ratios but identical growth, so the lower-P/E stock has the lower (cheaper) PEG. The third shows a high P/E justified by very high growth, landing at the same PEG of 1.0 as the first."
+  labels={["P/E 30, growth 30%", "P/E 15, growth 30%", "P/E 50, growth 50%"]}
+  series={[
+    { label: "P/E ratio", data: [30, 15, 50] },
+    { label: "Growth rate (%)", data: [30, 30, 50] },
+    { label: "PEG", data: [1.0, 0.5, 1.0] }
+  ]}
+  yLabel="Value (illustrative)"
+/>
+
+## How to read it: the "≈ 1" heuristic
+
+The rule of thumb that made the PEG famous is beautifully simple:
+
+- **PEG ≈ 1 → roughly fairly valued.** The price you pay for growth is about right.
+- **PEG `< 1` → potentially undervalued.** You're paying *less* than one unit of P/E per unit of growth — possibly a bargain.
+- **PEG `> 1` → potentially overvalued.** You're paying *more* than the growth seems to justify.
+
+When you're comparing similar stocks, **lower is generally better** — it means more growth per dollar of valuation.
+
+But you must hold this rule loosely. The "PEG = 1 means fair" line is **deliberately a rough rule of thumb, not a law of nature.** Wikipedia, summarizing the convention, flatly calls the choice of 1 as the fair-value threshold "somewhat arbitrary." There is no deep theory that says 1 is exactly fair; it's a convenient, memorable round number that works *approximately* and only under certain assumptions.
+
+<Callout type="warning">
+
+Treat the magic number "1" as a conversation-starter, not an answer. The threshold depends on interest rates, the company's quality and durability, and how trustworthy the growth forecast is. A high-quality compounder at PEG 1.2 can easily be a better buy than a fragile one at PEG 0.7. Use the PEG to *rank and question*, never to mechanically buy or sell.
+
+</Callout>
+
+## Who really invented it (commonly misquoted — flag)
+
+Almost everyone "knows" the PEG ratio belongs to **Peter Lynch.** Almost everyone is wrong about who *invented* it.
+
+The PEG ratio was originated by **Mario Farina** in his **1969** book *A Beginner's Guide to Successful Investing in the Stock Market*. Lynch came two decades later. What Lynch did was **popularize** it — so thoroughly that the world now calls it "Lynch's PEG ratio." That's a credit for marketing, not for invention. It's a useful reminder that in finance, the person who explains an idea memorably often gets remembered over the person who first had it.
+
+What Lynch actually contributed is the canonical one-liner. In *One Up on Wall Street* (1989), at page 199, he wrote:
+
+> "The P/E ratio of any company that's fairly priced will equal its growth rate."
+
+Read that carefully: "P/E equals growth rate" is exactly the same as saying **PEG = 1.** Lynch's sentence *is* the "≈ 1" heuristic, stated in plain English before anyone was calling it PEG.
+
+### Who Peter Lynch was
+
+Lynch ran **Fidelity's Magellan Fund from 1977 to 1990** — thirteen years. Over that stretch the fund is widely cited as averaging **about 29% annually** (the standard figure is 29.2%, sometimes rounded to ~28–29%), and it grew from roughly **$18 million to about $14 billion** in assets. He wrote *One Up on Wall Street* (1989) and *Beating the Street* (1993), and coined the term **"ten-bagger"** for a stock that rises tenfold. His investing philosophy — buy understandable businesses you encounter in everyday life, but only at a sensible price relative to their growth — is the spiritual home of GARP.
+
+<Callout type="note">
+
+The 29% figure is the standard citation, but treat any single headline return number with mild caution: averages can be computed several ways, and Magellan's assets ballooned over time, which makes the *typical investor's* experience differ from the headline fund return. The honest framing is "about 29% a year over 1977–1990" — an extraordinary record by any measure.
+
+</Callout>
+
+## GARP: the style the PEG belongs to
+
+**GARP — Growth At a Reasonable Price** — is a hybrid. It borrows the **value investor's discipline** (never overpay; demand a margin of safety) and marries it to the **growth investor's appetite** (favor companies whose earnings are expanding faster than average). It sits squarely **between deep value and pure growth**:
+
+- A **deep-value** investor buys cheap, slow, even unloved businesses, betting on a re-rating.
+- A **pure-growth** investor buys the fastest growers and worries about price later — sometimes not at all.
+- A **GARP** investor wants growth *and* refuses to pay any price for it.
+
+The PEG is the **signature GARP screen**, with **PEG ≤ 1** a common target threshold. It's the perfect tool for the style because it bakes both halves into one number: the P/E (the "price" discipline) sits on top, the growth rate (the "growth" appetite) sits on the bottom.
+
+<ConceptDiagram
+  caption="GARP sits between deep value and pure growth. The PEG ratio is the screen that operationalizes it: demand real growth, but only at a reasonable price."
+  chart={`flowchart LR
+  A[Universe of stocks] --> B{Is earnings growth above average?}
+  B -- No --> X[Skip: not a growth candidate]
+  B -- Yes --> C{Is the PEG roughly 1 or below?}
+  C -- No, PEG well above 1 --> Y[Skip: paying too much for the growth]
+  C -- Yes --> D[GARP candidate: growth at a reasonable price]
+  D --> E[Then check debt, cash flow, durability by hand]`}
+/>
+
+<Callout type="warning">
+
+A modern caveat: in recent years, with technology valuations elevated, a PEG below 1 has become genuinely rare. Many analysts now treat the strict "`< 1`" bar as **dated and context-dependent** rather than an absolute rule — the *relative* comparison (this stock's PEG versus its peers and its own history) often matters more than the raw number clearing some fixed line.
+
+</Callout>
+
+## The honest limitations — where the PEG lies to you
+
+The PEG ratio's elegance hides a long list of failure modes. A beginner who treats it as a truth machine will get burned. Here are the big ones.
+
+### 1. Garbage in, garbage out — it's only as good as the growth forecast
+
+The entire denominator is a **forecast**. PEG hinges on a guess about future growth, and five-year analyst estimates are notorious for **over-optimistic growth projections.** If the forecast is too rosy, the PEG looks deceptively low and "cheap." Worse, the reverse can fool you too: a low PEG sometimes simply means **the market distrusts the forecast** — it's pricing the stock as if the rosy growth won't actually arrive. A bargain PEG and a value trap can look identical on the screen.
+
+### 2. There's no standard recipe — the same stock has many PEGs
+
+This is the trap that catches even professionals. Nothing is standardized:
+
+- The **P/E** might be **trailing** (last 12 months' earnings) or **forward** (next year's estimate).
+- The **growth rate** might be **1-year, 3-year, or 5-year.**
+
+Mix and match, and the *same stock* yields wildly different PEGs. A widely-cited example: **Meta's** PEG has been quoted as **1.74 on a 4-year basis versus 0.86 on a 3-year basis** — one says "overvalued," the other says "bargain," for the identical company on the identical day. An older illustration: on **August 9, 2008**, IBM's PEG was reported as **1.26 by Yahoo Finance and 1.148 by NASDAQ** — same stock, same day, different methods.
+
+<BarChart
+  caption="Illustrative of a real problem: the PEG is not standardized, so the same company can show very different ratios depending on the growth horizon and P/E type used. Always state the inputs before trusting a PEG."
+  labels={["Meta, 3-year basis", "Meta, 4-year basis", "IBM, Yahoo (2008)", "IBM, NASDAQ (2008)"]}
+  series={[
+    { label: "Reported PEG", data: [0.86, 1.74, 1.26, 1.148] }
+  ]}
+  yLabel="PEG (as reported)"
+/>
+
+<Callout type="warning">
+
+**Always state the horizon and the P/E type.** A PEG quoted without saying "forward P/E, 5-year growth" is close to meaningless — you can't compare it to anything, and you can't know whether someone cherry-picked the inputs to make a stock look cheap.
+
+</Callout>
+
+### 3. Negative PEG is meaningless
+
+If a company has **negative earnings** (a loss) or **declining/negative growth**, the formula spits out a negative number. A negative PEG tells you nothing useful — it's not "extra cheap." Just discard it; the ratio simply doesn't apply to unprofitable or shrinking companies.
+
+### 4. It ignores most of the balance sheet and the business
+
+The PEG looks only at price, earnings, and growth. It is **blind to**:
+
+- **Debt** — two companies with identical PEGs can have wildly different risk if one is drowning in borrowings.
+- **Cash flow** — earnings can be massaged; cash is harder to fake.
+- **Dividends** — a dividend-paying stock looks artificially "expensive" on PEG because the payout isn't credited. (A variant called **PEGY** — PEG adjusted for dividend yield — exists to patch this.)
+- **Return on equity (ROE)** and the **required rate of return.**
+
+This makes the PEG a **poor fit for stable, slow-growing, dividend-paying firms** — utilities, mature consumer staples — where the growth denominator is tiny and the dividend, which PEG ignores, is much of the point.
+
+### 5. A suspiciously smooth growth rate can be a warning, not a comfort
+
+Because the PEG rewards steady, predictable growth, it can lull you toward businesses whose numbers look *too* perfect. A growth rate that never wobbles, year after year, is sometimes a **fraud signal** rather than a sign of quality — **Bernie Madoff's** impossibly smooth "returns" are the cautionary example. Real businesses are lumpy; suspiciously smooth ones deserve more scrutiny, not less.
+
+## "Growth at any price": the dot-com lesson
+
+GARP exists as a reaction to its opposite — **"growth at any price"** — the belief that growth itself justifies whatever multiple the market demands. The dot-com bubble is the textbook case of where that thinking leads, and it's the single best argument for the "reasonable price" half of GARP.
+
+The **Nasdaq Composite peaked on March 10, 2000, at 5,048.62**, having risen roughly **600% from 1995** to that top. Valuations had decoupled from earnings entirely: the **Nasdaq's P/E reached around 200** — for comparison, Japan's Nikkei was near a P/E of ~80 at its own 1991 bubble peak. Many companies went public with **no profits at all**, which means no earnings, which means no meaningful P/E and no meaningful PEG. The growth story *was* the entire investment thesis.
+
+Then it broke. The index **fell about 78%** to its trough by **October 2002** (the Nasdaq-100 sat near 1,114 on October 9, 2002), erasing roughly **$5 trillion** in market value.
+
+<LineChart
+  caption="Illustrative sketch of the Nasdaq Composite's bubble and crash (real milestones: peak 5,048.62 on March 10, 2000; ~78% decline to the late-2002 trough). The shape, not the intermediate points, is the lesson: 'growth at any price' ended in a violent re-rating."
+  height={300}
+  yMin={0}
+  yMax={5500}
+  labels={["1995", "1997", "1999", "Mar 2000 peak", "2001", "Oct 2002 trough"]}
+  series={[
+    { label: "Nasdaq Composite (illustrative path)", data: [750, 1550, 2750, 5049, 2100, 1140], color: "#38bdf8", width: 2 }
+  ]}
+/>
+
+The individual stories show the mechanism. **Qualcomm** rose **+2,619% in 1999** alone. **MicroStrategy** ran from about **$7 to roughly $333**, then lost about **62% in a single day** after a March 2000 revenue restatement. **Cisco** lost about **80%** of its value. Pure failures abounded — **Pets.com, Webvan, Boo.com** — and only about **48% of dot-com firms survived to 2004.**
+
+<Callout type="key">
+
+The core lesson connects straight back to the PEG: **when a stock prices in flawless growth — a very high multiple, a PEG well above 1 — any earnings miss triggers a double blow.** First the earnings get cut. Then the *multiple itself* compresses, because the market stops believing the perfect-growth story. The damage multiplies. Paying a reasonable price (a PEG near or below 1) is what gives you a cushion when reality disappoints. That cushion is the entire point of GARP.
+
+</Callout>
+
+## Putting it to work
+
+1. **Use the PEG to rank, not to rule.** It's a fast first-pass screen for "am I overpaying for this growth?" — not a buy/sell button.
+2. **Always state your inputs.** Write down "forward P/E, 5-year growth" (or whatever you used). An unlabeled PEG is untrustworthy.
+3. **Interrogate the denominator.** Where does the growth forecast come from? Is it analyst optimism? Is a *low* PEG actually the market telling you it doesn't believe the forecast?
+4. **Discard negative PEGs** and don't lean on PEG for stable, dividend-heavy firms — reach for other tools there.
+5. **Check what PEG ignores by hand** — debt, cash flow, ROE, dividends, durability — before you act on any ratio.
+6. **Remember the dot-com lesson.** A PEG far above 1 means the price already assumes everything goes right. Demand a reasonable price so a stumble doesn't become a catastrophe.
+
+## Key takeaways
+
+- **PEG = P/E ÷ growth rate**, with the growth rate entered as a plain number (20% growth → divide by 20). It normalizes the P/E so fast and slow growers can be compared on one scale.
+- The famous heuristic: **PEG ≈ 1 is roughly fair, `< 1` potentially cheap, `> 1` potentially expensive** — but the "1" threshold is openly **arbitrary**, a rule of thumb, not a law.
+- It was **invented by Mario Farina (1969)**, not Peter Lynch. **Lynch popularized it** in *One Up on Wall Street* (1989, p. 199): *"The P/E ratio of any company that's fairly priced will equal its growth rate"* — which simply restates PEG = 1.
+- **GARP (Growth At a Reasonable Price)** blends value discipline with growth appetite; the PEG (target **≤ 1**) is its signature screen, though a sub-1 PEG has grown rare in today's elevated valuations.
+- The PEG's weaknesses are serious: it depends entirely on an **optimistic-prone growth forecast**, has **no standard inputs** (same stock, many PEGs — Meta 0.86 vs 1.74), is **meaningless when negative**, and **ignores debt, cash flow, dividends, and ROE**. A *too*-smooth growth rate can even be a fraud flag.
+- The **dot-com bust** (Nasdaq peak 5,048.62 in March 2000, ~78% crash, ~$5 trillion lost, P/E near 200) is the cautionary tale: pay a reasonable price for growth, because a stock priced for perfection gets hit twice — lower earnings *and* a collapsing multiple — when reality disappoints.
+
+## Further reading
+
+- Peter Lynch, *One Up on Wall Street* (1989) — the source of the canonical "P/E equals growth rate" line (p. 199) and the popularization of the PEG and "ten-bagger."
+- Peter Lynch, *Beating the Street* (1993) — more on his GARP-flavored, buy-what-you-know approach.
+- Mario Farina, *A Beginner's Guide to Successful Investing in the Stock Market* (1969) — the true origin of the PEG concept.
+
+### Sources
+
+1. [PEG ratio — Wikipedia](https://en.wikipedia.org/wiki/PEG_ratio) — the formula and worked logic; the "≈ 1 is fair" heuristic described as "somewhat arbitrary"; Mario Farina (1969) as originator and Lynch as popularizer; the *One Up on Wall Street* p. 199 quote; the lack of standard inputs (trailing vs forward P/E, 1- vs multi-year growth), the Meta 0.86 vs 1.74 and IBM Yahoo 1.26 vs NASDAQ 1.148 examples; negative-PEG and ignored-factors limitations; PEGY variant; the Madoff smooth-growth caution.
+2. [Peter Lynch — Wikipedia](https://en.wikipedia.org/wiki/Peter_Lynch) — Magellan Fund 1977–1990; ~29.2% average annual return; growth from ~$18M to ~$14B; *One Up on Wall Street* (1989) and *Beating the Street* (1993); "ten-bagger."
+3. [Dot-com bubble — Wikipedia](https://en.wikipedia.org/wiki/Dot-com_bubble) — Nasdaq peak 5,048.62 on March 10, 2000; ~600% rise from 1995; ~78% decline to the Oct 2002 trough (Nasdaq-100 ~1,114 on Oct 9, 2002); ~$5 trillion erased; Nasdaq P/E ~200 vs Nikkei ~80; Qualcomm +2,619% (1999); MicroStrategy ~$7→~$333 then ~62% single-day drop; Cisco ~80% loss; Pets.com / Webvan / Boo.com; ~48% of dot-coms surviving to 2004.
+4. [PEG ratio glossary — The Motley Fool](https://www.fool.com/) — beginner-level explanation of the PEG formula, the "1 = fair" interpretation, and its use as a GARP screen. (Investopedia's PEG and GARP pages were inaccessible from this environment; the figures above are corroborated by the sources listed.)

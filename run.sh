@@ -21,7 +21,11 @@ API_PORT="${API_PORT:-48000}"
 WEB_PORT="${WEB_PORT:-48080}"
 
 API_PATTERN="uvicorn app.main:app"
-WEB_PATTERN="next dev"
+# Match BOTH the npm wrapper ("next dev") and the actual server process it
+# spawns ("next-server (vX.Y.Z)"). When only "next dev" is killed, the
+# next-server child is orphaned (reparented to PID 1) and keeps holding the
+# port, so the next launch fails with EADDRINUSE. Matching both avoids that.
+WEB_PATTERN="next dev|next-server"
 
 log() { printf '\033[36m[run]\033[0m %s\n' "$*"; }
 

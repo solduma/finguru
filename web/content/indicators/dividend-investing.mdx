@@ -1,0 +1,249 @@
+---
+title: "Dividend & Income Investing — Yield, Coverage & Compounding"
+slug: "dividend-investing"
+kind: "indicator"
+school: "fundamental"
+level: "beginner"
+order: 117
+summary: "A dividend is a real cash cut of a company's profit, paid straight to you. This lesson shows how to read a yield, check whether the company can actually afford it, and turn the cash into compounding — without falling for the trap where a fat yield is really a warning siren."
+tags: ["dividends", "dividend yield", "payout ratio", "DRIP", "dividend aristocrats", "qualified dividends", "REIT", "income investing"]
+prereqs: ["charles-dow"]
+---
+
+## Why this matters
+
+Most ways of making money in stocks rely on someone else paying you more later — you buy at $40 and hope to sell at $60. A **dividend** is different. It is **cash a company hands you out of its profits**, just for owning the share, whether the stock goes up, down, or sideways. No buyer required.
+
+That sounds simple, and the core of it is. But dividends carry a pile of small, sharp facts that trip up beginners: a *high* yield is often a *bad* sign, "reinvested" dividends are still taxed even though you never touched the cash, and the difference between a 15% tax rate and your full income-tax rate comes down to a holding-period rule almost everyone misquotes.
+
+This lesson walks through the whole machine: how to read a yield, how to check whether the company can **afford** the dividend, how reinvesting turns a trickle into compounding, and the honest tax and trap warnings nobody puts in the marketing.
+
+<Callout type="key">
+
+The one-sentence version: a dividend is a real cash cut of profit paid to you — but a number that looks generous (a high **yield**) means nothing until you check whether the company can keep paying it.
+
+</Callout>
+
+## What a dividend actually is
+
+A **dividend** is a payment a company makes to its shareholders, usually in cash, usually every quarter (four times a year) in the US. The company's board decides the amount — say **$0.25 per share** — and everyone who owns the stock on a certain date gets that much per share.
+
+A few terms you'll meet, defined as they come up:
+
+- **Dividend per share (DPS)** — the cash paid per share over a year. Four quarterly payments of $0.25 = **$1.00 per share** for the year.
+- **Ex-dividend date** — the cutoff. To receive the next dividend you must own the stock *before* this date. Buy on or after it and the **seller** keeps that payment.
+- **Declaration / record / payment dates** — when the board announces it, who's on the books to receive it, and when the cash actually lands.
+
+<Callout type="note">
+
+A dividend is **not** free money. On the ex-dividend date the share price typically drops by roughly the dividend amount — the company just shipped that cash out the door, so it's worth that much less per share. You moved value from "inside the stock" to "in your pocket"; you didn't create it. This is why **total return** — price change *plus* dividends — is the only honest scorecard.
+
+</Callout>
+
+## Dividend yield — the headline number
+
+The **dividend yield** is the single most-quoted dividend statistic. It answers: *for every dollar I pay for the stock, how much cash income do I get back per year?*
+
+```
+dividend yield = annual dividend per share / current share price  × 100
+```
+
+If a stock pays **$1.00** a year in dividends and trades at **$20**, the yield is `1.00 / 20 = 5%`. Pay $20, collect $1 a year in cash — a 5% income return before any price move.
+
+There are two flavors, and confusing them causes real mistakes:
+
+- **Trailing yield** uses the dividends actually paid over the **last 12 months**.
+- **Forward yield** takes the **most recent payout and annualizes it** — e.g. a $0.25 quarterly dividend × 4 = $1.00 assumed for the year.
+
+<BarChart
+  caption="Illustrative, not a forecast. The same $1.00 annual dividend produces very different yields depending on the share price. As price falls (left to right), the trailing yield rises — which is exactly why a high yield can be a warning rather than a gift."
+  yLabel="Dividend yield (%)"
+  labels={["Price $40", "Price $25", "Price $20", "Price $12.50", "Price $8"]}
+  series={[{ label: "Yield on $1.00 dividend (%)", data: [2.5, 4.0, 5.0, 8.0, 12.5] }]}
+/>
+
+### The yield–price seesaw (and why "high" is suspicious)
+
+Look at that chart again. The dividend never changed — only the price did. Because price is in the **denominator**, yield and price move in **opposite directions**: when a stock falls, its trailing yield mechanically *rises*.
+
+So a fat yield can mean three very different things. As the MSCI and JPMorgan research that gets quoted on this topic puts it, a high dividend yield "can reflect a higher payout, a lower share price, *or expectations that dividends will be reduced.*" The first is good news; the last two are warnings dressed up as bargains.
+
+It also means there is **no fixed "normal" yield** for the market. The S&P 500's dividend yield was around **6.7% in 1982** and had fallen to roughly **1.4% by 1998** as share prices ran far ahead of dividends. Yield is regime-dependent — judge it against current peers, not a textbook average.
+
+## The yield trap — the classic beginner mistake
+
+Here is the pattern that catches income investors over and over. Call it the **yield trap** (the name MSCI uses):
+
+1. A company hits trouble. Its **price falls.**
+2. The dividend hasn't been cut *yet*, so the trailing yield **balloons** — 4% becomes 9%.
+3. Income hunters see "9% yield!" and pile in, thinking they found a bargain.
+4. The company, unable to afford it, **cuts the dividend.** The income vanishes *and* the price often falls further.
+
+The yield looked like a gift; it was a siren. JPMorgan's blunt summary: "yield alone can be misleading."
+
+<Callout type="warning">
+
+An unusually high yield versus peers is a **question, not a buy signal.** Before you ever buy for the yield, check four things: the **payout ratio**, the **coverage**, the **free cash flow**, and the **debt load** (all defined below). If the company can't comfortably afford the dividend, the yield is borrowed time.
+
+</Callout>
+
+<ConceptDiagram
+  caption="The yield-trap decision tree. A high yield sends you to investigate, not to buy. Only a dividend the company can clearly afford — out of real cash, with room to spare — survives the checks."
+  chart={`flowchart TD
+  A[Stock shows an<br/>unusually high yield] --> B{Why is the<br/>yield so high?}
+  B -->|Healthy, growing payout| C[Check payout ratio<br/>and coverage]
+  B -->|Price has collapsed| D[Investigate the<br/>business trouble]
+  C --> E{Affordable from<br/>earnings AND cash flow?}
+  D --> E
+  E -->|Yes, comfortable cushion| F[Sustainable income<br/>candidate]
+  E -->|No, payout near/over 100%| G[Likely yield trap<br/>dividend at risk]`}
+/>
+
+## Can the company afford it? Payout ratio and coverage
+
+This is the heart of dividend analysis. A yield tells you what you'd *receive*; the **payout ratio** and **coverage ratio** tell you whether the company can keep paying it.
+
+### Payout ratio
+
+The **payout ratio** is the share of profit handed out as dividends:
+
+```
+payout ratio = dividend per share / earnings per share  × 100
+```
+
+If a company earns **$4.00** per share and pays **$2.00**, its payout ratio is **50%** — it keeps half to reinvest and pays out half. A payout ratio **above 100%** means the company is paying out *more than it earns that year* — funding the dividend from savings, asset sales, or borrowing. That is a classic red flag for a coming cut.
+
+A more robust version swaps in **free cash flow** (actual cash left after running and maintaining the business) for earnings per share. Why bother? Because **earnings per share is an accounting figure** — it includes non-cash items and can drift away from the real cash a company has on hand. A dividend is paid in *cash*, so checking it against *cash* is the stronger test.
+
+### Coverage ratio
+
+The **dividend coverage ratio** is just the payout ratio flipped over:
+
+```
+dividend coverage = earnings per share / dividend per share
+```
+
+It asks: *how many times over could this year's profit cover the dividend?* Coverage of **2x** (the same as a 50% payout) is a common rule-of-thumb comfort zone — earnings could halve and the dividend would still be covered. Coverage near or **below 1x** means almost no cushion: any stumble in profits and the dividend is in danger.
+
+<BarChart
+  caption="Illustrative, not a forecast. Three companies all paying a $2.00 dividend, but with very different safety. The 4x-covered firm could absorb a big profit drop and keep paying; the 0.8x firm is already paying out more than it earns — the dividend is living on borrowed time."
+  yLabel="Dividend coverage (times earnings cover the dividend)"
+  labels={["Earns $8 (4.0x)", "Earns $4 (2.0x)", "Earns $2.40 (1.2x)", "Earns $1.60 (0.8x)"]}
+  series={[{ label: "Coverage (x)", data: [4.0, 2.0, 1.2, 0.8] }]}
+/>
+
+<Callout type="note">
+
+"Comfortable" payout levels vary **enormously by sector.** A fast-growing tech firm paying out 20% might look stingy; a utility or a real-estate trust paying out 80–90% can be perfectly normal because their cash flows are steady and they have less to reinvest in. Never compare a payout ratio across industries — compare a company to its own peers and its own history.
+
+</Callout>
+
+## Aristocrats and Kings — paying for decades
+
+If a single year's coverage can lie, what about a *track record*? Some companies have raised their dividend every year for a generation, through recessions and crashes. The market has names for them.
+
+- A **Dividend Aristocrat** (the S&P 500 version) must be a **member of the S&P 500** *and* have **increased its dividend for at least 25 consecutive years.** The official **S&P 500 Dividend Aristocrats index launched in May 2005.** It is **equal-weighted** (each member counts the same, not weighted by size) and rebalanced quarterly. There are typically **around 65–70 constituents** — the exact count drifts over time as companies join, get cut, or fall out of the S&P 500.
+- A **Dividend King** is an informal title — **not** an official S&P index — for a company with **50+ consecutive years** of increases. It's a market convention, so there's no launch date or trademark behind it.
+
+<Callout type="warning">
+
+The single most common misquote here: Aristocrat status requires **S&P 500 membership.** A company can have raised its dividend for 30 straight years and *still* not be an Aristocrat if it isn't in the S&P 500. (The S&P MidCap 400 has its own variant requiring only **15** consecutive years.) "Kings" is defined purely by the 50-year streak, regardless of which index a company sits in — so the two labels measure different things.
+
+</Callout>
+
+A long streak is genuinely meaningful: raising a dividend every year for 25+ years means a company kept generating enough cash to grow the payout through multiple recessions. But it is a *starting filter*, not a guarantee — streaks can and do end, and a stock can be a wonderful payer and still be **overpriced** on the day you buy it.
+
+## DRIP and the compounding engine
+
+So you're collecting cash dividends. Now what? You can spend them — or you can buy **more shares** with them, which is where the real long-run power lives.
+
+A **DRIP (Dividend Reinvestment Plan)** automatically uses each cash dividend to buy more shares of the same stock. Those new shares then pay *their own* dividends next time, which buy still more shares. Each round, you own slightly more, so each round pays slightly more — the textbook definition of **compounding**.
+
+```
+Round 1: 100 shares → $100 dividend → buy ~2 more shares
+Round 2: 102 shares → $102 dividend → buy ~2 more shares
+Round 3: 104 shares → $104 dividend → ... and so on, geometrically
+```
+
+Over decades, reinvested dividends can become a large share of an investor's total return — your wealth ends up roughly equal to the price growth of the stock **compounded together with** the steadily reinvested income stream, rather than the two added separately.
+
+<LineChart
+  caption="Illustrative, not a forecast. Two paths for the same hypothetical stock: spending the dividends as cash versus reinvesting them through a DRIP. The reinvested line pulls steadily ahead because each dividend buys shares that pay future dividends. The gap widens with time — that is compounding at work."
+  height={300}
+  labels={["Year 0", "Year 5", "Year 10", "Year 15", "Year 20", "Year 25"]}
+  series={[
+    { label: "Dividends reinvested (DRIP)", data: [10000, 14000, 19600, 27400, 38400, 53800], color: "#22c55e" },
+    { label: "Dividends spent as cash", data: [10000, 12800, 16400, 21000, 26800, 34300], color: "#f59e0b" }
+  ]}
+/>
+
+<Callout type="warning">
+
+The tax catch that surprises almost everyone: **reinvested dividends are still taxable in the year you receive them.** The IRS is explicit — "If you use your dividends to buy more stock at a price equal to its fair market value, you must still report the dividends as income." You never saw a dollar of cash, yet you owe tax on it. (If a DRIP lets you buy shares *below* market price, that discount is reportable too.)
+
+Two practical consequences: (1) each reinvestment **adds to your cost basis**, which matters for capital-gains math when you eventually sell, and (2) this tax bite **disappears inside tax-deferred accounts** like an IRA. That's a strong argument for running dividend-heavy holdings inside a retirement account where the reinvestment compounds untaxed.
+
+</Callout>
+
+## The tax side — qualified vs. non-qualified
+
+Not all dividends are taxed the same, and the gap is large enough to change which stocks belong in which account.
+
+- **Qualified dividends** are taxed at the lower **long-term capital-gains rates — 0%, 15%, or 20%** depending on your income. To qualify, the dividend must be paid by a US corporation (or a qualified foreign one) **and** you must meet a holding-period rule.
+- **Non-qualified (ordinary) dividends** are taxed at your full **ordinary income-tax rate**, which is higher for most people.
+
+### The holding-period rule everyone gets wrong
+
+This is the most-misquoted item in all of dividend investing. People say "you have to hold 60 days." The actual rule for common stock is:
+
+> You must hold the stock for **more than 60 days during the 121-day period that begins 60 days before the ex-dividend date.**
+
+You count the day you **sold** but not the day you **bought**. The point of the window is to stop people from buying a stock the day before a dividend purely to grab the lower tax rate, then dumping it. (Preferred stock uses a longer test — more than **90 days within a 181-day window** beginning 90 days before the ex-dividend date, for dividends covering periods over 366 days.)
+
+<Callout type="key">
+
+Say it the right way: **not** "hold 60 days," but "hold for **more than 60 days within the 121-day window** centered on the ex-dividend date." Miss the window and an otherwise-qualified dividend gets taxed at your full ordinary rate instead of the 0/15/20% rate.
+
+</Callout>
+
+### REITs — high income, but taxed harder
+
+A **REIT (Real Estate Investment Trust)** is a company that owns income-producing real estate and is built specifically to pass rental income through to shareholders. By law a REIT must distribute the vast majority of its taxable income to keep its special tax status — the well-known **90% rule** (set in the US tax code, IRC §857). That's why REIT yields are often eye-catching.
+
+The catch: REIT distributions are **generally not "qualified" dividends.** As the SEC's investor education puts it, they are "generally treated as ordinary income and are not entitled to the reduced tax rates." So that fat REIT yield is taxed at your full ordinary rate, not the friendly 15%. (A partial offset has existed via the §199A 20% deduction on qualified REIT dividends, a pass-through provision — but it's subject to sunset legislation, so confirm the current-year status before relying on it.) The portion of a REIT distribution that is a **capital-gain distribution** is reported as a long-term gain.
+
+<Callout type="note">
+
+This is a textbook case for **asset location**: because REIT income is taxed at ordinary rates, many investors hold REITs inside a tax-advantaged account (like an IRA) and keep qualified-dividend payers, which already enjoy the low rate, in taxable accounts.
+
+</Callout>
+
+## Income vs. total return — don't let the tail wag the dog
+
+It's easy to fall in love with the income and forget the scoreboard. The only honest measure is **total return = price appreciation + dividends (reinvested).**
+
+Chasing yield can quietly *hurt* total return in two ways. First, the **yield trap**: high-yield names are disproportionately troubled companies whose prices later fall. Second, **under-diversification**: hunting for the biggest payers tends to crowd you into a handful of sectors (utilities, telecoms, REITs), leaving you exposed if that corner of the market stumbles.
+
+A dividend is a wonderful thing — real cash, a discipline on management, a cushion in flat markets. But "dividend" is not a synonym for "safe" or "cheap." The investor who pairs a decent yield with strong coverage, healthy free cash flow, and a diversified set of holdings beats the one who simply buys the biggest number on the screen.
+
+## Key takeaways
+
+- A **dividend** is real cash paid out of profits — but it isn't free money; the share price drops by roughly the dividend on the **ex-dividend date**. Judge results by **total return** (price + dividends), not income alone.
+- **Dividend yield = annual dividend per share ÷ price.** Because price is the denominator, **yield rises as price falls** — so a high yield is a *question*, not a bargain. There's no fixed "normal" yield (the S&P 500 went from ~6.7% in 1982 to ~1.4% by 1998).
+- The **yield trap**: a collapsing price inflates the trailing yield, lures income buyers, then the dividend gets cut. Always check before buying the yield.
+- **Payout ratio = dividends ÷ earnings.** Over **100%** is a red flag. **Coverage** (earnings ÷ dividends) of about **2x** is a common comfort zone; near or below **1x** means little cushion. Cross-check against **free cash flow**, since earnings are an accounting figure.
+- **Dividend Aristocrats** must be in the **S&P 500** and have raised dividends **25+ years** (index launched May 2005, equal-weighted, ~65–70 names). **Dividend Kings** is an informal label for **50+ years.** A long streak is a filter, not a guarantee.
+- **DRIPs** reinvest dividends into more shares that pay their own dividends — geometric compounding. But reinvested dividends are **still taxable in the year received**, and each one **raises your cost basis.** Tax-deferred accounts neutralize this.
+- **Qualified dividends** get the low **0/15/20%** rates if you meet the holding period: **more than 60 days within the 121-day window** around the ex-dividend date — not a flat "60 days."
+- **REITs** must distribute most income (the **90% rule**), but their dividends are generally taxed as **ordinary income**, not at the qualified rate — a strong reason to hold them in a tax-advantaged account.
+- This is educational material, not financial advice. The whole discipline reduces to one habit: never buy a yield you haven't proven the company can afford.
+
+---
+
+### Sources
+
+1. [IRS Publication 550 (2025) — Investment Income and Expenses](https://www.irs.gov/publications/p550) — qualified-dividend 0/15/20% rates, the holding-period rules for common and preferred stock, the taxability of reinvested (DRIP) dividends, cost-basis treatment, and REIT capital-gain distributions.
+2. [Dividend yield — Wikipedia](https://en.wikipedia.org/wiki/Dividend_yield) — the yield formula, trailing vs. forward yield, the inverse yield–price relationship, the MSCI/JPMorgan "yield can be misleading" and yield-trap framing, and the 1982 (~6.7%) and 1998 (~1.4%) S&P 500 yield data points.
+3. [Dividend — Wikipedia](https://en.wikipedia.org/wiki/Dividend) — payout ratio (earnings and free-cash-flow variants), coverage, and ex-dividend mechanics.
+4. [S&P 500 Dividend Aristocrats — Wikipedia](https://en.wikipedia.org/wiki/S%26P_500_Dividend_Aristocrats) — the 25-year / S&P 500-membership definition, May 2005 launch, equal weighting, the 1989 origin list of 26 companies, the MidCap 400 (15-year) variant, and the informal 50-year "Dividend King" convention.
+5. [Investor.gov (SEC) — Real Estate Investment Trusts (REITs)](https://www.investor.gov/introduction-investing/investing-basics/investment-products/real-estate-investment-trusts-reits) — REIT distributions "generally treated as ordinary income and are not entitled to the reduced tax rates."

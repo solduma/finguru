@@ -1,0 +1,368 @@
+---
+title: "The Turtle Traders & Managed-Futures Trend Following"
+slug: "turtle-traders"
+kind: "guru"
+school: "quant"
+strategy: "systematic-practitioners"
+level: "intermediate"
+order: 315
+summary: "A 1983 bet over whether great trading can be taught created the Turtles — a class of novices handed a simple breakout system and millions in real money. Their rules are the clearest beginner's blueprint for systematic trend following, and their afterlife is the honest story of how a public edge decays."
+era: "experiment ran 1983–1988"
+contribution: "Systematic Trend Following"
+tags: ["trend following", "managed futures", "breakout", "position sizing", "volatility", "CTA", "risk management"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+In 1983 a famous commodities trader bet his partner that he could take ordinary
+people off the street, teach them a written set of rules in two weeks, hand them
+millions of dollars of his own money, and turn them into great traders. He won
+the bet. The rules he taught are the cleanest beginner-level example of
+**systematic trend following** — and the decades since are an honest lesson in
+how an edge erodes once everyone knows it.
+
+<Callout type="key">
+The Turtle method in one breath: **trade a basket of unrelated futures markets,
+buy a breakout to a new high (or sell a new low), size every position so the
+same dollar amount is at risk regardless of how wild the market is, cut losers
+fast, and let the rare big winner run.** Most trades lose small; a few trends
+pay for everything. The skill being taught was never prediction — it was
+*discipline and risk-sizing.*
+</Callout>
+
+## Who they were
+
+In the early 1980s, **Richard Dennis** was a Chicago legend who had famously
+turned a tiny stake into a fortune commonly put at **$200 million or more** — and
+he credited a *repeatable method*, not a gift.
+
+His business partner, **William Eckhardt**, disagreed. Eckhardt thought great
+trading was innate — you either had the instinct or you didn't. To settle the
+argument, the two ran a real experiment with real money.
+
+- They placed a recruiting ad in *Barron's* and other papers and sifted
+  thousands of applicants.
+- They trained **two cohorts** — one in **December 1983**, one in **December
+  1984**. You will see "13 Turtles" and "23 Turtles" both quoted: the smaller
+  number is the first 1983 class, the larger is the total across both years. The
+  safe phrasing is **"about 21–23 across both classes"** (commonly 21 men and 2
+  women).
+- Dennis named them the **Turtles**. He had recently visited a turtle-breeding
+  farm in Singapore and reportedly said, *"We are going to grow traders just
+  like they grow turtles in Singapore."*
+- After roughly **two weeks** of instruction, each Turtle received a real trading
+  account funded with Dennis's own capital — figures from **$250,000 up to
+  about $2 million** per trader, scaled up over time for those who did well.
+
+The whole arrangement was secret. The Turtles signed a **10-year
+non-disclosure agreement** that expired in **late 1993**. After expiry the rules
+began to leak and were even sold by others, which is why one of the original
+Turtles, **Curtis Faith**, eventually published the complete rules for free as
+the *Original Turtle Trading Rules* (around 2003) — the primary source this
+lesson leans on.
+
+## What "trend following" even means
+
+A **trend follower** does not try to predict turning points or find cheap assets.
+The entire bet is that **markets that have started moving in one direction tend
+to keep moving that way long enough to profit** — and the trader simply climbs
+aboard an established move and rides it until it ends.
+
+The mechanism that defines a trend is the **breakout**: price pushing past its
+own recent extreme. If a market trades higher than it has at any point in the
+last 20 days, *something* has changed, and the trend follower treats that as the
+signal to get long.
+
+<ConceptDiagram
+  caption="The Turtle trade lifecycle. Every decision is mechanical and pre-decided: a price breakout triggers entry, a fixed volatility budget sets the size, an opposite breakout or a stop ends the trade. There is no forecasting step anywhere in the loop — that absence is the whole design."
+  chart={`flowchart LR
+  A[Price breaks to a new<br/>20- or 55-day high/low] --> B[Size the position by<br/>volatility unit 'N']
+  B --> C[Add units every 1/2 N<br/>as the trend extends]
+  C --> D{Trend still<br/>intact?}
+  D -- favorable move --> C
+  D -- hits 2N stop --> E[Cut the loss<br/>~2% of account]
+  D -- opposite breakout --> F[Exit & bank<br/>the trend]`}
+/>
+
+The catch every beginner underestimates: **most breakouts fail.** The trend
+follower is wrong most of the time — winning maybe 30–40% of trades — and stays
+profitable only because the losses are tiny and the occasional monster trend is
+enormous. That asymmetry is the engine, and tolerating a long string of small
+losses while waiting for it is the hard part.
+
+## The Turtle rules, step by step
+
+The Turtles were given a genuinely complete, mechanical system. Here is the
+beginner's tour of each piece.
+
+### The markets
+
+They traded only **liquid U.S. futures** — currencies, bonds and interest rates,
+metals (gold, silver, copper), energies (crude oil, heating oil, gas), and the
+"softs" (coffee, cocoa, sugar, cotton). A **futures contract** is a standardized
+agreement to buy or sell something at a set price on a future date; liquid ones
+trade in huge volume, so you can get in and out cleanly.
+
+They deliberately **excluded grains and meats** — grains because Dennis already
+held the maximum position the exchange allowed, and meats because of a contemporary
+floor-trading corruption scandal. The point of using *many unrelated markets* is
+diversification: when one market chops sideways and bleeds small losses, another
+may be in the big trend that pays for the year.
+
+### "N" — the volatility ruler
+
+Everything in the system is measured in units of **N**, the Turtles' name for
+how much a market typically moves in a day. N is essentially the **Average True
+Range (ATR)** — the average daily trading range, including overnight gaps —
+computed as a **20-day exponential moving average of the True Range:**
+
+> `N = (19 × prior N + today's True Range) ÷ 20`
+
+<Callout type="warning">
+A very common mis-statement: N is **not** the standard 14-day Wilder ATR you see
+in most charting packages. It is a **20-day exponential moving average of True
+Range.** The number 20 and the smoothing both matter — if you "test the Turtle
+system" with a 14-day ATR, you are not testing the Turtle system.
+</Callout>
+
+N is the ruler that makes every other rule work. A volatile market has a big N
+(it moves a lot each day); a calm market has a small N. By expressing position
+size, stops, and pyramiding *in multiples of N*, the system automatically treats
+a wild market and a sleepy one the same way.
+
+### Position sizing — the genuinely clever part
+
+This is the idea worth stealing even if you never trade a future. The Turtles
+defined one **Unit** as the position size where **a 1 N move in price equals 1%
+of the account's equity.**
+
+> `Unit size = (1% of account) ÷ (N × dollars per point of the contract)`
+
+Because N is bigger in volatile markets, the formula automatically hands you a
+**smaller position** there, and a larger one in calm markets. Every market ends
+up contributing roughly the **same dollar risk** — a form of
+**volatility-normalized risk parity** (sizing positions so each carries an equal
+share of the portfolio's risk).
+
+<BarChart
+  labels={["Calm market (small N)", "Average market", "Volatile market (big N)"]}
+  series={[{ label: "Contracts per Unit (illustrative)", data: [9, 5, 2] }]}
+  caption="Illustrative, not a forecast: the same 1%-of-account risk budget buys many contracts in a calm, low-N market and only a few in a wild, high-N one. The trader risks the same dollars either way — volatility decides the share count, not a gut feel for 'how much to buy.'"
+  yLabel="contracts the rule allows"
+/>
+
+### Entries — two breakout systems
+
+The Turtles ran two systems side by side:
+
+- **System 1 (faster).** Enter on a **20-day breakout** — one tick beyond the
+  highest high (go long) or lowest low (go short) of the prior 20 days. It has a
+  **filter:** *skip* the breakout if the **previous** breakout in that market
+  would have been a winning trade. Concretely: if the last 20-day breakout in gold
+  already paid off, you sit out the *next* one — and only re-engage on the
+  following 55-day breakout. The logic is subtle but important: it keeps you flat
+  through choppy false starts, then makes sure you are *on board* for the big
+  trend that so often follows a whipsaw.
+- **System 2 (slower).** Enter on a **55-day breakout**, with **no filter** —
+  every 55-day breakout is taken. The longer lookback catches only bigger, more
+  established moves, so it needs no skip rule.
+
+<CandleChart
+  caption="Illustrative, not a real market: price coils sideways, then closes one tick above its 20-day high — the breakout bar (the tall green candle) — which is exactly where a System 1 Turtle goes long. The entry is mechanical: no opinion about whether the breakout 'looks' real."
+  height={300}
+  candles={[
+    { o: 50, h: 50.8, l: 49.4, c: 50.2 },
+    { o: 50.2, h: 50.9, l: 49.6, c: 49.9 },
+    { o: 49.9, h: 50.6, l: 49.2, c: 50.4 },
+    { o: 50.4, h: 51.0, l: 49.8, c: 50.1 },
+    { o: 50.1, h: 50.7, l: 49.5, c: 50.5 },
+    { o: 50.5, h: 51.1, l: 49.9, c: 50.0 },
+    { o: 50.0, h: 50.9, l: 49.6, c: 50.6 },
+    { o: 50.6, h: 53.4, l: 50.5, c: 53.1 },
+    { o: 53.1, h: 55.2, l: 52.9, c: 54.8 },
+    { o: 54.8, h: 57.0, l: 54.5, c: 56.6 },
+  ]}
+/>
+
+### Pyramiding — adding to a winner
+
+A trend that works deserves more money. The Turtles **added one Unit for every
+½ N the market moved in their favor**, up to a **maximum of 4 Units** in a single
+market. This "pyramiding" loads the most capital onto the trades that are already
+proving themselves — the opposite of the amateur instinct to add to losers.
+
+### Stops — where the survival lives
+
+Every Unit carried a **2 N stop** — an automatic exit if price moved 2 N against
+it. Since one Unit is sized so 1 N equals 1% of the account, a 2 N stop caps the
+loss at about **2% of the account per trade.** As new Units were pyramided on,
+the stops on the earlier Units were **raised** so the *total* risk across all 4
+Units stayed at roughly 2%. (A "Whipsaw" variant used a tighter ½ N stop for
+traders who could stomach more frequent small losses.)
+
+### Exits — the hardest rule to obey
+
+You ride a trend until it breaks the *other* way:
+
+- **System 1** exits on a **10-day breakout against** the position — for a long,
+  a new 10-day low.
+- **System 2** exits on a **20-day breakout against** the position — a new 20-day
+  low for a long.
+
+The rules PDF calls letting profits run *"the single most difficult part."*
+Sitting through a winner giving back a chunk of open profit before the 10- or
+20-day exit triggers is psychologically brutal — and bailing early is exactly
+how trend followers ruin the math.
+
+### Portfolio limits
+
+To stop the book becoming one giant correlated bet, the Turtles capped exposure:
+**4 Units** in any single market, **6** across closely correlated markets, **10**
+across loosely correlated ones, and **12 Units maximum** in one direction (all
+long or all short).
+
+<Callout type="note">
+Notice what is **absent** from every rule above: any opinion about *value*, *news*,
+*the economy*, or *where the market is going*. The Turtle system is pure price
+mechanics. That is a feature — it removes the trader's ego and forecasting from
+the loop, which is precisely where most people lose money.
+</Callout>
+
+## The numbers — real, but handle with care
+
+By the Turtle-affiliated accounts (the *Original Rules* PDF and Curtis Faith's
+*Way of the Turtle*), the group earned an **average compound annual return of
+roughly 80%** over the experiment, and Dennis reportedly cleared on the order of
+**$100–175 million** from the program.
+
+<Callout type="warning">
+The "~80% a year" figure is the **program number from sources tied to the
+Turtles themselves** — never independently audited, so attribute it rather than
+repeating it as fact. Returns varied enormously *between* Turtles (some were cut
+for losing), so a program average is not "what a Turtle made." And the legend
+skips Dennis's hard ending: he lost heavily in the **1987–88** turmoil and **wound
+down his outside-money operations in spring 1988.** Even the system's designer
+took a brutal hit when markets turned violent.
+</Callout>
+
+Among the Turtles, two names matter most:
+
+- **Curtis Faith** claimed the strongest record — reportedly about **$31 million**
+  in profits — and wrote the best-known Turtle book. **Treat his self-reported
+  figures cautiously.** Fellow Turtle **Jerry Parker** and the journalist
+  **Michael Covel** (author of *The Complete TurtleTrader*) have publicly disputed
+  Faith's account of who performed best and even of how the systems were used.
+  Covel's reporting is the standard journalistic counterweight to Faith's memoir.
+- **Jerry Parker** became the most *commercially* successful Turtle. He founded
+  **Chesapeake Capital** in 1988 and built the Turtle approach into an
+  institutional business, helping turn trend following into the modern
+  **managed-futures / CTA** industry (a **CTA**, or Commodity Trading Advisor, is
+  a regulated manager who trades futures for clients).
+
+## The honest failure modes
+
+This is where the lesson earns its keep. The Turtle story is usually told as a
+triumph; the more useful half is what happened *after*.
+
+### A public edge decays
+
+Once the rules were public — the free PDF, then the 2007 Faith and Covel books —
+the simple breakout edge eroded as thousands of traders crowded into the same
+signals. Back-tests of the *original* system show returns dropping sharply after
+the mid-1980s and running roughly **flat from about 1996 to 2009.** An edge that
+everyone can see and copy is, by definition, getting harder to harvest.
+
+### Trend following is painfully cyclical
+
+The industry's standard yardstick, the **SG Trend Index**, makes the cycles plain.
+Trend-following CTAs broadly underperformed for so long in **2009–2018** that the
+period earned the nickname the **"lost decade."** Then trend roared back in
+**2022** — its best year in over two decades, as the strategy thrived on rising
+rates and commodity moves — only to suffer a record drawdown of about **−18.7%**
+over the 12 months to **April 2025**, the worst stretch in the index's 25-year
+history.
+
+<LineChart
+  caption="Illustrative, not a forecast: the lived shape of a trend-following return stream — strong bursts (early Turtle years, 2022) separated by long flat or losing stretches (the 2009–2018 'lost decade'). The strategy is real, but its payoff is lumpy and demands the patience to sit through years that feel broken."
+  height={300}
+  series={[{ label: "Stylized cumulative trend-following equity", data: [100, 165, 240, 300, 295, 285, 305, 360, 355, 345, 360, 340, 330, 430, 405, 360] }]}
+  levels={[{ y: 300, label: "the 'lost decade' plateau", color: "#f59e0b" }]}
+  points={[
+    { x: 3, y: 300, text: "early trend boom", color: "#22c55e" },
+    { x: 9, y: 345, text: "2009–2018 flat decade", color: "#f59e0b" },
+    { x: 13, y: 430, text: "2022 revival", color: "#22c55e" },
+    { x: 15, y: 360, text: "2024–25 drawdown", color: "#ef4444" },
+  ]}
+/>
+
+### Even with the rules, most people can't follow them
+
+The deepest lesson is behavioral. The win rate is low (most breakouts fail), the
+losing streaks are long, and the drawdowns are deep. Handed the exact rules,
+most people still abandon them mid-drawdown — exiting winners early, skipping the
+scary breakout that becomes the year's biggest trend, or quietly oversizing after
+a good run. The bet Dennis won was really narrower than "trading can be taught":
+what can be taught is **discipline and risk-sizing.** The edge is worthless to
+someone who can't sit still.
+
+<Callout type="key">
+The Turtle experiment's enduring takeaway is not the specific 20- and 55-day
+breakouts — those have largely been competed away. It is the **architecture**:
+a fully written, mechanical plan; volatility-based position sizing so every bet
+risks the same amount; hard stops that cap each loss near a fixed small percent;
+and the patience to let a small number of big winners carry a long string of
+small losses. That architecture outlives any one signal.
+</Callout>
+
+## Key books and sources
+
+- **Curtis Faith, _Original Turtle Trading Rules_ (~2003, free PDF)** — the
+  primary, rule-by-rule source for N, sizing, entries, stops, and exits.
+- **Curtis Faith, _Way of the Turtle_ (2007)** — an insider memoir; vivid, but
+  treat its self-reported performance claims cautiously.
+- **Michael Covel, _The Complete TurtleTrader_ (2007)** — the journalistic
+  account and the standard counterweight to Faith's version of events.
+
+## Key takeaways
+
+- The Turtles came from a **1983 bet** between Richard Dennis and William
+  Eckhardt over whether great trading can be taught. Dennis trained **about
+  21–23 novices** across **1983 and 1984** cohorts, funded them with his own
+  money, and won the bet.
+- The method is textbook **systematic trend following**: trade many unrelated
+  liquid futures, **buy 20- or 55-day breakouts**, cut losers fast, and let rare
+  big trends run. No forecasting is involved.
+- **"N"** is the volatility ruler — a **20-day EMA of True Range**, essentially
+  ATR — and it powers everything: positions are sized so **1 N = 1% of equity**,
+  giving smaller bets in wild markets and larger ones in calm markets.
+- Risk control is mechanical: a **2 N stop** caps each trade near **2%** of the
+  account; pyramid up to **4 Units** every **½ N** of favorable move; exit on a
+  **10-day (System 1)** or **20-day (System 2)** breakout against the position.
+- The headline **"~80% a year"** return is a **program figure from Turtle-linked
+  sources, not independently audited** — and individual results varied hugely.
+  Curtis Faith's personal claims are disputed by Jerry Parker and Michael Covel.
+- The edge **decayed once the rules went public**, and trend following is
+  **deeply cyclical** — a "lost decade" (2009–2018), a 2022 revival, then a
+  record drawdown to 2025. The strategy is real but demands patience through long
+  bad stretches.
+- The transferable lesson is **discipline and volatility-based position sizing**,
+  not the specific breakouts. What Dennis proved teachable was risk management,
+  not a crystal ball.
+
+<Callout type="warning">
+This is educational material, not financial advice. The original Turtle signals
+have been widely published and largely arbitraged away; trend following carries
+large drawdowns and long losing periods, and futures involve leverage that can
+amplify losses well beyond your initial stake. Nothing here is a recommendation
+to trade any market or system.
+</Callout>
+
+---
+
+### Sources
+
+1. Curtis Faith, *The Original Turtle Trading Rules* (originalturtles.org, ~2003) — markets traded, the N volatility unit (20-day EMA of True Range), Unit sizing, System 1/System 2 breakout entries and the winner filter, ½ N pyramiding, 2 N stops, 10-/20-day exits, position limits, and the "grow traders like turtles" origin quote.
+2. Curtis Faith, *Way of the Turtle* (McGraw-Hill, 2007) — insider account of the experiment, training, and performance claims (treated cautiously).
+3. Michael Covel, *The Complete TurtleTrader* (HarperBusiness, 2007) — journalistic history of Dennis, Eckhardt, the cohorts, recruitment, the NDA, Dennis's results and 1987–88 losses, and the disputes over Faith's claims.
+4. SG Trend Index (Société Générale) — the standard managed-futures/trend-following benchmark referenced for the 2009–2018 "lost decade," the 2022 revival, and the drawdown to April 2025.

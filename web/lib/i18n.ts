@@ -17,7 +17,48 @@ export const LOCALE_LABEL: Record<Locale, string> = {
 // separately (translated MDX under content/ko/).
 type Dict = {
   brand: string;
-  nav: { path: string; schools: string; gurus: string; indicators: string };
+  nav: {
+    path: string;
+    strategies: string;
+    schools: string;
+    gurus: string;
+    indicators: string;
+  };
+  strategiesIndex: {
+    title: string;
+    intro: string;
+    findTitle: string;
+    findBlurb: string;
+    findCta: string;
+    steps: (n: number) => string;
+    rankLabel: string;
+    schoolsLabel: string;
+  };
+  strategyPage: {
+    back: string;
+    pathHeading: string;
+    comingSoon: string;
+    drawsFrom: string;
+    takeQuiz: string;
+  };
+  quiz: {
+    title: string;
+    intro: string;
+    start: string;
+    of: string; // "Question {a} of {b}" — {a}/{b} substituted client-side
+    back: string;
+    next: string;
+    seeResult: string;
+    retake: string;
+    resultTitle: string;
+    whyFits: string;
+    alsoExplore: string;
+    startPath: string;
+    floorNote: string;
+    activeNote: string;
+    dayGatedNote: string;
+    dayWarning: string;
+  };
   schoolsIndex: {
     title: string;
     intro: string;
@@ -63,9 +104,52 @@ export const STRINGS: Record<Locale, Dict> = {
     brand: "FinGuru",
     nav: {
       path: "Learning Path",
+      strategies: "Learning Path",
       schools: "Schools",
       gurus: "Gurus",
       indicators: "Indicators",
+    },
+    strategiesIndex: {
+      title: "Find Your Learning Path",
+      intro:
+        "Pick the investment strategy that fits how you think, how much time you have, and how much risk you can stomach — and follow a learning path built just for it, drawn from the masters who pioneered it. Not sure which is you? Take the 2-minute quiz.",
+      findTitle: "Find My Strategy",
+      findBlurb:
+        "Answer 10 quick questions and we'll match you to the strategy — and the learning path — that fits you best.",
+      findCta: "Take the quiz →",
+      steps: (n) => `${n} step${n === 1 ? "" : "s"}`,
+      rankLabel: "Beginner-friendliness",
+      schoolsLabel: "Draws from",
+    },
+    strategyPage: {
+      back: "← All strategies",
+      pathHeading: "Your learning path",
+      comingSoon: "Coming soon",
+      drawsFrom: "Draws from",
+      takeQuiz: "Not sure this is you? Take the quiz →",
+    },
+    quiz: {
+      title: "Find My Strategy",
+      intro:
+        "Ten quick questions. There are no wrong answers — we'll match you to the investing strategy that fits how you think, the time you have, and the risk you can handle.",
+      start: "Start the quiz",
+      of: "Question {a} of {b}",
+      back: "← Back",
+      next: "Next →",
+      seeResult: "See my result →",
+      retake: "Retake the quiz",
+      resultTitle: "Your best-fit strategy",
+      whyFits: "Why this fits you",
+      alsoExplore: "Also worth exploring",
+      startPath: "Start this learning path →",
+      floorNote:
+        "Your answers are spread across several styles, so we're starting you with the approach most evidence supports for the majority of investors. You can always explore the others.",
+      activeNote:
+        "This approach needs ongoing effort and carries more risk than a simple index fund. A common move is to keep a passive core and use this for a smaller, deliberate slice.",
+      dayGatedNote:
+        "Your answers leaned toward fast, high-risk trading — but we don't recommend day trading until you've built more experience, time, and risk capacity. Here's a path to get there safely first.",
+      dayWarning:
+        "Day trading is the highest-risk path. Studies consistently find most day traders lose money, and it demands full-time attention, real experience, and money you can afford to lose. Master the fundamentals before risking capital.",
     },
     schoolsIndex: {
       title: "The Schools of Investing",
@@ -137,9 +221,52 @@ export const STRINGS: Record<Locale, Dict> = {
     brand: "FinGuru",
     nav: {
       path: "학습 경로",
+      strategies: "학습 경로",
       schools: "투자 유파",
       gurus: "거장들",
       indicators: "지표 & 도구",
+    },
+    strategiesIndex: {
+      title: "나만의 학습 경로 찾기",
+      intro:
+        "당신의 사고방식, 투자에 쓸 시간, 감당할 수 있는 위험에 맞는 투자 전략을 고르세요 — 그리고 그 전략을 개척한 거장들로부터 뽑아낸, 그 전략만을 위한 학습 경로를 따라가세요. 어떤 것이 나에게 맞는지 모르겠다면 2분짜리 퀴즈를 풀어 보세요.",
+      findTitle: "내 전략 찾기",
+      findBlurb:
+        "10개의 간단한 질문에 답하면, 당신에게 가장 잘 맞는 전략과 학습 경로를 찾아 드립니다.",
+      findCta: "퀴즈 풀기 →",
+      steps: (n) => `${n}단계`,
+      rankLabel: "입문자 적합도",
+      schoolsLabel: "기반 유파",
+    },
+    strategyPage: {
+      back: "← 모든 전략",
+      pathHeading: "당신의 학습 경로",
+      comingSoon: "준비 중",
+      drawsFrom: "기반 유파",
+      takeQuiz: "이게 나에게 맞는지 모르겠다면? 퀴즈 풀기 →",
+    },
+    quiz: {
+      title: "내 전략 찾기",
+      intro:
+        "10개의 간단한 질문입니다. 정답은 없습니다 — 당신의 사고방식, 투자 가능 시간, 감당할 수 있는 위험에 맞는 투자 전략을 찾아 드립니다.",
+      start: "퀴즈 시작하기",
+      of: "질문 {a} / {b}",
+      back: "← 이전",
+      next: "다음 →",
+      seeResult: "결과 보기 →",
+      retake: "퀴즈 다시 풀기",
+      resultTitle: "당신에게 가장 잘 맞는 전략",
+      whyFits: "이 전략이 잘 맞는 이유",
+      alsoExplore: "함께 살펴보면 좋은 전략",
+      startPath: "이 학습 경로 시작하기 →",
+      floorNote:
+        "당신의 답변이 여러 스타일에 걸쳐 있어, 대다수 투자자에게 근거가 가장 탄탄한 접근법부터 시작하도록 안내합니다. 다른 전략은 언제든 살펴볼 수 있습니다.",
+      activeNote:
+        "이 접근법은 지속적인 노력이 필요하고, 단순한 인덱스 펀드보다 위험이 큽니다. 흔한 방법은 패시브를 핵심으로 두고, 이 전략은 더 작고 의도적인 비중에 쓰는 것입니다.",
+      dayGatedNote:
+        "당신의 답변은 빠르고 위험이 큰 매매 쪽으로 기울었습니다 — 하지만 경험·시간·위험 감내력을 더 쌓기 전까지는 데이 트레이딩을 권하지 않습니다. 먼저 안전하게 그 단계에 이르는 경로를 안내합니다.",
+      dayWarning:
+        "데이 트레이딩은 가장 위험한 길입니다. 여러 연구는 대부분의 데이 트레이더가 손실을 본다는 것을 일관되게 보여줍니다. 또한 종일 집중, 실제 경험, 그리고 잃어도 되는 자금이 필요합니다. 자본을 위험에 두기 전에 기초부터 숙달하세요.",
     },
     schoolsIndex: {
       title: "투자의 유파들",

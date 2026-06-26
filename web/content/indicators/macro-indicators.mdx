@@ -1,0 +1,391 @@
+---
+title: "Reading the Economy — Leading, Coincident & Lagging Indicators"
+slug: "macro-indicators"
+kind: "indicator"
+school: "macro"
+level: "intermediate"
+order: 122
+summary: "How to read the economy the way a macro trader does — by sorting the firehose of data into three buckets (turns before, with, and after the cycle) and trusting the sequence, not any single number."
+tags: ["macro", "business cycle", "leading indicators", "yield curve", "recession", "conference board", "LEI"]
+prereqs: ["charles-dow"]
+---
+
+## Why this matters
+
+Every month the economy throws out a blizzard of numbers — jobs, prices, factory
+orders, housing starts, interest rates. A beginner sees noise. A macro trader
+sees a **clock**.
+
+The trick that turns the blizzard into a clock is one idea: not all data arrives
+at the same time relative to the **business cycle** — the economy's repeating
+rhythm of expansion (growing) and recession (shrinking). Some numbers turn
+*before* the economy does, some turn *with* it, and some turn *after*. Sort every
+indicator into those three buckets and you stop asking the impossible question
+("what is the economy doing right now?") and start asking three answerable ones:
+*where is it heading, where is it now, and has the trend been confirmed?*
+
+That three-bucket scheme — **leading, coincident, lagging** — is the oldest and
+most durable framework in macro. This lesson teaches you to build the read.
+
+## The one-sentence version
+
+> Leading indicators tell you where the economy is *going*, coincident
+> indicators tell you where it *is*, and lagging indicators *confirm* where it has
+> *been* — and the skill is reading the three in sequence, not betting on any one.
+
+## The three buckets, defined
+
+The whole framework rests on **timing relative to the business cycle's turning
+points** — the peaks (where expansion flips to recession) and troughs (where
+recession flips to recovery).
+
+- **Leading indicators** — turn *before* the economy does. They are your early
+  warning system: the things that soften or strengthen first because they sit at
+  the front of the economic chain (decisions to order, build, lend, and hire).
+- **Coincident indicators** — turn *with* the economy. They *define* the cycle's
+  current state. When economists say "we are in a recession," these are the
+  numbers they are looking at.
+- **Lagging indicators** — turn *after* the economy. They are slow to move, so
+  they don't predict — they **confirm**. A lagging signal tells you a trend was
+  real, after the fact.
+
+<Callout type="key">
+
+Think of it like a long freight train. The **locomotive** (leading) moves first.
+The **middle cars** (coincident) move as the train as a whole gets going. The
+**caboose** (lagging) is still sitting still when the engine has already pulled
+away — and is still rolling after the engine has stopped. To know what the train
+is doing, you watch all three cars and read the *sequence*.
+
+</Callout>
+
+<ConceptDiagram
+  caption="The sequence of a business-cycle turn. Leading indicators roll over first, coincident indicators confirm the turn is underway, and lagging indicators move last — which is exactly why each bucket answers a different question."
+  chart={`flowchart LR
+  L[Leading: turn BEFORE - where is it going?] --> C[Coincident: turn WITH - where is it now?]
+  C --> G[Lagging: turn AFTER - was the trend real?]`}
+/>
+
+## Where the framework comes from: the Conference Board indexes
+
+This isn't folk wisdom. It was built into formal statistics. Economists **Wesley
+Mitchell and Arthur Burns** at the **National Bureau of Economic Research
+(NBER)** pioneered the classification of indicators by cycle timing in **1938**.
+The US Commerce Department later published composite indexes, and since **1996**
+**The Conference Board** — a private research nonprofit — has produced the
+canonical three:
+
+- **LEI** — the Leading Economic Index (10 components)
+- **CEI** — the Coincident Economic Index (4 components)
+- **LAG** — the Lagging Economic Index (7 components)
+
+Each is a single number (set to a base of **2016 = 100**) that blends many
+underlying series into one composite, so a rise or fall in the index summarizes
+the whole bucket. Bundling many indicators is deliberate: any one series is
+noisy and gives false signals, but a *composite* smooths out the noise.
+
+### The LEI — the locomotive (10 components)
+
+The LEI is the headline number markets watch. The Conference Board's own framing
+is that **the LEI tends to lead cycle turning points by about 7 months** — that
+~7-month figure is the single most-citable number in this lesson, and it is why
+the index exists at all.
+
+Its ten components, each chosen because it sits early in the economic chain:
+
+1. Average weekly **manufacturing hours** (firms adjust hours before headcount)
+2. Average weekly **initial jobless claims** (the fastest-moving labor signal)
+3. Manufacturers' **new orders** for consumer goods and materials
+4. The **ISM Index of New Orders** (a factory survey, explained below)
+5. Manufacturers' **new orders** for nondefense capital goods (ex-aircraft) — a
+   proxy for business investment plans
+6. **Building permits** for new private housing (housing turns early)
+7. The **S&P 500** stock index (markets price the future)
+8. The **Leading Credit Index** (a blend of credit-market conditions)
+9. The **interest-rate spread**: the 10-year Treasury yield minus the fed funds
+   rate (the yield-curve signal, the star of this show)
+10. Average **consumer expectations** for business conditions
+
+<Callout type="note">
+
+Notice the logic. Hours change before hiring. Orders change before production.
+Permits change before construction. Stock prices and the yield curve are
+*forward-looking by nature*. Every component is something that moves at the
+*front* of the chain — that is what makes the bundle "leading."
+
+</Callout>
+
+### The CEI — the middle cars (4 components)
+
+The Coincident Economic Index is built from the four series that, together,
+*are* the economy's current state:
+
+1. **Nonfarm payroll employment** (total jobs)
+2. **Personal income** less transfer payments (earned income)
+3. **Manufacturing and trade sales**
+4. **Industrial production**
+
+These four are, not by accident, essentially the variables the **NBER's
+business-cycle dating committee** watches when it officially declares the start
+and end of recessions. If the CEI is the definition of "now," these are the
+words it's written in.
+
+### The LAG — the caboose (7 components)
+
+The Lagging Economic Index moves last, and its job is **confirmation**. Its seven
+components (per the Conference Board's *Description of Components*) are:
+
+1. Average **duration of unemployment** (how long the jobless stay jobless —
+   inverted, because it falls as the economy improves)
+2. The **inventories-to-sales ratio** for manufacturing and trade
+3. Change in **unit labor costs** (manufacturing)
+4. The average **prime rate** charged by banks
+5. **Commercial and industrial loans** outstanding
+6. The **consumer-installment-credit-to-income ratio**
+7. The change in the **CPI for services** (services inflation)
+
+<Callout type="warning">
+
+The LAG component list is the single most mis-stated fact in popular write-ups of
+this topic — many sources swap items in or out. The seven above are the
+Conference Board's official set. If you ever quote them, verify against the
+Conference Board's own *Description of Components* document rather than a
+secondhand summary.
+
+</Callout>
+
+### A snapshot of the three together
+
+To make the three concrete, here is a recent reading (Conference Board, May 2026
+data — illustrative of the *levels*, not a forecast): LEI **99.3** (+0.1% on the
+month), CEI **114.6** (+0.2%), LAG **120.5** (−0.1%). Note that the LEI's six- and
+twelve-month growth rates were still negative even as the monthly figure ticked
+up — exactly the kind of mixed signal that makes reading the *sequence* matter.
+
+<BarChart
+  caption="Illustrative, not a forecast. The Conference Board's three composite indexes, May 2026 levels (base 2016 = 100). The point isn't the exact heights — it's that three separate numbers each answer a different question: heading, now, and confirmed."
+  labels={["LEI (leading)", "CEI (coincident)", "LAG (lagging)"]}
+  series={[{ label: "Index level (2016 = 100)", data: [99.3, 114.6, 120.5] }]}
+  yLabel="Index level"
+/>
+
+## The recession-signal rule: the "3 Ds"
+
+A single month of a falling LEI means little. To filter noise, the Conference
+Board uses a rule built on three properties — the **"3 Ds": Duration, Depth, and
+Diffusion.**
+
+- **Duration** — is the decline lasting, not a one-month blip?
+- **Depth** — is it large enough to matter?
+- **Diffusion** — is the weakness *spread across* many components, or just one?
+
+The mechanical trigger: the recession signal fires when the **six-month diffusion
+index is at or below 50** (meaning *most* components are weakening, not just a
+few) **and** the **six-month annualized growth rate falls below about −4.3%**.
+Both conditions — breadth *and* depth, sustained over six months — must hold. The
+rule is conservative on purpose: it would rather miss a wobble than cry wolf.
+
+<Callout type="key">
+
+The deepest lesson of the "3 Ds" is **diffusion**. One weak number is noise. Weak
+numbers *spread across the whole bucket* is signal. Whenever you read macro data,
+ask not just "is this number bad?" but "**how broad** is the weakness?" Breadth is
+what separates a scare from a turn.
+
+</Callout>
+
+## The single most-cited leading signal: the yield curve
+
+If you learn one individual indicator, learn this one.
+
+The **yield curve** plots the interest rate (yield) on government bonds against
+how long until they mature. Normally it slopes **up**: longer loans pay more,
+because you're tying up money for longer. An **inverted** yield curve — when
+short-term rates rise *above* long-term rates — has preceded essentially every
+modern US recession, which is why it's the most-watched recession bellwether on
+the board.
+
+Two versions get quoted:
+
+- **10-year minus 3-month** — the spread popularized by economists **Arturo
+  Estrella and Frederic Mishkin** at the New York Fed in the mid-1990s, and the
+  one many academics favor as the cleanest signal.
+- **10-year minus 2-year** — the version markets and financial media quote most
+  often.
+
+When either spread goes **negative** (the line inverts), the clock starts. The
+lead time is commonly stated as anywhere from **~7 to 24 months** before a
+recession begins — wide, which is the first hint that this is a *warning light*,
+not a *timer*.
+
+<LineChart
+  caption="Illustrative, not real data. A stylized yield curve: normally upward-sloping (short rates below long rates). An inversion is when the short end rises ABOVE the long end — the line tilts down at the front. The shape, not these exact numbers, is the point."
+  labels={["3-month", "2-year", "5-year", "10-year", "30-year"]}
+  series={[
+    { label: "Normal (upward) curve", data: [3.0, 3.6, 4.0, 4.3, 4.5] },
+    { label: "Inverted curve", data: [5.4, 5.0, 4.6, 4.4, 4.3] },
+  ]}
+  yLabel="Yield (%)"
+/>
+
+### Why an inversion is a warning at all
+
+The intuition: short-term rates are set close to the central bank's policy rate.
+When the central bank jacks rates up to fight inflation, the short end shoots up.
+Long-term rates reflect the market's view of *future* growth and rates — and if
+investors expect the economy to slow (forcing rate *cuts* later), they pile into
+long bonds, pushing long yields *down*. High short rates plus low long rates =
+inversion. So an inverted curve is the market collectively saying: *policy is
+tight now, and we expect it to hurt.*
+
+## A worked read: where in the cycle am I?
+
+Here is how the buckets line up across a stylized cycle. This is the mental model,
+not a calendar:
+
+| Cycle phase | Leading | Coincident | Lagging |
+|---|---|---|---|
+| **Late expansion (peak nearing)** | Already softening — claims tick up, permits fall, curve inverts | Still strong (jobs, production high) | Still rising (inflation, unemployment duration low) |
+| **Recession** | Bottoming, may start to recover | Falling — the recession *is* the CEI dropping | Still deteriorating (unemployment duration rises, services CPI sticky) |
+| **Early recovery** | Rising clearly | Turning up | Still poor — lagging is last to heal |
+
+Read across any row and the sequence is obvious: leading moves first, lagging
+moves last. The macro trader's edge is **not** in any one cell — it's in noticing
+when the cells *disagree*. When leading indicators roll over while coincident
+data still looks great, that gap is the most valuable information the framework
+produces.
+
+<ConceptDiagram
+  caption="The cross-check a macro trader actually runs: a leading signal flags a possible turn, coincident data confirms the regime you're in, and lagging data validates after the fact. No single bucket is trusted alone."
+  chart={`flowchart TB
+  A[Leading flags a turn: curve inverts, claims rise, permits fall] --> B{Do coincident data confirm? jobs, income, production}
+  B -->|Yes, weakening| C[Regime change underway - position accordingly]
+  B -->|No, still strong| D[Warning only - wait for confirmation]
+  C --> E[Lagging confirms after the fact: unemployment duration, services CPI]
+  D --> E`}
+/>
+
+## How a macro trader builds the read
+
+The synthesis — the actual skill — is cross-checking the **sequence**:
+
+1. **Scan the leading bucket for an early turn.** Watch the LEI's six-month
+   growth rate *and* its diffusion (breadth), plus the highest-frequency raw
+   signals: weekly initial jobless claims and the monthly ISM new-orders survey
+   (released the first business day after month-end; a reading above 50 means
+   manufacturing is expanding, below 50 contracting). These are your tripwires.
+2. **Confirm with coincident data.** Don't act on a leading signal alone. Check
+   whether payrolls, income, sales, and industrial production are actually
+   bending. The gap between a leading warning and coincident confirmation is the
+   window you trade in.
+3. **Use lagging data to grade your call, not to make it.** When unemployment
+   duration finally lengthens and services inflation cools, the trend you spotted
+   months earlier is confirmed — useful as validation, useless as a trigger.
+4. **Watch the curve's *steepening*, not just its inversion.** A subtle but
+   crucial point covered next.
+
+<Callout type="note">
+
+Notice how the data release calendar *itself* reflects the buckets. Initial
+claims come **weekly** (least lagged). ISM lands the first business day after
+month-end. Payrolls come the first Friday; industrial production mid-month. CPI
+arrives mid-month for the *prior* month — genuinely lagging data about the past.
+Faster data tends to be more leading; slower data more lagging. The calendar is
+the framework in disguise.
+
+</Callout>
+
+## Honest failure modes — read this twice
+
+The framework is powerful and the yield curve is the best single recession signal
+we have. But "best available" is not "reliable." The honest record:
+
+<Callout type="warning">
+
+**The 2022–2024 inversion was the big false alarm.** The 10y–3m and 10y–2y curves
+inverted from around July 2022 — described as the longest and deepest inversion on
+record — and stayed inverted until roughly September 2024. **No recession
+materialized** in that window. This is the headline cautionary case of the modern
+era: do *not* describe the 2022 inversion as a successful recession call. The
+signal that has "never been wrong" was, in the most-watched real-time test in a
+generation, at minimum badly early and arguably wrong.
+
+</Callout>
+
+- **"It has predicted nine of the last five recessions."** The canonical joke
+  (aimed originally at the stock market, often attributed to economist Paul
+  Samuelson) captures the core hazard: **false positives.** Leading indicators
+  flash warnings that don't pan out. Every leading signal trades earliness for
+  accuracy.
+- **Reflexivity (the Goodhart problem).** Once *everyone* watches a signal, its
+  behavior can change. Analysts at Deutsche Bank have noted that in prior cycles
+  the curve actually **re-steepened *before* the recession began** — meaning the
+  *end* of an inversion (not its onset) can be the real warning. A signal everyone
+  front-runs is a signal that may stop working as advertised.
+- **Term-premium distortion.** Years of central-bank bond buying and selling
+  (quantitative easing and tightening) can flatten or steepen the curve for
+  reasons that have nothing to do with recession risk. The NY Fed's own "signal or
+  noise?" research warns the curve can be pushed around by policy, not the cycle.
+- **Data revisions.** Payrolls and several LEI components are revised — sometimes
+  substantially — after first release. The clean historical chart traders study
+  later is *not* what was visible in real time. The signal you act on is fuzzier
+  than the signal you backtest.
+
+<Callout type="key">
+
+Put the failure modes together and you get the one rule that protects you: **never
+trade a single indicator.** The yield curve's 2022 false alarm, the
+"nine-of-five" false-positive problem, reflexivity, policy distortion, and
+revisions are *all* reasons the buckets exist as a *system*. Leading flags it,
+coincident confirms it, lagging validates it. The discipline is the cross-check.
+
+</Callout>
+
+## Key takeaways
+
+- **Sort by timing, not topic.** Every indicator belongs to one of three buckets:
+  **leading** (turns before — where it's going), **coincident** (turns with —
+  where it is), **lagging** (turns after — confirmation).
+- **The Conference Board formalized it** into three composites: **LEI** (10
+  components), **CEI** (4), and **LAG** (7). The **LEI leads cycle turns by about
+  7 months** — the number worth remembering.
+- **Composites beat single series** because bundling smooths the noise that makes
+  any one indicator unreliable.
+- **The "3 Ds" — Duration, Depth, Diffusion** — filter noise from signal. The
+  recession trigger needs a sustained, broad, deep decline (six-month diffusion
+  `≤ 50` and six-month annualized growth below about `−4.3%`). **Breadth
+  (diffusion) is the underrated half.**
+- **The yield curve is the single most-cited leading signal** (10y–3m per
+  Estrella–Mishkin, or 10y–2y in the markets), with a wide lead of roughly 7 to 24
+  months — a warning light, not a timer.
+- **It fails, and recently.** The 2022–2024 inversion produced *no* recession.
+  Reflexivity, term-premium distortion, and data revisions all erode any single
+  signal.
+- **The skill is the sequence, not the number.** Leading flags, coincident
+  confirms, lagging validates. The most valuable information appears when the
+  buckets *disagree* — when leading indicators soften while coincident data still
+  looks strong.
+- This is educational material, not financial advice. Indicators describe
+  probabilities, not certainties; size and risk decisions are your own.
+
+## Further reading
+
+- The Conference Board, *US Leading Economic Index* page and *Description of
+  Components* — the primary source for the LEI/CEI/LAG component lists, the
+  ~7-month lead claim, the base (2016 = 100), and the "3 Ds" recession rule.
+- Arturo Estrella & Frederic Mishkin, *"The Yield Curve as a Predictor of US
+  Recessions"* (Federal Reserve Bank of New York, 1996/1998) — the academic
+  foundation for the 10-year-minus-3-month spread. Verify the lead-time figures
+  against the NY Fed yield-curve FAQ.
+- Mitchell & Burns, *Statistical Indicators of Cyclical Revivals* (NBER, 1938) —
+  the original classification of indicators by cycle timing.
+
+---
+
+### Sources
+
+1. [The Conference Board — US Leading Economic Index (June 18, 2026 release)](https://www.conference-board.org/topics/us-leading-indicators) — the LEI's 10 components and CEI's 4 components; the ~7-month lead; base 2016 = 100; the "3 Ds" rule (six-month diffusion ≤ 50 and six-month annualized growth below −4.3%); May 2026 levels (LEI 99.3, CEI 114.6, LAG 120.5).
+2. [The Conference Board — Description of Components](https://www.conference-board.org/) — the LAG index's 7 components (unemployment duration, inventories-to-sales, unit labor costs, prime rate, C&I loans, consumer-installment-credit-to-income, services CPI). Verify directly before quoting.
+3. [Inverted yield curve — Wikipedia](https://en.wikipedia.org/wiki/Inverted_yield_curve) — the 10y–3m vs. 10y–2y spreads; Estrella–Mishkin (NY Fed, 1996/1998); the ~7–24-month lead; the 2022–2024 inversion (longest/deepest on record, un-inverted by ~September 2024, no recession); the "nine of the last five recessions" line; Deutsche Bank's re-steepening observation; term-premium/QE distortion.
+4. [Conference Board Leading Economic Index — Wikipedia](https://en.wikipedia.org/wiki/Conference_Board_Leading_Economic_Index) — NBER origins (Mitchell & Burns, 1938); Commerce Department history; Conference Board took over publication in 1996; composite construction.
+5. [Federal Reserve Bank of New York — The Yield Curve as a Leading Indicator (FAQ)](https://www.newyorkfed.org/research/capital_markets/ycfaq) — recommended primary source to verify the Estrella–Mishkin spread definition and lead-time, and the term-premium "signal or noise?" caveats.
