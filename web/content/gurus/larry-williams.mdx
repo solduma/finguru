@@ -2,9 +2,11 @@
 title: "Larry Williams — Short-Term Timing"
 slug: "larry-williams"
 kind: "guru"
+school: "technical"
+strategy: "short-term-systems"
 level: "intermediate"
 order: 14
-summary: "The trader who turned $10,000 into over $1M in the 1987 championship, and the short-term toolkit — Williams %R, volatility breakouts, COT sentiment — behind it."
+summary: "The trader who turned $10,000 into over $1.1M in the 1987 championship, and the short-term futures toolkit — Williams %R, volatility breakouts, the Oops! gap reversal, COT sentiment, seasonality, and aggressive position sizing — behind it. Plus the honest reasons almost nobody (him included) has repeated it."
 era: "b. 1942"
 contribution: "%R & short-term timing"
 prereqs: ["charles-dow"]
@@ -14,15 +16,21 @@ prereqs: ["charles-dow"]
 
 In 1987, a Montana journalist-turned-trader named Larry Williams took $10,000 in a real-money futures contest and grew it past $1 million in twelve months — and then spent the next three decades teaching, selling, and occasionally being honest about why almost nobody (including him) has done it again.
 
-Larry Williams matters not because he found a magic indicator, but because he built a complete, repeatable *style*: short-term futures timing that fuses a momentum oscillator, volatility-based entries, seasonal tendencies, and the positioning of professional hedgers. His career is also a useful case study in survivorship, marketing, and the gap between a spectacular result and a reliable method. We will take all of it seriously — the genuinely good ideas and the honest caveats.
+Larry Williams matters not because he found a magic indicator, but because he built a complete, repeatable *style*: short-term futures timing that fuses a momentum oscillator, volatility-based entries, named gap/reversal patterns, calendar and seasonal tendencies, the positioning of professional hedgers, and — crucially — an aggressive, mathematically explicit way of *sizing* each bet. His career is also a useful case study in survivorship, marketing, and the gap between a spectacular result and a reliable method. We will take all of it seriously — the genuinely good ideas and the honest caveats — and at every step say exactly what a beginner should *do* differently from what he did.
 
 ## Who he was
 
-Larry R. Williams was born **October 6, 1942**, in Miles City, Montana, and graduated from the University of Oregon's School of Journalism in **1964** ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)). He became a commodity (futures) trader and a prolific author — roughly a dozen books, most famously *How I Made One Million Dollars Last Year Trading Commodities* (1979) and *Long-Term Secrets to Short-Term Trading* (1998).
+Larry R. Williams was born **October 6, 1942**, in Miles City, Montana, and graduated from the University of Oregon's **School of Journalism** in **1964** ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)). Note the degree: journalism, not finance. He is **self-taught as a trader**, active in the markets since **1962**, and the author of roughly a dozen books — most famously *How I Made One Million Dollars Last Year Trading Commodities* (1979) and *Long-Term Secrets to Short-Term Trading* (1998), the canonical text for this lesson. He created the **Williams %R** oscillator and the **Ultimate Oscillator**, plus COT-based indices; his indicators are licensed into platforms like TradeStation, NinjaTrader, eSignal, and StockCharts.
 
-He also ran twice as the Republican U.S. Senate nominee from Montana — losing to Max Baucus in **1978** and to John Melcher in **1982** — and he is the father of actress Michelle Williams. There is a financial footnote there too: Michelle Williams won the same World Cup Trading Championship about a decade after he did, a fact that cuts both ways, suggesting either a teachable edge or a family well-versed in how the contest's math works.
+He also ran twice as the Republican U.S. Senate nominee from Montana — losing to Max Baucus in **1978** and to John Melcher in **1982** — and he is the father of actress **Michelle Williams**. There is a financial footnote: Michelle won the same World Cup Trading Championship about a decade after he did, a fact that cuts both ways — suggesting either a teachable edge or a family well-versed in how the contest's math works.
 
-He is not without controversy. Williams faced a long IRS dispute; on **February 5, 2010**, the felony tax-evasion charges were dropped and he pleaded guilty to three misdemeanor counts of failing to file returns on time for tax years 1999–2001 ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)). Worth knowing when weighing how much to trust any single narrative about him.
+He is not without controversy. Williams faced a trial on three counts of tax evasion; on **February 5, 2010**, the felony charges were dropped and he **pleaded guilty to three misdemeanor counts of failing to file income-tax returns on time** for tax years **1999–2001** ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)). He later wrote *Confessions of a Radical Tax Protestor* (2011). Worth knowing when weighing how much to trust any single narrative about him — and separate from his trading.
+
+<Callout type="warning">
+
+**A self-promotion / impostor caveat, up front.** Williams sells courses, seminars, and indicators, and a great deal of the "Larry Williams strategy" content online is marketing-flavored or written by third parties. His own official site prominently warns that many people falsely claim to have been "personally mentored" by him. Read his published *method* on its merits; treat self-reported and contest-sponsor performance numbers with skepticism.
+
+</Callout>
 
 <Callout type="note">
 
@@ -30,32 +38,45 @@ He is not without controversy. Williams faced a long IRS dispute; on **February 
 
 </Callout>
 
+## The core idea in one breath
+
+Over short horizons, markets are driven by **emotion and over-reaction, not value.** Williams' edge is to **buy when the crowd is fearful and sell when it's greedy** — but only with **objective, pre-defined triggers**, never gut-feel discretion. He looks through four lenses, and a signal is strongest when several **agree**:
+
+1. **Momentum / over-extension** (Williams %R) — is price stretched too far?
+2. **Volatility & range structure** (breakouts, the Oops! gap reversal) — has price moved far enough to signal a real move, or gapped far enough to snap back?
+3. **Who is positioned where** (the COT report) — are the smart-money commercials buying while the public sells?
+4. **Calendar tendencies** (seasonality, day-of-week) — does this date historically favor up or down?
+
+The fuel that turned $10k into $1.1M was *not* a magic indicator — it was **aggressive but defined position sizing** layered on top of a modest edge. Keep that order in mind for the whole lesson.
+
 ## The 1987 World Cup Trading Championship
 
-The World Cup Championship of Futures Trading (run by Robbins Trading Company) is a contest scored on *percentage return* in a real, audited brokerage account. In 1987 Williams turned **$10,000 into $1,137,600 — an 11,376% return** for the year ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)).
+The World Cup Championship of Futures Trading (run by Robbins Trading Company) is scored on *percentage return* in a real, audited brokerage account. In 1987 Williams turned **$10,000 into $1,137,600 — an 11,376% return** for the year ([Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams)).
 
 That number is real in the sense that it happened in a tracked account. But you must understand *how* it happened before you treat it as a target.
 
 <LineChart
-  caption="The 1987 contest: $10,000 compounding past $1M — a near-vertical climb, but punctuated by sharp drawdowns (−17% even mid-run), the visible cost of the leverage"
+  caption="The 1987 contest: $10,000 compounding past $1M — a near-vertical climb, but punctuated by sharp drawdowns (Williams reportedly endured well over 50% peak-to-trough even mid-run), the visible cost of the leverage."
   height={300}
   series={[
     { label: "Account equity ($)", data: [10000, 22000, 18000, 41000, 78000, 65000, 150000, 310000, 270000, 560000, 880000, 1137600], color: "#2dd4bf", width: 2 }
   ]}
   points={[
     { x: 0, y: 10000, text: "$10,000 start", color: "#e6e9ef" },
-    { x: 5, y: 65000, text: "−17% drawdown (a peak-to-trough drop in account value) even in the winning year", color: "#ef4444" },
+    { x: 5, y: 65000, text: "deep drawdown (a peak-to-trough drop) even in the winning year", color: "#ef4444" },
     { x: 11, y: 1137600, text: "$1,137,600 (+11,376%)", color: "#22c55e" }
   ]}
 />
 
+Here is the math that makes it both famous *and* unrepeatable. $10,000 → $1,137,600 is a multiple of **×113.76** over roughly **250 trading days.** Compounded, that is only about **1.9% growth per day** — which sounds modest until you realize it is *only* achievable with heavy leverage on a positive-expectancy system, run on a tiny, all-in account. The same percentage on $10M would move the markets he traded and is simply not realistic.
+
 <Callout type="warning">
 
-A contest scored on percentage return rewards extreme, concentrated leverage. To grow an account 100x in a year, you must risk a very large fraction of capital repeatedly and be right. The same approach that produces an 11,000% winner also produces a long tail of competitors who blow up to zero — and we mostly only hear about the winner. This is **survivorship bias**, and Williams himself has acknowledged that he traded far larger position sizes in the contest than he would recommend for a normal account.
+A contest scored on percentage return rewards extreme, concentrated leverage. To grow an account 100x in a year, you must repeatedly risk a very large fraction of capital and be right. The same approach that produces an 11,000% winner also produces a long tail of competitors who blow up to zero — and we mostly only hear about the winner. This is **survivorship bias**, and Williams himself has acknowledged he traded far larger position sizes in the contest than he would recommend for a normal account.
 
 </Callout>
 
-So the honest reading is this: the *method* may have an edge; the *result* is an inseparable mix of skill, aggressive position sizing, and luck. Replicating the method is plausible. Replicating the 11,376% is, for almost everyone, not.
+So the honest reading: the *method* may have an edge; the *result* is an inseparable mix of skill, aggressive sizing, and luck. Replicating the method is plausible. Replicating the 11,376% is, for almost everyone, a path to ruin.
 
 ## Core idea 1 — Williams %R
 
@@ -126,7 +147,7 @@ A sign-convention quirk: Williams' original book multiplied by **+100** (giving 
 
 </Callout>
 
-**How to read it without getting whipsawed (repeatedly stopped out by false signals in a choppy market):** Williams explicitly *warned against* mechanically buying every oversold reading and selling every overbought one — in a strong trend, %R can pin near an extreme for a long time. He preferred *confirmation*: for example, wait for %R to hit −100%, let several days pass, and act only when it climbs back above a threshold such as −95% or −85%. A **divergence** — price makes a new extreme but %R does not — is a stronger signal than any single reading. (A *failure swing*, where %R refuses to confirm a new price extreme, is one form of divergence.)
+**How to read it without getting whipsawed (repeatedly stopped out by false signals in a choppy market):** Williams explicitly *warned against* mechanically buying every oversold reading and selling every overbought one — in a strong trend, %R can pin near an extreme for a long time. His refinement was *confirmation by the turn*: in an uptrend, wait for %R to reach oversold (−80 to −100), let several days pass, and act only when it **climbs back up through** a threshold such as −85% or −95% — a timed pullback-buy. A **divergence** — price makes a new extreme but %R does not — is a stronger signal than any single reading. (A *failure swing*, where %R refuses to confirm a new price extreme, is one form of divergence.)
 
 <LineChart
   caption="Bullish divergence, panel 1 of 2 — PRICE (real scale): the second trough at x=8 (36) is a LOWER low than the first at x=5 (42)"
@@ -194,18 +215,30 @@ A sign-convention quirk: Williams' original book multiplied by **+100** (giving 
 
 ## Core idea 2 — Volatility breakout entries
 
-Williams popularized **volatility breakout** entries: instead of guessing a top or bottom, you let the market prove momentum by moving a set distance.
+Williams popularized **volatility breakout** entries: instead of guessing a top or bottom, you let the market prove momentum by moving a set distance beyond today's open.
 
-The classic recipe (illustrative parameters):
+The classic recipe:
 
 ```
 Buy stop   = Today's open + (k × yesterday's range)
 Sell stop  = Today's open − (k × yesterday's range)
 
-where range = (High − Low) of the prior day, and k is a fraction, often ~0.5–0.8
+where range = (High − Low) of the prior day
+      k     = a fraction of that range
 ```
 
-A **buy stop** is an order that sits above the current price and only executes if price climbs up to it — so it fires automatically the moment a thrust confirms upward momentum (a **sell stop** is the mirror image, sitting below price and firing if price drops to it). If price thrusts up by, say, 60% of yesterday's range above today's open, your buy stop triggers automatically. Note the stop is **recomputed every morning** from that day's open and the prior day's range — the 103 marked below is only the value on the breakout bar (x=3), not a fixed standing level. The logic: a strong, fast move beyond normal daily noise tends to *continue* in the short term. It is a momentum/continuation bet, sized to the market's own recent volatility rather than a fixed dollar amount — which keeps the system adaptive across calm and wild markets.
+**What is k?** Williams' own published examples typically used **about 0.25 to 0.5** of the prior day's range (some variants run higher, up to ~0.8; a full 1.0× is a more aggressive, trend-following version). A **buy stop** is an order that sits above the current price and only executes if price climbs up to it — so it fires automatically the moment a thrust confirms upward momentum (a **sell stop** is the mirror, sitting below price and firing if price drops to it). The logic: once price moves a meaningful fraction of yesterday's range beyond today's open, a directional move is likely underway, so you join it. The stop is **recomputed every morning** from that day's open and the prior day's range — it is not a fixed standing level.
+
+### Worked example (entry math)
+
+Yesterday: High **5,050**, Low **5,000** → range = **50 points.** Today opens at **5,020.** With k = 0.4:
+
+```
+Buy stop  = 5,020 + (0.4 × 50) = 5,040
+Sell stop = 5,020 − (0.4 × 50) = 5,000
+```
+
+If price rises to **5,040** first, you go long, place a hard stop near 5,000, and ride the range expansion. Because the trigger distance scales with the market's *own* recent volatility, the system stays adaptive across calm and wild markets rather than using a fixed dollar amount.
 
 <CandleChart
   caption="Volatility breakout: each morning the buy stop is recomputed as open + 0.6 × prior range (here 103 on the breakout bar), then a continuation thrust"
@@ -224,9 +257,70 @@ A **buy stop** is an order that sits above the current price and only executes i
   ]}
 />
 
-## Core idea 3 — Commercials and the COT report
+## Core idea 3 — Short-term timing patterns
 
-This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the **U.S. Commodity Futures Trading Commission (CFTC)** — the U.S. federal regulator for futures markets — reflecting positions as of the preceding Tuesday's close and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into the categories below. (**Open interest** is the total number of futures contracts still open — entered into but not yet closed out or settled — at a given time; the COT report sorts that total by who is holding it.)
+The book that gives this lesson its subtitle, *Long-Term Secrets to Short-Term Trading* (1998), is mostly a catalog of **specific, named entry patterns**. %R and the volatility breakout are two of them; here are three more that Williams used heavily. None is a standalone system — each is a *trigger* you take only when the bigger picture (sentiment, seasonality, trend) already leans your way.
+
+### "Oops!" — the open-gap reversal (his most famous setup)
+
+The market **gaps** (opens with a jump beyond yesterday's range) in one direction on fear or news, then *reverses* — and Williams' reaction was the word "Oops!", as in *oops, I was wrong to gap.*
+
+- **Bullish Oops!:** today **opens below yesterday's low** (a down-gap). Place a **buy stop at yesterday's low**. If price climbs back up and trades through that low, you're long.
+- **Bearish Oops! (mirror):** today opens **above yesterday's high**; place a **sell stop at yesterday's high.**
+- **Filter:** require a minimum gap size (roughly **15–20 ticks**) so you are fading a real gap, not noise.
+- **Exit:** Williams' original rule was the **"first profitable open"** — exit on the next session open that shows a profit; modern intraday users close at session end. Always use a hard stop.
+
+The idea: an opening gap driven by overnight panic often gets faded once the regular session opens, and the snap back through the prior extreme is the tell.
+
+<CandleChart
+  caption="Bullish 'Oops!': the bar at x=2 gaps below the prior day's low (≈98), then rallies back up through it. The recovery through 98 triggers a buy stop placed at yesterday's low — the gap was a trap."
+  height={300}
+  candles={[
+    { o: 103, h: 105, l: 102, c: 104 },
+    { o: 103, h: 104, l: 98, c: 99 },
+    { o: 96, h: 102, l: 95, c: 101 },
+    { o: 101, h: 106, l: 100, c: 105 },
+    { o: 105, h: 109, l: 104, c: 108 }
+  ]}
+  points={[
+    { x: 1, y: 98, text: "prior day's low ≈ 98", color: "#a78bfa" },
+    { x: 2, y: 96, text: "gaps BELOW 98 on the open (panic)", color: "#ef4444" },
+    { x: 2, y: 101, text: "rallies back UP through 98 → buy stop fires", color: "#22c55e" }
+  ]}
+/>
+
+<Callout type="warning">
+
+**Oops! was built for the overnight-close era.** It needs a real session break so that genuine *opening gaps* can form. On modern 24-hour electronic markets (FX, many futures), clean gaps are rare, so raw versions backtest worse post-2000. It works best on instruments with a true session break — e.g. index futures or the DAX. Don't run Oops! on a market that never really "opens."
+
+</Callout>
+
+### Trade Day of Week (TDW) — the calendar inside the week
+
+Williams was an early, persistent proponent of the idea that **the day of the week carries a statistical bias.** Through decades of backtests he argued certain markets had a recurring tendency to bottom or top on particular weekdays — for example, buying an index future on a weak **Monday or Tuesday** close and exiting later in the week. He generalized this into **TDW** (and a finer "Trade Day of Month") filters: only take the setup if today is a historically favorable weekday for that market.
+
+<BarChart
+  caption="Illustrative TDW bias: a stylized, hypothetical average next-day gain by weekday for one market — Williams used filters like this to take longs only on the historically strong days. Real edges are far smaller and decay over time; never trade these numbers literally."
+  labels={["Mon", "Tue", "Wed", "Thu", "Fri"]}
+  series={[
+    { label: "Avg next-day move (stylized)", data: [0.35, 0.22, -0.05, 0.08, -0.18], color: "#38bdf8" }
+  ]}
+  yLabel="Stylized % gain"
+/>
+
+### Smash-day reversals
+
+A **smash day** is a bar that makes a dramatic close in one direction — a down close below the prior day's low (a "downside smash"), seemingly confirming a breakdown. The reversal pattern fires when **the very next day trades back above the smash day's high** (for a long): the breakdown failed, trapped sellers must cover, and that short-covering fuels the bounce. The mirror (an "upside smash" that fails the next day) sets up a short. The common thread across Oops! and smash days is the same: **a failed move in one direction becomes fuel for a move in the other.**
+
+<Callout type="warning">
+
+These patterns are seductive because they are concrete and easy to backtest — which is exactly the danger. Williams' own published win rates come from his marketing materials, and weekday/calendar edges in particular are notorious for **decaying once widely known** (and for being products of *overfitting* — see criticisms). Treat them as triggers to layer on top of real context, not as money machines, and demand that any edge survive out-of-sample testing before you size up.
+
+</Callout>
+
+## Core idea 4 — Commercials and the COT report
+
+This is arguably his most durable contribution to *sentiment* analysis. The **Commitments of Traders (COT)** report is published weekly by the **U.S. Commodity Futures Trading Commission (CFTC)** — the U.S. federal regulator for futures markets — reflecting positions as of the preceding **Tuesday's close** and released **Fridays at 3:30 p.m. Eastern** ([CFTC](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)). In its legacy format it splits futures open interest into the categories below. (**Open interest** is the total number of futures contracts still open — entered into but not yet closed out or settled — at a given time; the COT report sorts that total by who is holding it.)
 
 | Category | Who | Reputation |
 |---|---|---|
@@ -234,7 +328,7 @@ This is arguably his most durable contribution to *sentiment* analysis. The **Co
 | **Non-commercials** (large speculators) | Funds trading for profit | Trend-following crowd |
 | **Non-reportable** (small speculators) | Positions below reporting size | Often wrong at extremes |
 
-Williams built **COT indices** that normalize commercial positioning over a lookback window. **Net-long** means a group holds more buy (long) contracts than sell (short) ones after the two offset; **net-short** is the reverse — more shorts than longs. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* position, it can mark a bottom; an extreme net-short can mark a top ([Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders)). It is a *contrarian sentiment* tool, not a precise trigger.
+Williams built **COT indices** that normalize commercial positioning over a lookback window (often about three years) onto a **0–100% scale**. **Net-long** means a group holds more buy (long) contracts than sell (short) ones after the two offset; **net-short** is the reverse. The thesis: commercials understand their own market best, so when hedgers swing to an *extreme net-long* (index near 100%), it can mark a bottom; an extreme net-short (near 0%) can mark a top. It is a *contrarian sentiment bias*, not a precise trigger.
 
 <LineChart
   caption="COT commercial index (0–100): a net-long extreme precedes the price bottom; a net-short extreme precedes the top"
@@ -270,53 +364,147 @@ Williams built **COT indices** that normalize commercial positioning over a look
 
 <Callout type="warning">
 
-COT is **lagging and incomplete**: it is released three days stale, and reportable positions cover only roughly 70–90% of total open interest. It tells you *who is positioned how*, not *when* to act. Treat it as a slow-moving backdrop — a multi-week tailwind or headwind — never as a same-day entry signal.
+COT is **lagging and incomplete**: it is released three days stale (Tuesday data, Friday release), and reportable positions cover only roughly 70–90% of total open interest. It tells you *who is positioned how*, not *when* to act. Treat it as a slow-moving backdrop — a multi-week tailwind or headwind — **never** as a same-day entry signal.
 
 </Callout>
 
-## Putting it together: the Williams stack
+## Core idea 5 — Seasonality
 
-Williams' edge was never one indicator — it was *confluence* across independent dimensions:
+A *seasonal* tendency is a recurring calendar pattern — a market that has historically tended to rise or fall during a specific window of the year, usually for a structural reason. The classic Williams example is **heating oil**, which has often firmed heading into the Northern-Hemisphere winter as demand for heat rises, then eased in spring. Grains can soften around harvest when new supply floods in; gasoline can firm into the summer driving season. Williams would check whether the date sat inside such a historically favorable window and let it *tilt* his bias — taking his A/B/C-grade entry signals only in the direction of the seasonal lean, never acting on the seasonal alone.
 
-1. **Sentiment / context** — Are commercials leaning bullish (COT)? Is the *seasonal* tendency favorable (e.g., heating oil tends to firm into winter — see below)?
-2. **Setup** — Is %R or another oscillator showing an extreme, ideally with divergence?
-3. **Trigger** — A volatility breakout in the direction the first two layers favor.
-4. **Risk** — A pre-defined stop and position size.
+<LineChart
+  caption="Stylized seasonal tendency for heating oil: an average price index that firms from late summer into the winter heating season, then eases in spring. This is a smoothed multi-year average — any single year deviates a lot — so it sets bias, not a trade."
+  height={260}
+  series={[
+    { label: "Avg seasonal index", data: [100, 99, 98, 99, 102, 106, 110, 112, 109, 104, 101, 100], color: "#f59e0b", width: 2 }
+  ]}
+  points={[
+    { x: 3, y: 99, text: "late-summer lull", color: "#e6e9ef" },
+    { x: 7, y: 112, text: "winter demand peak", color: "#ef4444" },
+    { x: 10, y: 101, text: "spring easing", color: "#22c55e" }
+  ]}
+/>
 
 <Callout type="note">
 
-**What "seasonality" means here:** a *seasonal* tendency is a recurring calendar pattern — a market that has historically tended to rise or fall during a specific window of the year, usually for a structural reason. For example, heating-oil futures have often firmed heading into the Northern-Hemisphere winter as demand rises; grains can soften around harvest when supply floods in. Williams would check whether the date sat inside such a historically favorable window and let it *tilt* his bias — never act on it alone, because (see criticisms) these patterns are easy to overfit and fade once widely known.
+The x-axis runs roughly Aug → Jul (one annual cycle). Read it as *tendency, not destiny*: a smoothed average across many years hides wide year-to-year scatter, and (see criticisms) seasonals are easy to overfit and tend to fade once widely known.
 
 </Callout>
 
-The deeper layers (sentiment, seasonality) tilt the odds; the breakout times the entry. That layered logic is the genuinely transferable lesson — far more than any single setting.
+## Core idea 6 — Aggressive money management
+
+This is the piece the contest result actually turns on, and the one beginners most often skip. Williams is explicit in his books that **how much you bet matters more than what you buy.** Two named approaches sit at opposite ends of the aggressiveness scale.
+
+### The 0.5–2% risk rule (the conservative anchor — use this)
+
+The standard, survivable approach: on any single trade, risk no more than about **0.5–2% of account equity** — where "risk" is the distance from entry to your stop, times position size. If your stop is far away, you trade fewer contracts; if it's tight, you can hold more. Lose ten in a row at 2% and you're down ~18%, bruised but alive. This is the rule we recommend for almost everyone, and it is emphatically *not* how Williams won the 1987 contest.
+
+### Optimal-f, fixed-fractional & Kelly sizing (the aggressive engine)
+
+Williams's contest sizing was built on **fixed-fractional position sizing**: bet a *fixed fraction* of current equity each time, so position size **compounds** as the account grows — win, and the next bet is bigger in dollars; lose, and it shrinks. That compounding is exactly what bends an equity curve from linear into the near-vertical 1987 climb.
+
+The sharp edge of this idea is **optimal-f**, popularized by **Ralph Vince** (in *Portfolio Management Formulas*, 1990), whose work Williams championed and used. It answers: *what single fixed fraction of capital, risked per trade, maximizes long-run geometric (compounded) growth, given this system's historical wins and losses?* It is closely related to the **Kelly criterion**:
+
+```
+f = (b · p − q) / b
+
+where:
+  p = probability of a win
+  q = 1 − p (probability of a loss)
+  b = win/loss payoff ratio (size of a win ÷ size of a loss)
+```
+
+**Worked example.** Suppose a system wins **55%** of the time (p = 0.55, q = 0.45) at even money (b = 1):
+
+```
+f = (1 × 0.55 − 0.45) / 1 = 0.10  →  bet 10% of equity per trade
+```
+
+Risking 10% of a growing account per trade is explosive on the upside — and brutal on the downside. A short losing streak at 10% risk halves the account fast. This is the engine behind 1.9%-per-day compounding; it is also why it nearly killed the account along the way (Williams reportedly rode through a 50%+ drawdown during the run).
+
+<Callout type="key">
+
+**Why "optimal" is a trap for beginners.** Optimal-f and full Kelly maximize *growth rate*, not survival. At the true optimal fraction, the expected **drawdowns are brutal** — routinely 50–90% peak-to-trough — and betting *above* it grows the account *more slowly* while sharply raising the **risk of ruin** (going broke). Worse, the fraction is computed from *past* trades; if the future is even slightly worse than the backtest, sizing at optimal-f marches you toward zero. This is precisely why practitioners trade a small slice of it — **half- or quarter-Kelly** — and why the plain **0.5–2% rule** exists as the safe default. A beginner should risk 0.5–2%, full stop.
+
+</Callout>
+
+<BarChart
+  caption="Illustrative. The same hypothetical winning system, sized three ways: the 0.5–2% rule grows the account modestly with a shallow worst drawdown; full optimal-f maximizes ending equity but with a stomach-churning ~75% drawdown; fractional (half) optimal-f is the practical compromise. The contest used something close to the aggressive end."
+  labels={["0.5–2% rule", "Half optimal-f", "Full optimal-f"]}
+  series={[
+    { label: "Relative ending equity (stylized)", data: [3, 28, 60], color: "#2dd4bf" },
+    { label: "Worst drawdown (%)", data: [12, 45, 75], color: "#ef4444" }
+  ]}
+  yLabel="Stylized magnitude"
+/>
+
+So the honest summary: **fixed-fractional / Kelly-style compounding is the real "secret" of the 11,376%** — not %R, not the breakout. It is also why copying his contest sizing in a live account is the fastest route to zero. The transferable lesson is to size by a *fraction of equity* with a defined per-trade risk, and to keep that fraction small.
+
+## Putting it together: the Williams stack
+
+Williams' edge was never one indicator — it was *confluence* across independent dimensions, applied in a deliberate order. Each layer is a filter that narrows what reaches the next, and only trades surviving all of them get taken:
+
+<ConceptDiagram
+  caption="The Williams stack as a funnel: slow context (COT sentiment, seasonality) sets the bias, an oscillator extreme/divergence arms the setup, a volatility breakout or short-term pattern pulls the trigger — and only then does small fixed-fractional sizing decide how big. Each stage filters out trades; size is decided last, never first."
+  chart={`flowchart LR
+  A["Layer 1 - Context: COT commercial extreme? seasonal lean?"] --> B["Layer 2 - Setup: %R extreme / divergence in that direction"]
+  B --> C["Layer 3 - Trigger: volatility breakout, Oops!, smash-day, or TDW"]
+  C --> D["Layer 4 - Risk & size: hard stop + small fixed-fractional bet (0.5-2%)"]
+  D --> E["Take the trade"]`}
+/>
+
+The deeper layers (sentiment, seasonality) tilt the odds; the breakout or pattern times the entry; the sizing layer decides survival. That layered logic — context before setup before trigger before size — is the genuinely transferable lesson, far more than any single setting.
 
 ## Honest criticisms
 
-- **The contest result oversells the method.** As discussed, extreme leverage plus survivorship bias inflate the headline. Williams deserves credit for often saying so himself.
-- **He is a heavy marketer.** Much of the bio and performance data flows through promotional channels (his own materials, the contest sponsor). Self-reported numbers warrant skepticism.
-- **Seasonality is fragile.** Calendar patterns are notoriously prone to *overfitting* — finding a pattern in past data that was really just coincidence. Many published seasonals decay once they are widely known.
-- **%R is not unique.** It is a relabeled stochastic; the "edge" is in usage, not the formula.
+- **The contest result oversells the method.** Extreme leverage (fixed-fractional sizing near optimal-f) plus survivorship bias inflate the headline, and contest accounts are tiny and all-in. Williams' *audited* returns in following years were far lower. He deserves credit for often saying so himself.
+- **It doesn't scale.** The aggressive sizing that produced 11,376% on $10k is mathematically and practically impossible on large capital and guarantees catastrophic drawdowns at full size.
+- **Regime decay.** Oops! depends on overnight session gaps that have largely vanished in 24-hour electronic markets; raw versions backtest worse post-2000.
+- **%R is not unique.** It is a relabeled stochastic %K; it reads "overbought/oversold" *because* a trend is strong, and in trends it stays pinned. It is a *timing* tool, not a standalone system.
+- **Seasonality and calendar patterns are fragile.** TDW and seasonals are notoriously prone to *overfitting* and decay once widely known.
+- **Self-promotion conflict.** Much bio and performance data flows through promotional channels; many published "Williams strategies" are marketing-flavored, and his own site warns of impostors.
+- **Optimal-f is dangerous as stated.** It maximizes growth, not survival, and is computed from the past; used full-size it courts ruin. Its honest role is conceptual.
+- **Personal credibility caveat.** The 2010 misdemeanor tax-filing guilty pleas (tax years 1999–2001) are a fair thing to flag, separate from his trading.
 
 ## Common pitfalls
 
-- **Trading %R extremes blindly** in trends — the single biggest beginner error, and one Williams explicitly warned against.
+- **Trading %R extremes blindly** in trends — the single biggest beginner error, and one Williams explicitly warned against. Wait for the *turn back through* the level.
+- **Copying contest position sizing** (full optimal-f / Kelly at contest size) in a real account — the fastest route to a zeroed account. Use 0.5–2% risk per trade.
+- **Trading Oops! on 24-hour markets** with no real session break — there are no clean gaps to fade.
 - **Stacking redundant tools** (%R + stochastics + another momentum gauge) and mistaking correlated readings for independent confirmation.
-- **Copying contest position sizing** in a real account — the fastest route to a zeroed account.
-- **Treating COT as a timing trigger** rather than as slow context.
+- **Treating COT, seasonality, or TDW as a timing trigger** rather than as slow context or a bias filter (COT data is three days stale at release).
+- **Curve-fitting** the breakout fraction k and the lookback N to past data, then expecting them to hold live.
+- **No hard stop / no defined risk** — Williams' entire edge is *defined* risk. "Aggressive money management" is not the same as "no stop."
+- **Chasing the $1.1M dream** — expecting contest-style returns leads to over-leverage and ruin.
 
 ## How to apply it today
 
-Start in a *simulator* or with tiny size on a liquid market. Build the stack in order: (1) check the latest COT for commercial extremes, (2) note the seasonal lean, (3) wait for a %R divergence or extreme, (4) enter on a volatility breakout in that direction, (5) risk a fixed small percentage (1–2%) with a hard stop. Journal every trade. The goal is a *process* with positive expectancy (the average trade makes money once you weight wins and losses by their size and frequency) over many trades — not one heroic year.
+Start in a *simulator* or with tiny size on a liquid market with a real session break. Build the stack in order:
+
+1. Check the latest COT for commercial extremes.
+2. Note the seasonal (and TDW) lean.
+3. Wait for a %R divergence or extreme — and the *turn back through* the threshold — in that direction.
+4. Enter on a volatility breakout or a short-term pattern (Oops!, smash-day) that fires in the same direction; place the entry stop and a hard protective stop *before* you're filled.
+5. **Size by a small fixed fraction with that hard stop — risk 0.5–2% per trade, not contest-style leverage.**
+
+Journal every trade. The goal is a *process* with positive expectancy (the average trade makes money once you weight wins and losses by their size and frequency) over many trades — not one heroic year.
 
 ## Further reading
 
-- Larry Williams, *Long-Term Secrets to Short-Term Trading* (Wiley) — his most complete book on this style.
+- Larry Williams, *Long-Term Secrets to Short-Term Trading* (1998; rev. 2011) — his most complete book on this style, and the source of %R usage, volatility breakouts, Oops!, smash-day, TDW, COT, and seasonality.
+- Larry Williams, *Trade Stocks and Commodities with the Insiders: Secrets of the COT Report* (2005).
+- Ralph Vince, *Portfolio Management Formulas* (1990) and *The Mathematics of Money Management* (1992) — the original optimal-f / fixed-fractional math Williams drew on.
 - The CFTC COT page below for the raw data you would actually use.
+
+---
 
 ### Sources
 
-1. [Larry R. Williams — Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams) — birth date, biography, 1987 contest result ($1,137,600 / 11,376%), books, COT indices, Senate runs, and the February 2010 tax case.
-2. [Williams %R — Wikipedia](https://en.wikipedia.org/wiki/Williams_%25R) — exact formula, 0-to-−100 range, default 14-period vs. original 10-period, overbought/oversold levels, the −100 sign-convention printing-error note, and equivalence to stochastic %K.
-3. [CFTC — Commitments of Traders](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) — official publisher, weekly Friday 3:30 p.m. ET release, Tuesday-close data, and trader categories.
-4. [Commitments of Traders — Wikipedia](https://en.wikipedia.org/wiki/Commitments_of_Traders) — COT history (1924/1962), commercial vs. non-commercial vs. non-reportable definitions, "smart money" contrarian theory, and the 70–90% open-interest coverage / lagging limitations.
+1. [Larry R. Williams — Wikipedia](https://en.wikipedia.org/wiki/Larry_R._Williams) — birth date, journalism degree, trading since 1962, 1987 contest result ($1,137,600 / 11,376%), Michelle Williams, books, Senate runs, and the February 2010 misdemeanor tax-filing pleas.
+2. [Williams %R — Wikipedia](https://en.wikipedia.org/wiki/Williams_%25R) — exact formula, 0-to-−100 range, default 14-period vs. original 10-period, −20/−80 levels, the −100 sign-convention note, and equivalence to stochastic %K.
+3. [Larry Williams official site](https://www.ireallytrade.com/) — trading since 1962, indicator licensing, and the impostor / "personally mentored" warning.
+4. [CFTC — Commitments of Traders](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) — official publisher, weekly Friday 3:30 p.m. ET release, Tuesday-close data, and commercial / non-commercial / non-reportable categories.
+5. [Kelly criterion — Wikipedia](https://en.wikipedia.org/wiki/Kelly_criterion) — the f = (bp − q)/b formula, over-betting → risk of ruin, and fractional-Kelly practice (the basis Williams' fixed-fractional sizing draws on; the optimal-f link to Ralph Vince is industry knowledge).
+6. [Larry Williams' Oops! and volatility breakout setups (TradingView / Unger Academy)](https://ungeracademy.com/blog/larry-williams-oops-setup) — Oops! rules (gap below prior low → buy at prior low; mirror for shorts; "first profitable open" exit; minimum-gap filter) and the volatility-channel breakout (open ± k × prior range, k typically ~0.25–0.5).
+
+*Verification notes: the exact volatility-breakout fraction k and the precise peak drawdown during the 1987 contest are reported ranges from secondary sources, not confirmed primary figures — treat them as "approximately." The "buy stop exactly at the prior low" wording for Oops! is the common interpretation rather than a verbatim primary quote.*

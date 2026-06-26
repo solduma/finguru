@@ -1,36 +1,39 @@
 ---
-title: "Thomas DeMark — Mechanical Exhaustion Signals"
+title: "Thomas DeMark — Counting a Trend to Exhaustion"
 slug: "thomas-demark"
 kind: "guru"
+school: "technical"
+strategy: "indicators"
 level: "advanced"
 order: 11
-summary: "The indicator designer whose TD Sequential counts bars mechanically — a Setup of 9 and Countdown of 13 — to flag trend exhaustion with no chart interpretation required."
-era: "b. 1947"
+summary: "The indicator designer who replaced chart 'interpretation' with arithmetic — his TD Sequential counts bars mechanically (a Setup of 9, a Countdown of 13) to flag when a trend has run out of buyers or sellers."
+era: "fl. 1972–present"
 contribution: "DeMark indicators / TD Sequential"
 prereqs: ["charles-dow"]
+tags: ["demark", "td sequential", "exhaustion", "countdown", "mean reversion"]
 ---
 
 ## The one-sentence version
 
-Thomas DeMark spent roughly fifty years trying to replace the trader's gut feeling with a counting machine — a set of rigid, rule-based "exhaustion" signals that aim to tell you, with no human judgment required, when a trend has run out of buyers or sellers and is ripe to reverse.
+Thomas DeMark spent his entire career trying to replace the trader's gut feeling with a counting machine — a set of rigid, rule-based "exhaustion" signals that aim to tell you, with no human judgment required, when a trend has run out of buyers or sellers and is ripe to reverse.
 
 Most technical analysis asks you to *interpret* a chart: is this a head-and-shoulders? Is that support "strong"? DeMark found that question maddening, because two analysts looking at the same chart could draw opposite conclusions. His life's work was an attempt to remove the analyst from the analysis. If you and I both apply his TD Sequential rules to the same price series, we *must* get the same answer. That objectivity — and the institutional pedigree behind it — is why DeMark's name carries weight far beyond the retail charting crowd. It is also why his methods are notoriously fiddly, and why most people who claim to "use DeMark" are using a simplified shadow of the real thing.
 
 <Callout type="key">
 
-DeMark's central insight: trends don't end because of news or sentiment, they end when the supply of marginal buyers (or sellers) is *exhausted*. He tried to detect that exhaustion mechanically, by counting bars rather than reading patterns.
+DeMark's central insight: trends don't end because of news or sentiment — they end when the supply of marginal buyers (at a top) or sellers (at a bottom) is *exhausted*. He claimed that exhaustion plays out over a **countable, repeating number of bars** — famously **9** (Setup) and **13** (Countdown) — and built rules to detect it mechanically, by counting bars rather than reading patterns.
 
 </Callout>
 
 ## Who he was
 
-Thomas R. DeMark (commonly "Tom DeMark") is an American market technician and the founder and CEO of [DeMARK Analytics, LLC](https://www.demark.com/about/). His investment career began nearly fifty years ago at National Investment Services, a multibillion-dollar pension fund, where he was tasked with improving the firm's investment *timing*. Existing tools frustrated him because they were subjective and unfalsifiable, so he began building his own rule-based models. The **DeMARK Indicators®** library is the result.
+Thomas R. DeMark (commonly "Tom DeMark") is an American market technician and the founder and CEO of [DeMARK Analytics, LLC](https://www.demark.com/about/). His investment career began around 1972 at **National Investment Services**, a multibillion-dollar pension fund in Wisconsin, where he was tasked with improving the firm's investment *timing*. Existing tools frustrated him because they were subjective and unfalsifiable, so he began building his own rule-based models. The **DeMARK Indicators®** library — every name prefixed "TD," for "Tom DeMark" — is the result.
 
-What separates DeMark from the typical chart-pattern author is his clientele. Over his career he has consulted for or advised a roster of major institutions and well-known traders. According to his firm's own account, that list includes Goldman Sachs, Dean Witter, Citibank, IBM, 3M, the hedge-fund manager Michael Steinhardt, George Soros, Paul Tudor Jones, Van Hoisington, Charlie DiFrancesca, and Leon Cooperman. For over 27 years he has served as a special advisor to Steven A. Cohen (of SAC Capital, now Point72). In 2008 DeMARK Analytics partnered with Cohen's firm and John Burbank's Passport Capital. In 2020 the CMT Association (the body that grants the Chartered Market Technician designation) honored him with its Annual Award for a lifetime of achievement in the industry.
+He later founded a string of firms: DeMark Investment Advisory (1982), Devan Futures with Van Hoisington (1990), the software firm **Market Studies** (1994, which supplied indicators to vendors such as Bloomberg and CQG), and his current firm DeMARK Analytics. What separates DeMark from the typical chart-pattern author is his clientele. Over his career he has consulted for or advised a roster of major institutions and well-known traders. According to his firm's own account, that list includes Goldman Sachs, Dean Witter, Citibank, IBM, the hedge-fund manager Michael Steinhardt, George Soros, Paul Tudor Jones (where he was Executive VP of Tudor in 1988), Van Hoisington, and Leon Cooperman. For over 20 years he has served as a special advisor to Steven A. Cohen (of SAC Capital, now Point72), whose firm partnered with DeMARK Analytics in 2008. He was named Technical Analyst of the Year (London) in 2011, and in 2020 the CMT Association — the body that grants the Chartered Market Technician designation — honored him with its Annual Award for a lifetime of achievement.
 
 <Callout type="note">
 
-The hedge-fund associations above come largely from DeMark's own company materials and interviews, not from independent audits. They are widely repeated and broadly credible, but treat them as biographical color, not as evidence that the indicators "work."
+The hedge-fund associations above come largely from DeMark's own company materials and interviews, not from independent audits. They are widely repeated and broadly credible, but treat them as biographical color, not as evidence that the indicators "work." (His birth year is often cited as 1947, but only on low-reliability sources, so we date his *career* — active from roughly 1972 — rather than his birth.)
 
 </Callout>
 
@@ -38,7 +41,7 @@ The hedge-fund associations above come largely from DeMark's own company materia
 
 DeMark's flagship is **TD Sequential**. It runs in two phases that must happen in order: a **Setup** (a count to 9) that says "a trend is mature," followed by a **Countdown** (a count to 13) that says "exhaustion is now likely." A few definitions first, since this is an advanced lesson and the jargon is dense:
 
-- **Bar** — one candle/period on your chart (a day, an hour, whatever timeframe you've chosen).
+- **Bar** — one candle/period on your chart (a day, an hour, whatever timeframe you've chosen). DeMark's rules use **closing prices**, and work best on **4-hour charts and higher** (daily/weekly are the classics).
 - **Close[n]** — the closing price *n* bars ago. So `Close[0]` is the current bar's close and `Close[4]` is the close four bars back.
 - **Buy signal** = a *bullish* reversal expected (the downtrend is exhausting). **Sell signal** = a *bearish* reversal expected (the uptrend is exhausting).
 
@@ -52,10 +55,10 @@ Sell Setup, for nine consecutive bars:
    (nine bars in a row, no breaks)
 ```
 
-A **Buy Setup** (looking for a bottom) is the mirror image — nine consecutive closes *below* the close four bars earlier. The number "9" prints above the ninth bar of a sell setup and below the ninth bar of a buy setup. If even one bar fails the four-bars-earlier test, the count resets.
+A **Buy Setup** (looking for a bottom) is the mirror image — nine consecutive closes *below* the close four bars earlier. The number "9" prints above the ninth bar of a sell setup and below the ninth bar of a buy setup. **If even one bar fails the four-bars-earlier test, the count resets to zero** and you wait for a fresh start.
 
 <CandleChart
-  caption="Sell Setup (looking for a top): nine consecutive closes each ABOVE the close four bars earlier; the '9' prints above bar 9 and the uptrend is mature. The count can only begin once four prior bars exist to compare against, so bar 1 sits on the 5th candle"
+  caption="Sell Setup (looking for a top): nine consecutive closes each ABOVE the close four bars earlier; the '9' prints above bar 9 and the uptrend is mature. The count can only begin once four prior bars exist to compare against, so bar 1 sits on the 5th candle."
   height={300}
   candles={[
     { o: 94.5, h: 95.2, l: 94.3, c: 95 },
@@ -83,7 +86,7 @@ A **Buy Setup** (looking for a bottom) is the mirror image — nine consecutive 
 Setups are preceded by a **Price Flip** — a single bar whose close flips direction relative to four bars earlier — which arms the count. The four-bar lookback (lookback = how many bars back you compare the current close against) is the engine of the whole system; it compares the current close to the close roughly a trading "week" earlier, asking "are we still making relative progress?" A *Bearish* Price Flip (a close above the close-4-bars-back, immediately followed by a close below it) arms a **Buy** Setup; a *Bullish* Price Flip (the mirror image) arms a Sell Setup.
 
 <LineChart
-  caption="Bearish Price Flip: after closes above the close-4-bars-back, one bar closes below it — arming a Buy Setup whose count then begins on the next qualifying bar"
+  caption="Bearish Price Flip: after closes above the close-4-bars-back, one bar closes below it — arming a Buy Setup whose count then begins on the next qualifying bar."
   height={260}
   series={[
     { label: "Price", data: [104, 105, 106, 105.5, 106.5, 107, 107.5, 105, 104, 103.5], color: "#e6e9ef", width: 2 }
@@ -102,10 +105,15 @@ A completed Setup of 9 is *not* a trade signal. It only says the trend is stretc
 
 ### Setup Perfection and TDST
 
-DeMark added a quality filter called **perfection**. For a buy setup, the low of bar 8 or bar 9 should be less than or equal to the lows of bars 6 and 7 (the inverse, using highs, for a sell setup). An "unperfected" 9 is considered weaker, and the signal may need another bar or two to perfect.
+DeMark added a quality filter called **perfection**. A Setup is only "perfected" when the exhaustion is confirmed by price extremes:
+
+- **Buy Setup perfection:** the **low of bar 8 or bar 9 is at or below the lows of bars 6 and 7.**
+- **Sell Setup perfection:** the **high of bar 8 or bar 9 is at or above the highs of bars 6 and 7.**
+
+An "unperfected" 9 is considered weaker; perfection can still arrive a bar or two later when a subsequent bar satisfies the condition. Perfection is the difference between a textbook signal and a flimsy one.
 
 <CandleChart
-  caption="Buy Setup perfection (these are bars 3-9; bars 1-2 are off-screen to the left): the low of bar 8 or 9 dips at or below the lower of bars 6 and 7 (98.0), so the '9' is perfected; had bars 8-9 stayed above 98.0 the 9 would be unperfected and weaker"
+  caption="Buy Setup perfection (these are bars 3-9; bars 1-2 are off-screen to the left): the low of bar 8 or 9 dips at or below the lower of bars 6 and 7 (98.0), so the '9' is perfected; had bars 8-9 stayed above 98.0 the 9 would be unperfected and weaker."
   height={280}
   candles={[
     { o: 100, h: 100.2, l: 99.4, c: 99.6 },
@@ -130,10 +138,10 @@ DeMark added a quality filter called **perfection**. For a buy setup, the low of
   ]}
 />
 
-The Setup also creates **TDST lines** (TD Setup Trend support/resistance), drawn from the extreme of the bar that began the setup. These act as objective support/resistance: if price later breaks through the TDST line, it argues the trend has *resumed* rather than reversed.
+The completed Setup also creates a **TDST line** (TD Setup Trend support/resistance), drawn from the extreme of **bar 1** of that Setup — the true high for a Buy Setup (resistance), the true low for a Sell Setup (support). TDST appears *immediately*, without waiting for the Countdown, and acts as the objective level that gauges trend integrity: holding it supports the reversal, while a decisive break through it argues the trend has *resumed* instead — and can cancel a pending Countdown.
 
 <LineChart
-  caption="TDST as the objective verdict: after a Buy Setup, a bounce that holds below TDST resistance supports the reversal; a close back above TDST argues the downtrend has resumed instead"
+  caption="TDST as the objective verdict: after a Buy Setup, a bounce that holds below TDST resistance supports the reversal; a close back above TDST argues the downtrend has resumed instead."
   height={280}
   series={[
     { label: "Reversal holds (below TDST)", data: [100, 98.5, 97.5, 96.8, 96.2, 96.8, 97.4, 98.0, 98.6, 99.1], color: "#22c55e", width: 2 },
@@ -150,20 +158,20 @@ The Setup also creates **TDST lines** (TD Setup Trend support/resistance), drawn
 
 ### Phase 2 — TD Countdown (the 13)
 
-Once a Setup completes, the **Countdown** begins. Crucially, Countdown bars do **not** need to be consecutive. A **Buy Countdown** accumulates 13 qualifying bars (across however many it takes) where:
+Once a Setup completes, the **Countdown** begins and asks "how exhausted is this trend, really?" Crucially, Countdown bars do **not** need to be consecutive. A **Buy Countdown** accumulates 13 qualifying bars (across however many it takes) where:
 
 ```
 Buy Countdown bar qualifies when:
    Close <= Low[2 bars earlier]
-   ...count these until you reach 13
+   ...count these (non-consecutively) until you reach 13
 ```
 
-A **Sell Countdown** uses `Close >= High[2 bars earlier]`. Note the comparison changed: the Setup compares *close to close four bars back*; the Countdown compares *close to the low or high two bars back*. (Many simplified implementations use close-to-close for the Countdown too — that is a known approximation, not DeMark's original rule.)
+A **Sell Countdown** uses `Close >= High[2 bars earlier]`. Note the comparison changed: the Setup compares *close to close four bars back* and must be **consecutive**; the Countdown compares *close to the low or high two bars back* and may be **scattered**. Mixing these two rules up is the single most common DeMark error. (Many simplified implementations use close-to-close for the Countdown too — that is a known approximation, not DeMark's original rule.)
 
-DeMark added a famous extra qualifier on the final bar tied to **countdown bar 8**. For a buy countdown, the close of bar 13 should be at or below the *low of countdown bar 8*; if it isn't, the "13" is deferred until a later bar satisfies it. This is the detail almost everyone gets wrong.
+DeMark added a famous extra qualifier on the final bar tied to **countdown bar 8**. For a buy countdown, bar 13 must itself qualify *and* its low must be at or below the *close of countdown bar 8*; if it isn't, the "13" is **deferred** (marked "+") until a later bar satisfies it. This is the detail almost everyone gets wrong, and it is what stops the count from completing too early.
 
 <CandleChart
-  caption="Buy Countdown is NON-consecutive: a bar counts only when its close <= the low two bars earlier. Five bars here qualify (counts 1-5); two bars in between fail the test and are skipped, so the count does not march one-for-one"
+  caption="Buy Countdown is NON-consecutive: a bar counts only when its close <= the low two bars earlier. Five bars here qualify (counts 1-5); two bars in between fail the test and are skipped, so the count does not march one-for-one."
   height={300}
   candles={[
     { o: 97.0, h: 97.3, l: 96.4, c: 96.6 },
@@ -187,7 +195,12 @@ DeMark added a famous extra qualifier on the final bar tied to **countdown bar 8
   ]}
 />
 
-A Countdown can also be **cancelled or "recycled"** — for example, if a fresh Setup forms in the same direction with greater magnitude, or price closes back beyond the TDST line, the Countdown can reset. These cancellation rules are where most of the complexity (and most of the disagreement between software vendors) lives.
+A completed 13 is the **main reversal signal** and defines the "risk level" (reversal zone). But a Countdown can also be **cancelled or "recycled"** before it finishes:
+
+- **Recycling (the count resets):** if a fresh same-direction Setup forms that is large (roughly 100–200% the size of the prior one), or an overlapping Setup extends out to 18 or 22, the Countdown resets. This is the rule by which the tool itself admits a trend can simply be too strong to fade.
+- **Cancellation:** an opposite-direction Setup, or a TDST violation, cancels an *incomplete* Countdown. A *completed* 13, by contrast, is permanent.
+
+These cancellation rules are where most of the complexity (and most of the disagreement between software vendors) lives.
 
 ## A worked example (illustrative)
 
@@ -207,10 +220,10 @@ Imagine a stock falling. We watch for a Buy Setup — nine consecutive closes ea
 | 8 | 94.8| 97  | yes | 8 |
 | 9 | 94.5| 96  | yes | **9** |
 
-A "9" prints — the downtrend is mature. We check perfection (is the low of bar 8 or 9 ≤ the lows of bars 6 and 7?). If yes, the setup is perfected. Now the Countdown starts: we begin counting bars whose `Close <= Low[2 bars earlier]`, possibly spread over many more bars, until we accumulate 13 — and only treat the 13 as valid if bar 13's close clears the bar-8 qualifier. *That* 13 is the exhaustion signal.
+A "9" prints — the downtrend is mature. We check perfection (is the low of bar 8 or 9 at or below the lows of bars 6 and 7?). If yes, the setup is perfected. Now the Countdown starts: we begin counting bars whose `Close <= Low[2 bars earlier]`, possibly spread over many more bars, until we accumulate 13 — and only treat the 13 as valid if bar 13 also clears the bar-8 qualifier. *That* 13 is the exhaustion signal.
 
 <CandleChart
-  caption="These bars are a separate close-up of the countdown's final stretch, not a continuation of the table above. A valid 13 requires bar 13 to close at or below countdown bar 8's low (95.0). The bar that would be the 13 here closes at 95.4 — above the threshold — so the 13 is DEFERRED until a later qualifying bar closes at/below 95.0 (here, 94.8). This bar-8 qualifier is the single most-missed rule"
+  caption="These bars are a separate close-up of the countdown's final stretch, not a continuation of the table above. A valid 13 requires bar 13 to close at or below countdown bar 8's threshold (95.0). The bar that would be the 13 here closes at 95.4 — above the threshold — so the 13 is DEFERRED until a later qualifying bar prints at/below 95.0 (here, 94.8). This bar-8 qualifier is the single most-missed rule."
   height={320}
   candles={[
     { o: 95.6, h: 95.8, l: 95.0, c: 95.2 },
@@ -221,21 +234,36 @@ A "9" prints — the downtrend is mature. We check perfection (is the low of bar
     { o: 95.3, h: 95.5, l: 94.5, c: 94.8 }
   ]}
   points={[
-    { x: 0, y: 94.8, text: "count 8 (low 95.0)", color: "#a78bfa" },
-    { x: 3, y: 96.5, text: "would-be 13: close 95.4 qualifies (<= low[2]) but 95.4 > 95.0 -> deferred", color: "#ef4444" },
+    { x: 0, y: 94.8, text: "count 8 (threshold 95.0)", color: "#a78bfa" },
+    { x: 3, y: 96.5, text: "would-be 13: close 95.4 qualifies but > 95.0 -> deferred", color: "#ef4444" },
     { x: 5, y: 94.3, text: "valid 13 (close 94.8 <= 95.0)", color: "#22c55e" }
   ]}
   levels={[
-    { y: 95.0, label: "bar-8 low (qualifier threshold)", color: "#a78bfa" }
+    { y: 95.0, label: "bar-8 threshold", color: "#a78bfa" }
   ]}
 />
 
+### Turning the 13 into a stop (real DeMark-method numbers)
+
+The 13 marks a *zone*, not a precise price — so DeMark sizes the stop from **bar 13's own range**. Take a Buy Countdown whose bar 13 prints a high of **3294.81** and a low of **3135.55**:
+
+- Bar-13 range = 3294.81 − 3135.55 = **159.26**
+- Stop level = bar-13 low − range = 3135.55 − 159.26 = **2976.29**
+
+If price closes below that level, the exhaustion thesis is wrong and you're out. The signal gives you *timing*; this calculation gives you *risk*.
+
 ## TD Combo and the broader toolkit
 
-**TD Combo** is DeMark's sibling to TD Sequential. It targets the same exhaustion idea but is stricter and faster: in Combo, the Countdown can begin *during* the Setup rather than only after it completes, and it imposes additional ordering conditions on each countdown bar. The practical effect is that Combo tends to fire earlier and more conservatively. Which one you prefer is a matter of how early you want to fade a move (fade = trade against it, betting it reverses) versus how many false starts you'll tolerate.
+**TD Combo** is DeMark's sibling to TD Sequential. It uses the same Setup, but a stricter, faster Countdown: in Combo the Countdown can begin *earlier* (it may overlap the Setup rather than waiting for it to finish), and it stacks **multiple conditions on every counted bar** (for example: close at or below the low two bars earlier, *and* the low below the prior low, *and* the close below the prior counted close). Because it demands more, Combo fires **less often** and is treated as higher-conviction.
+
+<Callout type="note">
+
+Published descriptions disagree on the exact bar where Combo's Countdown starts (some say it can begin near bar 1 of the Setup, others near the second-to-last Setup bar), because DeMark's full Combo rules are copyright-protected and not fully public. Learn it as the *concept* — "Combo's count starts earlier, is stricter, and fires less often than Sequential's" — rather than memorizing one disputed start bar.
+
+</Callout>
 
 <LineChart
-  caption="Combo vs Sequential timing on the same decline: Combo overlaps its countdown with the setup and prints '13' earlier (higher in the move); Sequential waits for the setup to finish first and fires later"
+  caption="Combo vs Sequential timing on the same decline: Combo overlaps its countdown with the setup and prints '13' earlier (higher in the move); Sequential waits for the setup to finish first and fires later."
   height={300}
   series={[
     { label: "Price", data: [104, 102.5, 101, 100, 99.2, 98.5, 97.8, 97.2, 96.6, 96, 95.4, 94.9, 94.4, 94, 93.7, 93.5, 94.2, 95.5], color: "#e6e9ef", width: 2 }
@@ -249,7 +277,7 @@ A "9" prints — the downtrend is mature. We check perfection (is the low of bar
 The full sequence is best seen end to end: a Setup matures into a "9," the Countdown then accumulates 13 qualifying bars (not necessarily consecutive), and the "13" marks the exhaustion point where price turns. The TDST line drawn from the start of the setup is the objective level whose break would have argued the trend was resuming instead.
 
 <LineChart
-  caption="The full TD Sequential arc, in two phases: the green span is the Setup maturing into its '9' (which began near the TDST level), the teal span is the Countdown reaching '13' at exhaustion, then price reverses; TDST is the objective resistance"
+  caption="The full TD Sequential arc, in two phases: the green span is the Setup maturing into its '9' (which began near the TDST level), the teal span is the Countdown reaching '13' at exhaustion, then price reverses; TDST is the objective resistance."
   height={320}
   series={[
     { label: "Price", data: [104, 101, 100, 99.7, 99.6, 98, 97, 96, 95.5, 95, 94.5, 94.2, 93.8, 93.4, 93.1, 92.9, 93.6, 95.2, 96.8, 98.3], color: "#e6e9ef", width: 2 }
@@ -268,35 +296,59 @@ The full sequence is best seen end to end: a Setup matures into a "9," the Count
   ]}
 />
 
-DeMark's catalogue is large — **TD Lines** (an objective, rules-based way to draw trendlines so two analysts draw the identical line), TD D-Wave (a rule-bound take on Elliott Wave), TD Range Expansion (rules for flagging a breakout-sized bar), and more — all unified by the same philosophy: replace discretion with arithmetic.
+### TD Lines — objective trendlines
+
+DeMark applied the same "remove the judgment" philosophy to trendlines, which are normally the most subjective tool on a chart. In his scheme the *points* a line connects are defined mechanically:
+
+- A **TD Demand Point** is a low with a *higher low on each side*; a **TD Supply Point** is a high with a *lower high on each side*. ("Level" counts how many qualifying bars sit on each side: level 1 = one bar each side, level 2 = more, and so on.)
+- Draw the line through the **two most recent same-level points**, working **right-to-left** — recent points matter most. A demand line is support; a supply line is resistance.
+- Trade only a **qualified breakout** — one confirmed by a momentum, close, or gap qualifier — and ignore unqualified ("false") breaks.
+
+A quick numeric taste of the qualifier test. Suppose a downward break of a demand line, and the rule (qualifier 3) compares the breakout bar's neighbors: the bar before the break (X−1) had a high of **7426** and a close of **7358**.
+
+- Difference = 7426 − 7358 = **68**
+- Projected level = X−1 close − difference = 7358 − 68 = **7290**
+
+Because 7290 sits *above* the breakout point (here 6846), the downside break passes the test and counts as **"true" (qualified)** and tradable. The point isn't the arithmetic — it's that the decision to act is fixed by a rule, not a hunch.
+
+DeMark's catalogue is large — TD D-Wave (a rule-bound take on Elliott Wave), TD Range Expansion (rules for flagging a breakout-sized bar), TD Differential, TD Camouflage, and more — all unified by the same idea: replace discretion with arithmetic.
 
 ## Honest criticisms
 
 <Callout type="warning">
 
-DeMark's full ruleset is proprietary, trademarked, and genuinely complicated. The cancellation, recycling, and qualifier rules have many edge cases, and different platforms implement them differently — so two "TD Sequential" indicators can disagree on the same chart. The "objectivity" is real *only* if everyone uses the exact same complete ruleset, which in practice they don't.
+DeMark's full ruleset is proprietary, trademarked, and genuinely complicated. The deferral, recycling, cancellation, and especially the *full TD Combo* rules have many edge cases, and different platforms implement them differently — so two "TD Sequential" indicators can disagree on the same chart. The "objectivity" is real *only* if everyone uses the exact same complete ruleset, which in practice they don't. Practitioners warn that trading off a half-learned internet version is a fast way to lose.
 
 </Callout>
 
-- **Curve-fitting suspicion.** The number 9, the count of 13, the four-bar lookback, the bar-8 qualifier — these specific constants invite the charge that they were tuned to past data. There is little peer-reviewed, out-of-sample evidence (tested on data not used to pick the rules) that they generalize.
-- **Counting signals, not edges** (an edge = a real, positive expected return after trading costs). A completed 13 tells you a trend is stretched; it does not tell you the trade is profitable after costs. Exhaustion can persist far longer than your account can.
-- **Survivorship and selection in the marketing.** Impressive called tops circulate widely; the misses rarely do.
+- **Probabilistic, not deterministic.** A completed 9 or 13 signals *elevated odds* of a reversal, not a certainty. False signals and losses happen.
+- **Counter-trend risk.** It tries to catch falling knives and fade strong trends. A powerful trend can blow straight through a signal — and the rules concede as much, via "recycling," which resets the count when the trend proves too strong.
+- **Price-only, no context.** It ignores fundamentals, news, sentiment, and volume; a signal can fire into a fundamentally-driven move that keeps running.
+- **Curve-fitting suspicion.** The number 9, the count of 13, the four-bar lookback, the bar-8 qualifier — these specific constants invite the charge that they were tuned to past data. Robust, peer-reviewed, out-of-sample evidence that they generalize is scarce; much of the "evidence" is anecdotal or vendor-supplied. Beware the usual backtesting traps — overfitting, slippage, and especially **repainting** (signals that look perfect in hindsight only because they finalized after the fact). One author even admitted that not all published patterns were illustrated with real trades; some examples were "modeled."
+- **Timeframe sensitivity and few signals.** It works best on 4-hour and higher charts; on short timeframes it produces too many incomplete, whipsaw patterns. It also fires rarely, demanding patience.
 - **Cost and access.** The fully specified, real-time indicators are a paid institutional product. Free versions are approximations.
 
 ## Common pitfalls and misconceptions
 
-- **Trading the 9 as a signal.** The Setup is a *warning*; the Countdown 13 is the exhaustion signal. Conflating them is the single most common error.
-- **Ignoring the bar-13 qualifier.** A "13" that fails the bar-8 condition is not a valid signal.
-- **Forgetting cancellation/recycling.** A signal you think is live may have been invalidated by a fresh setup or a TDST break.
-- **Using close-to-close in the Countdown.** DeMark's original Countdown compares the close to the *low/high* two bars earlier.
-- **Treating it as standalone.** DeMark himself stresses combining signals (e.g., TDST breaks, multiple timeframes).
+<Callout type="warning">
+
+1. **Comparing consecutive closes instead of the close four bars earlier.** The Setup compares each close to the close *four bars back* — not to yesterday's close.
+2. **Trading the bare "9".** The Setup is a *warning*; a 9 without *perfection* (bar 8/9 extreme vs bars 6/7) is weak. The Countdown 13 is the exhaustion signal.
+3. **Confusing Setup and Countdown rules.** Setup = close vs close *4 bars* earlier, must be *consecutive*. Countdown = close vs *low/high 2 bars* earlier, *non-consecutive*. This is the #1 error.
+4. **Ignoring the bar-13 qualifier** and counting "13" too early. A "13" that fails the bar-8 condition is not valid.
+5. **Expecting an exact reversal price.** It marks a *zone*, not a tick. Use the risk/stop level (from bar 13's range), not the assumption that the high/low is in.
+6. **Trading it naked.** DeMark himself stresses combining it with TDST breaks, price action, and multiple timeframes — never in isolation.
+7. **Using it on tiny timeframes** (1–5 minute), where incomplete patterns and noise dominate.
+8. **Not knowing about recycling/cancellation**, then being confused when a count "disappears" because the trend was too strong or an opposite Setup formed.
+
+</Callout>
 
 ## How to apply it today
 
 1. Pick a platform and *read its documentation* on exactly which ruleset it implements (TradingView, GoCharting, and others all ship versions). Confirm whether perfection, the bar-13 qualifier, and recycling are included.
-2. Use TD Sequential as a **mean-reversion / counter-trend timing tool** (mean-reversion = betting that an over-stretched price will snap back toward its average rather than keep running), not a trend-following one — it tries to catch turns.
+2. Use TD Sequential as a **mean-reversion / counter-trend timing tool** (mean-reversion = betting that an over-stretched price snaps back toward its average rather than keeps running), not a trend-following one — it tries to catch turns.
 3. **Confirm across timeframes.** A daily buy 13 is far more compelling if a weekly setup is also maturing.
-4. **Define risk independently.** Use the setup's TDST line or a recent swing (a recent local high/low on the chart) as a stop; the indicator gives timing, not position sizing.
+4. **Define risk independently.** Use bar 13's range (as above), the setup's TDST line, or a recent swing (a recent local high/low) as a stop; the indicator gives timing, not position sizing.
 5. **Backtest the exact variant you'll trade**, on the instruments and timeframe you'll trade, including costs. Do not trust generic claims.
 
 <Callout type="note">
@@ -307,14 +359,16 @@ A reasonable way to think about DeMark: it is a disciplined *attention-allocator
 
 ## Further reading
 
-DeMark's primary texts are *The New Science of Technical Analysis* (Wiley, 1994) and *DeMark on Day Trading Options* (McGraw-Hill, 1999, co-authored with his son Thomas DeMark Jr.), plus Jason Perl's *DeMark Indicators* (Bloomberg Press, 2008), which is the most accessible third-party exposition of Sequential and Combo.
+DeMark's primary texts are *The New Science of Technical Analysis* (Wiley, 1994 — the foundational book introducing TD Sequential and TD Lines), *New Market Timing Techniques* (Wiley, 1997), and *DeMark on Day-Trading Options* (McGraw-Hill, 1999, co-authored with his son Thomas DeMark Jr.). For a third party explainer, Jason Perl's *DeMark Indicators* (Bloomberg Press, 2008) is the most accessible exposition of Sequential and Combo.
+
+---
 
 ### Sources
 
-1. [DeMARK Analytics — About](https://www.demark.com/about/) — primary source for DeMark's biography, career start at National Investment Services, advised firms (Goldman Sachs, Dean Witter, Citibank, IBM, 3M, Steinhardt, Soros, Tudor Jones, Cooperman), the 27-plus years advising Steve Cohen, the 2008 partnership with Passport Capital, and the 2020 CMT Annual Award.
-2. [TrendSpider Learning Center — TD Sequential: A Comprehensive Guide](https://trendspider.com/learning-center/td-sequential-a-comprehensive-guide-for-traders/) — supports the Setup-9 four-bar rule, the Setup-then-Countdown ordering, TDST lines, and setup cancellation.
-3. [Sai's Notebook — TD Sequential](https://sai-tai.com/other/econ/indicators-strategies/td-sequential/) — supports the precise close-vs-close-four-bars Setup conditions (Close[0] &lt; Close[4] ... Close[8] &lt; Close[12]) and the perfection definition (bars 8/9 vs bars 6/7).
-4. [GoCharting Docs — TD Sequential](https://gocharting.com/docs/charting/technical-indicator/overlays/td-sequential) — supports the "9-count setup and 13-count countdown" framing and the consecutive-closes rule.
-5. [Devexperts dxCharts KB — TD Sequential](https://www.devexperts.com/dxcharts/kb/docs/td-sequential) — supports the four-bar Setup difference, the Setup-then-Countdown ordering, and the two-bars-earlier Countdown comparison.
-6. [TradingLiteracy — TD Sequential Indicator](https://tradingliteracy.com/td-sequential-indicator/) — supports the buy/sell Countdown framing and the role of the 13-count as the exhaustion signal.
-7. [NexusFi — TD Sequential / DeMark Indicators](https://nexusfi.com/a/indicators/td-sequential-demark-indicators) — referenced for the full component list (Price Flip, TD Setup, TDST lines, TD Countdown, cancellation rules).
+1. [DeMARK Analytics — About](https://www.demark.com/about/) — primary source for DeMark's biography, career start at National Investment Services (~1972), the firms he founded, the advised institutions and traders (Goldman Sachs, Dean Witter, Citibank, IBM, Steinhardt, Soros, Tudor Jones, Cooperman, Hoisington), the 20-plus years advising Steve Cohen, the 2008 partnership, and the 2011 and 2020 honors.
+2. [DeMARK Analytics — Sequential Indicator](https://demark.com/sequential-indicator/) — authoritative rules for Setup, Countdown, perfection, TDST, and recycling/cancellation.
+3. [LiteFinance — TD Sequential & TD Combo (Tom DeMark)](https://www.litefinance.org/blog/for-professionals/technical-analysis-tool-by-tom-demark-td-sequential/) — full rules, the Setup/Countdown differences, the Combo distinctions, the worked bar-13 risk/stop example, and the limitations.
+4. [LiteFinance — TD Lines by Tom DeMark](https://www.litefinance.org/blog/for-professionals/td-lines-by-tom-demark/) — TD Demand/Supply points, right-to-left line construction, and the qualified-breakout numeric example.
+5. [TrendSpider Learning Center — TD Sequential: A Comprehensive Guide](https://trendspider.com/learning-center/td-sequential-a-comprehensive-guide-for-traders/) — exhaustion logic, the Setup-then-Countdown ordering, TDST lines, common mistakes, and limitations.
+6. [TradersDayTrading — Tom DeMark Indicators (Sequential & Combo)](https://www.tradersdaytrading.com/tom-demark-indicators.html) — Setup/Countdown mechanics, Combo's stricter conditions, and the practitioner cautions about incomplete free versions.
+7. [TradingLiteracy — TD Sequential Indicator](https://tradingliteracy.com/td-sequential-indicator/) — buy/sell Countdown framing, the 13 as the exhaustion signal, and "combine with other tools."

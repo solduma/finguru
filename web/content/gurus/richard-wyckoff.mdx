@@ -2,9 +2,11 @@
 title: "Richard Wyckoff — Reading the Composite Operator"
 slug: "richard-wyckoff"
 kind: "guru"
+school: "technical"
+strategy: "tape-price-action"
 level: "intermediate"
 order: 3
-summary: "The man who taught traders to read the footprints of the 'smart money' through accumulation, distribution, and the three laws of supply and demand."
+summary: "The man who taught ordinary traders to read the footprints of the 'smart money' — accumulation, distribution, the three laws, and a five-step playbook for trading alongside the big operators instead of becoming their exit liquidity."
 era: "1873–1934"
 contribution: "Wyckoff Method / smart money"
 prereqs: ["charles-dow"]
@@ -188,6 +190,40 @@ The spring and the UTAD are *not required* events. Plenty of valid accumulation 
   ]}
 />
 
+## The buying and selling tests (the nine-point checklists)
+
+The events above tell you *what* a range is doing. But how do you know accumulation is actually *finished* and a long is safe to take? Wyckoff's classic buying and selling tests — codified into two named nine-point checklists by his student **Robert G. Evans** and taught in their modern form by **Dr. Henry (Hank) Pruden** — answer exactly that. There are **nine buying tests** (for the end of accumulation, before a markup) and **nine selling tests** (for the end of distribution, before a markdown). These are the method's explicit *confirmation* step: the more tests that pass, the higher the odds the campaign has turned. They are a distinct tool from the single "secondary test" event — think of them as a pre-flight checklist run across the whole range.
+
+<Callout type="key">
+
+The tests are a *scorecard*, not a trigger. You want most of them passing before you commit. A range that fails several tests — say, supply never dries up and you never get higher supports — is telling you the cause isn't built yet. Wait.
+
+</Callout>
+
+| # | Buying tests (end of accumulation) | Selling tests (end of distribution) |
+|---|---|---|
+| 1 | Downside price objective accomplished (the prior decline has run its measured course) | Upside objective accomplished |
+| 2 | Preliminary support (PS) + selling climax (SC) have occurred | Preliminary supply (PSY) + buying climax (BC) have occurred |
+| 3 | Secondary test (ST) holds on lighter volume than the SC | Secondary test on lighter volume than the BC |
+| 4 | Activity (volume) dries up on reactions *down* — supply is exhausting | Activity dries up on rallies *up* — demand is exhausting |
+| 5 | Higher supports / higher lows forming inside the range | Lower tops / lower highs forming inside the range |
+| 6 | Higher highs on the bounces, too | Lower lows on the reactions, too |
+| 7 | A bullish trend now shows on the chart (price breaking up out of the range) | A bearish trend now shows on the chart |
+| 8 | A spring or shakeout (or successful test of one) — supply tested and absent | An upthrust / UTAD (or test of one) — demand tested and absent |
+| 9 | Demand greater than supply — shown by an SOS: a strong advance on widening spread and rising volume — **and the reward is worth the risk** | Supply greater than demand — shown by an SOW: a sharp break on widening spread and rising volume — **and the reward is worth the risk** |
+
+<Callout type="note">
+
+As taught today (Pruden, *The Three Skills of Top Trading*, 2007), test #9 carries an explicit risk rule: the distance from your entry up to the P&F objective should be at least **three times** the distance down to your protective stop — a **3:1 reward-to-risk** minimum. This single number turns the vague "is it worth it?" into a hard go/no-go: measure the upside to target and the downside to the stop *before* you click buy, and if the ratio is under 3:1, skip the trade.
+
+</Callout>
+
+<Callout type="warning">
+
+Don't demand a perfect 9-for-9 — real ranges rarely tick every box, and an obsessive checklist can keep you out of good trades forever (the mirror of the beginner who skips it entirely). Treat a clear majority of tests passing, *plus* a defined risk point (the spring/UTAD low or high), as the green light. The checklist's job is to stop you buying a range that is still falling apart.
+
+</Callout>
+
 ## Cause and effect: point-and-figure counting
 
 Wyckoff measures the "cause" — and thus a price target — using a **point-and-figure (P&F)** chart. A P&F chart ignores time and plots columns of X's (rising) and O's (falling), where each box is a fixed price increment and a new column only starts after a "reversal" of a set number of boxes. The *horizontal* width of the trading range on that chart is the cause; you project it as a vertical price move (the effect).
@@ -207,6 +243,18 @@ Max target  = count-line level + count
 ```
 
 If the range low were, say, 30,000, the minimum objective would be 33,600. Note the honesty here: Wyckoff gives a *range* of objectives (minimum, midpoint, maximum) to "stop, look, and listen" at — not a single magic number — and only complete P&F phases are counted. One subtlety: in this simplified example we count along the TR low, which serves as the count line; in practice Wyckoff takes the count at the LPS price level, while the *minimum* objective is always measured up from the trading-range low (which is why "Min target = TR low + count" above).
+
+To make the right-to-left counting concrete: a P&F chart has no time axis — it is just alternating columns of X's (up) and O's (down). You start at the column containing the Last Point of Support and count leftward across the range, one whole column at a time, multiplying the number of columns by box size and reversal to get the count.
+
+<ConceptDiagram
+  caption="Counting the cause on the actual P&F columns, right-to-left from the LPS. Each pair of X/O columns is one phase of the horizontal range; 12 columns at 100-point boxes and a 3-box reversal give a 3,600-point count. Read the boxes leftward (12 → 1); the leftmost column is the conservative start, and each added pair is a 'complete' phase."
+  chart={`flowchart RL
+  L["LPS column #12<br/>(start count here)"] --> K["#11"]
+  K --> J["#10 .. #3<br/>(eight more columns)"]
+  J --> B["#2"]
+  B --> A["range start #1<br/>(12 columns total)"]
+  A --> N["12 cols x 100 x 3 = 3,600 pt count"]`}
+/>
 
 <LineChart
   caption="Cause and effect — the wide trading range (the 'cause', ~30,000 with a 3,600 count) projects up to the minimum objective at 33,600 (the 'effect')"
@@ -251,6 +299,22 @@ A stock has fallen for months. One week it gaps down on the year's heaviest volu
   ]}
 />
 
+## Wyckoff's five-step approach (the actual playbook)
+
+The laws, schematics, and tests are the *vocabulary*. The **five-step approach** is the *sentence* — the order Wyckoff actually selected and timed a trade in. A beginner can follow it literally.
+
+<Callout type="key">
+
+1. **Read the whole market first.** Is the broad index (e.g. the S&P 500) trending up, down, or ranging? You will trade *with* it, not against it. (This is Dow Theory's "context" tenet doing its job underneath Wyckoff.)
+2. **Pick stocks in harmony with that trend.** In an uptrending market, hunt for stocks **stronger** than the index (they rise more on up days, fall less on down days); in a downtrend, hunt for stocks **weaker** than the index for shorts.
+3. **Pick stocks with a "cause" big enough to matter.** Use the P&F count to check that the trading range has built enough cause to reach a target worth trading for. A tiny base = a tiny move = not worth the risk.
+4. **Judge readiness to move.** Run the nine buying tests (for a long) or nine selling tests (for a short). Most passing = the campaign has likely turned.
+5. **Time your entry to a turn in the broad index.** Because most stocks move with the market, enter as the index itself turns — and *always* set a protective stop. Step 5 is where patience pays: the right stock at the wrong market moment still loses.
+
+</Callout>
+
+The single most common way beginners blow this up is **inverting step 1 and step 5** — falling in love with one stock's pretty accumulation chart while the whole market is rolling over. Wyckoff's order is deliberate: market first, stock last.
+
 ## Honest criticisms and pitfalls
 
 - **It's subjective.** Wyckoff himself insisted the method cannot be reduced to "mechanical" or mathematical rules. That means two skilled analysts can label the same chart differently, and it resists rigorous backtesting. Peer-reviewed evidence is scarce ([Wikipedia](https://en.wikipedia.org/wiki/Richard_Wyckoff)).
@@ -266,11 +330,13 @@ Common beginner mistake: treating the schematic as a *prediction* ("this is accu
 
 ## How to apply it today
 
-1. **Identify context** — is the broad market trending up, down, or ranging? Trade in harmony with it.
+This is the five-step playbook above, made concrete on a live chart:
+
+1. **Set context (steps 1–2)** — confirm the broad market's trend, then shortlist stocks moving in harmony with it (stronger than the index for longs, weaker for shorts).
 2. **Find a trading range** and try to label its phase. Mark the SC/AR (or BC/AR) boundaries.
 3. **Watch the climactic and test events** with volume. Is supply drying up on dips? Is effort failing to produce result?
-4. **Wait for the trigger** — a confirmed spring, then SOS and LPS for longs (bets that profit if price rises) — UTAD then SOW and LPSY for shorts (bets that profit if price falls).
-5. **Define risk and target** — stop beyond the spring/UTAD; estimate the objective with a P&F count or a measured move (project the size of the prior swing — one full up-or-down leg between turning points — onto the breakout).
+4. **Run the checklist, then wait for the trigger** — score the nine buying tests (or selling tests); when most pass, take a confirmed spring, then SOS and LPS for longs (bets that profit if price rises) — UTAD then SOW and LPSY for shorts (bets that profit if price falls).
+5. **Define risk and target, and demand 3:1** — put your stop just beyond the spring/UTAD; estimate the objective with a P&F count or a measured move (project the size of the prior swing — one full up-or-down leg between turning points — onto the breakout). If the upside to target isn't at least **three times** the downside to the stop, pass on the trade (buying-test #9).
 
 Start by *labeling old charts* with no money at risk. Pick liquid names, mark every PS/SC/AR/ST/spring/SOS/LPS you can find, and see how often the schematic actually fits — and how often it doesn't. That honest scorekeeping is the fastest way to internalize the method without getting fooled by hindsight.
 
@@ -278,4 +344,5 @@ Start by *labeling old charts* with no money at risk. Pick liquid names, mark ev
 
 1. [Richard Wyckoff — Wikipedia](https://en.wikipedia.org/wiki/Richard_Wyckoff) — biographical facts (1873–1934, *The Magazine of Wall Street*, bucket-shop exposés in *The Saturday Evening Post* from 1922, loss of the magazine to Cecelia Shear in 1928, the subjectivity of the method).
 2. [The Wyckoff Method: A Tutorial — StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md) — early career (stock runner at 15, head of his own firm in his twenties, 200,000+ subscribers), the three laws, Composite Man quote, full accumulation/distribution event and phase definitions, P&F cause counting, five-step approach.
-3. [StockCharts ChartSchool — The Wyckoff Method overview](https://school.stockcharts.com/doku.php?id=market_analysis:the_wyckoff_method) — corroborating reference for the price cycle and schematic events.
+3. [Robert G. Evans — the nine buying/selling tests](https://chartschool.stockcharts.com/table-of-contents/market-analysis/wyckoff-analysis-articles/the-wyckoff-method-a-tutorial.md) — Evans' codification of Wyckoff's classic buying and selling tests (objective accomplished, PS/SC, secondary test, activity drying up on reactions, higher supports/higher lows, spring/upthrust, demand-over-supply via SOS).
+4. [StockCharts ChartSchool — The Wyckoff Method overview](https://school.stockcharts.com/doku.php?id=market_analysis:the_wyckoff_method) — corroborating reference for the price cycle and schematic events.

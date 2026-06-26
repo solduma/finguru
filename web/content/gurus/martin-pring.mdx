@@ -2,6 +2,8 @@
 title: "Martin Pring — Momentum and the Bigger Picture"
 slug: "martin-pring"
 kind: "guru"
+school: "technical"
+strategy: "indicators"
 level: "intermediate"
 order: 8
 summary: "The educator who systematized momentum into the KST oscillator and tied it to a six-stage business-cycle and intermarket-rotation model."
@@ -16,11 +18,19 @@ Martin Pring's big idea is that momentum and the economic cycle are two sides of
 
 Most beginners meet momentum through a single indicator like RSI or a lone rate-of-change line, then get frustrated when it screams "overbought" for months during a strong trend. Pring's contribution was to *systematize* momentum: to combine multiple speeds into one cleaner signal (the KST), and to tie all of it back to a repeatable map of the business cycle. He is less a "guru with a secret" and more an educator who organized scattered ideas into a teachable framework. That is exactly why he is worth studying.
 
+His personal mantra, the thing to carry out of this whole lesson: **don't predict — identify the trend and the cycle stage, then go with it, and only act when more than one piece of evidence agrees.**
+
 ## Who he was
 
-Martin J. Pring is a British-born technical analyst who began working in financial markets in **1969**. He is best known for *Technical Analysis Explained*, first published in **1979** and now in its fifth edition; *Forbes* called it "the standard work for this generation of chartists," and *Barron's* described Pring himself as "a technician's technician." He has written many other books, including *Investment Psychology Explained*, *Martin Pring on Price Patterns*, and a multi-volume course on market momentum.
+Martin J. Pring is a British-born technical analyst who has worked in financial markets since the late 1960s. He is best known for *Technical Analysis Explained*, first published around 1980 and now in its **fifth edition (McGraw-Hill, 2014, ISBN 9780071825177)**, subtitled "The Successful Investor's Guide to Spotting Investment Trends and Turning Points." It is widely used as a study text by the **CMT Association** (the body that grants the Chartered Market Technician certification). He has written many other books, including *The Investor's Guide to Active Asset Allocation* (2006), which lays out his six business-cycle stages in detail.
 
-Pring has been an educator first and foremost. Since **1984** he has published the monthly *InterMarket Review*; he pioneered technical-analysis instructional videos in **1987**; and he has lectured everywhere from the Darden Business School to SDA Bocconi. He received the Market Technicians Association (now CMT Association) Annual Award in **2004** and was inducted into the Traders' Library Hall of Fame in **2007**. In **2012** he co-created the Dow Jones Pring U.S. Business Cycle Index with S&P Dow Jones Indices, and since **2015** he has served as Chief Technical Strategist for StockCharts.com.
+Pring has been an educator first and foremost. He founded **Pring Research, Inc.**, publisher of the monthly *InterMarket Review* (which has run for 35+ years), and runs **PringU**, a 20-lesson interactive technical-analysis course. He co-founded the money-management firm **Pring Turner Capital Group** with Joe Turner, built around his business-cycle framework. In **2012**, Dow Jones Indexes back-tested his approach to 1955 and launched the **Dow Jones Pring Business Cycle Index** — described as its first proactively managed business-cycle index.
+
+<Callout type="warning">
+
+There are two "Martin Prings." The famous Wikipedia entry under that name is a 17th-century English explorer (Martin Pring, 1580–1626), **not** the technical analyst. If you go researching, look for Pring Research, *Technical Analysis Explained*, or the KST — not the Wikipedia biography.
+
+</Callout>
 
 <Callout type="note">
 
@@ -33,10 +43,18 @@ Pring has been an educator first and foremost. Since **1984** he has published t
 **Momentum** in technical analysis means the *rate* at which price is changing, not the price level itself. The simplest measure is **rate of change (ROC)**, the percentage difference between today's price and the price N bars ago:
 
 ```
-ROC(n) = ((Price_today / Price_n_bars_ago) - 1) x 100
+ROC(n) = ((Close − Close_n_bars_ago) / Close_n_bars_ago) × 100
 ```
 
 A rising ROC says the trend is accelerating; a falling ROC says it is losing steam even if price is still climbing. That early warning — momentum often peaks *before* price — is the whole point of studying it.
+
+<Callout type="key">
+
+**Worked ROC example.** A stock closed at **$50** twelve days ago and closes at **$55** today.
+`ROC(12) = ((55 − 50) / 50) × 100 = +10%`.
+A common rule of thumb treats roughly **+10 as overbought and −10 as oversold** (tune wider, ±15, for volatile names and tighter, ±5, for calm ones). So +10% says momentum is strong but *stretched* — a reason to look for price confirmation, not to chase. Remember: a market can stay oversold while it keeps falling. ROC extremes are warnings, never automatic buy/sell buttons.
+
+</Callout>
 
 <LineChart
   caption="Momentum peaks before price: ROC peaks early (x=3) while price keeps climbing to its top, and by the time ROC crosses zero price has already rolled over"
@@ -65,6 +83,10 @@ The problem: any single ROC has a personality. A 10-day ROC is jumpy and full of
   levels={[ { y: 0, label: "zero", color: "#f59e0b" } ]}
 />
 
+### RSI sits alongside ROC
+
+Pring also teaches **RSI** (Wilder's Relative Strength Index) next to ROC. RSI is bounded 0–100: above 70 is "overbought," below 30 "oversold," with the most useful read being *divergence* (price makes a new high, RSI doesn't). Pring's caution is identical to his ROC caution: in a strong trend RSI can stay "overbought" or "oversold" for a long time, so use it for divergence and confirmation, **not** as a standalone trigger. (For the full mechanics, see the RSI lesson — Pring treats it as one vote among several.)
+
 ## The KST (Know Sure Thing)
 
 The **KST** ("Know Sure Thing," a playful name) is a momentum oscillator that combines four smoothed rate-of-change calculations of different lengths into a single weighted line. Longer-term cycles get more weight, because Pring believed the dominant trend deserves the loudest vote.
@@ -79,11 +101,11 @@ Each component (Pring calls it an RCMA, short for Rate-of-Change Moving Average 
 | RCMA4 | 30 | 15 | 4 |
 
 ```
-KST = (RCMA1 x 1) + (RCMA2 x 2) + (RCMA3 x 3) + (RCMA4 x 4)
+KST = (RCMA1 × 1) + (RCMA2 × 2) + (RCMA3 × 3) + (RCMA4 × 4)
 Signal line = 9-period SMA of KST
 ```
 
-The shorthand for these daily defaults is **KST(10,15,20,30, 10,10,10,15, 9)**: four ROC lengths, four smoothing lengths, one signal length. Pring published different settings per horizon — for example a medium-term weekly **KST(10,13,15,20, 10,13,15,20, 9)** and a long-term monthly **KST(9,12,18,24, 6,6,6,9, 9)**. Crucially, he changed the *settings*, not just the chart interval, when switching horizons.
+The shorthand for these daily defaults is **KST(10,15,20,30, 10,10,10,15, 9)**: four ROC lengths, four smoothing lengths, one signal length. Pring published different settings per horizon — for example a medium-term weekly **KST(10,13,15,20, 10,13,15,20, 9)** and a long-term monthly **KST(9,12,18,24, 6,6,6,9, 9)** (the monthly one is tied to the roughly four-year business cycle). Crucially, he changed the *settings*, not just the chart interval, when switching horizons.
 
 <Callout type="key">
 
@@ -91,25 +113,41 @@ The KST is really four ROC opinions averaged into one. Short cycles make it resp
 
 </Callout>
 
-### A small illustrative calculation
+### Why the long cycle dominates: the 1-2-3-4 weighting
 
-Suppose (illustrative numbers) the four smoothed ROC components on a given day are:
+The weights aren't decoration — they decide whose vote counts. Even if all four RCMAs read the *same* raw value, RCMA4 contributes four times as much as RCMA1. To make this concrete, suppose (illustrative numbers) the four smoothed ROC components on a given day are RCMA1 = +0.5, RCMA2 = +0.8, RCMA3 = +1.2, and RCMA4 = +1.5. After weighting, their contributions to the KST are:
 
-| Component | Value | Weight | Contribution |
-|-----------|------:|-------:|-------------:|
-| RCMA1 | +0.5 | 1 | +0.5 |
-| RCMA2 | +0.8 | 2 | +1.6 |
-| RCMA3 | +1.2 | 3 | +3.6 |
-| RCMA4 | +1.5 | 4 | +6.0 |
+<BarChart
+  caption="Illustrative. The same KST built from its four pieces: RCMA4 (the long, slow cycle) contributes +6.0 of the +11.7 total — more than the other three combined. This is why a KST signal-line cross 'means' the primary trend turned, not just a short-term wiggle."
+  labels={["RCMA1 (×1)", "RCMA2 (×2)", "RCMA3 (×3)", "RCMA4 (×4)"]}
+  series={[
+    { label: "Raw ROC value", data: [0.5, 0.8, 1.2, 1.5], color: "#7c8499" },
+    { label: "Weighted contribution to KST", data: [0.5, 1.6, 3.6, 6.0], color: "#2dd4bf" }
+  ]}
+  yLabel="Contribution to KST"
+/>
 
-KST = 0.5 + 1.6 + 3.6 + 6.0 = **+11.7**. The longest, most heavily weighted component (+6.0) dominates, so even though the short-term piece is modest, the KST registers solidly positive — meaning the broader momentum picture is bullish.
+KST = 0.5 + 1.6 + 3.6 + 6.0 = **+11.7**. Notice the longest component starts only marginally larger than the shortest (+1.5 vs +0.5 raw), yet after weighting it towers over everything else. Even when the short-term piece is modest, the heavily weighted long cycle drags the KST solidly positive — meaning the broader momentum picture is bullish. That is the whole design philosophy in one chart: *the primary trend gets the loudest vote.*
+
+### A second worked KST example: reading the turn
+
+Numbers can also warn you *before* a cross. Suppose at a month-end the four monthly components are RCMA1 = +2.0, RCMA2 = +1.5, RCMA3 = −0.5, RCMA4 = +3.0:
+
+```
+KST = (2.0 × 1) + (1.5 × 2) + (−0.5 × 3) + (3.0 × 4)
+    = 2.0 + 3.0 − 1.5 + 12.0
+    = +15.5
+```
+
+KST is positive (bull bias) and dominated by that heavily weighted +12.0 long-term component. If last month's KST was +12.0, the rising 9-period signal line is below the current +15.5 — so KST is **above its signal line and rising → buy bias confirmed.** But watch what happens *next*: if KST then prints +18, +17, +14 while still above its signal line, that fading sequence warns upside momentum is *running out* — a caution flag. It does not become a sell until KST actually crosses below the signal line **and** price confirms by breaking a trendline or moving average.
 
 ### How to read the KST
 
 - **Centerline:** above zero favors bulls, below zero favors bears.
-- **Signal-line crossovers:** the most robust signals. KST crossing *above* its 9-period average is bullish; crossing below is bearish.
+- **Signal-line crossovers:** the most robust signal. KST crossing *above* its 9-period average is bullish; crossing below is bearish.
 - **Direction vs. position:** a KST that is still negative but turning up shows downside momentum waning; a KST still positive but turning down shows upside momentum fading.
-- **Divergence:** when price makes a new high but KST does not (a "negative divergence"), it can warn of exhaustion — but Pring stressed using only large, obvious divergences, ideally confirmed by a signal-line cross.
+- **Trendline breaks on the KST itself:** rare but powerful, and they reinforce a crossover.
+- **Divergence:** when price makes a new high but KST does not (a "negative divergence"), it can warn of exhaustion — but Pring stressed using only large, blatant divergences, ideally confirmed by a signal-line cross.
 
 <LineChart
   caption="The two everyday KST triggers: a bullish signal-line cross while still below zero, then the KST clearing the centerline to confirm the turn"
@@ -144,17 +182,25 @@ KST = 0.5 + 1.6 + 3.6 + 6.0 = **+11.7**. The longest, most heavily weighted comp
 
 <Callout type="warning">
 
-The KST is *unbounded* — it has no fixed 0-to-100 ceiling like RSI. That makes it poorly suited for "overbought/oversold" calls. In a strong uptrend it can stay positive for a very long time; a signal-line cross there often just flags slowing momentum, not a reversal.
+The KST is *unbounded* — it has no fixed 0-to-100 ceiling like RSI. That makes it poorly suited for "overbought/oversold" calls. In a strong uptrend it can stay positive for a very long time; a signal-line cross there often just flags slowing momentum, not a reversal. Use signal-line and zero-line crossovers and trendline breaks — never treat a "high" KST as a sell.
 
 </Callout>
 
 ## Special K: momentum across the whole cycle
 
-Pring later built **Special K**, which extends the KST idea to *twelve* ROC components spanning short-, intermediate-, and long-term cycles, again grouped in fours with weights 1-2-3-4 within each group:
+Pring later built **Special K**, which extends the KST idea to *twelve* ROC components spanning short-, intermediate-, and long-term cycles, again grouped in fours with weights 1-2-3-4 *within* each group. The structure is the KST's idea nested three times — three speed bands, each a little 1-2-3-4 ladder:
 
-- Short-term: ROC(10, 15, 20, 30)
-- Intermediate: ROC(40, 65, 75, 100)
-- Long-term: ROC(195, 265, 390, 530)
+<BarChart
+  caption="Special K's twelve components, grouped in three speed bands. Within each band the four ROCs follow the same 1-2-3-4 weight ladder as the KST; across bands the lookbacks stretch from 10 days out to 530. The elegance is that one rule — 'four ROCs, weights 1-2-3-4' — repeats at three scales to span the whole four-year cycle."
+  height={300}
+  labels={["ROC #1 (×1)", "ROC #2 (×2)", "ROC #3 (×3)", "ROC #4 (×4)"]}
+  series={[
+    { label: "Short-term band", data: [10, 15, 20, 30], color: "#38bdf8" },
+    { label: "Intermediate band", data: [40, 65, 75, 100], color: "#a78bfa" },
+    { label: "Long-term band", data: [195, 265, 390, 530], color: "#f59e0b" }
+  ]}
+  yLabel="ROC lookback (periods)"
+/>
 
 The design assumes prices revolve around a roughly **four-year business cycle**, so Special K aims to peak and trough at the same time as the primary price trend. It needs a lot of history — at least about 725 data points — to compute fully. Read it with trendline breaks (a violated trendline of nine months or more suggests the primary trend has reversed) and with a long, double-smoothed signal line (the common default is a 100-period SMA smoothed by another 100-period SMA). Note its honest limitations: in a long linear bull market it tends to *lead* turning points, and around sudden, sharply truncated moves like the 1987 crash (where the decline was largely over almost before momentum could turn down), it can arrive *late*.
 
@@ -175,16 +221,31 @@ The design assumes prices revolve around a roughly **four-year business cycle**,
 
 ## The bigger picture: the six business-cycle stages
 
-Pring's other great theme is **intermarket rotation** — the observation that bonds, stocks, and commodities take turns leading the economy in a repeating relay. In a classic inflationary regime the sequence is: **bonds turn first, then stocks, then commodities** (and they weaken in the same order). Pring packaged this into six stages.
+Pring's other great theme is **intermarket rotation** — the observation that bonds, stocks, and commodities take turns leading the economy in a repeating relay. In a classic inflationary regime the sequence is: **bonds turn first, then stocks, then commodities** (and they weaken in the same order). Pring packaged this into six stages that loop endlessly — the economy never "finishes" the cycle, it just rolls into the next turn.
+
+<ConceptDiagram
+  caption="The cycle is a wheel, not a list. Read it clockwise: bonds turn bull first (Stage 1), then stocks (2), then commodities (3); then they turn bear in the same order (4, 5, 6) — and Stage 6 hands straight back to Stage 1. Each box shows which of bonds (B) / stocks (S) / commodities (C) are in a bull (▲) vs bear (▼) market, plus whether defensive or cyclical sectors tend to lead."
+  height={460}
+  chart={`flowchart LR
+  S1["Stage 1 — bottoming<br/>B ▲ · S ▼ · C ▼<br/>defensive leads"]
+  S2["Stage 2 — recovery starts<br/>B ▲ · S ▲ · C ▼<br/>early cyclicals turn up"]
+  S3["Stage 3 — full recovery<br/>B ▲ · S ▲ · C ▲<br/>cyclicals lead"]
+  S4["Stage 4 — peak / overheat<br/>B ▼ · S ▲ · C ▲<br/>late cyclicals, inflation hedges"]
+  S5["Stage 5 — early slowdown<br/>B ▼ · S ▼ · C ▲<br/>commodities still lead"]
+  S6["Stage 6 — contraction<br/>B ▼ · S ▼ · C ▼<br/>rotate to defensive / cash"]
+  S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S1`}
+/>
+
+The same six stages, as a lookup table you can scan:
 
 | Stage | Bonds | Stocks | Commodities | Roughly where |
 |-------|-------|--------|-------------|---------------|
-| 1 | Bull | Bear | Bear | Deep contraction; rates falling, bonds bottom first |
+| 1 | Bull | Bear | Bear | Deep contraction / recession; rates falling, bonds bottom first |
 | 2 | Bull | Bull | Bear | Stocks bottom, anticipating recovery |
-| 3 | Bull | Bull | Bull | Conditions improve; commodities join as demand returns |
-| 4 | Bear | Bull | Bull | Full expansion; bonds top first as inflation pressures rise |
+| 3 | Bull | Bull | Bull | Full recovery; commodities join as demand returns (all three up) |
+| 4 | Bear | Bull | Bull | Economy hot; bonds top first as inflation/rates rise |
 | 5 | Bear | Bear | Bull | Stocks top; commodities still strong |
-| 6 | Bear | Bear | Bear | Slowdown; commodities finally roll over |
+| 6 | Bear | Bear | Bear | Slowdown into recession; commodities finally roll over, cycle resets |
 
 <LineChart
   caption="The intermarket relay: bonds bottom and top first, stocks follow, commodities turn last — the staggered sequence behind the six stages"
@@ -210,41 +271,86 @@ Bonds bottom first and top first; commodities bottom last and top last; stocks s
 
 </Callout>
 
+### Offense vs. defense: the allocation playbook
+
+The reason the cycle matters to a real portfolio is that it tells you when to play **offense** (lean into stocks) and when to play **defense** (lean into bonds and cash):
+
+- **Stage 1 (recession):** defensive — heavy bonds and cash to stabilize while stocks are still falling.
+- **Stages 2–3 (accelerating economy):** offensive — maximum stock exposure; this is where the easy money is.
+- **Stages 4–5 (overheating / late cycle):** progressively de-risk; commodities and inflation hedges can lead here.
+- **Stage 6 (rolling into recession):** rotate back toward cash and bonds as the cycle hands off to the next Stage 1.
+
+<Callout type="warning">
+
+**Move gradually.** Cycles can skip a stage or "retrograde" back to a previous one, and the current stage is genuinely ambiguous in real time. Make a big allocation shift only when the evidence is overwhelming *and* the move isn't already priced in. Slow rotation beats abrupt all-or-nothing switches.
+
+</Callout>
+
 This is where momentum and macro connect: Pring applied his KST and Special K tools to bond, stock, and commodity indexes to gauge each market's primary trend, then read those turns against the six-stage map to estimate where in the cycle the economy sits.
 
-## A worked example (illustrative)
+## Trend confirmation: the discipline that ties it all together
 
-Imagine bond prices have been falling for two years, then their long-term KST turns up through its signal line. Bonds bottoming is the Stage 1 signal. A few months later the stock-index KST also crosses up: Stage 2, recovery is being anticipated. Later still, a commodity-index KST turns positive: Stage 3, broad expansion underway. A disciplined Pring follower would have rotated from cash and defensives toward cyclical stocks somewhere around Stages 2-3, then watched for bonds to weaken (Stage 4) as the first hint the expansion is maturing. None of these signals is exact, but the *order* gives a coherent storyline rather than isolated guesses.
+Everything above feeds one rule, and it is the single most important thing to take from Pring: **never act on one indicator alone.** He called it the **"weight of the evidence"** approach. A momentum reversal becomes *actionable* only when it lines up across three independent layers:
+
+<ConceptDiagram
+  caption="Pring's 'weight of the evidence' gate: a signal is only actionable when price, momentum, AND the cycle/intermarket backdrop all agree. Any one alone is just a hypothesis."
+  height={260}
+  chart={`flowchart LR
+  P["PRICE confirms<br/>(trendline / MA break)"]
+  M["MOMENTUM confirms<br/>(KST / ROC / RSI agree)"]
+  C["CYCLE confirms<br/>(stage + intermarket)"]
+  P --> G{All three agree?}
+  M --> G
+  C --> G
+  G -->|yes| A["Act — high-conviction signal"]
+  G -->|no| W["Wait — one vote isn't enough"]`}
+/>
+
+In practice: a KST signal-line cross by itself is a *candidate*, not a trade. You wait for price to break a trendline or a moving average too, and you check that the cycle stage isn't fighting you. The discipline is dull on purpose — it filters out the lone-indicator whipsaws that cost beginners the most money.
+
+## A worked example: walking the cycle relay
+
+Imagine bond prices have been falling for two years, then their long-term KST turns up through its signal line. Bonds bottoming is the Stage 1 signal. A few months later the stock-index KST also crosses up: Stage 2, recovery is being anticipated. Later still, a commodity-index KST turns positive: Stage 3, broad expansion underway. A disciplined Pring follower would have rotated from cash and defensives toward cyclical stocks somewhere around Stages 2–3, then watched for bonds to weaken (Stage 4) as the first hint the expansion is maturing.
+
+This isn't only theory. A real instance from Pring Turner's own commentary: in the 2018–19 cycle, **bonds bottomed in October 2018 (Stage 1)**, **stocks bottomed in December 2018 (Stage 2)**, and the next expected event was a **low in commodities (Stage 3)** — the bonds→stocks→commodities relay playing out in real time. None of these signals is exact, but the *order* gives a coherent storyline rather than isolated guesses.
 
 ## Honest criticisms
 
-- **Curve-fitting risk.** The KST and Special K periods and weights were chosen from years of market observation. Numbers tuned on past data can look better in hindsight than they perform live.
-- **Lag is baked in.** Smoothing buys cleaner signals at the cost of timeliness. Special K openly leads in some regimes and lags in others.
-- **The cycle is not a clock.** The six-stage model assumes a recognizable four-year-ish cycle and stable intermarket relationships. Those relationships shifted in the deflationary period after about 1998 — when stocks and bonds decoupled and often began moving inversely — and central-bank intervention can stretch or compress stages.
-- **Complexity.** Twelve ROCs and a six-box matrix can create false confidence and over-fitting in your own head.
+- **Cycle stages are clear only in hindsight.** Real cycles skip stages, retrograde, or stall, and the "current stage" is genuinely ambiguous live — Pring himself warns to move gradually.
+- **Intermarket relationships are regime-dependent.** Bond/stock/commodity correlations flipped between the inflationary era (1970s–late 1990s, when bonds and stocks were positively correlated) and the deflationary era after about 1998 (when they often moved inversely). Central-bank intervention — QE, zero-rate policy — has repeatedly broken the textbook rotation.
+- **The KST is curve-fit and parameter-heavy.** Nine parameters invite over-optimization; different timeframe settings can give conflicting signals; and because it's unbounded it gives no clean overbought/oversold read.
+- **Momentum divergences fail often.** Both StockCharts and Pring note divergences fail to foreshadow reversals more often than not — they need price confirmation.
+- **Lag is baked in.** KST is a smoothed average of averages, so it lags turns; in choppy markets signal-line crossovers whipsaw. Special K openly leads in some regimes and lags in others.
+- **The broad academic critique of technical analysis** (the efficient-market view) holds that much of TA's edge is hard to demonstrate out-of-sample after trading costs.
 
 ## Common pitfalls and misconceptions
 
-- Treating KST as overbought/oversold like RSI. It is unbounded; do not.
-- Acting on every signal-line cross in a strong trend. Many are momentum hiccups, not reversals.
-- Forcing today's market into a stage. Stages overlap and sometimes skip; use them as a hypothesis, not a horoscope.
-- Ignoring confirmation. Pring himself preached a "weight of the evidence" approach — no single indicator decides.
+- **Trading a single indicator alone.** Pring's whole philosophy is weight of the evidence; acting on a KST cross without price *and* cycle confirmation is the number-one error.
+- **Treating overbought/oversold as an automatic sell/buy.** Markets stay overbought in strong trends; ROC and RSI extremes need price confirmation.
+- **Using the KST as an overbought/oversold gauge.** It is unbounded — use signal-line and zero-line crossovers and trendline breaks instead.
+- **Mixing timeframes.** Applying daily KST settings to monthly cycle decisions (or vice versa). Match the *settings* to your horizon, not just the chart interval.
+- **Forcing the current cycle stage.** Declaring "we're in Stage 3" prematurely; stages are confirmed by the three barometers (bonds, stocks, commodities) together, not by one chart.
+- **Over-trusting divergences.** Chase only the large, blatant ones, and wait for a confirming cross.
+- **Big, abrupt allocation switches.** Pring says shift gradually; cycles can retrograde.
+- **Confusing the two Martin Prings** — the famous Wikipedia entry is a 17th-century explorer, not the analyst.
 
 ## How to apply it today
 
-1. Plot KST on three horizons (daily, weekly, monthly) and trade in the direction of the longer ones.
+1. Plot KST on three horizons (daily, weekly, monthly) — with the *settings* matched to each — and trade in the direction of the longer ones.
 2. Use signal-line crossovers as your primary trigger; act on divergences only when they are large and obvious.
-3. Run the same KST on bond, stock, and commodity benchmarks to locate the cycle stage.
-4. Combine with trend tools (moving averages, price patterns) and never bet on momentum alone.
+3. Run the same KST on bond, stock, and commodity benchmarks to locate the cycle stage, then tilt toward offense or defense accordingly — gradually.
+4. Apply the weight-of-the-evidence gate: never act until price, momentum, and the cycle backdrop agree. Combine KST with trend tools (moving averages, price patterns) and never bet on momentum alone.
 
 ## Further reading
 
-Read *Technical Analysis Explained* (5th ed.) for the full framework, and experiment with KST on free charting platforms before risking money.
+Read *Technical Analysis Explained* (5th ed., 2014) for the full framework, and *The Investor's Guide to Active Asset Allocation* (2006) for the six business-cycle stages in depth. Then experiment with KST on free charting platforms before risking money.
 
 ### Sources
 
-1. [StockCharts ChartSchool — Pring's Know Sure Thing (KST)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/prings-know-sure-thing-kst.md) — KST formula, ROC periods, weights, signal line, and interpretation.
-2. [StockCharts ChartSchool — Pring's Special K](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/prings-special-k.md) — Special K's twelve ROC components, four-year-cycle assumption, 725-data-point requirement, signal-line defaults, and limitations.
-3. [Pring.com — About Martin Pring](https://www.pring.com/about-us/) — biography, career dates, books, awards, and roles.
-4. [StockCharts ChartSchool — Intermarket Analysis](https://chartschool.stockcharts.com/table-of-contents/market-analysis/intermarket-analysis.md) — bond/stock/commodity relationships in inflationary and deflationary regimes, including the post-1998 shift.
-5. [StockCharts ChartSchool — Sector Rotation Analysis](https://chartschool.stockcharts.com/table-of-contents/market-analysis/sector-rotation-analysis.md) — the six business-cycle stages (based on Pring's *InterMarket Review*) and the bonds-then-stocks-then-commodities rotation order.
+1. [StockCharts ChartSchool — Pring's Know Sure Thing (KST)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/prings-know-sure-thing-kst) — KST formula, ROC periods, weights, all timeframe settings, signal line, and interpretation.
+2. [StockCharts ChartSchool — Rate of Change (ROC)](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/rate-of-change-roc) — ROC formula, overbought/oversold thresholds, divergence caution.
+3. [StockCharts ChartSchool — Pring's Special K](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/prings-special-k) — Special K's twelve ROC components, four-year-cycle assumption, ~725-data-point requirement, signal-line defaults, and limitations.
+4. [Pring Turner — Approach to Business Cycle Investing](https://www.pringturner.com/pring-turner-approach-to-business-cycle-investing/) — the six-stage table, the three barometers (bonds/stocks/commodities), and the Dow Jones Pring Business Cycle Index.
+5. [Pring Turner — Business Cycle Stage 3](https://www.pringturner.com/business-cycle-stage-3-which-market-bullish-for/) — the bonds→stocks→commodities sequence and the 2018–19 real example.
+6. [KST oscillator — Wikipedia](https://en.wikipedia.org/wiki/KST_oscillator) — short-term ROC/SMA periods, the 1-2-3-4 weights, and the 9-period signal line.
+7. [Pring.com](https://www.pring.com) — biography: *InterMarket Review* (35+ years), the six-stage cycle, PringU, KST and Special K.
