@@ -33,6 +33,14 @@ interface Zone {
   color?: string;
   label?: string;
 }
+interface XZone {
+  // Vertical band keyed to the category (x) axis by data index — e.g. NBER
+  // recession shading. Distinct from `zones`, which shade a horizontal y-band.
+  x1: number;
+  x2: number;
+  color?: string;
+  label?: string;
+}
 interface Trendline {
   x1: number;
   y1: number;
@@ -55,6 +63,7 @@ export interface LineChartProps {
   points?: Point[];
   levels?: Level[];
   zones?: Zone[];
+  xZones?: XZone[];
   trendlines?: Trendline[];
 }
 
@@ -72,6 +81,7 @@ export default function LineChart({
   points = [],
   levels = [],
   zones = [],
+  xZones = [],
   trendlines = [],
 }: LineChartProps) {
   const n = series[0]?.data.length ?? 0;
@@ -102,6 +112,16 @@ export default function LineChart({
       z.color ?? COLORS.zoneNeutral,
       z.label,
     );
+  });
+  // Vertical (x-axis) bands — e.g. recession shading keyed to data indices.
+  xZones.forEach((z, i) => {
+    annotations[`xzone${i}`] = {
+      type: "box" as const,
+      xMin: z.x1,
+      xMax: z.x2,
+      backgroundColor: z.color ?? "rgba(255,255,255,0.06)",
+      borderWidth: 0,
+    };
   });
   levels.forEach((l, i) => {
     annotations[`level${i}`] = levelLine(l.y, l.label, l.color ?? COLORS.axis);

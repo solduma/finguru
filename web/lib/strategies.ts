@@ -12,6 +12,7 @@
 import type { LessonKind } from "./content";
 import type { Locale } from "./i18n";
 import type { SchoolId } from "./schools";
+import type { LabId } from "./practicals";
 
 export interface PathStep {
   slug: string;
@@ -33,6 +34,8 @@ export interface Strategy {
   /** Schools this strategy draws on (for cross-linking to /schools). */
   schools: SchoolId[];
   steps: PathStep[];
+  /** Hands-on capstone lab for this strategy's path, if one is wired up. */
+  practical?: LabId;
 }
 
 // Helpers to keep the step list terse.
@@ -72,6 +75,7 @@ export const STRATEGIES: Strategy[] = [
       guru("warren-buffett", "The capstone authority: the greatest stock-picker tells ordinary investors to just buy a low-cost index fund.", "마무리 권위자: 최고의 종목 선정가가 일반 투자자에게 저비용 인덱스 펀드를 사라고 말한다."),
       concept("risk-management", "Position the passive portfolio in a lifetime context: horizon, drawdown tolerance, sequence risk.", "패시브 포트폴리오를 생애 관점에서 배치하기: 투자기간, 손실 감내, 시퀀스 리스크."),
     ],
+    practical: "cost-drag",
   },
   {
     // Goal-based, fully automated: target-date funds & roboadvisors that
@@ -95,6 +99,7 @@ export const STRATEGIES: Strategy[] = [
       concept("trading-psychology", "The only hard part is leaving it alone — automation removes the temptation to tinker.", "유일하게 어려운 점은 그냥 두는 것 — 자동화가 손대고 싶은 유혹을 없앤다."),
       concept("risk-management", "Match the target date to when you'll need the money; understand sequence-of-returns risk near the goal.", "목표 시점을 돈이 필요한 때에 맞추고, 목표 부근의 시퀀스 리스크를 이해하라."),
     ],
+    practical: "glide-path",
   },
   {
     // Defensive multi-asset: 60/40, All-Weather, permanent portfolio,
@@ -119,6 +124,7 @@ export const STRATEGIES: Strategy[] = [
       concept("dollar-cost-averaging", "Fund it steadily and rebalance on a schedule — the discipline that makes it work.", "꾸준히 납입하고 정기적으로 리밸런싱 — 이를 작동하게 하는 규율.", { en: "Rebalancing & Dollar-Cost Averaging", ko: "리밸런싱 & 분할 매수" }),
       concept("trading-psychology", "The payoff is behavioral: a calmer portfolio is one you'll actually stick with.", "보상은 행동에서 온다: 더 차분한 포트폴리오라야 실제로 끝까지 유지한다."),
     ],
+    practical: "portfolio",
   },
   {
     id: "dividend-income",
@@ -141,6 +147,7 @@ export const STRATEGIES: Strategy[] = [
       guru("pat-dorsey", "The moat checklist that separates a true aristocrat from a future dividend cut.", "진짜 배당귀족과 미래의 배당 삭감을 가르는 해자 체크리스트."),
       concept("risk-management", "Discipline against yield-chasing concentration; sizing to avoid ruin.", "고수익 추종형 집중에 맞서는 규율; 파산을 피하는 비중 조절."),
     ],
+    practical: "company-dividend",
   },
   {
     id: "value",
@@ -167,6 +174,7 @@ export const STRATEGIES: Strategy[] = [
       guru("howard-marks", "Second-level thinking and cycles: when bargains actually appear.", "2차적 사고와 사이클: 진짜 헐값이 나타나는 시점."),
       guru("mohnish-pabrai", "Dhandho: heads I win, tails I don't lose much — asymmetric, concentrated bets.", "단도: 앞면이면 내가 이기고 뒷면이면 크게 잃지 않는다 — 비대칭적이고 집중된 베팅."),
     ],
+    practical: "company-value",
   },
   {
     id: "growth",
@@ -191,6 +199,7 @@ export const STRATEGIES: Strategy[] = [
       guru("mark-minervini", "SEPA and the Volatility Contraction Pattern: the risk-managed pinnacle of growth-leader trading.", "SEPA와 변동성 수축 패턴: 위험을 관리하는 성장주도주 매매의 정점."),
       concept("risk-management", "Non-negotiable given growth's volatility: position sizing and stops against the high-multiple disappointment.", "성장주의 변동성을 감안하면 필수: 고배수 실망에 대비한 비중 조절과 손절."),
     ],
+    practical: "company-growth",
   },
   {
     id: "factor-quant",
@@ -215,6 +224,7 @@ export const STRATEGIES: Strategy[] = [
       guru("lopez-de-prado", "The worst failure mode: overfitting, backtest multiplicity, and the factor zoo.", "최악의 실패 모드: 과적합, 백테스트 다중성, 그리고 '팩터 동물원'."),
       concept("smart-beta-and-factor-etfs", "How a retail investor actually implements factor exposure, cheaply and long-only.", "개인 투자자가 팩터 익스포저를 저비용·롱온리로 실제로 구현하는 방법.", { en: "Smart Beta & Factor ETFs", ko: "스마트 베타 & 팩터 ETF" }),
     ],
+    practical: "factor",
   },
   {
     id: "global-macro",
@@ -244,6 +254,7 @@ export const STRATEGIES: Strategy[] = [
       guru("hugh-hendry", "Contrarian narrative macro: a contentious premise outside the consensus, held with discipline.", "역발상 내러티브 매크로: 컨센서스 밖의 논쟁적 전제를 규율 있게 견지한다."),
       guru("raoul-pal", "The modern liquidity-cycle lens: central-bank balance sheets and M2 over the cycle.", "현대적 유동성 사이클 렌즈: 사이클에 걸친 중앙은행 대차대조표와 M2."),
     ],
+    practical: "macro",
   },
   {
     id: "trend-momentum",
@@ -272,6 +283,7 @@ export const STRATEGIES: Strategy[] = [
       concept("risk-management", "The honest closer: trailing stops, pyramiding rules, and the momentum-crash problem.", "정직한 마무리: 추적 손절, 피라미딩 규칙, 그리고 모멘텀 급락 문제."),
       concept("trading-psychology", "Why momentum exists behaviorally — and why traders break trend discipline.", "모멘텀이 행동학적으로 존재하는 이유 — 그리고 트레이더가 추세 규율을 어기는 이유."),
     ],
+    practical: "trend-backtest",
   },
   {
     id: "event-driven",
@@ -292,6 +304,7 @@ export const STRATEGIES: Strategy[] = [
       guru("mohnish-pabrai", "Event-driven bets as asymmetric wagers, with Kelly-style sizing.", "이벤트 드리븐 베팅을 비대칭 베팅으로, 켈리식 사이징과 함께."),
       concept("merger-arbitrage", "The one mechanic the strategy is named for: deal spread, break risk, and annualized return.", "전략 이름의 바로 그 메커니즘: 딜 스프레드, 무산 위험, 그리고 연환산 수익률.", { en: "Merger Arbitrage — Betting on the Deal Closing", ko: "합병 차익거래 — 딜 성사에 베팅하기" }),
     ],
+    practical: "deal",
   },
   {
     // Tangible/real-asset exposure for income + inflation protection, reached by
@@ -314,6 +327,7 @@ export const STRATEGIES: Strategy[] = [
       guru("ray-dalio", "Real assets in an all-weather frame: the inflation-up quadrant they're meant to protect.", "올웨더 관점의 실물자산: 이들이 방어하려는 '인플레이션 상승' 사분면."),
       concept("risk-management", "The honest risks: illiquidity, leverage, concentration, and rate sensitivity.", "솔직한 위험: 비유동성, 레버리지, 집중, 그리고 금리 민감도."),
     ],
+    practical: "company-reit",
   },
   {
     // Selling option premium on shares you own (covered calls) or cash you set
@@ -337,6 +351,7 @@ export const STRATEGIES: Strategy[] = [
       concept("dividend-investing", "Pairs naturally with quality, dividend-paying holdings you're glad to keep if assigned.", "배정되어도 기꺼이 보유할 우량 배당주와 자연스럽게 어울린다.", { en: "Quality Holdings for an Income Overlay", ko: "인컴 오버레이를 위한 우량 보유" }),
       concept("trading-psychology", "The trap: capping upside and chasing premium into assets you don't actually want.", "함정: 상승을 막고, 실제로는 원치 않는 자산까지 프리미엄을 좇는 것."),
     ],
+    practical: "options",
   },
   {
     // Merged technical-trading identity. Swing and day trading are holding-period
@@ -375,6 +390,7 @@ export const STRATEGIES: Strategy[] = [
       concept("risk-management", "Position sizing, stops, R-multiples, daily max-loss — the only reason a minority survive.", "비중 조절, 손절, R-멀티플, 일일 최대손실 — 소수가 살아남는 유일한 이유."),
       concept("trading-psychology", "Discipline over analysis: overtrading, revenge trading, and tilt are what actually wreck traders.", "분석보다 규율: 과매매, 복수 매매, 틸트가 트레이더를 실제로 무너뜨린다."),
     ],
+    practical: "active-trading",
   },
 ];
 

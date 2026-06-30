@@ -114,6 +114,27 @@ export default async function StrategyPathPage({
         </ol>
       </div>
 
+      {strategy.practical && (
+        <Reveal>
+          <Link
+            href={`/${locale}/practice/${strategy.id}`}
+            className="flex items-center justify-between gap-4 rounded-lg border border-teal-400/30 bg-teal-400/5 p-5 no-underline transition hover:border-teal-400/60 hover-lift"
+          >
+            <span>
+              <span className="block text-lg font-semibold text-teal-300">
+                {t.strategyPage.practiceHeading}
+              </span>
+              <span className="mt-1 block text-sm text-gray-400">
+                {t.strategyPage.practiceCta}
+              </span>
+            </span>
+            <span className="flex-none text-2xl text-teal-300" aria-hidden>
+              →
+            </span>
+          </Link>
+        </Reveal>
+      )}
+
       <Link
         href={`/${locale}/path`}
         className="inline-block text-sm text-teal-400 no-underline hover:text-teal-300"
