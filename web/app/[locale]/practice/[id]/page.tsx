@@ -3,9 +3,10 @@ import PortfolioLab from "@/components/practicals/PortfolioLab";
 import CostDragLab from "@/components/practicals/CostDragLab";
 import GlidePathLab from "@/components/practicals/GlidePathLab";
 import CompanyLab from "@/components/practicals/CompanyLab";
+import TradeLab from "@/components/practicals/TradeLab";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
-import { companyModeFor } from "@/lib/practicals";
+import { companyModeFor, tradeModeFor } from "@/lib/practicals";
 
 // A strategy's hands-on capstone lab lives at /[locale]/practice/[id], where id
 // is the strategy id. The strategy declares which lab via its `practical` field
@@ -47,6 +48,12 @@ export default async function PracticePage({
       const cmode = companyModeFor(strategy.practical);
       if (!cmode) notFound();
       return <CompanyLab {...common} mode={cmode} />;
+    }
+    case "trend-backtest":
+    case "active-trading": {
+      const tmode = tradeModeFor(strategy.practical);
+      if (!tmode) notFound();
+      return <TradeLab {...common} mode={tmode} />;
     }
     default:
       notFound();

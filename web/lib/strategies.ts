@@ -281,6 +281,7 @@ export const STRATEGIES: Strategy[] = [
       concept("risk-management", "The honest closer: trailing stops, pyramiding rules, and the momentum-crash problem.", "정직한 마무리: 추적 손절, 피라미딩 규칙, 그리고 모멘텀 급락 문제."),
       concept("trading-psychology", "Why momentum exists behaviorally — and why traders break trend discipline.", "모멘텀이 행동학적으로 존재하는 이유 — 그리고 트레이더가 추세 규율을 어기는 이유."),
     ],
+    practical: "trend-backtest",
   },
   {
     id: "event-driven",
@@ -385,6 +386,7 @@ export const STRATEGIES: Strategy[] = [
       concept("risk-management", "Position sizing, stops, R-multiples, daily max-loss — the only reason a minority survive.", "비중 조절, 손절, R-멀티플, 일일 최대손실 — 소수가 살아남는 유일한 이유."),
       concept("trading-psychology", "Discipline over analysis: overtrading, revenge trading, and tilt are what actually wreck traders.", "분석보다 규율: 과매매, 복수 매매, 틸트가 트레이더를 실제로 무너뜨린다."),
     ],
+    practical: "active-trading",
   },
 ];
 

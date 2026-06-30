@@ -153,6 +153,38 @@ export type Dict = {
       // reit
       reitNote: string;
     };
+    trade: {
+      titles: Record<string, string>; // trend | active
+      intros: Record<string, string>;
+      lessons: Record<string, string>;
+      symbolLabel: string;
+      systemLabel: string;
+      systems: Record<string, string>; // sma200 | mom12 | donchian
+      cagr: string;
+      buyHold: string;
+      maxDd: string;
+      exposure: string;
+      trades: string;
+      equityCaption: string;
+      drawdownCaption: string;
+      stratLine: string;
+      bhLine: string;
+      // active mode
+      oddsWarning: string;
+      entryLabel: string;
+      equityInput: string;
+      riskPct: string;
+      planHeading: string;
+      stop: string;
+      target: string;
+      shares: string;
+      rr: string;
+      resolveHeading: string;
+      outcome: string;
+      hitStop: string;
+      hitTarget: string;
+      rMultiple: string;
+    };
   };
   quiz: {
     title: string;
@@ -398,6 +430,55 @@ export const STRINGS: Record<Locale, Dict> = {
         qualityCaption: "Quality metrics",
         reitNote:
           "Heads up: standard filings report net income, not FFO. A REIT's net-income payout will look alarmingly high because property depreciation is a non-cash charge — judge it on FFO/AFFO from the filing instead.",
+      },
+      trade: {
+        titles: {
+          trend: "Trend System Backtest",
+          active: "Setup & Position-Sizing Lab",
+        },
+        intros: {
+          trend:
+            "Test a simple, fixed rules-based trend system on real price history — with no lookahead. See the honest trade-off: trend following usually earns a bit less than buy-and-hold but cuts the worst drawdown roughly in half. The price you pay is whipsaws.",
+          active:
+            "Plan a single trade the disciplined way: an ATR-based stop, position size set by a fixed fraction of risk, and a defined reward-to-risk target — then resolve it forward bar by bar, with no peeking. This is the highest-risk path on the site; read the odds first.",
+        },
+        lessons: {
+          trend:
+            "The lesson: a trend filter doesn't beat the market on return — it earns less, more often, in exchange for far shallower crashes (it sat out the worst of 2008/2020). The cost is whipsaws: many small losing switches in choppy markets. There are no tunable knobs here on purpose — the more you optimize a backtest, the more you're fitting noise.",
+          active:
+            "The lesson: survival is about sizing and stops, not picking tops. Risking a fixed small fraction per trade and pre-defining the exit is what keeps a string of losers from ending you. And the hard truth: roughly 90%+ of active day traders lose money over time. Most of the edge you think you see in a backtest is lookahead, survivorship, and ignored costs.",
+        },
+        symbolLabel: "Symbol",
+        systemLabel: "Trend system",
+        systems: {
+          sma200: "200-day moving average",
+          mom12: "12-1 momentum (monthly)",
+          donchian: "Donchian 50-day breakout",
+        },
+        cagr: "Strategy CAGR",
+        buyHold: "Buy & hold CAGR",
+        maxDd: "Strategy worst drawdown",
+        exposure: "Time in market",
+        trades: "Switches",
+        equityCaption: "Growth of $1 — strategy vs. buy & hold",
+        drawdownCaption: "Strategy drawdown",
+        stratLine: "Trend strategy",
+        bhLine: "Buy & hold",
+        oddsWarning:
+          "Reality check: studies find ~90%+ of active day traders lose money over time, and the rare winners rarely beat a salary. Treat this as a discipline drill, not a money-making plan. Paper-trade first; risk tiny size.",
+        entryLabel: "Entry price",
+        equityInput: "Account size",
+        riskPct: "Risk per trade",
+        planHeading: "Your trade plan",
+        stop: "Stop (2× ATR)",
+        target: "Target (2R)",
+        shares: "Position size (shares)",
+        rr: "Reward : risk",
+        resolveHeading: "Resolve it forward (no lookahead)",
+        outcome: "Outcome",
+        hitStop: "Stopped out",
+        hitTarget: "Hit target",
+        rMultiple: "Result (R multiple)",
       },
     },
     quiz: {
@@ -689,6 +770,55 @@ export const STRINGS: Record<Locale, Dict> = {
         qualityCaption: "우량성 지표",
         reitNote:
           "참고: 표준 공시는 FFO가 아니라 순이익을 보고합니다. 부동산 감가상각이 비현금 비용이라 리츠의 순이익 기준 배당성향은 놀랄 만큼 높게 보입니다 — 공시의 FFO/AFFO로 판단하세요.",
+      },
+      trade: {
+        titles: {
+          trend: "추세 시스템 백테스트",
+          active: "셋업 & 비중 조절 랩",
+        },
+        intros: {
+          trend:
+            "단순하고 고정된 규칙 기반 추세 시스템을 실제 가격 역사로 — 미래 참조 없이 — 검증해 보세요. 정직한 트레이드오프가 보입니다: 추세추종은 보통 매수 후 보유보다 수익이 약간 적지만 최악의 낙폭을 대략 절반으로 줄입니다. 그 대가는 휩소(잦은 속임수 신호)입니다.",
+          active:
+            "단 한 번의 매매를 규율 있게 계획하세요: ATR 기반 손절, 위험의 고정 비율로 정한 비중, 그리고 정의된 손익비 목표 — 그런 다음 엿보지 않고 봉 단위로 결과를 풀어 봅니다. 사이트에서 가장 위험한 길이니 확률부터 읽으세요.",
+        },
+        lessons: {
+          trend:
+            "교훈: 추세 필터는 수익으로 시장을 이기지 않습니다 — 더 적게, 더 자주 벌되 훨씬 얕은 폭락을 받습니다(2008/2020 최악의 구간을 비켜갔습니다). 그 비용은 휩소: 횡보장에서 작은 손실 전환이 많아집니다. 여기에 조절 노브가 없는 건 의도적입니다 — 백테스트를 최적화할수록 소음에 맞추는 것이니까요.",
+          active:
+            "교훈: 생존은 고점을 맞히는 게 아니라 비중과 손절에 달렸습니다. 매매마다 작은 고정 비율만 위험에 노출하고 청산을 미리 정하는 것이, 연속된 손실이 당신을 끝내지 못하게 합니다. 그리고 냉정한 진실: 능동적 데이 트레이더의 약 90% 이상이 장기적으로 손실을 봅니다. 백테스트에서 보이는 우위의 대부분은 미래 참조, 생존 편향, 무시된 비용입니다.",
+        },
+        symbolLabel: "종목",
+        systemLabel: "추세 시스템",
+        systems: {
+          sma200: "200일 이동평균",
+          mom12: "12-1 모멘텀 (월간)",
+          donchian: "돈치안 50일 돌파",
+        },
+        cagr: "전략 CAGR",
+        buyHold: "매수 후 보유 CAGR",
+        maxDd: "전략 최대 낙폭",
+        exposure: "시장 노출 기간",
+        trades: "전환 횟수",
+        equityCaption: "$1의 성장 — 전략 vs. 매수 후 보유",
+        drawdownCaption: "전략 낙폭",
+        stratLine: "추세 전략",
+        bhLine: "매수 후 보유",
+        oddsWarning:
+          "현실 점검: 연구에 따르면 능동적 데이 트레이더의 약 90% 이상이 장기적으로 손실을 보며, 드문 승자도 급여를 넘기 어렵습니다. 이것을 돈 버는 계획이 아니라 규율 훈련으로 여기세요. 먼저 모의 매매하고, 아주 작은 비중만 위험에 거세요.",
+        entryLabel: "진입 가격",
+        equityInput: "계좌 규모",
+        riskPct: "매매당 위험",
+        planHeading: "당신의 매매 계획",
+        stop: "손절 (2×ATR)",
+        target: "목표 (2R)",
+        shares: "비중 (주식 수)",
+        rr: "손익비",
+        resolveHeading: "앞으로 풀어 보기 (미래 참조 없음)",
+        outcome: "결과",
+        hitStop: "손절 청산",
+        hitTarget: "목표 도달",
+        rMultiple: "결과 (R 멀티플)",
       },
     },
     quiz: {
