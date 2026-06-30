@@ -5,6 +5,9 @@ import GlidePathLab from "@/components/practicals/GlidePathLab";
 import CompanyLab from "@/components/practicals/CompanyLab";
 import TradeLab from "@/components/practicals/TradeLab";
 import MacroLab from "@/components/practicals/MacroLab";
+import OptionsLab from "@/components/practicals/OptionsLab";
+import FactorLab from "@/components/practicals/FactorLab";
+import DealLab from "@/components/practicals/DealLab";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
 import { companyModeFor, tradeModeFor } from "@/lib/practicals";
@@ -58,6 +61,12 @@ export default async function PracticePage({
     }
     case "macro":
       return <MacroLab {...common} />;
+    case "options":
+      return <OptionsLab {...common} />;
+    case "factor":
+      return <FactorLab {...common} />;
+    case "deal":
+      return <DealLab {...common} />;
     default:
       notFound();
   }

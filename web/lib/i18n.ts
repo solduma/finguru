@@ -208,6 +208,67 @@ export type Dict = {
       falling: string;
       fredNotice: string;
     };
+    options: {
+      title: string;
+      intro: string;
+      lesson: string;
+      spot: string;
+      iv: string;
+      dte: string;
+      chainHeading: string;
+      strike: string;
+      callPremium: string;
+      delta: string;
+      pickStrike: string;
+      planHeading: string;
+      maxProfit: string;
+      breakeven: string;
+      annPremium: string;
+      capped: string;
+      payoffCaption: string;
+      stockLine: string;
+      coveredLine: string;
+      bxmHeading: string;
+      bxmCaption: string;
+      bxmLine: string;
+      spyLine: string;
+      bxmStat: string;
+      spyStat: string;
+      assignmentNote: string;
+    };
+    factor: {
+      title: string;
+      intro: string;
+      lesson: string;
+      factorLabel: string;
+      factors: Record<string, string>; // VTV|MTUM|QUAL|USMV|VLUE
+      growthCaption: string;
+      factorLine: string;
+      marketLine: string;
+      cagr: string;
+      marketCagr: string;
+      maxDd: string;
+      excess: string;
+      decayNote: string;
+    };
+    deal: {
+      title: string;
+      intro: string;
+      lesson: string;
+      pickDeal: string;
+      targetLabel: string;
+      acquirer: string;
+      dealPrice: string;
+      currentPrice: string;
+      preAnnounce: string;
+      closeDays: string;
+      grossSpread: string;
+      spreadPct: string;
+      annualized: string;
+      breakDownside: string;
+      asymmetryNote: string;
+      manualNote: string;
+    };
   };
   quiz: {
     title: string;
@@ -538,6 +599,83 @@ export const STRINGS: Record<Locale, Dict> = {
         falling: "falling",
         fredNotice:
           "This product uses the FRED® API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.",
+      },
+      options: {
+        title: "Covered-Call & Premium Lab",
+        intro:
+          "Sell a call against shares you own and collect premium. Adjust the implied volatility and days to expiry to build a synthetic option chain, pick a strike, and see the income — and the capped upside — laid out as a payoff diagram.",
+        lesson:
+          "The lesson: a covered call trades away your big-rally upside for steady premium. It cushions flat and mild-down markets but badly lags a roaring bull (the CBOE BXM index returned ~8.5%/yr vs ~11% for the S&P since 1986, and trailed by 15+ points in 2013/2019). What you're really selling is implied volatility — and you can be assigned, including early, around dividends. This is income with a cap, not free money; never sell calls on shares you wouldn't be happy to part with.",
+        spot: "Share price",
+        iv: "Implied volatility",
+        dte: "Days to expiry",
+        chainHeading: "Synthetic option chain",
+        strike: "Strike",
+        callPremium: "Call premium",
+        delta: "Delta",
+        pickStrike: "Pick a strike to sell",
+        planHeading: "Covered-call payoff",
+        maxProfit: "Max profit (if called away)",
+        breakeven: "Breakeven",
+        annPremium: "Annualized return on premium",
+        capped: "Upside capped above strike",
+        payoffCaption: "Payoff at expiry — stock vs. covered call",
+        stockLine: "Stock only",
+        coveredLine: "Covered call",
+        bxmHeading: "The honest track record (buy-write vs. S&P)",
+        bxmCaption: "Growth of $1 — CBOE BuyWrite (BXM) vs. S&P 500 (SPY)",
+        bxmLine: "BXM (covered calls)",
+        spyLine: "SPY (buy & hold)",
+        bxmStat: "BXM CAGR",
+        spyStat: "SPY CAGR",
+        assignmentNote:
+          "Synthetic, illustrative prices (European Black-Scholes; real options are American and can be assigned early, especially before a dividend). Not live market data.",
+      },
+      factor: {
+        title: "Factor-Tilt Backtest",
+        intro:
+          "Tilt toward a proven return driver — value, momentum, quality, low-volatility — using real factor ETFs, and test it against the total market. See both the promise and the long, painful stretches where a factor lags.",
+        lesson:
+          "The lesson: factor premia are real but they decay, crowd, and underperform for 5–10+ years at a stretch (value's 2010s were brutal). A single-factor ETF's excess return over the market is small and arrives unevenly — tilting only works if you hold through the drought. The more factors you test and cherry-pick, the more you're fitting noise, not finding edge.",
+        factorLabel: "Factor ETF",
+        factors: {
+          VTV: "Value (VTV)",
+          MTUM: "Momentum (MTUM)",
+          QUAL: "Quality (QUAL)",
+          USMV: "Low volatility (USMV)",
+          VLUE: "Value, multifactor (VLUE)",
+        },
+        growthCaption: "Growth of $1 — factor ETF vs. total market (VTI)",
+        factorLine: "Factor ETF",
+        marketLine: "Total market (VTI)",
+        cagr: "Factor CAGR",
+        marketCagr: "Market CAGR",
+        maxDd: "Factor worst drawdown",
+        excess: "Excess vs. market (annualized)",
+        decayNote:
+          "Over the common window since the factor ETF launched. Past factor performance is especially prone to decay as capital crowds in — this is not a forecast.",
+      },
+      deal: {
+        title: "Merger-Arbitrage Spread Calculator",
+        intro:
+          "When a company is acquired, its stock usually trades just below the deal price until the deal closes — that gap is the merger-arb spread. Compute the annualized return on a real or hypothetical deal, and weigh it against the cliff if the deal breaks.",
+        lesson:
+          "The lesson: merger arb is picking up nickels in front of a steamroller. Spreads are small, the annualized return looks tempting, but if the deal breaks the stock falls back toward its pre-announcement price — a loss many times the spread. The annualized figure also assumes a close date that can slip. Read the actual 8-K/merger agreement; this is not free money.",
+        pickDeal: "Example deal",
+        targetLabel: "Target",
+        acquirer: "Acquirer",
+        dealPrice: "Deal price (per share)",
+        currentPrice: "Current price",
+        preAnnounce: "Pre-announcement price",
+        closeDays: "Days to expected close",
+        grossSpread: "Gross spread",
+        spreadPct: "Spread %",
+        annualized: "Annualized return",
+        breakDownside: "Downside if deal breaks",
+        asymmetryNote:
+          "Note the asymmetry: a small, capped upside against a large downside if the deal collapses.",
+        manualNote:
+          "Edit any field to model your own announced deal — find terms in the target's 8-K / merger proxy (DEFM14A) on SEC EDGAR.",
       },
     },
     quiz: {
@@ -914,6 +1052,83 @@ export const STRINGS: Record<Locale, Dict> = {
         falling: "하락",
         fredNotice:
           "본 제품은 FRED® API를 사용하지만, 세인트루이스 연방준비은행의 보증이나 인증을 받은 것은 아닙니다.",
+      },
+      options: {
+        title: "커버드콜 & 프리미엄 랩",
+        intro:
+          "보유한 주식에 콜을 매도해 프리미엄을 받습니다. 내재변동성과 만기까지 일수를 조절해 합성 옵션 체인을 만들고, 행사가를 골라 인컴 — 그리고 제한된 상승 — 을 페이오프 다이어그램으로 확인하세요.",
+        lesson:
+          "교훈: 커버드콜은 큰 상승의 여력을 꾸준한 프리미엄과 맞바꿉니다. 횡보·소폭 하락장은 완충하지만 강한 상승장에서는 크게 뒤처집니다(CBOE BXM 지수는 1986년 이후 연 약 8.5% vs S&P 약 11%, 2013/2019년엔 15%p 이상 뒤짐). 당신이 실제로 파는 것은 내재변동성이며, 배당 직전 등 조기 배정도 당할 수 있습니다. 이것은 상한이 있는 인컴이지 공짜 돈이 아닙니다 — 기꺼이 넘겨줄 수 없는 주식엔 콜을 팔지 마세요.",
+        spot: "주가",
+        iv: "내재변동성",
+        dte: "만기까지 일수",
+        chainHeading: "합성 옵션 체인",
+        strike: "행사가",
+        callPremium: "콜 프리미엄",
+        delta: "델타",
+        pickStrike: "매도할 행사가 선택",
+        planHeading: "커버드콜 페이오프",
+        maxProfit: "최대 이익 (배정 시)",
+        breakeven: "손익분기",
+        annPremium: "프리미엄 연환산 수익률",
+        capped: "행사가 위로는 상승 제한",
+        payoffCaption: "만기 페이오프 — 주식 vs. 커버드콜",
+        stockLine: "주식만 보유",
+        coveredLine: "커버드콜",
+        bxmHeading: "정직한 성과 기록 (바이라이트 vs. S&P)",
+        bxmCaption: "$1의 성장 — CBOE 바이라이트(BXM) vs. S&P 500(SPY)",
+        bxmLine: "BXM (커버드콜)",
+        spyLine: "SPY (매수 후 보유)",
+        bxmStat: "BXM CAGR",
+        spyStat: "SPY CAGR",
+        assignmentNote:
+          "합성·예시 가격(유럽형 블랙숄즈; 실제 옵션은 미국형이라 특히 배당 전 조기 배정 가능). 실시간 시장 데이터가 아닙니다.",
+      },
+      factor: {
+        title: "팩터 기울임 백테스트",
+        intro:
+          "검증된 수익 동인 — 가치·모멘텀·우량·저변동성 — 으로 실제 팩터 ETF를 사용해 기울이고, 전체 시장과 비교 검증하세요. 약속과, 팩터가 뒤처지는 길고 고통스러운 구간을 함께 봅니다.",
+        lesson:
+          "교훈: 팩터 프리미엄은 실재하지만 감쇠하고, 혼잡해지고, 한 번에 5~10년 이상 뒤처집니다(가치의 2010년대는 가혹했습니다). 단일 팩터 ETF의 시장 대비 초과수익은 작고 고르지 않게 옵니다 — 기울임은 가뭄을 견뎌야만 통합니다. 더 많은 팩터를 시험하고 골라낼수록 우위가 아니라 소음에 맞추는 것입니다.",
+        factorLabel: "팩터 ETF",
+        factors: {
+          VTV: "가치 (VTV)",
+          MTUM: "모멘텀 (MTUM)",
+          QUAL: "우량 (QUAL)",
+          USMV: "저변동성 (USMV)",
+          VLUE: "가치·멀티팩터 (VLUE)",
+        },
+        growthCaption: "$1의 성장 — 팩터 ETF vs. 전체 시장(VTI)",
+        factorLine: "팩터 ETF",
+        marketLine: "전체 시장 (VTI)",
+        cagr: "팩터 CAGR",
+        marketCagr: "시장 CAGR",
+        maxDd: "팩터 최대 낙폭",
+        excess: "시장 대비 초과 (연환산)",
+        decayNote:
+          "팩터 ETF 출시 이후 공통 구간 기준. 과거 팩터 성과는 자본이 몰리며 특히 감쇠하기 쉽습니다 — 예측이 아닙니다.",
+      },
+      deal: {
+        title: "합병 차익거래 스프레드 계산기",
+        intro:
+          "기업이 인수되면 그 주가는 보통 딜이 성사될 때까지 딜 가격보다 약간 아래에서 거래됩니다 — 그 차이가 합병 차익거래 스프레드입니다. 실제 또는 가상 딜의 연환산 수익률을 계산하고, 딜이 무산될 때의 절벽과 견줘 보세요.",
+        lesson:
+          "교훈: 합병 차익거래는 증기 롤러 앞에서 동전을 줍는 일입니다. 스프레드는 작고 연환산 수익률은 매혹적이지만, 딜이 깨지면 주가는 발표 전 가격으로 떨어집니다 — 스프레드의 몇 배에 달하는 손실. 연환산 수치는 미뤄질 수 있는 성사 시점을 가정합니다. 실제 8-K·합병계약서를 읽으세요; 공짜 돈이 아닙니다.",
+        pickDeal: "예시 딜",
+        targetLabel: "피인수 기업",
+        acquirer: "인수 기업",
+        dealPrice: "딜 가격 (주당)",
+        currentPrice: "현재 가격",
+        preAnnounce: "발표 전 가격",
+        closeDays: "예상 성사까지 일수",
+        grossSpread: "총 스프레드",
+        spreadPct: "스프레드 %",
+        annualized: "연환산 수익률",
+        breakDownside: "딜 무산 시 하락폭",
+        asymmetryNote:
+          "비대칭에 주목: 작고 제한된 상승 vs. 딜이 붕괴할 때의 큰 하락.",
+        manualNote:
+          "아무 칸이나 수정해 직접 발표된 딜을 모델링하세요 — 조건은 SEC EDGAR의 피인수 기업 8-K·합병 위임장(DEFM14A)에서 찾을 수 있습니다.",
       },
     },
     quiz: {

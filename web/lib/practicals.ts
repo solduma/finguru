@@ -18,7 +18,10 @@ export type LabId =
   | "company-reit"
   | "trend-backtest"
   | "active-trading"
-  | "macro";
+  | "macro"
+  | "options"
+  | "factor"
+  | "deal";
 
 /** The Company Analyzer (L2) scorecard variant. */
 export type CompanyMode = "dividend" | "value" | "growth" | "reit";
@@ -26,7 +29,16 @@ export type CompanyMode = "dividend" | "value" | "growth" | "reit";
 export interface LabMeta {
   id: LabId;
   /** i18n key under `practical` for this lab's strings. */
-  i18nKey: "portfolio" | "costDrag" | "glidePath" | "company" | "trade" | "macro";
+  i18nKey:
+    | "portfolio"
+    | "costDrag"
+    | "glidePath"
+    | "company"
+    | "trade"
+    | "macro"
+    | "options"
+    | "factor"
+    | "deal";
   /** For the shared CompanyLab: which scorecard to render. */
   companyMode?: CompanyMode;
   /** For the shared TradeLab: which mode to render. */
@@ -44,6 +56,9 @@ export const LABS: Record<LabId, LabMeta> = {
   "trend-backtest": { id: "trend-backtest", i18nKey: "trade", tradeMode: "trend" },
   "active-trading": { id: "active-trading", i18nKey: "trade", tradeMode: "active" },
   macro: { id: "macro", i18nKey: "macro" },
+  options: { id: "options", i18nKey: "options" },
+  factor: { id: "factor", i18nKey: "factor" },
+  deal: { id: "deal", i18nKey: "deal" },
 };
 
 export function companyModeFor(id: LabId): CompanyMode | null {

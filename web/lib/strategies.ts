@@ -224,6 +224,7 @@ export const STRATEGIES: Strategy[] = [
       guru("lopez-de-prado", "The worst failure mode: overfitting, backtest multiplicity, and the factor zoo.", "최악의 실패 모드: 과적합, 백테스트 다중성, 그리고 '팩터 동물원'."),
       concept("smart-beta-and-factor-etfs", "How a retail investor actually implements factor exposure, cheaply and long-only.", "개인 투자자가 팩터 익스포저를 저비용·롱온리로 실제로 구현하는 방법.", { en: "Smart Beta & Factor ETFs", ko: "스마트 베타 & 팩터 ETF" }),
     ],
+    practical: "factor",
   },
   {
     id: "global-macro",
@@ -303,6 +304,7 @@ export const STRATEGIES: Strategy[] = [
       guru("mohnish-pabrai", "Event-driven bets as asymmetric wagers, with Kelly-style sizing.", "이벤트 드리븐 베팅을 비대칭 베팅으로, 켈리식 사이징과 함께."),
       concept("merger-arbitrage", "The one mechanic the strategy is named for: deal spread, break risk, and annualized return.", "전략 이름의 바로 그 메커니즘: 딜 스프레드, 무산 위험, 그리고 연환산 수익률.", { en: "Merger Arbitrage — Betting on the Deal Closing", ko: "합병 차익거래 — 딜 성사에 베팅하기" }),
     ],
+    practical: "deal",
   },
   {
     // Tangible/real-asset exposure for income + inflation protection, reached by
@@ -349,6 +351,7 @@ export const STRATEGIES: Strategy[] = [
       concept("dividend-investing", "Pairs naturally with quality, dividend-paying holdings you're glad to keep if assigned.", "배정되어도 기꺼이 보유할 우량 배당주와 자연스럽게 어울린다.", { en: "Quality Holdings for an Income Overlay", ko: "인컴 오버레이를 위한 우량 보유" }),
       concept("trading-psychology", "The trap: capping upside and chasing premium into assets you don't actually want.", "함정: 상승을 막고, 실제로는 원치 않는 자산까지 프리미엄을 좇는 것."),
     ],
+    practical: "options",
   },
   {
     // Merged technical-trading identity. Swing and day trading are holding-period

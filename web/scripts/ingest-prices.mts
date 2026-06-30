@@ -26,6 +26,9 @@ const OUT_DIR = join(HERE, "..", "lib", "data", "prices");
 const SYMBOLS = [
   "SPY", "QQQ", "IWM", "EFA", "EEM", "TLT", "IEF", "GLD", "DBC", "VNQ",
   "AAPL", "MSFT", "NVDA",
+  // Factor ETFs (for the factor-quant tilt backtest). MTUM/QUAL/USMV/VLUE
+  // launched ~2013; VTV is older. Common window starts ~2013.
+  "VTI", "VTV", "MTUM", "QUAL", "USMV", "VLUE",
 ];
 
 // ~21 years of daily data — spans 2008, 2020, 2022 (the instructive drawdowns).
