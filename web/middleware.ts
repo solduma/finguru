@@ -3,7 +3,25 @@ import { COOKIE_NAME, isValidToken } from "@/lib/auth";
 
 // Paths that must stay reachable without auth (the login page + its endpoints,
 // and Next internals). Everything else is gated.
-const PUBLIC_PREFIXES = ["/login", "/auth", "/logout", "/_next", "/favicon"];
+const PUBLIC_PREFIXES = [
+  "/login",
+  "/auth",
+  "/logout",
+  "/_next",
+  "/favicon",
+  // PWA assets must load without auth: the manifest, service worker, its
+  // offline fallback, and the icon set.
+  "/manifest.webmanifest",
+  "/sw.js",
+  "/offline.html",
+  "/icons",
+  "/apple-touch-icon",
+  // Decorative cover-art SVGs (public/covers/**) — not sensitive, and the login
+  // page itself has none, so let them load without the auth round-trip.
+  "/covers",
+  // Web-sourced cover photos (public/photos/**) — same rationale as /covers.
+  "/photos",
+];
 
 export async function middleware(req: NextRequest) {
   const secret = process.env.AUTH_SECRET;

@@ -1,0 +1,125 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-grinold-kahn-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-grinold-kahn-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(270,68%,55%)" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="hsl(270,68%,55%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-grinold-kahn-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="0" x2="120" y2="250" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="250" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- target glow -->
+  <circle cx="318" cy="92" r="60" fill="url(#cv-guru-grinold-kahn-glow)"/>
+
+  <!-- concentric-ring target, upper-right -->
+  <circle cx="318" cy="92" r="48" fill="none" stroke="hsl(270,22%,46%)" stroke-width="2"/>
+  <circle cx="318" cy="92" r="34" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-opacity="0.7"/>
+  <circle cx="318" cy="92" r="20" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+  <circle cx="318" cy="92" r="8" fill="hsl(270,68%,55%)" fill-opacity="0.85"/>
+
+  <!-- faint square-root sweep arc tracing the spread tightening toward center -->
+  <path d="M 70 188 Q 200 30 318 92" fill="none" stroke="hsl(270,88%,82%)" stroke-width="1" stroke-opacity="0.22" stroke-dasharray="2 5"/>
+  <path d="M 70 188 Q 210 70 318 92" fill="none" stroke="hsl(270,88%,82%)" stroke-width="1" stroke-opacity="0.14" stroke-dasharray="2 5"/>
+
+  <!-- release point / quiver nock, lower-left focal origin -->
+  <circle cx="68" cy="188" r="9" fill="hsl(270,38%,7%)" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+  <circle cx="68" cy="188" r="3" fill="hsl(270,88%,82%)"/>
+
+  <!-- dense fan of ~14 thin identical arrows from release toward bullseye -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="hsl(270,75%,66%)" stroke-opacity="0.85">
+    <!-- each arrow: shaft + small head, tips clustering near center (318,92) -->
+    <g>
+      <line x1="68" y1="188" x2="304" y2="98"/>
+      <path d="M 304 98 l -7 -1 l 4 5 z" stroke="none" fill-opacity="0.9"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="308" y2="90"/>
+      <path d="M 308 90 l -7 -1 l 4 5 z" stroke="none" fill-opacity="0.9"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="312" y2="100"/>
+      <path d="M 312 100 l -7 -2 l 3 6 z" stroke="none" fill-opacity="0.9"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="314" y2="84"/>
+      <path d="M 314 84 l -7 0 l 3 5 z" stroke="none" fill-opacity="0.9"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="316" y2="96"/>
+      <path d="M 316 96 l -7 -1 l 3 6 z" stroke="none" fill-opacity="0.95"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="318" y2="88"/>
+      <path d="M 318 88 l -7 -1 l 3 5 z" stroke="none" fill-opacity="0.95"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="320" y2="93"/>
+      <path d="M 320 93 l -7 -1 l 3 5 z" stroke="none" fill-opacity="1"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="322" y2="86"/>
+      <path d="M 322 86 l -7 0 l 3 5 z" stroke="none" fill-opacity="0.95"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="324" y2="98"/>
+      <path d="M 324 98 l -7 -1 l 3 5 z" stroke="none" fill-opacity="0.9"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="326" y2="90"/>
+      <path d="M 326 90 l -7 -1 l 3 5 z" stroke="none" fill-opacity="0.9"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="328" y2="82"/>
+      <path d="M 328 82 l -7 1 l 2 5 z" stroke="none" fill-opacity="0.85"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="330" y2="100"/>
+      <path d="M 330 100 l -7 -2 l 2 6 z" stroke="none" fill-opacity="0.85"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="300" y2="106"/>
+      <path d="M 300 106 l -7 -2 l 3 6 z" stroke="none" fill-opacity="0.8"/>
+    </g>
+    <g>
+      <line x1="68" y1="188" x2="296" y2="86"/>
+      <path d="M 296 86 l -7 0 l 3 5 z" stroke="none" fill-opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- single oversized errant arrow along the bottom, missing wide -->
+  <g stroke="hsl(270,22%,46%)" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="60" y1="200" x2="360" y2="178" stroke-width="3"/>
+    <path d="M 360 178 l -16 -5 l 4 9 l 12 -4 z" fill="hsl(270,22%,46%)" stroke="none"/>
+    <!-- fletching on the big arrow -->
+    <path d="M 60 200 l 14 -4 m -14 4 l 14 4" stroke-width="2"/>
+  </g>
+
+  <!-- multiplier glyph at hinge of fan, lower-left: single arrow x bracket of arrows -->
+  <g transform="translate(40,150)">
+    <!-- single arrow icon -->
+    <line x1="0" y1="0" x2="22" y2="0" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 22 0 l -6 -3 l 0 6 z" fill="hsl(270,88%,82%)"/>
+    <!-- x -->
+    <line x1="30" y1="-5" x2="38" y2="5" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="38" y1="-5" x2="30" y2="5" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <!-- wide bracket of arrows (breadth) -->
+    <path d="M 52 -9 l -6 0 l 0 18 l 6 0" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48" y1="-5" x2="66" y2="-5" stroke="hsl(270,75%,66%)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 66 -5 l -5 -2 l 0 4 z" fill="hsl(270,75%,66%)"/>
+    <line x1="48" y1="0" x2="66" y2="0" stroke="hsl(270,75%,66%)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 66 0 l -5 -2 l 0 4 z" fill="hsl(270,75%,66%)"/>
+    <line x1="48" y1="5" x2="66" y2="5" stroke="hsl(270,75%,66%)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 66 5 l -5 -2 l 0 4 z" fill="hsl(270,75%,66%)"/>
+  </g>
+</svg>

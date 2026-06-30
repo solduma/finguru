@@ -1,0 +1,83 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-larry-williams-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-larry-williams-trail" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.1"/>
+      <stop offset="0.55" stop-color="hsl(160,75%,66%)" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="hsl(160,88%,82%)" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-larry-williams-bigcoin" cx="0.38" cy="0.34" r="0.75">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="0.6" stop-color="hsl(160,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(160,60%,38%)"/>
+    </radialGradient>
+    <radialGradient id="cv-guru-larry-williams-smallcoin" cx="0.38" cy="0.34" r="0.8">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="250" fill="url(#cv-guru-larry-williams-bg)"/>
+
+  <!-- Unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="20" x2="120" y2="230" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="260" y1="20" x2="260" y2="230" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ===== Comet arc-trail: lower-left to upper-right apex ===== -->
+  <!-- Solid swelling streak (tapers from thread at top to body lower) -->
+  <path d="M70 178 Q150 150 230 96 T326 64"
+        fill="none" stroke="url(#cv-guru-larry-williams-trail)"
+        stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+  <!-- bright inner core of streak -->
+  <path d="M78 174 Q150 148 224 100 T316 70"
+        fill="none" stroke="hsl(160,88%,82%)"
+        stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Fragile thin / broken segment near the top -->
+  <path d="M286 78 L300 71" fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-dasharray="5 6" stroke-linecap="round" opacity="0.9"/>
+  <path d="M304 69 L318 62" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-dasharray="3 7" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- ===== Slingshot / catapult at lower-left ===== -->
+  <!-- Y-frame -->
+  <path d="M58 200 L62 162" stroke="hsl(160,22%,46%)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M62 162 L48 136" stroke="hsl(160,75%,66%)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M62 162 L84 138" stroke="hsl(160,75%,66%)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- base notch -->
+  <line x1="48" y1="200" x2="74" y2="200" stroke="hsl(160,22%,46%)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Elastic band drawn back to sharp release point (the timing trigger) -->
+  <path d="M48 136 L96 166" stroke="hsl(160,68%,55%)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M84 138 L96 166" stroke="hsl(160,68%,55%)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- release trigger point -->
+  <circle cx="96" cy="166" r="3.5" fill="hsl(160,88%,82%)"/>
+  <circle cx="96" cy="166" r="8" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" opacity="0.5"/>
+
+  <!-- Notch-and-dial gauge on the frame -->
+  <circle cx="62" cy="178" r="9" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1.5"/>
+  <line x1="62" y1="178" x2="67" y2="172" stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="62" y1="170" x2="62" y2="172" stroke="hsl(160,75%,66%)" stroke-width="1"/>
+  <line x1="69" y1="174" x2="71" y2="173" stroke="hsl(160,75%,66%)" stroke-width="1"/>
+  <line x1="55" y1="174" x2="53" y2="173" stroke="hsl(160,75%,66%)" stroke-width="1"/>
+
+  <!-- ===== Small launched coin in the cradle ===== -->
+  <ellipse cx="78" cy="172" rx="11" ry="11" fill="url(#cv-guru-larry-williams-smallcoin)" stroke="hsl(160,88%,82%)" stroke-width="1.5"/>
+  <ellipse cx="78" cy="172" rx="6.5" ry="6.5" fill="none" stroke="hsl(160,60%,38%)" stroke-width="1" opacity="0.7"/>
+
+  <!-- ===== Large coin at apex (upper-right focal point) ===== -->
+  <ellipse cx="324" cy="62" rx="40" ry="40" fill="url(#cv-guru-larry-williams-bigcoin)" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+  <ellipse cx="324" cy="62" rx="30" ry="30" fill="none" stroke="hsl(160,60%,38%)" stroke-width="1.5" opacity="0.65"/>
+  <ellipse cx="324" cy="62" rx="22" ry="22" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1" opacity="0.4"/>
+  <!-- subtle radial tick detail -->
+  <line x1="324" y1="24" x2="324" y2="32" stroke="hsl(160,88%,82%)" stroke-width="1.5" opacity="0.7"/>
+  <line x1="362" y1="62" x2="354" y2="62" stroke="hsl(160,88%,82%)" stroke-width="1.5" opacity="0.5"/>
+  <line x1="324" y1="92" x2="324" y2="100" stroke="hsl(160,88%,82%)" stroke-width="1.5" opacity="0.5"/>
+  <!-- sparkle accents at apex -->
+  <circle cx="296" cy="40" r="1.6" fill="hsl(160,88%,82%)" opacity="0.9"/>
+  <circle cx="356" cy="48" r="1.2" fill="hsl(160,88%,82%)" opacity="0.7"/>
+</svg>

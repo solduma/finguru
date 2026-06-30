@@ -1,0 +1,260 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="550px" height="425px"
+     viewBox="0 0 550 425" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style type="text/css">
+text {
+	font-family : Verdana, Tahoma, sans-serif;
+	font-size : 11px;
+	fill : black;
+	stroke : none;
+}
+/* As at 20060630, Wikipedia's SVG rasteriser couldn't make use of these styles. Leave them in in case it improves. */
+#percentage_numbers text, #rank_numbers text {
+	text-anchor : end;
+}
+#x_axis_numbers text {
+	text-anchor : middle;
+}
+</style>
+<desc>S&amp;P 500 index year-end values and price-to-earnings ratios for the year past, 1988&#0150;2007</desc>
+<defs>
+	<!--
+		S&P index
+	-->
+	<line id="horizontal_line" x1="1988" x2="2007" y1="0" y2="0" stroke-width="5"  />
+	<line id="vertical_line" x1="0" x2="0" y1="25" y2="-25" stroke-width="0.05"  />
+	<!--
+		P/E ratio
+	-->
+	<line id="horizontal_line_2" x1="1988" x2="2007" y1="0" y2="0" stroke-width="0.2"  />
+	<line id="vertical_line_2" x1="0" x2="0" y1="1" y2="-1" stroke-width="0.05"  />
+</defs>
+
+<!--
+
+S&P INDEX
+=========
+
+--><!--
+	ORDER OF TRANSFORMATIONS:
+	(1)	Shift origin from (x, y) to (0, 0) (e.g., from [2004, 0] to [0, 0])
+	(2)	Scale as appropriate
+	(3)	Shift back to viewport's origin
+	(4)	Shift away from edge as desired
+	
+	In working out your calculations, opt for a number that divides nicely into 100s (e.g., 1, 2, 2.5, 5, 10, 20, 25, etc.)
+	
+	CALCULATIONS:
+	Horizontal	=	Width/Range
+				=	500/(2007-1988)
+				~	25
+	Vertical	=	[-1 * Height]/Range
+				=	-150/(1,500 - 0)
+				~	-0.1	(so 1/10 scale)
+-->
+<g transform="translate(50 25)">
+	<g transform="translate(10 150) scale(25 -0.1) translate(-1988 0)">
+		<!-- Plot -->
+		<path fill="#666" stroke-width="0" d="
+			M	1988	0
+			L	1988	277.72
+			L	1989	353.40
+			L	1990	330.22
+			L	1991	417.09
+			L	1992	435.71
+			L	1993	466.45
+			L	1994	459.27
+			L	1995	615.93
+			L	1996	740.74
+			L	1997	970.43
+			L	1998	1229.23
+			L	1999	1469.25
+			L	2000	1320.28
+			L	2001	1148.08
+			L	2002	879.82
+			L	2003	1111.92
+			L	2004	1211.92
+			L	2005	1248.29
+			L	2006	1418.30
+			L	2007	1468.36
+			V	0
+			z" />
+		<!-- X-axis -->
+		<use xlink:href="#horizontal_line" x="0" y="0" stroke="black" />
+		<!-- Horizontal gridlines -->
+		<g stroke="#000">
+			<use xlink:href="#horizontal_line" x="0" y="0" />
+			<use xlink:href="#horizontal_line" x="0" y="250" stroke-dasharray="0.1" />
+			<use xlink:href="#horizontal_line" x="0" y="500" />
+			<use xlink:href="#horizontal_line" x="0" y="750" stroke-dasharray="0.1" />
+			<use xlink:href="#horizontal_line" x="0" y="1000" />
+			<use xlink:href="#horizontal_line" x="0" y="1250" stroke-dasharray="0.1" />
+			<use xlink:href="#horizontal_line" x="0" y="1500" />
+		</g>
+		<!-- Vertical ticks -->
+		<g stroke="black">
+			<use xlink:href="#vertical_line" x="1988" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="1989" y="0" />
+			<use xlink:href="#vertical_line" x="1990" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="1991" y="0" />
+			<use xlink:href="#vertical_line" x="1992" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="1993" y="0" />
+			<use xlink:href="#vertical_line" x="1994" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="1995" y="0" />
+			<use xlink:href="#vertical_line" x="1996" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="1997" y="0" />
+			<use xlink:href="#vertical_line" x="1998" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="1999" y="0" />
+			<use xlink:href="#vertical_line" x="2000" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="2001" y="0" />
+			<use xlink:href="#vertical_line" x="2002" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="2003" y="0" />
+			<use xlink:href="#vertical_line" x="2004" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="2005" y="0" />
+			<use xlink:href="#vertical_line" x="2006" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line" x="2007" y="0" />
+		</g>
+	</g>
+	<g transform="translate(0 150)">
+		<!-- Text can't be scaled or it goes strange. Its location must be calculated directly. -->
+		<!-- Y-axis label -->
+		<text transform="translate(-35 -75) rotate(270)" x="0" y="0" text-anchor="middle">S&amp;P index</text>
+		<!-- Y-axis -->
+		<g id="percentage_numbers" transform="translate(5 -150)" text-anchor="end">
+			<text x="0" y="150">0</text>
+			<text x="0" y="125">250</text>
+			<text x="0" y="100">500</text>
+			<text x="0" y="75">750</text>
+			<text x="0" y="50">1,000</text>
+			<text x="0" y="25">1,250</text>
+			<text x="0" y="0">1,500</text>
+		</g>
+		<!-- X-axis text -->
+		<g id="x_axis_numbers" transform="translate(10 17)" text-anchor="middle">
+			<text x="0" y="0">1988</text>
+			<text x="50" y="0">1990</text>
+			<text x="100" y="0">1992</text>
+			<text x="150" y="0">1994</text>
+			<text x="200" y="0">1996</text>
+			<text x="250" y="0">1998</text>
+			<text x="300" y="0">2000</text>
+			<text x="350" y="0">2002</text>
+			<text x="400" y="0">2004</text>
+			<text x="450" y="0">2006</text>
+		</g>
+	</g>
+</g>
+
+<!--
+
+P/E RATIO
+=========
+
+--><!--
+	ORDER OF TRANSFORMATIONS:
+	(1)	Shift origin from (x, y) to (0, 0) (e.g., from [2004, 0] to [0, 0])
+	(2)	Scale as appropriate
+	(3)	Shift back to viewport's origin
+	(4)	Shift away from edge as desired
+	
+	In working out your calculations, opt for a number that divides nicely into 100s (e.g., 1, 2, 2.5, 5, 10, 20, 25, etc.)
+	
+	CALCULATIONS:
+	Horizontal	=	Width/Range
+				=	500/(2007-1988)
+				~	25
+	Vertical	=	[-1 * Height]/Range
+				=	-150/(50 - 0)
+				~	-3
+-->
+<g transform="translate(50 230)">
+	<g transform="translate(10 150) scale(25 -3) translate(-1988 0)">
+		<!-- Rank data -->
+		<path fill="#666" stroke="none" stroke-width="0.5" d="
+			M	1988	0
+			L	1988	11.69
+			L	1989	15.45
+			L	1990	15.47
+			L	1991	26.12
+			L	1992	22.82
+			L	1993	21.31
+			L	1994	15.01
+			L	1995	18.14
+			L	1996	19.13
+			L	1997	24.43
+			L	1998	32.60
+			L	1999	30.50
+			L	2000	26.41
+			L	2001	46.50
+			L	2002	31.89
+			L	2003	22.81
+			L	2004	20.70
+			L	2005	17.85
+			L	2006	17.40
+			L	2007	17.58
+			V	0
+			z" />
+		<!-- X-axis -->
+		<use xlink:href="#horizontal_line_2" x="0" y="0" stroke="black" />
+		<!-- Horizontal gridlines -->
+		<g stroke="#000">
+			<use xlink:href="#horizontal_line_2" x="0" y="10" stroke-dasharray="0.1" />
+			<use xlink:href="#horizontal_line_2" x="0" y="20" />
+			<use xlink:href="#horizontal_line_2" x="0" y="30" stroke-dasharray="0.1" />
+			<use xlink:href="#horizontal_line_2" x="0" y="40" />
+			<use xlink:href="#horizontal_line_2" x="0" y="50" stroke-dasharray="0.1" />
+		</g>
+		<!-- Vertical ticks -->
+		<g stroke="black" transform="translate(0 0)">
+			<use xlink:href="#vertical_line_2" x="1988" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="1989" y="0" />
+			<use xlink:href="#vertical_line_2" x="1990" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="1991" y="0" />
+			<use xlink:href="#vertical_line_2" x="1992" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="1993" y="0" />
+			<use xlink:href="#vertical_line_2" x="1994" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="1995" y="0" />
+			<use xlink:href="#vertical_line_2" x="1996" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="1997" y="0" />
+			<use xlink:href="#vertical_line_2" x="1998" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="1999" y="0" />
+			<use xlink:href="#vertical_line_2" x="2000" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="2001" y="0" />
+			<use xlink:href="#vertical_line_2" x="2002" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="2003" y="0" />
+			<use xlink:href="#vertical_line_2" x="2004" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="2005" y="0" />
+			<use xlink:href="#vertical_line_2" x="2006" y="0" transform="scale(1 2)" />
+			<use xlink:href="#vertical_line_2" x="2007" y="0" />
+		</g>
+	</g>
+	<g transform="translate(0 150)">
+		<!-- Text can't be scaled or it goes strange. Its location must be calculated directly. -->
+		<!-- Y-axis label -->
+		<text transform="translate(-20 -75) rotate(270)" x="0" y="0" text-anchor="middle">P/E ratio</text>
+		<!-- Y-axis -->
+		<g id="percentage_numbers_2" transform="translate(5 -148)" text-anchor="end">
+			<text x="0" y="150">0</text>
+			<text x="0" y="120">10</text>
+			<text x="0" y="90">20</text>
+			<text x="0" y="60">30</text>
+			<text x="0" y="30">40</text>
+			<text x="0" y="0">50</text>
+		</g>
+		<!-- X-axis text -->
+		<g id="x_axis_numbers_2" transform="translate(10 17)" text-anchor="middle">
+			<text x="0" y="0">1988</text>
+			<text x="50" y="0">1990</text>
+			<text x="100" y="0">1992</text>
+			<text x="150" y="0">1994</text>
+			<text x="200" y="0">1996</text>
+			<text x="250" y="0">1998</text>
+			<text x="300" y="0">2000</text>
+			<text x="350" y="0">2002</text>
+			<text x="400" y="0">2004</text>
+			<text x="450" y="0">2006</text>
+		</g>
+	</g>
+</g>
+</svg>

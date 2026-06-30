@@ -1,0 +1,90 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-george-soros" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-george-soros-mirror" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,68%,55%)" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="hsl(200,68%,55%)" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-george-soros)"/>
+
+  <!-- unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ===== curved mirror / lens : right two-thirds focal anchor ===== -->
+  <!-- mirror body -->
+  <path d="M250 52 C 312 70 318 180 250 198 C 296 158 296 92 250 52 Z"
+        fill="url(#cv-guru-george-soros-mirror)"
+        stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- nested arcs on mirror surface -->
+  <path d="M255 64 C 296 92 296 158 255 186" fill="none"
+        stroke="hsl(200,75%,66%)" stroke-width="1" stroke-opacity="0.7" stroke-linecap="round"/>
+  <path d="M260 78 C 288 102 288 148 260 172" fill="none"
+        stroke="hsl(200,88%,82%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M266 92 C 282 110 282 140 266 158" fill="none"
+        stroke="hsl(200,88%,82%)" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/>
+  <!-- mirror base / stand -->
+  <line x1="250" y1="198" x2="250" y2="208" stroke="hsl(200,22%,46%)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="232" y1="208" x2="268" y2="208" stroke="hsl(200,22%,46%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- ===== crowd : lower-left, facing the mirror ===== -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- figure 1 -->
+    <circle cx="78" cy="150" r="8" fill="hsl(200,68%,55%)" fill-opacity="0.30"/>
+    <line x1="78" y1="158" x2="78" y2="180"/>
+    <!-- figure 2 -->
+    <circle cx="100" cy="158" r="7" fill="hsl(200,68%,55%)" fill-opacity="0.30"/>
+    <line x1="100" y1="165" x2="100" y2="184"/>
+    <!-- figure 3 -->
+    <circle cx="120" cy="150" r="8" fill="hsl(200,68%,55%)" fill-opacity="0.30"/>
+    <line x1="120" y1="158" x2="120" y2="182"/>
+    <!-- figure 4 -->
+    <circle cx="142" cy="160" r="7" fill="hsl(200,68%,55%)" fill-opacity="0.30"/>
+    <line x1="142" y1="167" x2="142" y2="185"/>
+    <!-- figure 5 -->
+    <circle cx="160" cy="152" r="6" fill="hsl(200,68%,55%)" fill-opacity="0.30"/>
+    <line x1="160" y1="158" x2="160" y2="180"/>
+  </g>
+
+  <!-- ===== warped / distorted reflection inside the mirror ===== -->
+  <g stroke="hsl(200,88%,82%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.85">
+    <!-- stretched bent figures -->
+    <ellipse cx="263" cy="100" rx="6" ry="9" fill="hsl(200,88%,82%)" fill-opacity="0.18"/>
+    <path d="M263 109 C 267 118 259 126 263 134"/>
+    <ellipse cx="272" cy="118" rx="5" ry="8" fill="hsl(200,88%,82%)" fill-opacity="0.18"/>
+    <path d="M272 126 C 268 134 276 142 272 150"/>
+    <ellipse cx="262" cy="138" rx="5" ry="7" fill="hsl(200,88%,82%)" fill-opacity="0.18"/>
+    <path d="M262 145 C 266 152 258 158 262 164"/>
+  </g>
+
+  <!-- ===== reflexive feedback loop : bold arrow from mirror back into crowd ===== -->
+  <path d="M250 122 C 196 96 150 96 116 124"
+        fill="none" stroke="hsl(200,75%,66%)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- arrowhead landing on the crowd -->
+  <path d="M116 124 L 124 116 M116 124 L 126 126"
+        fill="none" stroke="hsl(200,75%,66%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- lower return arc closing the circle -->
+  <path d="M150 158 C 184 178 224 176 250 158"
+        fill="none" stroke="hsl(200,68%,55%)" stroke-width="2" stroke-opacity="0.55" stroke-linecap="round" stroke-dasharray="1 6"/>
+
+  <!-- ===== hand pinching a coin at the loop's apex (top-left) ===== -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- forearm from edge -->
+    <path d="M70 40 L 150 72"/>
+    <!-- hand / fingers pinching -->
+    <path d="M150 72 C 162 76 170 84 175 92"/>
+    <path d="M150 72 C 160 70 170 74 178 84"/>
+    <path d="M160 88 C 168 86 174 88 178 92"/>
+  </g>
+  <!-- the coin, lifted from the apex of the loop -->
+  <circle cx="182" cy="90" r="9" fill="hsl(200,68%,55%)" fill-opacity="0.85" stroke="hsl(200,88%,82%)" stroke-width="2"/>
+  <circle cx="182" cy="90" r="4.5" fill="none" stroke="hsl(200,45%,13%)" stroke-width="1.5" stroke-opacity="0.6"/>
+</svg>

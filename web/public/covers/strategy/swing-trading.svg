@@ -1,0 +1,84 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-strategy-swing-trading-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(36,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(36,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-strategy-swing-trading-wave" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="hsl(36,68%,55%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(36,68%,55%)" stop-opacity="0.12"/>
+    </linearGradient>
+    <clipPath id="cv-strategy-swing-trading-clip">
+      <path d="M360 60 C320 70 300 110 290 150 C282 182 270 200 250 210 L360 210 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-strategy-swing-trading-bg)"/>
+
+  <!-- shared frame: baseline + faint guides -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="133" y1="40" x2="133" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="267" y1="40" x2="267" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="125" x2="360" y2="125" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- WAVE: single sweeping arc, crest curling toward upper-left -->
+  <path d="M70 205 C140 200 200 185 250 140 C285 108 300 70 350 56 C320 78 314 118 300 150 C288 178 250 205 200 208 C150 210 100 209 70 205 Z"
+        fill="url(#cv-strategy-swing-trading-wave)"
+        stroke="hsl(36,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- inner face line of the wave -->
+  <path d="M95 200 C160 192 215 172 258 132 C290 102 308 76 344 62"
+        fill="none" stroke="hsl(36,75%,66%)" stroke-width="1" stroke-opacity="0.55"
+        stroke-linecap="round"/>
+
+  <!-- curling lip / whitecap (danger / exit zone, upper-right) -->
+  <g clip-path="url(#cv-strategy-swing-trading-clip)">
+    <path d="M350 56 C322 64 312 92 305 118 C300 138 292 150 280 158"
+          fill="none" stroke="hsl(36,88%,82%)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <circle cx="338" cy="66" r="5" fill="hsl(36,88%,82%)" fill-opacity="0.9"/>
+  <circle cx="328" cy="78" r="4" fill="hsl(36,88%,82%)" fill-opacity="0.7"/>
+  <circle cx="320" cy="92" r="3.5" fill="hsl(36,88%,82%)" fill-opacity="0.55"/>
+  <circle cx="346" cy="60" r="3" fill="hsl(36,88%,82%)" fill-opacity="0.8"/>
+  <circle cx="313" cy="106" r="2.5" fill="hsl(36,88%,82%)" fill-opacity="0.4"/>
+
+  <!-- dotted exit path: from surfer up the face and out front-left -->
+  <path d="M150 158 C130 148 100 138 70 132 C56 129 46 128 36 128"
+        fill="none" stroke="hsl(36,88%,82%)" stroke-width="2" stroke-linecap="round"
+        stroke-dasharray="1 7" stroke-opacity="0.85"/>
+  <!-- arrowhead at exit -->
+  <path d="M44 122 L34 128 L44 134" fill="none" stroke="hsl(36,88%,82%)"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+
+  <!-- ENTRY buoy / flag, low-right on the wave -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <line x1="278" y1="196" x2="278" y2="170" stroke="hsl(36,75%,66%)" stroke-width="2"/>
+    <path d="M278 170 L296 175 L278 182 Z" fill="hsl(36,68%,55%)" fill-opacity="0.9"
+          stroke="hsl(36,75%,66%)" stroke-width="1"/>
+    <ellipse cx="278" cy="198" rx="9" ry="3.5" fill="hsl(36,22%,46%)" fill-opacity="0.5"/>
+  </g>
+
+  <!-- SURFER: focal point, crouched riding stance on mid-face (lower-left third) -->
+  <g transform="translate(150 156) rotate(-26)" stroke="hsl(36,75%,66%)"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- board -->
+    <path d="M-22 16 L24 16 C28 16 28 22 24 22 L-22 22 C-26 22 -26 16 -22 16 Z"
+          fill="hsl(36,68%,55%)" fill-opacity="0.85" stroke-width="1.5"/>
+    <!-- body -->
+    <g fill="hsl(36,88%,82%)" stroke="hsl(36,88%,82%)">
+      <circle cx="2" cy="-14" r="4.5" stroke="none"/>
+      <path d="M2 -10 C0 -4 -2 0 -6 4 C-3 6 4 6 8 3 C6 -2 4 -6 2 -10 Z"
+            stroke-width="1" fill-opacity="0.95"/>
+      <!-- arms -->
+      <path d="M0 -4 L-12 -2" stroke-width="2" fill="none"/>
+      <path d="M4 -4 L14 -8" stroke-width="2" fill="none"/>
+      <!-- legs crouched -->
+      <path d="M-6 4 L-12 14" stroke-width="2.4" fill="none"/>
+      <path d="M6 3 L10 14" stroke-width="2.4" fill="none"/>
+    </g>
+  </g>
+
+  <!-- spray flick off the board nose -->
+  <circle cx="178" cy="138" r="2" fill="hsl(36,88%,82%)" fill-opacity="0.7"/>
+  <circle cx="186" cy="132" r="1.5" fill="hsl(36,88%,82%)" fill-opacity="0.5"/>
+</svg>

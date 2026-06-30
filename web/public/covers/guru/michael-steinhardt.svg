@@ -1,0 +1,88 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-michael-steinhardt-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-michael-steinhardt-beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(200,88%,82%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(200,88%,82%)" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-michael-steinhardt-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(200,88%,82%)" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="hsl(200,88%,82%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-michael-steinhardt-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="80" x2="360" y2="80" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- dividing wedge separating crowd from contrarian -->
+  <line x1="250" y1="40" x2="170" y2="200" stroke="hsl(200,22%,46%)" stroke-width="1.5" stroke-dasharray="5 6" stroke-opacity="0.6"/>
+
+  <!-- the crowd: dense cluster of identical arrows all pointing right -->
+  <g stroke="hsl(200,22%,46%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.85">
+    <g>
+      <line x1="55" y1="70" x2="90" y2="70"/><path d="M84 64 L90 70 L84 76"/>
+    </g>
+    <g>
+      <line x1="60" y1="92" x2="95" y2="92"/><path d="M89 86 L95 92 L89 98"/>
+    </g>
+    <g>
+      <line x1="52" y1="114" x2="87" y2="114"/><path d="M81 108 L87 114 L81 120"/>
+    </g>
+    <g>
+      <line x1="64" y1="136" x2="99" y2="136"/><path d="M93 130 L99 136 L93 142"/>
+    </g>
+    <g>
+      <line x1="56" y1="158" x2="91" y2="158"/><path d="M85 152 L91 158 L85 164"/>
+    </g>
+    <g>
+      <line x1="100" y1="81" x2="135" y2="81"/><path d="M129 75 L135 81 L129 87"/>
+    </g>
+    <g>
+      <line x1="105" y1="103" x2="140" y2="103"/><path d="M134 97 L140 103 L134 109"/>
+    </g>
+    <g>
+      <line x1="98" y1="125" x2="133" y2="125"/><path d="M127 119 L133 125 L127 131"/>
+    </g>
+    <g>
+      <line x1="108" y1="147" x2="143" y2="147"/><path d="M137 141 L143 147 L137 153"/>
+    </g>
+    <g>
+      <line x1="145" y1="92" x2="180" y2="92"/><path d="M174 86 L180 92 L174 98"/>
+    </g>
+    <g>
+      <line x1="150" y1="114" x2="185" y2="114"/><path d="M179 108 L185 114 L179 120"/>
+    </g>
+    <g>
+      <line x1="142" y1="136" x2="177" y2="136"/><path d="M171 130 L177 136 L171 142"/>
+    </g>
+  </g>
+
+  <!-- the variant view: single larger arrow, lower-right, angled away toward the door -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="200" y1="178" x2="300" y2="118"/>
+    <path d="M286 113 L300 118 L295 132"/>
+  </g>
+  <!-- eye accent at the base of the variant arrow -->
+  <g fill="none" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M180 188 q18 -16 36 0 q-18 16 -36 0 Z" fill="hsl(200,68%,55%)" fill-opacity="0.2"/>
+    <circle cx="198" cy="188" r="5" fill="hsl(200,88%,82%)" stroke="none"/>
+  </g>
+
+  <!-- beam of light from variant arrow toward the hidden door -->
+  <path d="M300 118 L355 56 L370 70 L308 130 Z" fill="url(#cv-guru-michael-steinhardt-beam)"/>
+
+  <!-- hidden door / keyhole revealed at end of beam -->
+  <circle cx="358" cy="58" r="24" fill="url(#cv-guru-michael-steinhardt-glow)"/>
+  <g stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="346" y="44" width="24" height="34" rx="3" fill="hsl(200,68%,55%)" fill-opacity="0.18"/>
+    <circle cx="358" cy="56" r="4" fill="hsl(200,88%,82%)" stroke="none"/>
+    <line x1="358" y1="60" x2="358" y2="68"/>
+  </g>
+</svg>

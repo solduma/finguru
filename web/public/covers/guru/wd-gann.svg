@@ -1,0 +1,98 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-wd-gann" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-wd-gann-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(160,88%,82%)" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="hsl(160,88%,82%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-wd-gann)"/>
+
+  <!-- shared unifying frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="110" y1="0" x2="110" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- origin focal center at (185,135) -->
+
+  <!-- faint time-cycle clock ring -->
+  <circle cx="185" cy="135" r="92" fill="none" stroke="hsl(160,22%,46%)" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="2 5"/>
+  <circle cx="185" cy="135" r="78" fill="none" stroke="hsl(160,22%,46%)" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="1 6"/>
+
+  <!-- Square of Nine: concentric square rings -->
+  <g fill="none" stroke="hsl(160,75%,66%)" stroke-linejoin="round">
+    <rect x="167" y="117" width="36" height="36" stroke-width="2" stroke-opacity="0.85"/>
+    <rect x="153" y="103" width="64" height="64" stroke-width="2" stroke-opacity="0.65"/>
+    <rect x="139" y="89" width="92" height="92" stroke-width="1.5" stroke-opacity="0.5"/>
+    <rect x="125" y="75" width="120" height="120" stroke-width="1.5" stroke-opacity="0.35"/>
+  </g>
+
+  <!-- spiral notch marks implying numbers, along rings -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-opacity="0.55" stroke-linecap="round">
+    <line x1="185" y1="117" x2="185" y2="112"/>
+    <line x1="203" y1="135" x2="208" y2="135"/>
+    <line x1="185" y1="153" x2="185" y2="158"/>
+    <line x1="167" y1="135" x2="162" y2="135"/>
+    <line x1="153" y1="103" x2="149" y2="99"/>
+    <line x1="217" y1="103" x2="221" y2="99"/>
+    <line x1="217" y1="167" x2="221" y2="171"/>
+    <line x1="153" y1="167" x2="149" y2="171"/>
+  </g>
+
+  <!-- protractor semicircle of angle tick-marks over the origin -->
+  <g stroke="hsl(160,68%,55%)" stroke-opacity="0.6" stroke-width="1" stroke-linecap="round">
+    <path d="M 245 135 A 60 60 0 0 0 125 135" fill="none" stroke-opacity="0.45" stroke-width="1.5"/>
+    <line x1="245" y1="135" x2="251" y2="135"/>
+    <line x1="241" y1="114" x2="247" y2="112"/>
+    <line x1="231" y1="96" x2="236" y2="92"/>
+    <line x1="215" y1="83" x2="219" y2="78"/>
+    <line x1="185" y1="75" x2="185" y2="69"/>
+    <line x1="155" y1="83" x2="151" y2="78"/>
+    <line x1="139" y1="96" x2="134" y2="92"/>
+    <line x1="129" y1="114" x2="123" y2="112"/>
+    <line x1="125" y1="135" x2="119" y2="135"/>
+  </g>
+
+  <!-- Gann angle fan: rays from origin at fixed slopes, sweeping up-and-right -->
+  <g stroke="hsl(160,75%,66%)" stroke-linecap="round">
+    <line x1="185" y1="135" x2="355" y2="121" stroke-width="1.5" stroke-opacity="0.55"/>
+    <line x1="185" y1="135" x2="345" y2="95" stroke-width="2" stroke-opacity="0.8"/>
+    <line x1="185" y1="135" x2="320" y2="60" stroke-width="2.5" stroke-opacity="0.95"/>
+    <line x1="185" y1="135" x2="270" y2="45" stroke-width="2" stroke-opacity="0.75"/>
+    <line x1="185" y1="135" x2="225" y2="42" stroke-width="1.5" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- glowing origin dot -->
+  <circle cx="185" cy="135" r="18" fill="url(#cv-guru-wd-gann-glow)"/>
+  <circle cx="185" cy="135" r="4.5" fill="hsl(160,88%,82%)"/>
+  <circle cx="185" cy="135" r="4.5" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.7"/>
+
+  <!-- drafting compass entering from upper area, hinged over the arc -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- hinge -->
+    <circle cx="248" cy="48" r="5" fill="hsl(160,68%,55%)" fill-opacity="0.3" stroke-width="2"/>
+    <!-- pinned leg to center origin -->
+    <line x1="248" y1="48" x2="185" y2="135"/>
+    <!-- pencil leg poised mid-arc -->
+    <line x1="248" y1="48" x2="296" y2="118"/>
+    <!-- pencil tip -->
+    <path d="M 296 118 l 5 7 l -8 2 z" fill="hsl(160,88%,82%)" stroke-width="1"/>
+  </g>
+  <!-- compass point at origin -->
+  <path d="M 185 135 l -3 -8 l 6 0 z" fill="hsl(160,88%,82%)" stroke="none"/>
+
+  <!-- faded ghostly coin-stack in lower corner -->
+  <g fill="none" stroke="hsl(160,68%,55%)" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="3 3" stroke-linejoin="round">
+    <ellipse cx="345" cy="198" rx="20" ry="6"/>
+    <ellipse cx="345" cy="190" rx="20" ry="6"/>
+    <ellipse cx="345" cy="182" rx="20" ry="6"/>
+    <line x1="325" y1="190" x2="325" y2="198"/>
+    <line x1="365" y1="190" x2="365" y2="198"/>
+  </g>
+</svg>

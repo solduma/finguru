@@ -1,0 +1,83 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-bruce-kovner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-bruce-kovner-rock" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(200,68%,55%)" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="hsl(200,68%,55%)" stop-opacity="0.10"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-bruce-kovner-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(200,88%,82%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(200,88%,82%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-bruce-kovner)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="360" y1="40" x2="360" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- cliff wall: tall geometric block anchoring left third -->
+  <polygon points="40,40 132,40 150,60 150,200 40,200"
+           fill="url(#cv-guru-bruce-kovner-rock)"
+           stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- rock face strata detail -->
+  <line x1="40" y1="92" x2="150" y2="100" stroke="hsl(200,22%,46%)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="40" y1="138" x2="150" y2="146" stroke="hsl(200,22%,46%)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="78" y1="40" x2="92" y2="200" stroke="hsl(200,22%,46%)" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
+  <line x1="150" y1="60" x2="116" y2="200" stroke="hsl(200,75%,66%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- safe ledge: flat horizontal step beneath the anchor (the floor / survival) -->
+  <path d="M150 174 L214 174 L214 188 L150 188 Z"
+        fill="hsl(200,68%,55%)" fill-opacity="0.20"
+        stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="156" y1="181" x2="208" y2="181" stroke="hsl(200,88%,82%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- focal glow at the anchor -->
+  <circle cx="156" cy="160" r="34" fill="url(#cv-guru-bruce-kovner-glow)"/>
+
+  <!-- piton / anchor bolt driven into the wall near the base -->
+  <line x1="124" y1="160" x2="158" y2="160" stroke="hsl(200,88%,82%)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="156" cy="160" r="8" fill="none" stroke="hsl(200,88%,82%)" stroke-width="3"/>
+
+  <!-- rope loop knotted through the piton (the predetermined exit) -->
+  <path d="M156 168 C148 174 164 178 156 184 C150 188 162 190 156 192"
+        fill="none" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- measured rope segment rising diagonally to upper right -->
+  <path d="M156 160 C200 132 246 108 286 84"
+        fill="none" stroke="hsl(200,75%,66%)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- bracket + tick marks beside rope reading as deliberate measurement -->
+  <path d="M138 168 L130 173 L172 247" fill="none" stroke="hsl(200,22%,46%)" stroke-width="1" stroke-opacity="0"/>
+  <g stroke="hsl(200,88%,82%)" stroke-width="1.5" stroke-linecap="round">
+    <path d="M170 142 L184 152" stroke-opacity="0.85"/>
+    <path d="M188 124 L202 134" stroke-opacity="0.85"/>
+    <path d="M206 106 L220 116" stroke-opacity="0.85"/>
+  </g>
+  <!-- measurement bracket spine -->
+  <path d="M178 134 L196 122 L214 110"
+        fill="none" stroke="hsl(200,75%,66%)" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- small reaching figure at top of rope (profit attempt, secondary) -->
+  <g stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="294" cy="74" r="7" fill="hsl(200,68%,55%)" fill-opacity="0.5"/>
+    <path d="M294 81 L294 100"/>
+    <path d="M294 88 L283 78"/>
+    <path d="M294 88 L309 70"/>
+    <path d="M294 100 L286 116"/>
+    <path d="M294 100 L304 114"/>
+  </g>
+  <!-- reaching hand grip toward void -->
+  <path d="M309 70 L318 62" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- negative space / void marker upper right (subtle) -->
+  <circle cx="344" cy="56" r="2" fill="hsl(200,22%,46%)" fill-opacity="0.7"/>
+  <circle cx="330" cy="44" r="1.5" fill="hsl(200,22%,46%)" fill-opacity="0.5"/>
+</svg>

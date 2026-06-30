@@ -1,0 +1,92 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-stochastic-oscillator" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-indicator-stochastic-oscillator-tube" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.05"/>
+      <stop offset="0.5" stop-color="hsl(160,68%,55%)" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="cv-indicator-stochastic-oscillator-ball" cx="0.38" cy="0.34" r="0.75">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="0.55" stop-color="hsl(160,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(160,70%,38%)"/>
+    </radialGradient>
+    <clipPath id="cv-indicator-stochastic-oscillator-clip">
+      <rect x="178" y="50" width="44" height="150" rx="22"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-indicator-stochastic-oscillator)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="125" x2="360" y2="125" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- glass tube fill -->
+  <rect x="178" y="50" width="44" height="150" rx="22" fill="url(#cv-indicator-stochastic-oscillator-tube)"/>
+
+  <!-- threshold bands (clipped inside tube) -->
+  <g clip-path="url(#cv-indicator-stochastic-oscillator-clip)">
+    <!-- overbought hatched zone (top) -->
+    <rect x="178" y="50" width="44" height="34" fill="hsl(160,68%,55%)" fill-opacity="0.14"/>
+    <g stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.45">
+      <line x1="170" y1="56" x2="186" y2="40"/>
+      <line x1="170" y1="68" x2="198" y2="40"/>
+      <line x1="170" y1="80" x2="210" y2="40"/>
+      <line x1="174" y1="88" x2="222" y2="40"/>
+      <line x1="186" y1="88" x2="230" y2="44"/>
+      <line x1="200" y1="88" x2="230" y2="58"/>
+      <line x1="214" y1="88" x2="230" y2="72"/>
+    </g>
+    <!-- oversold hatched zone (bottom) -->
+    <rect x="178" y="166" width="44" height="34" fill="hsl(160,68%,55%)" fill-opacity="0.14"/>
+    <g stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.45">
+      <line x1="170" y1="178" x2="186" y2="162"/>
+      <line x1="170" y1="190" x2="198" y2="162"/>
+      <line x1="170" y1="202" x2="210" y2="162"/>
+      <line x1="174" y1="210" x2="222" y2="162"/>
+      <line x1="186" y1="210" x2="230" y2="166"/>
+      <line x1="200" y1="210" x2="230" y2="180"/>
+      <line x1="214" y1="210" x2="230" y2="194"/>
+    </g>
+  </g>
+
+  <!-- threshold divider lines -->
+  <line x1="178" y1="84" x2="222" y2="84" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="3 3"/>
+  <line x1="178" y1="166" x2="222" y2="166" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="3 3"/>
+
+  <!-- tube outline -->
+  <rect x="178" y="50" width="44" height="150" rx="22" fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <!-- glass highlight -->
+  <line x1="186" y1="64" x2="186" y2="186" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-opacity="0.3"/>
+
+  <!-- HIGH cap (top) -->
+  <line x1="160" y1="50" x2="240" y2="50" stroke="hsl(160,88%,82%)" stroke-width="3"/>
+  <line x1="156" y1="44" x2="156" y2="56" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <line x1="244" y1="44" x2="244" y2="56" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+
+  <!-- LOW cap (bottom) -->
+  <line x1="160" y1="200" x2="240" y2="200" stroke="hsl(160,88%,82%)" stroke-width="3"/>
+  <line x1="156" y1="194" x2="156" y2="206" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <line x1="244" y1="194" x2="244" y2="206" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+
+  <!-- floating ball near top (overbought) -->
+  <ellipse cx="200" cy="98" rx="16" ry="6" fill="hsl(160,70%,30%)" fill-opacity="0.4"/>
+  <circle cx="200" cy="78" r="15" fill="url(#cv-indicator-stochastic-oscillator-ball)" stroke="hsl(160,88%,82%)" stroke-width="1.5"/>
+  <circle cx="194.5" cy="72.5" r="3.5" fill="hsl(160,90%,90%)" fill-opacity="0.85"/>
+
+  <!-- tick arrow from ball to today's close dot -->
+  <line x1="215" y1="78" x2="262" y2="78" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M262 78 l-9 -4 l0 8 z" fill="hsl(160,75%,66%)"/>
+  <circle cx="276" cy="78" r="5" fill="hsl(160,68%,55%)" stroke="hsl(160,88%,82%)" stroke-width="1.5"/>
+  <circle cx="276" cy="78" r="11" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- subtle base stand -->
+  <line x1="170" y1="207" x2="230" y2="207" stroke="hsl(160,22%,46%)" stroke-width="2" stroke-opacity="0.6"/>
+</svg>

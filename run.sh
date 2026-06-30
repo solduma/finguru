@@ -16,36 +16,67 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 API_DIR="$ROOT/api"
 WEB_DIR="$ROOT/web"
 
-# Unusual high ports (avoid the common 3000/8000). Override via env if needed.
-API_PORT="${API_PORT:-48000}"
-WEB_PORT="${WEB_PORT:-48080}"
+# Dev ports. Deliberately distinct from the PRODUCTION ports (48000/48080) used
+# by start-prod.sh, which a launchd job (com.finguru.app) keeps alive with
+# KeepAlive. If dev reused those ports, every time we freed them the supervisor
+# would instantly relaunch prod and re-bind them, and dev would lose the race
+# with EADDRINUSE. Using separate ports lets dev and prod run side by side.
+# Override via env if needed.
+API_PORT="${API_PORT:-49000}"
+WEB_PORT="${WEB_PORT:-49080}"
 
-API_PATTERN="uvicorn app.main:app"
-# Match BOTH the npm wrapper ("next dev") and the actual server process it
-# spawns ("next-server (vX.Y.Z)"). When only "next dev" is killed, the
-# next-server child is orphaned (reparented to PID 1) and keeps holding the
-# port, so the next launch fails with EADDRINUSE. Matching both avoids that.
-WEB_PATTERN="next dev|next-server"
+# Patterns to reap stray DEV servers from a previous run (e.g. an orphaned
+# next-server reparented to PID 1 that a port check might momentarily miss).
+# These are scoped to the dev PORTS so they can never match the production
+# servers (start-prod.sh on 48000/48080) — killing those would bounce prod and
+# trigger a launchd restart that races us for the ports.
+API_PATTERN="uvicorn app.main:app.*--port ${API_PORT}"
+WEB_PATTERN="next (dev|start).*--port ${WEB_PORT}"
 
 log() { printf '\033[36m[run]\033[0m %s\n' "$*"; }
+
+# PIDs that are *listening* on a TCP port. We must restrict to LISTEN sockets:
+# a plain `lsof -ti tcp:PORT` also matches sockets where PORT is the *remote*
+# end (e.g. VS Code's outbound connections to some host:48080), which would
+# both make the port look perpetually busy and risk killing unrelated apps.
+port_listeners() {
+  lsof -ti "tcp:$1" -sTCP:LISTEN 2>/dev/null || true
+}
 
 # Kill whatever is listening on a TCP port (if anything).
 kill_port() {
   local port="$1"
   local pids
-  pids="$(lsof -ti "tcp:${port}" 2>/dev/null || true)"
+  pids="$(port_listeners "$port")"
   if [ -n "$pids" ]; then
     log "terminating process(es) on port ${port}: ${pids}"
     # shellcheck disable=SC2086
     kill $pids 2>/dev/null || true
     sleep 1
-    pids="$(lsof -ti "tcp:${port}" 2>/dev/null || true)"
+    pids="$(port_listeners "$port")"
     if [ -n "$pids" ]; then
       log "force-killing on port ${port}: ${pids}"
       # shellcheck disable=SC2086
       kill -9 $pids 2>/dev/null || true
     fi
   fi
+}
+
+# Block until a TCP port has no listener, or bail after a timeout. Killing a
+# process is asynchronous — the socket can linger for a beat after the PID is
+# gone — so we poll instead of assuming the port is free immediately.
+wait_port_free() {
+  local port="$1"
+  local tries=0
+  while [ -n "$(port_listeners "$port")" ]; do
+    if [ "$tries" -ge 10 ]; then
+      log "port ${port} still busy after waiting; killing again"
+      kill_port "$port"
+      tries=0
+    fi
+    sleep 0.3
+    tries=$((tries + 1))
+  done
 }
 
 # Kill processes whose command line matches a pattern (catches strays not bound
@@ -87,6 +118,7 @@ kill_port "$API_PORT"
 kill_port "$WEB_PORT"
 
 # --- API ---
+wait_port_free "$API_PORT"
 log "starting API on :${API_PORT} (uvicorn)…"
 (
   cd "$API_DIR"
@@ -98,6 +130,10 @@ API_PID=$!
 # Point the Next.js /api/* proxy at the API port we just chose, so they can't
 # desync if the ports are overridden.
 export API_PROXY_TARGET="${API_PROXY_TARGET:-http://localhost:${API_PORT}}"
+# Write dev's build to its own dir (see next.config.mjs) so `next dev` never
+# clobbers the production .next that start-prod.sh's `next start` is serving.
+export NEXT_DIST_DIR="${NEXT_DIST_DIR:-.next-dev}"
+wait_port_free "$WEB_PORT"
 log "starting web on :${WEB_PORT} (next dev)…  proxy /api -> ${API_PROXY_TARGET}"
 (
   cd "$WEB_DIR"

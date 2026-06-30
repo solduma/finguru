@@ -26,9 +26,13 @@ export default function GlossaryTerm({
       className="gloss group relative inline cursor-help border-b border-dotted border-teal-400/70 outline-none"
     >
       {children}
+      {/* Mobile-first: a bottom-anchored sheet pinned to safe viewport insets so
+          it can NEVER overflow the right edge (a right-margin term's centered
+          popover used to widen the layout viewport, zooming the whole page out).
+          From `sm:` up it reverts to the classic centered popover above the term. */}
       <span
         role="tooltip"
-        className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[80vw] -translate-x-1/2 rounded-lg border border-teal-400/30 bg-[#0b0e14] px-3 py-2 text-left text-sm font-normal not-italic leading-snug text-gray-200 opacity-0 shadow-xl transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
+        className="pointer-events-none fixed inset-x-3 bottom-3 z-50 w-auto rounded-lg border border-teal-400/30 bg-[#0b0e14] px-3 py-2 text-left text-sm font-normal not-italic leading-snug text-gray-200 opacity-0 shadow-xl transition-opacity duration-[var(--motion-duration-fast)] group-hover:opacity-100 group-focus-within:opacity-100 sm:absolute sm:inset-x-auto sm:bottom-full sm:left-1/2 sm:mb-2 sm:w-64 sm:max-w-[80vw] sm:-translate-x-1/2"
       >
         {label && (
           <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-teal-300">

@@ -1,0 +1,107 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-elliott-wave-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-indicator-elliott-wave-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.12"/>
+    </linearGradient>
+    <clipPath id="cv-indicator-elliott-wave-clip">
+      <path d="M40 175 L70 130 L100 150 L150 95 L190 130 L255 55 L295 95 L330 130 L360 110 L360 200 L40 200 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-elliott-wave-bg)"/>
+
+  <!-- shared frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="130" y1="30" x2="130" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="255" y1="30" x2="255" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="120" x2="360" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- faint construction grid behind water -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="2 5" fill="none">
+    <line x1="70" y1="40" x2="70" y2="200"/>
+    <line x1="150" y1="40" x2="150" y2="200"/>
+    <line x1="255" y1="40" x2="255" y2="200"/>
+    <line x1="330" y1="40" x2="330" y2="200"/>
+    <line x1="40" y1="55" x2="360" y2="55"/>
+    <line x1="40" y1="95" x2="360" y2="95"/>
+    <line x1="40" y1="150" x2="360" y2="150"/>
+    <!-- diagonal read-in lines -->
+    <line x1="40" y1="175" x2="255" y2="55"/>
+    <line x1="255" y1="55" x2="360" y2="130"/>
+  </g>
+
+  <!-- water body: geometric Elliott profile (5 up, 3 down) -->
+  <path d="M40 175 L70 130 L100 150 L150 95 L190 130 L255 55 L295 95 L330 130 L360 110 L360 200 L40 200 Z"
+        fill="url(#cv-indicator-elliott-wave-water)"/>
+
+  <!-- inner water ripple lines (clipped to wave) -->
+  <g clip-path="url(#cv-indicator-elliott-wave-clip)" stroke="hsl(160,68%,55%)" stroke-opacity="0.30" stroke-width="1" fill="none">
+    <path d="M40 188 L70 145 L100 165 L150 110 L190 145 L255 70 L295 110 L330 145 L360 125"/>
+    <path d="M40 200 L70 160 L100 180 L150 128 L190 160 L255 88 L295 125 L330 158 L360 140"/>
+  </g>
+
+  <!-- wave crest profile (the read-in pattern, bold) -->
+  <path d="M40 175 L70 130 L100 150 L150 95 L190 130 L255 55 L295 95 L330 130 L360 110"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- pivot nodes on the five crests + three corrective steps -->
+  <g fill="hsl(160,88%,82%)">
+    <circle cx="70" cy="130" r="3.2"/>
+    <circle cx="150" cy="95" r="3.2"/>
+    <circle cx="255" cy="55" r="3.6"/>
+    <circle cx="295" cy="95" r="2.8" fill-opacity="0.85"/>
+    <circle cx="330" cy="130" r="2.8" fill-opacity="0.85"/>
+    <circle cx="360" cy="110" r="2.8" fill-opacity="0.85"/>
+  </g>
+  <g fill="hsl(160,68%,55%)" fill-opacity="0.7">
+    <circle cx="100" cy="150" r="2.4"/>
+    <circle cx="190" cy="130" r="2.4"/>
+  </g>
+
+  <!-- foam / spray flecks around the right-side correction (ambiguity) -->
+  <g fill="hsl(160,88%,82%)">
+    <circle cx="312" cy="84" r="1.6" fill-opacity="0.8"/>
+    <circle cx="324" cy="78" r="1.1" fill-opacity="0.6"/>
+    <circle cx="343" cy="118" r="1.5" fill-opacity="0.75"/>
+    <circle cx="352" cy="100" r="1.0" fill-opacity="0.5"/>
+    <circle cx="300" cy="106" r="1.2" fill-opacity="0.55"/>
+    <circle cx="336" cy="142" r="1.3" fill-opacity="0.6"/>
+    <circle cx="318" cy="120" r="0.9" fill-opacity="0.45"/>
+  </g>
+
+  <!-- Fibonacci caliper / divider compass, legs touching two peaks (255,55) and (150,95) -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- hinge at top -->
+    <line x1="150" y1="95" x2="200" y2="20"/>
+    <line x1="255" y1="55" x2="200" y2="20"/>
+    <!-- adjustment arc between legs (Fibonacci ratio set) -->
+    <path d="M168 67 A 60 60 0 0 1 238 47" stroke-opacity="0.55" stroke-dasharray="3 4"/>
+  </g>
+  <!-- hinge knob -->
+  <circle cx="200" cy="20" r="4.5" fill="hsl(160,68%,55%)" stroke="hsl(160,88%,82%)" stroke-width="1.5"/>
+  <!-- caliper sharp leg tips -->
+  <g fill="hsl(160,88%,82%)">
+    <path d="M150 95 l-4 -8 l8 0 Z" transform="rotate(33 150 95)"/>
+    <path d="M255 55 l-4 -8 l8 0 Z" transform="rotate(-33 255 55)"/>
+  </g>
+
+  <!-- three carved stone tablets / seals (inviolable rules), lower-left -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round">
+    <rect x="48" y="174" width="20" height="26" rx="3" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+    <rect x="73" y="178" width="20" height="22" rx="3" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+    <rect x="98" y="182" width="20" height="18" rx="3" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+  </g>
+  <!-- seal marks (non-text glyph notches) -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.8">
+    <line x1="54" y1="183" x2="62" y2="183"/>
+    <line x1="54" y1="189" x2="62" y2="189"/>
+    <circle cx="83" cy="188" r="3.5" fill="none"/>
+    <path d="M104 190 l4 4 l6 -7" fill="none"/>
+  </g>
+</svg>

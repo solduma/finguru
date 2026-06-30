@@ -68,14 +68,61 @@ export const STRATEGIES: Strategy[] = [
       guru("harry-markowitz", "Why a broad index beats a few picks: diversification is the only free lunch in investing.", "왜 광범위한 인덱스가 소수 종목보다 나은가: 분산은 투자의 유일한 공짜 점심."),
       concept("asset-allocation", "The decision that dominates outcomes: your stock/bond mix, the three-fund portfolio, and rebalancing.", "결과를 좌우하는 결정: 주식/채권 비중, 3-펀드 포트폴리오, 그리고 리밸런싱.", { en: "Asset Allocation & the Three-Fund Portfolio", ko: "자산배분 & 3-펀드 포트폴리오" }),
       concept("dollar-cost-averaging", "How to deploy money over time — and the honest math of when it helps vs. investing a lump sum.", "시간에 걸쳐 자금을 투입하는 법 — 그리고 일시 투자 대비 언제 유리한지에 대한 솔직한 계산.", { en: "Dollar-Cost Averaging — Steady Hands, Honest Math", ko: "분할 매수 — 흔들리지 않는 손, 정직한 계산" }),
-      guru("trading-psychology", "Buy-and-hold lives or dies on discipline: not panic-selling or chasing performance through drawdowns.", "장기 보유의 성패는 규율에 달렸다: 하락장에서 공포 매도하거나 성과를 좇지 않기."),
+      concept("trading-psychology", "Buy-and-hold lives or dies on discipline: not panic-selling or chasing performance through drawdowns.", "장기 보유의 성패는 규율에 달렸다: 하락장에서 공포 매도하거나 성과를 좇지 않기."),
       guru("warren-buffett", "The capstone authority: the greatest stock-picker tells ordinary investors to just buy a low-cost index fund.", "마무리 권위자: 최고의 종목 선정가가 일반 투자자에게 저비용 인덱스 펀드를 사라고 말한다."),
       concept("risk-management", "Position the passive portfolio in a lifetime context: horizon, drawdown tolerance, sequence risk.", "패시브 포트폴리오를 생애 관점에서 배치하기: 투자기간, 손실 감내, 시퀀스 리스크."),
     ],
   },
   {
-    id: "dividend-income",
+    // Goal-based, fully automated: target-date funds & roboadvisors that
+    // auto-allocate AND glide down risk over time. The most common real
+    // individual "strategy" — distinct from static index/passive.
+    id: "lifecycle",
     rank: 2,
+    riskRank: 2,
+    label: { en: "Lifecycle / Automated", ko: "라이프사이클 / 자동" },
+    blurb: {
+      en: "Pick a target retirement date (or a roboadvisor) and let it auto-diversify and de-risk for you over the decades — the lowest-effort path to a goal.",
+      ko: "목표 은퇴 시점(또는 로보어드바이저)을 고르면 수십 년에 걸쳐 자동으로 분산하고 위험을 줄여 준다 — 목표 달성을 위한 가장 손이 덜 가는 길.",
+    },
+    schools: ["quant"],
+    steps: [
+      guru("bogle-cost-matters", "The foundation: keep costs near zero — a target-date fund is only as good as its fees.", "기초: 비용을 0에 가깝게 — 타깃데이트 펀드의 가치는 그 보수에 달렸다.", { en: "John Bogle — Why Costs Decide", ko: "존 보글 — 비용이 결정한다" }),
+      concept("index-funds-etfs", "What's inside: a target-date fund is a fund-of-index-funds that rebalances itself.", "내부 구조: 타깃데이트 펀드는 스스로 리밸런싱하는 '인덱스 펀드의 펀드'.", { en: "Index Funds & ETFs", ko: "인덱스 펀드 & ETF" }),
+      concept("asset-allocation", "The glide path: how the stock/bond mix automatically gets safer as your date nears.", "글라이드 패스: 목표 시점이 다가올수록 주식/채권 비중이 자동으로 안전해지는 방식.", { en: "Asset Allocation & the Glide Path", ko: "자산배분 & 글라이드 패스" }),
+      concept("dollar-cost-averaging", "Automate contributions: pay yourself first, on schedule, and ignore the noise.", "자동 납입: 정해진 일정에 따라 먼저 저축하고 소음은 무시하라.", { en: "Dollar-Cost Averaging", ko: "분할 매수" }),
+      guru("harry-markowitz", "Why it works: diversification across assets is the free lunch the glide path harvests for you.", "왜 통하는가: 자산 간 분산이라는 공짜 점심을 글라이드 패스가 대신 취해 준다."),
+      concept("trading-psychology", "The only hard part is leaving it alone — automation removes the temptation to tinker.", "유일하게 어려운 점은 그냥 두는 것 — 자동화가 손대고 싶은 유혹을 없앤다."),
+      concept("risk-management", "Match the target date to when you'll need the money; understand sequence-of-returns risk near the goal.", "목표 시점을 돈이 필요한 때에 맞추고, 목표 부근의 시퀀스 리스크를 이해하라."),
+    ],
+  },
+  {
+    // Defensive multi-asset: 60/40, All-Weather, permanent portfolio,
+    // risk-parity-for-individuals. The low-anxiety home for the conservative
+    // investor who wants more than equity-index but less than stock-picking.
+    id: "diversified",
+    rank: 3,
+    riskRank: 3,
+    label: { en: "Diversified / All-Weather", ko: "분산 / 올웨더" },
+    blurb: {
+      en: "Spread risk across stocks, bonds, real assets, and cash so no single environment can sink you — a calm, balanced core for the long run.",
+      ko: "주식·채권·실물자산·현금에 위험을 분산해 어떤 국면에서도 무너지지 않게 한다 — 장기적으로 차분하고 균형 잡힌 핵심 전략.",
+    },
+    schools: ["quant", "macro"],
+    steps: [
+      guru("harry-markowitz", "The core idea: combining assets that don't move together lowers risk for the same return.", "핵심 아이디어: 함께 움직이지 않는 자산을 결합하면 같은 수익에서 위험이 낮아진다."),
+      concept("asset-allocation", "The decision that dominates outcomes: your mix across stocks, bonds, and cash.", "결과를 좌우하는 결정: 주식·채권·현금 사이의 비중.", { en: "Asset Allocation & the Three-Fund Portfolio", ko: "자산배분 & 3-펀드 포트폴리오" }),
+      concept("bonds-fixed-income", "The ballast: how bonds, duration, and the yield curve cushion equity drawdowns.", "안정판: 채권·듀레이션·수익률곡선이 주식 하락을 완충하는 방식.", { en: "Bonds & Fixed Income — The Portfolio's Ballast", ko: "채권 & 고정수익 — 포트폴리오의 안정판" }),
+      guru("william-sharpe", "Risk-adjusted return: why a smoother ride (higher Sharpe) can beat a higher-octane one.", "위험조정 수익: 더 매끄러운 여정(높은 샤프 비율)이 고옥탄 전략을 이길 수 있는 이유."),
+      guru("ray-dalio", "All-Weather: balance risk across growth × inflation environments, not just dollars.", "올웨더: 금액이 아니라 성장×인플레 국면에 위험을 균형 배분하기."),
+      concept("risk-parity", "Balance by risk contribution, not dollars — the individual's version, kept simple.", "금액이 아니라 위험 기여도로 균형 잡기 — 개인을 위한 단순한 버전."),
+      concept("dollar-cost-averaging", "Fund it steadily and rebalance on a schedule — the discipline that makes it work.", "꾸준히 납입하고 정기적으로 리밸런싱 — 이를 작동하게 하는 규율.", { en: "Rebalancing & Dollar-Cost Averaging", ko: "리밸런싱 & 분할 매수" }),
+      concept("trading-psychology", "The payoff is behavioral: a calmer portfolio is one you'll actually stick with.", "보상은 행동에서 온다: 더 차분한 포트폴리오라야 실제로 끝까지 유지한다."),
+    ],
+  },
+  {
+    id: "dividend-income",
+    rank: 4,
     riskRank: 2,
     label: { en: "Dividend / Income", ko: "배당 / 인컴" },
     blurb: {
@@ -97,7 +144,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     id: "value",
-    rank: 3,
+    rank: 5,
     riskRank: 3,
     label: { en: "Value", ko: "가치투자" },
     blurb: {
@@ -123,7 +170,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     id: "growth",
-    rank: 4,
+    rank: 6,
     riskRank: 5,
     label: { en: "Growth", ko: "성장투자" },
     blurb: {
@@ -147,7 +194,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     id: "factor-quant",
-    rank: 5,
+    rank: 7,
     riskRank: 4,
     label: { en: "Factor / Quant", ko: "팩터 / 퀀트" },
     blurb: {
@@ -171,7 +218,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     id: "global-macro",
-    rank: 6,
+    rank: 11,
     riskRank: 7,
     label: { en: "Global Macro", ko: "글로벌 매크로" },
     blurb: {
@@ -200,7 +247,7 @@ export const STRATEGIES: Strategy[] = [
   },
   {
     id: "trend-momentum",
-    rank: 7,
+    rank: 12,
     riskRank: 9,
     label: { en: "Trend Following / Momentum", ko: "추세추종 / 모멘텀" },
     blurb: {
@@ -223,12 +270,12 @@ export const STRATEGIES: Strategy[] = [
       guru("jegadeesh-titman-carhart", "The academic proof: cross-sectional momentum (~1%/month) and the Carhart factor.", "학술적 증명: 횡단면 모멘텀(월 약 1%)과 카하트 팩터."),
       guru("cliff-asness", "Momentum at scale: multi-asset, and why you diversify across factors.", "대규모 모멘텀: 멀티에셋, 그리고 팩터 간 분산이 필요한 이유."),
       concept("risk-management", "The honest closer: trailing stops, pyramiding rules, and the momentum-crash problem.", "정직한 마무리: 추적 손절, 피라미딩 규칙, 그리고 모멘텀 급락 문제."),
-      guru("trading-psychology", "Why momentum exists behaviorally — and why traders break trend discipline.", "모멘텀이 행동학적으로 존재하는 이유 — 그리고 트레이더가 추세 규율을 어기는 이유."),
+      concept("trading-psychology", "Why momentum exists behaviorally — and why traders break trend discipline.", "모멘텀이 행동학적으로 존재하는 이유 — 그리고 트레이더가 추세 규율을 어기는 이유."),
     ],
   },
   {
     id: "event-driven",
-    rank: 8,
+    rank: 9,
     riskRank: 6,
     label: { en: "Event-Driven / Special Situations", ko: "이벤트 드리븐 / 특수 상황" },
     blurb: {
@@ -247,64 +294,86 @@ export const STRATEGIES: Strategy[] = [
     ],
   },
   {
-    id: "swing-trading",
-    rank: 9,
-    riskRank: 8,
-    label: { en: "Swing Trading", ko: "스윙 트레이딩" },
+    // Tangible/real-asset exposure for income + inflation protection, reached by
+    // most individuals through REITs (and REIT funds) rather than direct property.
+    id: "real-assets",
+    rank: 8,
+    riskRank: 4,
+    label: { en: "Real Assets / REITs", ko: "실물자산 / 리츠" },
     blurb: {
-      en: "Capture multi-day to multi-week price swings off technical setups — the middle horizon.",
-      ko: "기술적 셋업으로 며칠~몇 주의 가격 스윙을 포착한다 — 중간 시간대.",
+      en: "Own income-producing real things — real estate (via REITs), and inflation hedges — for yield and diversification that doesn't move in lockstep with stocks.",
+      ko: "수익을 내는 실물 — 부동산(리츠를 통해)과 인플레이션 헤지 자산 — 을 보유해, 주식과 똑같이 움직이지 않는 수익과 분산을 얻는다.",
     },
-    schools: ["technical"],
+    schools: ["fundamental", "macro"],
     steps: [
-      guru("charles-dow", "Foundation: trend definition and confirmation — the grammar every swing setup is written in.", "기초: 추세 정의와 확인 — 모든 스윙 셋업이 쓰여지는 문법."),
-      concept("support-resistance-patterns", "The levels you buy, stop, and target against; where a swing begins and ends.", "매수·손절·목표의 기준 레벨; 스윙이 시작되고 끝나는 곳."),
-      concept("candlestick-patterns", "Entry-timing grammar: the precise bar to act on at a level.", "진입 타이밍의 문법: 레벨에서 행동할 정확한 봉."),
-      guru("steve-nison", "The master of candlesticks: reading engulfings, hammers, and stars at swing pivots.", "캔들차트의 거장: 스윙 변곡점에서 장악형·해머·별형 읽기."),
-      concept("volume-obv", "Volume confirms breakouts vs. traps and validates the move you'll ride for days.", "거래량은 브레이크아웃과 함정을 구분하고, 며칠 탈 움직임을 검증한다."),
-      concept("moving-averages", "The trend filter and dynamic support that say which swings are with the tide.", "어떤 스윙이 큰 흐름과 같은 편인지 알려주는 추세 필터이자 동적 지지선."),
-      concept("rsi", "Overbought/oversold and momentum for timing pullback entries and exits into strength.", "과매수/과매도와 모멘텀으로 눌림목 진입과 강세 청산의 타이밍을 잡기."),
-      concept("macd", "Momentum and trend-shift confirmation, plus divergence — a core swing oscillator.", "모멘텀과 추세 전환 확인, 그리고 다이버전스 — 핵심 스윙 오실레이터."),
-      concept("bollinger-bands", "The volatility envelope: squeezes precede swings; band-walk vs. reversion.", "변동성 밴드: 수축은 스윙을 예고한다; 밴드 워킹 vs. 회귀."),
-      guru("john-bollinger", "The author himself: combine bands with volume and momentum to avoid the touch=reverse mistake.", "밴드 창시자: 밴드를 거래량·모멘텀과 결합해 '터치=반전' 실수를 피하라."),
-      concept("adx-atr", "Regime filter (ADX) and volatility-based stop/target sizing (ATR).", "국면 필터(ADX)와 변동성 기반 손절/목표 사이징(ATR)."),
-      guru("welles-wilder", "The originator of RSI, ADX, and ATR — consolidating the indicator toolkit.", "RSI·ADX·ATR의 창시자 — 지표 도구함을 통합한다."),
-      guru("richard-wyckoff", "Accumulation/distribution: which stage a stock is in, so you buy near markup.", "매집/분산: 종목이 어느 국면인지 파악해 상승 직전에 매수하기."),
-      guru("william-jiler", "Classical chart patterns: the multi-day formations and measured-move targets.", "고전 차트 패턴: 며칠짜리 형성 패턴과 측정된 목표가."),
-      guru("linda-raschke", "The model swing playbook: regime-reading and concrete, codeable setups.", "모범 스윙 플레이북: 국면 읽기와 코드화 가능한 구체적 셋업."),
-      guru("alan-farley", "The Master Swing Trader: Pattern Cycles, signal convergence, capital preservation first.", "마스터 스윙 트레이더: 패턴 사이클, 신호 수렴, 자본 보존 우선."),
-      guru("larry-williams", "Short-term timing edges that sharpen swing entries: volatility breakouts, %R, seasonality.", "스윙 진입을 날카롭게 하는 단기 타이밍 우위: 변동성 돌파, %R, 계절성."),
-      guru("thomas-demark", "Objective exhaustion and turning points without subjective discretion.", "주관적 재량 없이 객관적인 소진과 전환점 포착."),
-      concept("swing-trading-playbook", "The capstone: a repeatable scan → setup → entry → stop → target → manage workflow.", "정점: 반복 가능한 스캔 → 셋업 → 진입 → 손절 → 목표 → 관리 워크플로우.", { en: "The Swing Trading Playbook: Entries, Stops & Targets", ko: "스윙 트레이딩 플레이북: 진입·손절·목표" }),
-      concept("risk-management", "Position sizing, stops, R-multiples, expectancy — survival over setups.", "비중 조절, 손절, R-멀티플, 기대값 — 셋업보다 생존."),
-      guru("trading-psychology", "Discipline over knowledge: patience to hold swings and avoid overtrading.", "지식보다 규율: 스윙을 버티고 과매매를 피하는 인내."),
+      concept("real-assets-reits", "The core: what a REIT is, how it must pay out income, and direct property vs. REIT funds.", "핵심: 리츠란 무엇인가, 왜 수익을 의무적으로 배당하는가, 그리고 직접 부동산 vs. 리츠 펀드.", { en: "Real Assets & REITs — Owning Income-Producing Things", ko: "실물자산 & 리츠 — 수익을 내는 자산 보유하기" }),
+      concept("asset-allocation", "Where it fits: real assets as a diversifying sleeve alongside stocks and bonds.", "배치: 주식·채권 옆에 분산용으로 두는 실물자산 비중.", { en: "Asset Allocation with Real Assets", ko: "실물자산을 포함한 자산배분" }),
+      concept("dividend-investing", "How to read the yield: payout discipline, coverage, and REIT-specific metrics (FFO).", "수익률 읽는 법: 배당 규율, 커버리지, 그리고 리츠 고유 지표(FFO).", { en: "Reading REIT Yield & Coverage", ko: "리츠 수익률 & 커버리지 읽기" }),
+      guru("geraldine-weiss", "Yield-band discipline applies to income real assets too: cheap vs. dear by historical yield.", "수익률 밴드 규율은 인컴형 실물자산에도 적용된다: 역사적 수익률로 본 저평가 vs. 고평가."),
+      concept("the-business-cycle", "Why rates and the cycle matter: real assets are sensitive to inflation and interest rates.", "왜 금리와 사이클이 중요한가: 실물자산은 인플레이션과 금리에 민감하다.", { en: "Real Assets, Rates & Inflation", ko: "실물자산·금리·인플레이션" }),
+      guru("ray-dalio", "Real assets in an all-weather frame: the inflation-up quadrant they're meant to protect.", "올웨더 관점의 실물자산: 이들이 방어하려는 '인플레이션 상승' 사분면."),
+      concept("risk-management", "The honest risks: illiquidity, leverage, concentration, and rate sensitivity.", "솔직한 위험: 비유동성, 레버리지, 집중, 그리고 금리 민감도."),
     ],
   },
   {
-    id: "day-trading",
+    // Selling option premium on shares you own (covered calls) or cash you set
+    // aside (cash-secured puts / the wheel). A defined-risk income overlay —
+    // distinct from dividend (earnings cash) and from active trading (speculation).
+    id: "options-income",
     rank: 10,
-    riskRank: 10,
-    label: { en: "Day Trading", ko: "데이 트레이딩" },
+    riskRank: 6,
+    label: { en: "Options Income", ko: "옵션 인컴" },
     blurb: {
-      en: "Intraday positions closed by the bell — the highest-effort, highest-risk path. Most lose money; learn the reality first.",
-      ko: "장 마감 전 청산하는 일중 매매 — 가장 노력이 많이 들고 가장 위험한 길. 대부분 손실을 본다; 현실부터 배우라.",
+      en: "Earn steady premium by selling covered calls and cash-secured puts on assets you'd be happy to own — income with capped upside, not leveraged speculation.",
+      ko: "기꺼이 보유할 자산에 커버드콜과 현금담보풋을 매도해 꾸준한 프리미엄을 번다 — 상승은 제한되지만 레버리지 투기가 아닌 인컴.",
+    },
+    schools: ["technical", "quant"],
+    steps: [
+      concept("risk-management", "Start here: options multiply both ways — sizing and defined risk come before any premium.", "여기서 시작: 옵션은 양방향으로 증폭된다 — 프리미엄보다 사이징과 정의된 위험이 먼저다."),
+      concept("options-basics", "The instrument: calls, puts, strikes, expiry, and what assignment actually means.", "도구: 콜·풋·행사가·만기, 그리고 배정이 실제로 의미하는 것.", { en: "Options 101 — Calls, Puts & Assignment", ko: "옵션 입문 — 콜·풋·배정" }),
+      guru("edward-thorp", "Edge, hedge, and size: the quantitative mindset behind selling priced risk for income.", "엣지·헤지·사이징: 가격이 매겨진 위험을 인컴을 위해 파는 정량적 사고방식."),
+      concept("covered-calls-wheel", "The core engine: covered calls, cash-secured puts, and the wheel — and their honest tradeoffs.", "핵심 엔진: 커버드콜, 현금담보풋, 그리고 휠 — 그리고 그 솔직한 트레이드오프.", { en: "Covered Calls, Cash-Secured Puts & the Wheel", ko: "커버드콜·현금담보풋·휠" }),
+      guru("emanuel-derman", "What you're really selling: implied volatility — and why the model is a metaphor, not the truth.", "당신이 실제로 파는 것: 내재변동성 — 그리고 모델은 진리가 아니라 은유라는 점."),
+      concept("dividend-investing", "Pairs naturally with quality, dividend-paying holdings you're glad to keep if assigned.", "배정되어도 기꺼이 보유할 우량 배당주와 자연스럽게 어울린다.", { en: "Quality Holdings for an Income Overlay", ko: "인컴 오버레이를 위한 우량 보유" }),
+      concept("trading-psychology", "The trap: capping upside and chasing premium into assets you don't actually want.", "함정: 상승을 막고, 실제로는 원치 않는 자산까지 프리미엄을 좇는 것."),
+    ],
+  },
+  {
+    // Merged technical-trading identity. Swing and day trading are holding-period
+    // horizons of one discipline, not separate strategies — this path teaches the
+    // swing core first, then escalates to the intraday (day-trading) reality check
+    // and microstructure as the highest-risk capstone.
+    id: "active-trading",
+    rank: 13,
+    riskRank: 10,
+    label: { en: "Active Technical Trading", ko: "능동적 기술적 트레이딩" },
+    blurb: {
+      en: "Trade technical setups over days (swing) down to intraday (day trading) — the highest-effort, highest-risk path. Most who go intraday lose money; learn the reality first.",
+      ko: "며칠 단위(스윙)부터 일중(데이 트레이딩)까지 기술적 셋업을 매매한다 — 가장 노력이 많이 들고 가장 위험한 길. 일중 매매에 뛰어든 대부분은 손실을 본다; 현실부터 배우라.",
     },
     schools: ["technical"],
     steps: [
-      concept("day-trading-reality-check", "Read this first: the odds, the cost drag, the leverage danger, and why ~90% lose money.", "이것부터 읽어라: 확률, 비용 부담, 레버리지 위험, 그리고 약 90%가 손실을 보는 이유.", { en: "Day Trading Reality Check — The Odds & The Costs", ko: "데이 트레이딩 현실 점검 — 확률과 비용" }),
-      guru("trading-psychology", "Day trading fails on discipline, not analysis: overtrading, revenge trading, tilt.", "데이 트레이딩은 분석이 아니라 규율에서 무너진다: 과매매, 복수 매매, 틸트."),
-      concept("risk-management", "The only mathematically defensible reason a minority survive: sizing and daily max-loss rules.", "소수가 살아남는 수학적으로 정당한 유일한 이유: 사이징과 일일 최대손실 규칙."),
-      concept("support-resistance-patterns", "The core intraday map: levels, ranges, breakouts, and failures.", "핵심 일중 지도: 레벨, 박스권, 돌파, 그리고 실패."),
-      concept("volume-obv", "Volume confirmation and climaxes — the bridge to tape and microstructure.", "거래량 확인과 클라이맥스 — 테이프와 시장 미시구조로 가는 다리."),
-      concept("candlestick-patterns", "A fast visual read of intraday bars: reversals and exhaustion on compressed timeframes.", "일중 봉의 빠른 시각적 해석: 압축된 시간대의 반전과 소진."),
-      guru("charles-dow", "Trend structure scaled to intraday — the conceptual root of price-action reading.", "일중으로 축소한 추세 구조 — 가격 행동 읽기의 개념적 뿌리."),
+      guru("charles-dow", "Foundation: trend definition and confirmation — the grammar every setup is written in.", "기초: 추세 정의와 확인 — 모든 셋업이 쓰여지는 문법."),
+      concept("support-resistance-patterns", "The levels you buy, stop, and target against; where a trade begins and ends.", "매수·손절·목표의 기준 레벨; 매매가 시작되고 끝나는 곳."),
+      concept("candlestick-patterns", "Entry-timing grammar: the precise bar to act on at a level.", "진입 타이밍의 문법: 레벨에서 행동할 정확한 봉."),
+      guru("steve-nison", "The master of candlesticks: reading engulfings, hammers, and stars at pivots.", "캔들차트의 거장: 변곡점에서 장악형·해머·별형 읽기."),
+      concept("volume-obv", "Volume confirms breakouts vs. traps and validates the move you'll ride.", "거래량은 브레이크아웃과 함정을 구분하고, 탈 움직임을 검증한다."),
+      concept("moving-averages", "The trend filter and dynamic support that say which trades are with the tide.", "어떤 매매가 큰 흐름과 같은 편인지 알려주는 추세 필터이자 동적 지지선."),
+      concept("rsi", "Overbought/oversold and momentum for timing pullback entries and exits into strength.", "과매수/과매도와 모멘텀으로 눌림목 진입과 강세 청산의 타이밍을 잡기."),
+      concept("macd", "Momentum and trend-shift confirmation, plus divergence — a core oscillator.", "모멘텀과 추세 전환 확인, 그리고 다이버전스 — 핵심 오실레이터."),
+      concept("bollinger-bands", "The volatility envelope: squeezes precede moves; band-walk vs. reversion.", "변동성 밴드: 수축은 움직임을 예고한다; 밴드 워킹 vs. 회귀."),
+      concept("adx-atr", "Regime filter (ADX) and volatility-based stop/target sizing (ATR).", "국면 필터(ADX)와 변동성 기반 손절/목표 사이징(ATR)."),
+      guru("welles-wilder", "The originator of RSI, ADX, and ATR — consolidating the indicator toolkit.", "RSI·ADX·ATR의 창시자 — 지표 도구함을 통합한다."),
+      guru("richard-wyckoff", "Accumulation/distribution and the composite operator: who is on the other side.", "매집/분산과 컴포지트 오퍼레이터: 반대편에 누가 있는가."),
+      guru("linda-raschke", "The model short-term playbook: regime-reading and concrete, codeable setups.", "모범 단기 플레이북: 국면 읽기와 코드화 가능한 구체적 셋업."),
+      guru("alan-farley", "The Master Swing Trader: Pattern Cycles, signal convergence, capital preservation first.", "마스터 스윙 트레이더: 패턴 사이클, 신호 수렴, 자본 보존 우선."),
+      concept("swing-trading-playbook", "The swing capstone: a repeatable scan → setup → entry → stop → target → manage workflow.", "스윙의 정점: 반복 가능한 스캔 → 셋업 → 진입 → 손절 → 목표 → 관리 워크플로우.", { en: "The Swing Trading Playbook: Entries, Stops & Targets", ko: "스윙 트레이딩 플레이북: 진입·손절·목표" }),
+      concept("day-trading-reality-check", "Before going intraday, read this: the odds, the cost drag, the leverage danger, and why ~90% lose money.", "일중 매매에 뛰어들기 전에 읽어라: 확률, 비용 부담, 레버리지 위험, 그리고 약 90%가 손실을 보는 이유.", { en: "Day Trading Reality Check — The Odds & The Costs", ko: "데이 트레이딩 현실 점검 — 확률과 비용" }),
       guru("jesse-livermore", "The original tape reader — and the original cautionary tale about discipline.", "원조 테이프 리더 — 그리고 규율에 관한 원조 경고담."),
-      guru("richard-wyckoff", "Tape reading and the composite operator: who is on the other side of your trade.", "테이프 읽기와 컴포지트 오퍼레이터: 당신 거래의 반대편에 누가 있는가."),
       guru("larry-williams", "Short-term timing systems: %R, volatility breakouts — canonical intraday methodology.", "단기 타이밍 시스템: %R, 변동성 돌파 — 전형적인 일중 방법론."),
-      guru("linda-raschke", "Professional short-term setups and a working trader's risk routine.", "프로의 단기 셋업과 현업 트레이더의 위험 관리 루틴."),
-      guru("alan-farley", "Pattern-cycle and intraday entries with tight risk control.", "패턴 사이클과 엄격한 위험 관리를 갖춘 일중 진입."),
-      guru("thomas-demark", "Exhaustion timing (TD Sequential) for intraday turning points — advanced, optional.", "일중 전환점을 위한 소진 타이밍(TD 시퀀셜) — 고급, 선택."),
-      guru("michael-huddleston", "Modern microstructure: liquidity, order blocks, stop-runs — last, and with a healthy skepticism.", "현대 미시구조: 유동성, 오더블록, 스톱런 — 마지막에, 건강한 회의와 함께."),
+      guru("michael-huddleston", "Modern microstructure: liquidity, order blocks, stop-runs — last, and with healthy skepticism.", "현대 미시구조: 유동성, 오더블록, 스톱런 — 마지막에, 건강한 회의와 함께."),
+      concept("risk-management", "Position sizing, stops, R-multiples, daily max-loss — the only reason a minority survive.", "비중 조절, 손절, R-멀티플, 일일 최대손실 — 소수가 살아남는 유일한 이유."),
+      concept("trading-psychology", "Discipline over analysis: overtrading, revenge trading, and tilt are what actually wreck traders.", "분석보다 규율: 과매매, 복수 매매, 틸트가 트레이더를 실제로 무너뜨린다."),
     ],
   },
 ];

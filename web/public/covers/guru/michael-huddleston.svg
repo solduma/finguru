@@ -1,0 +1,114 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-michael-huddleston-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-michael-huddleston-spot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,88%,82%)" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="hsl(160,88%,82%)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-michael-huddleston-curtain" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.45"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-michael-huddleston-vault" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="hsl(160,38%,7%)"/>
+      <stop offset="1" stop-color="hsl(160,45%,13%)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-michael-huddleston-bg)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#fff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="200" stroke="#fff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="110" y1="44" x2="110" y2="200" stroke="#fff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="290" y1="44" x2="290" y2="200" stroke="#fff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- spotlight cone from above onto empty vault -->
+  <polygon points="200,38 246,168 154,168" fill="url(#cv-guru-michael-huddleston-spot)"/>
+
+  <!-- ===== empty vault / safe pedestal (focal) ===== -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- pedestal -->
+    <rect x="168" y="158" width="64" height="14" rx="2" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+    <!-- vault body / frame -->
+    <rect x="160" y="78" width="80" height="80" rx="5" fill="url(#cv-guru-michael-huddleston-vault)"/>
+    <!-- hollow interior -->
+    <rect x="172" y="90" width="56" height="56" rx="3" fill="hsl(160,38%,7%)" fill-opacity="0.9"/>
+    <!-- door, ajar, swung open to the right -->
+    <g stroke-width="2">
+      <path d="M228 90 L252 84 L252 150 L228 146 Z" fill="hsl(160,68%,55%)" fill-opacity="0.35"/>
+      <!-- dial on door -->
+      <circle cx="240" cy="117" r="6" fill="none" stroke="hsl(160,88%,82%)"/>
+      <line x1="240" y1="117" x2="244" y2="113"/>
+    </g>
+    <!-- absent '$' embossed emblem (symbolic, no real text glyph: a coin-stroke ghost) -->
+    <g stroke="hsl(160,22%,46%)" stroke-width="2">
+      <path d="M200 102 c-7 0 -10 5 -3 8 c8 3 5 9 -2 9 c-4 0 -6 -2 -6 -2"/>
+      <line x1="200" y1="98" x2="200" y2="123"/>
+    </g>
+  </g>
+
+  <!-- ===== theater curtains ===== -->
+  <!-- right drape: still mostly closed -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M400 42 C 372 60 356 110 360 200 L400 200 Z" fill="url(#cv-guru-michael-huddleston-curtain)"/>
+    <path d="M388 50 C 380 100 380 150 384 198" fill="none" stroke-opacity="0.6"/>
+    <path d="M372 56 C 366 104 366 152 368 198" fill="none" stroke-opacity="0.4"/>
+  </g>
+  <!-- left drape: pulled half open, gathered -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 42 C 30 56 56 70 60 120 C 62 160 40 185 64 200 L0 200 Z" fill="url(#cv-guru-michael-huddleston-curtain)"/>
+    <path d="M14 52 C 36 90 30 150 40 196" fill="none" stroke-opacity="0.6"/>
+    <path d="M30 60 C 50 96 44 150 52 196" fill="none" stroke-opacity="0.4"/>
+    <!-- top valance -->
+    <path d="M0 42 L400 42" fill="none" stroke-opacity="0.5"/>
+  </g>
+
+  <!-- hand at top-left gripping the cord -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- cord -->
+    <path d="M60 118 C 40 108 30 96 22 78" stroke="hsl(160,75%,66%)"/>
+    <circle cx="60" cy="120" r="3" fill="hsl(160,88%,82%)" stroke="none"/>
+    <!-- simplified gripping hand -->
+    <path d="M22 78 c-6 -1 -10 2 -11 7 c-1 5 3 8 8 8 c4 0 7 -2 8 -5"/>
+    <path d="M15 74 l-1 -8 M20 75 l1 -9 M25 77 l3 -7"/>
+  </g>
+
+  <!-- ===== blueprint sheet (recycled Wyckoff source) ===== -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 182 L262 178 L256 204 L142 206 Z" fill="hsl(160,68%,55%)" fill-opacity="0.10"/>
+    <!-- faint old diagram lines on the sheet -->
+    <path d="M165 195 l12 -6 l10 5 l14 -7 l12 6 l16 -8" fill="none" stroke-opacity="0.55"/>
+    <line x1="160" y1="200" x2="244" y2="197" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- ===== open cardboard box overflowing with jargon-label tags ===== -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- box body -->
+    <path d="M178 184 L226 184 L222 206 L182 206 Z" fill="hsl(160,68%,55%)" fill-opacity="0.30"/>
+    <!-- open flaps -->
+    <path d="M178 184 L168 176 L214 174 L226 184" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+    <path d="M226 184 L238 176 L222 206" fill="none" stroke-opacity="0.7"/>
+    <!-- spilling label tags (no text, just tag shapes) -->
+    <g fill="hsl(160,88%,82%)" fill-opacity="0.8" stroke-width="1.5">
+      <path d="M186 178 l10 -2 l3 5 l-3 5 l-10 2 Z"/>
+      <path d="M202 172 l11 -1 l3 5 l-4 5 l-10 1 Z" fill-opacity="0.6"/>
+      <path d="M196 165 l9 0 l3 4 l-3 5 l-9 0 Z" fill-opacity="0.7"/>
+    </g>
+    <circle cx="188" cy="180" r="1.1" fill="hsl(160,45%,13%)" stroke="none"/>
+    <circle cx="204" cy="174" r="1.1" fill="hsl(160,45%,13%)" stroke="none"/>
+  </g>
+
+  <!-- ===== audience silhouettes in foreground ===== -->
+  <g fill="hsl(160,38%,7%)" fill-opacity="0.92" stroke="hsl(160,22%,46%)" stroke-width="1">
+    <path d="M70 234 q0 -14 12 -14 q12 0 12 14 Z M82 220 a6 6 0 1 1 0.1 0 Z"/>
+    <path d="M118 236 q0 -15 13 -15 q13 0 13 15 Z M131 220 a6.5 6.5 0 1 1 0.1 0 Z"/>
+    <path d="M174 238 q0 -16 14 -16 q14 0 14 16 Z M188 221 a7 7 0 1 1 0.1 0 Z"/>
+    <path d="M232 236 q0 -15 13 -15 q13 0 13 15 Z M245 220 a6.5 6.5 0 1 1 0.1 0 Z"/>
+    <path d="M286 234 q0 -14 12 -14 q12 0 12 14 Z M298 220 a6 6 0 1 1 0.1 0 Z"/>
+  </g>
+</svg>

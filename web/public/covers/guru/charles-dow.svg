@@ -1,0 +1,64 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-charles-dow-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-charles-dow-stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.20"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-charles-dow-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="92" y1="40" x2="92" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="308" y1="40" x2="308" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ghosted building arch behind: foundation for everything after -->
+  <g stroke="hsl(160,75%,66%)" stroke-opacity="0.16" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M118 196 L118 96 A82 82 0 0 1 282 96 L282 196"/>
+    <path d="M138 196 L138 104 A62 62 0 0 1 262 104 L262 196"/>
+  </g>
+
+  <!-- two converging pillars: confirmation handshake -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" fill="hsl(160,68%,55%)" fill-opacity="0.18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M168 152 L188 70 L196 70 L182 152 Z"/>
+    <path d="M232 152 L212 70 L204 70 L218 152 Z"/>
+  </g>
+  <!-- meeting tips -->
+  <circle cx="200" cy="68" r="4.5" fill="hsl(160,88%,82%)"/>
+  <line x1="192" y1="70" x2="208" y2="70" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- cornerstone block (isometric) -->
+  <!-- front face -->
+  <path d="M126 196 L274 196 L274 154 L126 154 Z" fill="url(#cv-guru-charles-dow-stone)" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- top face -->
+  <path d="M126 154 L150 138 L298 138 L274 154 Z" fill="hsl(160,68%,55%)" fill-opacity="0.32" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- side face -->
+  <path d="M274 154 L298 138 L298 180 L274 196 Z" fill="hsl(160,38%,7%)" fill-opacity="0.45" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- engraved newspaper text lines on front face -->
+  <g stroke="hsl(160,88%,82%)" stroke-opacity="0.55" stroke-width="1" stroke-linecap="round">
+    <line x1="136" y1="163" x2="194" y2="163"/>
+    <line x1="204" y1="163" x2="264" y2="163"/>
+    <line x1="136" y1="170" x2="184" y2="170"/>
+    <line x1="194" y1="170" x2="264" y2="170"/>
+    <line x1="136" y1="177" x2="210" y2="177"/>
+    <line x1="220" y1="177" x2="264" y2="177"/>
+    <line x1="136" y1="184" x2="190" y2="184"/>
+    <line x1="200" y1="184" x2="248" y2="184"/>
+  </g>
+  <!-- column divider -->
+  <line x1="200" y1="159" x2="200" y2="190" stroke="hsl(160,75%,66%)" stroke-opacity="0.4" stroke-width="1"/>
+
+  <!-- chisel / printer's quill leaning at lower-left base -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="84" y1="206" x2="120" y2="160"/>
+    <path d="M118 156 L126 162 L122 167 L114 161 Z" fill="hsl(160,88%,82%)" fill-opacity="0.8" stroke="hsl(160,88%,82%)"/>
+    <line x1="82" y1="208" x2="88" y2="203" stroke="hsl(160,22%,46%)" stroke-width="3"/>
+  </g>
+</svg>

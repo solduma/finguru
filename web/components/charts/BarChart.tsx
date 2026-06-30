@@ -2,7 +2,7 @@
 
 import { Chart } from "react-chartjs-2";
 import { ensureRegistered } from "./register";
-import { COLORS, levelLine } from "./theme";
+import { COLORS, levelLine, CHART_PADDING, legendConfig } from "./theme";
 import ChartFrame from "./ChartFrame";
 
 ensureRegistered();
@@ -95,17 +95,19 @@ export default function BarChart({
   };
 
   const data = { labels, datasets };
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const options = {
     indexAxis: horizontal ? ("y" as const) : ("x" as const),
     responsive: true,
     maintainAspectRatio: false,
+    animation: reduceMotion
+      ? (false as const)
+      : { duration: 1200, easing: "easeInOutQuart" as const },
+    layout: { padding: CHART_PADDING },
     plugins: {
-      legend: {
-        display: !hideLegend && series.length > 1,
-        labels: { boxWidth: 12, font: { size: 11 } },
-        position: "top" as const,
-        align: "end" as const,
-      },
+      legend: legendConfig(!hideLegend && series.length > 1),
       tooltip: { enabled: true },
       annotation: { annotations },
     },

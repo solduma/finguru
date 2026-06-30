@@ -1,0 +1,145 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-david-shaw" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-david-shaw)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="40" y1="0" x2="40" y2="250" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="360" y1="0" x2="360" y2="250" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- server cabinets backdrop (upper-left) -->
+  <g stroke="hsl(270,22%,46%)" stroke-width="1.5" fill="hsl(270,68%,55%)" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="48" y="48" width="42" height="92" rx="3" fill-opacity="0.15"/>
+    <rect x="96" y="56" width="42" height="84" rx="3" fill-opacity="0.12"/>
+    <rect x="144" y="50" width="42" height="90" rx="3" fill-opacity="0.10"/>
+  </g>
+  <!-- cabinet grid panels -->
+  <g stroke="hsl(270,75%,66%)" stroke-opacity="0.35" stroke-width="0.8">
+    <line x1="54" y1="62" x2="84" y2="62"/>
+    <line x1="54" y1="74" x2="84" y2="74"/>
+    <line x1="54" y1="86" x2="84" y2="86"/>
+    <line x1="54" y1="98" x2="84" y2="98"/>
+    <line x1="54" y1="110" x2="84" y2="110"/>
+    <line x1="54" y1="122" x2="84" y2="122"/>
+    <line x1="102" y1="70" x2="132" y2="70"/>
+    <line x1="102" y1="82" x2="132" y2="82"/>
+    <line x1="102" y1="94" x2="132" y2="94"/>
+    <line x1="102" y1="106" x2="132" y2="106"/>
+    <line x1="102" y1="118" x2="132" y2="118"/>
+    <line x1="150" y1="64" x2="180" y2="64"/>
+    <line x1="150" y1="76" x2="180" y2="76"/>
+    <line x1="150" y1="88" x2="180" y2="88"/>
+    <line x1="150" y1="100" x2="180" y2="100"/>
+    <line x1="150" y1="112" x2="180" y2="112"/>
+  </g>
+  <!-- blinking light dots -->
+  <g fill="hsl(270,88%,82%)">
+    <circle cx="58" cy="56" r="1.6"/>
+    <circle cx="65" cy="56" r="1.6" fill-opacity="0.5"/>
+    <circle cx="106" cy="64" r="1.6"/>
+    <circle cx="113" cy="64" r="1.6" fill-opacity="0.5"/>
+    <circle cx="154" cy="58" r="1.6"/>
+    <circle cx="161" cy="58" r="1.6" fill-opacity="0.5"/>
+  </g>
+
+  <!-- conveyor belt (lower third, left-to-right) -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="44" y1="196" x2="356" y2="196"/>
+    <line x1="44" y1="206" x2="356" y2="206"/>
+  </g>
+  <!-- belt segment ticks -->
+  <g stroke="hsl(270,22%,46%)" stroke-width="1" stroke-opacity="0.7">
+    <line x1="60" y1="196" x2="60" y2="206"/>
+    <line x1="90" y1="196" x2="90" y2="206"/>
+    <line x1="120" y1="196" x2="120" y2="206"/>
+    <line x1="150" y1="196" x2="150" y2="206"/>
+    <line x1="180" y1="196" x2="180" y2="206"/>
+    <line x1="210" y1="196" x2="210" y2="206"/>
+    <line x1="240" y1="196" x2="240" y2="206"/>
+    <line x1="270" y1="196" x2="270" y2="206"/>
+    <line x1="300" y1="196" x2="300" y2="206"/>
+    <line x1="330" y1="196" x2="330" y2="206"/>
+  </g>
+
+  <!-- dense row of tiny identical coins on belt -->
+  <g fill="hsl(270,68%,55%)" stroke="hsl(270,75%,66%)" stroke-width="1">
+    <circle cx="58" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="74" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="90" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="106" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="122" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="138" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="154" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="170" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="244" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="260" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="276" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="292" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="308" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="324" cy="190" r="4" fill-opacity="0.55"/>
+    <circle cx="340" cy="190" r="4" fill-opacity="0.55"/>
+  </g>
+  <!-- coin inner mark -->
+  <g fill="none" stroke="hsl(270,88%,82%)" stroke-width="0.7" stroke-opacity="0.6">
+    <circle cx="58" cy="190" r="1.8"/>
+    <circle cx="90" cy="190" r="1.8"/>
+    <circle cx="122" cy="190" r="1.8"/>
+    <circle cx="154" cy="190" r="1.8"/>
+    <circle cx="260" cy="190" r="1.8"/>
+    <circle cx="292" cy="190" r="1.8"/>
+    <circle cx="324" cy="190" r="1.8"/>
+  </g>
+
+  <!-- fleeting price gap wedges between coins -->
+  <g fill="hsl(270,88%,82%)" fill-opacity="0.55">
+    <path d="M66 184 l3 0 l-1.5 4 Z"/>
+    <path d="M98 184 l3 0 l-1.5 4 Z"/>
+    <path d="M130 184 l3 0 l-1.5 4 Z"/>
+    <path d="M162 184 l3 0 l-1.5 4 Z"/>
+    <path d="M268 184 l3 0 l-1.5 4 Z"/>
+    <path d="M300 184 l3 0 l-1.5 4 Z"/>
+    <path d="M332 184 l3 0 l-1.5 4 Z"/>
+  </g>
+
+  <!-- robotic arm anchored upper-right, angling down to center -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="hsl(270,68%,55%)">
+    <!-- base mount upper-right -->
+    <rect x="320" y="46" width="40" height="20" rx="3" fill-opacity="0.4"/>
+    <circle cx="340" cy="66" r="6" fill-opacity="0.5"/>
+    <!-- upper arm segment -->
+    <rect x="262" y="62" width="84" height="14" rx="7" transform="rotate(20 304 69)" fill-opacity="0.3"/>
+    <!-- elbow joint -->
+    <circle cx="268" cy="98" r="7" fill-opacity="0.5"/>
+    <!-- lower arm segment angling to center -->
+    <rect x="214" y="98" width="62" height="14" rx="7" transform="rotate(48 245 105)" fill-opacity="0.3"/>
+    <!-- wrist joint -->
+    <circle cx="233" cy="138" r="6" fill-opacity="0.5"/>
+  </g>
+
+  <!-- pincer claw lifting coins, just above belt -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="233" y1="138" x2="220" y2="158"/>
+    <path d="M220 158 l-9 12 M220 158 l9 12"/>
+  </g>
+
+  <!-- cluster of coins being lifted -->
+  <g fill="hsl(270,68%,55%)" stroke="hsl(270,75%,66%)" stroke-width="1">
+    <circle cx="216" cy="174" r="4.5" fill-opacity="0.85"/>
+    <circle cx="227" cy="176" r="4" fill-opacity="0.75"/>
+    <circle cx="221" cy="166" r="3.5" fill-opacity="0.7"/>
+  </g>
+  <g fill="none" stroke="hsl(270,88%,82%)" stroke-width="0.7" stroke-opacity="0.7">
+    <circle cx="216" cy="174" r="2"/>
+    <circle cx="227" cy="176" r="1.8"/>
+  </g>
+
+  <!-- faint dotted arc tracing the motion -->
+  <path d="M195 188 Q210 150 233 138" fill="none" stroke="hsl(270,88%,82%)" stroke-opacity="0.5" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="1 6"/>
+</svg>

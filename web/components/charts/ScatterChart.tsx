@@ -2,7 +2,7 @@
 
 import { Chart } from "react-chartjs-2";
 import { ensureRegistered } from "./register";
-import { COLORS } from "./theme";
+import { COLORS, CHART_PADDING, legendConfig } from "./theme";
 import ChartFrame from "./ChartFrame";
 
 ensureRegistered();
@@ -86,6 +86,8 @@ export default function ScatterChart({
         padding: 3,
         borderRadius: 4,
         yAdjust: -14,
+        // Render past the plot-area edge rather than being sheared (mobile).
+        clip: false,
       };
     });
   });
@@ -106,16 +108,18 @@ export default function ScatterChart({
   });
 
   const data = { datasets };
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: reduceMotion
+      ? (false as const)
+      : { duration: 1200, easing: "easeInOutQuart" as const },
+    layout: { padding: CHART_PADDING },
     plugins: {
-      legend: {
-        display: !hideLegend && series.length > 1,
-        labels: { boxWidth: 12, font: { size: 11 } },
-        position: "top" as const,
-        align: "end" as const,
-      },
+      legend: legendConfig(!hideLegend && series.length > 1),
       tooltip: { enabled: true },
       annotation: { annotations },
     },

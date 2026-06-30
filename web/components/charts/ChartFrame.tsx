@@ -1,6 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import Reveal from "@/components/Reveal";
 
 /** A consistent figure wrapper: bordered panel, fixed aspect, caption. */
 export default function ChartFrame({
@@ -12,17 +13,33 @@ export default function ChartFrame({
   height?: number;
   children: ReactNode;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") { setShow(true); return; }
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0]?.isIntersecting) { setShow(true); obs.disconnect(); }
+    }, { threshold: 0.15 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
   return (
     <figure className="my-6 not-prose">
-      <div
-        className="rounded-lg border border-white/10 bg-[#0f131c] p-3"
-        style={{ height }}
-      >
-        {children}
-      </div>
+      <Reveal threshold={0.15} delayMs={0}>
+        <div
+          ref={ref}
+          className="rounded-lg border border-white/10 bg-[#0f131c] p-3"
+          style={{ height }}
+        >
+          {show ? <div className="h-full">{children}</div> : null}
+        </div>
+      </Reveal>
       {caption && (
         <figcaption className="mt-2 text-center text-xs text-gray-500">
-          {caption} <span className="opacity-70">· illustrative</span>
+          <Reveal delayMs={150} as="span" className="block">
+            {caption} <span className="opacity-70">· illustrative</span>
+          </Reveal>
         </figcaption>
       )}
     </figure>

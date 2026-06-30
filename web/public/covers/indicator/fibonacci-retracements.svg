@@ -1,0 +1,63 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-fibonacci-retracements" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-fibonacci-retracements)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="100" y1="40" x2="100" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="125" x2="400" y2="125" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- translucent ratio bands crossing the full frame -->
+  <rect x="0" y="78" width="400" height="20" fill="hsl(160,68%,55%)" fill-opacity="0.10"/>
+  <rect x="0" y="118" width="400" height="20" fill="hsl(160,68%,55%)" fill-opacity="0.15"/>
+  <rect x="0" y="158" width="400" height="20" fill="hsl(160,68%,55%)" fill-opacity="0.10"/>
+
+  <!-- ratio band marker dots (in place of numeric labels) -->
+  <circle cx="356" cy="128" r="3" fill="hsl(160,88%,82%)"/>
+  <circle cx="362" cy="128" r="2" fill="hsl(160,88%,82%)" fill-opacity="0.6"/>
+  <circle cx="356" cy="88" r="3" fill="hsl(160,88%,82%)" fill-opacity="0.7"/>
+  <circle cx="362" cy="88" r="2" fill="hsl(160,88%,82%)" fill-opacity="0.4"/>
+
+  <!-- nested Fibonacci square grid (center-left), spiraling outward to upper right -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.9">
+    <!-- big 8 square -->
+    <rect x="60" y="98" width="80" height="80"/>
+    <!-- 5 square -->
+    <rect x="140" y="98" width="50" height="50"/>
+    <!-- 3 square -->
+    <rect x="140" y="148" width="30" height="30"/>
+    <!-- 2 square -->
+    <rect x="170" y="158" width="20" height="20"/>
+    <!-- 1 squares -->
+    <rect x="170" y="148" width="10" height="10"/>
+    <rect x="180" y="148" width="10" height="10"/>
+  </g>
+
+  <!-- golden spiral: single clean arc unfurling from tight center outward -->
+  <path d="M 180 153
+           A 5 5 0 0 1 185 158
+           A 10 10 0 0 1 175 168
+           A 20 20 0 0 1 155 148
+           A 30 30 0 0 1 185 118
+           A 50 50 0 0 1 135 168
+           A 80 80 0 0 1 215 88"
+        fill="none" stroke="hsl(160,88%,82%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- price swing arrows tucked inside the spiral -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 100 170 L 122 132"/>
+    <path d="M 122 132 L 116 138 M 122 132 L 124 140"/>
+    <path d="M 122 132 L 138 150" stroke-opacity="0.55"/>
+    <path d="M 138 150 L 132 144 M 138 150 L 144 146" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- subtle outer growth arc echo -->
+  <path d="M 215 88 A 95 95 0 0 1 150 178" fill="none" stroke="hsl(160,68%,55%)" stroke-width="1" stroke-opacity="0.3" stroke-linecap="round"/>
+</svg>

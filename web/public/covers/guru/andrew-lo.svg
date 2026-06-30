@@ -1,0 +1,112 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-andrew-lo-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-andrew-lo-glass" cx="0.42" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="hsl(270,68%,55%)" stop-opacity="0.18"/>
+      <stop offset="0.7" stop-color="hsl(270,68%,55%)" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="hsl(270,68%,55%)" stop-opacity="0.02"/>
+    </radialGradient>
+    <radialGradient id="cv-guru-andrew-lo-sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(270,88%,82%)" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="hsl(270,88%,82%)" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="cv-guru-andrew-lo-dome">
+      <path d="M200 36 C272 36 322 92 322 162 C322 196 314 214 314 214 L86 214 C86 214 78 196 78 162 C78 92 128 36 200 36 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-andrew-lo-bg)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="0" x2="120" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="0" x2="280" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- changing-environment sun pressing in from above the dome -->
+  <circle cx="248" cy="34" r="34" fill="url(#cv-guru-andrew-lo-sun)"/>
+  <circle cx="248" cy="34" r="11" fill="hsl(270,88%,82%)" fill-opacity="0.9"/>
+  <g stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7">
+    <line x1="248" y1="10" x2="248" y2="2"/>
+    <line x1="270" y1="20" x2="276" y2="14"/>
+    <line x1="226" y1="20" x2="220" y2="14"/>
+    <line x1="272" y1="46" x2="279" y2="51"/>
+  </g>
+
+  <!-- glass dome interior glow -->
+  <path d="M200 36 C272 36 322 92 322 162 C322 196 314 214 314 214 L86 214 C86 214 78 196 78 162 C78 92 128 36 200 36 Z" fill="url(#cv-guru-andrew-lo-glass)"/>
+
+  <!-- contents clipped to the dome world -->
+  <g clip-path="url(#cv-guru-andrew-lo-dome)">
+
+    <!-- soil floor / finite resource base -->
+    <rect x="60" y="196" width="280" height="24" fill="hsl(270,68%,55%)" fill-opacity="0.20"/>
+
+    <!-- branching roots = finite food source organisms cluster around -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.85">
+      <path d="M200 196 L200 168"/>
+      <path d="M200 178 C190 184 184 192 182 200"/>
+      <path d="M200 178 C210 184 216 192 218 200"/>
+      <path d="M200 186 C194 190 190 196 189 202"/>
+      <path d="M200 186 C206 190 210 196 211 202"/>
+    </g>
+    <!-- tiny food / seed source glow -->
+    <circle cx="200" cy="166" r="6" fill="hsl(270,88%,82%)" fill-opacity="0.9"/>
+    <circle cx="200" cy="166" r="11" fill="hsl(270,88%,82%)" fill-opacity="0.18"/>
+
+    <!-- leafy sprout species (lower left, reaching to resource) -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M138 200 C140 184 144 174 152 168"/>
+      <path d="M142 184 C134 182 128 176 126 168 C136 168 142 172 144 180" fill="hsl(270,68%,55%)" fill-opacity="0.45"/>
+      <path d="M147 176 C152 168 160 166 168 167 C164 175 156 179 148 178" fill="hsl(270,68%,55%)" fill-opacity="0.45"/>
+    </g>
+
+    <!-- fish species (upper, swimming toward light) -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M124 96 C140 86 168 86 184 100 C168 114 140 114 124 104 Z" fill="hsl(270,68%,55%)" fill-opacity="0.55"/>
+      <path d="M124 100 L108 90 L112 100 L108 110 Z" fill="hsl(270,68%,55%)" fill-opacity="0.55"/>
+      <circle cx="174" cy="98" r="2.2" fill="hsl(270,38%,9%)" stroke="none"/>
+    </g>
+
+    <!-- jellyfish species (upper right, drifting) -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M252 96 C252 84 264 76 276 76 C288 76 300 84 300 96 C292 96 288 100 284 100 C280 96 276 96 276 96 C276 96 272 96 268 100 C264 100 260 96 252 96 Z" fill="hsl(270,68%,55%)" fill-opacity="0.55"/>
+      <path d="M260 99 C260 108 258 116 256 124" fill="none"/>
+      <path d="M276 100 C276 110 276 120 276 130" fill="none"/>
+      <path d="M292 99 C292 108 294 116 296 124" fill="none"/>
+    </g>
+
+    <!-- beetle species (mid right, near resource) -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="248" cy="150" rx="16" ry="20" fill="hsl(270,68%,55%)" fill-opacity="0.55"/>
+      <line x1="248" y1="132" x2="248" y2="168"/>
+      <circle cx="248" cy="128" r="5" fill="hsl(270,68%,55%)" fill-opacity="0.55"/>
+      <path d="M232 144 L224 138 M232 152 L222 152 M232 160 L224 166"/>
+      <path d="M264 144 L272 138 M264 152 L274 152 M264 160 L272 166"/>
+      <path d="M245 124 L240 117 M251 124 L256 117"/>
+    </g>
+
+    <!-- EXTINCT / skeletal organism — faint on the foreground floor -->
+    <g stroke="hsl(270,22%,46%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.8">
+      <path d="M96 200 C112 195 140 196 156 202 C148 206 116 207 100 204 L96 200 Z"/>
+      <path d="M96 200 L84 195 L88 200 L84 205 Z"/>
+      <line x1="112" y1="198" x2="112" y2="204"/>
+      <line x1="122" y1="197" x2="122" y2="205"/>
+      <line x1="132" y1="197" x2="132" y2="205"/>
+      <line x1="142" y1="198" x2="142" y2="204"/>
+      <circle cx="148" cy="200" r="1.6" fill="hsl(270,22%,46%)" stroke="none"/>
+    </g>
+
+  </g>
+
+  <!-- glass dome outline + rim + highlight -->
+  <path d="M200 36 C272 36 322 92 322 162 C322 196 314 214 314 214 L86 214 C86 214 78 196 78 162 C78 92 128 36 200 36 Z" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="74" y1="214" x2="326" y2="214" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M126 70 C112 88 106 116 108 142" fill="none" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.45"/>
+  <!-- dome finial knob -->
+  <circle cx="200" cy="36" r="4" fill="hsl(270,75%,66%)"/>
+</svg>

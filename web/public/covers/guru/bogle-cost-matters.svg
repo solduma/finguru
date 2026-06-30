@@ -1,0 +1,72 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-bogle-cost-matters" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-bogle-cost-matters)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="100" x2="360" y2="100" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <g fill="none" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- central post planted on baseline -->
+    <line x1="200" y1="212" x2="200" y2="86"/>
+    <path d="M180 212 H220" stroke-width="3"/>
+    <circle cx="200" cy="84" r="5" fill="hsl(270,68%,55%)" fill-opacity="0.6"/>
+
+    <!-- balance beam, tilted toward heavy lower-left -->
+    <line x1="118" y1="112" x2="282" y2="60" stroke-width="3"/>
+
+    <!-- LEFT pan hanger (low) -->
+    <line x1="118" y1="112" x2="98" y2="150"/>
+    <line x1="118" y1="112" x2="138" y2="150"/>
+    <path d="M86 150 Q118 178 150 150" fill="hsl(270,68%,55%)" fill-opacity="0.18"/>
+    <path d="M86 150 Q118 178 150 150"/>
+
+    <!-- heavy plain coin stack on left pan -->
+    <g stroke-width="1.6">
+      <ellipse cx="118" cy="146" rx="22" ry="6" fill="hsl(270,68%,55%)" fill-opacity="0.55"/>
+      <ellipse cx="118" cy="138" rx="22" ry="6" fill="hsl(270,68%,55%)" fill-opacity="0.45"/>
+      <ellipse cx="118" cy="130" rx="22" ry="6" fill="hsl(270,68%,55%)" fill-opacity="0.35"/>
+      <ellipse cx="118" cy="122" rx="22" ry="6" fill="hsl(270,88%,82%)" fill-opacity="0.55"/>
+    </g>
+
+    <!-- RIGHT pan hanger (high) -->
+    <line x1="282" y1="60" x2="262" y2="98"/>
+    <line x1="282" y1="60" x2="302" y2="98"/>
+    <path d="M250 98 Q282 126 314 98" fill="hsl(270,68%,55%)" fill-opacity="0.10"/>
+    <path d="M250 98 Q282 126 314 98"/>
+
+    <!-- light ornate trophy + crown on right pan -->
+    <g stroke-width="1.6">
+      <!-- trophy base -->
+      <rect x="276" y="88" width="12" height="6" rx="1" fill="hsl(270,68%,55%)" fill-opacity="0.25"/>
+      <line x1="282" y1="88" x2="282" y2="80"/>
+      <!-- trophy cup -->
+      <path d="M270 64 Q272 80 282 80 Q292 80 294 64 Z" fill="hsl(270,68%,55%)" fill-opacity="0.20"/>
+      <!-- trophy handles -->
+      <path d="M270 66 Q262 68 264 76"/>
+      <path d="M294 66 Q302 68 300 76"/>
+      <!-- small crown on top -->
+      <path d="M274 60 L276 50 L279 56 L282 48 L285 56 L288 50 L290 60 Z" fill="hsl(270,88%,82%)" fill-opacity="0.45"/>
+    </g>
+
+  </g>
+
+  <!-- chalk-style subtraction mark near the fulcrum -->
+  <g stroke="hsl(270,88%,82%)" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round">
+    <line x1="190" y1="98" x2="210" y2="98"/>
+  </g>
+  <g stroke="hsl(270,22%,46%)" stroke-width="1" stroke-linecap="round" opacity="0.6">
+    <line x1="184" y1="108" x2="216" y2="108"/>
+    <line x1="200" y1="103" x2="200" y2="113"/>
+  </g>
+
+</svg>

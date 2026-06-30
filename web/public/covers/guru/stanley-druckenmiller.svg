@@ -1,0 +1,96 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-stanley-druckenmiller" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <clipPath id="cv-guru-stanley-druckenmiller-chip">
+      <ellipse cx="262" cy="92" rx="46" ry="15"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-stanley-druckenmiller)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- bold horizontal all-in line across the table -->
+  <line x1="40" y1="158" x2="360" y2="158" stroke="hsl(200,75%,66%)" stroke-width="3" stroke-linecap="round" stroke-dasharray="14 9"/>
+
+  <!-- tipping balance scale, upper-left, tilted heavily -->
+  <g stroke="hsl(200,22%,46%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="58" y1="48" x2="58" y2="78"/>
+    <line x1="40" y1="50" x2="76" y2="46"/>
+    <line x1="42" y1="50" x2="34" y2="64"/>
+    <line x1="42" y1="50" x2="50" y2="64"/>
+    <path d="M34 64 Q42 72 50 64" fill="hsl(200,68%,55%)" fill-opacity="0.55"/>
+    <line x1="74" y1="46" x2="69" y2="55"/>
+    <line x1="74" y1="46" x2="79" y2="55"/>
+    <path d="M69 55 Q74 60 79 55" fill="hsl(200,68%,55%)" fill-opacity="0.2"/>
+    <line x1="50" y1="78" x2="66" y2="78"/>
+  </g>
+
+  <!-- small reserved chip stacks, lower-left background, for scale contrast -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+    <!-- stack 1 -->
+    <ellipse cx="70" cy="190" rx="18" ry="6" fill="hsl(200,68%,55%)" fill-opacity="0.18"/>
+    <path d="M52 190 v-8 a18 6 0 0 0 36 0 v8" fill="hsl(200,68%,55%)" fill-opacity="0.12"/>
+    <ellipse cx="70" cy="182" rx="18" ry="6" fill="hsl(200,68%,55%)" fill-opacity="0.22"/>
+    <ellipse cx="70" cy="176" rx="18" ry="6" fill="hsl(200,68%,55%)" fill-opacity="0.22"/>
+    <!-- stack 2 -->
+    <ellipse cx="108" cy="192" rx="16" ry="5" fill="hsl(200,68%,55%)" fill-opacity="0.16"/>
+    <path d="M92 192 v-6 a16 5 0 0 0 32 0 v6" fill="hsl(200,68%,55%)" fill-opacity="0.1"/>
+    <ellipse cx="108" cy="186" rx="16" ry="5" fill="hsl(200,68%,55%)" fill-opacity="0.2"/>
+    <!-- stack 3 -->
+    <ellipse cx="142" cy="193" rx="14" ry="5" fill="hsl(200,68%,55%)" fill-opacity="0.16"/>
+    <ellipse cx="142" cy="188" rx="14" ry="5" fill="hsl(200,68%,55%)" fill-opacity="0.2"/>
+  </g>
+
+  <!-- THE giant chip stack (focal), crossing the all-in line -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- body of the tall cylinder -->
+    <path d="M216 92 v82 a46 15 0 0 0 92 0 v-82" fill="hsl(200,68%,55%)" fill-opacity="0.28"/>
+    <!-- chip seam lines down the stack -->
+    <line x1="216" y1="108" x2="216" y2="190" stroke-opacity="0"/>
+    <g stroke="hsl(200,88%,82%)" stroke-width="1" opacity="0.5">
+      <path d="M216 108 a46 15 0 0 0 92 0"/>
+      <path d="M216 124 a46 15 0 0 0 92 0"/>
+      <path d="M216 140 a46 15 0 0 0 92 0"/>
+      <path d="M216 156 a46 15 0 0 0 92 0"/>
+      <path d="M216 172 a46 15 0 0 0 92 0"/>
+    </g>
+    <!-- top face of giant chip -->
+    <ellipse cx="262" cy="92" rx="46" ry="15" fill="hsl(200,68%,55%)" fill-opacity="0.6"/>
+    <ellipse cx="262" cy="92" rx="36" ry="11" fill="none" stroke="hsl(200,88%,82%)" stroke-width="1"/>
+    <!-- pig motif embossed on top face, clipped to chip -->
+    <g clip-path="url(#cv-guru-stanley-druckenmiller-chip)" stroke="hsl(200,88%,82%)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.85">
+      <ellipse cx="262" cy="92" rx="15" ry="9" fill="hsl(200,88%,82%)" fill-opacity="0.15"/>
+      <ellipse cx="269" cy="93" rx="5" ry="4" fill="hsl(200,88%,82%)" fill-opacity="0.2"/>
+      <circle cx="267" cy="92.5" r="0.9" fill="hsl(200,88%,82%)" stroke="none"/>
+      <circle cx="271" cy="92.5" r="0.9" fill="hsl(200,88%,82%)" stroke="none"/>
+      <circle cx="259" cy="89" r="0.9" fill="hsl(200,88%,82%)" stroke="none"/>
+      <path d="M250 86 l2 -3 M256 84 l1 -3"/>
+    </g>
+  </g>
+
+  <!-- flat open hand pushing the giant stack forward -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="hsl(200,68%,55%)" fill-opacity="0.4">
+    <path d="M352 118
+             q-14 -2 -28 0
+             l-2 -16 q-1 -5 -6 -5 q-5 0 -5 5 l1 14
+             l-1 -20 q0 -6 -6 -6 q-6 0 -6 6 l1 21
+             l-2 -16 q-1 -6 -6 -6 q-5 0 -5 6 l2 18
+             l-4 -8 q-3 -5 -7 -2 q-4 3 -1 8
+             l10 24 q4 11 16 13 l20 2
+             q14 1 18 -10 q4 -12 -6 -15 z" />
+  </g>
+  <!-- motion lines from the hand -->
+  <g stroke="hsl(200,88%,82%)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
+    <line x1="360" y1="128" x2="350" y2="128"/>
+    <line x1="364" y1="138" x2="352" y2="138"/>
+  </g>
+</svg>

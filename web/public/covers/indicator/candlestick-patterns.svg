@@ -1,0 +1,64 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-candlestick-patterns" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-candlestick-patterns)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="90" x2="400" y2="90" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- backdrop wall panel (rear plane) -->
+  <rect x="70" y="42" width="260" height="158" rx="6" fill="hsl(160,38%,10%)" stroke="hsl(160,22%,46%)" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- cast candlestick-shaped shadow on the wall (largest single shape) -->
+  <g opacity="0.9">
+    <!-- upper + lower wicks -->
+    <line x1="200" y1="55" x2="200" y2="92" stroke="hsl(160,68%,55%)" stroke-width="3" stroke-opacity="0.45"/>
+    <line x1="200" y1="158" x2="200" y2="190" stroke="hsl(160,68%,55%)" stroke-width="3" stroke-opacity="0.45"/>
+    <!-- candle body -->
+    <rect x="180" y="92" width="40" height="66" rx="3" fill="hsl(160,68%,55%)" fill-opacity="0.28" stroke="hsl(160,75%,66%)" stroke-width="1.5" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- light source dot in upper corner -->
+  <circle cx="92" cy="58" r="6" fill="hsl(160,88%,82%)"/>
+  <circle cx="92" cy="58" r="11" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- two thin angled rays from light past the hands -->
+  <line x1="98" y1="62" x2="178" y2="132" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.25"/>
+  <line x1="100" y1="56" x2="222" y2="128" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.25"/>
+
+  <!-- pedestal / contest table base -->
+  <rect x="150" y="172" width="100" height="16" rx="3" fill="hsl(160,68%,55%)" fill-opacity="0.20" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <line x1="166" y1="188" x2="166" y2="200" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <line x1="234" y1="188" x2="234" y2="200" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+
+  <!-- arm-wrestling clasp (foreground focal) -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" fill="hsl(160,68%,55%)" fill-opacity="0.15" stroke-linecap="round" stroke-linejoin="round">
+    <!-- left forearm tilting left, rising to center -->
+    <path d="M150 172 L162 158 Q168 150 180 144 L196 137"/>
+    <path d="M150 172 L156 166 Q166 156 180 150 L196 143" stroke-opacity="0.7"/>
+    <!-- right forearm tilting right, rising to center -->
+    <path d="M250 172 L238 158 Q232 150 220 144 L204 137"/>
+    <path d="M250 172 L244 166 Q234 156 220 150 L204 143" stroke-opacity="0.7"/>
+
+    <!-- central clasp -->
+    <ellipse cx="200" cy="135" rx="16" ry="13" fill="hsl(160,68%,55%)" fill-opacity="0.35"/>
+    <!-- interlocking finger lines -->
+    <line x1="190" y1="129" x2="210" y2="129" stroke-width="1.5"/>
+    <line x1="188" y1="135" x2="212" y2="135" stroke-width="1.5"/>
+    <line x1="190" y1="141" x2="210" y2="141" stroke-width="1.5"/>
+  </g>
+
+  <!-- highlight accents on clasp -->
+  <circle cx="195" cy="130" r="2" fill="hsl(160,88%,82%)"/>
+
+  <!-- forearm muscle detail lines -->
+  <line x1="158" y1="164" x2="170" y2="152" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="242" y1="164" x2="230" y2="152" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+</svg>

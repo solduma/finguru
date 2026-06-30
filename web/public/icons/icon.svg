@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#0b0e14"/>
+  <!-- candlesticks in teal: a small uptrend -->
+  <g stroke="#2dd4bf" stroke-width="20" stroke-linecap="round">
+    <line x1="148" y1="300" x2="148" y2="392"/>
+    <line x1="256" y1="170" x2="256" y2="300"/>
+    <line x1="364" y1="120" x2="364" y2="210"/>
+  </g>
+  <g fill="#2dd4bf">
+    <rect x="124" y="318" width="48" height="56" rx="8"/>
+    <rect x="232" y="196" width="48" height="84" rx="8"/>
+    <rect x="340" y="138" width="48" height="56" rx="8"/>
+  </g>
+</svg>

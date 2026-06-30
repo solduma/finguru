@@ -1,0 +1,95 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-peter-lynch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(35,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-peter-lynch-leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(35,75%,66%)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-peter-lynch)"/>
+
+  <!-- unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="110" y1="48" x2="110" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="290" y1="48" x2="290" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ===== seedling rising from the cart ===== -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- stem -->
+    <path d="M200 150 C200 120 200 100 200 78" fill="none" stroke="hsl(35,75%,66%)" stroke-width="2.5"/>
+    <!-- left leaf -->
+    <path d="M200 104 C182 100 168 86 166 70 C184 72 198 86 200 104 Z" fill="url(#cv-guru-peter-lynch-leaf)" fill-opacity="0.85" stroke="hsl(35,88%,82%)" stroke-width="1.5"/>
+    <!-- right leaf -->
+    <path d="M200 92 C218 88 234 74 238 58 C220 58 204 70 200 92 Z" fill="hsl(35,68%,55%)" fill-opacity="0.55" stroke="hsl(35,88%,82%)" stroke-width="1.5"/>
+    <!-- top sprout tip -->
+    <path d="M200 78 C194 70 196 60 200 54 C204 60 206 70 200 78 Z" fill="hsl(35,88%,82%)" fill-opacity="0.9"/>
+  </g>
+
+  <!-- ===== shopping cart (side profile) ===== -->
+  <g fill="none" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- basket -->
+    <path d="M140 150 L262 150 L250 188 L160 188 Z" fill="hsl(35,68%,55%)" fill-opacity="0.15"/>
+    <!-- basket grid -->
+    <line x1="172" y1="150" x2="166" y2="188" stroke-opacity="0.6" stroke-width="1"/>
+    <line x1="201" y1="150" x2="201" y2="188" stroke-opacity="0.6" stroke-width="1"/>
+    <line x1="230" y1="150" x2="236" y2="188" stroke-opacity="0.6" stroke-width="1"/>
+    <line x1="145" y1="163" x2="257" y2="163" stroke-opacity="0.6" stroke-width="1"/>
+    <line x1="151" y1="176" x2="251" y2="176" stroke-opacity="0.6" stroke-width="1"/>
+    <!-- handle -->
+    <path d="M140 150 L122 132 L110 132" />
+    <!-- front bar up to handle -->
+    <path d="M262 150 L268 150" />
+    <!-- wheels -->
+    <circle cx="172" cy="200" r="7" fill="hsl(35,45%,13%)"/>
+    <circle cx="244" cy="200" r="7" fill="hsl(35,45%,13%)"/>
+    <line x1="166" y1="188" x2="172" y2="193"/>
+    <line x1="250" y1="188" x2="244" y2="193"/>
+  </g>
+
+  <!-- ===== price tag tied to the stem ===== -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- string -->
+    <path d="M200 120 C214 124 226 128 232 134" fill="none" stroke="hsl(35,88%,82%)" stroke-width="1.5"/>
+    <!-- tag body -->
+    <path d="M232 134 L266 134 L274 148 L266 162 L232 162 Z" fill="hsl(35,68%,55%)" fill-opacity="0.85" stroke="hsl(35,88%,82%)" stroke-width="2"/>
+    <!-- tag hole -->
+    <circle cx="240" cy="148" r="3" fill="hsl(35,45%,13%)" stroke="hsl(35,88%,82%)" stroke-width="1"/>
+    <!-- equals / balance symbol -->
+    <line x1="252" y1="144" x2="266" y2="144" stroke="hsl(35,45%,13%)" stroke-width="2"/>
+    <line x1="252" y1="152" x2="266" y2="152" stroke="hsl(35,45%,13%)" stroke-width="2"/>
+  </g>
+
+  <!-- ===== magnifying glass over the sprout (upper right of tag) ===== -->
+  <g fill="none" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="280" cy="96" r="22" fill="hsl(35,88%,82%)" fill-opacity="0.10"/>
+    <line x1="296" y1="112" x2="312" y2="128" stroke-width="3"/>
+    <!-- lens glint -->
+    <path d="M270 88 C272 82 278 80 284 82" stroke="hsl(35,88%,82%)" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== balance scale in foreground base (PEG: growth vs coin) ===== -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- fulcrum -->
+    <path d="M86 200 L100 178 L114 200 Z" fill="hsl(35,68%,55%)" fill-opacity="0.2" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+    <!-- beam -->
+    <line x1="74" y1="174" x2="126" y2="182" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+    <circle cx="100" cy="178" r="2.5" fill="hsl(35,88%,82%)"/>
+    <!-- left pan (small sprout leaf) -->
+    <line x1="74" y1="174" x2="74" y2="184" stroke="hsl(35,75%,66%)" stroke-width="1.5"/>
+    <path d="M64 184 C64 190 84 190 84 184" fill="none" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+    <path d="M74 184 C70 180 70 174 74 170 C78 174 78 180 74 184 Z" fill="hsl(35,68%,55%)" fill-opacity="0.7"/>
+    <!-- right pan (coin) -->
+    <line x1="126" y1="182" x2="126" y2="190" stroke="hsl(35,75%,66%)" stroke-width="1.5"/>
+    <path d="M116 190 C116 196 136 196 136 190" fill="none" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+    <circle cx="126" cy="184" r="6" fill="hsl(35,68%,55%)" fill-opacity="0.55" stroke="hsl(35,88%,82%)" stroke-width="1.5"/>
+  </g>
+
+  <!-- soft ground glow under cart -->
+  <ellipse cx="205" cy="206" rx="60" ry="4" fill="hsl(35,22%,46%)" opacity="0.25"/>
+</svg>

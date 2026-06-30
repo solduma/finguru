@@ -1,0 +1,54 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-stan-weinstein" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-stan-weinstein-terrain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-stan-weinstein)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="240" y1="40" x2="240" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- four-part terraced terrain: base, ramp, plateau, decline -->
+  <path d="M40 178 L120 178 L200 110 L300 110 L360 168 L360 195 L40 195 Z"
+        fill="url(#cv-guru-stan-weinstein-terrain)"
+        stroke="hsl(160,75%,66%)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- segment divider ticks -->
+  <line x1="120" y1="178" x2="120" y2="195" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="200" y1="110" x2="200" y2="195" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="300" y1="110" x2="300" y2="195" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- 30-week moving average rail, gently rising just beneath terrain -->
+  <line x1="40" y1="200" x2="360" y2="172" stroke="hsl(160,22%,46%)" stroke-width="2"
+        stroke-linecap="round" stroke-dasharray="1 7"/>
+  <line x1="40" y1="200" x2="360" y2="172" stroke="hsl(160,68%,55%)" stroke-width="2"
+        stroke-linecap="round" stroke-opacity="0.35"/>
+
+  <!-- flag at Stage 1->2 junction (base meets rising ramp) -->
+  <line x1="120" y1="178" x2="120" y2="120" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M120 122 L150 130 L120 138 Z" fill="hsl(160,88%,82%)"/>
+  <circle cx="120" cy="178" r="3" fill="hsl(160,88%,82%)"/>
+
+  <!-- breakout arrow lifting up & away from rail at flag position -->
+  <path d="M120 168 L142 142" stroke="hsl(160,88%,82%)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M142 142 L133 144 M142 142 L141 151" stroke="hsl(160,88%,82%)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- stage markers (dots, not numerals) -->
+  <circle cx="80" cy="178" r="2" fill="hsl(160,75%,66%)" fill-opacity="0.7"/>
+  <circle cx="160" cy="144" r="2" fill="hsl(160,75%,66%)" fill-opacity="0.7"/>
+  <circle cx="250" cy="110" r="2" fill="hsl(160,75%,66%)" fill-opacity="0.7"/>
+  <circle cx="332" cy="139" r="2" fill="hsl(160,75%,66%)" fill-opacity="0.7"/>
+</svg>

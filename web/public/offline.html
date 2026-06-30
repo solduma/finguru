@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FinGuru — Offline</title>
+    <link rel="icon" href="/favicon.png" />
+    <style>
+      :root { color-scheme: dark; }
+      html, body {
+        margin: 0;
+        height: 100%;
+        background: #0b0e14;
+        color: #e6e9ef;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .wrap {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      h1 { color: #2dd4bf; font-size: 1.5rem; margin: 0 0 0.5rem; }
+      p { color: #9aa3b2; max-width: 28rem; line-height: 1.6; }
+      button {
+        margin-top: 1.5rem;
+        background: #2dd4bf;
+        color: #000;
+        border: 0;
+        border-radius: 0.5rem;
+        padding: 0.6rem 1.25rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>You're offline</h1>
+      <p>
+        FinGuru can't reach the network right now. Pages you've already opened
+        stay available — reconnect to load new lessons and the chat tutor.
+      </p>
+      <button onclick="location.reload()">Try again</button>
+    </div>
+  </body>
+</html>

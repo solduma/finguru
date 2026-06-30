@@ -1,0 +1,96 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-cliff-asness" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-cliff-asness-hoop" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(270,68%,55%)" stop-opacity="0"/>
+      <stop offset="0.7" stop-color="hsl(270,68%,55%)" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="hsl(270,68%,55%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-cliff-asness)"/>
+
+  <!-- unifying frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="120" x2="360" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- faint connecting loop between pedestals (offsetting pull) -->
+  <g fill="none" stroke="hsl(270,22%,46%)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.55">
+    <path d="M200 70 Q300 80 322 120"/>
+    <path d="M322 120 Q300 162 200 172"/>
+    <path d="M200 172 Q100 162 78 120"/>
+    <path d="M78 120 Q100 80 200 70"/>
+  </g>
+
+  <!-- central hoop glow -->
+  <circle cx="200" cy="120" r="40" fill="url(#cv-guru-cliff-asness-hoop)"/>
+  <!-- central circus hoop / ring -->
+  <circle cx="200" cy="120" r="30" fill="none" stroke="hsl(270,88%,82%)" stroke-width="3" stroke-opacity="0.95"/>
+  <circle cx="200" cy="120" r="22" fill="none" stroke="hsl(270,75%,66%)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- ============ TOP: LION (north pedestal) ============ -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- pedestal (tallest) -->
+    <ellipse cx="200" cy="60" rx="22" ry="6" fill="hsl(270,68%,55%)" fill-opacity="0.20" stroke="hsl(270,75%,66%)" stroke-width="1.5"/>
+    <!-- lion: maned circular head facing down toward hoop -->
+    <circle cx="200" cy="46" r="13" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <g stroke="hsl(270,75%,66%)" stroke-width="1.5">
+      <line x1="200" y1="33" x2="200" y2="28"/>
+      <line x1="187" y1="46" x2="182" y2="46"/>
+      <line x1="213" y1="46" x2="218" y2="46"/>
+      <line x1="191" y1="37" x2="187" y2="33"/>
+      <line x1="209" y1="37" x2="213" y2="33"/>
+      <line x1="191" y1="55" x2="187" y2="59"/>
+      <line x1="209" y1="55" x2="213" y2="59"/>
+    </g>
+    <!-- inner face -->
+    <circle cx="200" cy="48" r="7" fill="hsl(270,88%,82%)" fill-opacity="0.85"/>
+    <circle cx="196" cy="47" r="1.4" fill="hsl(270,38%,10%)"/>
+    <circle cx="204" cy="47" r="1.4" fill="hsl(270,38%,10%)"/>
+  </g>
+
+  <!-- ============ BOTTOM: BULL (south pedestal) ============ -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="200" cy="190" rx="20" ry="5.5" fill="hsl(270,68%,55%)" fill-opacity="0.20" stroke="hsl(270,75%,66%)" stroke-width="1.5"/>
+    <!-- bull head facing up toward hoop -->
+    <path d="M188 184 Q200 196 212 184 Q214 174 200 172 Q186 174 188 184 Z" fill="hsl(270,68%,55%)" fill-opacity="0.35" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <!-- horns -->
+    <path d="M188 176 Q179 169 182 178" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <path d="M212 176 Q221 169 218 178" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <circle cx="194" cy="183" r="1.4" fill="hsl(270,88%,82%)"/>
+    <circle cx="206" cy="183" r="1.4" fill="hsl(270,88%,82%)"/>
+    <line x1="197" y1="189" x2="203" y2="189" stroke="hsl(270,88%,82%)" stroke-width="1.5"/>
+  </g>
+
+  <!-- ============ RIGHT: RAM (east pedestal) ============ -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="322" cy="120" rx="18" ry="5" fill="hsl(270,68%,55%)" fill-opacity="0.20" stroke="hsl(270,75%,66%)" stroke-width="1.5"/>
+    <!-- ram head facing left toward hoop -->
+    <path d="M328 110 Q336 116 332 124 Q322 128 314 122 Q312 114 320 111 Z" fill="hsl(270,68%,55%)" fill-opacity="0.30" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <!-- spiral horns -->
+    <path d="M326 110 Q336 104 332 113 Q327 116 330 110" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <path d="M320 111 Q330 102 326 112" fill="none" stroke="hsl(270,75%,66%)" stroke-width="1.5"/>
+    <circle cx="318" cy="119" r="1.3" fill="hsl(270,88%,82%)"/>
+  </g>
+
+  <!-- ============ LEFT: SNAKE (west pedestal, lowest) ============ -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="78" cy="120" rx="18" ry="5" fill="hsl(270,68%,55%)" fill-opacity="0.20" stroke="hsl(270,75%,66%)" stroke-width="1.5"/>
+    <!-- coiled snake, head facing right toward hoop -->
+    <path d="M70 116 Q60 112 64 122 Q70 130 80 126 Q90 122 86 118" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2.5"/>
+    <!-- head -->
+    <path d="M86 118 Q94 115 92 121 Q88 123 86 120 Z" fill="hsl(270,68%,55%)" fill-opacity="0.45" stroke="hsl(270,75%,66%)" stroke-width="1.5"/>
+    <line x1="92" y1="120" x2="97" y2="121" stroke="hsl(270,88%,82%)" stroke-width="1"/>
+    <circle cx="89" cy="119" r="1.1" fill="hsl(270,88%,82%)"/>
+  </g>
+
+  <!-- tamer's baton — single clean diagonal arc from lower-left corner -->
+  <path d="M44 206 Q120 170 170 138" fill="none" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.9"/>
+  <circle cx="44" cy="206" r="3.5" fill="hsl(270,88%,82%)"/>
+</svg>

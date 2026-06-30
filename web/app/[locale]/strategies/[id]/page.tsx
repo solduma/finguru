@@ -4,6 +4,8 @@ import { findLesson } from "@/lib/content";
 import { LOCALES, getStrings, isLocale, type Locale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy, riskLabel } from "@/lib/strategies";
 import { getSchool } from "@/lib/schools";
+import Reveal from "@/components/Reveal";
+import CoverArt, { riskHue, coverInitials } from "@/components/CoverArt";
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
@@ -24,34 +26,45 @@ export default async function StrategyPathPage({
 
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
-        <Link
-          href={`/${locale}/strategies`}
-          className="text-sm text-gray-400 no-underline hover:text-teal-300"
-        >
-          {t.strategyPage.back}
-        </Link>
-        <div className="flex items-baseline justify-between gap-3">
-          <h1 className="text-3xl font-bold text-white">
-            {strategy.label[locale]}
-          </h1>
-          <span className="flex-none text-xs uppercase tracking-wide text-gray-500">
-            {riskLabel(strategy.riskRank)[locale]}
-          </span>
+      <Reveal index={0}>
+        <div className="space-y-2">
+          <Link
+            href={`/${locale}/strategies`}
+            className="text-sm text-gray-400 no-underline hover:text-teal-300"
+          >
+            {t.strategyPage.back}
+          </Link>
+          <CoverArt
+            kind="strategy"
+            slug={strategy.id}
+            hue={riskHue(strategy.riskRank)}
+            initials={coverInitials(strategy.label.en, 2)}
+            className="mb-2 aspect-[8/5] w-full max-w-md rounded-lg border border-white/10"
+          />
+          <div className="flex items-baseline justify-between gap-3">
+            <h1 className="text-3xl font-bold text-white">
+              {strategy.label[locale]}
+            </h1>
+            <span className="flex-none text-xs uppercase tracking-wide text-gray-500">
+              {riskLabel(strategy.riskRank)[locale]}
+            </span>
+          </div>
+          <p className="max-w-2xl text-gray-300">{strategy.blurb[locale]}</p>
+          <p className="text-sm text-gray-500">
+            {t.strategyPage.drawsFrom}:{" "}
+            {strategy.schools
+              .map((sid) => getSchool(sid)?.label[locale] ?? sid)
+              .join(" · ")}
+          </p>
         </div>
-        <p className="max-w-2xl text-gray-300">{strategy.blurb[locale]}</p>
-        <p className="text-sm text-gray-500">
-          {t.strategyPage.drawsFrom}:{" "}
-          {strategy.schools
-            .map((sid) => getSchool(sid)?.label[locale] ?? sid)
-            .join(" · ")}
-        </p>
-      </div>
+      </Reveal>
 
       <div>
-        <h2 className="mb-4 text-xl font-semibold text-white">
-          {t.strategyPage.pathHeading}
-        </h2>
+        <Reveal>
+          <h2 className="mb-4 text-xl font-semibold text-white">
+            {t.strategyPage.pathHeading}
+          </h2>
+        </Reveal>
         <ol className="space-y-3">
           {strategy.steps.map((step, i) => {
             const lesson = findLesson(step.kind, step.slug, locale);
@@ -59,7 +72,7 @@ export default async function StrategyPathPage({
             const title =
               lesson?.frontmatter.title ?? step.newTitle?.[locale] ?? step.slug;
             const numberBadge = (
-              <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-teal-500 text-sm font-bold text-black">
+              <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-teal-500 text-sm font-bold text-black anim-scale-in">
                 {i + 1}
               </span>
             );
@@ -81,18 +94,20 @@ export default async function StrategyPathPage({
             );
             return (
               <li key={`${step.kind}-${step.slug}-${i}`}>
-                {lesson ? (
-                  <Link
-                    href={`/${locale}/${sub}/${step.slug}`}
-                    className="flex items-start gap-4 rounded-lg border border-white/10 bg-[#131722] p-4 no-underline transition hover:border-teal-400/50"
-                  >
-                    {body}
-                  </Link>
-                ) : (
-                  <div className="flex items-start gap-4 rounded-lg border border-dashed border-white/10 bg-[#131722]/50 p-4 opacity-70">
-                    {body}
-                  </div>
-                )}
+                <Reveal index={i}>
+                  {lesson ? (
+                    <Link
+                      href={`/${locale}/${sub}/${step.slug}`}
+                      className="flex items-start gap-4 rounded-lg border border-white/10 bg-[#131722] p-4 no-underline transition hover:border-teal-400/50 hover-lift"
+                    >
+                      {body}
+                    </Link>
+                  ) : (
+                    <div className="flex items-start gap-4 rounded-lg border border-dashed border-white/10 bg-[#131722]/50 p-4 opacity-70">
+                      {body}
+                    </div>
+                  )}
+                </Reveal>
               </li>
             );
           })}

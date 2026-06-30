@@ -1,0 +1,91 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-william-oneil-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-william-oneil-body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-william-oneil-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="80" y1="40" x2="80" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="320" y1="40" x2="320" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- speed / motion lines trailing from lower-left -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" opacity="0.55">
+    <line x1="40" y1="150" x2="118" y2="150"/>
+    <line x1="52" y1="165" x2="135" y2="165"/>
+    <line x1="36" y1="178" x2="100" y2="178"/>
+  </g>
+  <g stroke="hsl(160,88%,82%)" stroke-width="1" stroke-linecap="round" opacity="0.45">
+    <line x1="60" y1="158" x2="128" y2="158"/>
+    <line x1="48" y1="172" x2="120" y2="172"/>
+  </g>
+
+  <!-- breakout bar (the starting-gate / hurdle the horse clears) -->
+  <line x1="150" y1="172" x2="356" y2="172" stroke="hsl(160,88%,82%)" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <rect x="150" y="172" width="6" height="40" fill="hsl(160,22%,46%)" opacity="0.8"/>
+  <rect x="350" y="172" width="6" height="40" fill="hsl(160,22%,46%)" opacity="0.8"/>
+
+  <!-- stop-loss rail (lower hard floor) with small downward arrow tag -->
+  <line x1="120" y1="200" x2="360" y2="200" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-dasharray="9 7" stroke-linecap="round" opacity="0.85"/>
+  <g stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="340" y1="200" x2="340" y2="222"/>
+    <polyline points="333,215 340,224 347,215"/>
+  </g>
+
+  <!-- rosette / winner's ribbon, upper area -->
+  <g transform="translate(312,66)">
+    <circle cx="0" cy="0" r="13" fill="none" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="13" fill="hsl(160,68%,55%)" opacity="0.18"/>
+    <g stroke="hsl(160,75%,66%)" stroke-width="1.5" opacity="0.7">
+      <line x1="0" y1="-13" x2="0" y2="13"/>
+      <line x1="-13" y1="0" x2="13" y2="0"/>
+      <line x1="-9" y1="-9" x2="9" y2="9"/>
+      <line x1="-9" y1="9" x2="9" y2="-9"/>
+    </g>
+    <circle cx="0" cy="0" r="4.5" fill="hsl(160,88%,82%)"/>
+    <polygon points="-7,12 -2,12 -5,30 -10,26" fill="hsl(160,68%,55%)" opacity="0.75"/>
+    <polygon points="7,12 2,12 5,30 10,26" fill="hsl(160,68%,55%)" opacity="0.75"/>
+  </g>
+
+  <!-- leaping thoroughbred, central focal point, angled upward-right -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- body mass -->
+    <path d="M118 148 Q150 116 210 112 Q244 110 262 122 L255 138 Q224 134 196 142 Q160 150 136 162 Z"
+          fill="url(#cv-guru-william-oneil-body)"/>
+    <!-- neck + head reaching upper-right -->
+    <path d="M250 124 Q270 104 286 90 Q294 82 300 86 Q304 90 298 100 L288 116 Q276 130 262 136 Z"
+          fill="hsl(160,68%,55%)" fill-opacity="0.7"/>
+    <!-- ear -->
+    <path d="M298 88 L302 78 L306 90 Z" fill="hsl(160,68%,55%)" fill-opacity="0.7" stroke-width="1.5"/>
+    <!-- mane -->
+    <path d="M258 122 Q272 110 286 96" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+    <!-- tail flowing back-left -->
+    <path d="M120 142 Q96 150 82 170 Q92 158 110 158 Q98 168 92 184" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+
+    <!-- front legs extended forward/up over the bar -->
+    <path d="M236 134 Q248 148 244 162 Q242 170 236 174"/>
+    <path d="M252 132 Q266 144 268 158 Q269 166 264 172"/>
+    <!-- rear legs driving back -->
+    <path d="M150 156 Q142 174 150 188 Q153 194 158 192"/>
+    <path d="M168 154 Q166 172 178 184 Q183 188 188 184"/>
+
+    <!-- eye -->
+    <circle cx="290" cy="100" r="1.6" fill="hsl(160,88%,82%)" stroke="none"/>
+  </g>
+
+  <!-- saddle blanket with bold checkmark at visual center -->
+  <g>
+    <path d="M168 124 Q190 116 214 116 L222 140 Q196 140 174 148 Z" fill="hsl(160,22%,46%)" opacity="0.85"/>
+    <path d="M168 124 Q190 116 214 116 L222 140 Q196 140 174 148 Z" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-linejoin="round"/>
+    <polyline points="180,132 188,140 204,124" fill="none" stroke="hsl(160,88%,82%)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

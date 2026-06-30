@@ -1,0 +1,85 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-david-dodd" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(35,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-david-dodd-page" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(35,68%,55%)" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="hsl(35,68%,55%)" stop-opacity="0.38"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-david-dodd)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="80" y1="40" x2="80" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="320" y1="40" x2="320" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- lectern -->
+    <path d="M120 196 L280 196 L300 212 L100 212 Z" fill="hsl(35,68%,55%)" fill-opacity="0.18" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+    <line x1="200" y1="196" x2="200" y2="212" stroke="hsl(35,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- book base shadow -->
+    <path d="M200 80 L84 110 L96 196 L200 178 Z" fill="hsl(35,38%,7%)" fill-opacity="0.4"/>
+    <path d="M200 80 L316 110 L304 196 L200 178 Z" fill="hsl(35,38%,7%)" fill-opacity="0.4"/>
+
+    <!-- left page -->
+    <path d="M200 78 L82 108 L94 188 L200 172 Z" fill="url(#cv-guru-david-dodd-page)" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+    <!-- right page -->
+    <path d="M200 78 L318 108 L306 188 L200 172 Z" fill="url(#cv-guru-david-dodd-page)" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+
+    <!-- spine -->
+    <line x1="200" y1="78" x2="200" y2="172" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+
+    <!-- LEFT PAGE: loose scattered scribble lecture notes -->
+    <g stroke="hsl(35,88%,82%)" stroke-width="1" fill="none" stroke-opacity="0.7">
+      <path d="M104 118 q8 -5 16 -1 q8 5 14 -2"/>
+      <path d="M100 130 q10 -4 18 1 q6 4 12 -1"/>
+      <path d="M108 142 q6 -6 14 -1 q9 5 15 0"/>
+      <path d="M102 153 q11 -3 17 2 q7 3 13 -2"/>
+      <path d="M110 165 q7 -5 13 0 q8 4 12 -1"/>
+      <path d="M112 105 q6 -4 12 -1"/>
+    </g>
+
+    <!-- RIGHT PAGE: tidy ruled ordered columns -->
+    <g stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.85">
+      <!-- column divider -->
+      <line x1="256" y1="92" x2="252" y2="178" stroke-opacity="0.4"/>
+      <!-- left column rules -->
+      <line x1="214" y1="106" x2="250" y2="102"/>
+      <line x1="214" y1="118" x2="250" y2="114"/>
+      <line x1="214" y1="130" x2="250" y2="126"/>
+      <line x1="214" y1="142" x2="250" y2="138"/>
+      <line x1="214" y1="154" x2="250" y2="150"/>
+      <line x1="214" y1="166" x2="250" y2="162"/>
+      <!-- right column rules -->
+      <line x1="262" y1="100" x2="300" y2="104"/>
+      <line x1="262" y1="112" x2="300" y2="116"/>
+      <line x1="262" y1="124" x2="300" y2="128"/>
+      <line x1="262" y1="136" x2="300" y2="140"/>
+      <line x1="262" y1="148" x2="300" y2="152"/>
+      <line x1="262" y1="160" x2="300" y2="164"/>
+    </g>
+    <!-- chapter division bar on right page -->
+    <rect x="214" y="92" width="30" height="5" rx="1" fill="hsl(35,68%,55%)" fill-opacity="0.9"/>
+
+    <!-- ribbon bookmark hanging from spine -->
+    <path d="M196 78 L196 206 L200 198 L204 206 L204 78 Z" fill="hsl(35,68%,55%)" fill-opacity="0.85" stroke="hsl(35,75%,66%)" stroke-width="1"/>
+
+    <!-- fountain pen lying diagonally across the spine -->
+    <g stroke="hsl(35,75%,66%)" stroke-width="2">
+      <line x1="158" y1="142" x2="234" y2="96" stroke="hsl(35,22%,46%)" stroke-width="6" stroke-opacity="0.9"/>
+      <line x1="158" y1="142" x2="234" y2="96" stroke="hsl(35,88%,82%)" stroke-width="2"/>
+      <!-- nib -->
+      <path d="M158 142 L150 148 L156 138 Z" fill="hsl(35,88%,82%)" stroke="hsl(35,75%,66%)" stroke-width="1"/>
+      <!-- cap band -->
+      <line x1="222" y1="105" x2="230" y2="100" stroke="hsl(35,68%,55%)" stroke-width="7" stroke-opacity="0.9"/>
+    </g>
+
+  </g>
+</svg>

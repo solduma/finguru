@@ -1,0 +1,62 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-fama-french" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-fama-french)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="125" x2="360" y2="125" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+    <!-- incoming plain white market beam -->
+    <line x1="40" y1="125" x2="146" y2="125" stroke="white" stroke-opacity="0.85" stroke-width="3"/>
+
+    <!-- prism: clean equilateral triangle at optical center -->
+    <polygon points="160,98 160,152 196,135" fill="hsl(270,68%,55%)" fill-opacity="0.15" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+
+    <!-- four diverging rays fanning right -->
+    <line x1="170" y1="128" x2="318" y2="78" stroke="hsl(270,88%,82%)" stroke-opacity="0.95" stroke-width="2.4"/>
+    <line x1="170" y1="130" x2="320" y2="110" stroke="hsl(270,75%,66%)" stroke-opacity="0.85" stroke-width="2"/>
+    <line x1="170" y1="132" x2="320" y2="142" stroke="hsl(270,68%,55%)" stroke-opacity="0.75" stroke-width="2"/>
+    <line x1="170" y1="134" x2="318" y2="174" stroke="hsl(270,22%,46%)" stroke-opacity="0.95" stroke-width="2"/>
+
+    <!-- endpoint glyph 1: nested squares (size) -->
+    <g stroke="hsl(270,88%,82%)" stroke-width="1.6">
+      <rect x="326" y="64" width="22" height="22" rx="2"/>
+      <rect x="332" y="70" width="10" height="10" rx="1.5"/>
+    </g>
+
+    <!-- endpoint glyph 2: price-vs-worth tag (value) -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="1.6">
+      <path d="M328 100 l14 0 l8 8 -8 8 -14 0 z"/>
+      <circle cx="334" cy="108" r="1.6" fill="hsl(270,75%,66%)" stroke="none"/>
+    </g>
+
+    <!-- endpoint glyph 3: upward leaf/coin (profitability) -->
+    <g stroke="hsl(270,68%,55%)" stroke-width="1.6">
+      <circle cx="338" cy="142" r="11"/>
+      <path d="M338 148 l0 -10 M334 142 l4 -4 4 4"/>
+    </g>
+
+    <!-- endpoint glyph 4: gear/arrow-in-box (investment) -->
+    <g stroke="hsl(270,22%,46%)" stroke-width="1.6">
+      <rect x="328" y="164" width="22" height="22" rx="2"/>
+      <path d="M334 178 l8 -8 M338 170 l4 0 0 4"/>
+    </g>
+
+    <!-- faint open padlock at bottom corner (freely published data) -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="1.4" stroke-opacity="0.4">
+      <rect x="50" y="190" width="16" height="12" rx="2"/>
+      <path d="M53 190 l0 -4 a5 5 0 0 1 10 0"/>
+    </g>
+
+  </g>
+</svg>

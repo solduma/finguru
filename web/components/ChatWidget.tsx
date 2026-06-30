@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { getStrings, type Locale } from "@/lib/i18n";
 import ChatMarkdown from "./ChatMarkdown";
+import Reveal from "@/components/Reveal";
 
 interface Citation {
   title: string;
@@ -38,6 +39,7 @@ function citationHref(c: Citation, locale: Locale): string {
 export default function ChatWidget({ locale }: { locale: Locale }) {
   const t = getStrings(locale).chat;
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [streaming, setStreaming] = useState(false);
@@ -133,21 +135,37 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
   return (
     <>
       <button
-        onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-5 right-5 z-50 rounded-full bg-teal-500 px-5 py-3 font-semibold text-black shadow-lg"
+        onClick={() => {
+          if (open) setClosing(true);
+          else setOpen(true);
+        }}
+        className="fixed bottom-5 right-5 z-50 rounded-full bg-teal-500 px-5 py-3 font-semibold text-black shadow-lg hover-lift"
       >
-        {open ? t.close : t.open}
+        {open && !closing ? t.close : t.open}
       </button>
 
-      {open && (
-        <div className="fixed bottom-20 right-5 z-50 flex h-[32rem] w-96 flex-col rounded-xl border border-white/10 bg-[#131722] shadow-2xl">
+      {(open || closing) && (
+        <div
+          className="fixed inset-x-3 bottom-20 z-50 flex h-[70vh] max-h-[32rem] flex-col rounded-xl border border-white/10 bg-[#131722] shadow-2xl sm:inset-x-auto sm:right-5 sm:h-[32rem] sm:w-96 chat-panel-enter"
+          style={closing ? { animationDirection: "reverse" } : undefined}
+          onAnimationEnd={() => {
+            if (closing) {
+              setOpen(false);
+              setClosing(false);
+            }
+          }}
+        >
           <div className="border-b border-white/10 px-4 py-3 font-semibold text-teal-300">
             {t.title}
           </div>
           <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
             {messages.length === 0 && <p className="text-gray-400">{t.empty}</p>}
             {messages.map((m, i) => (
-              <div key={i} className={m.role === "user" ? "text-right" : "text-left"}>
+              // Messages arrive one at a time, so each fades up on mount with no
+              // index-based delay — an absolute-index stagger would make later
+              // messages wait progressively longer (msg 10 → 700ms) before showing.
+              <Reveal key={i}>
+              <div className={m.role === "user" ? "text-right" : "text-left"}>
                 <span
                   className={
                     "inline-block rounded-lg px-3 py-2 text-left " +
@@ -160,7 +178,7 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
                     m.content ? (
                       <ChatMarkdown content={m.content} />
                     ) : streaming && i === lastIndex ? (
-                      "…"
+                      <span className="inline-flex items-center gap-1" aria-label="typing" role="status" aria-live="polite"><span className="typing-dot inline-block h-1.5 w-1.5 rounded-full bg-current" /><span className="typing-dot inline-block h-1.5 w-1.5 rounded-full bg-current" /><span className="typing-dot inline-block h-1.5 w-1.5 rounded-full bg-current" /></span>
                     ) : (
                       ""
                     )
@@ -170,18 +188,19 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
                 </span>
 
                 {m.role === "assistant" && m.citations && m.citations.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1.5">
+                  <div className="mt-2 flex flex-wrap gap-1.5 anim-fade-in">
                     {m.citations.map((c, j) => (
+                      <Reveal key={j} delayMs={Math.min(50 * j, 200)}>
                       <a
-                        key={j}
                         href={citationHref(c, locale)}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-xs text-teal-200 no-underline hover:bg-teal-400/20"
+                        className="rounded-full border border-teal-400/40 bg-teal-400/10 px-2 py-0.5 text-xs text-teal-200 no-underline hover:bg-teal-400/20 hover-lift transition-colors duration-200"
                         title={c.section || c.url}
                       >
                         {c.kind === "web" ? "🔗" : "📖"} {c.title}
                       </a>
+                      </Reveal>
                     ))}
                   </div>
                 )}
@@ -192,19 +211,21 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
                   !streaming &&
                   m.suggestions &&
                   m.suggestions.length > 0 && (
-                    <div className="mt-2 flex flex-col items-start gap-1.5">
+                    <div className="mt-2 flex flex-col items-start gap-1.5 anim-fade-in">
                       {m.suggestions.map((s, j) => (
+                        <Reveal key={j} delayMs={Math.min(50 * j, 200)}>
                         <button
-                          key={j}
                           onClick={() => ask(s)}
-                          className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-left text-xs text-gray-200 hover:border-teal-400/50 hover:text-teal-200"
+                          className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-left text-xs text-gray-200 hover:border-teal-400/50 hover:text-teal-200 hover-lift transition-colors duration-200"
                         >
                           {s}
                         </button>
+                        </Reveal>
                       ))}
                     </div>
                   )}
               </div>
+              </Reveal>
             ))}
           </div>
           <div className="flex gap-2 border-t border-white/10 p-3">
@@ -213,12 +234,14 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && ask(input)}
               placeholder={t.placeholder}
-              className="flex-1 rounded-md bg-black/30 px-3 py-2 text-sm outline-none"
+              // min-h-11 (44px) keeps the field a comfortable touch target;
+              // text-base avoids iOS Safari's zoom-on-focus for <16px inputs.
+              className="min-h-11 flex-1 rounded-md bg-black/30 px-3 py-2 text-base outline-none transition focus:ring-2 focus:ring-teal-500/50 focus:ring-offset-2 focus:ring-offset-[#131722] sm:text-sm"
             />
             <button
               onClick={() => ask(input)}
               disabled={streaming}
-              className="rounded-md bg-teal-500 px-3 py-2 text-sm font-semibold text-black disabled:opacity-50"
+              className="min-h-11 rounded-md bg-teal-500 px-4 py-2 text-sm font-semibold text-black transition active:scale-95 disabled:opacity-50 disabled:active:scale-100"
             >
               {t.send}
             </button>

@@ -1,0 +1,105 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-steve-nison-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-steve-nison-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(160,88%,82%)" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="hsl(160,68%,55%)" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cv-guru-steve-nison-lantern" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-steve-nison-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="170" x2="400" y2="170" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="92" y1="40" x2="92" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- soft glow halo from the lantern into upper-center negative space -->
+  <circle cx="214" cy="92" r="110" fill="url(#cv-guru-steve-nison-glow)"/>
+
+  <!-- radiating light lines -->
+  <g stroke="hsl(160,88%,82%)" stroke-opacity="0.35" stroke-width="1.5" stroke-linecap="round">
+    <line x1="214" y1="40" x2="214" y2="20"/>
+    <line x1="172" y1="56" x2="158" y2="40"/>
+    <line x1="256" y1="56" x2="270" y2="40"/>
+    <line x1="146" y1="92" x2="124" y2="92"/>
+    <line x1="282" y1="92" x2="304" y2="92"/>
+    <line x1="178" y1="58" x2="166" y2="46"/>
+    <line x1="250" y1="58" x2="262" y2="46"/>
+  </g>
+
+  <!-- Eastern bank (lower-left): torii gate silhouette -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M44 118 q24 -6 48 0" stroke-width="2.4"/>
+    <line x1="48" y1="124" x2="88" y2="124"/>
+    <line x1="56" y1="124" x2="56" y2="178"/>
+    <line x1="80" y1="124" x2="80" y2="178"/>
+  </g>
+  <rect x="40" y="178" width="56" height="34" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+
+  <!-- Western bank (lower-right): square building skyline -->
+  <g fill="hsl(160,68%,55%)" fill-opacity="0.22" stroke="hsl(160,75%,66%)" stroke-width="1.5" stroke-linejoin="round">
+    <rect x="300" y="150" width="24" height="62"/>
+    <rect x="326" y="132" width="22" height="80"/>
+    <rect x="350" y="162" width="20" height="50"/>
+    <rect x="284" y="168" width="16" height="44"/>
+  </g>
+  <g stroke="hsl(160,88%,82%)" stroke-opacity="0.5" stroke-width="1" stroke-linecap="round">
+    <line x1="332" y1="142" x2="342" y2="142"/>
+    <line x1="332" y1="152" x2="342" y2="152"/>
+    <line x1="306" y1="160" x2="318" y2="160"/>
+    <line x1="356" y1="172" x2="364" y2="172"/>
+  </g>
+
+  <!-- arched bridge sweeping left-to-right across the middle -->
+  <path d="M28 188 C 130 120, 270 120, 372 188" fill="none" stroke="hsl(160,75%,66%)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M28 198 C 130 132, 270 132, 372 198" fill="none" stroke="hsl(160,22%,46%)" stroke-width="2" stroke-linecap="round"/>
+  <g stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.8">
+    <line x1="70" y1="160" x2="70" y2="171"/>
+    <line x1="110" y1="146" x2="110" y2="157"/>
+    <line x1="150" y1="138" x2="150" y2="149"/>
+    <line x1="250" y1="138" x2="250" y2="149"/>
+    <line x1="290" y1="146" x2="290" y2="157"/>
+    <line x1="330" y1="160" x2="330" y2="171"/>
+  </g>
+
+  <!-- carrying pole gripping the lantern's top ring -->
+  <line x1="214" y1="58" x2="214" y2="44" stroke="hsl(160,22%,46%)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="214" cy="62" r="5" fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+
+  <!-- Japanese paper lantern (chochin) just past the bridge apex -->
+  <g>
+    <!-- top cap -->
+    <rect x="206" y="56" width="16" height="6" rx="2" fill="hsl(160,75%,66%)"/>
+    <!-- body: vertical ovoid -->
+    <path d="M214 67
+             C 196 67, 188 82, 188 100
+             C 188 118, 196 132, 214 132
+             C 232 132, 240 118, 240 100
+             C 240 82, 232 67, 214 67 Z"
+          fill="url(#cv-guru-steve-nison-lantern)" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linejoin="round"/>
+    <!-- bottom cap -->
+    <rect x="206" y="130" width="16" height="6" rx="2" fill="hsl(160,75%,66%)"/>
+    <!-- horizontal ribs -->
+    <g stroke="hsl(160,38%,18%)" stroke-width="1.5" stroke-opacity="0.7" stroke-linecap="round">
+      <line x1="191" y1="84" x2="237" y2="84"/>
+      <line x1="188.5" y1="93" x2="239.5" y2="93"/>
+      <line x1="188" y1="102" x2="240" y2="102"/>
+      <line x1="188.5" y1="111" x2="239.5" y2="111"/>
+      <line x1="191" y1="120" x2="237" y2="120"/>
+    </g>
+    <!-- small flame inside the body -->
+    <path d="M214 96 C 209 102, 210 110, 214 114 C 218 110, 219 102, 214 96 Z"
+          fill="hsl(160,88%,82%)" stroke="none"/>
+  </g>
+</svg>

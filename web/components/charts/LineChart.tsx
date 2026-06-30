@@ -2,7 +2,7 @@
 
 import { Chart } from "react-chartjs-2";
 import { ensureRegistered } from "./register";
-import { COLORS, levelLine, zoneBox, pointLabel } from "./theme";
+import { COLORS, levelLine, zoneBox, pointLabel, CHART_PADDING, legendConfig } from "./theme";
 import ChartFrame from "./ChartFrame";
 
 ensureRegistered();
@@ -128,23 +128,46 @@ export default function LineChart({
         : undefined,
     };
   });
+  // Resolve the visible value ranges so edge points can anchor their labels
+  // inward (toward the plot center) instead of spilling off the canvas.
+  const lastIndex = Math.max(n - 1, 1);
+  const yValues = series.flatMap((s) => s.data).filter((v): v is number => v != null);
+  const dataYMin = yMin ?? (yValues.length ? Math.min(...yValues) : 0);
+  const dataYMax = yMax ?? (yValues.length ? Math.max(...yValues) : 1);
+  const ySpan = dataYMax - dataYMin || 1;
   points.forEach((p, i) => {
+    // Near an edge, anchor the label box so it grows inward (and so stays on
+    // canvas). position.x:"start" puts the box's LEFT edge at the point (box
+    // grows right) — what a left-edge point needs; "end" mirrors it. For y,
+    // "start" anchors the box top at the point (box grows DOWN) — what a
+    // top-of-range point needs so its label sits below the dot.
+    const xFrac = p.x / lastIndex;
+    const xAnchor =
+      xFrac <= 0.12 ? "start" : xFrac >= 0.88 ? "end" : "center";
+    const yFrac = (p.y - dataYMin) / ySpan;
+    const yAnchor =
+      yFrac >= 0.85 ? "start" : yFrac <= 0.15 ? "end" : "center";
     // index annotations on the category axis use the data index (0-based)
-    annotations[`pt${i}`] = pointLabel(p.x, p.y, p.text, p.color);
+    annotations[`pt${i}`] = pointLabel(p.x, p.y, p.text, p.color, {
+      x: xAnchor,
+      y: yAnchor,
+    });
   });
 
   const data = { labels: xLabels, datasets };
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: reduceMotion
+      ? (false as const)
+      : { duration: 1200, easing: "easeInOutQuart" as const },
     interaction: { intersect: false, mode: "index" as const },
+    layout: { padding: CHART_PADDING },
     plugins: {
-      legend: {
-        display: !hideLegend && series.length > 1,
-        labels: { boxWidth: 12, font: { size: 11 } },
-        position: "top" as const,
-        align: "end" as const,
-      },
+      legend: legendConfig(!hideLegend && series.length > 1),
       tooltip: { enabled: true },
       annotation: { annotations },
     },

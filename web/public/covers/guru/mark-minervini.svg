@@ -1,0 +1,72 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-mark-minervini" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-mark-minervini)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- faint ascending step-ledges (Trend Template foundation) -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="2" fill="none" stroke-opacity="0.45" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 196 H120 V172 H170"/>
+    <path d="M118 172 V148 H168"/>
+  </g>
+  <g stroke="hsl(160,22%,46%)" stroke-width="2" fill="none" stroke-opacity="0.30" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M232 196 H282 V172 H330"/>
+    <path d="M280 172 V148 H328"/>
+  </g>
+
+  <!-- base clamp / pin holding the spring -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" fill="hsl(160,68%,55%)" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="168" y="194" width="64" height="12" rx="3" fill-opacity="0.30"/>
+  </g>
+  <!-- tight stop-loss tick line just below base -->
+  <line x1="160" y1="212" x2="240" y2="212" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- helical coil spring: loops tighten & shorten toward top -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- bottom: loose, wide loops -->
+    <path d="M178 194
+             C172 184 228 184 222 172
+             C228 162 172 162 178 152
+             C172 144 228 144 222 136
+             C228 130 174 130 180 124
+             C176 119 226 119 222 113
+             C227 109 178 109 183 104
+             C180 101 224 101 220 97
+             C224 94 184 94 188 90"/>
+  </g>
+
+  <!-- topmost loosening coil beginning to release (highlight) -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M188 90 C184 86 218 86 214 83"/>
+  </g>
+
+  <!-- compression plate pressing down on top of spring -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="160" y="68" width="80" height="11" rx="3" fill="hsl(160,68%,55%)" fill-opacity="0.55"/>
+    <line x1="200" y1="79" x2="200" y2="84" stroke-opacity="0.8"/>
+  </g>
+
+  <!-- breakout arrow piercing past the plate -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="200" y1="68" x2="200" y2="44"/>
+    <path d="M191 53 L200 44 L209 53"/>
+  </g>
+
+  <!-- burst lines around the breakout -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7">
+    <line x1="178" y1="56" x2="170" y2="50"/>
+    <line x1="222" y1="56" x2="230" y2="50"/>
+    <line x1="184" y1="48" x2="180" y2="42"/>
+    <line x1="216" y1="48" x2="220" y2="42"/>
+  </g>
+</svg>
