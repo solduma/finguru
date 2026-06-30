@@ -61,6 +61,19 @@ class Settings(BaseSettings):
     # ---- Content ----
     content_dir: str = "../web/content"
 
+    # ---- Market data (practical modules / Company Analyzer) ----
+    # SEC EDGAR requires a descriptive User-Agent ("name email"); no key needed.
+    sec_edgar_ua: str = "finguru educational tool (contact@example.com)"
+    # OpenDART (Korea corporate disclosures) free API key; KIS / KRX for KR prices.
+    dart_api_key: str = ""
+    kis_app_key: str = ""
+    kis_app_secret: str = ""
+    kis_account_no: str = ""
+    krx_api: str = ""
+    # How long (seconds) to cache a fetched fundamentals payload. Fundamentals
+    # change quarterly, so a long TTL is fine and respects upstream rate limits.
+    market_data_cache_ttl: int = 86400
+
     # ---- Server ----
     api_host: str = "0.0.0.0"
     api_port: int = 8000

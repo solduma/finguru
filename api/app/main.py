@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
-from .routes import chat
+from .routes import chat, market_data
 
 settings = get_settings()
 
@@ -20,6 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(chat.router)
+app.include_router(market_data.router)
 
 
 @app.get("/health")

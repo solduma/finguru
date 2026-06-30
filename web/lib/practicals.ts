@@ -8,19 +8,39 @@
 // three allocation labs — preset comparison, cost-drag, and glide path — each a
 // different front-end on the same engine.
 
-export type LabId = "portfolio" | "cost-drag" | "glide-path";
+export type LabId =
+  | "portfolio"
+  | "cost-drag"
+  | "glide-path"
+  | "company-dividend"
+  | "company-value"
+  | "company-growth"
+  | "company-reit";
+
+/** The Company Analyzer (L2) scorecard variant. */
+export type CompanyMode = "dividend" | "value" | "growth" | "reit";
 
 export interface LabMeta {
   id: LabId;
   /** i18n key under `practical` for this lab's strings. */
-  i18nKey: "portfolio" | "costDrag" | "glidePath";
+  i18nKey: "portfolio" | "costDrag" | "glidePath" | "company";
+  /** For the shared CompanyLab: which scorecard to render. */
+  companyMode?: CompanyMode;
 }
 
 export const LABS: Record<LabId, LabMeta> = {
   portfolio: { id: "portfolio", i18nKey: "portfolio" },
   "cost-drag": { id: "cost-drag", i18nKey: "costDrag" },
   "glide-path": { id: "glide-path", i18nKey: "glidePath" },
+  "company-dividend": { id: "company-dividend", i18nKey: "company", companyMode: "dividend" },
+  "company-value": { id: "company-value", i18nKey: "company", companyMode: "value" },
+  "company-growth": { id: "company-growth", i18nKey: "company", companyMode: "growth" },
+  "company-reit": { id: "company-reit", i18nKey: "company", companyMode: "reit" },
 };
+
+export function companyModeFor(id: LabId): CompanyMode | null {
+  return LABS[id].companyMode ?? null;
+}
 
 export function isLabId(x: string): x is LabId {
   return x in LABS;

@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import PortfolioLab from "@/components/practicals/PortfolioLab";
 import CostDragLab from "@/components/practicals/CostDragLab";
 import GlidePathLab from "@/components/practicals/GlidePathLab";
+import CompanyLab from "@/components/practicals/CompanyLab";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
+import { companyModeFor } from "@/lib/practicals";
 
 // A strategy's hands-on capstone lab lives at /[locale]/practice/[id], where id
 // is the strategy id. The strategy declares which lab via its `practical` field
@@ -38,6 +40,14 @@ export default async function PracticePage({
       return <CostDragLab {...common} />;
     case "glide-path":
       return <GlidePathLab {...common} />;
+    case "company-dividend":
+    case "company-value":
+    case "company-growth":
+    case "company-reit": {
+      const cmode = companyModeFor(strategy.practical);
+      if (!cmode) notFound();
+      return <CompanyLab {...common} mode={cmode} />;
+    }
     default:
       notFound();
   }

@@ -106,6 +106,53 @@ export type Dict = {
       seqReversedEnd: string;
       lesson: string;
     };
+    company: {
+      // titles/intros per scorecard mode
+      titles: Record<string, string>;
+      intros: Record<string, string>;
+      lessons: Record<string, string>;
+      tickerLabel: string;
+      marketLabel: string;
+      marketUs: string;
+      marketKr: string;
+      priceLabel: string;
+      analyze: string;
+      loading: string;
+      notFound: string;
+      error: string;
+      examples: string;
+      sourceLink: string;
+      // metric labels
+      yield: string;
+      payoutEarnings: string;
+      payoutFcf: string;
+      growthStreak: string;
+      years: string;
+      cutWarning: string;
+      revenueCaption: string;
+      dpsCaption: string;
+      // value / dcf
+      growthRate: string;
+      terminalGrowth: string;
+      discountRate: string;
+      intrinsic: string;
+      marginOfSafety: string;
+      terminalShare: string;
+      earningsYield: string;
+      returnOnCapital: string;
+      dcfCaption: string;
+      terminalWarn: string;
+      // garp
+      pe: string;
+      peg: string;
+      epsCagr: string;
+      roe: string;
+      netMargin: string;
+      fcfConversion: string;
+      qualityCaption: string;
+      // reit
+      reitNote: string;
+    };
   };
   quiz: {
     title: string;
@@ -285,6 +332,72 @@ export const STRINGS: Record<Locale, Dict> = {
         seqReversedEnd: "Crash-late ending balance",
         lesson:
           "The lesson: near your target date the glide path shifts you toward bonds and cash precisely because a big loss just before or after you start withdrawing is the hardest to recover from. Sequence-of-returns risk — not the average return — is what de-risking protects against.",
+      },
+      company: {
+        titles: {
+          dividend: "Dividend Safety Check",
+          value: "Intrinsic Value & Margin of Safety",
+          growth: "Quality & Growth Scorecard",
+          reit: "REIT Income Check",
+        },
+        intros: {
+          dividend:
+            "Enter a real company and judge whether its dividend is safe — not just high. We pull its filings and compare what it pays against what it earns and the cash it actually generates.",
+          value:
+            "Estimate what a business is worth with a simple discounted-cash-flow model, then see your margin of safety against the price. Move the assumptions and watch the answer swing — that is the whole lesson.",
+          growth:
+            "Score a company on growth AND quality together: PEG (are you overpaying for growth?), returns on equity, margins, and whether earnings turn into real cash.",
+          reit: "Check a REIT's income the honest way. A REIT's net-income payout often looks impossible (>100%) because depreciation is non-cash — which is exactly why FFO exists.",
+        },
+        lessons: {
+          dividend:
+            "A safe dividend is necessary but not sufficient. A payout ratio above 100% — especially against free cash flow — or a past cut is a warning. A high yield is often the market pricing in a cut, not a gift. Always read the filing before trusting the number.",
+          value:
+            "Notice how much of the value comes from the terminal value — usually most of it. That means a DCF is mostly a guess about the far future. It is a tool for disciplined thinking, never a price target. Cheap can also be a value trap.",
+          growth:
+            "Fast growth is not the same as quality growth. PEG divides by an estimated growth rate, so it inherits all the error in that estimate. Pair every growth number with a quality check — returns on capital and whether earnings become cash.",
+          reit:
+            "Judge a REIT on FFO/AFFO, not net income, and respect its rate sensitivity (the 2022 drawdown). For most beginners a broad REIT fund beats single-name analysis; treat this as practice, not a pick.",
+        },
+        tickerLabel: "Ticker",
+        marketLabel: "Market",
+        marketUs: "US (SEC EDGAR)",
+        marketKr: "Korea (DART)",
+        priceLabel: "Current price (per share)",
+        analyze: "Analyze",
+        loading: "Pulling filings…",
+        notFound: "Couldn't find that ticker on the selected market.",
+        error: "Data lookup failed. Try again, or another ticker.",
+        examples: "Try",
+        sourceLink: "Verify in the primary filing",
+        yield: "Dividend yield",
+        payoutEarnings: "Payout (of earnings)",
+        payoutFcf: "Payout (of free cash flow)",
+        growthStreak: "Dividend-growth streak",
+        years: "yrs",
+        cutWarning: "This company has cut its dividend within the data window.",
+        revenueCaption: "Revenue by year",
+        dpsCaption: "Dividend per share by year",
+        growthRate: "FCF growth (next 5 yrs)",
+        terminalGrowth: "Terminal growth",
+        discountRate: "Discount rate",
+        intrinsic: "Intrinsic value / share",
+        marginOfSafety: "Margin of safety",
+        terminalShare: "From terminal value",
+        earningsYield: "Earnings yield (EBIT/EV)",
+        returnOnCapital: "Return on capital",
+        dcfCaption: "Where the value comes from",
+        terminalWarn:
+          "Most of the value sits in the terminal value — i.e. in assumptions about the distant future.",
+        pe: "P/E",
+        peg: "PEG (vs. history)",
+        epsCagr: "EPS growth (trailing)",
+        roe: "Return on equity",
+        netMargin: "Net margin",
+        fcfConversion: "FCF conversion",
+        qualityCaption: "Quality metrics",
+        reitNote:
+          "Heads up: standard filings report net income, not FFO. A REIT's net-income payout will look alarmingly high because property depreciation is a non-cash charge — judge it on FFO/AFFO from the filing instead.",
       },
     },
     quiz: {
@@ -510,6 +623,72 @@ export const STRINGS: Record<Locale, Dict> = {
         seqReversedEnd: "후반 폭락 시 최종 잔액",
         lesson:
           "교훈: 목표 시점이 가까워지면 글라이드 패스가 채권과 현금 쪽으로 옮겨 가는 이유는, 인출을 시작하기 직전이나 직후의 큰 손실이 가장 회복하기 어렵기 때문입니다. 평균 수익률이 아니라 시퀀스 리스크 — 이것이 위험 축소가 막아 주는 대상입니다.",
+      },
+      company: {
+        titles: {
+          dividend: "배당 안전성 점검",
+          value: "내재가치 & 안전마진",
+          growth: "우량성 & 성장 스코어카드",
+          reit: "리츠 인컴 점검",
+        },
+        intros: {
+          dividend:
+            "실제 기업을 입력해 배당이 '높은지'가 아니라 '안전한지'를 판단해 보세요. 공시를 불러와 지급액을, 벌어들인 이익과 실제 창출한 현금과 비교합니다.",
+          value:
+            "간단한 현금흐름할인(DCF) 모델로 기업의 가치를 추정하고, 가격 대비 안전마진을 확인하세요. 가정을 움직이면 답이 크게 흔들립니다 — 그것이 핵심 교훈입니다.",
+          growth:
+            "성장과 우량성을 함께 채점합니다: PEG(성장에 과도한 값을 치르는가?), 자기자본이익률, 마진, 그리고 이익이 실제 현금으로 전환되는지.",
+          reit: "리츠 인컴을 정직하게 점검합니다. 리츠의 순이익 기준 배당성향은 감가상각이 비현금 비용이라 흔히 100%를 넘어 보입니다 — 바로 그래서 FFO가 존재합니다.",
+        },
+        lessons: {
+          dividend:
+            "안전한 배당은 필요조건일 뿐 충분조건이 아닙니다. 배당성향이 100%를 넘거나(특히 잉여현금흐름 대비) 과거에 삭감 이력이 있다면 경고입니다. 높은 수익률은 선물이 아니라 시장이 삭감을 예상한 결과인 경우가 많습니다. 숫자를 믿기 전에 반드시 공시를 읽으세요.",
+          value:
+            "가치의 얼마나 많은 부분이 잔존가치(terminal value)에서 나오는지 보세요 — 대개 대부분입니다. 즉 DCF는 먼 미래에 대한 추측에 가깝습니다. 규율 있는 사고의 도구일 뿐, 결코 목표가가 아닙니다. 싼 것은 가치 함정일 수도 있습니다.",
+          growth:
+            "빠른 성장과 우량한 성장은 다릅니다. PEG는 추정 성장률로 나누므로 그 추정의 오차를 그대로 물려받습니다. 모든 성장 지표는 우량성 점검 — 자본수익률과 이익의 현금 전환 — 과 함께 보세요.",
+          reit:
+            "리츠는 순이익이 아니라 FFO/AFFO로 판단하고, 금리 민감도(2022년 하락)를 존중하세요. 대부분의 초심자에겐 광범위한 리츠 펀드가 개별 종목 분석보다 낫습니다 — 이것은 연습이지 추천이 아닙니다.",
+        },
+        tickerLabel: "종목 코드",
+        marketLabel: "시장",
+        marketUs: "미국 (SEC EDGAR)",
+        marketKr: "한국 (DART)",
+        priceLabel: "현재 주가 (주당)",
+        analyze: "분석",
+        loading: "공시 불러오는 중…",
+        notFound: "선택한 시장에서 해당 종목을 찾을 수 없습니다.",
+        error: "데이터 조회에 실패했습니다. 다시 시도하거나 다른 종목을 입력하세요.",
+        examples: "예시",
+        sourceLink: "원문 공시에서 검증",
+        yield: "배당수익률",
+        payoutEarnings: "배당성향 (이익 대비)",
+        payoutFcf: "배당성향 (잉여현금흐름 대비)",
+        growthStreak: "배당 성장 연속",
+        years: "년",
+        cutWarning: "이 기업은 데이터 구간 내에 배당을 삭감한 적이 있습니다.",
+        revenueCaption: "연도별 매출",
+        dpsCaption: "연도별 주당배당금",
+        growthRate: "FCF 성장률 (향후 5년)",
+        terminalGrowth: "영구 성장률",
+        discountRate: "할인율",
+        intrinsic: "주당 내재가치",
+        marginOfSafety: "안전마진",
+        terminalShare: "잔존가치 비중",
+        earningsYield: "이익수익률 (EBIT/EV)",
+        returnOnCapital: "자본수익률",
+        dcfCaption: "가치의 출처",
+        terminalWarn:
+          "가치의 대부분이 잔존가치 — 즉 먼 미래에 대한 가정 — 에서 나옵니다.",
+        pe: "PER",
+        peg: "PEG (역사 대비)",
+        epsCagr: "EPS 성장률 (과거)",
+        roe: "자기자본이익률",
+        netMargin: "순이익률",
+        fcfConversion: "FCF 전환율",
+        qualityCaption: "우량성 지표",
+        reitNote:
+          "참고: 표준 공시는 FFO가 아니라 순이익을 보고합니다. 부동산 감가상각이 비현금 비용이라 리츠의 순이익 기준 배당성향은 놀랄 만큼 높게 보입니다 — 공시의 FFO/AFFO로 판단하세요.",
       },
     },
     quiz: {

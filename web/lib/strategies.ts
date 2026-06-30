@@ -147,6 +147,7 @@ export const STRATEGIES: Strategy[] = [
       guru("pat-dorsey", "The moat checklist that separates a true aristocrat from a future dividend cut.", "진짜 배당귀족과 미래의 배당 삭감을 가르는 해자 체크리스트."),
       concept("risk-management", "Discipline against yield-chasing concentration; sizing to avoid ruin.", "고수익 추종형 집중에 맞서는 규율; 파산을 피하는 비중 조절."),
     ],
+    practical: "company-dividend",
   },
   {
     id: "value",
@@ -173,6 +174,7 @@ export const STRATEGIES: Strategy[] = [
       guru("howard-marks", "Second-level thinking and cycles: when bargains actually appear.", "2차적 사고와 사이클: 진짜 헐값이 나타나는 시점."),
       guru("mohnish-pabrai", "Dhandho: heads I win, tails I don't lose much — asymmetric, concentrated bets.", "단도: 앞면이면 내가 이기고 뒷면이면 크게 잃지 않는다 — 비대칭적이고 집중된 베팅."),
     ],
+    practical: "company-value",
   },
   {
     id: "growth",
@@ -197,6 +199,7 @@ export const STRATEGIES: Strategy[] = [
       guru("mark-minervini", "SEPA and the Volatility Contraction Pattern: the risk-managed pinnacle of growth-leader trading.", "SEPA와 변동성 수축 패턴: 위험을 관리하는 성장주도주 매매의 정점."),
       concept("risk-management", "Non-negotiable given growth's volatility: position sizing and stops against the high-multiple disappointment.", "성장주의 변동성을 감안하면 필수: 고배수 실망에 대비한 비중 조절과 손절."),
     ],
+    practical: "company-growth",
   },
   {
     id: "factor-quant",
@@ -320,6 +323,7 @@ export const STRATEGIES: Strategy[] = [
       guru("ray-dalio", "Real assets in an all-weather frame: the inflation-up quadrant they're meant to protect.", "올웨더 관점의 실물자산: 이들이 방어하려는 '인플레이션 상승' 사분면."),
       concept("risk-management", "The honest risks: illiquidity, leverage, concentration, and rate sensitivity.", "솔직한 위험: 비유동성, 레버리지, 집중, 그리고 금리 민감도."),
     ],
+    practical: "company-reit",
   },
   {
     // Selling option premium on shares you own (covered calls) or cash you set
