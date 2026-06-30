@@ -1,0 +1,89 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-richard-wyckoff" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-richard-wyckoff)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="110" y1="40" x2="110" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- giant hand + forearm entering top-left, palm down -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="hsl(160,68%,55%)">
+    <!-- forearm -->
+    <path d="M28 30 L78 52 L70 86 L26 70 Z" fill-opacity="0.25"/>
+    <!-- palm / back of hand -->
+    <path d="M64 56 L122 70 Q140 76 138 92 L130 118 Q120 132 102 128 L60 116 Q48 110 50 94 L54 70 Q56 56 64 56 Z" fill-opacity="0.35"/>
+    <!-- splayed fingers reaching toward the control bar -->
+    <path d="M128 86 L168 92 Q176 94 174 100 Q172 106 164 105 L126 100 Z" fill-opacity="0.4"/>
+    <path d="M130 100 L172 110 Q180 113 177 119 Q174 124 166 122 L128 113 Z" fill-opacity="0.4"/>
+    <path d="M126 113 L162 126 Q170 130 166 135 Q162 140 154 137 L120 124 Z" fill-opacity="0.4"/>
+    <path d="M114 124 L142 142 Q148 147 143 151 Q138 155 132 150 L108 134 Z" fill-opacity="0.4"/>
+    <!-- thumb -->
+    <path d="M62 96 L48 122 Q44 132 52 135 Q60 137 64 128 L74 108 Z" fill-opacity="0.4"/>
+  </g>
+
+  <!-- highlight knuckle accents -->
+  <g fill="hsl(160,88%,82%)" fill-opacity="0.55">
+    <circle cx="92" cy="84" r="2.2"/>
+    <circle cx="104" cy="90" r="2.2"/>
+    <circle cx="115" cy="97" r="2.2"/>
+  </g>
+
+  <!-- control / cross bar gripped by the hand -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="3" stroke-linecap="round">
+    <line x1="150" y1="118" x2="338" y2="118"/>
+  </g>
+  <rect x="150" y="114" width="188" height="8" rx="4" fill="hsl(160,68%,55%)" fill-opacity="0.3"/>
+  <!-- bar grip ring near hand -->
+  <circle cx="158" cy="118" r="5" fill="none" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-opacity="0.7"/>
+
+  <!-- taut strings descending to the crowd -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1" stroke-linecap="round">
+    <line x1="178" y1="122" x2="186" y2="176"/>
+    <line x1="218" y1="122" x2="222" y2="176"/>
+    <line x1="258" y1="122" x2="259" y2="176"/>
+    <line x1="298" y1="122" x2="295" y2="176"/>
+    <line x1="332" y1="122" x2="328" y2="176"/>
+  </g>
+
+  <!-- row of small identical crowd figures (the herd / exit liquidity) -->
+  <g fill="hsl(160,68%,55%)" fill-opacity="0.7" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-linejoin="round">
+    <g>
+      <circle cx="186" cy="180" r="4"/>
+      <path d="M182 186 L190 186 L189 200 L187 200 L186 192 L185 200 L183 200 Z"/>
+    </g>
+    <g>
+      <circle cx="222" cy="180" r="4"/>
+      <path d="M218 186 L226 186 L225 200 L223 200 L222 192 L221 200 L219 200 Z"/>
+    </g>
+    <g>
+      <circle cx="259" cy="180" r="4"/>
+      <path d="M255 186 L263 186 L262 200 L260 200 L259 192 L258 200 L256 200 Z"/>
+    </g>
+    <g>
+      <circle cx="295" cy="180" r="4"/>
+      <path d="M291 186 L299 186 L298 200 L296 200 L295 192 L294 200 L292 200 Z"/>
+    </g>
+    <g>
+      <circle cx="328" cy="180" r="4"/>
+      <path d="M324 186 L332 186 L331 200 L329 200 L328 192 L327 200 L325 200 Z"/>
+    </g>
+  </g>
+
+  <!-- faint footprints of smart money trailing along the bottom -->
+  <g fill="hsl(160,88%,82%)" fill-opacity="0.18">
+    <ellipse cx="70" cy="226" rx="7" ry="4" transform="rotate(-18 70 226)"/>
+    <ellipse cx="118" cy="233" rx="7" ry="4" transform="rotate(-18 118 233)"/>
+    <ellipse cx="168" cy="225" rx="7" ry="4" transform="rotate(-18 168 225)"/>
+    <ellipse cx="218" cy="233" rx="7" ry="4" transform="rotate(-18 218 233)"/>
+    <ellipse cx="268" cy="225" rx="7" ry="4" transform="rotate(-18 268 225)"/>
+    <ellipse cx="318" cy="233" rx="7" ry="4" transform="rotate(-18 318 233)"/>
+  </g>
+</svg>

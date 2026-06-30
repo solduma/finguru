@@ -1,0 +1,69 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-strategy-day-trading" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(0,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(0,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-strategy-day-trading-sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(0,88%,82%)"/>
+      <stop offset="1" stop-color="hsl(0,68%,55%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-strategy-day-trading)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="0" x2="120" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="0" x2="280" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- setting sun touching horizon behind bell -->
+  <path d="M 268 150 A 34 34 0 0 1 336 150 Z" fill="url(#cv-strategy-day-trading-sun)" fill-opacity="0.85"/>
+  <path d="M 268 150 A 34 34 0 0 1 336 150" fill="none" stroke="hsl(0,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="248" y1="150" x2="356" y2="150" stroke="hsl(0,22%,46%)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- right support post (bell platform) -->
+  <line x1="330" y1="100" x2="330" y2="200" stroke="hsl(0,22%,46%)" stroke-width="3" stroke-linecap="round"/>
+  <rect x="306" y="92" width="48" height="9" rx="2" fill="hsl(0,68%,55%)" fill-opacity="0.5" stroke="hsl(0,75%,66%)" stroke-width="2"/>
+
+  <!-- left support post: charred and leaning -->
+  <line x1="58" y1="86" x2="50" y2="195" stroke="hsl(0,22%,46%)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="58" y1="86" x2="50" y2="130" stroke="#000000" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- the tightrope: downhill-left burning to uphill-right bell -->
+  <line x1="118" y1="112" x2="318" y2="92" stroke="hsl(0,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <!-- frayed/curling left back portion of rope -->
+  <path d="M 118 112 C 100 116 86 110 74 118 C 88 116 96 122 104 118" fill="none" stroke="hsl(0,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7"/>
+  <path d="M 74 118 C 66 120 62 114 58 120" fill="none" stroke="hsl(0,75%,66%)" stroke-width="1" stroke-linecap="round" stroke-opacity="0.5"/>
+
+  <!-- flames consuming the rope behind, lower-left -->
+  <path d="M 96 120 C 90 108 100 104 96 96 C 106 102 108 114 100 122 Z" fill="hsl(0,68%,55%)" fill-opacity="0.85" stroke="hsl(0,88%,82%)" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M 80 122 C 76 112 84 108 81 100 C 90 106 90 116 84 124 Z" fill="hsl(0,68%,55%)" fill-opacity="0.7" stroke="hsl(0,88%,82%)" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M 110 122 C 107 114 113 110 111 104 C 118 109 117 117 113 123 Z" fill="hsl(0,68%,55%)" fill-opacity="0.55" stroke="hsl(0,75%,66%)" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M 90 116 C 88 110 93 108 91 103" fill="none" stroke="hsl(0,88%,82%)" stroke-width="1" stroke-linecap="round" stroke-opacity="0.8"/>
+
+  <!-- the bell on the platform at far right -->
+  <path d="M 330 56 C 314 56 308 70 308 90 L 352 90 C 352 70 346 56 330 56 Z" fill="hsl(0,68%,55%)" fill-opacity="0.5" stroke="hsl(0,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="304" y="89" width="52" height="5" rx="2" fill="hsl(0,75%,66%)"/>
+  <line x1="330" y1="48" x2="330" y2="56" stroke="hsl(0,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="330" cy="46" r="3" fill="none" stroke="hsl(0,88%,82%)" stroke-width="2"/>
+  <!-- swinging clapper -->
+  <line x1="330" y1="70" x2="338" y2="96" stroke="hsl(0,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="339" cy="98" r="3" fill="hsl(0,88%,82%)"/>
+  <!-- sound lines -->
+  <path d="M 360 66 C 366 72 366 80 360 86" fill="none" stroke="hsl(0,88%,82%)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M 367 60 C 376 70 376 86 367 96" fill="none" stroke="hsl(0,75%,66%)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.5"/>
+
+  <!-- running stick-figure trader at off-center sweet spot, mid-stride -->
+  <g stroke="hsl(0,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="196" cy="80" r="6" fill="hsl(0,88%,82%)" stroke="none"/>
+    <line x1="196" y1="86" x2="194" y2="104"/>
+    <!-- arms out for balance -->
+    <line x1="194" y1="92" x2="178" y2="86"/>
+    <line x1="194" y1="92" x2="212" y2="88"/>
+    <!-- running legs mid-stride landing on rope -->
+    <line x1="194" y1="104" x2="185" y2="108"/>
+    <line x1="194" y1="104" x2="205" y2="106"/>
+  </g>
+</svg>

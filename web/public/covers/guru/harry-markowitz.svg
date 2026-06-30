@@ -1,0 +1,96 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-harry-markowitz" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-harry-markowitz)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="260" y1="40" x2="260" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="150" x2="360" y2="150" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- efficient frontier arc threading the basket rims -->
+    <path d="M70 178 Q150 96 230 88 Q300 84 340 110" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-opacity="0.55" stroke-dasharray="2 7"/>
+
+    <!-- ascending baskets along the arc -->
+    <!-- basket 1 -->
+    <g transform="translate(96,168)">
+      <path d="M-22 0 A22 22 0 0 0 22 0 Z" fill="hsl(270,68%,55%)" fill-opacity="0.22" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-22" y1="0" x2="22" y2="0" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-12" y1="0" x2="-6" y2="18" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="12" y1="0" x2="6" y2="18" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="-16" y1="8" x2="16" y2="8" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+      <ellipse cx="-7" cy="-5" rx="6" ry="8" fill="hsl(270,88%,82%)" fill-opacity="0.9"/>
+      <ellipse cx="7" cy="-4" rx="6" ry="8" fill="hsl(270,68%,55%)" fill-opacity="0.8" stroke="hsl(270,88%,82%)" stroke-width="1"/>
+    </g>
+
+    <!-- basket 2 -->
+    <g transform="translate(168,128)">
+      <path d="M-22 0 A22 22 0 0 0 22 0 Z" fill="hsl(270,68%,55%)" fill-opacity="0.22" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-22" y1="0" x2="22" y2="0" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-12" y1="0" x2="-6" y2="18" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="0" y1="0" x2="0" y2="20" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="12" y1="0" x2="6" y2="18" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="-16" y1="8" x2="16" y2="8" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+      <ellipse cx="-6" cy="-5" rx="6" ry="8" fill="hsl(270,88%,82%)" fill-opacity="0.9"/>
+      <ellipse cx="8" cy="-4" rx="6" ry="8" fill="hsl(270,68%,55%)" fill-opacity="0.8" stroke="hsl(270,88%,82%)" stroke-width="1"/>
+    </g>
+
+    <!-- basket 3 (focal target, mid-curve) -->
+    <g transform="translate(240,110)">
+      <path d="M-24 0 A24 24 0 0 0 24 0 Z" fill="hsl(270,68%,55%)" fill-opacity="0.30" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-24" y1="0" x2="24" y2="0" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-13" y1="0" x2="-6" y2="20" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="0" y1="0" x2="0" y2="22" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="13" y1="0" x2="6" y2="20" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="-18" y1="9" x2="18" y2="9" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+      <ellipse cx="-8" cy="-5" rx="6" ry="8" fill="hsl(270,88%,82%)" fill-opacity="0.9"/>
+    </g>
+
+    <!-- basket 4 -->
+    <g transform="translate(316,118)">
+      <path d="M-20 0 A20 20 0 0 0 20 0 Z" fill="hsl(270,68%,55%)" fill-opacity="0.22" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-20" y1="0" x2="20" y2="0" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+      <line x1="-11" y1="0" x2="-6" y2="16" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="0" y1="0" x2="0" y2="18" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="11" y1="0" x2="6" y2="16" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="-14" y1="7" x2="14" y2="7" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+      <ellipse cx="-5" cy="-5" rx="6" ry="8" fill="hsl(270,88%,82%)" fill-opacity="0.9"/>
+      <ellipse cx="8" cy="-4" rx="6" ry="8" fill="hsl(270,68%,55%)" fill-opacity="0.8" stroke="hsl(270,88%,82%)" stroke-width="1"/>
+    </g>
+
+    <!-- hand entering from upper area, releasing an egg toward focal basket -->
+    <g stroke="hsl(270,75%,66%)" stroke-width="2">
+      <path d="M268 46 q14 -2 22 6 q6 6 4 16 q-1 6 -7 8"/>
+      <path d="M281 76 q-8 4 -16 1"/>
+      <path d="M276 56 q9 -1 12 5"/>
+    </g>
+    <!-- falling egg (focal) -->
+    <ellipse cx="246" cy="78" rx="7" ry="9" fill="hsl(270,88%,82%)" fill-opacity="0.95"/>
+    <path d="M246 90 L242 100" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="2 4"/>
+
+    <!-- cautionary: overloaded single basket with cracked egg, lower-left foreground -->
+    <g transform="translate(64,196)">
+      <path d="M-26 0 A26 26 0 0 0 26 0 Z" fill="hsl(270,22%,46%)" fill-opacity="0.30" stroke="hsl(270,22%,46%)" stroke-width="2"/>
+      <line x1="-26" y1="0" x2="26" y2="0" stroke="hsl(270,22%,46%)" stroke-width="2"/>
+      <line x1="-14" y1="0" x2="-7" y2="22" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="24" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+      <line x1="14" y1="0" x2="7" y2="22" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+      <!-- crowded eggs -->
+      <ellipse cx="-12" cy="-6" rx="6" ry="8" fill="hsl(270,22%,46%)" fill-opacity="0.7"/>
+      <ellipse cx="12" cy="-6" rx="6" ry="8" fill="hsl(270,22%,46%)" fill-opacity="0.7"/>
+      <ellipse cx="0" cy="-12" rx="6" ry="8" fill="hsl(270,68%,55%)" fill-opacity="0.55" stroke="hsl(270,75%,66%)" stroke-width="1"/>
+      <!-- crack on the top egg -->
+      <path d="M0 -18 l-3 5 l3 3 l-2 4" stroke="hsl(270,88%,82%)" stroke-width="1.4"/>
+    </g>
+
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import { DEFAULT_LOCALE } from "@/lib/i18n";
+import { LANDING_LOCALE } from "@/lib/i18n";
 
-// The bare root just sends visitors to the default locale.
+// The bare root just sends visitors to the default landing locale.
 export default function RootRedirect() {
-  redirect(`/${DEFAULT_LOCALE}`);
+  redirect(`/${LANDING_LOCALE}`);
 }

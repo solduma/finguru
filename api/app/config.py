@@ -35,13 +35,19 @@ class Settings(BaseSettings):
     web_search_max_results: int = 4
 
     # ---- Embeddings ----
-    embedding_backend: str = "local"  # "local" | "ollama"
+    embedding_backend: str = "local"  # "local" | "gemini" | "ollama"
     # Multilingual model with strong Korean retrieval quality. e5 models REQUIRE
     # "query:"/"passage:" prefixes (added in embeddings.py). 1024-dim. Batch
     # ingest is slow on CPU but a one-time offline cost; single-query latency at
     # chat time is ~40ms, which is fine.
     local_embedding_model: str = "intfloat/multilingual-e5-large"
     ollama_embedding_model: str = "embeddinggemma"
+    # Gemini embeddings (used by the serverless deploy: no model in-process, so
+    # the container stays small and cold starts are fast). Multilingual incl.
+    # Korean. Free tier is ample for low traffic. 768-dim. Asymmetric retrieval
+    # is handled via taskType in embeddings.py, not text prefixes.
+    gemini_api_key: str = ""
+    gemini_embedding_model: str = "gemini-embedding-001"
 
     # ---- RAG / Chroma ----
     chroma_dir: str = "./chroma_db"

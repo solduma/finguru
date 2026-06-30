@@ -1,0 +1,75 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-black-scholes-merton-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-black-scholes-merton-sphere" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="hsl(270,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(270,55%,20%)"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-black-scholes-merton-bg)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="200" y1="40" x2="200" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="80" y1="40" x2="80" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="320" y1="40" x2="320" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- sigma glyph: lone unknown input hovering top-center -->
+  <g stroke="hsl(270,88%,82%)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M 211 44 L 192 44 L 203 56 L 192 68 L 211 68"/>
+  </g>
+  <circle cx="200" cy="56" r="26" fill="none" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.4"/>
+  <line x1="200" y1="82" x2="200" y2="98" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.55"/>
+
+  <!-- fulcrum post -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="2" fill="hsl(270,68%,55%)" fill-opacity="0.18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 200 102 L 188 178 L 212 178 Z"/>
+    <line x1="170" y1="178" x2="230" y2="178"/>
+    <circle cx="200" cy="102" r="6" fill="hsl(270,88%,82%)" fill-opacity="0.9" stroke="none"/>
+  </g>
+
+  <!-- level beam (dead-level) -->
+  <line x1="78" y1="108" x2="322" y2="108" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <!-- equilibrium guide line -->
+  <line x1="40" y1="108" x2="78" y2="108" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-dasharray="3 4" stroke-opacity="0.4"/>
+  <line x1="322" y1="108" x2="360" y2="108" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-dasharray="3 4" stroke-opacity="0.4"/>
+
+  <!-- left hanger chains -->
+  <line x1="86" y1="108" x2="70" y2="148" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+  <line x1="86" y1="108" x2="102" y2="148" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+  <!-- right hanger chains -->
+  <line x1="314" y1="108" x2="298" y2="148" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+  <line x1="314" y1="108" x2="330" y2="148" stroke="hsl(270,22%,46%)" stroke-width="1"/>
+
+  <!-- LEFT pan: opaque mysterious sphere (the option) -->
+  <path d="M 56 148 A 30 9 0 0 0 116 148" fill="hsl(270,68%,55%)" fill-opacity="0.12" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="86" cy="148" rx="30" ry="9" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+  <circle cx="86" cy="128" r="20" fill="url(#cv-guru-black-scholes-merton-sphere)" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+  <ellipse cx="79" cy="121" rx="6" ry="4" fill="hsl(270,88%,82%)" fill-opacity="0.35"/>
+  <!-- question mark on sphere -->
+  <g stroke="hsl(270,88%,82%)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 80 124 A 6 6 0 1 1 86 132 L 86 136"/>
+    <circle cx="86" cy="142" r="1.4" fill="hsl(270,88%,82%)" stroke="none"/>
+  </g>
+
+  <!-- RIGHT pan: transparent replicating portfolio (stock disc + cash bar) -->
+  <path d="M 284 148 A 30 9 0 0 0 344 148" fill="hsl(270,68%,55%)" fill-opacity="0.12" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="314" cy="148" rx="30" ry="9" fill="none" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+
+  <!-- cash bar (rectangular, lower) -->
+  <rect x="294" y="132" width="40" height="12" rx="2" fill="hsl(270,68%,55%)" fill-opacity="0.2" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+  <line x1="301" y1="138" x2="327" y2="138" stroke="hsl(270,88%,82%)" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- stock disc (circular, stacked on top) -->
+  <ellipse cx="314" cy="120" rx="16" ry="6" fill="hsl(270,68%,55%)" fill-opacity="0.25" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+  <path d="M 298 120 L 298 126 A 16 6 0 0 0 330 126 L 330 120" fill="hsl(270,68%,55%)" fill-opacity="0.15" stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="314" cy="120" rx="6" ry="2.4" fill="none" stroke="hsl(270,88%,82%)" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- equals tick at center confirming balance -->
+  <line x1="195" y1="125" x2="205" y2="125" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <line x1="195" y1="131" x2="205" y2="131" stroke="hsl(270,88%,82%)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>

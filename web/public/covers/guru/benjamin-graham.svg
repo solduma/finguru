@@ -1,0 +1,76 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-benjamin-graham" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(35,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-benjamin-graham-col" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(35,68%,55%)" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="hsl(35,68%,55%)" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="hsl(35,68%,55%)" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-benjamin-graham)"/>
+
+  <!-- unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="120" x2="360" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ground shadow under foundation -->
+  <ellipse cx="170" cy="184" rx="120" ry="9" fill="#000000" fill-opacity="0.22"/>
+
+  <!-- wide foundation slab (over-built strength) -->
+  <rect x="62" y="170" width="216" height="16" rx="2" fill="hsl(35,68%,55%)" fill-opacity="0.30" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="78" y="158" width="184" height="14" rx="2" fill="hsl(35,68%,55%)" fill-opacity="0.22" stroke="hsl(35,75%,66%)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- the empty gap / cushion region (between column base and danger line) -->
+
+  <!-- horizontal dashed danger line near bottom -->
+  <line x1="96" y1="150" x2="244" y2="150" stroke="hsl(35,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-dasharray="7 6"/>
+
+  <!-- column base sits ABOVE the danger line, leaving an empty gap -->
+  <!-- column (intrinsic value) - tall vertical block, slightly left of center -->
+  <g stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <!-- column capital (top) -->
+    <rect x="130" y="78" width="52" height="10" rx="2" fill="hsl(35,68%,55%)" fill-opacity="0.45"/>
+    <!-- column shaft -->
+    <rect x="138" y="88" width="36" height="42" fill="url(#cv-guru-benjamin-graham-col)"/>
+    <!-- flutes / line detail on shaft -->
+    <line x1="147" y1="90" x2="147" y2="128" stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.6"/>
+    <line x1="156" y1="90" x2="156" y2="128" stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.6"/>
+    <line x1="165" y1="90" x2="165" y2="128" stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.6"/>
+    <!-- column base block (rests above danger line) -->
+    <rect x="130" y="130" width="52" height="10" rx="2" fill="hsl(35,68%,55%)" fill-opacity="0.45"/>
+  </g>
+
+  <!-- small weight / load resting on top of the column -->
+  <g stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M148 78 L150 66 L162 66 L164 78 Z" fill="hsl(35,68%,55%)" fill-opacity="0.7"/>
+    <!-- weight handle -->
+    <path d="M152 66 Q156 58 160 66" fill="none" stroke="hsl(35,88%,82%)" stroke-width="1.5"/>
+  </g>
+
+  <!-- dimension-arrow bracket spanning the cushion gap (column base at y=140 to danger line y=150) -->
+  <g stroke="hsl(35,88%,82%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- vertical reference tick at left of bracket -->
+    <line x1="210" y1="140" x2="210" y2="150"/>
+    <!-- top extension lines -->
+    <line x1="200" y1="140" x2="220" y2="140" stroke-opacity="0.7"/>
+    <line x1="200" y1="150" x2="220" y2="150" stroke-opacity="0.7"/>
+    <!-- arrowheads top -->
+    <path d="M207 143 L210 140 L213 143" fill="none"/>
+    <!-- arrowheads bottom -->
+    <path d="M207 147 L210 150 L213 147" fill="none"/>
+  </g>
+
+  <!-- soft cushion glow marker in the gap -->
+  <rect x="138" y="141" width="44" height="8" rx="2" fill="hsl(35,88%,82%)" fill-opacity="0.12"/>
+
+  <!-- faint highlight accent dot for engineered-precision feel -->
+  <circle cx="318" cy="92" r="3" fill="hsl(35,88%,82%)" fill-opacity="0.55"/>
+  <circle cx="318" cy="92" r="9" fill="none" stroke="hsl(35,22%,46%)" stroke-width="1" stroke-opacity="0.5"/>
+</svg>

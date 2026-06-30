@@ -1,0 +1,95 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-john-burr-williams-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(35,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-john-burr-williams-funnel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,68%,55%)" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="hsl(35,68%,55%)" stop-opacity="0.10"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-john-burr-williams-coin" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="hsl(35,88%,82%)"/>
+      <stop offset="0.6" stop-color="hsl(35,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(35,60%,42%)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-john-burr-williams-bg)"/>
+
+  <!-- shared unifying frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="0" y1="70" x2="400" y2="70" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="0" x2="300" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="150" y1="0" x2="150" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- dismissed crowd-price arrow: thin, pale, veering away in upper background -->
+  <path d="M150 110 Q235 96 320 52" fill="none" stroke="hsl(35,22%,46%)" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M320 52 l-11 1.5 l5.5 -8.5 z" fill="hsl(35,22%,46%)" fill-opacity="0.5"/>
+
+  <!-- timeline of future years: dotted baseline with small year ticks -->
+  <line x1="170" y1="86" x2="372" y2="86" stroke="hsl(35,22%,46%)" stroke-width="1" stroke-dasharray="2 4" stroke-opacity="0.75"/>
+  <g stroke="hsl(35,22%,46%)" stroke-width="1" stroke-opacity="0.7" stroke-linecap="round">
+    <line x1="200" y1="83" x2="200" y2="90"/>
+    <line x1="240" y1="83" x2="240" y2="90"/>
+    <line x1="278" y1="83.5" x2="278" y2="89.5"/>
+    <line x1="312" y1="84" x2="312" y2="89"/>
+    <line x1="342" y1="84" x2="342" y2="88.5"/>
+    <line x1="366" y1="84.5" x2="366" y2="88"/>
+  </g>
+
+  <!-- future coins: smaller and fainter the farther right -->
+  <g stroke="hsl(35,75%,66%)" stroke-linejoin="round" stroke-linecap="round" fill="hsl(35,68%,55%)">
+    <circle cx="200" cy="66" r="14" fill-opacity="0.42" stroke-width="2" stroke-opacity="0.85"/>
+    <circle cx="240" cy="66" r="12" fill-opacity="0.34" stroke-width="1.7" stroke-opacity="0.72"/>
+    <circle cx="278" cy="66" r="10" fill-opacity="0.26" stroke-width="1.5" stroke-opacity="0.6"/>
+    <circle cx="312" cy="66" r="8" fill-opacity="0.2" stroke-width="1.3" stroke-opacity="0.5"/>
+    <circle cx="342" cy="65.5" r="6.5" fill-opacity="0.15" stroke-width="1.1" stroke-opacity="0.42"/>
+    <circle cx="366" cy="65" r="5" fill-opacity="0.12" stroke-width="1" stroke-opacity="0.36"/>
+  </g>
+  <!-- inner detail rings on the nearest coins -->
+  <circle cx="200" cy="66" r="8.5" fill="none" stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.45"/>
+  <circle cx="240" cy="66" r="7" fill="none" stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.32"/>
+
+  <!-- threads pulling coins down-left toward funnel mouth (~x130..150,y100..150) -->
+  <g fill="none" stroke="hsl(35,75%,66%)" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6">
+    <path d="M198 78 Q150 96 142 110"/>
+    <path d="M239 76 Q160 104 146 116"/>
+    <path d="M277 74 Q168 112 150 122"/>
+    <path d="M311 72 Q176 120 152 130"/>
+    <path d="M341 70 Q182 128 150 138"/>
+    <path d="M365 69 Q186 134 148 146"/>
+  </g>
+
+  <!-- tapered discounting funnel/cone: wide mouth upper-right, narrow tip lower-left -->
+  <path d="M158 102 L154 152 L132 168 L120 158 L130 132 L138 108 Z"
+        fill="url(#cv-guru-john-burr-williams-funnel)"
+        stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- funnel compression lines -->
+  <g stroke="hsl(35,75%,66%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round">
+    <line x1="142" y1="116" x2="135" y2="128"/>
+    <line x1="148" y1="124" x2="140" y2="138"/>
+    <line x1="151" y1="135" x2="143" y2="148"/>
+  </g>
+  <!-- funnel narrow neck channeling down to the coin -->
+  <path d="M132 168 L128 184 M124 162 L120 180" fill="none" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.8"/>
+
+  <!-- the one bold present-value coin emerging at the neck, resting in the palm -->
+  <ellipse cx="118" cy="190" rx="24" ry="23" fill="url(#cv-guru-john-burr-williams-coin)" stroke="hsl(35,88%,82%)" stroke-width="2"/>
+  <circle cx="118" cy="190" r="16" fill="none" stroke="hsl(35,60%,42%)" stroke-width="1.5" stroke-opacity="0.7"/>
+  <circle cx="118" cy="190" r="9" fill="none" stroke="hsl(35,88%,82%)" stroke-width="1.5" stroke-opacity="0.85"/>
+  <path d="M112 196 L118 184 L124 196" fill="none" stroke="hsl(35,60%,42%)" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round"/>
+
+  <!-- open flat palm cradling the coin in lower-left foreground -->
+  <path d="M70 198 Q90 224 118 224 Q150 224 168 204"
+        fill="hsl(35,68%,55%)" fill-opacity="0.18"
+        stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M70 198 Q90 224 118 224 Q150 224 168 204" fill="none" stroke="hsl(35,88%,82%)" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- finger strokes on the open hand -->
+  <g fill="none" stroke="hsl(35,75%,66%)" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.85">
+    <path d="M70 198 Q62 192 60 184"/>
+    <path d="M168 204 Q178 200 184 192"/>
+    <path d="M88 215 Q84 209 84 203"/>
+  </g>
+</svg>

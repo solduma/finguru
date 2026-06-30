@@ -165,3 +165,12 @@ export function getLessonsForSchool(school: string, locale: Locale): Lesson[] {
     (l) => l.frontmatter.school === school,
   );
 }
+
+/** Look up a single lesson by (kind, slug) without ordering the whole path. */
+export function findLesson(
+  kind: LessonKind,
+  slug: string,
+  locale: Locale,
+): Lesson | null {
+  return readDir(kind, locale).find((l) => l.frontmatter.slug === slug) ?? null;
+}

@@ -1,0 +1,94 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-school-technical" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <clipPath id="cv-school-technical-foot">
+      <path d="M236 70 C264 70 280 92 280 118 C280 138 270 152 264 166 C258 180 256 192 244 198 C232 204 214 202 204 192 C196 184 196 172 190 162 C182 148 168 144 160 134 C150 122 152 104 164 92 C178 78 212 70 236 70 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-school-technical)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- faint trailing footprints receding upper-left (path of past steps) -->
+  <g fill="hsl(160,68%,55%)" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-linejoin="round">
+    <g opacity="0.10" transform="translate(60,72) rotate(-18) scale(0.30)">
+      <path d="M236 70 C264 70 280 92 280 118 C280 138 270 152 264 166 C258 180 256 192 244 198 C232 204 214 202 204 192 C196 184 196 172 190 162 C182 148 168 144 160 134 C150 122 152 104 164 92 C178 78 212 70 236 70 Z"/>
+    </g>
+    <g opacity="0.16" transform="translate(98,98) rotate(-15) scale(0.42)">
+      <path d="M236 70 C264 70 280 92 280 118 C280 138 270 152 264 166 C258 180 256 192 244 198 C232 204 214 202 204 192 C196 184 196 172 190 162 C182 148 168 144 160 134 C150 122 152 104 164 92 C178 78 212 70 236 70 Z"/>
+    </g>
+    <g opacity="0.24" transform="translate(132,128) rotate(-12) scale(0.55)">
+      <path d="M236 70 C264 70 280 92 280 118 C280 138 270 152 264 166 C258 180 256 192 244 198 C232 204 214 202 204 192 C196 184 196 172 190 162 C182 148 168 144 160 134 C150 122 152 104 164 92 C178 78 212 70 236 70 Z"/>
+    </g>
+  </g>
+
+  <!-- MAIN FOOTPRINT, tilted slightly along the forward diagonal -->
+  <g transform="rotate(-9 220 134)">
+    <!-- footprint pressed into terrain: filled silhouette + outline -->
+    <path d="M236 70 C264 70 280 92 280 118 C280 138 270 152 264 166 C258 180 256 192 244 198 C232 204 214 202 204 192 C196 184 196 172 190 162 C182 148 168 144 160 134 C150 122 152 104 164 92 C178 78 212 70 236 70 Z"
+          fill="hsl(160,68%,55%)" fill-opacity="0.15"
+          stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- crowd of tiny identical figures packed inside, all leaning the same way -->
+    <g clip-path="url(#cv-school-technical-foot)">
+      <g fill="hsl(160,88%,82%)" fill-opacity="0.85" stroke="none" transform="rotate(9 220 134)">
+        <!-- each figure: head dot + leaning body line, all facing same direction -->
+        <g>
+          <!-- row generation done by explicit placements for crisp control -->
+          <g transform="translate(170,96)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(186,90)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(202,88)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(218,90)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(234,96)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+
+          <g transform="translate(176,112)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(192,110)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(208,108)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(224,110)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(240,114)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+
+          <g transform="translate(180,130)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(196,128)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(212,127)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(228,129)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(244,133)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+
+          <g transform="translate(190,148)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(206,146)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(222,147)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(238,150)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+
+          <g transform="translate(204,164)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(220,164)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(236,166)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+
+          <g transform="translate(216,180)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+          <g transform="translate(232,182)"><circle cx="0" cy="0" r="2.1"/><path d="M-1.5 3 l4 9" stroke="hsl(160,88%,82%)" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>
+        </g>
+      </g>
+    </g>
+
+    <!-- re-stroke outline above crowd for a crisp edge -->
+    <path d="M236 70 C264 70 280 92 280 118 C280 138 270 152 264 166 C258 180 256 192 244 198 C232 204 214 202 204 192 C196 184 196 172 190 162 C182 148 168 144 160 134 C150 122 152 104 164 92 C178 78 212 70 236 70 Z"
+          fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- directional motion arrow / wind-streak along the toe direction (the trend) -->
+  <g stroke="hsl(160,88%,82%)" stroke-linecap="round" fill="none">
+    <path d="M286 60 L334 50" stroke-width="2" opacity="0.9"/>
+    <path d="M322 42 L338 49 L324 60" stroke-width="2" opacity="0.9"/>
+    <path d="M280 78 L320 70" stroke-width="1.4" opacity="0.5"/>
+    <path d="M284 94 L314 88" stroke-width="1.4" opacity="0.35"/>
+  </g>
+
+  <!-- subtle terrain dimple beneath the print -->
+  <ellipse cx="216" cy="206" rx="74" ry="9" fill="hsl(160,22%,46%)" opacity="0.18"/>
+</svg>

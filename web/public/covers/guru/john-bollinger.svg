@@ -1,0 +1,83 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-john-bollinger-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-john-bollinger-sph" cx="0.38" cy="0.34" r="0.72">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="0.5" stop-color="hsl(160,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(160,68%,30%)"/>
+    </radialGradient>
+    <linearGradient id="cv-guru-john-bollinger-fill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-john-bollinger-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="40" y1="40" x2="40" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="360" y1="40" x2="360" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="125" x2="400" y2="125" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- breathing envelope: wide mouth at left, narrow throat at right -->
+  <!-- inner membrane fill -->
+  <path d="M44,60 C140,52 250,108 356,116 L356,134 C250,142 140,198 44,190 Z"
+        fill="url(#cv-guru-john-bollinger-fill)"/>
+
+  <!-- upper band-wall -->
+  <path d="M44,60 C140,52 250,108 356,116"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- lower band-wall -->
+  <path d="M44,190 C140,198 250,142 356,134"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- end caps at mouth and throat -->
+  <line x1="44" y1="60" x2="44" y2="190" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="356" y1="116" x2="356" y2="134" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- dashed center spine (moving average) -->
+  <line x1="44" y1="125" x2="356" y2="125"
+        stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-opacity="0.8"
+        stroke-dasharray="6 6" stroke-linecap="round"/>
+
+  <!-- floating central sphere, in the wide-left region on the midline -->
+  <circle cx="108" cy="125" r="26" fill="url(#cv-guru-john-bollinger-sph)"
+          stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-opacity="0.6"/>
+  <ellipse cx="100" cy="116" rx="9" ry="6" fill="hsl(160,88%,82%)" fill-opacity="0.55"/>
+
+  <!-- outward breathing arrows where walls bulge (left) -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="80" y1="50" x2="80" y2="38"/>
+    <path d="M76,42 L80,37 L84,42"/>
+    <line x1="80" y1="200" x2="80" y2="212"/>
+    <path d="M76,208 L80,213 L84,208"/>
+  </g>
+
+  <!-- inward breathing arrows where walls pinch (right) -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="312" y1="100" x2="312" y2="112"/>
+    <path d="M308,108 L312,113 L316,108"/>
+    <line x1="312" y1="150" x2="312" y2="138"/>
+    <path d="M308,142 L312,137 L316,142"/>
+  </g>
+
+  <!-- tick-gauge near top wall (high) -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round">
+    <line x1="372" y1="100" x2="380" y2="100"/>
+    <line x1="372" y1="108" x2="378" y2="108"/>
+    <line x1="372" y1="116" x2="380" y2="116"/>
+  </g>
+  <!-- tick-gauge near bottom wall (low) -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round">
+    <line x1="372" y1="134" x2="380" y2="134"/>
+    <line x1="372" y1="142" x2="378" y2="142"/>
+    <line x1="372" y1="150" x2="380" y2="150"/>
+  </g>
+</svg>

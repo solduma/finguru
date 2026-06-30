@@ -1,0 +1,107 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-dividend-investing-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-indicator-dividend-investing-coin" cx="0.35" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-indicator-dividend-investing-bg)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="110" y1="40" x2="110" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="290" y1="40" x2="290" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="130" x2="400" y2="130" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ground mound under the tree -->
+  <path d="M120 212 Q200 196 280 212" fill="hsl(160,68%,55%)" fill-opacity="0.12"/>
+
+  <!-- ============ TREE ============ -->
+  <!-- roots -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M195 210 Q188 206 178 210"/>
+    <path d="M205 210 Q214 206 224 210"/>
+  </g>
+
+  <!-- trunk (tapered) -->
+  <path d="M191 210 L189 150 Q200 142 211 150 L209 210 Z" fill="hsl(160,68%,55%)" fill-opacity="0.30" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- branches -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" fill="none">
+    <!-- healthy left/upper branches -->
+    <path d="M196 150 Q170 122 150 108"/>
+    <path d="M198 148 Q182 116 176 92"/>
+    <path d="M202 148 Q214 118 224 100"/>
+    <!-- sagging right branch toward the oversized coin -->
+    <path d="M204 152 Q250 150 286 168"/>
+  </g>
+
+  <!-- canopy hint -->
+  <path d="M150 100 Q200 70 250 102 Q230 118 200 116 Q170 120 150 100 Z" fill="hsl(160,68%,55%)" fill-opacity="0.12"/>
+
+  <!-- ripe coin-fruits (healthy, small discs) -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="1">
+    <circle cx="150" cy="108" r="9" fill="url(#cv-indicator-dividend-investing-coin)"/>
+    <circle cx="176" cy="92" r="9" fill="url(#cv-indicator-dividend-investing-coin)"/>
+    <circle cx="224" cy="100" r="9" fill="url(#cv-indicator-dividend-investing-coin)"/>
+    <circle cx="200" cy="86" r="8" fill="url(#cv-indicator-dividend-investing-coin)"/>
+  </g>
+  <!-- inner coin rings -->
+  <g fill="none" stroke="hsl(160,45%,13%)" stroke-opacity="0.45" stroke-width="1.5">
+    <circle cx="150" cy="108" r="4.5"/>
+    <circle cx="176" cy="92" r="4.5"/>
+    <circle cx="224" cy="100" r="4.5"/>
+    <circle cx="200" cy="86" r="4"/>
+  </g>
+
+  <!-- ============ SPIGOT / TAP in trunk ============ -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="182" y="174" width="14" height="10" rx="2" fill="hsl(160,68%,55%)" fill-opacity="0.55"/>
+    <path d="M182 179 L168 179 L168 190" fill="none"/>
+    <circle cx="190" cy="170" r="4" fill="hsl(160,68%,55%)" fill-opacity="0.6"/>
+  </g>
+
+  <!-- falling cash droplet from tap -->
+  <path d="M168 195 q4 5 0 9 q-4 -4 0 -9 Z" fill="hsl(160,88%,82%)"/>
+
+  <!-- ============ CUP / BUCKET at base ============ -->
+  <path d="M150 198 L182 198 L178 212 L154 212 Z" fill="hsl(160,68%,55%)" fill-opacity="0.45" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M150 198 Q166 202 182 198" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1.5"/>
+  <!-- coins resting in cup -->
+  <ellipse cx="160" cy="200" rx="4" ry="2" fill="hsl(160,88%,82%)" fill-opacity="0.85"/>
+  <ellipse cx="171" cy="201" rx="4" ry="2" fill="hsl(160,88%,82%)" fill-opacity="0.65"/>
+
+  <!-- ============ SAPLING (reinvestment / compounding) ============ -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" fill="none">
+    <path d="M132 212 L132 199"/>
+    <path d="M132 203 Q124 198 120 192"/>
+    <path d="M132 200 Q140 196 144 190"/>
+  </g>
+  <path d="M118 188 Q124 184 132 191 Q126 196 118 188 Z" fill="hsl(160,68%,55%)" fill-opacity="0.5"/>
+  <path d="M146 186 Q140 182 132 189 Q138 194 146 186 Z" fill="hsl(160,68%,55%)" fill-opacity="0.5"/>
+
+  <!-- ============ OVERSIZED HOLLOW / CRACKED COIN (too-good yield) ============ -->
+  <line x1="286" y1="168" x2="300" y2="178" stroke="hsl(160,75%,66%)" stroke-width="1.5"/>
+  <circle cx="300" cy="196" r="20" fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <circle cx="300" cy="196" r="13" fill="none" stroke="hsl(160,22%,46%)" stroke-width="2"/>
+  <!-- crack -->
+  <path d="M300 176 L296 190 L304 198 L298 212" fill="none" stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M300 176 L308 178" fill="none" stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- ============ BEAR-TRAP on ground under oversized coin ============ -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <ellipse cx="300" cy="226" rx="20" ry="5" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+    <!-- left jaw -->
+    <path d="M283 226 L284 218 L288 224 L290 217 L294 224"/>
+    <!-- right jaw -->
+    <path d="M317 226 L316 218 L312 224 L310 217 L306 224"/>
+    <!-- spring/base -->
+    <path d="M286 228 Q300 232 314 228"/>
+  </g>
+</svg>

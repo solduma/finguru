@@ -1,0 +1,71 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-seth-klarman" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(35,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-seth-klarman)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="150" x2="360" y2="150" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- diagonal line of attention: hunter to fruit (very faint) -->
+  <line x1="100" y1="150" x2="300" y2="80" stroke="hsl(35,88%,82%)" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- branch with single ripe fruit (the fat pitch) upper-right focal point -->
+  <path d="M360 52 Q320 56 302 72" fill="none" stroke="hsl(35,22%,46%)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="298" cy="86" r="15" fill="hsl(35,68%,55%)" fill-opacity="0.9" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+  <path d="M298 72 q5 -6 0 -10" fill="none" stroke="hsl(35,22%,46%)" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="293" cy="81" rx="4" ry="2.5" fill="hsl(35,88%,82%)" fill-opacity="0.55"/>
+
+  <!-- margin-of-safety vertical gap with tick marks (right edge beneath fruit) -->
+  <line x1="338" y1="101" x2="338" y2="172" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 4"/>
+  <!-- top tick: value line -->
+  <line x1="326" y1="101" x2="350" y2="101" stroke="hsl(35,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+  <!-- bottom tick: price line -->
+  <line x1="326" y1="172" x2="350" y2="172" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <!-- arrows showing the cushion -->
+  <path d="M338 108 l-4 6 l8 0 z" fill="hsl(35,75%,66%)" fill-opacity="0.7"/>
+  <path d="M338 165 l-4 -6 l8 0 z" fill="hsl(35,75%,66%)" fill-opacity="0.7"/>
+
+  <!-- thick stone wall (margin of safety shield) lower-left foreground -->
+  <rect x="44" y="166" width="120" height="40" rx="3" fill="hsl(35,68%,55%)" fill-opacity="0.18" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+  <line x1="44" y1="180" x2="164" y2="180" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="44" y1="193" x2="164" y2="193" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="78" y1="166" x2="78" y2="180" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="120" y1="166" x2="120" y2="180" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="62" y1="180" x2="62" y2="193" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="100" y1="180" x2="100" y2="193" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="140" y1="180" x2="140" y2="193" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="86" y1="193" x2="86" y2="206" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+  <line x1="128" y1="193" x2="128" y2="206" stroke="hsl(35,75%,66%)" stroke-opacity="0.45" stroke-width="1"/>
+
+  <!-- crouched still hunter silhouette behind the wall, lowered bow -->
+  <g stroke="hsl(35,75%,66%)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- head -->
+    <circle cx="108" cy="120" r="11" fill="hsl(35,68%,55%)" fill-opacity="0.85"/>
+    <!-- crouched body torso -->
+    <path d="M108 131 q-6 14 -2 30 q1 6 8 6" fill="hsl(35,68%,55%)" fill-opacity="0.30"/>
+    <!-- back/shoulder line -->
+    <path d="M108 131 q14 4 18 18 q2 8 -2 17"/>
+    <!-- bent leg crouch -->
+    <path d="M106 167 q18 2 30 -4"/>
+    <!-- lowered arm holding bow -->
+    <path d="M118 140 q14 4 22 16"/>
+  </g>
+  <!-- lowered bow at rest -->
+  <path d="M148 134 q14 22 -4 44" fill="none" stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="150" y1="138" x2="142" y2="172" stroke="hsl(35,88%,82%)" stroke-opacity="0.7" stroke-width="1"/>
+
+  <!-- small stacked coin pile beside hunter (waiting in cash), low and grounded -->
+  <g stroke="hsl(35,75%,66%)" stroke-width="1.5">
+    <ellipse cx="72" cy="201" rx="13" ry="4" fill="hsl(35,68%,55%)" fill-opacity="0.55"/>
+    <ellipse cx="72" cy="196" rx="13" ry="4" fill="hsl(35,68%,55%)" fill-opacity="0.65"/>
+    <ellipse cx="72" cy="191" rx="13" ry="4" fill="hsl(35,68%,55%)" fill-opacity="0.75"/>
+  </g>
+</svg>

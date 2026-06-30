@@ -1,0 +1,73 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-ichimoku-cloud-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-indicator-ichimoku-cloud-kumo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="cv-indicator-ichimoku-cloud-sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(160,88%,82%)"/>
+      <stop offset="1" stop-color="hsl(160,75%,66%)" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="cv-indicator-ichimoku-cloud-clip">
+      <path d="M118 120 q-22 -2 -22 -22 q0 -24 26 -24 q4 -22 30 -22 q24 0 30 18 q14 -10 30 0 q8 -16 30 -14 q26 2 24 26 q22 0 22 22 q0 18 -22 20 z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-ichimoku-cloud-bg)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- five Ichimoku guide lines fanning across at staggered heights, shifted forward to the right -->
+  <g stroke-linecap="round" fill="none">
+    <path d="M30 96 L260 84 L370 78" stroke="hsl(160,22%,46%)" stroke-width="1"/>
+    <path d="M30 132 L250 118 L370 108" stroke="hsl(160,75%,66%)" stroke-width="1"/>
+    <path d="M30 158 L255 150 L370 138" stroke="hsl(160,22%,46%)" stroke-width="1"/>
+    <path d="M30 178 L250 172 L370 168" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.8"/>
+    <path d="M30 200 L255 196 L370 190" stroke="hsl(160,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+  </g>
+
+  <!-- sun / single open eye disc above-within the cloud -->
+  <circle cx="200" cy="70" r="34" fill="url(#cv-indicator-ichimoku-cloud-sun)"/>
+  <circle cx="200" cy="70" r="14" fill="none" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+  <circle cx="200" cy="70" r="4.5" fill="hsl(160,88%,82%)"/>
+
+  <!-- light rays / faint 'now' vertical marker dropping to terrain -->
+  <g stroke="hsl(160,88%,82%)" stroke-opacity="0.18" stroke-width="1" stroke-linecap="round">
+    <line x1="200" y1="118" x2="200" y2="196"/>
+    <line x1="172" y1="120" x2="150" y2="190"/>
+    <line x1="228" y1="120" x2="250" y2="190"/>
+  </g>
+
+  <!-- Kumo cloud: shaded interior with diagonal hatching -->
+  <g clip-path="url(#cv-indicator-ichimoku-cloud-clip)">
+    <rect x="80" y="50" width="220" height="90" fill="url(#cv-indicator-ichimoku-cloud-kumo)"/>
+    <g stroke="hsl(160,75%,66%)" stroke-opacity="0.25" stroke-width="1">
+      <line x1="60" y1="140" x2="180" y2="20"/>
+      <line x1="90" y1="140" x2="210" y2="20"/>
+      <line x1="120" y1="140" x2="240" y2="20"/>
+      <line x1="150" y1="140" x2="270" y2="20"/>
+      <line x1="180" y1="140" x2="300" y2="20"/>
+      <line x1="210" y1="140" x2="330" y2="20"/>
+    </g>
+  </g>
+
+  <!-- cloud outlines: one thick edge, one thin edge for depth -->
+  <path d="M118 120 q-22 -2 -22 -22 q0 -24 26 -24 q4 -22 30 -22 q24 0 30 18 q14 -10 30 0 q8 -16 30 -14 q26 2 24 26 q22 0 22 22 q0 18 -22 20 z"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M124 128 q-20 -2 -20 -20 q0 -22 24 -22 q4 -20 28 -20 q22 0 28 16"
+        fill="none" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- mountain / terrain ridge, ground for support & resistance -->
+  <path d="M0 212 L60 178 L100 196 L150 162 L200 192 L250 168 L300 200 L350 174 L400 200 L400 212 Z"
+        fill="hsl(160,68%,55%)" fill-opacity="0.20" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M150 162 L165 178 M250 168 L262 184 M350 174 L362 188"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
+</svg>

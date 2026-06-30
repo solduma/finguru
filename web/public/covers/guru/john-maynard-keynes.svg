@@ -1,0 +1,108 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-john-maynard-keynes" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-guru-john-maynard-keynes-crown" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="hsl(200,68%,55%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(200,68%,55%)" stop-opacity="0.12"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-john-maynard-keynes)"/>
+
+  <!-- shared frame: baseline + faint guides -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="133" y1="40" x2="133" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="267" y1="40" x2="267" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ===== LEFT: discarded spinning timing wheel ===== -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- motion-streak arcs (it was once whirling fast) -->
+    <path d="M44 168 A40 18 0 0 1 116 162" fill="none" stroke="hsl(200,22%,46%)" stroke-width="1" opacity="0.45"/>
+    <path d="M50 176 A36 16 0 0 1 112 172" fill="none" stroke="hsl(200,22%,46%)" stroke-width="1" opacity="0.32"/>
+    <path d="M58 185 A30 12 0 0 1 106 182" fill="none" stroke="hsl(200,22%,46%)" stroke-width="1" opacity="0.22"/>
+
+    <!-- toppled wheel: ellipse seen at an angle, lying low -->
+    <ellipse cx="84" cy="192" rx="40" ry="17" fill="hsl(200,68%,55%)" fill-opacity="0.15" stroke="hsl(200,75%,66%)" stroke-width="2"/>
+    <ellipse cx="84" cy="192" rx="22" ry="9" fill="none" stroke="hsl(200,75%,66%)" stroke-width="1" opacity="0.7"/>
+    <!-- spokes -->
+    <line x1="84" y1="175" x2="84" y2="209" stroke="hsl(200,75%,66%)" stroke-width="1" opacity="0.6"/>
+    <line x1="44" y1="192" x2="124" y2="192" stroke="hsl(200,75%,66%)" stroke-width="1" opacity="0.6"/>
+    <line x1="56" y1="180" x2="112" y2="204" stroke="hsl(200,75%,66%)" stroke-width="1" opacity="0.5"/>
+    <line x1="112" y1="180" x2="56" y2="204" stroke="hsl(200,75%,66%)" stroke-width="1" opacity="0.5"/>
+    <circle cx="84" cy="192" r="3" fill="hsl(200,88%,82%)"/>
+
+    <!-- two broken chips/coins (the two near-bankruptcies) -->
+    <ellipse cx="40" cy="204" rx="9" ry="4" fill="hsl(200,68%,55%)" fill-opacity="0.4" stroke="hsl(200,75%,66%)" stroke-width="1"/>
+    <line x1="40" y1="200" x2="40" y2="208" stroke="hsl(200,38%,7%)" stroke-width="1.5"/>
+    <ellipse cx="120" cy="206" rx="8" ry="4" fill="hsl(200,68%,55%)" fill-opacity="0.3" stroke="hsl(200,75%,66%)" stroke-width="1"/>
+    <line x1="120" y1="202" x2="120" y2="210" stroke="hsl(200,38%,7%)" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== CENTER: striding figure, back to wheel, walking right ===== -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="hsl(200,75%,66%)" stroke-width="2">
+    <!-- head -->
+    <circle cx="176" cy="96" r="9" fill="hsl(200,68%,55%)" fill-opacity="0.5"/>
+    <!-- torso angled forward toward the right -->
+    <path d="M176 105 L185 145"/>
+    <!-- forward (right) leg planted, back leg pushing -->
+    <path d="M185 145 L198 178 L204 206"/>
+    <path d="M185 145 L172 176 L162 204"/>
+    <!-- arm reaching up holding the tree like a staff -->
+    <path d="M180 118 L208 100"/>
+    <!-- trailing arm balancing back -->
+    <path d="M178 120 L162 138"/>
+  </g>
+
+  <!-- ===== RIGHT: tall rooted oak as bright focal anchor ===== -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- soft crown glow -->
+    <circle cx="288" cy="92" r="58" fill="url(#cv-guru-john-maynard-keynes-crown)"/>
+
+    <!-- roots gripping the ground -->
+    <g fill="none" stroke="hsl(200,75%,66%)" stroke-width="2">
+      <path d="M280 196 C268 202 256 204 244 210"/>
+      <path d="M284 198 C286 206 290 209 296 212"/>
+      <path d="M288 196 C300 203 314 205 326 211"/>
+      <path d="M276 192 C270 197 262 199 254 200" stroke-width="1" opacity="0.7"/>
+    </g>
+
+    <!-- thick trunk held upright like a staff (line from figure's hand up) -->
+    <path d="M283 196 L286 100" fill="none" stroke="hsl(200,75%,66%)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M208 100 L286 100" fill="none" stroke="hsl(200,75%,66%)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- a few bold branches -->
+    <g fill="none" stroke="hsl(200,75%,66%)" stroke-width="3" stroke-linecap="round">
+      <path d="M285 122 L256 100 L246 84"/>
+      <path d="M285 110 L314 92 L328 78"/>
+      <path d="M285 95 L285 66"/>
+      <path d="M285 130 L262 122" stroke-width="2"/>
+      <path d="M285 118 L308 110" stroke-width="2"/>
+    </g>
+
+    <!-- leafy crown masses -->
+    <g fill="hsl(200,68%,55%)" fill-opacity="0.55" stroke="hsl(200,75%,66%)" stroke-width="1.5">
+      <circle cx="285" cy="60" r="20"/>
+      <circle cx="252" cy="78" r="17"/>
+      <circle cx="320" cy="76" r="18"/>
+      <circle cx="268" cy="98" r="15"/>
+      <circle cx="306" cy="98" r="15"/>
+    </g>
+    <!-- crown highlight -->
+    <circle cx="278" cy="54" r="7" fill="hsl(200,88%,82%)" fill-opacity="0.7"/>
+  </g>
+
+  <!-- ===== animal spirits: stylized birds circling, settling into crown ===== -->
+  <g fill="none" stroke="hsl(200,88%,82%)" stroke-width="1.5" stroke-linecap="round">
+    <path d="M150 56 q6 -6 12 0 q6 -6 12 0"/>
+    <path d="M196 44 q5 -5 10 0 q5 -5 10 0"/>
+    <path d="M236 40 q4 -4 8 0 q4 -4 8 0"/>
+    <path d="M268 70 q4 -4 8 0 q4 -4 8 0" stroke-opacity="0.85"/>
+    <path d="M300 64 q4 -4 8 0 q4 -4 8 0" stroke-opacity="0.85"/>
+    <path d="M288 84 q3 -3 6 0 q3 -3 6 0" stroke-opacity="0.7"/>
+  </g>
+</svg>

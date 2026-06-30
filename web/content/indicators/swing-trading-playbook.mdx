@@ -1,0 +1,276 @@
+---
+title: "The Swing Trading Playbook — Entries, Stops & Targets"
+slug: "swing-trading-playbook"
+kind: "indicator"
+school: "technical"
+strategy: "short-term-systems"
+level: "intermediate"
+order: 125
+summary: "A repeatable workflow for holding a trade days to weeks: filter the regime, time the entry on a candle, place the stop on structure or volatility, then size and scale out in R-multiples — with an honest tour of where it breaks."
+tags: ["swing-trading", "playbook", "stops", "position-sizing", "candlesticks", "ATR"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Swing trading is the discipline of holding a tradable asset for **a few days to a few weeks** — longer than a day trader, far shorter than a buy-and-hold investor who measures positions in months or years — to capture one *swing* of price, up or down. The promise is unusual and worth stating plainly: you **do not need perfect timing**. The edge comes not from any single brilliant call but from running the *same process* over and over, with strict money-management rules, so that a modest statistical advantage can compound across many trades.
+
+This lesson is that process — a **playbook**. It is the capstone that wires together the individual tools you have met (moving averages, candlesticks, Average True Range, position sizing) into one repeatable assembly line you can run on any chart.
+
+<Callout type="key">
+
+The *process* is the edge, not the prediction. A swing trader is not someone who knows where price is going; they are someone who has a rule for every stage — scan, filter, trigger, stop, size, target, manage — and follows it whether they feel confident or terrified.
+
+</Callout>
+
+## What "swing trading" actually means
+
+A swing trade sits in the middle of the holding-period spectrum:
+
+- **Day trading** — positions opened and closed within a single session; nothing held overnight.
+- **Swing trading** — held "for one or more days to capture price movements." The common industry convention is a few days to a few weeks (the upper bound is convention, not a hard rule).
+- **Buy-and-hold investing** — held for months or years, ignoring the swings entirely.
+
+Because a swing trader holds *across* sessions, they can profit going **long** (buying low, hoping to sell higher) or **short** (selling borrowed shares high, hoping to buy them back lower) — a falling market is just as tradable as a rising one. The price of that flexibility is **overnight risk**, which we will return to honestly at the end.
+
+## The playbook spine
+
+Every swing trade runs through the same seven stations. Memorize the spine; the rest of the lesson fills in each box.
+
+<ConceptDiagram
+  caption="The swing-trading assembly line: each station has a rule, and a trade only advances when its rule is satisfied. Most candidates are rejected before the entry trigger."
+  chart={`flowchart LR
+  A[Scan for candidates] --> B[Regime / trend filter]
+  B --> C[Setup selection: pullback or breakout]
+  C --> D[Entry trigger: candle or break]
+  D --> E[Place stop: structure or ATR]
+  E --> F[Size for fixed % risk]
+  F --> G[Target & scale-out in R]
+  G --> H[Manage over days/weeks]
+  H --> A`}
+/>
+
+The loop matters: managing one trade frees you to scan for the next. Now each station, with the tool that powers it.
+
+## Station 1 — The regime filter: trade *with* the tide
+
+Before any entry, you ask one question: **what kind of market is this?** Trend-following entries get chopped to pieces in a sideways market; counter-trend fades get run over in a strong trend. A regime filter keeps you on the right side of the tide.
+
+The classic rule-based example is **Alexander Elder's three-moving-average system**: go long only when all three averages are aligned and pointing *up*, and go short only when all three point *down*. When they disagree, you stand aside. The averages do not predict anything — they simply describe the current slope and force you to agree with it.
+
+A coarser, market-wide gauge is the **golden cross / death cross**, built from the 50-day and 200-day simple moving averages (the average closing price over the last 50 or 200 days):
+
+- **Golden cross** — the 50-day SMA crosses *above* the 200-day SMA (bullish regime context).
+- **Death cross** — the 50-day SMA crosses *below* the 200-day SMA (bearish regime context).
+
+<Callout type="warning">
+
+These crosses are **lagging** and do not predict future direction — by construction they confirm a move that has already happened. The death cross in particular "is not a reliable indicator of future market declines." Use the golden/death cross as background *context* for which way the wind is blowing, never as an entry trigger by itself.
+
+</Callout>
+
+<LineChart
+  caption="Illustrative, not a forecast. A golden cross: the faster 50-day SMA climbs above the slower 200-day SMA, flagging an uptrend regime. Note how late the cross prints relative to the price low — the signal lags."
+  height={280}
+  yMin={88}
+  yMax={120}
+  series={[
+    { label: "50-day SMA", data: [100, 97, 95, 96, 100, 105, 110, 114, 117], color: "#2dd4bf", width: 2 },
+    { label: "200-day SMA", data: [104, 103, 102, 101, 101, 102, 104, 107, 110], color: "#a78bfa", width: 2 }
+  ]}
+  points={[
+    { x: 4, y: 100, text: "golden cross", color: "#22c55e" }
+  ]}
+/>
+
+## Station 2 — Setup selection: pullback or breakout
+
+Once the regime is set, you wait for one of two recurring shapes:
+
+- **Pullback (the most common swing setup):** in a confirmed uptrend, price dips back toward a support level — a prior swing low, a rising moving average, or a Fibonacci retracement — then you look to buy the bounce *in the direction of the trend*. The mirror image (a rally into resistance) sets up shorts in a downtrend.
+- **Breakout:** price pushes through a level it had been stuck under (resistance) or above (support), and you join the move as it accelerates.
+
+The setup tells you *where* to look. It is not yet a reason to act — for that you need a trigger.
+
+## Station 3 — The entry trigger: read the candle
+
+A **candlestick** compresses one period into a single mark: a body spanning the open and close, with wicks to the high and low. Their lineage runs back to 18th-century Japanese rice traders — most famously **Munehisa Homma (1724–1803)**, who traded the Dojima Rice Market in Sakata.
+
+<Callout type="note">
+
+Homma is *popularly* credited with inventing candlestick charts, but be careful repeating that. Steve Nison — the analyst who introduced candlesticks to the West — argued the candlestick chart "probably began after 1850," i.e. *after* Homma's lifetime. Homma was a legendary rice speculator; the modern candle chart likely came later. State it that way.
+
+</Callout>
+
+A handful of patterns are worth featuring because they encode a clean shift in the balance between buyers and sellers:
+
+- **Bullish / bearish engulfing** — a candle whose body completely swallows the prior candle's body; treated as a "major reversal signal."
+- **Hammer** — a small body with a long lower wick after a downtrend, hinting buyers stepped in.
+- **Morning star / evening star** — three-candle major-reversal sequences at the bottom and top of a move.
+- **Doji** — a candle that opens and closes at nearly the same price: indecision, a possible turning point.
+
+<CandleChart
+  caption="Illustrative. A pullback in an uptrend finds support, then a bullish engulfing candle (green) swallows the prior down-candle's body — the entry trigger. The stop goes just below the swing low."
+  height={300}
+  candles={[
+    { o: 50.0, h: 50.8, l: 49.7, c: 50.6 },
+    { o: 50.6, h: 50.9, l: 49.8, c: 50.0 },
+    { o: 50.0, h: 50.2, l: 49.0, c: 49.2 },
+    { o: 49.2, h: 49.5, l: 48.4, c: 48.7 },
+    { o: 48.6, h: 50.4, l: 48.5, c: 50.3 },
+    { o: 50.3, h: 51.6, l: 50.2, c: 51.5 }
+  ]}
+  levels={[
+    { y: 48.2, label: "swing low (stop below)", color: "#22c55e" }
+  ]}
+  points={[
+    { x: 4, y: 50.7, text: "bullish engulfing → entry", color: "#22c55e" },
+    { x: 3, y: 48.2, text: "swing low", color: "#a78bfa" }
+  ]}
+/>
+
+<Callout type="warning">
+
+Pattern reading **is subjective**, and academics genuinely dispute whether candlestick patterns carry predictive power on their own. Reliability improves when the pattern appears *at a meaningful location* (a support or resistance level) and lines up with the regime filter. The watchword is **confluence**: a single candle is a whisper; a candle at support, in an uptrend, on rising volume is a sentence.
+
+</Callout>
+
+## Station 4 — The stop: structure or volatility
+
+The stop-loss — the pre-set exit price for a trade gone wrong — is decided *before* you enter, and it defines your risk. Two honest approaches:
+
+**Structural stop.** Place it just below the swing low that produced your entry (for a long), or just above the swing high (for a short). The logic is clean: if price violates that level, the reason for the trade is gone.
+
+**Volatility stop with ATR.** **Average True Range** measures how far an asset typically moves per bar. It comes from **J. Welles Wilder Jr.**, *New Concepts in Technical Trading Systems* (**1978**), with a default **14-period** smoothing. Each bar's True Range is the greatest of three distances:
+
+```
+True Range = max of:
+  1.  High − Low
+  2. | High − Previous Close |
+  3. | Low  − Previous Close |
+```
+
+(The previous close appears in 2 and 3 so that overnight **gaps** — a jump between yesterday's close and today's open — are counted as real movement.) ATR then gives "a self-adjusting risk limit dependent on the market volatility": you set the stop a multiple of ATR away — commonly **1.5× to 3× ATR(14)** — so a jumpy stock gets a wide stop and a calm one a tight stop, automatically. (The exact multiplier is a convention to be tuned, not a law.)
+
+For the *management* phase of a multi-week hold, the **Chandelier Exit** turns ATR into a trailing stop. It was developed by **Charles Le Beau** and popularized in **Alexander Elder's** books:
+
+```
+Chandelier Exit (long)  = 22-day High − ATR(22) × 3
+Chandelier Exit (short) = 22-day Low  + ATR(22) × 3
+```
+
+Defaults are **(22, 3.0)**. Raise the multiplier for volatile names to avoid being shaken out; lower it for "dull," quiet names to make the stop more sensitive. The stop hangs below the recent peak and ratchets *up* as price rises — never down — locking in gains while leaving room to breathe.
+
+<LineChart
+  caption="Illustrative. Chandelier Exit (long, 22/3): the trailing stop sits 3×ATR below the highest high, stepping up as price makes new highs and holding flat on pullbacks — it never moves down — until a close below it ends the trade."
+  height={300}
+  series={[
+    { label: "Price", data: [50, 52, 55, 54, 58, 61, 60, 63, 61, 58, 56], color: "#e6e9ef", width: 2 },
+    { label: "Chandelier stop", data: [44, 46, 49, 49, 52, 55, 55, 57, 57, 57, 57], color: "#f59e0b", width: 2, dashed: true }
+  ]}
+  points={[
+    { x: 7, y: 64, text: "new high lifts stop", color: "#22c55e" },
+    { x: 10, y: 56.8, text: "close below → exit", color: "#ef4444" }
+  ]}
+/>
+
+## Station 5 — Sizing: the R-multiple and the 1% rule
+
+Here is the station that actually keeps you solvent. Two ideas working together.
+
+**The R-multiple framework**, associated with Van Tharp's *Trade Your Way to Financial Freedom*, defines **1R** as your initial risk per share — the distance from entry to stop. Every outcome is then measured in Rs: a stop-out is **−1R**, a win three times the stop distance is **+3R**. Measuring trades in R lets you compare a small loss and a large win on one scale, regardless of position size.
+
+**The 1–2% risk rule** is the widely-taught convention (it has no single clean primary source — treat it as a rule-of-thumb, not gospel): never let a single trade lose more than 1–2% of your account. Combine it with ATR and the position size falls out as pure arithmetic:
+
+```
+Risk per trade ($)     = Account × Risk %            (e.g. 1%)
+Stop distance ($)      = ATR × multiplier   (or entry − swing low)
+Position size (shares) = Risk per trade ($) ÷ Stop distance ($)
+```
+
+**Worked example (illustrative).** A $25,000 account, 1% risk → $250 at stake. You enter at $50.00; ATR(14) is $1.25 and you use a 2× ATR stop, so the stop sits $2.50 below at $47.50.
+
+```
+Stop distance  = 2 × $1.25 = $2.50
+Position size  = $250 ÷ $2.50 = 100 shares
+Capital used   = 100 × $50 = $5,000  (20% of the account)
+```
+
+If the stop hits, you lose exactly $250 — your planned −1R, 1% of equity. The stop sets the size; you never pick a share count first.
+
+<Callout type="key">
+
+Why so small? **Risk of ruin.** In a cited example, capping each loss at $200 on a $1,000 account means that "for four trades or less, the risk of ruin is zero. For five trades, the risk of ruin is about 3%." Oversizing — not bad entries — is the real account-killer. The Kelly criterion gives the formal mathematical optimum for bet size, but in practice traders bet a fraction of it precisely to keep ruin near zero.
+
+</Callout>
+
+## Station 6 — Targets and scaling out
+
+With the risk defined in R, the target is just a multiple of it. A common plan: aim for **+2R**, and rather than exiting all at once, **scale out** — sell part of the position at +1R or +2R to bank a sure gain, then **trail the remainder with the Chandelier Exit** to let a strong move run. This converts the trade from a single bet into a managed sequence: you lock in a win while keeping a free option on a bigger one.
+
+<ScatterChart
+  caption="Illustrative, not a forecast — it shows the shape of the trade-off, not real outcomes. Taking the full position off at +2R locks a clean, lower-variance result; trailing the runner with a Chandelier Exit raises the average outcome but adds variance (some runners give back gains, a few become big winners)."
+  xLabel="Outcome variability (risk) →"
+  yLabel="Average outcome in R →"
+  series={[{
+    label: "Exit plan",
+    line: true,
+    color: "#38bdf8",
+    data: [
+      { x: 2, y: 1.6, label: "All out at +2R (tidy, lower variance)" },
+      { x: 6, y: 2.3, label: "Scale + trail the runner (higher average, more variance)" }
+    ]
+  }]}
+/>
+
+## Two complete trades, end to end
+
+**The long.** Uptrend confirmed (price above a rising 50/200 SMA, golden-cross context) → price pulls back to support → a bullish engulfing or hammer fires as the **entry trigger** → **stop** at the swing low, or entry − 1.5–2× ATR(14) → **size** for 1% risk → first **target +2R**, then trail the remainder with a long Chandelier Exit (22, 3).
+
+**The short.** Downtrend confirmed (death-cross context, price below the 200-day SMA) → price rallies into resistance → a bearish engulfing or evening star fires → **stop** above the swing high, or + an ATR multiple → **size** for 1% risk → **cover** the first slice at +2R, trail the rest with a short Chandelier Exit.
+
+Notice that the two trades are *the same playbook*, mirror-imaged. That symmetry is the whole point: once the process is fixed, direction is just a parameter.
+
+## The honest failure modes
+
+No playbook survives contact with the market unbruised. State the weaknesses plainly so they don't surprise you.
+
+- **Whipsaws and false signals.** Moving-average crosses lag; candlesticks are subjective with disputed predictive power. Confluence and confirmation *reduce* false signals — they do not eliminate them. Expect to be wrong often; that is why each loss is capped at ~1R.
+- **Overnight and gap risk.** This is the swing-specific danger. Because you hold across sessions, a stop **cannot protect you against a gap** — if bad news hits after the close, price can open well past your stop, and you exit at the open, not your level. Day traders sidestep this by going flat each night; swing traders accept it as the cost of the strategy and keep size small.
+- **Strategy decay.** Rule-based edges erode as more people crowd into them. The quant Andrew Lo put it bluntly: "Now it's an arms race." A setup that worked beautifully for years can quietly stop paying as everyone trades it.
+- **Over-sizing.** The deepest failure mode of all. A trader with a genuine edge can still go broke by betting too large into an inevitable losing streak. The risk-of-ruin math is the antidote — it is *why* the 1–2% rule exists.
+
+<Callout type="warning">
+
+The playbook does not make you right. It makes you **survivable and consistent** — so that a small positive expectancy has the many trades it needs to compound. If your process has a negative edge, trading it bigger only reaches ruin faster. Track your results in R and fix the edge before you ever size up.
+
+</Callout>
+
+## How to practice
+
+1. Pick one regime filter (e.g. the 3-MA alignment) and *only* take trades that agree with it for a month. Notice how many bad trades it silently vetoes.
+2. Paper-trade 30 setups, logging for each: regime, setup, trigger candle, entry, stop (and how you set it), size, target, and the final result **in R**. Then compute your win rate and average R.
+3. Recompute one losing trade as if you had risked 0.5%, 1%, and 3%. Feel how sizing — not the entry — dictated the damage.
+4. Backtest your ATR stop multiplier (1.5, 2, 3) and the Chandelier (22, 3) defaults on names of different volatility. The "right" multiplier is the one that survives the noise without giving back the trend.
+
+## Key takeaways
+
+- **Swing trading holds days to weeks** to capture one swing, long or short — between day trading and buy-and-hold. You do not need perfect timing; you need a repeatable process.
+- The spine is fixed: **scan → regime filter → setup → entry trigger → stop → size → target/scale-out → manage.** Most candidates are rejected before the trigger.
+- **Filter the regime first** (Elder's 3-MA alignment; golden/death cross for context) — but remember crosses *lag* and don't predict.
+- **Trigger on candles** (engulfing, hammer, star, doji), and demand **confluence** — the patterns are subjective and academically disputed in isolation.
+- **Stops come from structure or ATR** (Wilder, 1978); trail multi-week holds with the **Chandelier Exit** (22, 3.0), widening the multiplier for volatile names.
+- **Size for a fixed 1–2% risk**, derive shares from the stop distance, and measure everything in **R-multiples**. Small size keeps risk of ruin near zero.
+- Be honest about the cracks: **gaps beat stops, signals whipsaw, edges decay, and over-sizing kills.** The playbook buys survivability, not certainty.
+
+> This is educational material, not financial advice. Every number in the worked examples is illustrative.
+
+### Sources
+
+1. [Swing trading — Wikipedia](https://en.wikipedia.org/wiki/Swing_trading) — definition and holding window ("one or more days"), long/short profit, the "do not need perfect timing" + "strict money management rules" framing, Elder's three-moving-average alignment rule, and Andrew Lo's "arms race" quote on strategy decay.
+2. [Average true range — Wikipedia](https://en.wikipedia.org/wiki/Average_true_range) — Wilder's 1978 origin, 14-period default, the max() True Range formula, and ATR as a "self-adjusting risk limit dependent on the market volatility."
+3. [StockCharts ChartSchool — Chandelier Exit](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/chandelier-exit) — exact long/short formulas, the 22-period / 3× ATR defaults, Le Beau and Elder attribution, and multiplier tuning for volatile vs. dull stocks.
+4. [Candlestick pattern — Wikipedia](https://en.wikipedia.org/wiki/Candlestick_pattern) — 18th-century Japanese rice-trading origin and Munehisa Homma, the Homma-vs-Nison "probably began after 1850" caveat, engulfing/hammer/star/doji descriptions, and the subjectivity / disputed-predictive-power caveats.
+5. [Golden cross / Death cross — Wikipedia](https://en.wikipedia.org/wiki/Golden_cross) — 50-day vs 200-day SMA definitions and the "do not predict future direction," lagging, "not a reliable indicator" caveats.
+6. [Risk of ruin — Wikipedia](https://en.wikipedia.org/wiki/Risk_of_ruin) — the $200-loss / $1,000-account example ("for four trades or less, the risk of ruin is zero. For five trades, the risk of ruin is about 3%") and the Kelly-criterion reference.
+7. Van K. Tharp, *Trade Your Way to Financial Freedom* — the R-multiple framework for measuring trade outcomes (1R = initial risk; results expressed in multiples of R). The 1–2% risk-per-trade rule is presented here as a widely-used convention rather than a single sourced figure.

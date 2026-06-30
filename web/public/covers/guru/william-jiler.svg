@@ -1,0 +1,105 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-william-jiler" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-william-jiler-page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-william-jiler)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- small spark / 'edge' top-center -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="200" y1="48" x2="200" y2="62"/>
+    <line x1="193" y1="55" x2="207" y2="55"/>
+    <line x1="195" y1="50" x2="205" y2="60"/>
+    <line x1="205" y1="50" x2="195" y2="60"/>
+  </g>
+  <circle cx="200" cy="55" r="2.2" fill="hsl(160,88%,82%)"/>
+
+  <!-- ===== OPEN BOOK ===== -->
+  <!-- left page -->
+  <path d="M200 150 L118 132 L130 168 L200 184 Z"
+        fill="url(#cv-guru-william-jiler-page)"
+        stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- right page -->
+  <path d="M200 150 L282 132 L270 168 L200 184 Z"
+        fill="url(#cv-guru-william-jiler-page)"
+        stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- center spine -->
+  <line x1="200" y1="150" x2="200" y2="184" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <!-- page lines -->
+  <line x1="150" y1="150" x2="188" y2="158" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+  <line x1="148" y1="160" x2="188" y2="168" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+  <line x1="250" y1="150" x2="212" y2="158" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+  <line x1="252" y1="160" x2="212" y2="168" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+
+  <!-- ===== POP-UP CUTOUTS ===== -->
+
+  <!-- triangle (converging wedge) cutout, left, slightly back -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M138 154 L182 154 L160 116 Z"
+          fill="hsl(160,68%,55%)" fill-opacity="0.22"/>
+    <line x1="140" y1="138" x2="175" y2="138" stroke-opacity="0.5" stroke-width="1"/>
+  </g>
+  <!-- triangle base tab into page -->
+  <path d="M148 154 L172 154 L170 160 L150 160 Z" fill="hsl(160,22%,46%)" fill-opacity="0.5"/>
+
+  <!-- pennant flag cutout, right, slightly back -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="252" y1="152" x2="252" y2="112"/>
+    <path d="M252 114 L288 124 L252 134 Z"
+          fill="hsl(160,68%,55%)" fill-opacity="0.30"/>
+  </g>
+  <ellipse cx="252" cy="153" rx="9" ry="3" fill="hsl(160,22%,46%)" fill-opacity="0.5"/>
+
+  <!-- head-and-shoulders cutout, center, tallest -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M178 150
+             C184 150 186 134 192 134
+             C198 134 199 122 200 92
+             C201 122 202 134 208 134
+             C214 134 216 150 222 150"
+          fill="hsl(160,68%,55%)" fill-opacity="0.32"/>
+    <!-- neckline -->
+    <line x1="178" y1="150" x2="222" y2="150" stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-opacity="0.8"/>
+  </g>
+  <!-- H&S base tab -->
+  <ellipse cx="200" cy="151" rx="22" ry="3.5" fill="hsl(160,22%,46%)" fill-opacity="0.5"/>
+
+  <!-- ===== HANDS cradling the book from below ===== -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="hsl(160,68%,55%)" fill-opacity="0.16">
+    <!-- left hand -->
+    <path d="M118 134
+             C104 140 96 150 96 166
+             C96 178 104 188 118 190
+             L150 178
+             C140 176 132 174 130 168
+             L118 134 Z"/>
+    <!-- left fingers -->
+    <line x1="108" y1="168" x2="124" y2="174" fill="none"/>
+    <line x1="110" y1="178" x2="128" y2="180" fill="none"/>
+
+    <!-- right hand -->
+    <path d="M282 134
+             C296 140 304 150 304 166
+             C304 178 296 188 282 190
+             L250 178
+             C260 176 268 174 270 168
+             L282 134 Z"/>
+    <!-- right fingers -->
+    <line x1="292" y1="168" x2="276" y2="174" fill="none"/>
+    <line x1="290" y1="178" x2="272" y2="180" fill="none"/>
+  </g>
+</svg>

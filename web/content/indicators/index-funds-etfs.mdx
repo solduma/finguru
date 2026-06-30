@@ -1,0 +1,200 @@
+---
+title: "Index Funds & ETFs — Owning the Whole Market"
+slug: "index-funds-etfs"
+kind: "indicator"
+school: "quant"
+level: "beginner"
+order: 114
+summary: "Instead of picking winners, you buy a sliver of every company at once — for a fee so small it rounds to nothing. Here's how index funds and ETFs actually work, and the catches nobody mentions."
+tags: ["index funds", "ETFs", "passive investing", "expense ratio", "diversification", "S&P 500"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+Instead of trying to pick which stocks will win, you buy a tiny piece of **all of them at once** — through a single fund that simply mirrors a market index — and you pay a fee so small it often rounds to a couple of cents per $100 invested.
+
+That idea — built by John Bogle in 1975 and once mocked as "Bogle's folly" — is now the default way most people own stocks. This lesson explains what an index actually is, the difference between an index mutual fund and an ETF, why fees matter far more than they look, and the honest risks the marketing leaves out.
+
+## What an index actually is
+
+An **index** is a rules-based, hypothetical basket of securities designed to *measure* a market's performance. The S&P 500 measures large U.S. companies; it is a yardstick, like a thermometer for the stock market.
+
+Here's the key thing beginners miss: **you cannot buy an index directly.** It's just a list and a formula. What you *can* buy is a **fund** that holds the actual securities and tries to track the index as closely as possible. The index is the recipe; the fund is the meal.
+
+<Callout type="note">
+
+"Passive investing" doesn't mean the fund does nothing. It means the fund makes **no judgment calls** about which stocks are good — it just owns whatever the index says to own, in the proportions the index specifies. The skill is in *tracking cheaply and accurately*, not in stock-picking.
+
+</Callout>
+
+### How the basket is weighted (this matters more than it sounds)
+
+Two funds tracking "the same 500 companies" can behave differently depending on *how much* of each company they hold. There are two main schemes:
+
+- **Cap-weighted** (by far the most common): each company is held in proportion to its **market capitalization** — its share price times the number of shares outstanding. Bigger companies count more. The S&P 500 uses *free-float* cap-weighting, meaning only publicly tradable shares count (locked-up founder shares are excluded). A huge advantage of cap-weighting is that it is **self-rebalancing**: as a stock's price rises, its weight rises automatically, so the fund barely has to trade. Low trading means low costs and low taxes.
+- **Equal-weighted**: every company gets the *same* slice, regardless of size. This gives you more exposure to smaller companies — but it requires constant **forced rebalancing** (selling the winners, buying the laggards) to keep the weights equal, which means higher turnover, higher trading costs, and more taxable events.
+
+<Callout type="warning">
+
+**The concentration nobody warns beginners about.** A cap-weighted S&P 500 is *top-heavy* — far more than the name "500 companies" suggests. As of mid-2026, the **ten largest holdings make up roughly a third of the entire index** (about 38%), and the top 50 are around 60%. These figures shift daily as prices move, so treat them as "roughly a third in the ten largest," not a fixed number. The takeaway is structural: when you "buy the whole market" cap-weighted, you are making an outsized bet on a few giant companies whether you realize it or not.
+
+</Callout>
+
+<BarChart
+  caption="Illustrative, not a precise snapshot — exact weights move every trading day. A cap-weighted S&P 500 fund concentrates roughly a third of your money in its ten largest holdings; the remaining ~490 companies share the rest. 'Owning the whole market' is not the same as 'owning it evenly.'"
+  labels={["Top 10 holdings", "Next 40 (to top 50)", "The other ~450"]}
+  series={[{ label: "Approx. share of the index", data: [38, 22, 40] }]}
+  yLabel="Percent of index by weight"
+/>
+
+## Index mutual fund vs. ETF — same idea, different wrapper
+
+Both an index mutual fund and an **ETF (exchange-traded fund)** can track the exact same index and hold the exact same stocks. The difference is the *wrapper* — how you buy and sell the thing.
+
+- **Index mutual fund**: priced **once per day**. After the market closes, the fund totals up what its holdings are worth, divides by the number of shares, and that single price — the **net asset value (NAV)** — is what everyone who bought or sold that day gets. You transact directly with the fund company, sometimes subject to a minimum investment (e.g. $1,000 or $3,000).
+- **ETF**: trades on a stock exchange **all day long, just like a share of stock**. You buy it through a broker at whatever the market price is at that moment, by its ticker symbol (e.g. VOO or SPY for the S&P 500, VTI for the total U.S. market). The minimum is often just one share — or a fraction of one, if your broker allows fractional shares.
+
+### The clever machinery: creation and redemption
+
+ETFs have a behind-the-scenes mechanism that gives them two superpowers: they stay priced fairly *and* they're tax-efficient. Large brokers called **authorized participants (APs)** swap big baskets of the underlying stocks for new ETF shares (and vice versa), directly with the fund, in chunks called **creation units** (typically 50,000 shares). Crucially, this swap happens **"in kind"** — stocks for fund shares, not cash for stocks.
+
+<ConceptDiagram
+  caption="The ETF creation/redemption loop. Authorized participants swap baskets of the actual stocks for new ETF shares (creation) or hand ETF shares back for the stocks (redemption). Because the swaps are 'in kind,' the fund rarely has to sell stock for cash — which keeps taxable gains low and keeps the ETF's market price glued to the value of what it holds."
+  chart={`flowchart LR
+  A[Authorized Participant] -- delivers basket of stocks --> F[ETF fund]
+  F -- issues new ETF shares (creation) --> A
+  A -- returns ETF shares (redemption) --> F
+  F -- delivers basket of stocks --> A
+  A -- buys/sells shares all day --> M[Stock exchange]`}
+/>
+
+This machinery does two things:
+
+1. **Keeps price near value.** If the ETF's market price drifts above the value of its underlying stocks, APs create new shares and sell them, pushing the price back down; if it drifts below, they redeem shares, pushing it back up. This arbitrage keeps the ETF's price hugging its NAV.
+2. **Makes ETFs tax-efficient.** Because the fund hands out *stocks* rather than selling them for *cash*, it rarely "realizes" capital gains inside the fund. A traditional mutual fund, by contrast, must sell stock for cash to meet redemptions — and those sales can trigger **taxable capital-gains distributions** passed on to *every* shareholder, even ones who didn't sell. This is why ETFs generally distribute fewer taxable gains than comparable mutual funds.
+
+<Callout type="key">
+
+The single most useful mental model: an **index** is the recipe, a **fund** is the meal that follows it, and the **wrapper** (mutual fund vs. ETF) is the container it's served in. The recipe determines what you own; the wrapper determines how you buy it and how it's taxed.
+
+</Callout>
+
+## Total-market vs. S&P 500 vs. sector — which "market"?
+
+"Owning the whole market" is a slogan that hides a real choice. There are different markets, and different funds for each.
+
+- **S&P 500** (e.g. VOO, SPY): about 500 of the largest U.S. companies — technically ~503 share classes — covering roughly **80% of total U.S. stock-market value**. Note one quirk: the S&P 500 isn't a pure rules-based index. A **committee** at S&P Dow Jones Indices selects which companies go in, using profitability and liquidity criteria. The aggregate market value of its members topped **$61 trillion at the end of 2025**.
+- **Total-market** (e.g. VTI, or the Wilshire 5000 concept): the S&P 500 **plus** mid-, small-, and micro-cap companies — fuller coverage of the *entire* U.S. stock market in one fund. Because the S&P 500 already captures ~80% of U.S. market value, the two behave very similarly day to day; the extra small-caps add a little diversification and volatility, so the choice between them matters less than beginners often fear.
+- **Sector funds** (technology, energy, healthcare, etc.): a single industry slice. Concentrated and higher-risk by design. A sector fund is emphatically **not** "the whole market" — it's a focused bet on one corner of it.
+
+## Replication and tracking error — how well does the fund copy the index?
+
+A fund promises to mirror an index. How it does that, and how closely, are worth understanding.
+
+**Two ways to copy an index:**
+
+- **Full replication**: the fund holds *every* security in the index, in the exact proportions. This is practical for indexes of large, liquid stocks like the S&P 500.
+- **Sampling**: the fund holds a *representative subset* chosen to behave like the whole index. This is used for indexes that are huge or hard to trade — a total-market index with thousands of tiny illiquid stocks, or an emerging-markets index where buying every name is impractical or expensive.
+
+**Tracking error** is the gap between the fund's return and the index's return — your measure of how good a copy it is. Some sources of slippage: the fund's fee, trading costs, cash sitting idle, and the imperfections of sampling.
+
+<Callout type="warning">
+
+How big is tracking error in practice? Vanguard has said a well-run S&P 500 index fund should track to within about **5 basis points** (0.05 percentage points) a year. But a Morningstar survey found the *average* index fund tracked about **38 basis points** off — and emerging-market index funds can be much worse. "Index fund" is a promise of method, not a guarantee of a tight copy. Cheaper, simpler indexes (large-cap U.S.) tend to track best.
+
+</Callout>
+
+A "basis point" (bp) is just **one-hundredth of a percentage point** — so 5 bps = 0.05%, and 100 bps = 1%. You'll see fees and tracking error quoted in basis points constantly; it's the industry's shorthand.
+
+## Expense ratios — the small number that quietly compounds
+
+The **expense ratio** is the annual fee the fund skims from its assets to cover its costs, quoted as a percentage. You never get a bill; it's simply deducted from the fund's value, a little each day.
+
+Typical ranges:
+
+- U.S. large-cap index funds and ETFs: roughly **0.02% to 0.10%** a year — some ETFs are as low as **0.02%**.
+- Emerging-market index funds: higher, up to around **0.70%**, because they're costlier to run.
+- The average **actively managed** large-cap fund has historically charged far more — around **1.15%** (a 2015 figure) — for the privilege of a manager trying (and usually failing) to beat the index.
+
+That sounds like a rounding error. It isn't, because the fee is charged **every year, on a growing balance** — so the gap compounds.
+
+<Callout type="key">
+
+A clean illustration: suppose the market returns **10% before fees**. A 0.1% index fund nets **9.9%**; a 1.15% active fund nets **8.85%**. That ~1-point yearly gap doesn't subtract once — because the fee is taken from an ever-larger balance, **the gap widens every single year.** Over decades, a 1% annual fee can quietly consume a *large* fraction of your final balance.
+
+</Callout>
+
+<LineChart
+  caption="Illustrative, not a forecast. Two hypothetical $10,000 investments riding a 10%-before-fees market for 30 years: one in a 0.10% index fund (nets 9.9%), one in a 1.15% active fund (nets 8.85%). The lines start together and fan apart — a tiny annual fee compounds into a large difference. This shows only the mechanics of fees, not real (lumpy) returns."
+  series={[
+    { label: "0.10% fee fund (9.9%/yr)", data: [10000, 16032, 25703, 41206, 66062, 105911, 169797] },
+    { label: "1.15% fee fund (8.85%/yr)", data: [10000, 15281, 23350, 35680, 54522, 83313, 127307] }
+  ]}
+  labels={["Year 0", "Year 5", "Year 10", "Year 15", "Year 20", "Year 25", "Year 30"]}
+  yLabel="Account value ($)"
+/>
+
+<Callout type="note">
+
+The popular line that "a 1% fee costs you ~25–30% of your ending balance over a lifetime" is a *real ballpark* — but it's a **modeled result**, not a law of nature: it depends on the return assumed, the horizon, and contributions. Use it for intuition, not as a precise prediction. The robust claim is simpler: **lower fees reliably beat higher fees for an otherwise-identical fund.**
+
+</Callout>
+
+## How you'd actually buy one
+
+The mechanics are mundane, which is the point: open a brokerage or retirement account (e.g. a 401(k) or IRA in the U.S.), then either buy an ETF by its ticker during market hours like any stock, or order an index mutual fund at that day's closing NAV. For most beginners the choice barely matters — inside a tax-sheltered account the ETF tax edge largely disappears, leaving ETFs better for intraday trading and mutual funds better for automatic recurring investing.
+
+## A brief history (and why it was once a laughingstock)
+
+On **December 31, 1975**, **John Bogle** launched the **First Index Investment Trust** — later the **Vanguard 500** — the first index fund aimed at ordinary investors. It started with just **$11 million** and was so widely ridiculed that critics dubbed it **"Bogle's folly."** Today indexing is the dominant way Americans own stocks. ETFs came later: the first lasting U.S. ETF was the **SPDR S&P 500 (ticker SPY)**, launched in **January 1993**, with Vanguard's total-market ETF (**VTI**) following in **2001**.
+
+## The honest failure modes
+
+The "own everything cheaply" pitch is mostly true — but it's not the whole story. A professional understands the catches.
+
+<Callout type="warning">
+
+**1. Concentration risk.** A cap-weighted index quietly concentrates your money in a few mega-caps. When those giants stumble, "the whole market" stumbles with them — you are *not* as diversified as the holding count implies.
+
+**2. Index front-running.** Because index funds must buy or sell whatever the index adds or drops on a known schedule, other traders can trade ahead of those moves — a hidden drag the headline expense ratio doesn't show. Antti Petajisto (2011) estimated this costs S&P 500 funds roughly **21–28 basis points a year**.
+
+**3. "Asset manager capitalism."** So much money now flows into a few providers — BlackRock, Vanguard, and State Street together control well over half of ETF assets — that they hold giant stakes in nearly every public company. Scholars like Benjamin Braun (2020) warn this concentrates *voting power* and raises governance concerns.
+
+**4. Niche and synthetic ETFs.** Not all ETFs are the cheap, diversified kind. Narrow sector ETFs carry concentration risk; **synthetic** ETFs that use derivatives add **counterparty risk** (the bank on the other side could fail). The wrapper is not automatically safe — read what's inside.
+
+</Callout>
+
+<Callout type="note">
+
+These criticisms are reasons to choose your fund *thoughtfully* — not reasons to abandon indexing. For the typical long-term investor, a broad, cap-weighted, low-cost index fund still wins on fees, diversification, and tax efficiency against the realistic alternative: picking stocks or paying for active management. Know the trade-offs; don't be scared off by them.
+
+</Callout>
+
+## Key takeaways
+
+- An **index** is a rules-based measuring stick you can't buy directly; an **index fund** tracks it for you. Recipe vs. meal.
+- **Cap-weighting** (the norm) is cheap and self-rebalancing but **top-heavy**; **equal-weighting** spreads exposure but costs more.
+- **Mutual funds** price once a day at NAV; **ETFs** trade intraday and are more **tax-efficient** via the in-kind **creation/redemption** mechanism.
+- Choose your "market": **S&P 500** (~80% of U.S. value), **total-market** (adds smaller companies), or a **sector** fund (a concentrated bet).
+- Funds copy an index by **full replication** or **sampling**; the residual gap is **tracking error** — small for large-cap funds, larger elsewhere.
+- The **expense ratio** is tiny per year but **compounds relentlessly** — favor the lowest-cost fund.
+- Indexing was born in **1975** ("Bogle's folly"); the first lasting ETF (**SPY**) arrived in **1993**.
+- Know the catches: **concentration**, **front-running**, **asset-manager concentration**, and **niche/synthetic ETF** risks.
+- Educational material, not financial advice — verify current figures before acting.
+
+## Further reading
+
+- [SEC — Investor.gov: Mutual Funds and ETFs](https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-1) — the regulator's plain-language primer on fund types, NAV, and fees.
+- [Vanguard — index investing basics](https://investor.vanguard.com/investor-resources-education/understanding-investment-types/index-funds-vs-actively-managed-funds) — John Bogle's firm on tracking, expense ratios, and the index-vs-active case.
+- [S&P Dow Jones Indices — S&P 500 methodology](https://www.spglobal.com/spdji/en/indices/equity/sp-500/) — the official rules for what's in the index and how it's weighted.
+- [Bogleheads wiki — Index funds](https://www.bogleheads.org/wiki/Index_fund) — a practitioner community's deep, low-cost-investing reference.
+- Antti Petajisto, *"The Index Premium and Its Hidden Cost for Index Funds"* (2011) — the academic estimate of index front-running costs.
+
+---
+
+### Sources
+
+1. [Index fund — Wikipedia](https://en.wikipedia.org/wiki/Index_fund) — definition, cap- vs. equal-weighting, full replication vs. sampling, tracking error (5 bps target vs. 38 bps average), expense-ratio ranges and the 0.1% vs. 1.15% compounding illustration, Bogle's 1975 launch, Petajisto front-running estimates, asset-manager-capitalism critique.
+2. [Exchange-traded fund — Wikipedia](https://en.wikipedia.org/wiki/Exchange-traded_fund) — intraday trading, NAV, the creation/redemption mechanism and 50,000-share creation units, in-kind tax efficiency, SPY's 1993 launch, synthetic-ETF counterparty risk, 2026 issuer market shares.
+3. [S&P 500 — Wikipedia](https://en.wikipedia.org/wiki/S%26P_500) — free-float cap-weighting, ~500/503 share classes, ~80% of U.S. market cap, committee selection, top-10/top-50 concentration figures, aggregate value >$61T (Dec 31, 2025).

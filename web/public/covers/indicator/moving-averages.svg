@@ -1,0 +1,60 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-moving-averages-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-indicator-moving-averages-roller" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)"/>
+      <stop offset="1" stop-color="hsl(160,68%,38%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-moving-averages-bg)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="150" x2="360" y2="150" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- LEFT: smoothed wave ribbon emerging -->
+  <path d="M48 150 C72 150 80 132 104 132 C128 132 136 158 160 158 C176 158 184 150 192 150"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48 150 C72 150 80 132 104 132 C128 132 136 158 160 158 C176 158 184 150 192 150 L192 162 C184 162 176 170 160 170 C136 170 128 144 104 144 C80 144 72 162 48 162 Z"
+        fill="hsl(160,68%,55%)" fill-opacity="0.16"/>
+
+  <!-- RIGHT: raw jagged sawtooth strip feeding in -->
+  <path d="M232 150 L244 120 L256 168 L268 122 L280 170 L292 118 L304 166 L316 124 L328 172 L340 120 L352 150"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.9"/>
+  <path d="M232 150 L244 120 L256 168 L268 122 L280 170 L292 118 L304 166 L316 124 L328 172 L340 120 L352 150 Z"
+        fill="hsl(160,68%,55%)" fill-opacity="0.12"/>
+
+  <!-- averaging-window dot cluster hugging the contact point (denser near roller) -->
+  <circle cx="222" cy="150" r="3.2" fill="hsl(160,88%,82%)" fill-opacity="0.95"/>
+  <circle cx="231" cy="150" r="2.6" fill="hsl(160,88%,82%)" fill-opacity="0.7"/>
+  <circle cx="240" cy="150" r="2.1" fill="hsl(160,88%,82%)" fill-opacity="0.5"/>
+  <circle cx="249" cy="150" r="1.7" fill="hsl(160,88%,82%)" fill-opacity="0.34"/>
+  <circle cx="258" cy="150" r="1.3" fill="hsl(160,88%,82%)" fill-opacity="0.2"/>
+  <circle cx="266" cy="150" r="1.0" fill="hsl(160,88%,82%)" fill-opacity="0.12"/>
+
+  <!-- crank handle on the axle -->
+  <line x1="200" y1="118" x2="226" y2="100" stroke="hsl(160,22%,46%)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="226" cy="100" r="5" fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <circle cx="226" cy="100" r="2" fill="hsl(160,88%,82%)"/>
+
+  <!-- CENTER: cylindrical roller on the baseline (focal point) -->
+  <ellipse cx="200" cy="124" rx="34" ry="34" fill="url(#cv-indicator-moving-averages-roller)" fill-opacity="0.95"/>
+  <ellipse cx="200" cy="124" rx="34" ry="34" fill="none" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  <!-- roller axle / inner ring -->
+  <circle cx="200" cy="124" r="6" fill="none" stroke="hsl(160,45%,13%)" stroke-width="2" stroke-opacity="0.7"/>
+  <circle cx="200" cy="124" r="6" fill="hsl(160,88%,82%)" fill-opacity="0.85"/>
+  <!-- highlight sweep on cylinder -->
+  <path d="M180 100 A34 34 0 0 1 216 96" fill="none" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-opacity="0.55" stroke-linecap="round"/>
+  <!-- contact shadow under roller -->
+  <ellipse cx="200" cy="156" rx="30" ry="5" fill="#000000" fill-opacity="0.22"/>
+
+  <!-- motion arc above showing crank turn -->
+  <path d="M236 110 A40 40 0 0 1 250 132" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M250 132 l-5 -2 l1 6 Z" fill="hsl(160,75%,66%)" fill-opacity="0.5"/>
+</svg>

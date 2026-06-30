@@ -30,7 +30,38 @@ WEB_PORT="${WEB_PORT:-48080}"
 API_PATTERN="uvicorn app.main:app"
 WEB_PATTERN="next start"
 
+LAUNCHD_LABEL="com.finguru.app"
+
 log() { printf '\033[36m[prod]\033[0m %s\n' "$*"; }
+
+# --- Guard against the manual-run vs launchd collision ---------------------
+# This machine runs prod under a launchd job (com.finguru.app, KeepAlive=true).
+# If you run ./start-prod.sh BY HAND while that job is alive, the manual run's
+# kill_pattern/kill_port below tears down launchd's children; KeepAlive then
+# instantly relaunches launchd's own copy, which runs `next build` — and a build
+# WIPES .next at its start, colliding with whichever `next build`/`next start`
+# the other instance is mid-way through. The visible symptom is the build dying
+# with "SyntaxError: Unexpected end of JSON input" (a half-written manifest).
+#
+# To make `./start-prod.sh` safe to type, detect that case and DELEGATE to a
+# single clean supervised restart instead of fighting. When launchd itself
+# spawns this script, `launchctl print` reports pid = our own $$, so we only
+# bail when the reported pid belongs to a DIFFERENT live process.
+if [ "${FORCE_MANUAL:-0}" != "1" ] && command -v launchctl >/dev/null 2>&1; then
+  managed_pid="$(launchctl print "gui/$(id -u)/${LAUNCHD_LABEL}" 2>/dev/null \
+    | awk '/^[[:space:]]*pid = [0-9]+/ { print $3; exit }')"
+  if [ -n "${managed_pid:-}" ] && [ "$managed_pid" != "$$" ] \
+     && kill -0 "$managed_pid" 2>/dev/null; then
+    log "launchd job '${LAUNCHD_LABEL}' is already supervising prod (pid ${managed_pid})."
+    log "Delegating to a single clean restart to avoid a concurrent-build collision…"
+    if launchctl kickstart -k "gui/$(id -u)/${LAUNCHD_LABEL}"; then
+      log "kickstarted '${LAUNCHD_LABEL}' — it will rebuild and restart. Tail logs:"
+      log "  tail -f ${ROOT}/deploy/logs/finguru.{out,err}.log"
+      exit 0
+    fi
+    log "kickstart failed; continuing with a manual start (set FORCE_MANUAL=1 to skip this guard)."
+  fi
+fi
 
 kill_port() {
   local port="$1" pids
@@ -82,15 +113,12 @@ kill_port "$API_PORT"
 kill_port "$WEB_PORT"
 
 # --- Build the web app for production ---
-# Build only when needed: a valid build leaves .next/BUILD_ID. Skipping it when
-# present makes supervisor restarts near-instant instead of a ~45s rebuild.
-# Force a rebuild with FORCE_BUILD=1 (e.g. after pulling new code).
+# Always rebuild so `next start` serves the latest code. Set SKIP_BUILD=1 to
+# reuse an existing .next build (e.g. for near-instant supervisor restarts).
 if [ "${SKIP_BUILD:-0}" = "1" ]; then
   log "SKIP_BUILD=1 — using existing .next build"
-elif [ "${FORCE_BUILD:-0}" != "1" ] && [ -f "$WEB_DIR/.next/BUILD_ID" ]; then
-  log "existing production build found (.next/BUILD_ID) — skipping rebuild. FORCE_BUILD=1 to rebuild."
 else
-  log "building web (next build)…"
+  log "building web (npm run build)…"
   ( cd "$WEB_DIR" && npm run build )
 fi
 

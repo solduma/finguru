@@ -18,6 +18,7 @@ wheels/
 # Node / Next.js
 node_modules/
 web/.next/
+web/.next-dev/
 web/out/
 web/next-env.d.ts
 web/tsconfig.tsbuildinfo

@@ -1,0 +1,65 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-strategy-growth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(89,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(89,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-strategy-growth)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="212" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- soil mound + radiating roots anchoring the sapling -->
+  <path d="M120 212 Q150 198 180 212 Z" fill="hsl(89,68%,55%)" fill-opacity="0.18"/>
+  <g stroke="hsl(89,22%,46%)" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <path d="M150 210 L138 222"/>
+    <path d="M150 210 L152 224"/>
+    <path d="M150 210 L164 221"/>
+    <path d="M150 210 L130 218"/>
+  </g>
+
+  <!-- row of three squat mature shrub-trees along bottom-right (the 'market') -->
+  <g>
+    <ellipse cx="240" cy="198" rx="22" ry="16" fill="hsl(89,68%,55%)" fill-opacity="0.20"/>
+    <rect x="237" y="198" width="6" height="14" rx="2" fill="hsl(89,22%,46%)" fill-opacity="0.55"/>
+    <ellipse cx="240" cy="198" rx="22" ry="16" fill="none" stroke="hsl(89,75%,66%)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+    <ellipse cx="295" cy="200" rx="24" ry="15" fill="hsl(89,68%,55%)" fill-opacity="0.20"/>
+    <rect x="292" y="200" width="6" height="12" rx="2" fill="hsl(89,22%,46%)" fill-opacity="0.55"/>
+    <ellipse cx="295" cy="200" rx="24" ry="15" fill="none" stroke="hsl(89,75%,66%)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+    <ellipse cx="348" cy="199" rx="21" ry="15" fill="hsl(89,68%,55%)" fill-opacity="0.20"/>
+    <rect x="345" y="199" width="6" height="13" rx="2" fill="hsl(89,22%,46%)" fill-opacity="0.55"/>
+    <ellipse cx="348" cy="199" rx="21" ry="15" fill="none" stroke="hsl(89,75%,66%)" stroke-width="1.5" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- tall slender sapling trunk shooting upward, bending near the top -->
+  <path d="M150 210 L149 120 Q149 80 168 58" fill="none" stroke="hsl(89,75%,66%)" stroke-width="3" stroke-linecap="round"/>
+  <!-- small side branches -->
+  <path d="M149 130 Q132 122 124 108" fill="none" stroke="hsl(89,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M149 105 Q166 98 173 84" fill="none" stroke="hsl(89,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- sprouting crown / burst of fresh leaves at the very top -->
+  <g>
+    <ellipse cx="168" cy="58" rx="30" ry="24" fill="hsl(89,68%,55%)" fill-opacity="0.30"/>
+    <path d="M168 58 L150 40" stroke="hsl(89,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M168 58 L172 30" stroke="hsl(89,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M168 58 L192 44" stroke="hsl(89,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="146" cy="40" rx="9" ry="5" fill="hsl(89,88%,82%)" fill-opacity="0.85" transform="rotate(-35 146 40)"/>
+    <ellipse cx="173" cy="28" rx="9" ry="5" fill="hsl(89,88%,82%)" fill-opacity="0.85" transform="rotate(80 173 28)"/>
+    <ellipse cx="195" cy="43" rx="9" ry="5" fill="hsl(89,88%,82%)" fill-opacity="0.85" transform="rotate(25 195 43)"/>
+    <ellipse cx="168" cy="58" rx="30" ry="24" fill="none" stroke="hsl(89,75%,66%)" stroke-width="2"/>
+  </g>
+
+  <!-- wind-stroke / volatility lines arcing into upper-right negative space -->
+  <g stroke="hsl(89,22%,46%)" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M205 64 Q245 56 285 70" stroke-opacity="0.75"/>
+    <path d="M210 82 Q252 76 296 92" stroke-opacity="0.55"/>
+    <path d="M214 100 Q255 96 300 112" stroke-opacity="0.35"/>
+  </g>
+</svg>

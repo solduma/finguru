@@ -1,0 +1,87 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-turtle-traders" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-turtle-traders)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="100" y1="40" x2="100" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- the trading channel / fenced pen -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="92" y="118" width="216" height="78" rx="6"
+          fill="hsl(270,68%,55%)" fill-opacity="0.07"
+          stroke="hsl(270,22%,46%)" stroke-width="2"/>
+    <!-- top edge: the breakout boundary, emphasized -->
+    <line x1="92" y1="118" x2="308" y2="118" stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <!-- fence posts -->
+    <line x1="130" y1="118" x2="130" y2="196" stroke="hsl(270,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+    <line x1="170" y1="118" x2="170" y2="196" stroke="hsl(270,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+    <line x1="210" y1="118" x2="210" y2="196" stroke="hsl(270,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+    <line x1="250" y1="118" x2="250" y2="196" stroke="hsl(270,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+    <line x1="270" y1="118" x2="270" y2="196" stroke="hsl(270,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+  </g>
+
+  <!-- faint dashed second turtle, still inside the pen (the trained novices) -->
+  <g stroke="hsl(270,75%,66%)" stroke-opacity="0.32" stroke-width="1.5"
+     fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3">
+    <ellipse cx="138" cy="168" rx="22" ry="13"/>
+    <path d="M160 166 q9 -1 13 4"/>
+    <line x1="124" y1="180" x2="124" y2="188"/>
+    <line x1="152" y1="180" x2="152" y2="188"/>
+  </g>
+
+  <!-- upward breakout arrow in upper-left negative space, above the breached edge -->
+  <g stroke="hsl(270,88%,82%)" stroke-width="2.5" fill="none"
+     stroke-linecap="round" stroke-linejoin="round">
+    <line x1="98" y1="96" x2="98" y2="58"/>
+    <path d="M88 70 L98 56 L108 70"/>
+  </g>
+  <!-- small footprint marks trailing the breakout -->
+  <g fill="hsl(270,68%,55%)" fill-opacity="0.55">
+    <ellipse cx="118" cy="104" rx="3.4" ry="5" transform="rotate(-22 118 104)"/>
+    <ellipse cx="132" cy="92" rx="3.4" ry="5" transform="rotate(-22 132 92)"/>
+  </g>
+
+  <!-- SOLID FOCAL TURTLE: angled upward-left, head + front leg crossing the top edge -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- back legs (inside the pen) -->
+    <g fill="hsl(270,68%,55%)" fill-opacity="0.55" stroke="hsl(270,75%,66%)" stroke-width="2">
+      <path d="M232 146 q4 14 -1 22 l9 0 q3 -10 3 -18 z"/>
+      <path d="M198 150 q-2 14 -7 21 l9 1 q4 -9 6 -17 z"/>
+    </g>
+
+    <!-- shell: oval, straddling the top edge (sits inside) -->
+    <ellipse cx="210" cy="138" rx="50" ry="30"
+             fill="hsl(270,68%,55%)" fill-opacity="0.30"
+             stroke="hsl(270,75%,66%)" stroke-width="2"/>
+
+    <!-- hexagonal-tile pattern on shell -->
+    <g fill="none" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.85">
+      <polygon points="210,122 220,128 220,140 210,146 200,140 200,128"/>
+      <polygon points="190,127 200,133 200,145 190,151 180,145 180,133"/>
+      <polygon points="230,127 240,133 240,145 230,151 220,145 220,133"/>
+      <polygon points="210,146 220,152 217,162 203,162 200,152"/>
+    </g>
+    <line x1="160" y1="138" x2="260" y2="138" stroke="hsl(270,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- front leg: lifted, crossing the top edge -->
+    <path d="M170 130 q-12 -8 -16 -22 q-1 -6 5 -7 l5 1 q3 12 12 19 z"
+          fill="hsl(270,68%,55%)" fill-opacity="0.7"
+          stroke="hsl(270,75%,66%)" stroke-width="2"/>
+
+    <!-- head + neck: extended past the top edge, reaching up-left -->
+    <path d="M168 124 q-16 -10 -26 -26 q-3 -6 2 -10 q6 -4 11 1 q8 14 22 22 z"
+          fill="hsl(270,68%,55%)" fill-opacity="0.8"
+          stroke="hsl(270,75%,66%)" stroke-width="2"/>
+    <!-- eye -->
+    <circle cx="146" cy="92" r="2.4" fill="hsl(270,88%,82%)"/>
+  </g>
+</svg>

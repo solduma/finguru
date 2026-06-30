@@ -1,0 +1,66 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-macro-indicators" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-macro-indicators)"/>
+
+  <!-- shared unifying frame: baseline + faint guides -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="126" x2="360" y2="126" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- the curving track: sweeping crest from lower-left up to upper-center then down to lower-right -->
+  <path d="M 50 196 C 120 188 150 78 200 76 C 250 74 285 188 350 196"
+        fill="none" stroke="hsl(160,22%,46%)" stroke-width="6" stroke-linecap="round" stroke-opacity="0.55"/>
+  <path d="M 50 196 C 120 188 150 78 200 76 C 250 74 285 188 350 196"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- dashed drop-lines from each runner to baseline (time markers) -->
+  <g stroke="hsl(160,68%,55%)" stroke-width="1.5" stroke-dasharray="3 4" stroke-opacity="0.55">
+    <line x1="158" y1="100" x2="158" y2="212"/>
+    <line x1="200" y1="60" x2="200" y2="212"/>
+    <line x1="262" y1="124" x2="262" y2="212"/>
+  </g>
+  <g fill="hsl(160,88%,82%)">
+    <circle cx="158" cy="212" r="2.5"/>
+    <circle cx="200" cy="212" r="2.5"/>
+    <circle cx="262" cy="212" r="2.5"/>
+  </g>
+
+  <!-- turning-point flag planted at the crest -->
+  <line x1="200" y1="74" x2="200" y2="34" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 200 36 L 224 43 L 200 50 Z" fill="hsl(160,68%,55%)" fill-opacity="0.9" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-linejoin="round"/>
+
+  <!-- LEAD runner ('before') — cresting the bend, leaning forward, brightest -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="160" cy="80" r="5" fill="hsl(160,88%,82%)" stroke="none"/>
+    <path d="M 158 86 L 152 100"/>
+    <path d="M 158 86 L 168 90"/>
+    <path d="M 152 100 L 162 104"/>
+    <path d="M 152 100 L 144 100"/>
+  </g>
+
+  <!-- MIDDLE runner ('with') — upright on the peak -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="200" cy="62" r="5" fill="hsl(160,75%,66%)" stroke="none"/>
+    <path d="M 200 68 L 200 84"/>
+    <path d="M 200 84 L 194 96"/>
+    <path d="M 200 84 L 206 96"/>
+    <path d="M 200 73 L 192 78"/>
+    <path d="M 200 73 L 208 78"/>
+  </g>
+
+  <!-- TRAILING runner ('after') — behind the bend on the downslope, muted -->
+  <g stroke="hsl(160,68%,55%)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.85">
+    <circle cx="264" cy="104" r="4.6" fill="hsl(160,68%,55%)" fill-opacity="0.85" stroke="none"/>
+    <path d="M 263 109 L 268 122"/>
+    <path d="M 263 109 L 254 110"/>
+    <path d="M 268 122 L 274 124"/>
+    <path d="M 268 122 L 262 124"/>
+  </g>
+</svg>

@@ -1,0 +1,374 @@
+---
+title: "Geraldine Weiss — Dividend Yield Theory"
+slug: "geraldine-weiss"
+kind: "guru"
+school: "fundamental"
+strategy: "growth-quality-valuation"
+level: "beginner"
+order: 214
+summary: "The 'Grande Dame of Dividends' built an entire valuation method on one stubborn fact: management can fake earnings, but a cash dividend is real money out the door. Her tool — a blue chip's own dividend-yield band — tells you when it's cheap or dear."
+era: "b. 1926 – d. 2022"
+contribution: "Dividend Yield Theory"
+tags: ["dividend investing", "valuation", "dividend yield", "blue chips", "mean reversion", "income investing"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+A company's accountants can dress up its profits, but they cannot fake a cash
+dividend — the money is either paid or it isn't. Geraldine Weiss built her whole
+method on that single honest signal: **"dividends don't lie."** And from it she
+extracted a strikingly simple way to value a blue-chip stock — by comparing
+*today's* dividend yield to the stock's *own history*.
+
+> **Dividend yield** = annual dividend per share ÷ share price.
+> If a stock pays $2 a year and trades at $50, its yield is 2 ÷ 50 = **4%**.
+
+Here's the key mechanical insight. The dividend a mature blue chip pays barely
+moves from quarter to quarter — companies hate cutting it. So if the *yield*
+swings around, it's almost entirely because the *price* moved. That makes yield a
+quiet, low-noise gauge of cheapness:
+
+- Yield near its **historical high** → the price is unusually **low** →
+  **undervalued** (a buying zone).
+- Yield near its **historical low** → the price is unusually **high** →
+  **overvalued** (a selling zone).
+
+<Callout type="key">
+The whole theory rests on one assumption you must always check: that the dividend
+is **secure** and the **business is stable.** When that holds, yield mean-reverts
+around a reliable band and the method works. When it breaks — a coming dividend
+cut, a changed business model — the band lies, and so does the signal.
+</Callout>
+
+## Who she was
+
+**Geraldine Weiss** (born Geraldine Schmulowitz, **16 March 1926, San Francisco**;
+died **25 April 2022, San Diego**, aged 96) earned a degree in business and
+finance from **UC Berkeley in 1945.** She spent years reading every investing book
+she could find — she leaned heavily on the value tradition of Benjamin Graham and
+David Dodd — but in the male-dominated finance world of the 1950s and 60s, no firm
+would hire a woman as an analyst.
+
+So she went around the gatekeepers. In **1966**, at age 40, she co-founded the
+investment newsletter ***Investment Quality Trends* (IQT)** (initially with a
+partner, Fred Whitmore, whom she later bought out). She is widely credited as the
+**first woman to found a U.S. investment-advisory newsletter** — a genuine
+pioneer.
+
+The signature human detail is this: she signed the newsletter **"G. Weiss,"**
+deliberately hiding her *first name and gender*, because prospective subscribers
+in that era simply doubted a woman could pick stocks. (Note that she was not
+*anonymous* — readers knew "G. Weiss"; they just didn't know she was a woman.) She
+kept the disguise for over a decade, until a **1977 appearance on the television
+program *Wall Street Week with Louis Rukeyser*** finally revealed her publicly. The
+press dubbed her **"the Grande Dame of Dividends."**
+
+She ran IQT until **2002 — thirty-six years** — then handed the editing to
+**Kelley Wright** while staying involved on strategy. The newsletter still
+publishes today.
+
+<Callout type="note">
+Weiss laid out her method in two books. ***Dividends Don't Lie: Finding Value in
+Blue-Chip Stocks*** (with co-author Janet Lowe), published in the **late 1980s
+(sources give 1988 or 1989)**, is the canonical statement. ***The Dividend
+Connection*** (1995) was co-written with her son, Gregory Weiss. A later update,
+*Dividends Still Don't Lie* (2010), was written by **Kelley Wright, not by Weiss**
+— so don't attribute it to her.
+</Callout>
+
+## Why dividends, and not earnings?
+
+To understand why Weiss anchored everything to the dividend, you have to see what
+she distrusted: **reported earnings.**
+
+A company's reported profit is an *accounting* number. It depends on choices —
+how fast to depreciate assets, when to recognize revenue, how to treat one-off
+charges. None of that is necessarily dishonest, but it's all judgment, and
+judgment can be nudged to flatter the result. Earnings can be "managed."
+
+A **dividend** is different. It is cash that leaves the company's bank account and
+lands in yours. A board cannot pay an imaginary dividend, and it is deeply
+reluctant to cut a real one, because a cut screams "we're in trouble" and
+hammers the share price. So the dividend is the one number management both *can't
+fake* and *won't lightly change.* That stability is exactly what makes it useful.
+
+<LineChart
+  caption="Illustrative: a mature blue chip's reported earnings (bumpy, sensitive to the economic cycle and accounting choices) versus its dividend per share (a smooth, almost monotonic line that management raises gently and rarely cuts). Because the dividend barely moves, swings in its yield come almost entirely from the price — which is what makes yield a low-noise value gauge. Illustrative, not real data."
+  height={300}
+  yLabel="indexed to 100"
+  series={[
+    { label: "Earnings per share (noisy)", data: [100, 118, 96, 130, 88, 142, 110, 155, 120, 170], color: "#ef4444" },
+    { label: "Dividend per share (smooth)", data: [100, 105, 110, 116, 121, 127, 133, 140, 147, 154], color: "#22c55e" }
+  ]}
+/>
+
+This is the difference from a classic value tool like the P/E ratio (price ÷
+earnings per share). The P/E's denominator is the noisy earnings number. Weiss's
+yield uses the *dividend* as its anchor instead — a far steadier reference point.
+
+## The core tool: the dividend-yield band
+
+Here is the method in one picture. Take a blue chip with a long dividend history —
+Weiss wanted **at least 5 years**, ideally more — and plot its dividend yield over
+time. You'll typically find the yield oscillating between two fairly stable
+extremes: a **historical high-yield line** it keeps bouncing up off, and a
+**historical low-yield line** it keeps topping out at.
+
+Those two lines define the stock's **valuation band.** Because the dividend itself
+is roughly constant, *high yield = low price = cheap*, and *low yield = high price
+= expensive.*
+
+<LineChart
+  caption="Illustrative dividend-yield band for a stable blue chip. The yield repeatedly bounces up off its historical HIGH line (~6%, the 'undervalued' zone where price is low) and tops out near its historical LOW line (~2.5%, the 'overvalued' zone where price is high). Weiss bought near the high-yield line and sold near the low-yield line. Illustrative pattern, not a forecast."
+  height={300}
+  yLabel="dividend yield (%)"
+  series={[
+    { label: "Dividend yield", data: [3.2, 4.5, 5.8, 4.9, 3.4, 2.6, 3.1, 4.2, 5.6, 4.4, 3.0, 2.7], color: "#38bdf8" },
+    { label: "Historical HIGH (undervalued)", data: [6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0], color: "#22c55e" },
+    { label: "Historical LOW (overvalued)", data: [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5], color: "#ef4444" }
+  ]}
+/>
+
+### Turning the band into a price target
+
+The band also gives you a **fair-value estimate.** The standard expression of
+Weiss's method (this is the textbook formulation used by later writers, not a
+verbatim quote of hers) is:
+
+> **Fair value ≈ expected annual dividend ÷ historical average dividend yield.**
+
+Work through it. Suppose a stock is expected to pay **$3.00** next year, and over
+the last decade its dividend yield has averaged **4%.** Then:
+
+> Fair value = 3.00 ÷ 0.04 = **$75.**
+
+Now compare that to the current price:
+
+- If the stock trades at **$50**, its yield is 3 ÷ 50 = **6%** — well above the 4%
+  average, so it looks **cheap** (price below the $75 fair value).
+- If it trades at **$100**, its yield is 3 ÷ 100 = **3%** — below average, so it
+  looks **expensive** (price above fair value).
+
+<BarChart
+  caption="The same stock (expected $3.00 dividend, 4% historical average yield → $75 fair value) at three prices. As the price rises left to right, the yield you buy falls and the stock moves from undervalued to overvalued. Weiss buys in the green zone (high yield, low price) and sells in the red. Illustrative arithmetic, not advice."
+  height={290}
+  labels={["$50 (6.0% yield)", "$75 (4.0% = fair)", "$100 (3.0% yield)"]}
+  series={[{ label: "Dividend yield at this price (%)", data: [6.0, 4.0, 3.0] }]}
+  yLabel="dividend yield (%)"
+/>
+
+<Callout type="note">
+Notice the elegant symmetry: you can express the same judgment as a *price* (is it
+below or above $75?) or as a *yield* (is it above or below the 4% average?). Weiss
+preferred the yield framing because the dividend, her honest anchor, sits right in
+it.
+</Callout>
+
+## The quality gate comes first
+
+This is the part beginners miss. Weiss did **not** apply yield theory to just any
+stock. The mean-reversion logic only holds for a financially sound, established
+company whose dividend is safe. So before the yield band, every candidate had to
+clear a **blue-chip quality screen.**
+
+The commonly cited version has **seven criteria** (sources vary slightly on the
+exact thresholds; these are the most frequently quoted):
+
+1. The dividend yield is **undervalued relative to its own history** (the band
+   test above).
+2. The dividend has been **raised about 10%+ compounded annually over roughly 12
+   years.**
+3. The stock trades at **no more than 2× book value** (book value = the company's
+   net assets per share).
+4. The **P/E ratio is about 20 or lower** (`P/E ≤ ~20`).
+5. The **payout ratio is 50% or less** — the payout ratio is the share of profit
+   paid out as dividends; keeping it under half leaves room to keep paying and
+   raising the dividend even in a bad year.
+6. **Debt is no more than 50% of the company's market value.**
+7. It passes a stricter **"blue chip" sub-screen** of fundamental tests.
+
+That final sub-screen is itself a checklist — typically six tests: the dividend
+**raised at least 5 times in 12 years**, an **S&P quality rating of A or better**,
+**at least 5 million shares outstanding**, **at least 80 institutional holders**,
+**at least 25 years of uninterrupted dividends**, and **earnings up at least 7-fold
+over 12 years.**
+
+<Callout type="note">
+You'll sometimes see Weiss's method described as "six criteria" and sometimes as
+"seven." IQT's own materials describe **six** tests that narrow roughly **4,000
+stocks down to about 300 blue chips.** The "six vs. seven" difference is just
+nesting — whether you count the blue-chip sub-screen as one criterion or break out
+its parts. Don't be thrown by the discrepancy.
+</Callout>
+
+<ConceptDiagram
+  caption="The two-stage funnel. Stage 1 is a strict quality gate that shrinks ~4,000 stocks to ~300 vetted blue chips. ONLY those that survive go to Stage 2, the yield-band valuation. A stock that fails the quality gate is never valued on yield at all — because the mean-reversion assumption wouldn't be trustworthy."
+  chart={`flowchart TD
+  A[~4,000 dividend-paying stocks] --> B{Quality gate: dividend growth, low debt, payout under 50%, A-rating, 25+ yrs of dividends}
+  B -- fail --> X[Rejected: yield theory does not apply]
+  B -- pass --> C[~300 vetted blue chips]
+  C --> D{Yield near historical HIGH?}
+  D -- yes --> E[Undervalued: buy zone]
+  D -- no --> F{Yield near historical LOW?}
+  F -- yes --> G[Overvalued: sell zone]
+  F -- no --> H[Fairly valued: hold / wait]`}
+/>
+
+The quality gate isn't a side note — it's *what makes the yield band meaningful.*
+A junk company can have a high yield because it's about to collapse, not because
+it's a bargain. The screen is designed to keep those out.
+
+## The track record
+
+How well did it work? Be careful here, because the figures get misquoted and most
+trace back to IQT's own marketing and to columns by the newsletter-tracker Mark
+Hulbert.
+
+The best-supported number: over IQT's run under Weiss, roughly **1966–2002**, the
+strategy returned about **11% annualized versus about 10% for the S&P 500** — call
+it **roughly a point a year over the market.** A separate Hulbert claim credits IQT
+with beating the broad **Wilshire 5000 by about a point a year** over a measured
+window. The **Hulbert Financial Digest** ranked the newsletter highly, especially
+on a **risk-adjusted** basis (IQT cites a Hulbert measurement window of
+**30 Sept 2002 – 30 Sept 2022**).
+
+<Callout type="warning">
+Treat these numbers as "roughly a point a year over the market," not as a precise,
+audited alpha. The exact periods and benchmarks differ by source, and the figures
+lean heavily on IQT's own promotional materials and Hulbert's columns. The honest
+takeaway is a *modest, durable edge with relatively low risk* — which is exactly
+what you'd expect from a conservative, blue-chip, dividend-anchored method, not a
+home-run strategy.
+</Callout>
+
+## When the theory breaks — the honest failure modes
+
+Every method has terrain where it fails. Weiss's depends on two fragile
+assumptions — that the dividend is **secure** and the business is **stable** — and
+when either cracks, the yield band lies to you. There are three classic ways this
+happens.
+
+### 1. The yield trap (a coming dividend cut)
+
+A yield that spikes *above* its historical high band can mean the market knows
+something you don't: the dividend is about to be **cut.** The price falls (pushing
+yield up) precisely because investors are pricing in the cut. Buying then isn't
+catching a bargain — it's catching a falling knife.
+
+The canonical example is **General Electric.** Its dividend yield climbed well
+above its normal band, which looked like a screaming "undervalued" signal. But the
+business was deteriorating; GE then **slashed its dividend**, and afterward the
+yield fell *below* its old average. The band had become worthless because the
+anchor — the dividend — was no longer stable.
+
+<LineChart
+  caption="Illustrative 'yield trap': the yield rockets above its historical HIGH line (looking like a deep bargain), but it's signalling distress, not value. The dividend is then cut, and the yield collapses BELOW its old average — the band that made the stock look cheap has evaporated. Buying the apparent bargain meant buying right before the cut. Illustrative pattern, not real data."
+  height={300}
+  yLabel="dividend yield (%)"
+  series={[
+    { label: "Dividend yield", data: [4.0, 4.5, 5.5, 7.5, 9.5, 11.0, 3.5, 2.8, 2.5, 2.6], color: "#38bdf8" },
+    { label: "Old historical HIGH", data: [6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0], color: "#22c55e" },
+    { label: "Old average", data: [4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0], color: "#94a3b8" }
+  ]}
+/>
+
+This is why the quality gate insists on a low payout ratio, low debt, and decades
+of uninterrupted dividends — all of which make a cut far less likely. But no
+screen catches every GE.
+
+### 2. The low-payout growth stock (the tool simply doesn't apply)
+
+Some excellent companies pay a tiny dividend or none at all, choosing instead to
+**reinvest** their cash to grow. Their returns come from rising earnings, not
+income. A stock like **Roper Technologies**, with a yield under 1%, has almost no
+meaningful yield band to mean-revert around — the dividend is too small to anchor
+anything. For these, **the P/E ratio (or a cash-flow measure) is the right tool**,
+and Weiss's method is simply the wrong instrument. There's no shame in that; it's
+like trying to weigh something with a ruler.
+
+### 3. A permanent change in the business
+
+Mean reversion assumes the *old* yield range still describes the company. But if
+the business changes structurally — a different growth rate, a new industry
+position, a permanently lower margin — then the **old band is obsolete.** The
+example often cited is **General Mills**: when its long-run fundamentals shifted,
+the "new" yield became the **new normal**, and waiting for it to revert to the old
+band was waiting for something that would never come.
+
+<Callout type="warning">
+The deepest trap is treating the yield band as a law of nature. It isn't — it's a
+*pattern* that holds only while the dividend stays secure and the business stays
+recognizably the same. The method gives you **no signal** for non-dividend payers,
+cyclicals with erratic dividends, or any company whose past simply no longer
+predicts its future. Knowing when the tool doesn't apply is half of using it well.
+</Callout>
+
+## Where this sits in the bigger picture
+
+Weiss's Dividend Yield Theory is a specific, disciplined member of a broader family
+of ideas:
+
+- It's a **value** approach in the Graham–Dodd tradition (buy when cheap, sell when
+  dear), but it swaps Graham's earnings-and-assets focus for a single cleaner
+  anchor: the dividend.
+- It's a **mean-reversion** strategy — it bets that a stable quantity (the yield)
+  returns to its long-run range, the same logic behind many statistical valuation
+  tools.
+- And it's a **quality / income** strategy: by demanding decades of dividend
+  growth, low debt, and a modest payout ratio, it naturally selects for the kind of
+  durable, cash-generative blue chips that other quality investors also prize.
+
+Its great virtue is *humility and clarity*: one honest number, a visible band, and
+explicit rules for when not to trust it.
+
+## Key takeaways
+
+- **Dividends don't lie.** Earnings can be massaged by accounting; a cash dividend
+  is real money paid out, so it's the honest signal Weiss anchored everything to.
+- **The yield band is the core tool.** For a stable blue chip, dividend yield
+  mean-reverts: yield near its **historical high** means the price is low
+  (undervalued); yield near its **historical low** means the price is high
+  (overvalued).
+- **Fair value ≈ expected dividend ÷ historical average yield** (the standard
+  textbook form of her method). It's just the yield rule expressed as a price
+  target.
+- **Quality first.** The yield logic only holds for vetted blue chips — long
+  dividend-growth records, payout ratio `≤ 50%`, low debt, A-grade ratings, 25+
+  years of uninterrupted dividends. Weiss screened ~4,000 stocks down to ~300.
+- **The edge was modest and durable:** roughly **a point a year over the market**
+  (≈11% vs ≈10%, 1966–2002), best understood as a low-risk conservative result, and
+  drawn largely from IQT's own and Hulbert's figures — not a precise audited alpha.
+- **Know the failure modes:** the **yield trap** (a spike before a dividend cut, as
+  with GE), **low-payout growth stocks** where P/E is the right tool (Roper), and
+  **permanent business change** that makes the old band obsolete (General Mills).
+- **A pioneer.** As "G. Weiss," she founded the first U.S. investment-advisory
+  newsletter run by a woman (1966) and concealed her gender until 1977 — the method
+  earned its credibility before its author could.
+- **Not advice.** This is educational material. The dividend is only an honest
+  signal while it's *secure*; always verify the business can keep paying before you
+  trust its yield.
+
+## Further reading
+
+- Geraldine Weiss & Janet Lowe, *Dividends Don't Lie: Finding Value in Blue-Chip
+  Stocks* (Dearborn, late 1980s) — the canonical statement of the method.
+- Geraldine Weiss & Gregory Weiss, *The Dividend Connection* (1995) — the follow-up
+  co-written with her son.
+- *Investment Quality Trends (IQT)* — the newsletter she founded in 1966 and ran
+  until 2002; its site documents the quality criteria and the blue-chip screen.
+
+---
+
+### Sources
+
+1. *Investment Quality Trends* — official site (newsletter history since 1966, the
+   blue-chip quality criteria, the ~4,000-to-~300 screening funnel, and the cited
+   Hulbert measurement window).
+2. Mark Hulbert / MarketWatch obituary coverage of Geraldine Weiss (2022) — career
+   summary, the ~1-point-a-year edge, and risk-adjusted ranking.
+3. Janet Lowe & Geraldine Weiss, *Dividends Don't Lie* — the primary text for the
+   yield-band method and quality screen.
+4. Simply Safe Dividends — explainer on Dividend Yield Theory mechanics, the
+   fair-value formula, and the failure modes (yield traps with GE, low-payout
+   growth like Roper, structural change like General Mills).

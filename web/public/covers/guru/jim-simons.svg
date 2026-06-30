@@ -1,0 +1,123 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-jim-simons" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(270,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(270,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-jim-simons)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="120" x2="360" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- BACKGROUND: scattered uniform data dots (noise) -->
+  <g fill="hsl(270,68%,55%)" fill-opacity="0.28">
+    <circle cx="60" cy="60" r="1.6"/>
+    <circle cx="92" cy="48" r="1.6"/>
+    <circle cx="138" cy="58" r="1.6"/>
+    <circle cx="176" cy="50" r="1.6"/>
+    <circle cx="214" cy="64" r="1.6"/>
+    <circle cx="250" cy="52" r="1.6"/>
+    <circle cx="296" cy="62" r="1.6"/>
+    <circle cx="334" cy="54" r="1.6"/>
+    <circle cx="74" cy="96" r="1.6"/>
+    <circle cx="112" cy="104" r="1.6"/>
+    <circle cx="158" cy="92" r="1.6"/>
+    <circle cx="198" cy="106" r="1.6"/>
+    <circle cx="236" cy="96" r="1.6"/>
+    <circle cx="276" cy="108" r="1.6"/>
+    <circle cx="318" cy="98" r="1.6"/>
+    <circle cx="52" cy="140" r="1.6"/>
+    <circle cx="96" cy="150" r="1.6"/>
+    <circle cx="142" cy="138" r="1.6"/>
+    <circle cx="186" cy="152" r="1.6"/>
+    <circle cx="228" cy="142" r="1.6"/>
+    <circle cx="268" cy="154" r="1.6"/>
+    <circle cx="312" cy="144" r="1.6"/>
+    <circle cx="348" cy="156" r="1.6"/>
+    <circle cx="70" cy="184" r="1.6"/>
+    <circle cx="116" cy="190" r="1.6"/>
+    <circle cx="162" cy="182" r="1.6"/>
+    <circle cx="206" cy="192" r="1.6"/>
+    <circle cx="248" cy="184" r="1.6"/>
+    <circle cx="292" cy="194" r="1.6"/>
+    <circle cx="330" cy="186" r="1.6"/>
+  </g>
+
+  <!-- BACKGROUND: faint cipher digits dissolving into noise (drawn as glyph-shapes, no text) -->
+  <g stroke="hsl(270,22%,46%)" stroke-opacity="0.5" stroke-width="1" fill="none" stroke-linecap="round">
+    <!-- "1" strokes -->
+    <line x1="300" y1="78" x2="300" y2="90"/>
+    <line x1="58" y1="170" x2="58" y2="182"/>
+    <!-- "0" glyphs -->
+    <ellipse cx="324" cy="84" rx="3.5" ry="6" stroke-opacity="0.45"/>
+    <ellipse cx="80" cy="78" rx="3.5" ry="6" stroke-opacity="0.4"/>
+    <line x1="340" y1="170" x2="340" y2="182"/>
+    <ellipse cx="44" cy="100" rx="3" ry="5.5" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- CONSTELLATION: thin connector lines revealing hidden lattice, radiating from pivot -->
+  <g stroke="hsl(270,75%,66%)" stroke-opacity="0.55" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <polyline points="150,178 198,106 250,154 312,144 318,98"/>
+    <polyline points="150,178 228,142 268,154 312,144"/>
+    <polyline points="198,106 236,96 276,108 318,98"/>
+    <line x1="150" y1="178" x2="186" y2="152"/>
+    <line x1="186" y1="152" x2="228" y2="142"/>
+    <line x1="236" y1="96" x2="250" y2="154"/>
+    <line x1="276" y1="108" x2="268" y2="154"/>
+    <line x1="318" y1="98" x2="348" y2="156"/>
+  </g>
+
+  <!-- nodes of the revealed lattice (highlighted dots) -->
+  <g fill="hsl(270,88%,82%)">
+    <circle cx="198" cy="106" r="2.4"/>
+    <circle cx="236" cy="96" r="2.4"/>
+    <circle cx="276" cy="108" r="2.4"/>
+    <circle cx="318" cy="98" r="2.4"/>
+    <circle cx="186" cy="152" r="2.4"/>
+    <circle cx="228" cy="142" r="2.4"/>
+    <circle cx="268" cy="154" r="2.4"/>
+    <circle cx="312" cy="144" r="2.4"/>
+    <circle cx="348" cy="156" r="2.4"/>
+    <circle cx="250" cy="154" r="2.4"/>
+  </g>
+
+  <!-- RULER / set-square edge intersecting the compass pivot -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="hsl(270,68%,55%)" fill-opacity="0.12">
+    <path d="M150,178 L242,212 L150,212 Z"/>
+    <line x1="150" y1="178" x2="242" y2="212" stroke-opacity="0.9"/>
+    <!-- tick marks along ruler edge -->
+    <line x1="170" y1="186" x2="174" y2="191" stroke-width="1"/>
+    <line x1="190" y1="194" x2="194" y2="199" stroke-width="1"/>
+    <line x1="210" y1="201" x2="214" y2="206" stroke-width="1"/>
+  </g>
+
+  <!-- FOREGROUND: large open drafting compass straddling the scene -->
+  <g stroke="hsl(270,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- hinge / head at top -->
+    <circle cx="178" cy="58" r="6" fill="hsl(270,68%,55%)" fill-opacity="0.35"/>
+    <line x1="178" y1="44" x2="178" y2="52" stroke-width="2"/>
+    <circle cx="178" cy="40" r="3" fill="hsl(270,88%,82%)" stroke="none"/>
+
+    <!-- left leg: sharp pivot point planted into dot-field at (150,178) -->
+    <line x1="178" y1="63" x2="150" y2="178"/>
+    <!-- right leg: drawing leg sweeping toward lower right -->
+    <line x1="178" y1="63" x2="232" y2="174"/>
+
+    <!-- pencil tip on right leg -->
+    <path d="M232,174 l4,9 l-7,2 Z" fill="hsl(270,88%,82%)" stroke="none"/>
+    <!-- sharp metal point on left leg -->
+    <path d="M150,178 l-3,-9 l6,0 Z" fill="hsl(270,75%,66%)" stroke="none" transform="rotate(8 150 178)"/>
+  </g>
+
+  <!-- faint arc the compass would scribe, hinting circular geometry -->
+  <path d="M150,178 A40,40 0 0 1 232,174" stroke="hsl(270,88%,82%)" stroke-opacity="0.3" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+  <!-- pivot focal anchor -->
+  <circle cx="150" cy="178" r="3.4" fill="hsl(270,88%,82%)"/>
+  <circle cx="150" cy="178" r="6.5" fill="none" stroke="hsl(270,75%,66%)" stroke-opacity="0.6" stroke-width="1"/>
+</svg>

@@ -1,0 +1,121 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-hugh-hendry-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-hugh-hendry-wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(200,22%,46%)" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="hsl(200,38%,18%)" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-hugh-hendry-jet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(200,88%,82%)" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="hsl(200,68%,55%)" stop-opacity="0.45"/>
+    </linearGradient>
+    <clipPath id="cv-guru-hugh-hendry-clip">
+      <path d="M 50 40 Q 60 130 78 196 L 350 196 Q 348 110 332 40 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-hugh-hendry-bg)"/>
+
+  <!-- shared frame texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="260" y1="40" x2="260" y2="212" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- ===== DAM WALL ===== -->
+  <g clip-path="url(#cv-guru-hugh-hendry-clip)">
+    <path d="M 50 40 Q 60 130 78 196 L 350 196 Q 348 110 332 40 Z" fill="url(#cv-guru-hugh-hendry-wall)"/>
+    <!-- stacked block courses (horizontal) -->
+    <g stroke="hsl(200,75%,66%)" stroke-opacity="0.22" stroke-width="1">
+      <path d="M 54 66 Q 58 66 334 66" fill="none"/>
+      <path d="M 57 92 Q 60 92 336 92" fill="none"/>
+      <path d="M 61 118 Q 64 118 338 118" fill="none"/>
+      <path d="M 66 144 Q 70 144 341 144" fill="none"/>
+      <path d="M 71 170 Q 76 170 344 170" fill="none"/>
+    </g>
+    <!-- vertical block joints, staggered -->
+    <g stroke="hsl(200,75%,66%)" stroke-opacity="0.16" stroke-width="1">
+      <line x1="110" y1="40" x2="112" y2="66"/>
+      <line x1="180" y1="40" x2="180" y2="66"/>
+      <line x1="250" y1="40" x2="250" y2="66"/>
+      <line x1="145" y1="66" x2="146" y2="92"/>
+      <line x1="215" y1="66" x2="215" y2="92"/>
+      <line x1="285" y1="66" x2="284" y2="92"/>
+      <line x1="110" y1="92" x2="112" y2="118"/>
+      <line x1="180" y1="92" x2="180" y2="118"/>
+      <line x1="250" y1="92" x2="250" y2="118"/>
+      <line x1="145" y1="118" x2="146" y2="144"/>
+      <line x1="215" y1="118" x2="215" y2="144"/>
+      <line x1="285" y1="118" x2="284" y2="144"/>
+      <line x1="110" y1="144" x2="112" y2="170"/>
+      <line x1="180" y1="144" x2="180" y2="170"/>
+      <line x1="250" y1="144" x2="250" y2="170"/>
+      <line x1="150" y1="170" x2="151" y2="196"/>
+      <line x1="220" y1="170" x2="220" y2="196"/>
+      <line x1="290" y1="170" x2="289" y2="196"/>
+    </g>
+  </g>
+  <!-- dam outline + crest -->
+  <path d="M 50 40 Q 60 130 78 196 L 350 196 Q 348 110 332 40 Z" fill="none" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="50" y1="40" x2="332" y2="40" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round"/>
+
+  <!-- ===== HAIRLINE CRACK NETWORK ===== -->
+  <g stroke="hsl(200,88%,82%)" stroke-opacity="0.45" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 150 60 L 168 88 L 158 110 L 176 132 L 168 158"/>
+    <path d="M 168 88 L 192 96"/>
+    <path d="M 158 110 L 138 122"/>
+    <path d="M 176 132 L 198 140 L 214 130"/>
+    <path d="M 110 130 L 128 150 L 120 174"/>
+    <path d="M 128 150 L 150 156"/>
+  </g>
+
+  <!-- crack erupting into the jet (right) -->
+  <path d="M 285 70 L 300 96 L 290 116 L 305 138" fill="none" stroke="hsl(200,88%,82%)" stroke-opacity="0.6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ===== BURSTING WATER JET (focal accent, right) ===== -->
+  <path d="M 305 138 C 322 150 336 168 332 196 C 322 200 310 200 300 196 C 300 170 296 152 305 138 Z"
+        fill="url(#cv-guru-hugh-hendry-jet)"/>
+  <path d="M 305 138 C 322 150 336 168 332 196" fill="none" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- splash droplets -->
+  <g fill="hsl(200,88%,82%)" fill-opacity="0.8">
+    <circle cx="316" cy="202" r="2.4"/>
+    <circle cx="328" cy="200" r="1.8"/>
+    <circle cx="338" cy="190" r="1.6"/>
+    <circle cx="306" cy="204" r="1.6"/>
+  </g>
+  <!-- inner jet line detail -->
+  <path d="M 308 146 C 320 160 326 176 322 192" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- ===== HALF-BURIED HOURGLASS at dam base ===== -->
+  <g transform="translate(118,182)">
+    <path d="M -10 -10 L 10 -10 L 0 0 L 10 10 L -10 10 L 0 0 Z" fill="hsl(200,68%,55%)" fill-opacity="0.55" stroke="hsl(200,75%,66%)" stroke-width="1.4" stroke-linejoin="round"/>
+    <line x1="-12" y1="-10" x2="12" y2="-10" stroke="hsl(200,75%,66%)" stroke-width="1.6" stroke-linecap="round"/>
+    <!-- falling sand -->
+    <line x1="0" y1="-4" x2="0" y2="4" stroke="hsl(200,88%,82%)" stroke-width="1" stroke-opacity="0.8"/>
+    <!-- buried bottom (clipped by baseline feel) -->
+    <line x1="-12" y1="10" x2="12" y2="10" stroke="hsl(200,75%,66%)" stroke-width="1.6" stroke-opacity="0.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- ===== LONE FIGURE + TINY UMBRELLA (lower-left foreground) ===== -->
+  <g transform="translate(168,150)">
+    <!-- umbrella canopy under the jet line, dwarfed -->
+    <path d="M 12 -2 A 22 22 0 0 1 56 -2 Z" fill="hsl(200,68%,55%)" fill-opacity="0.75" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 12 -2 Q 23 4 34 -2 Q 45 4 56 -2" fill="none" stroke="hsl(200,88%,82%)" stroke-width="1.4"/>
+    <!-- central stick -->
+    <line x1="34" y1="-2" x2="34" y2="42" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+    <!-- top nub -->
+    <line x1="34" y1="-2" x2="34" y2="-8" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linecap="round"/>
+    <!-- figure (calm, facing dam = right) -->
+    <circle cx="30" cy="20" r="5" fill="hsl(200,88%,82%)"/>
+    <path d="M 30 25 L 30 45" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+    <!-- arm up to stick -->
+    <path d="M 30 32 L 34 26" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+    <!-- legs -->
+    <path d="M 30 45 L 26 56" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 30 45 L 35 56" stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,242 @@
+---
+title: "Asset Allocation & the Three-Fund Portfolio"
+slug: "asset-allocation"
+kind: "indicator"
+school: "quant"
+level: "beginner"
+order: 115
+summary: "The single biggest decision you make as an investor isn't which stock to pick — it's how you split your money across stocks, bonds, and cash. Here's the evidence, the famous three-fund recipe, and the rules of thumb (and their limits)."
+tags: ["asset allocation", "three-fund portfolio", "diversification", "rebalancing", "index funds", "home bias", "bogleheads"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+The decision that shapes your investing results more than any other is not *which* stocks or funds you buy — it is **how you divide your money among the big buckets**: stocks, bonds, and cash. That split is called your **asset allocation**, and getting it roughly right matters far more than getting any single pick exactly right.
+
+Most beginners pour all their energy into stock-picking — the most glamorous and least decisive part of investing. This lesson is about the part the professionals obsess over instead: the **allocation**. We'll cover the famous evidence (and the way that evidence is constantly misquoted), the simplest portfolio that actually works — the **three-fund portfolio** — the age-based rules of thumb, why **rebalancing** quietly enforces "buy low, sell high," and the strange pull of **home bias**.
+
+<Callout type="key">
+
+This is educational content, not financial advice. The numbers in the charts are illustrative teaching aids, not forecasts or recommendations. The aim is to make you understand *how allocation works* so you can think clearly about your own situation.
+
+</Callout>
+
+## What "asset allocation" actually means
+
+**Asset allocation** is simply the mix of broad **asset classes** in your portfolio. An asset class is a family of investments that behaves in a broadly similar way:
+
+- **Stocks (equities)** — ownership slices of companies. Higher long-run return, but they swing hard and can fall 30–50% in a bad year.
+- **Bonds (fixed income)** — loans to governments or companies that pay interest. Lower return, far calmer, and they often hold up (or rise) when stocks fall.
+- **Cash** — money-market funds, savings — almost no return, almost no risk, instant access.
+
+Your allocation might be "70% stocks, 30% bonds." That one line determines the *character* of your portfolio: how much it grows over decades, and how violently it lurches along the way. Picking the exact stocks inside the stock bucket is a detail by comparison.
+
+## The famous evidence — and the stat everyone gets wrong
+
+In **1986**, three researchers — **Gary Brinson, Randolph Hood, and Gilbert Beebower** (universally abbreviated **BHB**) — published *"Determinants of Portfolio Performance"* in the *Financial Analysts Journal*. They studied **91 large US pension funds** over 1974–1983 and found a startling result: a fund's **asset-allocation policy explained 93.6% of the variance** of its quarterly returns. A **1991 follow-up** (Brinson, Singer & Beebower) put the figure at **91.5%**.
+
+That "93.6%" became the most-quoted — and most-mangled — statistic in all of personal finance. You will constantly hear it stated as *"asset allocation determines 94% of your returns."* **That is wrong.** It is worth slowing down to understand why, because the correct version is genuinely useful and the wrong version leads people astray.
+
+<Callout type="warning">
+
+The BHB 93.6% figure measures **how much of the bumpiness of a fund's returns over time** is explained by its allocation policy. It does **not** mean "94% of how much money you make comes from allocation." Variance of returns over time is a completely different question from how much you end up with.
+
+</Callout>
+
+The cleanup came from **Roger Ibbotson and Paul Kaplan** in a wonderfully-titled **2000** paper: *"Does Asset Allocation Policy Explain 40, 90, or 100 Percent of Performance?"* Their answer: it depends which question you ask, and there are three different answers, all true at once.
+
+- **~90%** — how much of the **variability of one fund's returns over time** allocation explains. (This is the BHB number, correctly framed.)
+- **~40%** — how much of the **difference between funds** allocation explains. The rest of why funds differ from each other is security selection, timing, fees, and luck.
+- **~100%** — on average, allocation explains roughly **the entire level of returns** a typical fund earns, because the average fund's active bets net out to roughly zero (and then cost fees).
+
+<BarChart
+  caption="Illustrative. The same 'asset allocation explains performance' idea answers three different questions with three very different numbers (Ibbotson & Kaplan, 2000). Quoting the 90% figure as if it answered the 40% question is the classic mistake."
+  labels={["Variability over time", "Differences between funds", "Average level of return"]}
+  series={[
+    { label: "Share explained by allocation policy (%)", data: [90, 40, 100] },
+  ]}
+  yLabel="Percent explained (illustrative)"
+/>
+
+To drive the point home, **Meir Statman** showed in 2000 that an imaginary advisor with *perfect* market-timing skill could beat the benchmark by about **8.1% per year** — an enormous edge — and yet allocation policy would *still* "explain" 89.4% of that portfolio's variance. In other words, "explaining 90% of the variance" is fully compatible with timing adding (or subtracting) a fortune. **Explaining variance is not the same as explaining performance.**
+
+<Callout type="note">
+
+The honest takeaway from all this: your allocation is the **single most important decision** you control, *and* the famous statistic is routinely overstated. Both things are true. Use the three framings above and you'll never be fooled by a headline that says "studies prove allocation is 94% of investing."
+
+</Callout>
+
+## The three-fund portfolio: maximum simplicity
+
+If allocation is what matters, what's the simplest way to implement a sensible one? The answer popularized by **Taylor Larimore** — affectionately called the "King of the Bogleheads," the online community built around **John Bogle's** index-investing philosophy — is the **three-fund portfolio**.
+
+You own exactly three low-cost **index funds** (funds that mechanically hold an entire market rather than trying to beat it):
+
+1. **Total US stock market** — every investable US company at once.
+2. **Total international stock market** — companies in the rest of the world.
+3. **Total US bond market** — a broad basket of high-quality bonds.
+
+That's the whole portfolio. With three funds you own *thousands* of underlying securities across the planet. The advantages compound:
+
+- **Ultra-low cost.** Index funds charge a tiny fraction of what active managers do. Cost is the one thing in investing that's guaranteed, and lower cost reliably means more of the return stays yours.
+- **Broad diversification.** Spreading across thousands of holdings means no single company's collapse can sink you.
+- **Simplicity.** Three lines on a statement. You can understand and maintain it forever.
+- **Tax efficiency.** Index funds trade rarely (low **turnover** — how often holdings are bought and sold), which means fewer taxable events.
+- **No manager or style risk.** You're not betting that a particular fund manager stays hot, because there's no stock-picking bet to lose.
+
+<ConceptDiagram
+  caption="The three-fund portfolio: a single allocation decision (the split) feeds three total-market index funds, which together hold thousands of securities worldwide. Rebalancing keeps the mix on target over time."
+  chart={`flowchart LR
+  A[Your money] --> B[Choose an allocation: stocks vs bonds, US vs international]
+  B --> C[Total US stock fund]
+  B --> D[Total international stock fund]
+  B --> E[Total US bond fund]
+  C --> F[Thousands of holdings, very low cost]
+  D --> F
+  E --> F
+  F --> G[Rebalance periodically back to target]`}
+/>
+
+Sample splits you'll see quoted — things like 50/30/20 or 60/20/20 (US stock / international / bond) — are **illustrative starting points, not sacred numbers.** The right split depends on your age, goals, and stomach for volatility. The power of the idea is the *structure*, not any specific percentage.
+
+<Callout type="note">
+
+A bit of history worth knowing: **John Bogle founded Vanguard in 1974** and launched the first index mutual fund for ordinary investors in **1975** — derided at the time as "Bogle's Folly." The First Index Investment Trust (1976) became today's Vanguard 500. Bogle argued in his writing for holding a **minimum of 20% bonds and a minimum of 20% stocks**, increasing the bond share as you age. The snappy "**age in bonds**" maxim (hold your age as a percentage in bonds) is *commonly attributed* to him, but treat it as folk wisdom rather than a verified Bogle quote.
+
+</Callout>
+
+## Age and horizon: the rules of thumb (and where they break)
+
+How much should be in stocks versus bonds? The oldest rule of thumb is **"100 minus your age"** = the percentage in stocks. A 30-year-old holds 70% stocks; a 70-year-old holds 30%. The logic: the longer your **time horizon** (years until you need the money), the more short-term volatility you can ride out, so the more stocks you can afford.
+
+Because people now live longer and bonds have at times yielded very little, the rule got nudged upward to **"110 minus age"** and even **"120 minus age,"** which keep more in stocks for longer.
+
+<LineChart
+  caption="Illustrative. Three age-based rules of thumb for the percentage of a portfolio in stocks. They're starting points to react against, not prescriptions — the right number depends on your goals and risk tolerance, not your birthday alone."
+  height={300}
+  yMin={0}
+  yMax={110}
+  labels={["25", "35", "45", "55", "65", "75"]}
+  series={[
+    { label: "100 − age", data: [75, 65, 55, 45, 35, 25], color: "#38bdf8", width: 2 },
+    { label: "110 − age", data: [85, 75, 65, 55, 45, 35], color: "#22c55e", width: 2 },
+    { label: "120 − age", data: [95, 85, 75, 65, 55, 45], color: "#f59e0b", width: 2 }
+  ]}
+/>
+
+<Callout type="warning">
+
+These rules ignore almost everything that actually matters: your **risk tolerance** (how much loss you can endure without panic-selling), other income like a pension or salary, your total wealth, and your specific goals. A rule of thumb is a conversation-starter, not an answer. **Target-date funds** — which automatically shift from stocks to bonds as a retirement date approaches along a preset "glide path" — are the packaged, automated version of this same idea.
+
+</Callout>
+
+## Rebalancing: contrarian discipline on autopilot
+
+Once you pick an allocation, the market won't leave it alone. If stocks surge, your 70/30 portfolio drifts to maybe 78/22 — quietly becoming riskier than you chose. **Rebalancing** is the act of selling some of what grew and buying more of what lagged, returning the portfolio to its target mix.
+
+Notice what that mechanically forces you to do: **sell high (trim the winners) and buy low (top up the losers).** It's a built-in **contrarian** discipline that overrides the human urge to chase whatever just went up.
+
+<BarChart
+  caption="Illustrative. A 70/30 portfolio drifts to ~78/22 after a stock rally; rebalancing sells the appreciated stocks and buys bonds to restore the target — mechanically forcing 'sell high, buy low.'"
+  labels={["Target", "After stock rally (drifted)", "After rebalancing"]}
+  series={[
+    { label: "Stocks %", data: [70, 78, 70] },
+    { label: "Bonds %", data: [30, 22, 30] }
+  ]}
+  yLabel="Allocation (%)"
+/>
+
+There are two common methods:
+
+- **Calendar rebalancing** — check on a fixed schedule, e.g. once a year. Easy to remember and to stick with.
+- **Threshold (tolerance-band) rebalancing** — rebalance only when an asset drifts more than, say, **5%** away from its target. Larimore's widely-cited **"5/25 rule"** is a band heuristic of this type (a common rule from the Bogleheads community — verify the exact form before adopting it).
+
+Research suggests the *exact* frequency is "probably not too important... as long as it's performed consistently." Consistency beats cleverness here.
+
+<Callout type="warning">
+
+Don't over-promise yourself a "rebalancing bonus." The idea that rebalancing reliably *adds* return (explored by William Bernstein in 1996, and pushed further by Rob Arnott, who suggested up to ~2%/year of extra return in favorable conditions) only holds under **specific conditions** — when assets are negatively correlated and **mean-reverting** (tending to swing back toward an average). In other periods, rebalancing can actually *reduce* returns by trimming a long, sustained winner too early. Rebalance to **control risk**, and treat any return bonus as a maybe, not a guarantee.
+
+</Callout>
+
+## Home bias: the comfort of the familiar
+
+The "international" fund in the three-fund portfolio exists to fight a deeply human tendency. Investors all over the world overweight their *own* country's stocks far beyond what its share of the global market would justify — the **equity home bias puzzle**. It was first studied academically by **Kenneth French and James Poterba (1991)** in *"Investor Diversification and International Equity Markets."* (The famous claim that US investors held roughly **94%** of their equity at home traces to this paper — a widely-quoted figure worth confirming against the source before you repeat it.)
+
+Modern magnitudes are still striking: home-equity bias has been estimated around **78% in the US, 78% in Japan, and 19% in the UK** (a far more globally-diversified market). The US foreign-asset share did rise over time — from roughly 12% in 2001 to about 28% in 2010 — but the pull of the familiar remains powerful. Researcher **Karen Lewis** found that a minimum-volatility mix sat near **61% domestic / 39% foreign** — a useful reminder that *some* home tilt can be reasonable, but a 90%+ home concentration usually isn't.
+
+<BarChart
+  caption="Illustrative magnitudes of equity home bias by country. Investors hold far more domestic stock than the country's share of the global market would justify; the UK is a notably more diversified outlier."
+  labels={["United States", "Japan", "United Kingdom"]}
+  series={[
+    { label: "Approx. share of equity held domestically (%)", data: [78, 78, 19] }
+  ]}
+  yLabel="Domestic equity share (%)"
+/>
+
+The lesson: a globally-diversified stock allocation reduces the risk that your portfolio's fate is chained to one country's economy. That's exactly why the three-fund portfolio splits stocks into "US" and "international."
+
+## Don't confuse this with risk parity
+
+As you read more, you'll meet a more advanced cousin called **risk parity**, and it's worth drawing a clean line so you don't mix them up. The three-fund portfolio allocates by **dollars** — a beginner-friendly, unleveraged approach. Risk parity allocates by **risk contribution** instead.
+
+Here's the key fact risk parity is built on: a "balanced" **60/40** portfolio (60% stocks, 40% bonds by money) actually carries roughly **90% of its risk in the stocks**, because stocks swing several times harder than bonds. Risk parity equalizes the risk each asset contributes, then typically **uses leverage** (borrowing, especially against the bond sleeve) to lift the calmer portfolio's returns back up.
+
+<Callout type="warning">
+
+Risk parity is a **leveraged, advanced** strategy — associated with Bridgewater's **All Weather** fund (launched 1996) and the term coined by **Edward Qian** (PanAgora, 2005). Its reliance on **leverage** and on **bonds** behaving well are its central risks, and it had a hard time in the disorderly rising-rate environment of **2022**, when stocks and bonds fell together. It is **not** a drop-in alternative to a beginner three-fund portfolio. Treat it as a separate, more complex topic. (There's a dedicated lesson on it.)
+
+</Callout>
+
+## Common beginner pitfalls
+
+<Callout type="warning">
+
+1. **Mistaking the BHB stat for "94% of returns."** It's 94% of *variance over time*, not 94% of how much you make. Use Ibbotson & Kaplan's three framings (90% / 40% / 100%).
+2. **Obsessing over picks, ignoring the split.** The allocation is the decision that dominates your experience — start there.
+3. **Treating a rule of thumb as an answer.** "100 minus age" ignores your risk tolerance, goals, and other wealth. It's a starting point.
+4. **Never rebalancing.** Drift quietly turns your chosen risk level into a bigger stock bet than you signed up for.
+5. **Expecting a guaranteed rebalancing bonus.** It only exists under specific conditions; rebalance to manage risk, not to chase a sure return.
+6. **Extreme home bias.** Holding 90%+ of your stocks in one country concentrates your fate; broad international exposure is cheap insurance.
+7. **Confusing this with risk parity.** That's leveraged and advanced — don't blend the two.
+
+</Callout>
+
+## Putting it to work
+
+1. **Decide your stock/bond split first.** Use an age rule as a *starting point*, then adjust honestly for how much loss you could stomach without selling at the bottom.
+2. **Implement it simply** — three total-market index funds get you a globally-diversified, ultra-low-cost portfolio in three lines.
+3. **Split your stocks across US and international** to push back on home bias.
+4. **Write down a rebalancing rule** — calendar (once a year) or a tolerance band (e.g. ~5% drift) — and follow it mechanically.
+5. **Keep costs and turnover low**, and leave it alone between rebalances. Boring is the point.
+
+The enduring idea: **the mix is the decision.** Once you internalize that allocation drives your ride far more than any single pick, you'll spend your energy where it actually matters — and you'll be free to keep the rest of your portfolio refreshingly simple.
+
+## Key takeaways
+
+- **Asset allocation** — your split across stocks, bonds, and cash — is the single decision that most shapes your investing outcome, and it's one you fully control.
+- The famous **BHB "93.6%"** figure means allocation explains ~90% of the **variability of returns over time** — *not* 94% of how much money you make. **Ibbotson & Kaplan** untangled it into three answers: ~90% (variability over time), ~40% (differences between funds), ~100% (average level of return).
+- The **three-fund portfolio** (total US stock + total international stock + total US bond) delivers broad diversification, ultra-low cost, tax efficiency, and simplicity — popularized by Taylor Larimore from John Bogle's index philosophy.
+- Age **rules of thumb** ("100/110/120 minus age" in stocks) are useful starting points but ignore risk tolerance, other income, and goals; **target-date funds** automate the glide path.
+- **Rebalancing** restores your target mix, mechanically forcing "sell high, buy low." Do it consistently for **risk control** — don't bank on a guaranteed return bonus.
+- **Home bias** leads investors to over-concentrate in their own country; broad international exposure is cheap diversification.
+- **Risk parity** (allocate by risk, then leverage) is a separate, advanced, leveraged strategy — *not* a beginner alternative to the three-fund portfolio.
+
+## Further reading
+
+- Brinson, Hood & Beebower, *"Determinants of Portfolio Performance"* (*Financial Analysts Journal*, 1986) — the original 93.6% study; the 1991 follow-up (Brinson, Singer & Beebower).
+- Roger Ibbotson & Paul Kaplan, *"Does Asset Allocation Policy Explain 40, 90, or 100 Percent of Performance?"* (*FAJ*, 2000) — the essential clarification of what the famous stat does and doesn't mean.
+- Taylor Larimore, *The Bogleheads' Guide to the Three-Fund Portfolio* (2018) — the case for the three-fund approach from its leading popularizer.
+- John C. Bogle, *Common Sense on Mutual Funds* — the index-investing philosophy underpinning all of this.
+- Kenneth French & James Poterba, *"Investor Diversification and International Equity Markets"* (1991) — the foundational study of equity home bias.
+
+### Sources
+
+1. [Brinson, Hood & Beebower — "Determinants of Portfolio Performance" (CFA Institute / FAJ)](https://www.cfainstitute.org/) — the 1986 study of 91 pension funds; 93.6% of return variance explained by allocation policy; 91.5% in the 1991 follow-up.
+2. [Ibbotson & Kaplan — "Does Asset Allocation Policy Explain 40, 90, or 100 Percent of Performance?" (FAJ, 2000)](https://en.wikipedia.org/wiki/Asset_allocation) — the ~90% / ~40% / ~100% decomposition; Statman's perfect-timing illustration (~8.1%/yr, 89.4% variance).
+3. [Bogleheads wiki — Three-fund portfolio](https://www.bogleheads.org/wiki/Three-fund_portfolio) — the three total-market funds; benefits (cost, diversification, simplicity, tax efficiency); sample allocations; Taylor Larimore's role. (Verify exact sample percentages and the 5/25 rule directly on the wiki.)
+4. [John Bogle — Wikipedia](https://en.wikipedia.org/wiki/John_C._Bogle) — Vanguard founded 1974; first index fund 1975 ("Bogle's Folly"); First Index Investment Trust 1976; the minimum-20%-bonds / minimum-20%-stocks guidance. ("Age in bonds" is commonly attributed — verify before quoting.)
+5. [Home bias in equities — Wikipedia](https://en.wikipedia.org/wiki/Home_bias_in_trade) — French & Poterba (1991); modern home-bias magnitudes (~78% US, ~78% Japan, ~19% UK); the rise in US foreign-asset share; Karen Lewis's ~61/39 minimum-volatility mix.
+6. [Rebalancing (investment) / William Bernstein — Wikipedia](https://en.wikipedia.org/wiki/Rebalancing_investments) — calendar vs. threshold methods; the conditional nature of the "rebalancing bonus" (negatively correlated, mean-reverting assets); consistency over frequency.
+7. [Risk parity — Wikipedia](https://en.wikipedia.org/wiki/Risk_parity) — 60/40 ≈ 90% equity risk; allocate by risk contribution; leverage; All Weather (1996); Edward Qian coined "risk parity" (2005); 2022 stress. (See the dedicated risk-parity lesson.)

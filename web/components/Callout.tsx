@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "@/components/Reveal";
 
 type CalloutType = "key" | "note" | "warning";
 
@@ -32,11 +33,11 @@ export default function Callout({
 }) {
   const s = STYLES[type] ?? STYLES.note;
   return (
-    <div className={`my-5 rounded-lg border ${s.border} ${s.bg} px-4 py-3`}>
+    <Reveal className={`my-5 rounded-lg border ${s.border} ${s.bg} px-4 py-3`}>
       <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-300">
         {s.icon} {s.label}
       </div>
       <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">{children}</div>
-    </div>
+    </Reveal>
   );
 }

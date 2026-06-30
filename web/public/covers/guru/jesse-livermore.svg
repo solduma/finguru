@@ -1,0 +1,64 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-jesse-livermore" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-jesse-livermore-wave" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-guru-jesse-livermore)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="0" x2="120" y2="250" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="0" x2="280" y2="250" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- low sun, open sky upper-left -->
+  <circle cx="92" cy="78" r="20" fill="hsl(160,88%,82%)" fill-opacity="0.35"/>
+  <circle cx="92" cy="78" r="20" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- horizon line -->
+  <line x1="40" y1="150" x2="360" y2="150" stroke="hsl(160,22%,46%)" stroke-width="1" stroke-opacity="0.7"/>
+
+  <!-- the giant wave: sweeping arc lower-left to upper-right, curling crest -->
+  <path d="M40 198 C 110 200 180 188 250 150 C 300 122 320 84 318 58 C 300 78 268 90 236 96 C 270 116 286 150 270 186 C 220 206 110 208 40 198 Z"
+        fill="url(#cv-guru-jesse-livermore-wave)"/>
+  <path d="M40 198 C 110 200 180 188 250 150 C 300 122 320 84 318 58 C 300 78 268 90 236 96"
+        fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- inner contour lines of the crest -->
+  <path d="M232 110 C 260 124 274 152 262 180" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6"/>
+  <path d="M248 122 C 268 136 278 156 268 178" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-linecap="round" stroke-opacity="0.5"/>
+  <path d="M252 86 C 286 86 304 70 308 56" fill="none" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-linecap="round" stroke-opacity="0.5"/>
+
+  <!-- surfboard at top of wave, angled into the face -->
+  <path d="M278 70 L 308 56" stroke="hsl(160,88%,82%)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- tiny surfer, crouched stance, arms out for balance -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="294" cy="46" r="3" fill="hsl(160,88%,82%)" stroke="none"/>
+    <path d="M294 49 L 292 58"/>
+    <path d="M292 58 L 285 65"/>
+    <path d="M292 58 L 297 64"/>
+    <path d="M293 53 L 284 50"/>
+    <path d="M293 53 L 303 50"/>
+  </g>
+
+  <!-- broken/splintered boards floating in trough lower-left -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="2" stroke-linecap="round" fill="none" stroke-opacity="0.85">
+    <path d="M58 196 L 86 190"/>
+    <path d="M70 193 L 66 199"/>
+    <path d="M96 202 L 122 198"/>
+    <path d="M108 200 L 105 205"/>
+    <path d="M62 205 L 80 207"/>
+  </g>
+
+  <!-- churning water hints in the trough -->
+  <path d="M50 188 C 62 184 70 188 82 184" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.35" stroke-linecap="round"/>
+  <path d="M95 192 C 108 188 116 192 130 188" fill="none" stroke="hsl(160,75%,66%)" stroke-width="1" stroke-opacity="0.35" stroke-linecap="round"/>
+</svg>

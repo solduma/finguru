@@ -20,6 +20,12 @@
     background: var(--bg);
     color: #e6e9ef;
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* Defensive guard: a single stray wide element (an off-screen absolute
+       popover, an unbreakable long token) must never make the whole page
+       horizontally scrollable / zoom-to-fit on mobile. `clip` contains the
+       overflow without creating a scroll container (so `position: sticky`
+       descendants like the lesson TOC keep working, unlike `hidden`). */
+    overflow-x: clip;
   }
 
   /* Default link color only for content links that don't set their own. */
@@ -27,3 +33,394 @@
     color: var(--accent);
   }
 }
+
+/* Lesson prose can contain wide tables and long code/preformatted blocks.
+   On narrow viewports let them scroll horizontally inside the article instead
+   of stretching the whole page and breaking the layout. */
+.prose :where(table) {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+.prose :where(pre) {
+  overflow-x: auto;
+  max-width: 100%;
+  /* Momentum scroll + a hint that the block scrolls horizontally on touch. */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+/* Formula/code blocks carry long unbreakable lines (e.g. σ_p² = …). On phones,
+   shrink the type a notch so more of each line is visible before the reader
+   must scroll the block sideways. Desktop keeps the prose default size. */
+@media (max-width: 640px) {
+  .prose :where(pre, pre code) {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+  /* Inline code can wrap mid-token rather than forcing a wide line. */
+  .prose :where(code):not(pre code) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* ============================================================
+   Motion system
+   CSS-first motion foundation: tokens, keyframes, reveal styles,
+   utility classes, and a mandatory reduced-motion override.
+   Transform/opacity only (GPU-friendly), no layout shift.
+   ============================================================ */
+
+/* Motion tokens */
+/* Timing intent:
+   600ms (--motion-duration-medium) = entrance/reveal, thoughtful pace; 300ms (--motion-duration-fast) = hover/interaction micro-feedback, snappy; 1200ms (--motion-duration-chart) = number count-up and Chart.js/diagram draw, readable. */
+:root {
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-duration-fast: 300ms;
+  --motion-duration-medium: 600ms;
+  --motion-duration-chart: 1200ms;
+  --motion-duration-pulse: 300ms;
+}
+
+/* Keyframes */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes select-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.45); }
+  100% { box-shadow: 0 0 0 8px rgba(45, 212, 191, 0); }
+}
+
+/* Reveal styles (driven by components/Reveal.tsx data attributes) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--motion-duration-medium) var(--motion-ease),
+    transform var(--motion-duration-medium) var(--motion-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Utility classes */
+.anim-fade-up {
+  animation: fade-up var(--motion-duration-medium) var(--motion-ease) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.anim-fade-in {
+  animation: fade-in var(--motion-duration-medium) var(--motion-ease) both;
+}
+
+.anim-scale-in {
+  animation: scale-in var(--motion-duration-fast) var(--motion-ease) both;
+}
+
+.hover-lift {
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease),
+    box-shadow var(--motion-duration-fast) var(--motion-ease);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgba(45, 212, 191, 0.35);
+}
+
+.underline-grow {
+  position: relative;
+}
+
+.underline-grow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.underline-grow:hover::after,
+.underline-grow[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+.progress-fill {
+  transition: width var(--motion-duration-medium) var(--motion-ease);
+}
+
+.anim-select-pulse {
+  animation: select-pulse var(--motion-duration-pulse) var(--motion-ease) both;
+}
+
+.typing-dot {
+  animation: pulse-dot 1.2s var(--motion-ease) infinite;
+  animation-delay: var(--typing-delay, 0ms);
+}
+.typing-dot:nth-child(1) { --typing-delay: 0ms; }
+.typing-dot:nth-child(2) { --typing-delay: 200ms; }
+.typing-dot:nth-child(3) { --typing-delay: 400ms; }
+
+/* Mobile menu (hamburger) icon rotation — driven by data-open so the
+   reduced-motion block can fully neutralize the transform. An inline
+   style transform would win over a utility class and ignore reduced motion. */
+.menu-icon {
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+.menu-icon[data-open="true"] {
+  transform: rotate(90deg);
+}
+
+/* Mobile nav menu entrance — slides down + fades in on mount (SiteHeader.tsx) */
+@keyframes menu-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 28rem;
+  }
+}
+.mobile-menu-enter {
+  overflow: hidden;
+  animation: menu-drop var(--motion-duration-fast) var(--motion-ease) both;
+}
+
+/* Chat panel entrance — fade + rise + slight slide from the right (ChatWidget.tsx) */
+@keyframes chat-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+.chat-panel-enter {
+  animation: chat-panel-in var(--motion-duration-medium) var(--motion-ease) both;
+}
+
+/* Prose chunked reveal (consumed by Mdx.tsx via .prose-reveal) */
+@keyframes prose-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prose-reveal > * {
+  animation: prose-rise var(--motion-duration-medium) var(--motion-ease) both;
+}
+
+.prose-reveal > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.prose-reveal > *:nth-child(2) {
+  animation-delay: 60ms;
+}
+.prose-reveal > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.prose-reveal > *:nth-child(4) {
+  animation-delay: 180ms;
+}
+.prose-reveal > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+.prose-reveal > *:nth-child(6) { animation-delay: 300ms; }
+.prose-reveal > *:nth-child(7) { animation-delay: 360ms; }
+.prose-reveal > *:nth-child(8) { animation-delay: 420ms; }
+.prose-reveal > *:nth-child(9) { animation-delay: 480ms; }
+.prose-reveal > *:nth-child(10) { animation-delay: 540ms; }
+.prose-reveal > *:nth-child(11) { animation-delay: 600ms; }
+/* Cap the stagger so very long articles don't stall */
+.prose-reveal > *:nth-child(n + 12) { animation-delay: 600ms; }
+
+/* Blockquotes are direct children, so they already participate in the
+   prose-rise entrance above. Just a subtle accent — no premature opacity:1. */
+.prose-reveal blockquote {
+  border-left-color: var(--accent);
+}
+
+/* Concept diagram draw-in (consumed by ConceptDiagram.tsx via .concept-diagram-draw) */
+@keyframes concept-stroke {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.concept-diagram-draw {
+  animation: fade-in var(--motion-duration-medium) var(--motion-ease) both;
+}
+
+/* ConceptDiagram.tsx sets pathLength="1" as an SVG *attribute* on each stroke
+   (it's not a valid CSS property), so dasharray/offset of 1 draw the full stroke
+   regardless of real length. If a browser ignores it, the fade-in above still
+   provides the entrance. Do not animate fill/text (avoids label flicker). */
+.concept-diagram-draw path,
+.concept-diagram-draw line,
+.concept-diagram-draw polyline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: concept-stroke var(--motion-duration-chart) var(--motion-ease) forwards;
+}
+
+/* Reduced-motion override: neutralize ALL motion above (mandatory) */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal][data-revealed="true"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .anim-fade-up,
+  .anim-fade-in,
+  .anim-scale-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hover-lift {
+    transition: none !important;
+  }
+  .hover-lift:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .underline-grow::after {
+    transition: none !important;
+  }
+  .typing-dot {
+    animation: none !important;
+  }
+  .progress-fill {
+    transition: none !important;
+  }
+  .anim-select-pulse {
+    animation: none !important;
+  }
+  .menu-icon,
+  .menu-icon[data-open="true"] {
+    transition: none !important;
+    transform: none !important;
+  }
+  :active {
+    transform: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* Keep low-amplitude, non-disorienting hover feedback responsive for a11y */
+  .underline-grow::after { transition-duration: 200ms !important; }
+  a, button { transition-duration: 200ms !important; }
+  .prose-reveal > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .concept-diagram-draw,
+  .concept-diagram-draw path,
+  .concept-diagram-draw line,
+  .concept-diagram-draw polyline {
+    animation: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .mobile-menu-enter,
+  .chat-panel-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    max-height: none !important;
+  }
+}
+

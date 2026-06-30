@@ -1,0 +1,96 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-adx-atr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-indicator-adx-atr-sock" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-indicator-adx-atr)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- diagonal wind streaks flowing left-to-right, behind instruments -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.55">
+    <path d="M30 70 C 90 64, 150 70, 205 60"/>
+    <path d="M22 96 C 80 92, 140 100, 195 92"/>
+    <path d="M40 150 C 100 146, 150 150, 210 142"/>
+    <path d="M30 178 C 90 176, 150 182, 200 174"/>
+  </g>
+
+  <!-- force-gauge arc, lower-left, no needle to a destination -->
+  <g fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" opacity="0.9">
+    <path d="M50 196 A 34 34 0 0 1 110 178"/>
+    <line x1="50" y1="196" x2="55" y2="190"/>
+    <line x1="62" y1="178" x2="66" y2="172"/>
+    <line x1="80" y1="170" x2="82" y2="163"/>
+    <line x1="99" y1="170" x2="103" y2="164"/>
+    <!-- short force pointer, deliberately mid-arc -->
+    <line x1="80" y1="196" x2="74" y2="176" stroke="hsl(160,88%,82%)"/>
+    <circle cx="80" cy="196" r="3" fill="hsl(160,68%,55%)" stroke="none"/>
+  </g>
+
+  <!-- MAST -->
+  <line x1="200" y1="56" x2="200" y2="200" stroke="hsl(160,75%,66%)" stroke-width="3" stroke-linecap="round"/>
+  <!-- mast base anchor -->
+  <path d="M188 200 L212 200 L206 208 L194 208 Z" fill="hsl(160,68%,55%)" fill-opacity="0.6" stroke="hsl(160,75%,66%)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- ANEMOMETER at top: hub + 3 radial arms with cups -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="200" cy="56" r="5" fill="hsl(160,68%,55%)"/>
+    <!-- arm 1 (up-right) -->
+    <line x1="200" y1="56" x2="226" y2="42"/>
+    <circle cx="230" cy="40" r="7" fill="hsl(160,68%,55%)" fill-opacity="0.85"/>
+    <!-- arm 2 (up-left) -->
+    <line x1="200" y1="56" x2="174" y2="42"/>
+    <circle cx="170" cy="40" r="7" fill="hsl(160,68%,55%)" fill-opacity="0.4"/>
+    <!-- arm 3 (down) -->
+    <line x1="200" y1="56" x2="200" y2="76"/>
+    <circle cx="200" cy="80" r="7" fill="hsl(160,68%,55%)" fill-opacity="0.6"/>
+  </g>
+  <!-- rotation motion arcs -->
+  <g fill="none" stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-linecap="round" opacity="0.85">
+    <path d="M244 34 A 46 46 0 0 1 222 22"/>
+    <path d="M178 24 A 46 46 0 0 0 156 36"/>
+  </g>
+
+  <!-- WIND-SOCK cone billowing right, jagged turbulence ripple-segments -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <!-- attachment ring -->
+    <circle cx="200" cy="112" r="4" fill="hsl(160,68%,55%)"/>
+    <!-- main billowing cone body with jagged top/bottom edges -->
+    <path d="M204 102
+             L228 99 L246 104 L266 100 L288 106 L306 102
+             L312 124
+             L300 128 L282 124 L262 130 L244 126 L224 130 L204 122 Z"
+          fill="url(#cv-indicator-adx-atr-sock)"/>
+    <!-- internal ripple segment lines (turbulence) -->
+    <g stroke-width="1" opacity="0.8">
+      <path d="M226 100 L223 128"/>
+      <path d="M248 105 L246 127"/>
+      <path d="M270 101 L266 129"/>
+      <path d="M290 106 L286 125"/>
+    </g>
+  </g>
+
+  <!-- +DI / -DI opposing pennants near base on short lines -->
+  <!-- left-pulling pennant -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="200" y1="172" x2="166" y2="178"/>
+    <path d="M166 178 L140 170 L160 184 Z" fill="hsl(160,68%,55%)" fill-opacity="0.7"/>
+  </g>
+  <!-- right-pulling pennant -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="200" y1="184" x2="234" y2="190"/>
+    <path d="M234 190 L260 182 L240 196 Z" fill="hsl(160,88%,82%)" fill-opacity="0.55"/>
+  </g>
+</svg>

@@ -78,9 +78,16 @@ export default function CandleChart({
     annotations[`pt${i}`] = pointLabel(p.x, p.y, p.text, p.color);
   });
 
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: reduceMotion
+      ? (false as const)
+      : { duration: 1200, easing: "easeInOutQuart" as const },
     plugins: {
       legend: { display: false },
       tooltip: { enabled: true },

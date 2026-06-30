@@ -1,0 +1,67 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-mohnish-pabrai" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(35,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(35,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-mohnish-pabrai-coin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(35,68%,55%)" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="hsl(35,68%,55%)" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="cv-guru-mohnish-pabrai-clip">
+      <ellipse cx="205" cy="108" rx="62" ry="78"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-mohnish-pabrai)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="100" y1="40" x2="100" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="300" y1="40" x2="300" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- break-even baseline (asymmetry measured against this) -->
+  <line x1="60" y1="170" x2="340" y2="170" stroke="hsl(35,22%,46%)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"/>
+
+  <!-- dotted flight arc sweeping from lower-left up through the coin -->
+  <path d="M40 196 Q140 40 205 30" fill="none" stroke="hsl(35,88%,82%)" stroke-width="2" stroke-opacity="0.7" stroke-dasharray="2 8" stroke-linecap="round"/>
+  <path d="M205 30 Q270 38 320 90" fill="none" stroke="hsl(35,88%,82%)" stroke-width="2" stroke-opacity="0.45" stroke-dasharray="2 8" stroke-linecap="round"/>
+
+  <!-- coin body, tilted three-quarter -->
+  <ellipse cx="205" cy="108" rx="62" ry="78" fill="url(#cv-guru-mohnish-pabrai-coin)" stroke="hsl(35,75%,66%)" stroke-width="2"/>
+  <ellipse cx="205" cy="108" rx="50" ry="66" fill="none" stroke="hsl(35,75%,66%)" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- coin contents clipped to disc -->
+  <g clip-path="url(#cv-guru-mohnish-pabrai-clip)">
+    <!-- heads face (upper): tall climbing staircase = large upside -->
+    <g stroke="hsl(35,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M178 138 L178 122 L190 122 L190 106 L202 106 L202 90 L214 90 L214 74 L226 74 L226 58 L238 58"/>
+    </g>
+    <!-- fill under stair for body -->
+    <path d="M178 138 L178 122 L190 122 L190 106 L202 106 L202 90 L214 90 L214 74 L226 74 L226 58 L238 58 L238 138 Z" fill="hsl(35,68%,55%)" fill-opacity="0.22"/>
+
+    <!-- midline separating the two faces -->
+    <line x1="143" y1="150" x2="267" y2="150" stroke="hsl(35,75%,66%)" stroke-width="1" stroke-opacity="0.45"/>
+
+    <!-- tails face (lower): single shallow step down = small capped loss -->
+    <g stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M178 162 L205 162 L205 172 L232 172"/>
+    </g>
+  </g>
+
+  <!-- motion-spin glyph: curved arrows around the coin -->
+  <g stroke="hsl(35,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.85">
+    <path d="M276 78 A78 92 0 0 1 286 132"/>
+    <path d="M286 132 l5 -10 l-11 2"/>
+    <path d="M134 138 A78 92 0 0 1 124 84"/>
+    <path d="M124 84 l-5 10 l11 -2"/>
+  </g>
+
+  <!-- highlight glint on coin edge -->
+  <path d="M168 52 A62 78 0 0 0 150 95" fill="none" stroke="hsl(35,88%,82%)" stroke-width="2" stroke-opacity="0.55" stroke-linecap="round"/>
+
+  <!-- upside marker high above baseline, loss marker just below -->
+  <circle cx="238" cy="58" r="3" fill="hsl(35,88%,82%)"/>
+  <circle cx="232" cy="178" r="2.5" fill="hsl(35,75%,66%)" fill-opacity="0.8"/>
+</svg>

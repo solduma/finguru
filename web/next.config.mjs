@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Build output directory. Defaults to ".next". The dev launcher (run.sh) sets
+  // NEXT_DIST_DIR=.next-dev so `next dev` writes to its own directory and never
+  // clobbers the production build in .next that start-prod.sh's `next start`
+  // serves — letting dev and prod run side by side on the same checkout.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
+
   // Allow loading the dev server from non-localhost origins (LAN IP, 0.0.0.0)
   // without the cross-origin /_next/* warning. Dev-only; ignored in production.
   allowedDevOrigins: ["0.0.0.0", "127.0.0.1", "192.168.0.13", "*.local"],

@@ -1,0 +1,51 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-indicator-bollinger-bands" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-indicator-bollinger-bands)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="240" y1="40" x2="240" y2="200" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="40" y1="125" x2="360" y2="125" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- faint elastic rib-lines following the envelope -->
+  <g fill="none" stroke="hsl(160,68%,55%)" stroke-opacity="0.16" stroke-width="1" stroke-linecap="round">
+    <path d="M50 78 C 150 58, 250 105, 350 118"/>
+    <path d="M50 96 C 150 80, 250 110, 350 121"/>
+    <path d="M50 172 C 150 192, 250 145, 350 132"/>
+    <path d="M50 154 C 150 170, 250 140, 350 129"/>
+  </g>
+
+  <!-- the breathing envelope: wide bulge left, pinch right (the Squeeze) -->
+  <g fill="none" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 88 C 150 66, 250 108, 350 124"/>
+    <path d="M50 162 C 150 184, 250 142, 350 126"/>
+  </g>
+
+  <!-- soft fill between the bands to read as elastic skin -->
+  <path d="M50 88 C 150 66, 250 108, 350 124 C 250 142, 150 184, 50 162 Z"
+        fill="hsl(160,68%,55%)" fill-opacity="0.10"/>
+
+  <!-- central spine / mid-band -->
+  <line x1="48" y1="125" x2="352" y2="125" stroke="hsl(160,88%,82%)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.85"/>
+
+  <!-- BandWidth double-headed arrows in the wide foreground (left section) -->
+  <g stroke="hsl(160,88%,82%)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="0.9">
+    <line x1="105" y1="80" x2="105" y2="170"/>
+    <path d="M99 88 L105 80 L111 88"/>
+    <path d="M99 162 L105 170 L111 162"/>
+  </g>
+
+  <!-- %b marker dot riding the upper band -->
+  <circle cx="170" cy="69" r="9" fill="hsl(160,68%,55%)" fill-opacity="0.30"/>
+  <circle cx="170" cy="69" r="4.5" fill="hsl(160,88%,82%)"/>
+
+  <!-- pinch accent: small node at the Squeeze where bands converge -->
+  <circle cx="350" cy="125" r="3" fill="hsl(160,75%,66%)"/>
+</svg>

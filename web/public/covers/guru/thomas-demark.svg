@@ -1,0 +1,85 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-thomas-demark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-thomas-demark-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-thomas-demark)"/>
+
+  <!-- unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="40" x2="280" y2="200" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- coiled spring / ratchet detail at the limit (lower, behind body hint) -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 196 q6 -7 12 0 q6 7 12 0 q6 -7 12 0 q6 7 12 0 q6 -7 12 0"/>
+  </g>
+
+  <!-- counter body, slight three-quarter tilt -->
+  <g transform="rotate(-6 200 130)">
+    <!-- main rounded body -->
+    <rect x="150" y="92" width="100" height="98" rx="24"
+          fill="url(#cv-guru-thomas-demark-body)"
+          stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- thumb-press button on top -->
+    <rect x="183" y="66" width="34" height="20" rx="8"
+          fill="hsl(160,68%,55%)" fill-opacity="0.40"
+          stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="200" y1="66" x2="200" y2="60" stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- circular numeral window (focal) -->
+    <circle cx="200" cy="138" r="34"
+            fill="hsl(160,38%,7%)" fill-opacity="0.55"
+            stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <circle cx="200" cy="138" r="34" fill="none"
+            stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.5"/>
+
+    <!-- dial ring tick marks + a faint earlier '9' notch -->
+    <g stroke="hsl(160,88%,82%)" stroke-linecap="round">
+      <line x1="200" y1="108" x2="200" y2="113" stroke-width="2" stroke-opacity="0.85"/>
+      <line x1="230" y1="138" x2="225" y2="138" stroke-width="1" stroke-opacity="0.45"/>
+      <line x1="170" y1="138" x2="175" y2="138" stroke-width="1" stroke-opacity="0.45"/>
+      <line x1="200" y1="168" x2="200" y2="163" stroke-width="1" stroke-opacity="0.45"/>
+      <!-- faint earlier notch ('9' position) on the dial ring -->
+      <line x1="221" y1="160" x2="218" y2="157" stroke-width="2" stroke-opacity="0.30"/>
+    </g>
+
+    <!-- abstract numeral mark inside window (symbolic, no actual digits) -->
+    <g stroke="hsl(160,88%,82%)" stroke-width="3" stroke-linecap="round" fill="none">
+      <line x1="194" y1="126" x2="194" y2="150"/>
+      <path d="M203 128 q9 0 9 11 q0 11 -9 11"/>
+    </g>
+  </g>
+
+  <!-- tally marks etched lower-left, last struck through -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round">
+    <line x1="78" y1="158" x2="78" y2="184"/>
+    <line x1="88" y1="158" x2="88" y2="184"/>
+    <line x1="98" y1="158" x2="98" y2="184"/>
+    <line x1="108" y1="158" x2="108" y2="184"/>
+    <line x1="72" y1="186" x2="114" y2="156" stroke="hsl(160,88%,82%)" stroke-opacity="0.85"/>
+  </g>
+
+  <!-- flag springing up to upper-right -->
+  <g stroke="hsl(160,75%,66%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- pole -->
+    <line x1="232" y1="70" x2="278" y2="44"/>
+    <!-- flag triangle -->
+    <path d="M278 44 L278 70 L310 56 Z"
+          fill="hsl(160,68%,55%)" fill-opacity="0.85"
+          stroke="hsl(160,88%,82%)"/>
+    <!-- motion spark lines (snap up) -->
+    <line x1="248" y1="60" x2="242" y2="52" stroke="hsl(160,88%,82%)" stroke-opacity="0.55"/>
+    <line x1="262" y1="52" x2="258" y2="42" stroke="hsl(160,88%,82%)" stroke-opacity="0.55"/>
+  </g>
+</svg>

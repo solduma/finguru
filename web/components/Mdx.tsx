@@ -29,7 +29,7 @@ export default function Mdx({
   locale?: Locale;
 }) {
   return (
-    <article className="prose prose-invert prose-teal max-w-none prose-headings:scroll-mt-24">
+    <article className="prose prose-invert prose-teal max-w-none prose-headings:scroll-mt-24 prose-reveal">
       <MDXRemote
         source={source}
         components={components}

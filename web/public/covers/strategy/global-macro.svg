@@ -1,0 +1,98 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-strategy-global-macro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(53,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(53,38%,7%)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="250" fill="url(#cv-strategy-global-macro)"/>
+
+  <!-- shared unifying frame -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="0" x2="120" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="0" x2="280" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+    <!-- orbital ring -->
+    <circle cx="200" cy="120" r="90" stroke="hsl(53,22%,46%)" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="3 5"/>
+
+    <!-- tension cables from hub to four emblems -->
+    <g stroke="hsl(53,75%,66%)" stroke-width="1" stroke-opacity="0.6">
+      <line x1="200" y1="120" x2="200" y2="30"/>
+      <line x1="200" y1="120" x2="290" y2="120"/>
+      <line x1="200" y1="120" x2="200" y2="210"/>
+      <line x1="200" y1="120" x2="110" y2="120"/>
+    </g>
+
+    <!-- globe -->
+    <circle cx="200" cy="120" r="52" fill="hsl(53,68%,55%)" fill-opacity="0.15" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+    <!-- latitude / longitude arcs -->
+    <path d="M 152 142 A 80 80 0 0 1 248 142" stroke="hsl(53,75%,66%)" stroke-width="1" stroke-opacity="0.7"/>
+    <path d="M 156 98 A 90 90 0 0 0 244 98" stroke="hsl(53,75%,66%)" stroke-width="1" stroke-opacity="0.7"/>
+    <ellipse cx="200" cy="120" rx="22" ry="52" stroke="hsl(53,75%,66%)" stroke-width="1" stroke-opacity="0.7"/>
+    <line x1="200" y1="68" x2="200" y2="172" stroke="hsl(53,75%,66%)" stroke-width="1" stroke-opacity="0.7"/>
+
+    <!-- ship's wheel / valve dial over center -->
+    <circle cx="200" cy="120" r="34" stroke="hsl(53,88%,82%)" stroke-width="2"/>
+    <circle cx="200" cy="120" r="8" fill="hsl(53,68%,55%)" fill-opacity="0.9" stroke="hsl(53,88%,82%)" stroke-width="2"/>
+    <!-- spokes -->
+    <g stroke="hsl(53,88%,82%)" stroke-width="2">
+      <line x1="200" y1="120" x2="200" y2="78"/>
+      <line x1="200" y1="120" x2="200" y2="162"/>
+      <line x1="200" y1="120" x2="158" y2="120"/>
+      <line x1="200" y1="120" x2="242" y2="120"/>
+      <line x1="200" y1="120" x2="170" y2="90"/>
+      <line x1="200" y1="120" x2="230" y2="150"/>
+      <line x1="200" y1="120" x2="230" y2="90"/>
+      <line x1="200" y1="120" x2="170" y2="150"/>
+    </g>
+    <!-- spoke handle nubs -->
+    <g fill="hsl(53,88%,82%)">
+      <circle cx="200" cy="76" r="3"/>
+      <circle cx="244" cy="120" r="3"/>
+      <circle cx="200" cy="164" r="3"/>
+      <circle cx="156" cy="120" r="3"/>
+    </g>
+
+    <!-- emblem 12 o'clock: coin (currency) -->
+    <circle cx="200" cy="30" r="13" fill="hsl(53,68%,55%)" fill-opacity="0.25" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+    <circle cx="200" cy="30" r="7" stroke="hsl(53,88%,82%)" stroke-width="1.5"/>
+
+    <!-- emblem 3 o'clock: rate gauge (semicircle + needle) -->
+    <path d="M 277 124 A 14 14 0 0 1 305 124" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+    <line x1="291" y1="124" x2="299" y2="114" stroke="hsl(53,88%,82%)" stroke-width="2"/>
+    <circle cx="291" cy="124" r="2.5" fill="hsl(53,88%,82%)"/>
+
+    <!-- emblem 6 o'clock: oil teardrop -->
+    <path d="M 200 196 C 188 207 188 218 200 218 C 212 218 212 207 200 196 Z" fill="hsl(53,68%,55%)" fill-opacity="0.3" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+
+    <!-- emblem 9 o'clock: wheat sheaf -->
+    <line x1="110" y1="106" x2="110" y2="134" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+    <line x1="103" y1="110" x2="103" y2="134" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+    <line x1="117" y1="110" x2="117" y2="134" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+    <g stroke="hsl(53,88%,82%)" stroke-width="1.5">
+      <path d="M 110 106 q 5 -4 0 -8 q -5 4 0 8"/>
+      <path d="M 103 110 q 5 -4 0 -8 q -5 4 0 8"/>
+      <path d="M 117 110 q 5 -4 0 -8 q -5 4 0 8"/>
+    </g>
+    <line x1="100" y1="138" x2="120" y2="138" stroke="hsl(53,22%,46%)" stroke-width="2"/>
+
+    <!-- single hand gripping a spoke, entering lower-right -->
+    <g>
+      <!-- forearm -->
+      <path d="M 268 220 L 244 184 L 232 192 L 256 226 Z" fill="hsl(53,68%,55%)" fill-opacity="0.85" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+      <!-- palm wrapping spoke nub area -->
+      <path d="M 230 152 C 222 158 224 174 236 180 C 248 186 256 178 252 168 C 250 162 244 160 240 158 Z" fill="hsl(53,68%,55%)" fill-opacity="0.9" stroke="hsl(53,75%,66%)" stroke-width="2"/>
+      <!-- fingers curling over the spoke -->
+      <g stroke="hsl(53,88%,82%)" stroke-width="2">
+        <path d="M 226 158 q -6 4 -2 11"/>
+        <path d="M 232 154 q -6 4 -2 11"/>
+        <path d="M 238 152 q -6 4 -2 11"/>
+      </g>
+    </g>
+
+  </g>
+</svg>

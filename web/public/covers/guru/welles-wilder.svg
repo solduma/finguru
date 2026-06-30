@@ -1,0 +1,142 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-guru-welles-wilder-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(160,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(160,38%,7%)"/>
+    </linearGradient>
+    <linearGradient id="cv-guru-welles-wilder-housing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="hsl(160,68%,55%)" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="hsl(160,68%,55%)" stop-opacity="0.10"/>
+    </linearGradient>
+    <clipPath id="cv-guru-welles-wilder-clip">
+      <rect x="96" y="118" width="208" height="84" rx="6"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-guru-welles-wilder-bg)"/>
+
+  <!-- unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="white" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="20" x2="120" y2="230" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="20" x2="280" y2="230" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="70" x2="400" y2="70" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- punch-card / input sheet feeding from top center -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="180" y="36" width="40" height="60" rx="3" fill="hsl(160,22%,46%)" fill-opacity="0.20" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <line x1="186" y1="48" x2="214" y2="48" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.7"/>
+    <line x1="186" y1="56" x2="208" y2="56" stroke="hsl(160,88%,82%)" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="190" cy="68" r="1.6" fill="hsl(160,88%,82%)" fill-opacity="0.8"/>
+    <circle cx="198" cy="68" r="1.6" fill="hsl(160,88%,82%)" fill-opacity="0.8"/>
+    <circle cx="206" cy="76" r="1.6" fill="hsl(160,88%,82%)" fill-opacity="0.8"/>
+    <line x1="200" y1="96" x2="200" y2="112" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+  </g>
+
+  <!-- four output dials along the top edge -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- needle gauge -->
+    <circle cx="116" cy="104" r="13" fill="hsl(160,38%,7%)" fill-opacity="0.5" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <line x1="116" y1="104" x2="123" y2="96" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+    <circle cx="116" cy="104" r="1.6" fill="hsl(160,88%,82%)"/>
+
+    <!-- bounded 0-100 arc gauge -->
+    <circle cx="176" cy="104" r="13" fill="hsl(160,38%,7%)" fill-opacity="0.5" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <path d="M167 104 A9 9 0 0 1 185 104" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+    <line x1="176" y1="104" x2="170" y2="98" stroke="hsl(160,68%,55%)" stroke-width="2"/>
+
+    <!-- directional arrow dial -->
+    <circle cx="236" cy="104" r="13" fill="hsl(160,38%,7%)" fill-opacity="0.5" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <line x1="230" y1="110" x2="242" y2="98" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+    <path d="M242 98 L237 99 M242 98 L241 103" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+
+    <!-- stepping dots dial -->
+    <circle cx="296" cy="104" r="13" fill="hsl(160,38%,7%)" fill-opacity="0.5" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <circle cx="290" cy="110" r="1.6" fill="hsl(160,88%,82%)"/>
+    <circle cx="294" cy="106" r="1.6" fill="hsl(160,88%,82%)"/>
+    <circle cx="298" cy="102" r="1.6" fill="hsl(160,88%,82%)"/>
+    <circle cx="302" cy="98" r="1.6" fill="hsl(160,88%,82%)"/>
+  </g>
+
+  <!-- connecting stems from dials to housing -->
+  <g stroke="hsl(160,22%,46%)" stroke-width="2" stroke-opacity="0.6">
+    <line x1="116" y1="117" x2="116" y2="124"/>
+    <line x1="176" y1="117" x2="176" y2="124"/>
+    <line x1="236" y1="117" x2="236" y2="124"/>
+    <line x1="296" y1="117" x2="296" y2="124"/>
+  </g>
+
+  <!-- machine housing (cutaway) -->
+  <rect x="96" y="118" width="208" height="84" rx="6" fill="url(#cv-guru-welles-wilder-housing)" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+
+  <!-- gear train inside cutaway -->
+  <g clip-path="url(#cv-guru-welles-wilder-clip)" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- large gear -->
+    <g stroke="hsl(160,75%,66%)" stroke-width="2">
+      <circle cx="150" cy="162" r="24" fill="hsl(160,68%,55%)" fill-opacity="0.15"/>
+      <circle cx="150" cy="162" r="7"/>
+      <g stroke="hsl(160,88%,82%)" stroke-width="2">
+        <line x1="150" y1="138" x2="150" y2="131"/>
+        <line x1="167" y1="145" x2="172" y2="140"/>
+        <line x1="174" y1="162" x2="181" y2="162"/>
+        <line x1="167" y1="179" x2="172" y2="184"/>
+        <line x1="150" y1="186" x2="150" y2="193"/>
+        <line x1="133" y1="179" x2="128" y2="184"/>
+        <line x1="126" y1="162" x2="119" y2="162"/>
+        <line x1="133" y1="145" x2="128" y2="140"/>
+      </g>
+    </g>
+    <!-- medium gear -->
+    <g stroke="hsl(160,75%,66%)" stroke-width="2">
+      <circle cx="208" cy="150" r="17" fill="hsl(160,68%,55%)" fill-opacity="0.18"/>
+      <circle cx="208" cy="150" r="5"/>
+      <g stroke="hsl(160,88%,82%)" stroke-width="2">
+        <line x1="208" y1="133" x2="208" y2="128"/>
+        <line x1="225" y1="150" x2="230" y2="150"/>
+        <line x1="208" y1="167" x2="208" y2="172"/>
+        <line x1="191" y1="150" x2="186" y2="150"/>
+        <line x1="220" y1="138" x2="224" y2="134"/>
+        <line x1="220" y1="162" x2="224" y2="166"/>
+        <line x1="196" y1="162" x2="192" y2="166"/>
+        <line x1="196" y1="138" x2="192" y2="134"/>
+      </g>
+    </g>
+    <!-- small gear -->
+    <g stroke="hsl(160,75%,66%)" stroke-width="2">
+      <circle cx="252" cy="172" r="13" fill="hsl(160,68%,55%)" fill-opacity="0.20"/>
+      <circle cx="252" cy="172" r="4"/>
+      <g stroke="hsl(160,88%,82%)" stroke-width="1">
+        <line x1="252" y1="159" x2="252" y2="155"/>
+        <line x1="265" y1="172" x2="269" y2="172"/>
+        <line x1="252" y1="185" x2="252" y2="189"/>
+        <line x1="239" y1="172" x2="235" y2="172"/>
+        <line x1="261" y1="163" x2="264" y2="160"/>
+        <line x1="261" y1="181" x2="264" y2="184"/>
+        <line x1="243" y1="181" x2="240" y2="184"/>
+        <line x1="243" y1="163" x2="240" y2="160"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- hand crank on left foreground -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="96" cy="162" r="6" fill="hsl(160,38%,7%)" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+    <line x1="96" y1="162" x2="78" y2="178" stroke="hsl(160,75%,66%)" stroke-width="3"/>
+    <line x1="78" y1="178" x2="70" y2="186" stroke="hsl(160,88%,82%)" stroke-width="4"/>
+    <circle cx="68" cy="188" r="5" fill="hsl(160,68%,55%)" fill-opacity="0.6" stroke="hsl(160,88%,82%)" stroke-width="2"/>
+  </g>
+
+  <!-- output port (lower right) -->
+  <rect x="298" y="180" width="14" height="12" rx="2" fill="hsl(160,38%,7%)" fill-opacity="0.6" stroke="hsl(160,75%,66%)" stroke-width="2"/>
+
+  <!-- Parabolic SAR dot trail sweeping out to lower right -->
+  <g fill="hsl(160,88%,82%)">
+    <circle cx="316" cy="190" r="2.4"/>
+    <circle cx="326" cy="194" r="2.4" fill-opacity="0.92"/>
+    <circle cx="337" cy="197" r="2.2" fill-opacity="0.84"/>
+    <circle cx="348" cy="198" r="2.2" fill-opacity="0.72"/>
+    <circle cx="359" cy="197" r="2" fill-opacity="0.58"/>
+    <circle cx="369" cy="193" r="2" fill="hsl(160,68%,55%)" fill-opacity="0.5"/>
+    <circle cx="377" cy="187" r="1.8" fill="hsl(160,68%,55%)" fill-opacity="0.4"/>
+  </g>
+</svg>

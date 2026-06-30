@@ -1,0 +1,131 @@
+<svg viewBox="0 0 400 250" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-school-macro" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(200,45%,13%)"/>
+      <stop offset="1" stop-color="hsl(200,38%,7%)"/>
+    </linearGradient>
+    <radialGradient id="cv-school-macro-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="hsl(200,68%,55%)" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="hsl(200,68%,55%)" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="cv-school-macro-globe">
+      <circle cx="200" cy="120" r="30"/>
+    </clipPath>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="250" fill="url(#cv-school-macro)"/>
+
+  <!-- shared unifying texture -->
+  <line x1="0" y1="212" x2="400" y2="212" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="120" y1="0" x2="120" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="280" y1="0" x2="280" y2="250" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- faint concentric orbit arcs (background rotation) -->
+  <g fill="none" stroke="hsl(200,22%,46%)" stroke-opacity="0.5" stroke-width="1" stroke-linecap="round">
+    <path d="M 40 50 A 130 130 0 0 1 70 30"/>
+    <path d="M 360 200 A 130 130 0 0 1 330 220"/>
+    <path d="M 30 150 A 150 150 0 0 0 60 200"/>
+    <path d="M 370 90 A 150 150 0 0 0 345 50"/>
+  </g>
+  <ellipse cx="200" cy="120" rx="120" ry="120" fill="url(#cv-school-macro-glow)"/>
+
+  <!-- ===== Ship's helm wheel ===== -->
+  <g stroke="hsl(200,75%,66%)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- outer rim -->
+    <circle cx="200" cy="120" r="92"/>
+    <circle cx="200" cy="120" r="80"/>
+    <!-- inner hub ring -->
+    <circle cx="200" cy="120" r="44" stroke-width="2"/>
+  </g>
+
+  <!-- spokes (8) -->
+  <g stroke="hsl(200,75%,66%)" stroke-width="2" stroke-linecap="round">
+    <line x1="200" y1="76" x2="200" y2="28"/>
+    <line x1="200" y1="164" x2="200" y2="212"/>
+    <line x1="156" y1="120" x2="108" y2="120"/>
+    <line x1="244" y1="120" x2="292" y2="120"/>
+    <line x1="169" y1="89" x2="135" y2="55"/>
+    <line x1="231" y1="151" x2="265" y2="185"/>
+    <line x1="231" y1="89" x2="265" y2="55"/>
+    <line x1="169" y1="151" x2="135" y2="185"/>
+  </g>
+
+  <!-- grip knobs at rim (8) -->
+  <g fill="hsl(200,68%,55%)" fill-opacity="0.9" stroke="hsl(200,88%,82%)" stroke-width="1.5">
+    <circle cx="200" cy="22" r="6"/>
+    <circle cx="200" cy="218" r="6"/>
+    <circle cx="102" cy="120" r="6"/>
+    <circle cx="298" cy="120" r="6"/>
+    <circle cx="131" cy="51" r="6"/>
+    <circle cx="269" cy="189" r="6"/>
+    <circle cx="269" cy="51" r="6"/>
+    <circle cx="131" cy="189" r="6"/>
+  </g>
+
+  <!-- ===== Globe at hub ===== -->
+  <circle cx="200" cy="120" r="32" fill="hsl(200,68%,55%)" fill-opacity="0.20" stroke="hsl(200,75%,66%)" stroke-width="2"/>
+  <g clip-path="url(#cv-school-macro-globe)" fill="none" stroke="hsl(200,88%,82%)" stroke-width="1" stroke-opacity="0.75" stroke-linecap="round">
+    <!-- latitude -->
+    <line x1="168" y1="108" x2="232" y2="108"/>
+    <line x1="168" y1="120" x2="232" y2="120"/>
+    <line x1="168" y1="132" x2="232" y2="132"/>
+    <!-- longitude arcs -->
+    <path d="M 200 88 C 184 104 184 136 200 152"/>
+    <path d="M 200 88 C 216 104 216 136 200 152"/>
+    <path d="M 200 88 L 200 152"/>
+  </g>
+  <!-- continent blobs -->
+  <g clip-path="url(#cv-school-macro-globe)" fill="hsl(200,88%,82%)" fill-opacity="0.55">
+    <path d="M 182 104 q 10 -6 16 2 q 4 8 -4 12 q -10 2 -14 -4 z"/>
+    <path d="M 206 124 q 12 -2 14 8 q -2 10 -12 8 q -8 -4 -2 -16 z"/>
+  </g>
+
+  <!-- ===== Force icons on alternating spokes ===== -->
+  <!-- TOP: percent sign (rates) -->
+  <g transform="translate(200,52)" stroke="hsl(200,88%,82%)" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="-5" cy="-5" r="3.5" fill="hsl(200,68%,55%)" fill-opacity="0.4"/>
+    <circle cx="5" cy="5" r="3.5" fill="hsl(200,68%,55%)" fill-opacity="0.4"/>
+    <line x1="7" y1="-7" x2="-7" y2="7"/>
+  </g>
+
+  <!-- LEFT: coin / currency -->
+  <g transform="translate(130,120)">
+    <circle r="9" fill="hsl(200,68%,55%)" fill-opacity="0.30" stroke="hsl(200,88%,82%)" stroke-width="2"/>
+    <circle r="4.5" fill="none" stroke="hsl(200,88%,82%)" stroke-width="1.5"/>
+  </g>
+
+  <!-- RIGHT: oil drop (commodities) -->
+  <g transform="translate(270,120)" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linejoin="round">
+    <path d="M 0 -10 C 7 -1 8 6 0 9 C -8 6 -7 -1 0 -10 Z" fill="hsl(200,68%,55%)" fill-opacity="0.40"/>
+  </g>
+
+  <!-- BOTTOM: wave / sine (cycle) -->
+  <g transform="translate(200,188)" fill="none" stroke="hsl(200,88%,82%)" stroke-width="2" stroke-linecap="round">
+    <path d="M -11 0 q 5.5 -9 11 0 q 5.5 9 11 0"/>
+  </g>
+
+  <!-- ===== Steering hand from lower-right ===== -->
+  <g fill="hsl(200,68%,55%)" fill-opacity="0.85" stroke="hsl(200,75%,66%)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- forearm/wrist coming from lower-right edge to grip lower-right spoke knob (269,189) -->
+    <path d="M 360 246
+             C 330 232 305 218 290 205
+             C 282 198 274 195 268 196
+             C 260 197 256 192 260 187
+             C 264 182 272 182 278 186
+             C 286 191 296 196 308 200
+             C 326 208 348 224 372 236 Z"/>
+    <!-- thumb wrapping the spoke -->
+    <path d="M 264 184 q -8 -3 -10 4 q -1 6 6 6 q 6 0 7 -5 z" fill="hsl(200,68%,55%)" fill-opacity="0.85"/>
+    <!-- finger ridges -->
+    <g fill="none" stroke="hsl(200,45%,13%)" stroke-opacity="0.45" stroke-width="1.3">
+      <path d="M 286 196 l 6 -7"/>
+      <path d="M 296 201 l 6 -7"/>
+      <path d="M 306 205 l 6 -7"/>
+    </g>
+  </g>
+
+  <!-- grip knob re-drawn over hand at lower-right for legibility -->
+  <circle cx="269" cy="189" r="6" fill="hsl(200,68%,55%)" fill-opacity="0.95" stroke="hsl(200,88%,82%)" stroke-width="1.5"/>
+</svg>
