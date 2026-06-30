@@ -12,6 +12,7 @@
 import type { LessonKind } from "./content";
 import type { Locale } from "./i18n";
 import type { SchoolId } from "./schools";
+import type { LabId } from "./practicals";
 
 export interface PathStep {
   slug: string;
@@ -33,6 +34,8 @@ export interface Strategy {
   /** Schools this strategy draws on (for cross-linking to /schools). */
   schools: SchoolId[];
   steps: PathStep[];
+  /** Hands-on capstone lab for this strategy's path, if one is wired up. */
+  practical?: LabId;
 }
 
 // Helpers to keep the step list terse.
@@ -119,6 +122,7 @@ export const STRATEGIES: Strategy[] = [
       concept("dollar-cost-averaging", "Fund it steadily and rebalance on a schedule — the discipline that makes it work.", "꾸준히 납입하고 정기적으로 리밸런싱 — 이를 작동하게 하는 규율.", { en: "Rebalancing & Dollar-Cost Averaging", ko: "리밸런싱 & 분할 매수" }),
       concept("trading-psychology", "The payoff is behavioral: a calmer portfolio is one you'll actually stick with.", "보상은 행동에서 온다: 더 차분한 포트폴리오라야 실제로 끝까지 유지한다."),
     ],
+    practical: "portfolio",
   },
   {
     id: "dividend-income",

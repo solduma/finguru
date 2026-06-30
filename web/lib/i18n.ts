@@ -25,7 +25,7 @@ export const LOCALE_LABEL: Record<Locale, string> = {
 
 // All user-facing UI chrome strings, per locale. Lesson *content* is handled
 // separately (translated MDX under content/ko/).
-type Dict = {
+export type Dict = {
   brand: string;
   nav: {
     path: string;
@@ -51,6 +51,31 @@ type Dict = {
     comingSoon: string;
     drawsFrom: string;
     takeQuiz: string;
+    practiceHeading: string;
+    practiceCta: string;
+  };
+  practical: {
+    back: string; // "← Back to {strategy}" — {strategy} substituted client-side
+    disclaimer: string;
+    sourceNote: string;
+    portfolio: {
+      title: string;
+      intro: string;
+      presetLabel: string;
+      presets: Record<string, string>;
+      rebalance: string;
+      startYear: string;
+      cagr: string;
+      realCagr: string;
+      vol: string;
+      sharpe: string;
+      maxDd: string;
+      finalValue: string;
+      growthCaption: string;
+      drawdownCaption: string;
+      allocCaption: string;
+      lesson: string;
+    };
   };
   quiz: {
     title: string;
@@ -162,6 +187,40 @@ export const STRINGS: Record<Locale, Dict> = {
       comingSoon: "Coming soon",
       drawsFrom: "Draws from",
       takeQuiz: "Not sure this is you? Take the quiz →",
+      practiceHeading: "Put it into practice",
+      practiceCta: "Open the hands-on lab →",
+    },
+    practical: {
+      back: "← Back to {strategy}",
+      disclaimer:
+        "Educational only — not investment advice. Backtests use historical annual returns; past performance is not indicative of future results. A model is a tool for building intuition, never a buy decision.",
+      sourceNote:
+        "Data: annual asset-class total returns (Aswath Damodaran, NYU Stern) and CPI (Minneapolis Fed), redistributed for education.",
+      portfolio: {
+        title: "Portfolio Backtester",
+        intro:
+          "Build a mix of asset classes and test it against a century of market history. Compare a balanced portfolio to all-stocks and watch how diversification trades away some return for a far smoother ride.",
+        presetLabel: "Choose a portfolio",
+        presets: {
+          "100-stocks": "100% Stocks",
+          "60-40": "Classic 60/40",
+          "all-weather": "All-Weather (balanced)",
+          permanent: "Permanent Portfolio",
+        },
+        rebalance: "Rebalance yearly",
+        startYear: "Start year",
+        cagr: "Return (CAGR)",
+        realCagr: "Real (after inflation)",
+        vol: "Volatility",
+        sharpe: "Sharpe ratio",
+        maxDd: "Worst drawdown",
+        finalValue: "Grew $10,000 to",
+        growthCaption: "Growth of $10,000 (portfolio vs. 100% stocks)",
+        drawdownCaption: "Drawdown — how far below the prior peak, year by year",
+        allocCaption: "Your allocation",
+        lesson:
+          "The lesson: the balanced portfolio usually earns less than all-stocks, but its worst drop is far shallower. In 2008 bonds cushioned the crash; in 2022 stocks AND bonds fell together — diversification helps, but it is not a guarantee.",
+      },
     },
     quiz: {
       title: "Find My Strategy",
@@ -318,6 +377,40 @@ export const STRINGS: Record<Locale, Dict> = {
       comingSoon: "준비 중",
       drawsFrom: "기반 유파",
       takeQuiz: "이게 나에게 맞는지 모르겠다면? 퀴즈 풀기 →",
+      practiceHeading: "실전으로 옮기기",
+      practiceCta: "실습 랩 열기 →",
+    },
+    practical: {
+      back: "← {strategy}(으)로 돌아가기",
+      disclaimer:
+        "교육용일 뿐 투자 조언이 아닙니다. 백테스트는 과거 연간 수익률을 사용하며, 과거 성과는 미래를 보장하지 않습니다. 모델은 직관을 기르는 도구일 뿐, 결코 매수 결정이 아닙니다.",
+      sourceNote:
+        "데이터: 연간 자산군 총수익률(Aswath Damodaran, NYU Stern)과 CPI(미니애폴리스 연준), 교육 목적 재배포.",
+      portfolio: {
+        title: "포트폴리오 백테스터",
+        intro:
+          "자산군을 조합해 한 세기의 시장 역사로 검증해 보세요. 균형 포트폴리오를 전액 주식과 비교하면, 분산이 약간의 수익을 내주는 대신 훨씬 더 매끄러운 여정을 어떻게 만드는지 볼 수 있습니다.",
+        presetLabel: "포트폴리오 선택",
+        presets: {
+          "100-stocks": "전액 주식 100%",
+          "60-40": "고전 60/40",
+          "all-weather": "올웨더(균형)",
+          permanent: "영구 포트폴리오",
+        },
+        rebalance: "매년 리밸런싱",
+        startYear: "시작 연도",
+        cagr: "수익률 (CAGR)",
+        realCagr: "실질(인플레 차감)",
+        vol: "변동성",
+        sharpe: "샤프 비율",
+        maxDd: "최대 낙폭",
+        finalValue: "$10,000의 결과",
+        growthCaption: "$10,000의 성장 (포트폴리오 vs. 전액 주식)",
+        drawdownCaption: "낙폭 — 직전 고점 대비 얼마나 떨어졌는지, 연도별",
+        allocCaption: "나의 자산 배분",
+        lesson:
+          "교훈: 균형 포트폴리오는 보통 전액 주식보다 적게 벌지만, 최악의 하락은 훨씬 얕습니다. 2008년에는 채권이 폭락을 완충했지만, 2022년에는 주식과 채권이 함께 떨어졌습니다 — 분산은 도움이 되지만 보장은 아닙니다.",
+      },
     },
     quiz: {
       title: "내 전략 찾기",
