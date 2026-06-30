@@ -76,6 +76,36 @@ export type Dict = {
       allocCaption: string;
       lesson: string;
     };
+    costDrag: {
+      title: string;
+      intro: string;
+      feeLabel: string;
+      startYear: string;
+      lumpVsDca: string;
+      lump: string;
+      dca: string;
+      lowFinal: string;
+      highFinal: string;
+      lostToFees: string;
+      cagrLow: string;
+      cagrHigh: string;
+      growthCaption: string;
+      lesson: string;
+    };
+    glidePath: {
+      title: string;
+      intro: string;
+      retireYear: string;
+      allocCaption: string;
+      seqHeading: string;
+      seqIntro: string;
+      seqCaption: string;
+      seqNormal: string;
+      seqReversed: string;
+      seqNormalEnd: string;
+      seqReversedEnd: string;
+      lesson: string;
+    };
   };
   quiz: {
     title: string;
@@ -220,6 +250,41 @@ export const STRINGS: Record<Locale, Dict> = {
         allocCaption: "Your allocation",
         lesson:
           "The lesson: the balanced portfolio usually earns less than all-stocks, but its worst drop is far shallower. In 2008 bonds cushioned the crash; in 2022 stocks AND bonds fell together — diversification helps, but it is not a guarantee.",
+      },
+      costDrag: {
+        title: "The Cost of Fees",
+        intro:
+          "The one thing you control in investing is cost. Drag a fund's annual fee up and down and watch how a seemingly tiny percentage quietly compounds into a huge chunk of your final wealth.",
+        feeLabel: "Annual fee (expense ratio)",
+        startYear: "Start year",
+        lumpVsDca: "How you invest",
+        lump: "Lump sum at the start",
+        dca: "Spread evenly each year (DCA)",
+        lowFinal: "With a near-zero fee",
+        highFinal: "With your chosen fee",
+        lostToFees: "Lost to fees",
+        cagrLow: "Return — low cost",
+        cagrHigh: "Return — your fee",
+        growthCaption: "Growth of $10,000 — near-zero fee vs. your chosen fee",
+        lesson:
+          "The lesson: a 1% annual fee sounds trivial, but over decades it can quietly eat a quarter or more of your final balance. A low-cost index fund keeps that money compounding for you. Lump-sum usually beats spreading it out (markets rise more often than they fall), but DCA reduces the regret of buying right before a drop.",
+      },
+      glidePath: {
+        title: "The Glide Path & Sequence Risk",
+        intro:
+          "A target-date fund automatically shifts from stock-heavy to safer as your retirement nears. See that glide path — then meet the risk it is built to manage: when a crash lands matters as much as how big it is.",
+        retireYear: "Target retirement year",
+        allocCaption: "Your automatic stock / bond / cash mix over time",
+        seqHeading: "Why the order of returns matters",
+        seqIntro:
+          "Here is the unsettling part. Take the exact same set of yearly returns, withdrawing a fixed amount each year in retirement. Run them in their real order, then reversed. Same average return — very different outcome, because an early crash drains a portfolio you can't let recover.",
+        seqCaption: "Same returns, two orders — $100,000 drawn down 6%/year",
+        seqNormal: "Real order (crash early)",
+        seqReversed: "Reversed (crash late)",
+        seqNormalEnd: "Crash-early ending balance",
+        seqReversedEnd: "Crash-late ending balance",
+        lesson:
+          "The lesson: near your target date the glide path shifts you toward bonds and cash precisely because a big loss just before or after you start withdrawing is the hardest to recover from. Sequence-of-returns risk — not the average return — is what de-risking protects against.",
       },
     },
     quiz: {
@@ -410,6 +475,41 @@ export const STRINGS: Record<Locale, Dict> = {
         allocCaption: "나의 자산 배분",
         lesson:
           "교훈: 균형 포트폴리오는 보통 전액 주식보다 적게 벌지만, 최악의 하락은 훨씬 얕습니다. 2008년에는 채권이 폭락을 완충했지만, 2022년에는 주식과 채권이 함께 떨어졌습니다 — 분산은 도움이 되지만 보장은 아닙니다.",
+      },
+      costDrag: {
+        title: "수수료의 비용",
+        intro:
+          "투자에서 당신이 통제할 수 있는 단 하나는 비용입니다. 펀드의 연간 보수를 올리고 내려 보며, 사소해 보이는 퍼센트가 어떻게 조용히 복리로 불어나 최종 자산의 큰 몫을 갉아먹는지 확인하세요.",
+        feeLabel: "연간 보수(운용보수율)",
+        startYear: "시작 연도",
+        lumpVsDca: "투자 방식",
+        lump: "처음에 일시 투자",
+        dca: "매년 균등 분할 투자(DCA)",
+        lowFinal: "보수가 거의 0일 때",
+        highFinal: "선택한 보수일 때",
+        lostToFees: "수수료로 잃은 금액",
+        cagrLow: "수익률 — 저비용",
+        cagrHigh: "수익률 — 선택한 보수",
+        growthCaption: "$10,000의 성장 — 보수 거의 0 vs. 선택한 보수",
+        lesson:
+          "교훈: 연 1% 보수는 사소해 보이지만, 수십 년이 지나면 최종 잔액의 4분의 1 이상을 조용히 갉아먹을 수 있습니다. 저비용 인덱스 펀드는 그 돈이 계속 당신을 위해 복리로 불어나게 합니다. 일시 투자가 분할보다 대체로 유리하지만(시장은 떨어지기보다 오르는 때가 많음), DCA는 하락 직전에 사는 후회를 줄여 줍니다.",
+      },
+      glidePath: {
+        title: "글라이드 패스 & 시퀀스 리스크",
+        intro:
+          "타깃데이트 펀드는 은퇴가 다가올수록 주식 중심에서 안전한 쪽으로 자동 전환합니다. 그 글라이드 패스를 보고 — 그것이 관리하려는 위험을 만나 보세요: 폭락이 '언제' 오느냐가 '얼마나 큰가'만큼 중요합니다.",
+        retireYear: "목표 은퇴 연도",
+        allocCaption: "시간에 따른 자동 주식 / 채권 / 현금 비중",
+        seqHeading: "수익률의 순서가 왜 중요한가",
+        seqIntro:
+          "불편한 진실은 여기에 있습니다. 똑같은 연간 수익률 묶음을 두고, 은퇴 후 매년 고정 금액을 인출합니다. 실제 순서대로, 그리고 거꾸로 돌려 봅니다. 평균 수익률은 같지만 결과는 크게 다릅니다 — 초반의 폭락은 회복을 기다릴 수 없는 포트폴리오를 말려 버리기 때문입니다.",
+        seqCaption: "같은 수익률, 두 가지 순서 — $100,000을 연 6%씩 인출",
+        seqNormal: "실제 순서(초반 폭락)",
+        seqReversed: "거꾸로(후반 폭락)",
+        seqNormalEnd: "초반 폭락 시 최종 잔액",
+        seqReversedEnd: "후반 폭락 시 최종 잔액",
+        lesson:
+          "교훈: 목표 시점이 가까워지면 글라이드 패스가 채권과 현금 쪽으로 옮겨 가는 이유는, 인출을 시작하기 직전이나 직후의 큰 손실이 가장 회복하기 어렵기 때문입니다. 평균 수익률이 아니라 시퀀스 리스크 — 이것이 위험 축소가 막아 주는 대상입니다.",
       },
     },
     quiz: {

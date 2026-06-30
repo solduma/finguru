@@ -75,6 +75,7 @@ export const STRATEGIES: Strategy[] = [
       guru("warren-buffett", "The capstone authority: the greatest stock-picker tells ordinary investors to just buy a low-cost index fund.", "마무리 권위자: 최고의 종목 선정가가 일반 투자자에게 저비용 인덱스 펀드를 사라고 말한다."),
       concept("risk-management", "Position the passive portfolio in a lifetime context: horizon, drawdown tolerance, sequence risk.", "패시브 포트폴리오를 생애 관점에서 배치하기: 투자기간, 손실 감내, 시퀀스 리스크."),
     ],
+    practical: "cost-drag",
   },
   {
     // Goal-based, fully automated: target-date funds & roboadvisors that
@@ -98,6 +99,7 @@ export const STRATEGIES: Strategy[] = [
       concept("trading-psychology", "The only hard part is leaving it alone — automation removes the temptation to tinker.", "유일하게 어려운 점은 그냥 두는 것 — 자동화가 손대고 싶은 유혹을 없앤다."),
       concept("risk-management", "Match the target date to when you'll need the money; understand sequence-of-returns risk near the goal.", "목표 시점을 돈이 필요한 때에 맞추고, 목표 부근의 시퀀스 리스크를 이해하라."),
     ],
+    practical: "glide-path",
   },
   {
     // Defensive multi-asset: 60/40, All-Weather, permanent portfolio,

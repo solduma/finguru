@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import PortfolioLab from "@/components/practicals/PortfolioLab";
+import CostDragLab from "@/components/practicals/CostDragLab";
+import GlidePathLab from "@/components/practicals/GlidePathLab";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
 
@@ -32,6 +34,10 @@ export default async function PracticePage({
   switch (strategy.practical) {
     case "portfolio":
       return <PortfolioLab {...common} />;
+    case "cost-drag":
+      return <CostDragLab {...common} />;
+    case "glide-path":
+      return <GlidePathLab {...common} />;
     default:
       notFound();
   }
