@@ -253,6 +253,7 @@ export const STRATEGIES: Strategy[] = [
       guru("hugh-hendry", "Contrarian narrative macro: a contentious premise outside the consensus, held with discipline.", "역발상 내러티브 매크로: 컨센서스 밖의 논쟁적 전제를 규율 있게 견지한다."),
       guru("raoul-pal", "The modern liquidity-cycle lens: central-bank balance sheets and M2 over the cycle.", "현대적 유동성 사이클 렌즈: 사이클에 걸친 중앙은행 대차대조표와 M2."),
     ],
+    practical: "macro",
   },
   {
     id: "trend-momentum",

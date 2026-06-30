@@ -185,6 +185,29 @@ export type Dict = {
       hitTarget: string;
       rMultiple: string;
     };
+    macro: {
+      title: string;
+      intro: string;
+      lesson: string;
+      gaugeHeading: string;
+      gaugeScore: string;
+      regimeHeading: string;
+      quadrants: Record<string, string>; // goldilocks|reflation|stagflation|deflation
+      quadrantTilts: Record<string, string>;
+      currentRegime: string;
+      verdictHeading: string;
+      seriesHeading: string;
+      yieldCurve: string;
+      unemployment: string;
+      cpiYoY: string;
+      fedFunds: string;
+      recessionShade: string;
+      growth: string;
+      inflation: string;
+      rising: string;
+      falling: string;
+      fredNotice: string;
+    };
   };
   quiz: {
     title: string;
@@ -479,6 +502,42 @@ export const STRINGS: Record<Locale, Dict> = {
         hitStop: "Stopped out",
         hitTarget: "Hit target",
         rMultiple: "Result (R multiple)",
+      },
+      macro: {
+        title: "Read the Cycle Dashboard",
+        intro:
+          "Macro investing starts by reading where the economy sits in its cycle. Here are the signals practitioners actually watch — the yield curve, unemployment, inflation, and policy rates — across five decades, with every past recession shaded.",
+        lesson:
+          "The lesson: these signals lead, but they lie too — the yield curve has inverted 6–24 months ahead of recessions (and once with no recession at all), and data gets revised after the fact. Read the cycle to size small tilts around a diversified core, never to make concentrated, leveraged bets. Macro timing is humbling.",
+        gaugeHeading: "Recession-risk gauge",
+        gaugeScore: "Composite risk (0–100)",
+        regimeHeading: "Growth × Inflation regime",
+        quadrants: {
+          goldilocks: "Goldilocks (growth↑, inflation↓)",
+          reflation: "Reflation (growth↑, inflation↑)",
+          stagflation: "Stagflation (growth↓, inflation↑)",
+          deflation: "Deflation / bust (growth↓, inflation↓)",
+        },
+        quadrantTilts: {
+          goldilocks: "Historically favors: stocks (and bonds do fine too)",
+          reflation: "Historically favors: stocks + commodities",
+          stagflation: "Historically favors: commodities + inflation-linked bonds",
+          deflation: "Historically favors: long government bonds, cash",
+        },
+        currentRegime: "Current regime",
+        verdictHeading: "Right now",
+        seriesHeading: "The signals (recessions shaded)",
+        yieldCurve: "Yield curve (10y − 3m)",
+        unemployment: "Unemployment rate (%)",
+        cpiYoY: "Inflation (CPI, YoY %)",
+        fedFunds: "Fed funds rate (%)",
+        recessionShade: "Shaded = NBER recession",
+        growth: "Growth",
+        inflation: "Inflation",
+        rising: "rising",
+        falling: "falling",
+        fredNotice:
+          "This product uses the FRED® API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.",
       },
     },
     quiz: {
@@ -819,6 +878,42 @@ export const STRINGS: Record<Locale, Dict> = {
         hitStop: "손절 청산",
         hitTarget: "목표 도달",
         rMultiple: "결과 (R 멀티플)",
+      },
+      macro: {
+        title: "사이클 읽기 대시보드",
+        intro:
+          "매크로 투자는 경제가 사이클의 어디에 있는지 읽는 데서 시작합니다. 실무가들이 실제로 보는 신호 — 수익률곡선, 실업률, 인플레이션, 정책금리 — 를 5개 십 년에 걸쳐 보여 주고, 과거의 모든 경기침체를 음영으로 표시했습니다.",
+        lesson:
+          "교훈: 이 신호들은 선행하지만 거짓말도 합니다 — 수익률곡선은 침체보다 6~24개월 앞서 역전됐고(한 번은 침체 없이도), 데이터는 사후에 수정됩니다. 사이클은 분산된 핵심 포트폴리오 주위에서 작은 기울임을 정하는 데 쓰세요 — 집중·레버리지 베팅이 아니라. 매크로 타이밍은 겸손을 가르칩니다.",
+        gaugeHeading: "경기침체 위험 게이지",
+        gaugeScore: "종합 위험 (0–100)",
+        regimeHeading: "성장 × 인플레이션 국면",
+        quadrants: {
+          goldilocks: "골디락스 (성장↑, 인플레↓)",
+          reflation: "리플레이션 (성장↑, 인플레↑)",
+          stagflation: "스태그플레이션 (성장↓, 인플레↑)",
+          deflation: "디플레이션 / 침체 (성장↓, 인플레↓)",
+        },
+        quadrantTilts: {
+          goldilocks: "역사적으로 유리: 주식 (채권도 무난)",
+          reflation: "역사적으로 유리: 주식 + 원자재",
+          stagflation: "역사적으로 유리: 원자재 + 물가연동채",
+          deflation: "역사적으로 유리: 장기 국채, 현금",
+        },
+        currentRegime: "현재 국면",
+        verdictHeading: "지금 이 순간",
+        seriesHeading: "신호들 (음영 = 침체)",
+        yieldCurve: "수익률곡선 (10년 − 3개월)",
+        unemployment: "실업률 (%)",
+        cpiYoY: "인플레이션 (CPI, 전년比 %)",
+        fedFunds: "연방기금금리 (%)",
+        recessionShade: "음영 = NBER 경기침체",
+        growth: "성장",
+        inflation: "인플레이션",
+        rising: "상승",
+        falling: "하락",
+        fredNotice:
+          "본 제품은 FRED® API를 사용하지만, 세인트루이스 연방준비은행의 보증이나 인증을 받은 것은 아닙니다.",
       },
     },
     quiz: {

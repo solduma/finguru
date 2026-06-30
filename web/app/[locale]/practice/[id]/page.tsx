@@ -4,6 +4,7 @@ import CostDragLab from "@/components/practicals/CostDragLab";
 import GlidePathLab from "@/components/practicals/GlidePathLab";
 import CompanyLab from "@/components/practicals/CompanyLab";
 import TradeLab from "@/components/practicals/TradeLab";
+import MacroLab from "@/components/practicals/MacroLab";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
 import { companyModeFor, tradeModeFor } from "@/lib/practicals";
@@ -55,6 +56,8 @@ export default async function PracticePage({
       if (!tmode) notFound();
       return <TradeLab {...common} mode={tmode} />;
     }
+    case "macro":
+      return <MacroLab {...common} />;
     default:
       notFound();
   }
