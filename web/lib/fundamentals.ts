@@ -31,6 +31,7 @@ export interface Fundamentals {
   cash: number | null;
   totalDebt: number | null;
   sharesOutstanding: number | null;
+  forwardEpsGrowth: number | null;
   sources: { label: string; url: string }[];
 }
 
@@ -169,7 +170,12 @@ export function magicFormula(f: Fundamentals, price: number): MagicFormula {
 
 export interface GarpScore {
   pe: number | null;
-  pegFromHistory: number | null; // P/E ÷ historical EPS CAGR%
+  /** P/E ÷ growth%. Uses forward analyst growth when available, else trailing. */
+  peg: number | null;
+  /** The growth rate (decimal) that fed the PEG. */
+  growth: number | null;
+  /** Which growth basis produced the PEG — for honest labeling in the UI. */
+  growthBasis: "forward" | "historical" | null;
   epsCagr: number | null; // trailing EPS CAGR over the series
   roe: number | null;
   netMargin: number | null;
@@ -193,11 +199,28 @@ export function garp(f: Fundamentals, price: number): GarpScore {
   const fcf = last(fcfSeries(f));
   const epsCagr = cagr(f.eps);
   const pe = eps && eps > 0 ? price / eps : null;
+
+  // Prefer analyst forward EPS growth (US via FMP); fall back to trailing EPS
+  // CAGR (used for KR, which has no free consensus feed). Label which we used —
+  // a forward PEG and a backward-looking PEG are not the same claim.
+  let growth: number | null = null;
+  let growthBasis: "forward" | "historical" | null = null;
+  if (f.forwardEpsGrowth != null && f.forwardEpsGrowth > 0) {
+    growth = f.forwardEpsGrowth;
+    growthBasis = "forward";
+  } else if (epsCagr != null && epsCagr > 0) {
+    growth = epsCagr;
+    growthBasis = "historical";
+  }
+  const peg =
+    pe != null && growth != null && growth > 0 ? pe / (growth * 100) : null;
+
   return {
     pe,
+    peg,
+    growth,
+    growthBasis,
     epsCagr,
-    pegFromHistory:
-      pe != null && epsCagr != null && epsCagr > 0 ? pe / (epsCagr * 100) : null,
     roe: ni != null && f.totalEquity && f.totalEquity > 0 ? ni / f.totalEquity : null,
     netMargin: ni != null && rev && rev > 0 ? ni / rev : null,
     fcfConversion: fcf != null && ni && ni > 0 ? fcf / ni : null,

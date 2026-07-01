@@ -183,14 +183,7 @@ export default function CompanyLab({
             </div>
 
             {mode === "dividend" && <DividendCard data={data} price={priceNum} c={c} />}
-            {mode === "reit" && (
-              <>
-                <div className="rounded-lg border border-amber-400/30 bg-amber-400/5 p-3 text-sm text-amber-100">
-                  {c.reitNote}
-                </div>
-                <DividendCard data={data} price={priceNum} c={c} />
-              </>
-            )}
+            {mode === "reit" && <DividendCard data={data} price={priceNum} c={c} reit />}
             {mode === "value" && (
               <ValueCard
                 data={data}
@@ -241,11 +234,42 @@ function Stat({ label, value, accent }: { label: string; value: string; accent?:
 
 type CT = Dict["practical"]["company"];
 
-function DividendCard({ data, price, c }: { data: Fundamentals; price: number; c: CT }) {
+function DividendCard({
+  data,
+  price,
+  c,
+  reit,
+}: {
+  data: Fundamentals;
+  price: number;
+  c: CT;
+  reit?: boolean;
+}) {
   const d = dividendSafety(data);
   const yld = d.latestDps != null && price > 0 ? d.latestDps / price : null;
+  const payoutOver100 = (d.payoutOnEarnings ?? 0) > 1;
   return (
     <div className="space-y-4">
+      {reit && (
+        // The trap is the hook: a REIT's net-income payout looks impossible
+        // (>100%) because depreciation is a non-cash charge — which is exactly
+        // why FFO exists. We can't fetch true FFO (non-GAAP, not in XBRL), so we
+        // teach the trap instead of a fake FFO number.
+        <div
+          className={`rounded-lg border p-3 text-sm ${
+            payoutOver100
+              ? "border-amber-400/50 bg-amber-400/10 text-amber-100"
+              : "border-amber-400/30 bg-amber-400/5 text-amber-100"
+          }`}
+        >
+          {payoutOver100 && d.payoutOnEarnings != null && (
+            <p className="mb-1 font-semibold">
+              {c.reitTrapHook.replace("{payout}", pct(d.payoutOnEarnings, 0))}
+            </p>
+          )}
+          {c.reitNote}
+        </div>
+      )}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Stat label={c.yield} value={pct(yld)} />
         <Stat
@@ -381,12 +405,14 @@ function ValueCard({
 
 function GrowthCard({ data, price, c }: { data: Fundamentals; price: number; c: CT }) {
   const g = garp(data, price);
+  const pegLabel =
+    g.growthBasis === "forward" ? c.pegForward : g.growthBasis === "historical" ? c.pegHistorical : c.peg;
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
         <Stat label={c.pe} value={num(g.pe, 1)} />
-        <Stat label={c.peg} value={num(g.pegFromHistory, 2)} accent={(g.pegFromHistory ?? 0) > 2} />
-        <Stat label={c.epsCagr} value={pct(g.epsCagr)} />
+        <Stat label={pegLabel} value={num(g.peg, 2)} accent={(g.peg ?? 0) > 2} />
+        <Stat label={c.growthUsed} value={pct(g.growth)} />
         <Stat label={c.roe} value={pct(g.roe)} />
         <Stat label={c.netMargin} value={pct(g.netMargin)} />
         <Stat

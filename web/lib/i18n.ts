@@ -146,6 +146,9 @@ export type Dict = {
       // garp
       pe: string;
       peg: string;
+      pegForward: string;
+      pegHistorical: string;
+      growthUsed: string;
       epsCagr: string;
       roe: string;
       netMargin: string;
@@ -153,6 +156,7 @@ export type Dict = {
       qualityCaption: string;
       // reit
       reitNote: string;
+      reitTrapHook: string; // "{payout}" substituted
     };
     trade: {
       titles: Record<string, string>; // trend | active
@@ -482,7 +486,7 @@ export const STRINGS: Record<Locale, Dict> = {
           value:
             "Notice how much of the value comes from the terminal value — usually most of it. That means a DCF is mostly a guess about the far future. It is a tool for disciplined thinking, never a price target. Cheap can also be a value trap.",
           growth:
-            "Fast growth is not the same as quality growth. PEG divides by an estimated growth rate, so it inherits all the error in that estimate. Pair every growth number with a quality check — returns on capital and whether earnings become cash.",
+            "Fast growth is not the same as quality growth. PEG divides by a growth rate — a forward analyst estimate (US) or a company's own past EPS growth (KR) — so it inherits all the error in that number; a forward estimate can be too rosy, a historical rate may not repeat. Pair every growth figure with a quality check — returns on capital and whether earnings become cash.",
           reit:
             "Judge a REIT on FFO/AFFO, not net income, and respect its rate sensitivity (the 2022 drawdown). For most beginners a broad REIT fund beats single-name analysis; treat this as practice, not a pick.",
         },
@@ -518,7 +522,10 @@ export const STRINGS: Record<Locale, Dict> = {
         terminalWarn:
           "Most of the value sits in the terminal value — i.e. in assumptions about the distant future.",
         pe: "P/E",
-        peg: "PEG (vs. history)",
+        peg: "PEG",
+        pegForward: "PEG (forward, analyst)",
+        pegHistorical: "PEG (historical growth)",
+        growthUsed: "Growth used",
         epsCagr: "EPS growth (trailing)",
         roe: "Return on equity",
         netMargin: "Net margin",
@@ -526,6 +533,8 @@ export const STRINGS: Record<Locale, Dict> = {
         qualityCaption: "Quality metrics",
         reitNote:
           "Heads up: standard filings report net income, not FFO. A REIT's net-income payout will look alarmingly high because property depreciation is a non-cash charge — judge it on FFO/AFFO from the filing instead.",
+        reitTrapHook:
+          "This REIT appears to pay out {payout} of net income — seemingly impossible. It isn't: that's the FFO trap.",
       },
       trade: {
         titles: {
@@ -947,7 +956,7 @@ export const STRINGS: Record<Locale, Dict> = {
           value:
             "가치의 얼마나 많은 부분이 잔존가치(terminal value)에서 나오는지 보세요 — 대개 대부분입니다. 즉 DCF는 먼 미래에 대한 추측에 가깝습니다. 규율 있는 사고의 도구일 뿐, 결코 목표가가 아닙니다. 싼 것은 가치 함정일 수도 있습니다.",
           growth:
-            "빠른 성장과 우량한 성장은 다릅니다. PEG는 추정 성장률로 나누므로 그 추정의 오차를 그대로 물려받습니다. 모든 성장 지표는 우량성 점검 — 자본수익률과 이익의 현금 전환 — 과 함께 보세요.",
+            "빠른 성장과 우량한 성장은 다릅니다. PEG는 성장률 — 선행 애널리스트 추정치(미국) 또는 기업의 과거 EPS 성장률(한국) — 로 나누므로 그 숫자의 오차를 그대로 물려받습니다. 선행 추정치는 지나치게 낙관적일 수 있고, 과거 성장률은 반복되지 않을 수 있습니다. 모든 성장 지표는 우량성 점검 — 자본수익률과 이익의 현금 전환 — 과 함께 보세요.",
           reit:
             "리츠는 순이익이 아니라 FFO/AFFO로 판단하고, 금리 민감도(2022년 하락)를 존중하세요. 대부분의 초심자에겐 광범위한 리츠 펀드가 개별 종목 분석보다 낫습니다 — 이것은 연습이지 추천이 아닙니다.",
         },
@@ -983,7 +992,10 @@ export const STRINGS: Record<Locale, Dict> = {
         terminalWarn:
           "가치의 대부분이 잔존가치 — 즉 먼 미래에 대한 가정 — 에서 나옵니다.",
         pe: "PER",
-        peg: "PEG (역사 대비)",
+        peg: "PEG",
+        pegForward: "PEG (선행, 애널리스트)",
+        pegHistorical: "PEG (과거 성장 기준)",
+        growthUsed: "적용 성장률",
         epsCagr: "EPS 성장률 (과거)",
         roe: "자기자본이익률",
         netMargin: "순이익률",
@@ -991,6 +1003,8 @@ export const STRINGS: Record<Locale, Dict> = {
         qualityCaption: "우량성 지표",
         reitNote:
           "참고: 표준 공시는 FFO가 아니라 순이익을 보고합니다. 부동산 감가상각이 비현금 비용이라 리츠의 순이익 기준 배당성향은 놀랄 만큼 높게 보입니다 — 공시의 FFO/AFFO로 판단하세요.",
+        reitTrapHook:
+          "이 리츠는 순이익의 {payout}를 배당하는 것처럼 보입니다 — 불가능해 보이죠. 아닙니다: 그것이 바로 FFO 함정입니다.",
       },
       trade: {
         titles: {
