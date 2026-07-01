@@ -28,12 +28,25 @@ _COMPANY_URL = "https://opendart.fss.or.kr/api/company.json"
 # statement(s) the value should be read from. An account_id like ProfitLoss
 # appears in several statements (IS, CIS, CF, and multiple SCE rows including
 # zeros), so we MUST scope by sj_div or the wrong row wins. IS = income stmt,
-# CIS = comprehensive income, BS = balance sheet.
+# CIS = comprehensive income, CF = cash-flow, BS = balance sheet, SCE = equity.
+#
+# netIncome/eps MUST include CIS: firms that file only a combined statement of
+# comprehensive income (no separate IS — e.g. 네이버 035420, 093320) put
+# ProfitLoss and EPS in CIS. account_id exact-matches ifrs-full_ProfitLoss, so
+# CIS's pre-tax / owners' / non-controlling rows never win; for dual filers
+# (e.g. Samsung) the IS and CIS values are identical, so no ambiguity.
 _ACCOUNT_IDS: dict[str, tuple[list[str], set[str]]] = {
     "revenue": (["ifrs-full_Revenue", "ifrs-full_RevenueFromContractsWithCustomers"], {"IS", "CIS"}),
-    "netIncome": (["ifrs-full_ProfitLoss"], {"IS"}),
+    "netIncome": (["ifrs-full_ProfitLoss"], {"IS", "CIS"}),
     "operatingIncome": (["dart_OperatingIncomeLoss"], {"IS", "CIS"}),
     "eps": (["ifrs-full_DilutedEarningsLossPerShare", "ifrs-full_BasicEarningsLossPerShare"], {"IS", "CIS"}),
+    # Cash-flow items live in CF. capex = PP&E purchases (fcfSeries = OCF − capex
+    # on the client). dividendsPaid uses the ...ClassifiedAsFinancingActivities
+    # tag, which is unique in CF — the bare ifrs-full_DividendsPaid appears only
+    # as duplicate/zero SCE rows, so scoping to CF avoids it.
+    "operatingCashFlow": (["ifrs-full_CashFlowsFromUsedInOperatingActivities"], {"CF"}),
+    "capex": (["ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"], {"CF"}),
+    "dividendsPaid": (["ifrs-full_DividendsPaidClassifiedAsFinancingActivities"], {"CF"}),
 }
 _SNAPSHOT_IDS: dict[str, tuple[list[str], set[str]]] = {
     "totalAssets": (["ifrs-full_Assets"], {"BS"}),
