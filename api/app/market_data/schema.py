@@ -23,6 +23,11 @@ class Fundamentals(BaseModel):
     name: str
     currency: str  # "USD" | "KRW"
 
+    # KR reporting basis actually used: "CFS" = consolidated (연결), "OFS" =
+    # separate/individual (별도). Null for US (EDGAR is consolidated by nature).
+    # May differ from what was requested when we fell back (see dart.fetch_kr).
+    basis: str | None = None
+
     # Per-year series (most recent last). Missing items are simply absent/short.
     revenue: list[AnnualPoint] = []
     netIncome: list[AnnualPoint] = []

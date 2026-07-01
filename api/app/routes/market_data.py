@@ -39,12 +39,13 @@ async def quote(
 async def fundamentals(
     ticker: str = Query(..., min_length=1, max_length=12),
     market: str = Query("us", pattern="^(us|kr)$"),
+    basis: str = Query("CFS", pattern="^(CFS|OFS)$"),
 ) -> Fundamentals:
     try:
         if market == "kr":
             # KR filings lag; the most recent completed fiscal year is last year.
             latest_year = datetime.now(timezone.utc).year - 1
-            f = await dart.fetch_kr(ticker, latest_year)
+            f = await dart.fetch_kr(ticker, latest_year, basis)
             # Enrich with FnGuide forward consensus via Naver (best-effort); on
             # None the client falls back to historical-growth PEG.
             try:

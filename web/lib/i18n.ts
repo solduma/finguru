@@ -115,6 +115,10 @@ export type Dict = {
       marketLabel: string;
       marketUs: string;
       marketKr: string;
+      basisLabel: string;
+      basisConsolidated: string;
+      basisSeparate: string;
+      basisFellBack: string; // shown when the requested basis was unavailable
       priceLabel: string;
       priceAuto: string;
       analyze: string;
@@ -498,6 +502,11 @@ export const STRINGS: Record<Locale, Dict> = {
         marketLabel: "Market",
         marketUs: "US (SEC EDGAR)",
         marketKr: "Korea (DART)",
+        basisLabel: "Basis",
+        basisConsolidated: "Consolidated",
+        basisSeparate: "Separate",
+        basisFellBack:
+          "Requested basis wasn't available for this name — showing the {basis} statements instead.",
         priceLabel: "Current price (per share)",
         priceAuto: "Auto-filled from live data — edit to override.",
         analyze: "Analyze",
@@ -973,6 +982,11 @@ export const STRINGS: Record<Locale, Dict> = {
         marketLabel: "시장",
         marketUs: "미국 (SEC EDGAR)",
         marketKr: "한국 (DART)",
+        basisLabel: "기준",
+        basisConsolidated: "연결",
+        basisSeparate: "별도",
+        basisFellBack:
+          "요청한 기준의 재무제표가 없어 {basis} 기준으로 표시합니다.",
         priceLabel: "현재 주가 (주당)",
         priceAuto: "실시간 데이터로 자동 입력됨 — 수정해 덮어쓸 수 있습니다.",
         analyze: "분석",
