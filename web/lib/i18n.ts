@@ -185,6 +185,9 @@ export type Dict = {
       hitStop: string;
       hitTarget: string;
       rMultiple: string;
+      nextSetup: string;
+      setupLabel: string;
+      entryDate: string;
     };
     macro: {
       title: string;
@@ -251,6 +254,13 @@ export type Dict = {
       maxDd: string;
       excess: string;
       decayNote: string;
+      regHeading: string;
+      alpha: string;
+      betaMkt: string;
+      betaSmb: string;
+      betaHml: string;
+      rsq: string;
+      regNote: string;
     };
     deal: {
       title: string;
@@ -565,6 +575,9 @@ export const STRINGS: Record<Locale, Dict> = {
         hitStop: "Stopped out",
         hitTarget: "Hit target",
         rMultiple: "Result (R multiple)",
+        nextSetup: "Next setup →",
+        setupLabel: "Setup",
+        entryDate: "Entry date",
       },
       macro: {
         title: "Read the Cycle Dashboard",
@@ -656,6 +669,14 @@ export const STRINGS: Record<Locale, Dict> = {
         excess: "Excess vs. market (annualized)",
         decayNote:
           "Over the common window since the factor ETF launched. Past factor performance is especially prone to decay as capital crowds in — this is not a forecast.",
+        regHeading: "Factor regression (Fama-French 3-factor)",
+        alpha: "Alpha (annual)",
+        betaMkt: "Market β",
+        betaSmb: "Size β (SMB)",
+        betaHml: "Value β (HML)",
+        rsq: "R²",
+        regNote:
+          "The regression explains the ETF's excess return by its factor loadings. Notice the alpha is tiny and the value/size betas match what the fund advertises — you're buying factor exposure (a high R²), not manager skill. That's the point of a rules-based tilt.",
       },
       deal: {
         title: "Merger-Arbitrage Spread Calculator",
@@ -1019,6 +1040,9 @@ export const STRINGS: Record<Locale, Dict> = {
         hitStop: "손절 청산",
         hitTarget: "목표 도달",
         rMultiple: "결과 (R 멀티플)",
+        nextSetup: "다음 셋업 →",
+        setupLabel: "셋업",
+        entryDate: "진입 날짜",
       },
       macro: {
         title: "사이클 읽기 대시보드",
@@ -1110,6 +1134,14 @@ export const STRINGS: Record<Locale, Dict> = {
         excess: "시장 대비 초과 (연환산)",
         decayNote:
           "팩터 ETF 출시 이후 공통 구간 기준. 과거 팩터 성과는 자본이 몰리며 특히 감쇠하기 쉽습니다 — 예측이 아닙니다.",
+        regHeading: "팩터 회귀분석 (파마-프렌치 3팩터)",
+        alpha: "알파 (연간)",
+        betaMkt: "시장 β",
+        betaSmb: "규모 β (SMB)",
+        betaHml: "가치 β (HML)",
+        rsq: "R²",
+        regNote:
+          "회귀분석은 ETF의 초과수익을 팩터 노출로 설명합니다. 알파는 미미하고 가치·규모 베타는 펀드가 표방하는 것과 일치합니다 — 당신이 사는 것은 팩터 노출(높은 R²)이지 매니저의 실력이 아닙니다. 그것이 규칙 기반 기울임의 핵심입니다.",
       },
       deal: {
         title: "합병 차익거래 스프레드 계산기",

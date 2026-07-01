@@ -5,6 +5,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import LineChart from "@/components/charts/LineChart";
 import type { Candle } from "@/lib/ta";
+import { factorRegression, type FactorRegression } from "@/lib/factor";
 import type { Locale, Dict } from "@/lib/i18n";
 
 type T = Dict["practical"];
@@ -96,6 +97,10 @@ export default function FactorLab({
     () => (factorC && marketC ? compare(factorC, marketC) : null),
     [factorC, marketC],
   );
+  const reg = useMemo<FactorRegression | null>(
+    () => (factorC ? factorRegression(factorC) : null),
+    [factorC],
+  );
 
   return (
     <div className="space-y-8">
@@ -146,6 +151,20 @@ export default function FactorLab({
             />
           </Reveal>
         </>
+      )}
+
+      {reg && (
+        <Reveal>
+          <h2 className="mb-3 text-xl font-semibold text-white">{fr.regHeading}</h2>
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+            <Stat label={fr.alpha} value={pct(reg.alphaAnnual)} accent={reg.alphaAnnual < 0} />
+            <Stat label={fr.betaMkt} value={reg.betaMkt.toFixed(2)} />
+            <Stat label={fr.betaSmb} value={reg.betaSmb.toFixed(2)} />
+            <Stat label={fr.betaHml} value={reg.betaHml.toFixed(2)} />
+            <Stat label={fr.rsq} value={reg.rSquared.toFixed(2)} />
+          </div>
+          <p className="mt-2 text-sm text-gray-400">{fr.regNote}</p>
+        </Reveal>
       )}
 
       <Reveal>

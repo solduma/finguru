@@ -201,11 +201,17 @@ function TrendMode({ tt }: { tt: TT }) {
   );
 }
 
+// Several entry points spread across the history so stepping through them
+// surfaces BOTH winners and losers (the honest hit-rate lesson) — never a
+// cherry-picked win.
+const SETUP_FRACTIONS = [0.35, 0.5, 0.65, 0.8, 0.92];
+
 function ActiveMode({ tt }: { tt: TT }) {
   const [symbol, setSymbol] = useState("AAPL");
   const [candles, setCandles] = useState<Candle[] | null>(null);
   const [equity, setEquity] = useState(25000);
   const [riskPct, setRiskPct] = useState(0.01);
+  const [setupIdx, setSetupIdx] = useState(0);
 
   useEffect(() => {
     let live = true;
@@ -215,11 +221,12 @@ function ActiveMode({ tt }: { tt: TT }) {
     };
   }, [symbol]);
 
-  // Use a fixed historical "entry" near the middle of the data so the trade can
-  // resolve forward without lookahead. The learner sees a real, frozen example.
+  // Frozen historical entries the learner steps through; each resolves forward
+  // with no lookahead. Different entries → different outcomes (some hit target,
+  // some stop out) — that's the point.
   const result = useMemo(() => {
     if (!candles || candles.length < 300) return null;
-    const entryIdx = Math.floor(candles.length * 0.7);
+    const entryIdx = Math.floor(candles.length * SETUP_FRACTIONS[setupIdx]);
     const atrSeries = atr(candles, 14);
     const a = atrSeries[entryIdx];
     if (a == null) return null;
@@ -228,7 +235,7 @@ function ActiveMode({ tt }: { tt: TT }) {
     const fwd = candles.slice(entryIdx + 1, entryIdx + 1 + 120); // up to ~6mo
     const res = resolveTrade(fwd, plan);
     return { plan, res, entryDate: candles[entryIdx].t };
-  }, [candles, equity, riskPct]);
+  }, [candles, equity, riskPct, setupIdx]);
 
   return (
     <div className="space-y-6">
@@ -280,7 +287,21 @@ function ActiveMode({ tt }: { tt: TT }) {
       {result && (
         <>
           <Reveal>
-            <h2 className="text-lg font-semibold text-white">{tt.planHeading}</h2>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="text-lg font-semibold text-white">
+                {tt.planHeading}{" "}
+                <span className="text-sm font-normal text-gray-500">
+                  ({tt.setupLabel} {setupIdx + 1}/{SETUP_FRACTIONS.length} · {tt.entryDate}{" "}
+                  {result.entryDate})
+                </span>
+              </h2>
+              <button
+                onClick={() => setSetupIdx((i) => (i + 1) % SETUP_FRACTIONS.length)}
+                className="rounded border border-teal-400/40 px-3 py-1.5 text-sm text-teal-300 transition hover:bg-teal-400/10"
+              >
+                {tt.nextSetup}
+              </button>
+            </div>
             <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-5">
               <Stat label={tt.entryLabel} value={"$" + result.plan.entry.toFixed(2)} />
               <Stat label={tt.stop} value={"$" + result.plan.stop.toFixed(2)} />
