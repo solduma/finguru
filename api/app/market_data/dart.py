@@ -95,8 +95,9 @@ def _num(s: str | None) -> float | None:
         return None
 
 
-async def _statements(corp_code: str, year: int) -> list[dict]:
-    """Consolidated full-year statements for one fiscal year (reprt 11011)."""
+async def _statements(corp_code: str, year: int, fs_div: str) -> list[dict]:
+    """Full-year statements for one fiscal year (reprt 11011). fs_div selects
+    the basis: 'CFS' = consolidated (연결), 'OFS' = separate/individual (별도)."""
 
     async def load() -> list[dict]:
         r = await get_client().get(
@@ -106,7 +107,7 @@ async def _statements(corp_code: str, year: int) -> list[dict]:
                 "corp_code": corp_code,
                 "bsns_year": str(year),
                 "reprt_code": "11011",  # annual / business report
-                "fs_div": "CFS",  # consolidated
+                "fs_div": fs_div,
             },
         )
         r.raise_for_status()
@@ -114,26 +115,46 @@ async def _statements(corp_code: str, year: int) -> list[dict]:
         return data.get("list", []) if data.get("status") == "000" else []
 
     ttl = get_settings().market_data_cache_ttl
-    return await cached(f"dart:fin:{corp_code}:{year}", ttl, load)
+    return await cached(f"dart:fin:{corp_code}:{year}:{fs_div}", ttl, load)
 
 
-async def fetch_kr(ticker: str, latest_year: int) -> Fundamentals:
+async def _rows_for_basis(corp_code: str, latest_year: int, fs_div: str):
+    """Fetch two recent annual filings (~4 distinct years, each carries 3) for
+    one basis. Returns (rows, rcept_no)."""
+    rows: list[dict] = []
+    rcept_no = None
+    for y in (latest_year, latest_year - 2):
+        chunk = await _statements(corp_code, y, fs_div)
+        if chunk and rcept_no is None:
+            rcept_no = chunk[0].get("rcept_no")
+        rows.extend(chunk)
+    return rows, rcept_no
+
+
+async def fetch_kr(
+    ticker: str, latest_year: int, basis: str = "CFS"
+) -> Fundamentals:
     code = ticker.strip().zfill(6)
     cmap = await _corp_code_map()
     corp_code = cmap.get(code)
     if not corp_code:
         raise LookupError(f"KR ticker not found on OpenDART: {ticker}")
 
-    # Two recent annual filings give ~4 distinct years (each carries 3).
-    rows: list[dict] = []
-    rcept_no = None
-    for y in (latest_year, latest_year - 2):
-        chunk = await _statements(corp_code, y)
-        if chunk and rcept_no is None:
-            rcept_no = chunk[0].get("rcept_no")
-        rows.extend(chunk)
+    # Try the requested basis; if it yields nothing (e.g. a small cap that only
+    # files separate statements, or a name that only files consolidated), fall
+    # back to the other so the learner still sees data. Track which basis
+    # actually produced the numbers so the UI can be honest about it.
+    basis = basis if basis in ("CFS", "OFS") else "CFS"
+    other = "OFS" if basis == "CFS" else "CFS"
+    used = basis
+    rows, rcept_no = await _rows_for_basis(corp_code, latest_year, basis)
+    if not rows:
+        used = other
+        rows, rcept_no = await _rows_for_basis(corp_code, latest_year, other)
 
-    f = Fundamentals(ticker=code, market="kr", name=ticker, currency="KRW")
+    f = Fundamentals(
+        ticker=code, market="kr", name=ticker, currency="KRW", basis=used
+    )
 
     # company name (best-effort)
     try:
