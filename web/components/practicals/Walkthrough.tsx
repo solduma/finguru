@@ -4,7 +4,7 @@ import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
-import { pick, type Walkthrough as WT, type WalkStep } from "@/lib/walkthroughs";
+import { pick, type Walkthrough as WT, type WalkStep, type SourceRef } from "@/lib/walkthroughs";
 
 // The guided-walkthrough shell (실습). Renders a walkthrough's steps as a
 // stepper; the "tool" step slots in the strategy's analyzer (passed by the
@@ -83,6 +83,84 @@ function inline(s: string): ReactNode[] {
   });
 }
 
+// A source: name/what/why, plus either an annotated screenshot (ShotGuide) or a
+// written navigation guide (numbered steps) when a screenshot isn't available.
+function SourceCard({ s, locale }: { s: SourceRef; locale: Locale }) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-[#131722] p-4">
+      <a
+        href={s.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold text-teal-300 underline"
+      >
+        {pick(s.name, locale)} ↗
+      </a>
+      <p className="mt-2 text-sm text-gray-300">{pick(s.what, locale)}</p>
+      <p className="mt-1 text-sm text-gray-500">{pick(s.why, locale)}</p>
+
+      {s.shot && <ShotGuide shot={s.shot} locale={locale} />}
+
+      {!s.shot && s.steps && (
+        <ol className="mt-3 space-y-2">
+          {s.steps.map((st, i) => (
+            <li key={i} className="flex gap-3 text-sm text-gray-300">
+              <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-teal-500 text-[11px] font-bold text-black">
+                {i + 1}
+              </span>
+              <span>{pick(st, locale)}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  );
+}
+
+// Renders a real screenshot with numbered markers + highlight boxes overlaid at
+// percentage coordinates (so the overlay stays aligned at any width), and lists
+// the same numbered steps beneath it as a legend.
+function ShotGuide({ shot, locale }: { shot: SourceRef["shot"] & {}; locale: Locale }) {
+  return (
+    <figure className="mt-3">
+      <div className="relative overflow-hidden rounded-lg border border-white/10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={shot.img} alt={pick(shot.alt, locale)} className="block w-full" />
+        {/* Highlight boxes: sized in % of the image, so they track any width. */}
+        {shot.markers
+          .filter((m) => m.w != null && m.h != null)
+          .map((m) => (
+            <div
+              key={`box-${m.n}`}
+              className="pointer-events-none absolute rounded border-2 border-amber-400 bg-amber-400/15"
+              style={{ left: `${m.x}%`, top: `${m.y}%`, width: `${m.w}%`, height: `${m.h}%` }}
+            />
+          ))}
+        {/* Numbered badges: anchored at (x,y); for a box, at its top-left corner. */}
+        {shot.markers.map((m) => (
+          <span
+            key={`badge-${m.n}`}
+            className="pointer-events-none absolute flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-amber-400 text-xs font-bold text-black shadow"
+            style={{ left: `${m.x}%`, top: `${m.y}%` }}
+          >
+            {m.n}
+          </span>
+        ))}
+      </div>
+      <ol className="mt-3 space-y-2">
+        {shot.markers.map((m) => (
+          <li key={m.n} className="flex gap-3 text-sm text-gray-300">
+            <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-amber-400 text-[11px] font-bold text-black">
+              {m.n}
+            </span>
+            <span>{pick(m.label, locale)}</span>
+          </li>
+        ))}
+      </ol>
+    </figure>
+  );
+}
+
 function StepView({
   step,
   locale,
@@ -108,20 +186,9 @@ function StepView({
       <Body text={pick(step.body, locale)} />
 
       {step.kind === "source" && step.sources && (
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="space-y-4">
           {step.sources.map((s, i) => (
-            <div key={i} className="rounded-lg border border-white/10 bg-[#131722] p-4">
-              <a
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-teal-300 underline"
-              >
-                {pick(s.name, locale)} ↗
-              </a>
-              <p className="mt-2 text-sm text-gray-300">{pick(s.what, locale)}</p>
-              <p className="mt-1 text-sm text-gray-500">{pick(s.why, locale)}</p>
-            </div>
+            <SourceCard key={i} s={s} locale={locale} />
           ))}
         </div>
       )}

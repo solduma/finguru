@@ -30,11 +30,34 @@ export type StepKind =
   // The closing step: a takeaway + a concrete next-action checklist.
   | "conclude";
 
+/** One annotated hotspot on a source screenshot: a numbered marker anchored at
+ *  (x,y) as PERCENTAGES of the image, optionally boxing a region (w,h in %).
+ *  Percentages keep the overlay aligned at any rendered width. */
+export interface ShotMarker {
+  n: number; // step order shown in the badge
+  label: L; // what to do / look at here
+  x: number; // 0–100, left of the marker/box
+  y: number; // 0–100, top of the marker/box
+  w?: number; // 0–100, box width (omit for a point marker)
+  h?: number; // 0–100, box height
+}
+
+/** A real screenshot of the source plus an ordered click/read guide over it. */
+export interface SourceShot {
+  img: string; // path under /public, e.g. "/walkthroughs/dart-home.png"
+  alt: L;
+  markers: ShotMarker[];
+}
+
 export interface SourceRef {
   name: L; // "OpenDART", "SEC EDGAR", …
   what: L; // what you pull from it
   why: L; // why this is the right source
   url: string; // where to see it yourself
+  shot?: SourceShot; // optional annotated screenshot walkthrough
+  /** When there's no screenshot (e.g. SEC EDGAR blocks automated capture), a
+   *  written, ordered navigation guide instead. */
+  steps?: L[];
 }
 
 export interface WalkStep {
