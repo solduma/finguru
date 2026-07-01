@@ -17,6 +17,9 @@ export interface Fundamentals {
   market: "us" | "kr";
   name: string;
   currency: string;
+  /** KR reporting basis actually used: "CFS" = consolidated, "OFS" = separate.
+   *  Null for US. May differ from the request when the backend fell back. */
+  basis?: "CFS" | "OFS" | null;
   revenue: AnnualPoint[];
   netIncome: AnnualPoint[];
   operatingIncome: AnnualPoint[];

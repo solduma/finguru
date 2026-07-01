@@ -46,6 +46,12 @@ export default function CompanyLab({
   const c = t.company;
   const [market, setMarket] = useState<"us" | "kr">("us");
   const [ticker, setTicker] = useState("");
+  // KR reporting basis — consolidated (연결) by default, a shared premise across
+  // every strategy module. Ignored for US (EDGAR is consolidated by nature).
+  const [basis, setBasis] = useState<"CFS" | "OFS">("CFS");
+  // The basis actually requested for the loaded data — so a later dropdown
+  // change (before re-analyzing) can't trigger a false fallback notice.
+  const [reqBasis, setReqBasis] = useState<"CFS" | "OFS">("CFS");
   const [price, setPrice] = useState("");
   const [data, setData] = useState<Fundamentals | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "notfound" | "error">("idle");
@@ -66,10 +72,13 @@ export default function CompanyLab({
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null);
     try {
-      const res = await fetch(`/api/market-data/fundamentals?ticker=${tk}&market=${market}`);
+      const res = await fetch(
+        `/api/market-data/fundamentals?ticker=${tk}&market=${market}&basis=${basis}`,
+      );
       if (res.status === 404) return setStatus("notfound");
       if (!res.ok) return setStatus("error");
       setData((await res.json()) as Fundamentals);
+      setReqBasis(basis);
       setStatus("idle");
       const q = await quotePromise;
       if (q?.price != null) setPrice(String(q.price));
@@ -110,6 +119,19 @@ export default function CompanyLab({
                 <option value="kr">{c.marketKr}</option>
               </select>
             </label>
+            {market === "kr" && (
+              <label className="flex flex-col gap-1 text-sm text-gray-400">
+                {c.basisLabel}
+                <select
+                  value={basis}
+                  onChange={(e) => setBasis(e.target.value as "CFS" | "OFS")}
+                  className="rounded border border-white/10 bg-[#0f131c] px-3 py-2 text-white"
+                >
+                  <option value="CFS">{c.basisConsolidated}</option>
+                  <option value="OFS">{c.basisSeparate}</option>
+                </select>
+              </label>
+            )}
             <label className="flex flex-col gap-1 text-sm text-gray-400">
               {c.tickerLabel}
               <input
@@ -167,7 +189,11 @@ export default function CompanyLab({
               <h2 className="text-xl font-semibold text-white">
                 {data.name}{" "}
                 <span className="text-sm font-normal text-gray-500">
-                  ({data.ticker} · {data.currency})
+                  ({data.ticker} · {data.currency}
+                  {data.basis
+                    ? ` · ${data.basis === "CFS" ? c.basisConsolidated : c.basisSeparate}`
+                    : ""}
+                  )
                 </span>
               </h2>
               {data.sources[0] && (
@@ -181,6 +207,15 @@ export default function CompanyLab({
                 </a>
               )}
             </div>
+
+            {data.basis && data.basis !== reqBasis && (
+              <p className="rounded-lg border border-amber-400/30 bg-amber-400/5 p-3 text-sm text-amber-100">
+                {c.basisFellBack.replace(
+                  "{basis}",
+                  data.basis === "CFS" ? c.basisConsolidated : c.basisSeparate,
+                )}
+              </p>
+            )}
 
             {mode === "dividend" && <DividendCard data={data} price={priceNum} c={c} />}
             {mode === "reit" && <DividendCard data={data} price={priceNum} c={c} reit />}
