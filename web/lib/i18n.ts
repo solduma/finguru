@@ -403,8 +403,9 @@ export const STRINGS: Record<Locale, Dict> = {
       comingSoon: "Coming soon",
       drawsFrom: "Draws from",
       takeQuiz: "Not sure this is you? Take the quiz →",
-      practiceHeading: "Put it into practice",
-      practiceCta: "Open the hands-on lab →",
+      practiceHeading: "Practice: a guided walkthrough",
+      practiceCta:
+        "Follow it step by step on real data — pull the numbers, judge them, reach a call →",
     },
     practical: {
       back: "← Back to {strategy}",
@@ -883,8 +884,9 @@ export const STRINGS: Record<Locale, Dict> = {
       comingSoon: "준비 중",
       drawsFrom: "기반 유파",
       takeQuiz: "이게 나에게 맞는지 모르겠다면? 퀴즈 풀기 →",
-      practiceHeading: "실전으로 옮기기",
-      practiceCta: "실습 랩 열기 →",
+      practiceHeading: "실습: 단계별 가이드",
+      practiceCta:
+        "실제 데이터로 한 단계씩 따라가며 — 숫자를 직접 가져와 판단하고 결론까지 내보세요 →",
     },
     practical: {
       back: "← {strategy}(으)로 돌아가기",
