@@ -203,8 +203,40 @@ const growth: Walkthrough = {
   ],
 };
 
+// ===========================================================================
+// The remaining twelve walkthroughs live in ./walkthroughs.data — split out to
+// keep this file (the model + pilot) readable. They follow the exact same
+// WalkStep shape.
+// ===========================================================================
+import {
+  dividend,
+  value,
+  reit,
+  portfolio,
+  costDrag,
+  glidePath,
+  trend,
+  active,
+  macro,
+  options,
+  factor,
+  deal,
+} from "./walkthroughs.data";
+
 export const WALKTHROUGHS: Partial<Record<LabId, Walkthrough>> = {
   "company-growth": growth,
+  "company-dividend": dividend,
+  "company-value": value,
+  "company-reit": reit,
+  portfolio,
+  "cost-drag": costDrag,
+  "glide-path": glidePath,
+  "trend-backtest": trend,
+  "active-trading": active,
+  macro,
+  options,
+  factor,
+  deal,
 };
 
 export function getWalkthrough(labId: LabId): Walkthrough | null {
