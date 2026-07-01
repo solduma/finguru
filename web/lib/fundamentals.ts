@@ -175,8 +175,11 @@ export interface GarpScore {
   /** The growth rate (decimal) that fed the PEG. */
   growth: number | null;
   /** Which growth basis produced the PEG — for honest labeling in the UI. */
-  growthBasis: "forward" | "historical" | null;
-  epsCagr: number | null; // trailing EPS CAGR over the series
+  growthBasis: "forward" | "trend" | null;
+  epsCagr: number | null; // trailing EPS 2-point CAGR (endpoint-sensitive)
+  epsTrend: number | null; // trailing EPS log-linear regression growth (robust)
+  revenueTrend: number | null; // trailing revenue log-linear regression growth
+  sgr: number | null; // ROE-based sustainable growth = ROE × (1 − payout)
   roe: number | null;
   netMargin: number | null;
   fcfConversion: number | null; // FCF ÷ net income
@@ -192,25 +195,66 @@ function cagr(series: AnnualPoint[]): number | null {
   return Math.pow(lastV / first, 1 / n) - 1;
 }
 
+/** Log-linear trend growth: the slope of a least-squares fit to ln(value) vs
+ *  year, expressed as an annual rate (e^slope − 1). Unlike a 2-point CAGR this
+ *  uses every year, so a single dented endpoint can't dominate the estimate —
+ *  the fix for cases like a stock whose EPS peaked mid-series (endpoint CAGR
+ *  reads ~flat while the trend is clearly up). Needs ≥3 positive points; only
+ *  positive values enter the fit (logs of ≤0 are undefined). */
+function trendGrowth(series: AnnualPoint[]): number | null {
+  const pts = series.filter((p) => p.value > 0);
+  if (pts.length < 3) return null;
+  const n = pts.length;
+  const xs = pts.map((p) => p.year);
+  const ys = pts.map((p) => Math.log(p.value));
+  const meanX = xs.reduce((a, b) => a + b, 0) / n;
+  const meanY = ys.reduce((a, b) => a + b, 0) / n;
+  let num = 0;
+  let den = 0;
+  for (let i = 0; i < n; i++) {
+    num += (xs[i] - meanX) * (ys[i] - meanY);
+    den += (xs[i] - meanX) ** 2;
+  }
+  if (den === 0) return null;
+  return Math.exp(num / den) - 1;
+}
+
 export function garp(f: Fundamentals, price: number): GarpScore {
   const eps = last(f.eps);
   const ni = last(f.netIncome);
   const rev = last(f.revenue);
   const fcf = last(fcfSeries(f));
   const epsCagr = cagr(f.eps);
+  const epsTrend = trendGrowth(f.eps);
+  const revenueTrend = trendGrowth(f.revenue);
   const pe = eps && eps > 0 ? price / eps : null;
+  const roe = ni != null && f.totalEquity && f.totalEquity > 0 ? ni / f.totalEquity : null;
 
-  // Prefer analyst forward EPS growth (US via FMP); fall back to trailing EPS
-  // CAGR (used for KR, which has no free consensus feed). Label which we used —
-  // a forward PEG and a backward-looking PEG are not the same claim.
+  // Sustainable growth (Higgins): ROE × retention. Retention = 1 − payout, from
+  // the latest dividends-paid ÷ net income. A validated growth proxy for KR
+  // listed firms and a sanity check on the EPS-derived g — it caps growth at
+  // what retained earnings can actually fund. Only meaningful for a profitable
+  // year with a payout we can read (0 ≤ payout ≤ 1).
+  const paid = last(f.dividendsPaid);
+  const payout = paid != null && ni && ni > 0 ? paid / ni : null;
+  const sgr =
+    roe != null && payout != null && payout >= 0 && payout <= 1
+      ? roe * (1 - payout)
+      : null;
+
+  // Prefer analyst forward EPS growth (US via FMP). Otherwise fall back to the
+  // trailing EPS log-linear TREND (used for KR, which has no free consensus
+  // feed) — not the 2-point CAGR, which an off endpoint can badly distort.
+  // Label which basis we used: a forward PEG and a backward-looking PEG are not
+  // the same claim.
   let growth: number | null = null;
-  let growthBasis: "forward" | "historical" | null = null;
+  let growthBasis: "forward" | "trend" | null = null;
   if (f.forwardEpsGrowth != null && f.forwardEpsGrowth > 0) {
     growth = f.forwardEpsGrowth;
     growthBasis = "forward";
-  } else if (epsCagr != null && epsCagr > 0) {
-    growth = epsCagr;
-    growthBasis = "historical";
+  } else if (epsTrend != null && epsTrend > 0) {
+    growth = epsTrend;
+    growthBasis = "trend";
   }
   const peg =
     pe != null && growth != null && growth > 0 ? pe / (growth * 100) : null;
@@ -221,7 +265,10 @@ export function garp(f: Fundamentals, price: number): GarpScore {
     growth,
     growthBasis,
     epsCagr,
-    roe: ni != null && f.totalEquity && f.totalEquity > 0 ? ni / f.totalEquity : null,
+    epsTrend,
+    revenueTrend,
+    sgr,
+    roe,
     netMargin: ni != null && rev && rev > 0 ? ni / rev : null,
     fcfConversion: fcf != null && ni && ni > 0 ? fcf / ni : null,
   };
