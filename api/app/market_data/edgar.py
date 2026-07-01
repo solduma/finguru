@@ -7,6 +7,8 @@ to one value per fiscal year (annual 10-K frames, form 10-K, full-year period).
 """
 from __future__ import annotations
 
+from datetime import date
+
 from ..config import get_settings
 from .cache import cached, get_client
 from .schema import AnnualPoint, Fundamentals
@@ -66,7 +68,15 @@ async def _ticker_map() -> dict[str, dict]:
 
 
 def _fy_facts(facts: list[dict]) -> dict[int, float]:
-    """Pick one value per fiscal year from FY 10-K facts."""
+    """Pick one value per fiscal year from FY 10-K facts.
+
+    A concept can carry BOTH an annual and a quarterly row for the same fiscal
+    year, all tagged form=10-K fp=FY (e.g. AAPL FY2019 revenue: a $260B full-year
+    row and a $64B Q4 row). Keying by year alone lets the quarter overwrite the
+    year. For flow items (income statement / cash flow) we therefore keep only
+    ~annual periods (start→end span ≳ 300 days). Balance-sheet items are
+    instants (no start), so those pass through unfiltered.
+    """
     by_year: dict[int, float] = {}
     for f in facts:
         if f.get("form") != "10-K" or f.get("fp") != "FY":
@@ -75,6 +85,14 @@ def _fy_facts(facts: list[dict]) -> dict[int, float]:
         val = f.get("val")
         if fy is None or val is None:
             continue
+        start, end = f.get("start"), f.get("end")
+        if start and end:
+            try:
+                span = (date.fromisoformat(end) - date.fromisoformat(start)).days
+                if span < 300:  # quarterly / partial-period — not the annual figure
+                    continue
+            except ValueError:
+                pass
         by_year[int(fy)] = float(val)
     return by_year
 
