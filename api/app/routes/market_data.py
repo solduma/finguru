@@ -45,7 +45,14 @@ async def fundamentals(
             # KR filings lag; the most recent completed fiscal year is last year.
             latest_year = datetime.now(timezone.utc).year - 1
             return await dart.fetch_kr(ticker, latest_year)
-        return await edgar.fetch_us(ticker)
+        f = await edgar.fetch_us(ticker)
+        # Enrich US names with analyst-consensus forward EPS growth for a true
+        # forward-PEG (best-effort; leaves the field null if FMP has nothing).
+        try:
+            f.forwardEpsGrowth = await fmp.forward_eps_growth(ticker)
+        except Exception:
+            pass
+        return f
     except LookupError as e:
         raise HTTPException(status_code=404, detail=str(e)) from e
     except RuntimeError as e:  # e.g. missing API key

@@ -41,6 +41,11 @@ class Fundamentals(BaseModel):
     totalDebt: float | None = None
     sharesOutstanding: float | None = None
 
+    # Forward EPS growth (decimal) from analyst estimates, when available (US via
+    # FMP). Null for markets without a free consensus feed (e.g. KR) — the client
+    # then falls back to historical EPS-growth PEG and labels it as such.
+    forwardEpsGrowth: float | None = None
+
     # Provenance: the primary-source filing link(s), so the learner can verify
     # (the OpenProxy / honesty-thread principle). 1-3 entries.
     sources: list[dict] = []
