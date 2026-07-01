@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Query
 
-from ..market_data import dart, edgar, fmp, kis
+from ..market_data import dart, edgar, fmp, kis, naver
 from ..market_data.schema import Fundamentals
 
 router = APIRouter(prefix="/market-data", tags=["market-data"])
@@ -44,7 +44,14 @@ async def fundamentals(
         if market == "kr":
             # KR filings lag; the most recent completed fiscal year is last year.
             latest_year = datetime.now(timezone.utc).year - 1
-            return await dart.fetch_kr(ticker, latest_year)
+            f = await dart.fetch_kr(ticker, latest_year)
+            # Enrich with FnGuide forward consensus via Naver (best-effort); on
+            # None the client falls back to historical-growth PEG.
+            try:
+                f.forwardEpsGrowth = await naver.forward_eps_growth(ticker)
+            except Exception:
+                pass
+            return f
         f = await edgar.fetch_us(ticker)
         # Enrich US names with analyst-consensus forward EPS growth for a true
         # forward-PEG (best-effort; leaves the field null if FMP has nothing).
