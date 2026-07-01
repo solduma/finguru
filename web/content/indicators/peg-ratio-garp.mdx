@@ -173,6 +173,24 @@ This makes the PEG a **poor fit for stable, slow-growing, dividend-paying firms*
 
 Because the PEG rewards steady, predictable growth, it can lull you toward businesses whose numbers look *too* perfect. A growth rate that never wobbles, year after year, is sometimes a **fraud signal** rather than a sign of quality — **Bernie Madoff's** impossibly smooth "returns" are the cautionary example. Real businesses are lumpy; suspiciously smooth ones deserve more scrutiny, not less.
 
+## The g is different in the Korean market
+
+The PEG was born in the US market. Ported straight to Korean stocks, it misfires on both the denominator (g) and the "≈ 1" benchmark — for three structural reasons.
+
+**1. Forward consensus is scarce — so g looks backward.** In the US, forward analyst EPS consensus is abundant for most stocks; in Korea there is effectively no broad, free forward feed (especially for small/mid caps). So in practice, g for Korean names is often computed from **past EPS** — a rear-view mirror, not a forecast. Worse, Korean sell-side earnings estimates carry a **documented optimism bias** (forecast > actual), so even when a forward number exists you can't take it at face value.
+
+**2. When g comes from past EPS, avoid the 2-point CAGR.** Computing growth (CAGR) from just the first and last year lets one lucky-high or dented endpoint distort the whole estimate. A growth company whose earnings peaked mid-series and eased back can show a **near-zero growth rate** because start and end happen to be similar — even while revenue is still compounding at double digits. A **log-linear trend (regression) growth** that uses *every* year is far more robust to this endpoint distortion. (The growth-adjusted-P/E literature likewise uses multi-year windows, not a single pair.)
+
+**3. Reported EPS is itself noisier — chaebol & earnings quality.** Korean academic work shows that **earnings and book value are significantly less value-relevant for group- (chaebol-) affiliated firms** (Bae & Jeong, 2007). Controlling-vs-minority-shareholder agency problems, cross-equity holdings, and entrenchment make reported earnings a blurrier signal of value. That means both the PEG numerator (EPS-based P/E) and denominator (EPS growth) draw on the **same noisy source**.
+
+<Callout type="warning">
+
+**The "1" yardstick is also different in Korea.** The so-called **Korea discount** is real and quantified: over 2012–2021 Korea's average PER was **17.0** — 17–23% below developed markets (22.2) — and its PBR ranked **41st of 45 countries** (Korea Capital Market Institute). Much of that discount traces to structural factors: low shareholder returns, low profitability/growth, and weak governance. If Korean valuations sit structurally lower, you cannot import the US "PEG ≈ 1 is fair" line unchanged. A **relative comparison among Korean peers** is far more useful than any fixed threshold.
+
+</Callout>
+
+**So here's what the practical lab (growth-investing lab) does.** For Korean tickers with no forward consensus, it sets g from a **log-linear trend of past EPS** (not a 2-point CAGR), and labels it explicitly as "trend growth" to signal you shouldn't read it as a forecast. Alongside it, the lab shows **revenue growth (trend)** and an **ROE-based sustainable growth rate (SGR = ROE × retention)** — revenue growth is a validated driver of Korean stock returns, and SGR tells you the ceiling on growth that retained earnings can actually fund. The point is to stop one wobbly EPS number from misrepresenting the whole growth story.
+
 ## "Growth at any price": the dot-com lesson
 
 GARP exists as a reaction to its opposite — **"growth at any price"** — the belief that growth itself justifies whatever multiple the market demands. The dot-com bubble is the textbook case of where that thinking leads, and it's the single best argument for the "reasonable price" half of GARP.
@@ -230,3 +248,10 @@ The core lesson connects straight back to the PEG: **when a stock prices in flaw
 2. [Peter Lynch — Wikipedia](https://en.wikipedia.org/wiki/Peter_Lynch) — Magellan Fund 1977–1990; ~29.2% average annual return; growth from ~$18M to ~$14B; *One Up on Wall Street* (1989) and *Beating the Street* (1993); "ten-bagger."
 3. [Dot-com bubble — Wikipedia](https://en.wikipedia.org/wiki/Dot-com_bubble) — Nasdaq peak 5,048.62 on March 10, 2000; ~600% rise from 1995; ~78% decline to the Oct 2002 trough (Nasdaq-100 ~1,114 on Oct 9, 2002); ~$5 trillion erased; Nasdaq P/E ~200 vs Nikkei ~80; Qualcomm +2,619% (1999); MicroStrategy ~$7→~$333 then ~62% single-day drop; Cisco ~80% loss; Pets.com / Webvan / Boo.com; ~48% of dot-coms surviving to 2004.
 4. [PEG ratio glossary — The Motley Fool](https://www.fool.com/) — beginner-level explanation of the PEG formula, the "1 = fair" interpretation, and its use as a GARP screen. (Investopedia's PEG and GARP pages were inaccessible from this environment; the figures above are corroborated by the sources listed.)
+
+#### On the Korean market (deep research — peer-reviewed & institutional)
+
+5. [Bae & Jeong (2007), *The Value-relevance of Earnings and Book Value, Ownership Structure, and Business Group Affiliation*, Journal of Business Finance & Accounting 34(5-6):740-766](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-5957.2007.02017.x) — earnings and book value are significantly less value-relevant for chaebol-affiliated firms; cross-equity ownership lowers it further.
+6. Kim & Kang (Korea Capital Market Institute), [*Analysis of the Causes of the Korea Discount* (2023)](https://www.kcmi.re.kr/report/report_view?report_no=1522) — Korea's 2012–2021 average PER 17.0 (17–23% below developed markets), PBR 41st of 45 countries; much of the discount is structural (payout, profitability/growth, governance).
+7. [Growth-adjusted P/E (GA-P/E) empirical study, arXiv:2001.08240](https://arxiv.org/abs/2001.08240) — estimates g via 1-, 2-, and 3-year CAGR windows of past EPS (not a single pair); low GA-P/E outperformed standard P/E value on US data (1990–2015); not validated on Korea.
+8. Oh (2021), *International Accounting Review* — documents optimism bias (forecast > actual EPS) across 2,044 Korean firm-years, 2011–2019.
