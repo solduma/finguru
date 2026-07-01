@@ -116,6 +116,7 @@ export type Dict = {
       marketUs: string;
       marketKr: string;
       priceLabel: string;
+      priceAuto: string;
       analyze: string;
       loading: string;
       notFound: string;
@@ -480,6 +481,7 @@ export const STRINGS: Record<Locale, Dict> = {
         marketUs: "US (SEC EDGAR)",
         marketKr: "Korea (DART)",
         priceLabel: "Current price (per share)",
+        priceAuto: "Auto-filled from live data — edit to override.",
         analyze: "Analyze",
         loading: "Pulling filings…",
         notFound: "Couldn't find that ticker on the selected market.",
@@ -933,6 +935,7 @@ export const STRINGS: Record<Locale, Dict> = {
         marketUs: "미국 (SEC EDGAR)",
         marketKr: "한국 (DART)",
         priceLabel: "현재 주가 (주당)",
+        priceAuto: "실시간 데이터로 자동 입력됨 — 수정해 덮어쓸 수 있습니다.",
         analyze: "분석",
         loading: "공시 불러오는 중…",
         notFound: "선택한 시장에서 해당 종목을 찾을 수 없습니다.",
