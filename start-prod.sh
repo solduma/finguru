@@ -113,6 +113,12 @@ kill_port "$API_PORT"
 kill_port "$WEB_PORT"
 
 # --- Build the web app for production ---
+# Next.js bakes rewrites() destinations into .next/routes-manifest.json at BUILD
+# time, not at `next start`. So API_PROXY_TARGET must be exported BEFORE the
+# build or the manifest keeps the default http://localhost:8000 (nothing listens
+# there in prod → every /api/* proxy call ECONNREFUSEDs → 500). See issue #14.
+export API_PROXY_TARGET="${API_PROXY_TARGET:-http://localhost:${API_PORT}}"
+
 # Always rebuild so `next start` serves the latest code. Set SKIP_BUILD=1 to
 # reuse an existing .next build (e.g. for near-instant supervisor restarts).
 if [ "${SKIP_BUILD:-0}" = "1" ]; then
@@ -131,7 +137,8 @@ log "starting API on :${API_PORT} (uvicorn, no reload)…"
 API_PID=$!
 
 # --- Web (production: next start) ---
-export API_PROXY_TARGET="${API_PROXY_TARGET:-http://localhost:${API_PORT}}"
+# API_PROXY_TARGET was exported before the build (above) so it's baked into the
+# manifest; it's already in the environment here for `next start` too.
 log "starting web on :${WEB_PORT} (next start)…  proxy /api -> ${API_PROXY_TARGET}"
 (
   cd "$WEB_DIR"
