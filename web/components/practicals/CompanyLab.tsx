@@ -406,13 +406,15 @@ function ValueCard({
 function GrowthCard({ data, price, c }: { data: Fundamentals; price: number; c: CT }) {
   const g = garp(data, price);
   const pegLabel =
-    g.growthBasis === "forward" ? c.pegForward : g.growthBasis === "historical" ? c.pegHistorical : c.peg;
+    g.growthBasis === "forward" ? c.pegForward : g.growthBasis === "trend" ? c.pegHistorical : c.peg;
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
         <Stat label={c.pe} value={num(g.pe, 1)} />
         <Stat label={pegLabel} value={num(g.peg, 2)} accent={(g.peg ?? 0) > 2} />
         <Stat label={c.growthUsed} value={pct(g.growth)} />
+        <Stat label={c.revenueTrend} value={pct(g.revenueTrend)} />
+        <Stat label={c.sgr} value={pct(g.sgr)} />
         <Stat label={c.roe} value={pct(g.roe)} />
         <Stat label={c.netMargin} value={pct(g.netMargin)} />
         <Stat
@@ -421,6 +423,11 @@ function GrowthCard({ data, price, c }: { data: Fundamentals; price: number; c: 
           accent={g.fcfConversion != null && g.fcfConversion < 0.8}
         />
       </div>
+      {data.market === "kr" && (
+        <p className="rounded-lg border border-amber-400/30 bg-amber-400/5 p-3 text-sm text-amber-100">
+          {c.krGrowthCaveat}
+        </p>
+      )}
       {data.revenue.length > 1 && (
         <LineChart
           caption={c.revenueCaption}

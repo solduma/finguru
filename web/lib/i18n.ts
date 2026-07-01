@@ -150,6 +150,10 @@ export type Dict = {
       pegHistorical: string;
       growthUsed: string;
       epsCagr: string;
+      epsTrend: string;
+      revenueTrend: string;
+      sgr: string;
+      krGrowthCaveat: string;
       roe: string;
       netMargin: string;
       fcfConversion: string;
@@ -524,9 +528,14 @@ export const STRINGS: Record<Locale, Dict> = {
         pe: "P/E",
         peg: "PEG",
         pegForward: "PEG (forward, analyst)",
-        pegHistorical: "PEG (historical growth)",
+        pegHistorical: "PEG (trend growth)",
         growthUsed: "Growth used",
-        epsCagr: "EPS growth (trailing)",
+        epsCagr: "EPS CAGR (2-point)",
+        epsTrend: "EPS growth (trend)",
+        revenueTrend: "Revenue growth (trend)",
+        sgr: "Sustainable growth (ROE-based)",
+        krGrowthCaveat:
+          "No free forward-consensus feed for Korean tickers, so g here is a trend fit to past EPS — backward-looking, not analysts' forecast. Read it alongside revenue growth and the ROE-based sustainable rate: Korean reported EPS is a noisier value signal (group/chaebol structure, lower earnings quality), and the Korea discount means Korean valuations sit structurally below global peers — so a PEG of 1 is not the same yardstick here.",
         roe: "Return on equity",
         netMargin: "Net margin",
         fcfConversion: "FCF conversion",
@@ -994,9 +1003,14 @@ export const STRINGS: Record<Locale, Dict> = {
         pe: "PER",
         peg: "PEG",
         pegForward: "PEG (선행, 애널리스트)",
-        pegHistorical: "PEG (과거 성장 기준)",
+        pegHistorical: "PEG (추세 성장 기준)",
         growthUsed: "적용 성장률",
-        epsCagr: "EPS 성장률 (과거)",
+        epsCagr: "EPS CAGR (2점)",
+        epsTrend: "EPS 성장률 (추세)",
+        revenueTrend: "매출 성장률 (추세)",
+        sgr: "지속가능성장률 (ROE 기반)",
+        krGrowthCaveat:
+          "국내 종목은 무료 선행 컨센서스 피드가 없어, 여기의 g는 과거 EPS에 맞춘 추세치입니다 — 애널리스트 예측이 아니라 과거를 돌아본 값입니다. 매출 성장률·ROE 기반 지속가능성장률과 함께 읽으세요. 한국의 보고 EPS는 (그룹·재벌 구조, 낮은 이익질로) 기업가치의 신호로서 노이즈가 크고, 코리아 디스카운트로 한국 밸류에이션은 글로벌 대비 구조적으로 낮습니다 — 따라서 PEG 1이라는 잣대를 미국과 똑같이 적용하면 안 됩니다.",
         roe: "자기자본이익률",
         netMargin: "순이익률",
         fcfConversion: "FCF 전환율",
