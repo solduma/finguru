@@ -11,6 +11,7 @@
 
 import type { Locale } from "./i18n";
 import type { LabId } from "./practicals";
+import { DART_SHOT, EDGAR_STEPS } from "./walkthroughs.shots";
 
 /** A localized string pair. */
 export interface L {
@@ -30,11 +31,34 @@ export type StepKind =
   // The closing step: a takeaway + a concrete next-action checklist.
   | "conclude";
 
+/** One annotated hotspot on a source screenshot: a numbered marker anchored at
+ *  (x,y) as PERCENTAGES of the image, optionally boxing a region (w,h in %).
+ *  Percentages keep the overlay aligned at any rendered width. */
+export interface ShotMarker {
+  n: number; // step order shown in the badge
+  label: L; // what to do / look at here
+  x: number; // 0–100, left of the marker/box
+  y: number; // 0–100, top of the marker/box
+  w?: number; // 0–100, box width (omit for a point marker)
+  h?: number; // 0–100, box height
+}
+
+/** A real screenshot of the source plus an ordered click/read guide over it. */
+export interface SourceShot {
+  img: string; // path under /public, e.g. "/walkthroughs/dart-home.png"
+  alt: L;
+  markers: ShotMarker[];
+}
+
 export interface SourceRef {
   name: L; // "OpenDART", "SEC EDGAR", …
   what: L; // what you pull from it
   why: L; // why this is the right source
   url: string; // where to see it yourself
+  shot?: SourceShot; // optional annotated screenshot walkthrough
+  /** When there's no screenshot (e.g. SEC EDGAR blocks automated capture), a
+   *  written, ordered navigation guide instead. */
+  steps?: L[];
 }
 
 export interface WalkStep {
@@ -60,9 +84,6 @@ export function pick(l: L, locale: Locale): string {
   return locale === "ko" ? l.ko : l.en;
 }
 
-// ---------------------------------------------------------------------------
-// Growth investing (pilot) — reuses the CompanyLab growth analyzer.
-// ---------------------------------------------------------------------------
 
 const growth: Walkthrough = {
   labId: "company-growth",
@@ -105,6 +126,7 @@ const growth: Walkthrough = {
             ko: "법정 공시 시스템입니다 — 회사가 법적으로 책임지는 바로 그 재무제표입니다.",
           },
           url: "https://dart.fss.or.kr",
+          shot: DART_SHOT,
         },
         {
           name: { en: "SEC EDGAR", ko: "SEC EDGAR" },
@@ -116,7 +138,8 @@ const growth: Walkthrough = {
             en: "The US regulator's primary filing store — no vendor in between.",
             ko: "미국 규제당국의 1차 공시 저장소 — 중간 벤더가 없습니다.",
           },
-          url: "https://www.sec.gov/edgar",
+          url: "https://www.sec.gov/edgar/search/",
+          steps: EDGAR_STEPS,
         },
       ],
     },
