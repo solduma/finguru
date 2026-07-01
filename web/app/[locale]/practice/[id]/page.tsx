@@ -1,20 +1,15 @@
 import { notFound } from "next/navigation";
-import PortfolioLab from "@/components/practicals/PortfolioLab";
-import CostDragLab from "@/components/practicals/CostDragLab";
-import GlidePathLab from "@/components/practicals/GlidePathLab";
-import CompanyLab from "@/components/practicals/CompanyLab";
-import TradeLab from "@/components/practicals/TradeLab";
-import MacroLab from "@/components/practicals/MacroLab";
-import OptionsLab from "@/components/practicals/OptionsLab";
-import FactorLab from "@/components/practicals/FactorLab";
-import DealLab from "@/components/practicals/DealLab";
+import Walkthrough from "@/components/practicals/Walkthrough";
+import { renderAnalyzer } from "@/components/practicals/renderAnalyzer";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
-import { companyModeFor, tradeModeFor } from "@/lib/practicals";
+import { getWalkthrough } from "@/lib/walkthroughs";
 
-// A strategy's hands-on capstone lab lives at /[locale]/practice/[id], where id
-// is the strategy id. The strategy declares which lab via its `practical` field
-// (lib/strategies.ts → lib/practicals.ts). Phase 0 ships the portfolio lab.
+// A strategy's hands-on capstone at /[locale]/practice/[id] (id = strategy id).
+// This is the guided WALKTHROUGH (실습) — teaching that embeds the analyzer tool
+// inside a source→fetch→compute→judge→conclude flow. If a lab doesn't have a
+// walkthrough authored yet, we fall back to its standalone analyzer so the page
+// is never empty.
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
     STRATEGIES.filter((s) => s.practical).map((s) => ({ locale, id: s.id })),
@@ -38,36 +33,21 @@ export default async function PracticePage({
     strategyLabel: strategy.label[locale],
     strategyHref: `/${locale}/strategies/${strategy.id}`,
   };
-  switch (strategy.practical) {
-    case "portfolio":
-      return <PortfolioLab {...common} />;
-    case "cost-drag":
-      return <CostDragLab {...common} />;
-    case "glide-path":
-      return <GlidePathLab {...common} />;
-    case "company-dividend":
-    case "company-value":
-    case "company-growth":
-    case "company-reit": {
-      const cmode = companyModeFor(strategy.practical);
-      if (!cmode) notFound();
-      return <CompanyLab {...common} mode={cmode} />;
-    }
-    case "trend-backtest":
-    case "active-trading": {
-      const tmode = tradeModeFor(strategy.practical);
-      if (!tmode) notFound();
-      return <TradeLab {...common} mode={tmode} />;
-    }
-    case "macro":
-      return <MacroLab {...common} />;
-    case "options":
-      return <OptionsLab {...common} />;
-    case "factor":
-      return <FactorLab {...common} />;
-    case "deal":
-      return <DealLab {...common} />;
-    default:
-      notFound();
-  }
+  const analyzer = renderAnalyzer(strategy.practical, common);
+  if (!analyzer) notFound();
+
+  const walk = getWalkthrough(strategy.practical);
+  if (!walk) return analyzer; // no walkthrough yet → show the tool alone
+
+  return (
+    <Walkthrough
+      locale={locale}
+      walk={walk}
+      analyzer={analyzer}
+      toolHref={`/${locale}/tools/${strategy.id}`}
+      strategyLabel={strategy.label[locale]}
+      strategyHref={common.strategyHref}
+      disclaimer={t.practical.disclaimer}
+    />
+  );
 }
