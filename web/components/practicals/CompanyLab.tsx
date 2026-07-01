@@ -59,14 +59,20 @@ export default function CompanyLab({
     if (!ticker.trim()) return;
     setStatus("loading");
     setData(null);
+    const tk = encodeURIComponent(ticker.trim());
+    // Fetch fundamentals and the live price in parallel; the quote is
+    // best-effort (auto-fills the price field, which the user can override).
+    const quotePromise = fetch(`/api/market-data/quote?ticker=${tk}&market=${market}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
     try {
-      const res = await fetch(
-        `/api/market-data/fundamentals?ticker=${encodeURIComponent(ticker.trim())}&market=${market}`,
-      );
+      const res = await fetch(`/api/market-data/fundamentals?ticker=${tk}&market=${market}`);
       if (res.status === 404) return setStatus("notfound");
       if (!res.ok) return setStatus("error");
       setData((await res.json()) as Fundamentals);
       setStatus("idle");
+      const q = await quotePromise;
+      if (q?.price != null) setPrice(String(q.price));
     } catch {
       setStatus("error");
     }
@@ -124,6 +130,9 @@ export default function CompanyLab({
                 placeholder="0"
                 className="w-32 rounded border border-white/10 bg-[#0f131c] px-3 py-2 text-white"
               />
+              {data && price && (
+                <span className="max-w-[12rem] text-[11px] text-gray-500">{c.priceAuto}</span>
+              )}
             </label>
             <button
               onClick={analyze}

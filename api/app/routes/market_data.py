@@ -12,10 +12,27 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Query
 
-from ..market_data import dart, edgar
+from ..market_data import dart, edgar, fmp, kis
 from ..market_data.schema import Fundamentals
 
 router = APIRouter(prefix="/market-data", tags=["market-data"])
+
+
+@router.get("/quote")
+async def quote(
+    ticker: str = Query(..., min_length=1, max_length=12),
+    market: str = Query("us", pattern="^(us|kr)$"),
+) -> dict:
+    """Current price (+ a few headline fields) — US via FMP, KR via KIS."""
+    try:
+        q = await (kis.quote(ticker) if market == "kr" else fmp.quote(ticker))
+        return {"ticker": ticker.upper(), "market": market, **q}
+    except LookupError as e:
+        raise HTTPException(status_code=404, detail=str(e)) from e
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Quote error: {e}") from e
 
 
 @router.get("/fundamentals", response_model=Fundamentals)

@@ -70,6 +70,10 @@ class Settings(BaseSettings):
     kis_app_secret: str = ""
     kis_account_no: str = ""
     krx_api: str = ""
+    # Financial Modeling Prep — current US quotes + fundamentals enrichment.
+    fmp_api_key: str = ""
+    # KIS real-trading domain (mock/paper uses openapivts...:29443).
+    kis_base_url: str = "https://openapi.koreainvestment.com:9443"
     # How long (seconds) to cache a fetched fundamentals payload. Fundamentals
     # change quarterly, so a long TTL is fine and respects upstream rate limits.
     market_data_cache_ttl: int = 86400
