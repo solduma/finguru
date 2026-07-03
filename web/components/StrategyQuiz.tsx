@@ -17,6 +17,7 @@ interface QuizStrings {
   title: string;
   intro: string;
   start: string;
+  startHere: string;
   of: string;
   back: string;
   next: string;
@@ -86,6 +87,13 @@ export default function StrategyQuiz({
         >
           {t.start}
         </button>
+        {/* Never-invested on-ramp: send absolute beginners to the primer first. */}
+        <Link
+          href={`/${locale}/indicators/investing-basics`}
+          className="block max-w-2xl text-sm text-amber-200/90 no-underline hover:text-amber-100"
+        >
+          {t.startHere}
+        </Link>
       </div>
     );
   }

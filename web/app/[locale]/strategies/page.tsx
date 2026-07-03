@@ -24,6 +24,25 @@ export default async function StrategiesIndex({
         <p className="max-w-2xl text-gray-300">{t.strategiesIndex.intro}</p>
       </div>
 
+      {/* Never-invested on-ramp: point absolute beginners at the primer before
+          they pick a strategy, so onboarding isn't purely pull-based. */}
+      <Reveal>
+        <Link
+          href={`/${locale}/indicators/investing-basics`}
+          className="flex items-center gap-3 rounded-lg border border-amber-400/30 bg-amber-400/5 p-4 no-underline transition hover:border-amber-300/60 hover-lift"
+        >
+          <span aria-hidden className="text-lg">🧭</span>
+          <span className="min-w-0">
+            <span className="block text-sm font-semibold text-amber-100">
+              {t.strategiesIndex.startHereTitle}
+            </span>
+            <span className="block text-sm text-gray-300">
+              {t.strategiesIndex.startHereBlurb}
+            </span>
+          </span>
+        </Link>
+      </Reveal>
+
       {/* Find My Strategy — the quiz entry, given top billing. */}
       <Reveal>
         <Link
