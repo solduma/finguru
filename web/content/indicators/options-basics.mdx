@@ -1,0 +1,213 @@
+---
+title: "Options 101 — Calls, Puts & Assignment"
+slug: "options-basics"
+kind: "indicator"
+school: "quant"
+level: "beginner"
+order: 129
+summary: "An option is a contract that rents you the right — not the duty — to buy or sell 100 shares at a fixed price before a deadline. This lesson walks through calls, puts, and the moment nobody warns beginners about: getting assigned."
+tags: ["options", "calls", "puts", "strike price", "expiration", "premium", "assignment", "covered calls"]
+prereqs: ["risk-management"]
+---
+
+## The one-sentence version
+
+An **option** is a contract that gives its owner the *right — but not the obligation —* to buy or sell **100 shares** of a stock at a fixed price, on or before a deadline. For that right, the owner pays an up-front fee called the **premium**.
+
+That's the whole idea in one breath. An option is like a coupon: a $30-off coupon lets you buy something at a discount if you want to, but nobody forces you to use it, and you paid a little something to get the coupon in the first place. This lesson takes that coupon apart piece by piece — what the fixed price is, when the deadline is, why the coupon costs what it costs, and the part that trips up almost every beginner: what happens when you're on the *other* side of the coupon and someone shows up to redeem it.
+
+This is your first-ever contact with options, so we go slow and use concrete dollars throughout. Options are genuinely higher-risk than owning stock, and we'll be honest about that.
+
+## The four words you must nail first
+
+Every option is described by four things. Get these four and the rest is just combinations.
+
+- **Underlying** — the stock the option is *about*. If the option is "about" shares of some company, that company's stock is the underlying. (We'll just use a made-up stock trading at **$100** throughout.)
+- **Strike price** (or just **strike**) — the fixed price written into the contract. It's the price at which you're allowed to buy or sell the shares, no matter what the stock actually costs at the time. Think of it as the price locked onto your coupon.
+- **Expiration** (or **expiry**) — the deadline. After this date the option is over; if you didn't use it, it's gone.
+- **Premium** — the price you pay to *buy* the option (or collect if you *sell* one). It's the cost of the coupon itself, separate from the strike.
+
+And the fact that surprises everyone the first time:
+
+<Callout type="key">
+
+**One option contract controls 100 shares.** Prices are quoted *per share*, but you buy the contract, so you multiply by 100. If an option is quoted at **$2.00**, one contract costs **$2.00 × 100 = $200**. Miss this and every number you calculate will be off by 100x. When someone says "I bought a call for two dollars," they almost always spent two hundred.
+
+</Callout>
+
+## A call = the right to BUY
+
+A **call option** gives its owner the right to **buy** 100 shares of the underlying at the strike price, any time up to expiry (for the common American style — more on styles below).
+
+You buy a call when you think the stock is going *up*, because a call lets you lock in today's-ish price and profit if the stock climbs above it. Here's the concrete walk-through. Our stock is at **$100**. You buy one **$105 call** expiring in a month, and the premium is **$2.00 per share** — so it costs you **$200** for the contract (controlling 100 shares).
+
+The strike is $105. That's the price you're allowed to buy at. Two things can happen by expiry:
+
+- **The stock rises to $110.** Your call lets you buy 100 shares at $105 when they're worth $110 — a $5-per-share gain, or **$500**. You paid $200 for the call, so your net profit is **$500 − $200 = $300**. The right was worth using.
+- **The stock falls to $95.** Why would you use a coupon to buy at $105 when the shares cost $95 in the open market? You wouldn't. You let the call **expire worthless** and you lose the **$200** premium — nothing more. That capped loss is the whole point of *buying* an option: the premium is the most you can lose.
+
+Notice the shape: buying a call risks a small, known amount (the premium) for a potentially large gain. That asymmetry attracts beginners — and burns them, because "expire worthless" is the *usual* outcome, not the exception.
+
+## A put = the right to SELL
+
+A **put option** is the mirror image: it gives its owner the right to **sell** 100 shares at the strike price by expiry.
+
+You buy a put when you think the stock is going *down*, or when you already own the stock and want **insurance** against a drop — a put is the closest thing the market has to a fire-insurance policy on your shares. Same stock at **$100**. You buy one **$95 put** for a **$2.00** premium (**$200** total). The strike is $95 — the price you're guaranteed you can sell at.
+
+- **The stock falls to $90.** Your put lets you sell at $95 when the shares are only worth $90 — a $5-per-share benefit, **$500**. Minus the $200 premium, that's **$300** net. If you owned the stock, the put softened your loss; if you didn't, you profited from the fall.
+- **The stock rises to $110.** Why sell at $95 when you could sell at $110 in the market? You wouldn't. The put **expires worthless** and you lose the **$200** premium. If this put was insurance on stock you own, that's fine — your shares went up, and the $200 was the cost of a policy you were glad not to need.
+
+<Callout type="note">
+
+A put is not a bet that always "wins when the stock falls." It only pays if the stock falls *below the strike by more than the premium you paid*. A $2 put on a $95 strike needs the stock under **$93** just to break even. Buying protection, like buying insurance, has a cost that eats into the payout.
+
+</Callout>
+
+## Moneyness: in-, at-, and out-of-the-money
+
+You'll constantly hear an option called "ITM," "ATM," or "OTM." This just describes whether the option would be worth *using right now* — its **moneyness**.
+
+- **In-the-money (ITM)** — using the option right now would give you real value. A $105 call is ITM when the stock is *above* $105. A $95 put is ITM when the stock is *below* $95.
+- **At-the-money (ATM)** — the strike is right about where the stock is trading (a $100 strike with the stock at $100).
+- **Out-of-the-money (OTM)** — using the option now would be pointless. A $105 call with the stock at $100 is OTM (why buy at $105 when it's $100?). A $95 put with the stock at $100 is OTM too.
+
+## Intrinsic value vs. time value — where premium comes from
+
+An option's premium is really two pieces added together, and separating them explains almost everything about pricing.
+
+- **Intrinsic value** — the value the option would have *if it expired right now*. It's the "already in the money" part. For a $105 call with the stock at $110, intrinsic value is **$110 − $105 = $5**. An out-of-the-money option has **zero** intrinsic value (it's worth nothing if it expired this instant).
+- **Time value** (or **extrinsic value**) — everything *above* intrinsic value. It's what buyers pay for the *possibility* that the stock moves further in their favor before expiry. It's the "who knows what could happen yet" part.
+
+```
+Premium = Intrinsic value + Time value
+```
+
+**Worked example.** Stock at **$110**, a **$105 call** trading for a **$7** premium.
+
+```
+Intrinsic value = $110 − $105 = $5   (it's $5 in-the-money)
+Time value      = $7 − $5     = $2   (the rest is hope + time)
+```
+
+So of the $7 you pay, $5 is "real" value you'd capture immediately and $2 is paying for the chance the stock climbs even higher before expiry.
+
+<Callout type="key">
+
+**Time value bleeds away as expiry approaches — this is "time decay."** Every day that passes, there's less time for the stock to move, so the time-value portion of the premium shrinks, and it shrinks *faster* in the final weeks. On expiration day, time value is essentially zero: an option is worth only its intrinsic value. For an option *buyer*, this decay is a constant headwind; for a *seller*, it's the tailwind they're trying to harvest.
+
+</Callout>
+
+<LineChart
+  caption="Illustrative, not a forecast. The time-value portion of an option's premium melts toward zero as expiration nears, and the melt accelerates in the final weeks. An option buyer fights this decay every day; a seller collects it. Real curves vary with the stock and volatility."
+  labels={["90 days left", "60 days", "30 days", "14 days", "7 days", "Expiry"]}
+  series={[{ label: "Time value remaining ($/share)", data: [3.0, 2.4, 1.7, 1.0, 0.6, 0.0] }]}
+  yLabel="Time value ($ per share)"
+/>
+
+## What makes premium expensive or cheap
+
+You don't need heavy math to understand the two biggest levers on an option's price. Both push in the same intuitive direction: **the more likely a big move seems, the more the option costs.**
+
+- **Time to expiry.** More time = more chances for the stock to move your way = pricier option. A call expiring in six months costs more than the same-strike call expiring next week, all else equal. (This is just time value, above.)
+- **Implied volatility (IV).** **Volatility** is how much a stock tends to jump around; *implied* volatility is the amount of future movement the *market is currently pricing in*. High IV means traders expect big swings — which makes both calls and puts more expensive, because a bigger expected range means a better chance the option finishes deep in the money. IV typically spikes before events like earnings reports.
+
+<Callout type="warning">
+
+**The IV-crush trap.** Beginners often buy a call right before an earnings announcement, betting the stock jumps. The stock *does* jump the right way — and the option still loses money. How? Implied volatility was pumped up before the event and **collapses the moment the news is out** (the uncertainty is resolved). That drop in IV — "IV crush" — can erase more value than the stock move added. Being right on direction is not enough; you also paid for volatility that then evaporated.
+
+</Callout>
+
+## The four basic positions — who has the right, who has the obligation
+
+Every simple options play is one of four positions. The split that matters is **buyer vs. seller**: the buyer pays premium and holds a *right*; the seller (the **writer**) collects premium and takes on an *obligation* to honor the contract if the buyer uses it.
+
+- **Long call** *(you buy a call)* — you **pay** premium; you have the **right to buy** 100 shares at the strike. Max loss = the premium. Used to bet the stock rises.
+- **Long put** *(you buy a put)* — you **pay** premium; you have the **right to sell** 100 shares at the strike. Max loss = the premium. Used to bet the stock falls, or to insure shares you own.
+- **Short call** *(you write/sell a call)* — you **collect** premium; you take on the **obligation to sell** 100 shares at the strike *if the buyer exercises*. If you already own those 100 shares, this is a **covered call** — the income strategy this learning path is built around. If you don't own them, it's a **naked call**, whose risk is theoretically unlimited (a stock can rise forever, and you'd have to deliver shares at the low strike no matter how high it climbs).
+- **Short put** *(you write/sell a put)* — you **collect** premium; you take on the **obligation to buy** 100 shares at the strike *if the buyer exercises*. Your risk is large but capped (the stock can only fall to $0). Often used to try to buy a stock you like at a lower effective price, or purely for income.
+
+<Callout type="key">
+
+The core trade in every option: **the buyer pays cash today for a right; the seller pockets that cash today in exchange for an obligation.** The seller's most likely outcome is keeping the premium free and clear (options often expire worthless). Their nightmare outcome is being forced to honor the contract at a terrible price. Premium is the seller's *pay for taking that risk.*
+
+</Callout>
+
+## Assignment — the moment beginners get blindsided
+
+Here is the concept that separates people who understand options from people who merely bought one. **Assignment** is what happens on the *seller's* side when the buyer decides to use their option.
+
+When an option buyer **exercises** (uses their right), the clearinghouse picks a seller of that same option and **assigns** them — obligating them to fulfill the contract. If you *sold* an option and it's **in-the-money** at expiry, expect to be assigned. Concretely:
+
+- **You're assigned on a call you wrote** → you must **sell** (deliver) 100 shares at the strike. If it's a covered call and you own the shares, they simply get sold at the strike — you keep the premium but give up any gain above the strike. If it's naked, you must go **buy** 100 shares at the current (higher) market price to deliver them at the lower strike — that's the painful, potentially huge loss.
+- **You're assigned on a put you wrote** → you must **buy** 100 shares at the strike, even if the stock is now worth far less. You wanted the premium; the obligation is the string attached.
+
+**Worked example.** You write (sell) one $105 call on our stock for a **$2** premium ($200 collected), and you own 100 shares you bought at $100. The stock climbs to **$112** by expiry. The buyer exercises. You're **assigned**: you must sell your 100 shares at **$105**.
+
+```
+Sold shares at strike:      100 × $105 = $10,500
+Premium you kept:                          +$200
+Your cost for the shares:   100 × $100 = −$10,000
+------------------------------------------------
+Net result:                                +$700
+```
+
+You made $700 — a fine outcome. But notice what you *gave up*: the stock reached $112, so on your own you'd have gained $1,200; instead you capped yourself at the strike. The premium is the trade-off for surrendering all upside above $105. That capped upside is the defining feature of writing calls.
+
+<Callout type="warning">
+
+**Assignment can happen early — especially around dividends.** With **American-style** options (most single-stock options in the US), the buyer can exercise *any time* before expiry, not just at the end. The classic early-assignment trigger: if you've written an in-the-money call and the stock is about to pay a dividend, the call owner may exercise *the day before the ex-dividend date* to grab the shares and collect that dividend. You can be assigned with no warning, at the worst possible moment. **European-style** options (common on index products) can only be exercised at expiry — no early-assignment surprise — so always know which style you hold.
+
+</Callout>
+
+## The ways this fails — what the marketing doesn't tell you
+
+Options ads sell the dream: "control 100 shares for a fraction of the cost," "generate income in any market." The mechanics are real. The honest picture is harder.
+
+<Callout type="warning">
+
+**1. Bought options usually expire worthless.** The single most common beginner experience is watching the whole premium go to zero. You can be *right about direction* and still lose, because the stock didn't move enough, or didn't move fast enough, and time decay plus IV crush ate the option alive. The capped loss is "only the premium" — but losing 100% of what you put in, over and over, adds up fast.
+
+**2. Sellers have a small, capped gain and a large, sometimes undefined risk.** Writing options flips the payoff: you collect a modest premium (your best case) while shouldering the risk of a big adverse move. A **naked call**'s loss is theoretically *unlimited*. A written put or a covered call has capped-but-large downside. The premium can feel like free money right up until the one move that dwarfs a year of collected premiums.
+
+**3. This is higher-risk than owning stock — leverage cuts both ways.** One contract controls 100 shares for a small premium, so percentage swings are violent. A 5% move in the stock can be a 100% move in the option. Leverage magnifies gains *and* wipes out capital.
+
+**4. Complexity and fees compound.** Bid-ask spreads on options are often wide, commissions per contract add up, assignment can hit at inconvenient times, and the tax treatment is fiddly. Every layer is a place for a beginner to lose money that a stock-only investor never faces.
+
+</Callout>
+
+<Callout type="note">
+
+**Where beginners should start (educational, not a recommendation).** The gentlest, most-taught entry into options is the **covered call** — writing a call against 100 shares you already own — because your obligation is simply to sell stock you're holding anyway, and your worst case is "I sold my shares at a price I chose." That's why this OPTIONS-INCOME path teaches the income uses first. Buying speculative calls and puts, and anything involving *naked* selling, carries far more risk and belongs much later, if ever. Most brokers require you to apply for tiered "options approval" precisely because the strategies differ so wildly in risk.
+
+</Callout>
+
+## Reading an option's name
+
+Put it all together and an option quote like **"XYZ Jan-16 $105 Call @ $2.30"** decodes cleanly: **XYZ** is the underlying stock, **Jan-16** the expiration date, **$105** the strike, **Call** the type (right to buy), and **$2.30** the premium *per share* — so **$230** for the one contract controlling 100 shares. If you can read that line and say who has the right, who has the obligation, and what happens at expiry if the stock is above or below $105, you understand the core of options.
+
+## Key takeaways
+
+- An **option** is a contract granting the *right, not the obligation,* to buy or sell **100 shares** at a fixed **strike** price by an **expiry** date, in exchange for an up-front **premium**. One contract = 100 shares, so multiply quoted prices by 100.
+- A **call** is the right to **buy** at the strike (bet up, or an income tool when sold); a **put** is the right to **sell** at the strike (bet down, or insurance/income).
+- **Moneyness**: an option is **in-the-money** if using it now has value, **at-the-money** near the strike, **out-of-the-money** if using it now is pointless.
+- Premium = **intrinsic value** (the in-the-money part) + **time value** (payment for the chance of further movement). **Time value decays to zero by expiry** — a headwind for buyers, a tailwind for sellers.
+- Premium is driven mostly by **time to expiry** and **implied volatility**: more time or more expected movement = pricier. Beware **IV crush** around earnings.
+- The **four positions**: **long call / long put** (you pay premium, you hold the *right*, max loss = premium) and **short call / short put** (you collect premium, you carry the *obligation*, with large or even unlimited risk).
+- **Assignment**: if you *sold* an option and it's in-the-money, you can be forced to deliver or buy the shares — the obligation you took the premium for. With **American-style** options it can happen **early**, notably around **dividends**; **European-style** only at expiry.
+- Options are **higher-risk than owning stock**: bought options often **expire worthless**, sellers face capped gains against large/undefined risk, and leverage magnifies everything. Beginners should learn the income uses (**covered calls**) before anything speculative.
+- Educational material, not a recommendation to trade options — understand the risks and your broker's approval tiers before ever placing a trade.
+
+## Further reading
+
+- [SEC — Investor.gov: Options](https://www.investor.gov/introduction-investing/investing-basics/investment-products/options) — the regulator's plain-language primer on calls, puts, and risks.
+- [OCC — The Options Clearing Corporation: education](https://www.optionseducation.org/) — the clearinghouse that handles exercise and assignment explains the mechanics.
+- [SEC Investor Bulletin — An Introduction to Options](https://www.sec.gov/oiea/investor-alerts-and-bulletins) — official guidance on options basics and risk.
+
+---
+
+### Sources
+
+1. [Option (finance) — Wikipedia](https://en.wikipedia.org/wiki/Option_(finance)) — definition of calls/puts, strike, expiry, premium, the right-vs-obligation split, intrinsic vs. time value, and American vs. European exercise styles.
+2. [Exercise (options) — Wikipedia](https://en.wikipedia.org/wiki/Exercise_(options)) — how exercise and assignment work, and early exercise around dividends.
+3. [Investor.gov (SEC) — Options](https://www.investor.gov/introduction-investing/investing-basics/investment-products/options) — regulator framing of options risk, the 100-share contract, and why they are higher-risk products.
+4. [Implied volatility — Wikipedia](https://en.wikipedia.org/wiki/Implied_volatility) — implied volatility as the market's priced-in expected movement and its effect on premium.

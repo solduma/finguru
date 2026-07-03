@@ -1,0 +1,222 @@
+---
+title: "Bonds & Fixed Income — The Portfolio's Ballast"
+slug: "bonds-fixed-income"
+kind: "indicator"
+school: "quant"
+level: "beginner"
+order: 127
+summary: "When you buy a bond you stop being an owner and become the lender — you get paid interest and, if all goes well, your money back. This lesson covers what a bond actually is, the seesaw that makes bond prices move opposite to interest rates, and why a diversified portfolio holds bonds as ballast — including the year that ballast failed."
+tags: ["bonds", "fixed income", "yield", "duration", "interest rates", "yield curve", "credit risk", "diversification"]
+prereqs: ["charles-dow"]
+---
+
+## The one-sentence version
+
+When you buy a **stock**, you own a slice of a company. When you buy a **bond**, you are not an owner at all — you are the **lender**. You hand a government or a company a pile of money, they promise to pay you interest along the way and return your money on a fixed date, and that promise is the whole product.
+
+That difference — owner versus lender — is why bonds behave so differently from stocks, and why a diversified, all-weather portfolio holds them. Stocks are the engine: they provide most of the long-run growth, but they lurch. Bonds are the **ballast** — the heavy, boring weight low in a ship's hull that keeps it from capsizing when the engine's power throws it around. This lesson explains what a bond really is, the counterintuitive seesaw between bond prices and interest rates, and the honest limits of the ballast metaphor — including the year the ballast leaked.
+
+<Callout type="key">
+
+A bond is an **IOU you can trade.** You lend money; the borrower promises fixed interest plus your money back on a set date. Because the interest is fixed, the whole family is called **fixed income.** Its job in a portfolio is not to make you rich — it's to keep you steady while your stocks do the growing.
+
+</Callout>
+
+## What a bond actually is (you are the lender)
+
+Governments and companies constantly need to borrow. Rather than visit a bank, they borrow from thousands of investors at once by **issuing bonds** — and each bond is a chunk of that loan that you can buy, hold, and later sell to someone else.
+
+So the roles flip. As a shareholder you're an owner hoping the business grows. As a **bondholder** you're a creditor. You don't share in the company's success beyond your agreed interest — but you also stand *ahead* of shareholders if things go wrong. If a company goes bankrupt, bondholders get paid out of what's left before shareholders see a cent. You gave up the upside in exchange for a stronger, more predictable claim.
+
+## The anatomy of a bond
+
+Every bond is defined by a handful of terms. Meet them once and the rest of the lesson clicks into place.
+
+- **Face value (par):** the amount the issuer promises to repay you at the end — the loan's principal. It's conventionally quoted as **$1,000** per bond. Think of it as the sticker on the IOU.
+- **Coupon:** the fixed interest the bond pays, quoted as an annual percentage of face value. A 5% coupon on a $1,000 bond pays **$50 a year**, usually split into two $25 payments. (The name is literal: old paper bonds had little coupons you clipped off and mailed in to collect your interest.)
+- **Maturity:** the date the loan ends and the issuer repays the face value. It can be months away (a short-term bond) or 30 years out (a long-term bond).
+- **Issuer:** who's borrowing — and therefore who has to pay you back. This is the single biggest driver of how safe the bond is.
+
+On the issuer, three broad families matter:
+
+- **Government bonds** — a national government borrowing in its own currency (in the US, **Treasuries**). Generally treated as the safest borrower in that currency, because a government can tax and, in the last resort, print money to pay. This is the classic "ballast" bond.
+- **Corporate bonds** — a company borrowing. Riskier than a government of the same country, because companies can go bankrupt. To compensate, they pay **more** interest.
+- **Municipal bonds** — in the US, bonds issued by state or local governments (to build a school, a bridge, a water system). Their interest is often free of federal income tax, which is their main draw.
+
+<Callout type="note">
+
+A bond bought at issue and held to maturity is genuinely simple: you collect the coupons, then get your face value back. All the confusing stuff — prices bouncing around, "yields" that differ from the coupon — comes from the fact that bonds also **trade** in between. The moment you might sell before maturity, or buy someone else's bond secondhand, price and yield start to matter.
+
+</Callout>
+
+## Coupon vs. yield — the number that actually tells you your return
+
+Beginners mix up two numbers that sound alike. The **coupon** is fixed forever — a 5% bond always pays $50 a year. The **yield** is what you actually earn *given the price you pay today*, and it moves.
+
+The simplest version, **current yield**, is the annual coupon divided by the bond's current market price:
+
+```
+current yield = annual coupon ($) / current price ($)  × 100
+```
+
+Say a $1,000 bond has a 5% coupon, so it pays $50 a year. If you can buy it today for exactly $1,000, your yield is `50 / 1000 = 5%` — same as the coupon. But bonds don't always trade at face value. If nervous sellers dump this bond and you scoop it up for **$800**, you still collect the same $50 a year — so your yield is `50 / 800 = 6.25%`. You paid less for the same fixed stream, so you earn a higher rate.
+
+That's the whole secret hiding behind the jargon: **the coupon is fixed in dollars, so the only way the market can make an old bond pay a competitive rate is to change its price.** Hold that thought — it's the seesaw.
+
+<Callout type="note">
+
+Professionals mostly quote **yield to maturity (YTM)**, a fuller number that also folds in the gain or loss between today's price and the $1,000 you'll get back at maturity, spread over the bond's remaining life. The exact YTM math needs a calculator, but the intuition is identical to current yield: **pay less than face value and your yield rises above the coupon; pay more and it falls below.** For a beginner, "yield moves opposite to price" is the load-bearing idea — not the formula.
+
+</Callout>
+
+## The core seesaw: prices move opposite to rates
+
+Here is the one fact that surprises every beginner, and the reason bonds feel weird: **when interest rates rise, existing bond prices fall — and when rates fall, existing bond prices rise.** They sit on opposite ends of a seesaw.
+
+Why? Because a bond's coupon is locked in, but the world's interest rates are not. Work through it slowly with real numbers:
+
+1. You buy a brand-new $1,000 bond with a **5% coupon** → it pays $50 a year. Fair deal, because new bonds are being issued at 5%.
+2. Six months later, interest rates in the economy climb. Now the government issues **new** $1,000 bonds paying a **6% coupon** → $60 a year.
+3. You need to sell your old bond. But why would anyone pay $1,000 for your $50-a-year bond when a fresh $1,000 bond pays $60? They wouldn't.
+4. So your bond's **price has to drop** until its $50-a-year payment represents a competitive yield. Roughly, it has to fall toward the point where $50 on the lower price works out near 6%. Your bond is now worth *less than* $1,000 — even though nothing about the bond itself changed.
+
+The reverse is just as true. If rates *fall* to 4%, your 5%-coupon bond suddenly looks generous, and buyers will pay *more than* $1,000 to get it. The bond didn't get better; the alternatives got worse.
+
+<Callout type="key">
+
+The seesaw in one line: **a bond's coupon is fixed, so when the going rate changes, the bond's *price* is the only thing that can move to keep it competitive.** Rates up → old bonds worth less. Rates down → old bonds worth more. This is why "interest rates" and "bonds" are always mentioned in the same breath.
+
+</Callout>
+
+<Callout type="warning">
+
+The beginner trap: "bonds are safe, so their price can't fall." Not true. A **government** bond has almost no risk that the issuer *fails to pay you back* — but its market **price still swings** as rates move. If you're forced to sell a long-term bond after rates have jumped, you can lose real money on a bond that will, if held to maturity, pay every promised cent. Safe from default is not the same as safe from price moves.
+
+</Callout>
+
+## Duration — how hard the seesaw swings
+
+If every bond reacted to rate changes by the same amount, that would be the end of it. But they don't. A 30-year bond gets slammed by a rate move; a 1-year bond barely flinches. The measure of that sensitivity is **duration.**
+
+Plain-English duration: **roughly how much a bond's price moves, in percent, for each 1-percentage-point change in interest rates.** A rule of thumb that's close enough for intuition: a bond with a duration of 8 loses about 8% of its price if rates rise 1%, and gains about 8% if rates fall 1%.
+
+Why does a longer maturity mean a bigger swing? Because a long bond locks you into its now-uncompetitive coupon for *many more years*. If your bond underpays by $10 a year, one more year of that is a small annoyance; twenty more years of it is a real loss — so the price has to drop much further to make up for two decades of shortfall.
+
+**Worked example (illustrative).** Rates rise 1 percentage point. Compare two bonds:
+
+- A **2-year** bond has a duration of roughly **2**. Its price falls about **2%** — a $1,000 bond drops to about **$980**. Annoying, but small; and it matures soon, so you get your $1,000 back before long anyway.
+- A **10-year** bond has a duration of roughly **9**. Its price falls about **9%** — a $1,000 bond drops to about **$910**. Same 1-point rate move, more than four times the price hit.
+
+<BarChart
+  caption="Illustrative, not a forecast. The approximate price drop when interest rates rise by 1 percentage point, for bonds of different maturities. Longer bonds have higher duration and swing far harder on the same rate move — that is why 'how long until it matures' is the first question about a bond's price risk."
+  labels={["2-year bond", "5-year bond", "10-year bond", "30-year bond"]}
+  series={[{ label: "Approx. price drop if rates rise 1% (%)", data: [2, 4.5, 9, 19] }]}
+  yLabel="Price decline (%)"
+/>
+
+<Callout type="note">
+
+This cuts both ways, and it's the honest reason long bonds exist. The same duration that hurts you when rates rise **helps** you when rates fall: that 30-year bond that drops ~19% on a 1-point rate rise would gain roughly that much on a 1-point rate *cut*. Long bonds are the strongest cushion when rates plunge in a crisis — and the most painful thing to hold when rates spike. Duration is the dial that sets how much of that ride you're signing up for.
+
+</Callout>
+
+## The yield curve, in one plain paragraph
+
+If you plot the yield of government bonds against how long until they mature — 3-month, 2-year, 10-year, 30-year — you get the **yield curve.** Normally it slopes **upward**: lenders demand more yield to tie up their money for longer, because a lot can go wrong over 30 years, so long-term rates sit above short-term rates. Sometimes, though, the curve **inverts** — short-term yields rise *above* long-term ones. That's unusual and it makes headlines because, historically, an inverted yield curve has often (not always) preceded a recession: it signals that investors expect the central bank to cut rates in the future to rescue a slowing economy, which is a collective bet that trouble is coming. Treat it as a widely-watched *warning light*, not a guarantee — it has been early, and it has been wrong.
+
+## Credit risk — you get paid more to lend to a riskier borrower
+
+The seesaw so far assumed the borrower always pays you back. For governments in their own currency, that's a fair assumption. For companies, it isn't. **Credit risk** is the risk that the issuer **defaults** — fails to make its promised payments. A default can mean late payments, reduced payments, or, in a bankruptcy, getting back only a fraction of your money.
+
+To help investors judge this, agencies (Moody's, S&P, Fitch) assign **credit ratings** — letter grades for how likely a borrower is to pay. They split into two big buckets:
+
+- **Investment-grade** (roughly BBB/Baa and above): borrowers judged reliable. Lower yields, because lending to them is safer.
+- **High-yield**, bluntly nicknamed **junk** (below investment-grade): borrowers judged shaky. Higher yields, because you're being paid to accept a real chance of not being repaid.
+
+<Callout type="key">
+
+The iron law of fixed income: **higher yield is compensation for higher risk, not a free lunch.** A bond paying noticeably more than a Treasury of the same maturity is paying you extra because something is riskier — longer duration, weaker credit, or both. The extra yield a corporate bond pays over a safe government bond is called the **credit spread**, and it's literally the market's price tag on that borrower's risk of not paying you back.
+
+</Callout>
+
+<Callout type="warning">
+
+Ratings are opinions, not guarantees, and they can lag reality badly. In the 2008 crisis, piles of mortgage bonds carried top **AAA** ratings right up until they collapsed. A rating is a useful starting filter — it is not a promise. And "high-yield" funds can behave a lot like stocks in a crash: when the economy scares investors, junk bonds fall *with* equities rather than cushioning them, precisely when you wanted a cushion.
+
+</Callout>
+
+## Why a portfolio holds bonds: the ballast
+
+Now the payoff. Why would a growth-seeking investor deliberately hold something as un-exciting as a government bond? Because of how bonds behave **when stocks fall.**
+
+For much of modern history, high-quality government bonds have tended to **rise when stocks crash.** The mechanism is intuitive: when a recession or panic hits, frightened investors sell stocks and pile into the safest thing they can find — government bonds — pushing bond prices up. On top of that, central banks usually *cut interest rates* to fight a downturn, and (via the seesaw) falling rates push bond prices up further. So the same event that guts your stocks can lift your bonds.
+
+The cleanest real example is **2008.** US stocks fell roughly 37% for the year, while high-quality US Treasury bonds *gained* — a broad Treasury index rose in the double digits. An investor holding both felt far less pain than one holding stocks alone: the bonds were the ballast, steadying the ship while the stock engine sputtered.
+
+<LineChart
+  caption="Illustrative, not real data. A stylized crisis year: stocks fall sharply while high-quality government bonds rise, so a blended stock-and-bond portfolio drops far less than stocks alone. This is the 'ballast' effect that a diversified portfolio is built around — it is a tendency, not a guarantee (see the 2022 caveat below)."
+  labels={["Start", "Q1", "Q2", "Q3", "Q4"]}
+  series={[
+    { label: "Stocks only", data: [100, 92, 80, 68, 63] },
+    { label: "Government bonds", data: [100, 103, 106, 109, 111] },
+    { label: "60/40 blend", data: [100, 96, 90, 84, 82] }
+  ]}
+  yLabel="Portfolio value (indexed to 100)"
+/>
+
+<Callout type="key">
+
+The ballast idea: stocks and safe bonds often move in **opposite directions** during a crisis, so mixing them smooths the ride. You give up some upside in booming years, but you avoid the stomach-churning full-depth crashes — and, crucially, you're less likely to panic-sell at the bottom. The classic expression of this is the **60/40 portfolio**: 60% stocks for growth, 40% bonds for ballast. (Educational, not a recommendation — the right mix depends entirely on the individual.)
+
+</Callout>
+
+## The honest caveat: the year the ballast leaked
+
+The ballast metaphor is powerful, and the marketing around "safe bonds" leans on it hard. But it rests on an assumption that is not a law of physics: that bonds and stocks move *oppositely.* They usually do — but not always. And when the assumption breaks, it breaks at the worst possible time.
+
+**2022** is the cautionary tale every honest bond lesson has to tell. That year, inflation surged and central banks raised interest rates rapidly to fight it. Stocks fell — and bonds, instead of cushioning the blow, **fell too.** Via the seesaw, sharply rising rates crushed bond prices, and longer-duration bonds got hit hardest. A US total bond index lost around **13%** — its worst year in modern history — at the same time stocks dropped roughly 18%. The classic 60/40 portfolio had one of its ugliest years ever, because *both* halves fell together. The ballast leaked.
+
+<Callout type="warning">
+
+The pattern to internalize: bonds cushion stock crashes **that are driven by recession or panic** (rates fall, bonds rise — 2008). They do **not** cushion — and can amplify — a crash **driven by inflation and rising rates** (2022). Diversification is a strong tendency, not a promise. Anyone who tells you bonds "always" protect you is selling the metaphor, not the reality.
+
+</Callout>
+
+## How individuals actually own bonds
+
+You *can* buy an individual bond and hold it to maturity — collect the coupons, get your face value back, ignore the price wiggles in between. That's the most predictable way to own fixed income, and it's popular with people who want a known payment on a known date.
+
+But most people, especially beginners, own bonds through a **bond fund** or **bond ETF** — a single fund that holds hundreds or thousands of individual bonds. The trade-offs:
+
+- **Individual bonds:** you know your exact payments and your exact maturity date, so if you hold to maturity, price swings don't cost you real money. The downsides: it takes a lot of money to buy enough different bonds to be diversified, and selling one early can be clumsy and expensive.
+- **Bond funds / ETFs:** instant diversification across many issuers, low minimums, easy to buy and sell like a stock. The catch beginners miss: a bond fund **never matures.** It continually replaces maturing bonds, so it always has a duration — and its share price rises and falls with rates *permanently.* There's no "just hold to maturity" escape hatch; you're exposed to the seesaw for as long as you own it.
+
+<Callout type="note">
+
+A bond fund's **duration** (usually listed right on its fact sheet) tells you its rate sensitivity at a glance — the same rule of thumb applies: duration 6 means roughly a 6% price move per 1-point rate change. When you pick a bond fund, you're really choosing two dials: **how much credit risk** (government vs. corporate vs. junk) and **how much duration** (short-term vs. long-term). Those two choices explain most of how any bond fund will behave.
+
+</Callout>
+
+## Key takeaways
+
+- A **bond** makes you the **lender**, not an owner: fixed interest plus your money back on a set date. The whole family is **fixed income.** Its portfolio job is stability, not growth.
+- Anatomy: **face value** (par, ~$1,000, repaid at the end), **coupon** (fixed interest, e.g. 5% = $50/yr), **maturity** (the end date), and **issuer** (government = safest, corporate = riskier/higher-paying, municipal = often tax-advantaged).
+- **Yield** is what you actually earn given today's price, and it moves even though the coupon is fixed — buy below face value and your yield rises above the coupon.
+- The **core seesaw:** bond prices move **opposite** to interest rates. Rates up → existing bonds worth less; rates down → worth more. A fixed coupon can only stay competitive by changing its price.
+- **Duration** measures how hard the seesaw swings: ~duration % price move per 1-point rate change. **Longer maturity = bigger swing** — a 10-year bond can fall ~9% on a 1-point rate rise while a 2-year barely dips ~2%.
+- The **yield curve** normally slopes up (longer = higher yield); an **inversion** (short above long) is a watched — but imperfect — recession warning.
+- **Credit risk** is the risk of **default.** Ratings run from **investment-grade** down to **junk/high-yield**; you're paid a higher yield (the **credit spread**) to lend to riskier borrowers — never a free lunch.
+- Bonds are portfolio **ballast** because high-quality government bonds often **rise when stocks crash** (2008). But this is a tendency, not a law: in **2022**, inflation and rising rates made stocks **and** bonds fall together.
+- Most people own bonds via **funds/ETFs** (diversified, but permanently exposed to the seesaw — a fund never matures) rather than **individual bonds** (predictable if held to maturity, but harder to diversify).
+- This is educational material, not financial advice. The reliable claim isn't "bonds are safe" — it's "bonds behave differently from stocks, and that difference is what makes them useful."
+
+---
+
+### Sources
+
+1. [SEC — Investor.gov: Bonds](https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products) — the regulator's plain-language primer on what a bond is, coupon, face value, maturity, issuer types, and credit risk.
+2. [Bond (finance) — Wikipedia](https://en.wikipedia.org/wiki/Bond_(finance)) — face value/par, coupon mechanics, maturity, issuer categories, and the price-yield relationship.
+3. [Bond duration — Wikipedia](https://en.wikipedia.org/wiki/Bond_duration) — duration as the measure of price sensitivity to interest-rate changes and its link to maturity.
+4. [Yield curve — Wikipedia](https://en.wikipedia.org/wiki/Yield_curve) — normal upward slope, inversion, and the empirical (imperfect) inversion-recession relationship.
+5. [Credit rating — Wikipedia](https://en.wikipedia.org/wiki/Credit_rating) — investment-grade vs. high-yield ("junk") categories and the meaning of ratings.
+6. [FINRA — Bonds and Interest Rates](https://www.finra.org/investors/investing/investment-products/bonds) — the inverse price-rate relationship, credit spreads, and bond-fund vs. individual-bond trade-offs, plus 2008 and 2022 as illustrative crisis years for stock-bond correlation.

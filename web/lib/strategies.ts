@@ -64,6 +64,7 @@ export const STRATEGIES: Strategy[] = [
     },
     schools: ["quant"],
     steps: [
+      concept("investing-basics", "New to all of this? Start here: stock, share, ticker, broker, bond, dividend, fund — every word the path uses, in one plain paragraph each.", "여기가 처음인가요? 여기서 시작하세요: 주식·주·티커·증권사·채권·배당·펀드 — 이 경로가 쓰는 모든 용어를 한 문단씩 쉬운 말로."),
       guru("william-sharpe", "The arithmetic proof that the average active dollar must lose to the average passive dollar after costs.", "비용을 빼면 평균적인 액티브 투자가 평균적인 패시브 투자에 질 수밖에 없다는 산술적 증명."),
       guru("bogle-cost-matters", "The man who turned that arithmetic into a product: minimize cost, the one thing you control.", "그 산술을 상품으로 만든 인물: 당신이 통제할 수 있는 유일한 변수인 비용을 최소화하라.", { en: "John Bogle — The Rules of Humble Arithmetic", ko: "존 보글 — 겸손한 산술의 법칙" }),
       guru("fama-french", "Why it works: if markets are largely efficient, capture the average cheaply instead of trying to beat it.", "왜 통하는가: 시장이 대체로 효율적이라면, 이기려 하지 말고 평균을 저렴하게 취하라."),
@@ -91,6 +92,7 @@ export const STRATEGIES: Strategy[] = [
     },
     schools: ["quant"],
     steps: [
+      concept("investing-basics", "Brand new? Start here: what a stock, fund, ETF, bond, and index actually are — the vocabulary the rest of this path assumes.", "완전 초보인가요? 여기서 시작하세요: 주식·펀드·ETF·채권·지수가 실제로 무엇인지 — 이 경로가 전제하는 기본 어휘."),
       guru("bogle-cost-matters", "The foundation: keep costs near zero — a target-date fund is only as good as its fees.", "기초: 비용을 0에 가깝게 — 타깃데이트 펀드의 가치는 그 보수에 달렸다.", { en: "John Bogle — Why Costs Decide", ko: "존 보글 — 비용이 결정한다" }),
       concept("index-funds-etfs", "What's inside: a target-date fund is a fund-of-index-funds that rebalances itself.", "내부 구조: 타깃데이트 펀드는 스스로 리밸런싱하는 '인덱스 펀드의 펀드'.", { en: "Index Funds & ETFs", ko: "인덱스 펀드 & ETF" }),
       concept("asset-allocation", "The glide path: how the stock/bond mix automatically gets safer as your date nears.", "글라이드 패스: 목표 시점이 다가올수록 주식/채권 비중이 자동으로 안전해지는 방식.", { en: "Asset Allocation & the Glide Path", ko: "자산배분 & 글라이드 패스" }),
@@ -115,6 +117,7 @@ export const STRATEGIES: Strategy[] = [
     },
     schools: ["quant", "macro"],
     steps: [
+      concept("investing-basics", "New here? Start with the vocabulary: stock, bond, fund, index, and risk — the words every mix in this path is built from.", "여기가 처음인가요? 어휘부터: 주식·채권·펀드·지수·위험 — 이 경로의 모든 조합이 이 단어들로 이루어집니다."),
       guru("harry-markowitz", "The core idea: combining assets that don't move together lowers risk for the same return.", "핵심 아이디어: 함께 움직이지 않는 자산을 결합하면 같은 수익에서 위험이 낮아진다."),
       concept("asset-allocation", "The decision that dominates outcomes: your mix across stocks, bonds, and cash.", "결과를 좌우하는 결정: 주식·채권·현금 사이의 비중.", { en: "Asset Allocation & the Three-Fund Portfolio", ko: "자산배분 & 3-펀드 포트폴리오" }),
       concept("bonds-fixed-income", "The ballast: how bonds, duration, and the yield curve cushion equity drawdowns.", "안정판: 채권·듀레이션·수익률곡선이 주식 하락을 완충하는 방식.", { en: "Bonds & Fixed Income — The Portfolio's Ballast", ko: "채권 & 고정수익 — 포트폴리오의 안정판" }),
@@ -137,6 +140,7 @@ export const STRATEGIES: Strategy[] = [
     },
     schools: ["fundamental"],
     steps: [
+      concept("investing-basics", "First time investing? Start here: what a share, dividend, yield, and payout mean in plain language before we judge whether one is safe.", "투자가 처음인가요? 여기서 시작하세요: 배당이 안전한지 따지기 전에 주·배당·수익률·배당성향이 쉬운 말로 무엇인지부터."),
       guru("charles-dow", "The shared root: a stock is a claim on a real business, the premise income investing rests on.", "공통 뿌리: 주식은 실제 기업에 대한 청구권이며, 인컴 투자가 기대는 전제."),
       guru("benjamin-graham", "Foundation: income with safety, Mr. Market, and the margin of safety.", "기초: 안전마진을 갖춘 인컴, 미스터 마켓, 그리고 안전마진."),
       guru("john-burr-williams", "The theory that a stock is worth its discounted future dividends — the intellectual core of income.", "주식의 가치는 할인된 미래 배당의 합이라는 이론 — 인컴 투자의 지적 핵심."),

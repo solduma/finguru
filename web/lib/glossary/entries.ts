@@ -1460,4 +1460,108 @@ export const GLOSSARY: GlossaryEntry[] = [
       ko: "세 개 캔들의 하락 반전 패턴으로, 큰 초록색 캔들, 갭을 두고 높게 형성된 작은 캔들, 첫 번째 몸통 속으로 내려가는 강한 빨간색 캔들로 구성됨.",
     },
   },
+
+  // ── Securities primitives (for absolute beginners; see the investing-basics
+  // primer). Short surface forms over-match common words, so these use
+  // deliberately specific phrases and rely on the plugin's longest-first order.
+  {
+    id: "share",
+    match: ["shares of stock", "a share of stock"],
+    matchKo: ["주식 한 주"],
+    label: { en: "Share / Stock", ko: "주식 / 주" },
+    def: {
+      en: "A unit of ownership in a company. Own a share and you own a small slice of that actual business — a claim on its assets and future profits.",
+      ko: "회사에 대한 소유권 한 단위. 주식을 보유하면 그 사업체의 작은 조각을 소유하는 것으로, 회사의 자산과 미래 이익에 대한 청구권을 갖습니다.",
+    },
+  },
+  {
+    id: "ticker",
+    match: ["ticker symbol", "ticker"],
+    matchKo: ["티커"],
+    label: { en: "Ticker", ko: "티커(종목코드)" },
+    def: {
+      en: "A company's short code for trading — e.g. AAPL for Apple, 005930 for Samsung Electronics. A nickname so buyers and sellers know exactly which stock they mean.",
+      ko: "거래에 쓰는 회사의 짧은 코드 — 예: 애플은 AAPL, 삼성전자는 005930. 매수자와 매도자가 어떤 종목인지 정확히 알 수 있게 하는 별명입니다.",
+    },
+  },
+  {
+    id: "stock-exchange",
+    match: ["stock exchange"],
+    matchKo: ["증권거래소"],
+    label: { en: "Stock Exchange", ko: "증권거래소" },
+    def: {
+      en: "The marketplace where shares are bought and sold (NYSE, Nasdaq, the Korea Exchange). In practice a computer system that matches buyers with sellers.",
+      ko: "주식을 사고파는 시장(뉴욕증권거래소, 나스닥, 한국거래소). 실제로는 매수자와 매도자를 연결하는 전산 시스템입니다.",
+    },
+  },
+  {
+    id: "brokerage",
+    match: ["brokerage account", "brokerage", "stockbroker"],
+    matchKo: ["증권 계좌", "증권사"],
+    label: { en: "Broker / Brokerage", ko: "증권사 / 증권 계좌" },
+    def: {
+      en: "The licensed firm that holds your account and places your buy/sell orders on the exchange. Like a bank account that can hold investments instead of just cash.",
+      ko: "당신의 계좌를 보유하고 거래소에 매수/매도 주문을 넣어 주는 인가받은 회사. 현금뿐 아니라 투자자산을 담을 수 있는 은행 계좌와 비슷합니다.",
+    },
+  },
+  {
+    id: "market-order",
+    match: ["market order"],
+    matchKo: ["시장가 주문"],
+    label: { en: "Market Order", ko: "시장가 주문" },
+    def: {
+      en: "An instruction to buy or sell right now at whatever the going price is. Fast and certain to execute, but you take the current price.",
+      ko: "지금 즉시 현재 가격에 사거나 팔라는 주문. 빠르고 체결이 확실하지만, 그 순간의 시세를 그대로 받아들이게 됩니다.",
+    },
+  },
+  {
+    id: "limit-order",
+    match: ["limit order"],
+    matchKo: ["지정가 주문"],
+    label: { en: "Limit Order", ko: "지정가 주문" },
+    def: {
+      en: "An instruction to buy or sell only at a price you set (or better). You control the price, but the trade happens only if the market reaches it.",
+      ko: "당신이 정한 가격(또는 그보다 유리한 가격)에서만 사거나 팔라는 주문. 가격을 통제할 수 있지만, 시세가 그 가격에 닿아야만 체결됩니다.",
+    },
+  },
+  {
+    id: "dividend-basic",
+    match: ["dividend"],
+    matchKo: ["배당금", "배당"],
+    label: { en: "Dividend", ko: "배당" },
+    def: {
+      en: "Cash a company pays to shareholders out of its profits, usually each quarter. Optional and never guaranteed — a company can cut it in a bad year.",
+      ko: "회사가 이익에서 주주에게 지급하는 현금으로, 보통 분기마다 나옵니다. 의무가 아니며 보장되지도 않아, 실적이 나쁜 해에는 삭감될 수 있습니다.",
+    },
+  },
+  {
+    id: "bond",
+    match: ["fixed income", "bonds"],
+    matchKo: ["채권"],
+    label: { en: "Bond", ko: "채권" },
+    def: {
+      en: "A loan you make to a government or company in exchange for regular interest and the return of your money on a set date. Steadier than stocks, but slower-growing.",
+      ko: "정부나 기업에 돈을 빌려주고 정기적인 이자와 만기일의 원금 상환을 받는 것. 주식보다 안정적이지만 더 느리게 불어납니다.",
+    },
+  },
+  {
+    id: "fund",
+    match: ["mutual fund", "index fund"],
+    matchKo: ["인덱스 펀드"],
+    label: { en: "Fund / Index Fund", ko: "펀드 / 인덱스 펀드" },
+    def: {
+      en: "A single product that pools many investors' money to hold many stocks or bonds at once, so you diversify instantly. An index fund simply owns whatever is on a market index's list.",
+      ko: "여러 투자자의 돈을 모아 한 번에 많은 주식·채권을 보유하는 하나의 상품으로, 즉시 분산 효과를 얻습니다. 인덱스 펀드는 특정 시장 지수 목록에 있는 것을 그대로 담습니다.",
+    },
+  },
+  {
+    id: "portfolio",
+    match: ["portfolio"],
+    matchKo: ["포트폴리오"],
+    label: { en: "Portfolio", ko: "포트폴리오" },
+    def: {
+      en: "Everything you own, taken together. Your mix of stocks, bonds, and funds is your portfolio.",
+      ko: "당신이 보유한 모든 것을 합친 것. 주식·채권·펀드의 조합 전체가 당신의 포트폴리오입니다.",
+    },
+  },
 ];
