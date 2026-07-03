@@ -38,6 +38,8 @@ export type Dict = {
   strategiesIndex: {
     title: string;
     intro: string;
+    startHereTitle: string;
+    startHereBlurb: string;
     findTitle: string;
     findBlurb: string;
     findCta: string;
@@ -301,6 +303,7 @@ export type Dict = {
     title: string;
     intro: string;
     start: string;
+    startHere: string;
     of: string; // "Question {a} of {b}" — {a}/{b} substituted client-side
     back: string;
     next: string;
@@ -396,6 +399,9 @@ export const STRINGS: Record<Locale, Dict> = {
       title: "Find Your Learning Path",
       intro:
         "Pick the investment strategy that fits how you think, how much time you have, and how much risk you can stomach — and follow a learning path built just for it, drawn from the masters who pioneered it. Not sure which is you? Take the 2-minute quiz.",
+      startHereTitle: "Never invested before? Start here.",
+      startHereBlurb:
+        "A 10-minute plain-language primer — stock, share, broker, bond, dividend, fund — so the rest of the site stops sounding like a foreign language.",
       findTitle: "Find My Strategy",
       findBlurb:
         "Answer 10 quick questions and we'll match you to the strategy — and the learning path — that fits you best.",
@@ -746,6 +752,7 @@ export const STRINGS: Record<Locale, Dict> = {
       intro:
         "A dozen quick questions. There are no wrong answers — we'll match you to the investing strategy that fits how you think, the time you have, and the risk you can handle.",
       start: "Start the quiz",
+      startHere: "Never invested before? Read the 10-minute basics primer first →",
       of: "Question {a} of {b}",
       back: "← Back",
       next: "Next →",
@@ -885,6 +892,9 @@ export const STRINGS: Record<Locale, Dict> = {
       title: "나만의 학습 경로 찾기",
       intro:
         "당신의 사고방식, 투자에 쓸 시간, 감당할 수 있는 위험에 맞는 투자 전략을 고르세요 — 그리고 그 전략을 개척한 거장들로부터 뽑아낸, 그 전략만을 위한 학습 경로를 따라가세요. 어떤 것이 나에게 맞는지 모르겠다면 2분짜리 퀴즈를 풀어 보세요.",
+      startHereTitle: "투자가 처음이신가요? 여기서 시작하세요.",
+      startHereBlurb:
+        "주식·주·증권사·채권·배당·펀드를 쉬운 말로 풀어 주는 10분짜리 입문 — 그러면 사이트의 나머지가 더 이상 외국어처럼 들리지 않습니다.",
       findTitle: "내 전략 찾기",
       findBlurb:
         "10개의 간단한 질문에 답하면, 당신에게 가장 잘 맞는 전략과 학습 경로를 찾아 드립니다.",
@@ -1235,6 +1245,7 @@ export const STRINGS: Record<Locale, Dict> = {
       intro:
         "10여 개의 간단한 질문입니다. 정답은 없습니다 — 당신의 사고방식, 투자 가능 시간, 감당할 수 있는 위험에 맞는 투자 전략을 찾아 드립니다.",
       start: "퀴즈 시작하기",
+      startHere: "투자가 처음이신가요? 10분짜리 기초 입문부터 읽어 보세요 →",
       of: "질문 {a} / {b}",
       back: "← 이전",
       next: "다음 →",
