@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { findLesson, readingMinutes } from "@/lib/content";
 import { LOCALES, getStrings, isLocale, type Locale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy, riskLabel } from "@/lib/strategies";
+import { getCheatsheet } from "@/lib/cheatsheets";
 import { getSchool } from "@/lib/schools";
 import Reveal from "@/components/Reveal";
 import StrategyProgress from "@/components/StrategyProgress";
@@ -159,6 +160,27 @@ export default async function StrategyPathPage({
             </span>
             <span className="flex-none text-2xl text-teal-300" aria-hidden>
               →
+            </span>
+          </Link>
+        </Reveal>
+      )}
+
+      {getCheatsheet(strategy.id) && (
+        <Reveal>
+          <Link
+            href={`/${locale}/cheatsheet/${strategy.id}`}
+            className="flex items-center justify-between gap-4 rounded-lg border border-white/10 bg-[#131722] p-5 no-underline transition hover:border-teal-400/50 hover-lift"
+          >
+            <span>
+              <span className="block text-lg font-semibold text-teal-300">
+                {t.strategyPage.cheatsheetHeading}
+              </span>
+              <span className="mt-1 block text-sm text-gray-400">
+                {t.strategyPage.cheatsheetCta}
+              </span>
+            </span>
+            <span className="flex-none text-2xl text-teal-300" aria-hidden>
+              ↗
             </span>
           </Link>
         </Reveal>
