@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { findLesson } from "@/lib/content";
+import { findLesson, readingMinutes } from "@/lib/content";
 import { LOCALES, getStrings, isLocale, type Locale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy, riskLabel } from "@/lib/strategies";
 import { getSchool } from "@/lib/schools";
 import Reveal from "@/components/Reveal";
+import StrategyProgress from "@/components/StrategyProgress";
 import CoverArt, { riskHue, coverInitials } from "@/components/CoverArt";
 
 export function generateStaticParams() {
@@ -23,6 +24,25 @@ export default async function StrategyPathPage({
   const strategy = getStrategy(id);
   if (!strategy) notFound();
   const t = getStrings(locale);
+
+  // Resolve each step once: does its lesson exist, its title, reading minutes,
+  // and a stable progress id. Reused by the list render and the progress bar.
+  const resolved = strategy.steps.map((step) => {
+    const lesson = findLesson(step.kind, step.slug, locale);
+    return {
+      step,
+      lesson,
+      title: lesson?.frontmatter.title ?? step.newTitle?.[locale] ?? step.slug,
+      minutes: lesson ? readingMinutes(lesson.content) : 0,
+      progressId: `lesson:${step.kind}:${step.slug}`,
+    };
+  });
+  // Progress ids for the steps that actually have a lesson, plus the lab.
+  const progressIds = [
+    ...resolved.filter((r) => r.lesson).map((r) => r.progressId),
+    ...(strategy.practical ? [`lab:${strategy.id}`] : []),
+  ];
+  const totalMinutes = resolved.reduce((sum, r) => sum + r.minutes, 0);
 
   return (
     <div className="space-y-8">
@@ -55,9 +75,17 @@ export default async function StrategyPathPage({
             {strategy.schools
               .map((sid) => getSchool(sid)?.label[locale] ?? sid)
               .join(" · ")}
+            {" · "}
+            {t.strategyPage.totalTime.replace("{min}", String(totalMinutes))}
           </p>
         </div>
       </Reveal>
+
+      {progressIds.length > 0 && (
+        <Reveal>
+          <StrategyProgress ids={progressIds} t={t.strategyPage} />
+        </Reveal>
+      )}
 
       <div>
         <Reveal>
@@ -66,11 +94,8 @@ export default async function StrategyPathPage({
           </h2>
         </Reveal>
         <ol className="space-y-3">
-          {strategy.steps.map((step, i) => {
-            const lesson = findLesson(step.kind, step.slug, locale);
+          {resolved.map(({ step, lesson, title, minutes }, i) => {
             const sub = step.kind === "guru" ? "gurus" : "indicators";
-            const title =
-              lesson?.frontmatter.title ?? step.newTitle?.[locale] ?? step.slug;
             const numberBadge = (
               <span className="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-teal-500 text-sm font-bold text-black anim-scale-in">
                 {i + 1}
@@ -81,7 +106,11 @@ export default async function StrategyPathPage({
                 {numberBadge}
                 <span className="min-w-0">
                   <span className="font-semibold text-teal-300">{title}</span>
-                  {!lesson && (
+                  {lesson ? (
+                    <span className="ml-2 text-[10px] uppercase tracking-wide text-gray-500">
+                      {t.lesson.minRead.replace("{min}", String(minutes))}
+                    </span>
+                  ) : (
                     <span className="ml-2 rounded bg-white/10 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-gray-400">
                       {t.strategyPage.comingSoon}
                     </span>
@@ -97,7 +126,7 @@ export default async function StrategyPathPage({
                 <Reveal index={i}>
                   {lesson ? (
                     <Link
-                      href={`/${locale}/${sub}/${step.slug}`}
+                      href={`/${locale}/${sub}/${step.slug}?path=${strategy.id}`}
                       className="flex items-start gap-4 rounded-lg border border-white/10 bg-[#131722] p-4 no-underline transition hover:border-teal-400/50 hover-lift"
                     >
                       {body}

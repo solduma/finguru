@@ -15,12 +15,15 @@ export function generateStaticParams() {
 
 export default async function GuruPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams: Promise<{ path?: string }>;
 }) {
   const { locale, slug } = await params;
+  const { path } = await searchParams;
   if (!isLocale(locale)) notFound();
   const lesson = getLesson("guru", slug, locale);
   if (!lesson) notFound();
-  return <LessonLayout lesson={lesson} locale={locale} />;
+  return <LessonLayout lesson={lesson} locale={locale} pathId={path} />;
 }

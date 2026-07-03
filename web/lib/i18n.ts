@@ -29,6 +29,7 @@ export type Dict = {
   brand: string;
   nav: {
     path: string;
+    quiz: string;
     strategies: string;
     schools: string;
     gurus: string;
@@ -53,6 +54,9 @@ export type Dict = {
     takeQuiz: string;
     practiceHeading: string;
     practiceCta: string;
+    totalTime: string; // "~{min} min total"
+    progressLabel: string; // "{done} of {total} complete"
+    progressComplete: string; // "Path complete 🎉"
   };
   practical: {
     back: string; // "← Back to {strategy}" — {strategy} substituted client-side
@@ -358,6 +362,10 @@ export type Dict = {
     backToPath: string;
     onThisPage: string;
     translationNote: string;
+    minRead: string; // "{min} min"
+    stepInPath: string; // "Step {n} of {total} · {strategy}"
+    markComplete: string;
+    completed: string;
   };
   chat: {
     open: string;
@@ -378,6 +386,7 @@ export const STRINGS: Record<Locale, Dict> = {
     brand: "FinGuru",
     nav: {
       path: "Learning Path",
+      quiz: "Find My Strategy",
       strategies: "Learning Path",
       schools: "Schools",
       gurus: "Gurus",
@@ -406,6 +415,9 @@ export const STRINGS: Record<Locale, Dict> = {
       practiceHeading: "Practice: a guided walkthrough",
       practiceCta:
         "Follow it step by step on real data — pull the numbers, judge them, reach a call →",
+      totalTime: "~{min} min total",
+      progressLabel: "{done} of {total} complete",
+      progressComplete: "Path complete 🎉",
     },
     practical: {
       back: "← Back to {strategy}",
@@ -832,6 +844,10 @@ export const STRINGS: Record<Locale, Dict> = {
       onThisPage: "On this page",
       translationNote:
         "This lesson isn't translated into Korean yet — showing the English version.",
+      minRead: "{min} min",
+      stepInPath: "Step {n} of {total} · {strategy}",
+      markComplete: "Mark this lesson complete",
+      completed: "Completed ✓",
     },
     chat: {
       open: "Ask the Tutor",
@@ -859,6 +875,7 @@ export const STRINGS: Record<Locale, Dict> = {
     brand: "FinGuru",
     nav: {
       path: "학습 경로",
+      quiz: "전략 찾기",
       strategies: "학습 경로",
       schools: "투자 유파",
       gurus: "거장들",
@@ -887,6 +904,9 @@ export const STRINGS: Record<Locale, Dict> = {
       practiceHeading: "실습: 단계별 가이드",
       practiceCta:
         "실제 데이터로 한 단계씩 따라가며 — 숫자를 직접 가져와 판단하고 결론까지 내보세요 →",
+      totalTime: "총 약 {min}분",
+      progressLabel: "{total}개 중 {done}개 완료",
+      progressComplete: "경로 완료 🎉",
     },
     practical: {
       back: "← {strategy}(으)로 돌아가기",
@@ -1313,6 +1333,10 @@ export const STRINGS: Record<Locale, Dict> = {
       onThisPage: "이 페이지 목차",
       translationNote:
         "이 강의는 아직 한국어로 번역되지 않아 영어 원문을 표시합니다.",
+      minRead: "{min}분",
+      stepInPath: "{total}단계 중 {n}단계 · {strategy}",
+      markComplete: "이 강의 완료로 표시",
+      completed: "완료됨 ✓",
     },
     chat: {
       open: "튜터에게 질문하기",

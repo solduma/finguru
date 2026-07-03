@@ -406,6 +406,45 @@ export function isStrategyId(x: string): boolean {
   return STRATEGIES.some((s) => s.id === x);
 }
 
+/** A lesson's position within a strategy's ordered path, plus its neighbours in
+ *  THAT path (not the global biographical order). Returns null if the strategy
+ *  is unknown or the (kind, slug) isn't a step in it. Powers the "Step N of M
+ *  in <strategy>" nav so Prev/Next follow the path the learner actually chose. */
+export interface StrategyPlacement {
+  strategyId: string;
+  strategyLabel: Record<Locale, string>;
+  index: number; // 0-based position in the step list
+  total: number; // number of steps
+  prev: PathStep | null;
+  next: PathStep | null;
+  /** True once the learner is on the last step — the practical lab comes next. */
+  atLastStep: boolean;
+  hasPractical: boolean;
+}
+
+export function placeInStrategy(
+  strategyId: string,
+  kind: LessonKind,
+  slug: string,
+): StrategyPlacement | null {
+  const strategy = getStrategy(strategyId);
+  if (!strategy) return null;
+  const i = strategy.steps.findIndex(
+    (s) => s.kind === kind && s.slug === slug,
+  );
+  if (i === -1) return null;
+  return {
+    strategyId: strategy.id,
+    strategyLabel: strategy.label,
+    index: i,
+    total: strategy.steps.length,
+    prev: i > 0 ? strategy.steps[i - 1] : null,
+    next: i < strategy.steps.length - 1 ? strategy.steps[i + 1] : null,
+    atLastStep: i === strategy.steps.length - 1,
+    hasPractical: Boolean(strategy.practical),
+  };
+}
+
 /** Risk badge label for a strategy's riskRank. */
 export function riskLabel(riskRank: number): Record<Locale, string> {
   if (riskRank <= 2) return { en: "Lower risk", ko: "낮은 위험" };
