@@ -26,8 +26,16 @@ export default async function LocaleLayout({
           this element only — it does not mask real hydration bugs elsewhere. */}
       <body suppressHydrationWarning>
         <ServiceWorker />
+        {/* Skip link: hidden until keyboard-focused, lets screen-reader and
+            keyboard users jump past the nav straight to the lesson content. */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-teal-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-black"
+        >
+          {locale === "ko" ? "본문으로 건너뛰기" : "Skip to content"}
+        </a>
         <SiteHeader locale={locale} showLogout={Boolean(process.env.AUTH_SECRET)} />
-        <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
+        <main id="main-content" className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
           {children}
         </main>
         {/* The chat tutor shows by default. On a frontend-only deploy (no Python

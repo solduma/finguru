@@ -181,7 +181,10 @@ function StepView({
   toggle: (i: number) => void;
 }) {
   return (
-    <div className="space-y-4">
+    // Marked so the RAG tutor (ChatWidget.readCurrentPage) can read the current
+    // lab step's text AND the embedded analyzer's live scorecard — labs render
+    // no <article>, so without this the tutor only saw the page title.
+    <div className="space-y-4" data-tutor-context>
       <h2 className="text-2xl font-bold text-white">{pick(step.title, locale)}</h2>
       <Body text={pick(step.body, locale)} />
 

@@ -20,14 +20,21 @@ interface Msg {
   suggestions?: string[];
 }
 
-// Read the lesson the user is currently viewing, straight from the DOM, so the
-// tutor can answer "what does this mean?" about the open page.
+// Read whatever the user is currently viewing, straight from the DOM, so the
+// tutor can answer "what does this mean?" about the open page. Prose lessons
+// render a <main article>; the practice labs don't (they're a stepper with a
+// live scorecard), so we fall back to an explicit [data-tutor-context] region
+// (which the Walkthrough shell marks) and finally to <main> as a whole — that
+// way the tutor also sees the current lab step text and the computed numbers.
 function readCurrentPage(): { title: string; text: string } {
   if (typeof document === "undefined") return { title: "", text: "" };
   const h1 = document.querySelector("main h1");
-  const article = document.querySelector("main article");
+  const source =
+    document.querySelector("[data-tutor-context]") ||
+    document.querySelector("main article") ||
+    document.querySelector("main");
   const title = h1?.textContent?.trim() || "";
-  const text = (article?.textContent || "").replace(/\s+/g, " ").trim().slice(0, 6000);
+  const text = (source?.textContent || "").replace(/\s+/g, " ").trim().slice(0, 6000);
   return { title, text };
 }
 

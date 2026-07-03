@@ -8,6 +8,7 @@ import BarChart from "./charts/BarChart";
 import ScatterChart from "./charts/ScatterChart";
 import ConceptDiagram from "./charts/ConceptDiagram";
 import GlossaryTerm from "./GlossaryTerm";
+import Quiz, { Option } from "./Quiz";
 import { remarkGlossary } from "@/lib/glossary/remarkGlossary";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 
@@ -19,6 +20,8 @@ const components = {
   ScatterChart,
   ConceptDiagram,
   GlossaryTerm,
+  Quiz,
+  Option,
 };
 
 export default function Mdx({

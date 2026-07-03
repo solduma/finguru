@@ -31,8 +31,17 @@ export default function ChartFrame({
           ref={ref}
           className="rounded-lg border border-white/10 bg-[#0f131c] p-3"
           style={{ height }}
+          // The chart draws to an opaque <canvas>; expose the caption as the
+          // accessible name so screen readers announce what it shows instead of
+          // an unlabeled graphic.
+          role={caption ? "img" : undefined}
+          aria-label={caption || undefined}
         >
-          {show ? <div className="h-full">{children}</div> : null}
+          {show ? (
+            <div className="h-full" aria-hidden={caption ? true : undefined}>
+              {children}
+            </div>
+          ) : null}
         </div>
       </Reveal>
       {caption && (
