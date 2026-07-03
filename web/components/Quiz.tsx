@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Children, isValidElement, useState } from "react";
 
 // An in-lesson knowledge-check. Authored inline in MDX:
 //
@@ -34,19 +34,18 @@ interface OptionData {
 }
 
 function extractOptions(children: React.ReactNode): OptionData[] {
+  // Read props off every valid element child. We deliberately do NOT compare
+  // `child.type === Option`: under the MDX renderer the child's type is a
+  // wrapped/remapped component, so an identity check silently matches nothing
+  // and the quiz renders zero options. The only children a <Quiz> ever has are
+  // <Option>s, so treating each element child as an option is correct here.
   const out: OptionData[] = [];
-  const arr = Array.isArray(children) ? children : [children];
-  for (const child of arr) {
-    if (
-      child &&
-      typeof child === "object" &&
-      "props" in child &&
-      (child as { type?: unknown }).type === Option
-    ) {
-      const p = (child as { props: OptionProps }).props;
-      out.push({ label: p.children, correct: Boolean(p.correct), explain: p.explain });
-    }
-  }
+  Children.forEach(children, (child) => {
+    if (!isValidElement(child)) return; // skip whitespace/text nodes
+    const p = child.props as OptionProps;
+    if (p == null || p.children == null) return;
+    out.push({ label: p.children, correct: Boolean(p.correct), explain: p.explain });
+  });
   return out;
 }
 
