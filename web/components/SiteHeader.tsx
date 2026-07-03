@@ -33,6 +33,7 @@ export default function SiteHeader({
   }, [closing]);
 
   const links = [
+    { href: `/${locale}/path`, label: t.nav.quiz },
     { href: `/${locale}/strategies`, label: t.nav.strategies },
     { href: `/${locale}/schools`, label: t.nav.schools },
     { href: `/${locale}/gurus`, label: t.nav.gurus },

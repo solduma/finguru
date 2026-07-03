@@ -92,6 +92,25 @@ export function getLearningPath(locale: Locale): Lesson[] {
   );
 }
 
+/** Rough reading time in whole minutes for an MDX body. Counts words in the
+ *  prose (CJK is counted per-character since Korean/Chinese don't space-delimit
+ *  words) and divides by an average reading pace, floored at 1 minute. Used for
+ *  the "N min" badges so a learner can budget a path like a real course. */
+export function readingMinutes(content: string): number {
+  // Strip code fences and MDX component tags so they don't inflate the count.
+  const prose = content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/<[^>]+>/g, " ");
+  const cjk = (prose.match(/[ㄱ-힝一-鿿]/g) || []).length;
+  const latinWords = prose
+    .replace(/[ㄱ-힝一-鿿]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  // ~200 latin words/min; ~350 CJK chars/min.
+  const minutes = latinWords / 200 + cjk / 350;
+  return Math.max(1, Math.round(minutes));
+}
+
 export interface TocEntry {
   depth: number; // 2 = h2, 3 = h3
   text: string;

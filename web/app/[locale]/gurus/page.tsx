@@ -35,6 +35,10 @@ export default async function GurusIndex({
                   className="aspect-[8/5] w-full"
                 />
                 <div className="min-w-0 p-4">
+                  <div className="mb-1 text-[10px] uppercase tracking-wide text-gray-500">
+                    {(t.levels as Record<string, string>)[l.frontmatter.level] ??
+                      l.frontmatter.level}
+                  </div>
                   <div className="font-semibold text-teal-300">
                     {l.frontmatter.title}
                   </div>
