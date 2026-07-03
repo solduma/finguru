@@ -59,6 +59,17 @@ export type Dict = {
     totalTime: string; // "~{min} min total"
     progressLabel: string; // "{done} of {total} complete"
     progressComplete: string; // "Path complete 🎉"
+    cheatsheetHeading: string;
+    cheatsheetCta: string;
+  };
+  cheatsheet: {
+    back: string; // "← Back to {s}"
+    badge: string; // "Cheatsheet"
+    steps: string;
+    data: string;
+    rules: string;
+    pitfall: string;
+    disclaimer: string;
   };
   practical: {
     back: string; // "← Back to {strategy}" — {strategy} substituted client-side
@@ -424,6 +435,19 @@ export const STRINGS: Record<Locale, Dict> = {
       totalTime: "~{min} min total",
       progressLabel: "{done} of {total} complete",
       progressComplete: "Path complete 🎉",
+      cheatsheetHeading: "Cheatsheet: the one-page recall card",
+      cheatsheetCta:
+        "Finished the path? Keep this — how to run the strategy on real data, from memory, without our tool →",
+    },
+    cheatsheet: {
+      back: "← Back to {s}",
+      badge: "1-page cheatsheet",
+      steps: "How to run it (tool-free)",
+      data: "The numbers & where to find them",
+      rules: "Pass / fail rules of thumb",
+      pitfall: "The biggest pitfall",
+      disclaimer:
+        "Educational only — not investment advice. A recall aid for a strategy you've studied; verify every number against the primary source.",
     },
     practical: {
       back: "← Back to {strategy}",
@@ -917,6 +941,19 @@ export const STRINGS: Record<Locale, Dict> = {
       totalTime: "총 약 {min}분",
       progressLabel: "{total}개 중 {done}개 완료",
       progressComplete: "경로 완료 🎉",
+      cheatsheetHeading: "치트시트: 한 페이지 요약 카드",
+      cheatsheetCta:
+        "경로를 끝냈나요? 이것만 남기세요 — 우리 도구 없이 기억만으로 실제 데이터에 전략을 실행하는 법 →",
+    },
+    cheatsheet: {
+      back: "← {s}(으)로 돌아가기",
+      badge: "1페이지 치트시트",
+      steps: "실행하는 법 (도구 없이)",
+      data: "지표와 찾는 위치",
+      rules: "합격 / 불합격 기준",
+      pitfall: "가장 큰 함정",
+      disclaimer:
+        "교육용일 뿐 투자 자문이 아닙니다. 이미 공부한 전략의 기억을 돕는 카드이며, 모든 숫자는 원본 자료로 직접 확인하세요.",
     },
     practical: {
       back: "← {strategy}(으)로 돌아가기",
