@@ -227,6 +227,14 @@ Income options are a real, legitimate tool — not a scam and not a miracle. Use
 
 The professional's summary is unromantic: **you are selling insurance on a stock.** You collect small, regular premiums and you are on the hook for the rare large claim. Whether that's a good business depends entirely on picking the right stocks, pricing the risk sensibly, and surviving the claims. The next lesson's lab lets you run the Wheel on real historical prices and watch the shark-fin distribution appear for yourself.
 
+## From our tool to a real broker
+
+Our lab prices a clean synthetic chain; a live broker chain is a grid with columns **Bid / Ask / Last / IV / Delta / Volume / Open Interest** across strikes for each expiration. The load-bearing detail: as a call **seller you get filled near the bid**, not the mid, so your real premium is a touch lower than a model number — and you want a **tight bid-ask spread** before selling.
+
+To place one you need **tiered options approval** from your broker (a separate application, with levels for covered vs. naked strategies). Our beginner path, *placing-your-first-trade*, tells newcomers to **skip options entirely** — this options-income path is the one place you'd later enable that approval, once you understand the capped-upside bargain above.
+
+A KR caveat (example, not advice): on a domestic/KIS account, **KOSPI200 options** are **European-style** (no early assignment), **cash-settled**, with a **×250,000** contract multiplier — there is no single-stock covered call to write. So the covered call as taught here is largely a **US-market technique**; KR readers should treat it as concept-first.
+
 ## Key takeaways
 
 - Selling options collects **premium today** in exchange for an **obligation** later; when the buyer exercises, you are **assigned.** One US equity option = **100 shares**, so multiply every premium by 100.

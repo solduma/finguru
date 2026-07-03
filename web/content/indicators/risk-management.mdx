@@ -263,6 +263,28 @@ A simple thought experiment: even a 60% win-rate strategy will occasionally prod
 
 This is also the lesson behind the **Kelly criterion** — a formula for the mathematically "optimal" bet fraction, developed by Bell Labs researcher John L. Kelly Jr. in 1956. It can suggest surprisingly large bets: a 55% win rate at even odds (a 1:1 payout — you win as much as you risk), for example, tells you to risk 10% of your account *per trade*. In practice, traders deliberately use *fractional* (often half) Kelly — so that 10% becomes 5% or less — because full Kelly produces stomach-churning drawdowns and assumes you know your win probability exactly, which you never do.
 
+## Sequence-of-returns risk (near and in retirement)
+
+Everything above sizes *trading* risk. But long-term investors face a different, sneakier danger — one that decides whether a retirement lasts. The **average** return of your portfolio over decades can be identical, yet your outcome can range from comfortable to broke, purely because of the **order** in which those returns arrive. This is **sequence-of-returns risk**.
+
+The key insight is *when* the order matters:
+
+- **While accumulating** (still adding money, taking nothing out), order barely matters. A crash early or late leaves you at nearly the same ending balance, because you are not selling — you just hold, and often buy more cheaply.
+- **While withdrawing** (living off the portfolio), order dominates. A crash in the *first few* retirement years, while you are pulling money out, sells shares at low prices and permanently shrinks the base that has to recover. A late crash, after years of growth, does far less damage.
+
+A tiny illustration — same three yearly returns (+20%, −20%, +5%; identical average), $1,000,000, withdrawing $50,000 at each year-end:
+
+- **Good-first order** (+20%, −20%, +5%): 1,200,000 − 50k = 1,150k → 920,000 − 50k = 870k → 913,500 − 50k = **≈ 863,500**
+- **Bad-first order** (−20%, +20%, +5%): 800,000 − 50k = 750k → 900,000 − 50k = 850k → 892,500 − 50k = **≈ 842,500**
+
+Same average return, ~$21,000 apart after three years — and the gap widens the longer you draw. The early loss hurts more because the withdrawal locks it in.
+
+<Callout type="key">
+
+The **4% rule** — a common *starting* withdrawal guideline (take about 4% of the initial balance in year one, then adjust for inflation) — exists precisely because of this risk. It is a rule of thumb, **not a guarantee**: a severe crash early in retirement can still break it. This is why a lifecycle **glide path** de-risks (shifts from stocks toward bonds/cash) *before* withdrawals begin. You cannot control the *order* of the market's returns, but you *can* control how exposed you are when a bad sequence would do the most damage — right as you start to withdraw.
+
+</Callout>
+
 ## Diversification and correlation
 
 Spreading risk across several positions reduces the chance that one bad event sinks you — but only if those positions don't all move together. **Correlation** measures how tightly two assets move in tandem (+1 = lockstep, 0 = unrelated, −1 = opposite).
