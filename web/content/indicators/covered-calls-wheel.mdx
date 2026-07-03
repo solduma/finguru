@@ -1,0 +1,255 @@
+---
+title: "Covered Calls, Cash-Secured Puts & the Wheel"
+slug: "covered-calls-wheel"
+kind: "indicator"
+school: "quant"
+level: "intermediate"
+order: 130
+summary: "You already own the shares — so why not collect rent on them? This lesson turns options into an income routine: sell calls on stock you hold, sell puts on stock you'd happily buy, and cycle the two into the Wheel — while staring straight at the asymmetry that makes it capped-upside income, not free money."
+tags: ["covered call", "cash-secured put", "the wheel", "options income", "premium", "buy-write", "assignment", "BXM"]
+prereqs: ["options-basics"]
+---
+
+## The one-sentence version
+
+You already know that an **option** is a contract giving its owner the right (not the obligation) to buy or sell 100 shares of a stock at a fixed **strike price** before a set expiration, and that the buyer pays a **premium** for that right. This lesson flips you to the *other* side of the table: instead of buying options, you **sell** them — to strangers who pay you that premium up front — using stock (or cash) you already have as collateral.
+
+Three strategies, one idea. A **covered call** is renting out shares you own. A **cash-secured put** is getting paid to place a buy order below today's price. And **the Wheel** is doing them in a loop forever. All three collect steady premium in calm and rising-slowly markets — and all three quietly hand your upside to someone else while leaving nearly all your downside on your own plate. Understanding *that* trade is the whole point of the lesson.
+
+<Callout type="key">
+
+The load-bearing insight: selling options turns an uncertain, lumpy thing (future price moves) into cash **today**. In exchange, you give up the fat tail of upside and keep almost all of the downside. It feels like income; it is really you **selling insurance** — and insurers make money only if they price the risk correctly and can survive the rare big claim.
+
+</Callout>
+
+## Quick refresher: the two options, from the seller's chair
+
+You met these as a *buyer*. Now meet them as a *seller* (also called the **writer**), because that is where all the income lives.
+
+- A **call** is the right to *buy* 100 shares at the strike. If you **sell** (write) a call, you have taken on the *obligation* to *deliver* 100 shares at the strike if the buyer chooses to exercise. You collect the premium for accepting that obligation.
+- A **put** is the right to *sell* 100 shares at the strike. If you **sell** a put, you have taken on the obligation to *buy* 100 shares at the strike if the buyer exercises. Again, you collect premium for the obligation.
+
+When the buyer exercises and you are forced to act, you have been **assigned**. Think of assignment as your phone ringing: the counterparty is calling in the obligation you sold them.
+
+<Callout type="note">
+
+Standard equity options in the US control **100 shares** each. So one option quoted at a premium of **$2.00** actually puts **$200** (2.00 × 100) in your pocket. Every dollar figure in options is secretly "per share × 100." Beginners routinely under- or over-estimate a trade by a factor of 100 because of this. Multiply.
+
+</Callout>
+
+## Strategy 1: The covered call — renting out shares you own
+
+Suppose you already own **100 shares** of a stock. A **covered call** means you sell one call option against those shares. The call is "covered" because if you get assigned and must deliver 100 shares, you already have them sitting in your account — you don't have to scramble to buy them. (Selling a call with *no* shares behind it is a "naked call," a very different, far riskier animal we are not doing here.)
+
+You collect the premium immediately. In return you have promised: *if the stock is above my strike at expiration, I will sell my 100 shares at that strike.*
+
+### The payoff, in plain language
+
+There are three worlds at expiration:
+
+1. **Stock stays below the strike.** The call expires worthless, the buyer walks away, and you keep the premium *and* your shares. You can sell another call next month. This is the outcome the strategy is built to farm.
+2. **Stock finishes above the strike.** You get assigned. Your shares are **called away** — sold at the strike. You keep the premium and all the gains *up to* the strike, but you miss every dollar of gain *above* it. You capped your own upside.
+3. **Stock falls.** The premium cushions the drop a little, but you still eat the loss on your 100 shares. The premium is a small down-payment against the fall, not a shield.
+
+<Callout type="warning">
+
+The single most dangerous misconception: a covered call is **not downside protection.** If you own a $50 stock, sell a call for $1.50, and the stock drops to $30, you have lost $20/share and softened it by only $1.50. You are down $18.50/share. The premium is a thin cushion, not a floor. Anyone who sells you a covered call as "safe" is selling you the pleasant half of the picture.
+
+</Callout>
+
+### Worked example (illustrative, not a recommendation)
+
+You own **100 shares** bought at **$50** (cost = $5,000). Today the stock trades at **$52**. You sell **one 30-day call** with a **$55 strike** for a premium of **$1.50/share**.
+
+```
+Premium received now = $1.50 × 100 = $150   (yours to keep no matter what)
+```
+
+Now walk the three worlds at expiration:
+
+```
+World A — stock at $53 (below the $55 strike):
+  Call expires worthless. You keep the $150 and all 100 shares.
+  Your shares also rose from $52 to $53 (+$1/share = +$100 on paper).
+  Total this cycle: +$150 premium (+$100 unrealized). Repeat next month.
+
+World B — stock at $60 (above the $55 strike):
+  Assigned. You sell 100 shares at $55 = $5,500.
+  Gain on shares: ($55 − $50) × 100 = $500
+  Plus premium kept:                    $150
+  Total realized:                       $650
+  BUT the stock is at $60. Had you just held, your 100 shares
+  would be worth $6,000 — a $1,000 gain. You gave up $350 of upside.
+
+World C — stock at $45 (a drop):
+  Call expires worthless; you keep the $150 and your shares.
+  Shares now worth $4,500 — down $500 from your $5,000 cost.
+  Premium softens it: net position ≈ −$350. You still lost money.
+```
+
+That $350 gap in World B is the entire trade laid bare: in a strong rally the covered-call seller **systematically underperforms the simple share-holder**. In flat and mildly-up markets (World A), the seller wins by pocketing rent the holder never collects.
+
+<BarChart
+  caption="Illustrative, not a forecast. The same 100 shares (bought at $50, covered call sold at a $55 strike for $1.50) across three ending prices. Covered call wins when the stock is flat or down a little (extra $150 of rent), ties roughly at the strike, and loses relative to buy-and-hold in a strong rally because the upside above $55 was handed away."
+  yLabel="Total profit/loss on the position ($)"
+  labels={["Stock $45", "Stock $52", "Stock $55", "Stock $60"]}
+  series={[
+    { label: "Buy & hold 100 shares", data: [-500, 200, 500, 1000] },
+    { label: "Covered call ($55 strike)", data: [-350, 350, 650, 650] }
+  ]}
+/>
+
+Notice the covered-call line is *flat* to the right of the $55 strike — that horizontal ceiling is the capped upside, drawn in profit-and-loss. It never goes higher no matter how far the stock runs.
+
+## Strategy 2: The cash-secured put — getting paid to wait
+
+Now flip to the other side. Suppose you *don't* own the stock but you'd be happy to buy it — just at a lower price than today. A **cash-secured put** means you sell one put option at a strike *below* today's price, and you set aside enough cash to actually buy 100 shares at that strike if you're assigned. It is "cash-secured" because the money is parked and ready; you are not gambling on credit.
+
+You collect the premium immediately. In return you have promised: *if the stock is below my strike at expiration, I will buy 100 shares at that strike.*
+
+### The payoff, in plain language
+
+Two worlds at expiration:
+
+1. **Stock stays above the strike.** The put expires worthless. You keep the premium and buy nothing. Your set-aside cash is freed up, and you can sell another put. You got paid to place a limit order that never filled.
+2. **Stock finishes below the strike.** You get assigned — the shares are **"put" to you.** You buy 100 shares at the strike (using the cash you parked), and you keep the premium. Your *effective* purchase price is the strike **minus** the premium — a discount to the strike you named.
+
+<Callout type="note">
+
+The clean way to think about a cash-secured put: it is a **limit buy order that pays you to place it.** If the stock never comes down, you keep the fee. If it does come down, you buy at your chosen price and the premium makes your entry a little cheaper still. The catch — covered below — is that you only get assigned when the stock is *falling*, which is exactly when you might no longer want it.
+
+</Callout>
+
+### Worked example (illustrative, not a recommendation)
+
+A stock trades at **$52**. You'd be glad to own it at **$48**. You sell **one 30-day put** with a **$48 strike** for a premium of **$1.20/share**, and you set aside **$4,800** (48 × 100) in case you must buy.
+
+```
+Premium received now = $1.20 × 100 = $120   (yours to keep no matter what)
+Cash set aside       = $48 × 100  = $4,800  (parked, ready to buy)
+```
+
+The two worlds at expiration:
+
+```
+World A — stock at $50 (above the $48 strike):
+  Put expires worthless. You keep the $120 and buy nothing.
+  Return on the cash you tied up: $120 / $4,800 ≈ 2.5% in 30 days.
+  Your $4,800 is freed; sell another put next month.
+
+World B — stock at $44 (below the $48 strike):
+  Assigned. You buy 100 shares at $48 = $4,800.
+  But you keep the $120 premium, so your effective cost is:
+     $48 − $1.20 = $46.80 per share  (net $4,680 for the 100 shares)
+  The stock is at $44, so you are underwater on paper
+  (−$44 vs your $46.80 net cost = −$2.80/share = −$280).
+  You wanted it at $48; you got it near $47 — but it kept falling.
+```
+
+World B is the honest catch. You *did* get your discount — but you only get assigned when the stock is dropping, and it can drop right past your strike. You are now a shareholder with a paper loss, holding a stock in a downtrend. That is not a failure of the strategy; it is the strategy. You agreed to buy the dip, and the market obliged, then kept dipping.
+
+## Strategy 3: The Wheel — cycling the two into a loop
+
+The two strategies above are two halves of one machine. Chain them and you get **the Wheel** — a systematic income loop:
+
+1. **Sell cash-secured puts** on a stock you'd genuinely want to own, collecting premium each cycle.
+2. **Eventually you get assigned** — the shares are put to you. Now you own 100 shares.
+3. **Sell covered calls** against those shares, collecting premium each cycle.
+4. **Eventually you get called away** — the shares are sold at the strike. Now you're back to cash.
+5. **Go to step 1.** Repeat forever.
+
+<ConceptDiagram
+  caption="The Wheel: a loop between cash and shares. You sell cash-secured puts while holding cash; assignment moves you into shares; you then sell covered calls; being called away moves you back to cash. Premium is collected at every leg. The loop only 'works' on a stock you are content to own or sell at the strikes you choose."
+  chart={`flowchart LR
+  A[Hold cash] -- sell cash-secured puts, collect premium --> B{Assigned?}
+  B -- No, put expires worthless --> A
+  B -- Yes, shares put to you --> C[Own 100 shares]
+  C -- sell covered calls, collect premium --> D{Called away?}
+  D -- No, call expires worthless --> C
+  D -- Yes, shares sold at strike --> A`}
+/>
+
+In a sideways or gently choppy market the Wheel is genuinely elegant: you collect rent whether you're holding cash or holding shares, and the two assignment events (buying low, selling higher) can even book small capital gains along the way. Practitioners like it because it's mechanical — clear rules, no agonizing over entries.
+
+<Callout type="key">
+
+The Wheel's founding rule, and the one line to remember from this entire lesson: **never sell a put on a stock you would not want to own at that strike, and never sell a call on shares you would be upset to lose at that strike.** If assignment on either leg would ruin your day, you have picked the wrong stock or the wrong strike. The Wheel is only safe on holdings you are content to buy *or* sell at the prices you named.
+
+</Callout>
+
+## The asymmetry — what the marketing doesn't tell you
+
+Every income-options pitch you'll ever see leans on the calm months, where premium rolls in like clockwork. Here is the part they skip.
+
+### You cap the upside and keep the downside
+
+Look again at the covered-call payoff. Your profit is *capped* at the strike (flat line to the right) but your loss runs almost all the way down (the stock can go to zero, minus a sliver of premium). The cash-secured put has the mirror shape: capped gain (the premium), large potential loss (you're forced to buy a falling stock). This is a **fundamentally asymmetric** bargain — you sold the exciting half and kept the painful half.
+
+<Callout type="warning">
+
+Premium income looks *steady* — a little cash every month — right up until it doesn't. Two events blow up the illusion:
+
+- **A crash.** Your covered calls keep only the tiny premium while your shares fall with the market; your cash-secured puts get assigned into a plummeting stock. You collected pennies for years and hand back dollars in a week.
+- **A runaway rally.** Your shares get called away at the strike and you watch the stock double *without you*. The premium you collected is a rounding error next to the upside you gave up.
+
+The strategy's return distribution has a "shark fin" shape: many small wins, punctuated by occasional large losses (or large *missed* gains). Averages that ignore the tail flatter it enormously.
+
+</Callout>
+
+### The BXM evidence — capped upside, measured
+
+This isn't just theory; it's been indexed for decades. The Cboe (formerly CBOE) publishes the **BXM**, the **BuyWrite Index** — a rules-based benchmark that does exactly one thing: hold the S&P 500 and sell a one-month, at-the-money covered call against it, month after month. It is the covered-call strategy, systematized and tracked since 1986.
+
+Its long-run record is the honest verdict on income options. Over multi-decade spans the BXM has delivered returns **modestly below** a straight investment in the S&P 500 — roughly on the order of **~8.5% a year versus ~11%** for the index in strong bull-market eras — while producing a *somewhat smoother* ride (lower volatility). Read that carefully: the covered-call machine did **not** beat buy-and-hold over the long haul in strong bulls; it *lagged*, because the capped upside kept clipping the market's best runs. What it bought you was a slightly calmer path, not extra money.
+
+<Callout type="note">
+
+There *are* market environments where buy-write shines — flat, choppy, or slowly grinding sideways markets, where there's little upside to give up and the premium is pure gravy. The strategy isn't broken; it's *conditional*. Its edge is a bet that markets will be calmer than the options market is pricing. When that bet is wrong (big crash, big melt-up), you pay for it. "Income" is the marketing word; "selling volatility insurance" is the accurate one.
+
+</Callout>
+
+### The frictions nobody prices into the pitch
+
+- **Assignment risk & timing.** American-style equity options can be assigned *early*, not just at expiration — especially around ex-dividend dates for calls. You can wake up already assigned. You also can't perfectly time the loop; sometimes you're stuck holding a stock through a decline you'd rather have exited.
+- **Taxes.** Every called-away lot and every expired option is a **taxable event**, most often taxed as short-term gains (your full ordinary rate) because the cycle is monthly. Covered calls can also mess with your shares' **holding period** — an in-the-money call can suspend or reset the clock that would have earned you the lower long-term rate. The Wheel is a tax-*inefficient* machine in a taxable account; many run it inside a tax-advantaged account for that reason.
+- **Transaction drag.** Commissions, bid-ask spreads on the options, and the sheer number of trades (a dozen-plus round trips a year) quietly erode the premium. The frequent trading that generates the income also generates the friction.
+- **Opportunity cost of the parked cash.** A cash-secured put ties up real money as collateral for a small premium. That capital isn't compounding elsewhere while it waits.
+
+<Callout type="warning">
+
+The beginner trap that ends accounts: **chasing yield by selling puts on stocks you don't actually want.** A high premium is the market telling you the stock is risky — that's *why* the option is expensive. Sell a put on a volatile name purely for the fat premium and you'll be assigned exactly when it's cratering, holding a stock you never liked, at a strike above the market. High option premium is a *warning label*, not a free lunch — the same lesson as a suspiciously high dividend yield.
+
+</Callout>
+
+## Putting it together honestly
+
+Income options are a real, legitimate tool — not a scam and not a miracle. Used on stocks you're content to own, at strikes you'd genuinely accept, sized so a bad month can't hurt you, they can smooth returns and generate cash in flat markets. Used as a yield-chasing autopilot on stocks picked for their premiums, they hand you the market's worst outcomes at the worst times.
+
+The professional's summary is unromantic: **you are selling insurance on a stock.** You collect small, regular premiums and you are on the hook for the rare large claim. Whether that's a good business depends entirely on picking the right stocks, pricing the risk sensibly, and surviving the claims. The next lesson's lab lets you run the Wheel on real historical prices and watch the shark-fin distribution appear for yourself.
+
+## Key takeaways
+
+- Selling options collects **premium today** in exchange for an **obligation** later; when the buyer exercises, you are **assigned.** One US equity option = **100 shares**, so multiply every premium by 100.
+- A **covered call** rents out 100 shares you already own: keep the premium plus gains **up to the strike**; above it your shares are **called away** and you miss the rest. The premium is a thin cushion on a drop — **not** downside protection.
+- A **cash-secured put** is a limit buy order that **pays you to place it**: keep the premium if the stock stays up, or get the shares **"put" to you** at a net cost of strike minus premium if it falls — but you're only assigned when the stock is *dropping*.
+- **The Wheel** cycles them: sell cash-secured puts until assigned shares, sell covered calls until called away, repeat — a mechanical income loop that thrives in flat, choppy markets.
+- The bargain is **asymmetric**: you **cap your upside** and keep **nearly all your downside.** Premium looks steady until a **crash** or a **runaway rally** exposes the missing tail.
+- The evidence: the Cboe **BXM buy-write index** has historically **lagged** the S&P in strong bulls (~**8.5%/yr vs ~11%**) while being a bit smoother — capped-upside income, **not** free money.
+- Watch the **frictions**: early assignment (esp. around ex-dividend), heavy **short-term-tax** and holding-period effects, transaction drag from frequent trades, and the opportunity cost of parked cash.
+- The one rule: **never sell a call on shares you'd be upset to lose, and never sell a put on a stock you wouldn't want to own at the strike.** A fat premium is a risk warning, not a gift.
+- Educational material, not a recommendation — verify contract terms, margin rules, and tax treatment for your own situation before acting.
+
+## Further reading
+
+- [Cboe — BuyWrite (BXM) Index](https://www.cboe.com/us/indices/dashboard/bxm/) — the official methodology and history of the systematic covered-call benchmark.
+- [Options Clearing Corporation — *Characteristics and Risks of Standardized Options*](https://www.theocc.com/company-information/documents-and-archives/options-disclosure-document) — the regulator-mandated risk disclosure every options investor is meant to read.
+- [SEC Investor.gov — Options](https://www.investor.gov/introduction-investing/investing-basics/investment-products/options) — plain-language regulator primer on calls, puts, and assignment.
+
+---
+
+### Sources
+
+1. [Covered call — Wikipedia](https://en.wikipedia.org/wiki/Covered_call) — payoff structure, capped upside, premium as partial (not full) downside cushion, assignment mechanics.
+2. [Cash-secured put / Naked put — Wikipedia](https://en.wikipedia.org/wiki/Naked_put) — the cash-secured put payoff, effective purchase price of strike minus premium, and the assignment-into-a-falling-stock risk.
+3. [CBOE S&P 500 BuyWrite Index (BXM) — Cboe / Wikipedia](https://en.wikipedia.org/wiki/CBOE_S%26P_500_BuyWrite_Index) — the buy-write benchmark's history since 1986 and its long-run return/volatility profile relative to the S&P 500.
+4. [Options (finance) — Wikipedia](https://en.wikipedia.org/wiki/Option_(finance)) — writer obligations, American-style early assignment, 100-share contract multiplier.
