@@ -45,6 +45,7 @@ export default async function PracticePage({
       walk={walk}
       analyzer={analyzer}
       toolHref={`/${locale}/tools/${strategy.id}`}
+      strategyId={strategy.id}
       strategyLabel={strategy.label[locale]}
       strategyHref={common.strategyHref}
       disclaimer={t.practical.disclaimer}

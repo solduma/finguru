@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import type { Locale } from "@/lib/i18n";
 import { pick, type Walkthrough as WT, type WalkStep, type SourceRef } from "@/lib/walkthroughs";
+import { labId, setDone } from "@/lib/progress";
 
 // The guided-walkthrough shell (실습). Renders a walkthrough's steps as a
 // stepper; the "tool" step slots in the strategy's analyzer (passed by the
@@ -252,6 +253,7 @@ export default function Walkthrough({
   walk,
   analyzer,
   toolHref,
+  strategyId,
   strategyLabel,
   strategyHref,
   disclaimer,
@@ -260,6 +262,9 @@ export default function Walkthrough({
   walk: WT;
   analyzer: ReactNode;
   toolHref: string;
+  /** The strategy id this lab is the capstone of — used to record lab
+   *  completion so the strategy path's progress bar can reach 100%. */
+  strategyId: string;
   strategyLabel: string;
   strategyHref: string;
   disclaimer: string;
@@ -269,6 +274,12 @@ export default function Walkthrough({
   const [checked, setChecked] = useState<boolean[]>([]);
   const step = walk.steps[i];
   const last = walk.steps.length - 1;
+
+  // Reaching the final (conclude) step counts as completing the lab — the last
+  // piece of the strategy path, so the path's progress can hit 100%.
+  useEffect(() => {
+    if (i === last) setDone(labId(strategyId), true, Date.now());
+  }, [i, last, strategyId]);
 
   return (
     <div className="space-y-8">
