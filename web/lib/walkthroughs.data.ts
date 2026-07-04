@@ -3,6 +3,7 @@
 import type { Walkthrough } from "./walkthroughs";
 import {
   DART_SHOT,
+  DART_STEPS,
   FRED_SHOT,
   YAHOO_SHOT,
   FRENCH_SHOT,
@@ -48,6 +49,7 @@ export const dividend: Walkthrough = {
           why: { en: "It's the regulator's own database, so it's the source of record for KR fundamentals.", ko: "금융당국의 공식 데이터베이스라, 한국 기업 재무의 원천입니다." },
           url: "https://opendart.fss.or.kr/",
           shot: DART_SHOT,
+          steps: DART_STEPS,
         },
         {
           name: { en: "SEC EDGAR (US)", ko: "SEC EDGAR (미국)" },
@@ -166,6 +168,7 @@ export const value: Walkthrough = {
           why: { en: "Your growth and terminal assumptions should be grounded in this actual history, not hope.", ko: "성장률과 잔존가치 가정은 희망이 아니라 이 실제 이력에 근거해야 합니다." },
           url: "https://opendart.fss.or.kr/",
           shot: DART_SHOT,
+          steps: DART_STEPS,
         },
         {
           name: { en: "SEC EDGAR (US)", ko: "SEC EDGAR (미국)" },
@@ -291,6 +294,7 @@ export const reit: Walkthrough = {
           why: { en: "KR REIT rules require distributing at least 90% of distributable profit, so it's the correct legal basis for coverage — but note it's a legal/accounting profit figure, not a like-for-like cash FFO.", ko: "한국 리츠 제도는 배당가능이익의 90% 이상 의무 배당을 규정하므로, 이것이 커버리지의 올바른 법적 기준입니다 — 다만 미국식 현금 FFO와 동일한 지표가 아니라 법적·회계상 이익 개념임을 유념하세요." },
           url: "https://opendart.fss.or.kr/",
           shot: DART_SHOT,
+          steps: DART_STEPS,
         },
       ],
     },
@@ -1083,6 +1087,14 @@ export const options: Walkthrough = {
       body: {
         en: "Be clear on the trade you're making:\n- **It smooths your returns and generates income** — the premium cushions small drops and calms the bumpiness of your portfolio's value over time. (Note this is a *different* sense of \"volatility\" than the IV input: here it means how much your portfolio's value jumps around, which steady premium income settles down.) That's why BXM is usually calmer than SPY.\n- **It caps your gains** — above the strike, you don't participate. In a roaring bull market, buy-write lags badly.\n- **It barely protects the downside** — the premium is a thin cushion. If the stock falls 30%, a 2% premium won't save you. A covered call is *not* a **hedge** (a hedge = a separate position bought specifically to offset losses, like insurance). If you want real downside protection you'd instead **buy a put** — a different option that gives you the right to *sell* your shares at a set price, so it pays off when the stock falls.",
         ko: "지금 하는 거래를 분명히 해두십시오.\n- **수익률을 매끄럽게 하고 수입을 만듭니다** — 프리미엄이 작은 하락을 완충하고, 시간이 지나며 포트폴리오 가치가 출렁이는 정도를 진정시킵니다. (이것은 IV 입력값과는 *다른* 의미의 \"변동성\"입니다. 여기서는 여러분 포트폴리오 가치가 얼마나 요동치느냐를 뜻하고, 꾸준한 프리미엄 수입이 그것을 가라앉힙니다.) BXM이 대개 SPY보다 잔잔한 이유입니다.\n- **상승 이익을 제한합니다** — 행사가 위로는 참여하지 못합니다. 강한 상승장에서 바이라이트는 크게 뒤처집니다.\n- **하락은 거의 방어하지 못합니다** — 프리미엄은 얇은 완충일 뿐입니다. 주가가 30% 빠지면 2% 프리미엄으로는 못 막습니다. 커버드 콜은 **헤지(hedge)**가 *아닙니다*(헤지 = 손실을 상쇄하려고 따로 잡는 포지션, 보험 같은 것). 진짜 하락 방어가 필요하면 대신 **풋(put)을 매수**합니다 — 정해진 가격에 주식을 *팔* 권리를 주는 다른 옵션으로, 주가가 떨어질 때 이익이 납니다.",
+      },
+    },
+    {
+      kind: "read",
+      title: { en: "Picking the strike, and managing it after", ko: "행사가 고르기, 그리고 그 뒤 관리하기" },
+      body: {
+        en: "Opening the trade is half the skill; **choosing which strike and managing it afterward** is the other half — this is what separates \"I sold one call once\" from running the strategy.\n\n**Pick the strike by delta, not by gut.** On a real chain each call shows a **delta** — for a call it runs 0 to 1, and it doubles as a rough probability the option finishes in-the-money (i.e. gets assigned). Common covered-call practice:\n- **~0.30 delta** (further out-of-the-money) → roughly a 30% chance of assignment: smaller premium, but you keep more upside and are less likely to have your shares called away. A popular default.\n- **~0.40–0.50 delta** (closer to the money) → more premium, but a much higher chance you're capped and assigned. Choose this only if you're happy to sell at that strike.\nSo delta lets you *dial* the trade: how much income you want vs. how much upside you're willing to risk losing.\n\n**Then manage the open call — you have three moves as expiry nears:**\n- **Let it expire worthless** (stock below strike) — you keep the shares AND the whole premium. The goal case; sell another call next cycle.\n- **Let it get assigned** (stock above strike) — your 100 shares are sold at the strike. Fine *if* you were happy to sell there; you keep premium + gains up to the strike.\n- **Roll it** — if you want to KEEP the shares but the call is now in-the-money, you **buy-to-close** the current call (pay to cancel your obligation) and **sell-to-open** a later-dated (and often higher-strike) call, usually for a net credit. Rolling \"up and out\" defers assignment and raises the cap, at the cost of tying the position up longer.\nRule of thumb: never sell a call at a strike you'd be unhappy to sell your shares at — because assignment is exactly what you signed up for.",
+        ko: "거래를 여는 것은 기술의 절반이고, **어떤 행사가를 고르고 그 뒤에 관리하느냐**가 나머지 절반입니다 — 이것이 \"콜 한 번 팔아봤다\"와 \"전략을 굴린다\"를 가릅니다.\n\n**행사가는 감이 아니라 델타로 고릅니다.** 실제 체인에서 각 콜에는 **델타(delta)**가 표시되는데 — 콜의 경우 0에서 1 사이이고, 옵션이 내가격으로 끝날(즉 배정될) 대략적인 확률로도 읽힙니다. 흔한 커버드 콜 방식:\n- **델타 약 0.30**(더 외가격) → 배정 확률 약 30%: 프리미엄은 적지만 상승 여력을 더 지키고 주식이 넘어갈 가능성이 낮습니다. 널리 쓰는 기본값.\n- **델타 약 0.40~0.50**(등가격에 가까움) → 프리미엄은 많지만 상단이 막히고 배정될 확률이 훨씬 높습니다. 그 행사가에 팔아도 좋을 때만 고르세요.\n즉 델타로 거래를 *조절*합니다: 수입을 얼마나 원하는가 대 상승 여력을 얼마나 잃을 위험을 감수하는가.\n\n**그다음 열린 콜을 관리합니다 — 만기가 다가올 때 선택지는 셋입니다:**\n- **그냥 소멸시키기**(주가가 행사가 아래) — 주식과 프리미엄을 모두 지킵니다. 목표 상황이며, 다음 사이클에 콜을 또 팝니다.\n- **배정되게 두기**(주가가 행사가 위) — 100주가 행사가에 팔립니다. 그 가격에 팔아도 좋았다면 괜찮고, 프리미엄 + 행사가까지의 이익을 챙깁니다.\n- **롤링(roll)** — 주식을 **계속 보유**하고 싶은데 콜이 내가격이 됐다면, 현재 콜을 **바이투클로즈(buy-to-close)**로 되사서(의무를 취소) 더 늦은 만기(그리고 대개 더 높은 행사가)의 콜을 **셀투오픈(sell-to-open)**합니다 — 보통 순(net) 크레딧을 받으며. \"위로 그리고 뒤로(up and out)\" 롤링은 배정을 미루고 상단을 높이지만, 포지션이 더 오래 묶입니다.\n경험칙: 주식을 팔아도 아깝지 않을 행사가가 아니면 콜을 팔지 마세요 — 배정은 바로 여러분이 감수하기로 한 것이기 때문입니다.",
       },
     },
     {

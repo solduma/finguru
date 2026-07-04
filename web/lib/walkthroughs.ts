@@ -11,7 +11,7 @@
 
 import type { Locale } from "./i18n";
 import type { LabId } from "./practicals";
-import { DART_SHOT, EDGAR_STEPS } from "./walkthroughs.shots";
+import { DART_SHOT, DART_STEPS, EDGAR_STEPS } from "./walkthroughs.shots";
 
 /** A localized string pair. */
 export interface L {
@@ -138,6 +138,7 @@ const growth: Walkthrough = {
           },
           url: "https://dart.fss.or.kr",
           shot: DART_SHOT,
+          steps: DART_STEPS,
         },
         {
           name: { en: "SEC EDGAR", ko: "SEC EDGAR" },
