@@ -5,12 +5,16 @@ import {
   DART_SHOT,
   DART_STEPS,
   DART_CASHFLOW_SHOT,
+  DART_INCOME_SHOT,
   EDGAR_CASHFLOW_SHOT,
+  EDGAR_INCOME_SHOT,
   FRED_SHOT,
   YAHOO_SHOT,
   FRENCH_SHOT,
   CBOE_SHOT,
   EDGAR_STEPS,
+  MERGER_8K_STEPS,
+  PRIOR_DAY_CLOSE_STEPS,
 } from "./walkthroughs.shots";
 
 export const dividend: Walkthrough = {
@@ -67,6 +71,20 @@ export const dividend: Walkthrough = {
           url: "https://www.sec.gov/edgar/searchedgar/companysearch",
           shot: EDGAR_CASHFLOW_SHOT,
           steps: EDGAR_STEPS,
+        },
+        {
+          name: { en: "OpenDART — inside the income statement", ko: "OpenDART — 손익계산서 속으로" },
+          what: { en: "The earnings numbers are on a DIFFERENT statement than the cash-flow one above: net income (당기순이익) — the payout denominator — plus operating income / EBIT (영업이익) and revenue all sit on the 연결 손익계산서. Here's where each line is.", ko: "이익 관련 숫자는 위 현금흐름표가 아니라 다른 표에 있습니다: 당기순이익(배당성향 분모), 영업이익(EBIT), 매출은 모두 연결 손익계산서에 있습니다. 각 항목이 어디 있는지 보여줍니다." },
+          why: { en: "The cash-flow shot above can't show net income or EBIT — read those here, on the income statement.", ko: "위 현금흐름표 화면은 순이익이나 EBIT를 보여줄 수 없습니다 — 그건 여기 손익계산서에서 읽으세요." },
+          url: "https://dart.fss.or.kr/",
+          shot: DART_INCOME_SHOT,
+        },
+        {
+          name: { en: "SEC EDGAR — the income statement (US)", ko: "SEC EDGAR — 손익계산서 (미국)" },
+          what: { en: "The US income statement (Consolidated Statements of Operations): Net income (the payout denominator), Operating income = EBIT, and Net sales.", ko: "미국 손익계산서(Consolidated Statements of Operations): Net income(배당성향 분모), Operating income = EBIT, Net sales." },
+          why: { en: "Same idea for US names: net income and EBIT live on the income statement, not the cash-flow statement.", ko: "미국 기업도 동일: 순이익과 EBIT는 현금흐름표가 아니라 손익계산서에 있습니다." },
+          url: "https://www.sec.gov/edgar/searchedgar/companysearch",
+          shot: EDGAR_INCOME_SHOT,
         },
       ],
     },
@@ -194,6 +212,20 @@ export const value: Walkthrough = {
           url: "https://www.sec.gov/edgar/searchedgar/companysearch",
           shot: EDGAR_CASHFLOW_SHOT,
           steps: EDGAR_STEPS,
+        },
+        {
+          name: { en: "OpenDART — inside the income statement", ko: "OpenDART — 손익계산서 속으로" },
+          what: { en: "The earnings numbers are on a DIFFERENT statement than the cash-flow one above: net income (당기순이익) — the payout denominator — plus operating income / EBIT (영업이익) and revenue all sit on the 연결 손익계산서. Here's where each line is.", ko: "이익 관련 숫자는 위 현금흐름표가 아니라 다른 표에 있습니다: 당기순이익(배당성향 분모), 영업이익(EBIT), 매출은 모두 연결 손익계산서에 있습니다. 각 항목이 어디 있는지 보여줍니다." },
+          why: { en: "The cash-flow shot above can't show net income or EBIT — read those here, on the income statement.", ko: "위 현금흐름표 화면은 순이익이나 EBIT를 보여줄 수 없습니다 — 그건 여기 손익계산서에서 읽으세요." },
+          url: "https://dart.fss.or.kr/",
+          shot: DART_INCOME_SHOT,
+        },
+        {
+          name: { en: "SEC EDGAR — the income statement (US)", ko: "SEC EDGAR — 손익계산서 (미국)" },
+          what: { en: "The US income statement (Consolidated Statements of Operations): Net income (the payout denominator), Operating income = EBIT, and Net sales.", ko: "미국 손익계산서(Consolidated Statements of Operations): Net income(배당성향 분모), Operating income = EBIT, Net sales." },
+          why: { en: "Same idea for US names: net income and EBIT live on the income statement, not the cash-flow statement.", ko: "미국 기업도 동일: 순이익과 EBIT는 현금흐름표가 아니라 손익계산서에 있습니다." },
+          url: "https://www.sec.gov/edgar/searchedgar/companysearch",
+          shot: EDGAR_INCOME_SHOT,
         },
       ],
     },
@@ -1311,8 +1343,8 @@ export const deal: Walkthrough = {
       kind: "source",
       title: { en: "Where the deal terms come from", ko: "딜 조건이 어디서 오는지" },
       body: {
-        en: "For a real deal, the terms aren't rumor — they're filed. The moment a merger is announced, the target files an **8-K** with SEC EDGAR (see the first source below), followed by a **proxy statement** for the shareholder vote. Those, plus the company's own press release, are your primary sources.\n\n**Ignore the on-screen tips in the two generic source guides below and do exactly this instead** — those guides were reused from other labs (a backtest and a 10-K read), so their marker labels point you the wrong way for a merger:\n- **Deal terms → the merger 8-K and the DEFM14A/proxy, NOT the income statement.** On EDGAR, do *not* open the annual 10-K financial statements; open the target's **merger 8-K** (filed within days of the announcement, with the merger agreement attached) and the **DEFM14A** proxy. Hunt for the recital that reads \"**$X.XX per share in cash**\" — that single line is your offer price. Revenue and earnings on the income statement tell you nothing about what a shareholder gets paid per share.\n- **Pre-announcement price → the plain Close the day before, NOT Adjusted Close.** On the price chart, first find the **announcement date** (the 8-K filing date), then read the ordinary **Close** of the single trading day *before* it. Do **not** use **Adjusted Close (Adj Close)**: it is back-adjusted for dividends and splits that happen *after* that date, so it is not the level the stock actually traded at — and not the level it would revert to if the deal breaks. You want the raw close, the real break-price anchor. (Also ignore the chart tip about setting a long \"bull-and-bear\" date range — here you need one single day, not a full market cycle.)\n\nA few terms you'll meet:\n- **8-K** — a short SEC filing a US company must publish within days of any major event (here, the merger); it attaches the actual merger agreement.\n- **Proxy statement (DEFM14A)** — the booklet mailed to shareholders before they vote on the deal; it restates the price, timeline, and risks in more detail.\n- **Break fee** — a penalty one side pays the other if it walks away from the deal; a signal of how committed the parties are.\n- **Closing conditions** — the boxes that must be ticked before the deal can complete, mainly regulator approvals and the shareholder vote.\n\nThe offer price is stated in the first page or two of the press release and in the merger agreement's opening recitals — look for a phrase like \"$X.XX per share in cash.\"\n\n**Cash vs. stock.** In an **all-cash** deal the offer is a fixed dollar figure (e.g. $50.00/share) — simple. In a **stock** deal the buyer pays in its own shares, so the effective deal price floats up and down with the buyer's stock price and is harder to pin down. This lab assumes an **all-cash** deal (a fixed deal price); stock deals need an extra step we don't cover here.\n\nOne number is *not* in any filing: the **pre-announcement price**. It's just a historical stock quote — pull up a price chart (see the second source), find the announcement date, and read the closing price of the trading day *before* it. That single number is your break-price anchor. This lab pre-loads two illustrative deals — one that closed cleanly and one that broke — and lets you edit any field to model a live deal.",
-        ko: "실제 딜의 조건은 소문이 아니라 공시됩니다. 합병이 발표되는 순간, 피인수 기업은 **8-K**를 SEC EDGAR에 제출하고(아래 첫 번째 출처 참조), 이어서 주주총회 표결을 위한 **위임장(proxy)**을 냅니다. 이것들과 기업의 보도자료가 1차 출처입니다.\n\n**아래 두 개의 일반 출처 가이드에 붙은 화면 설명은 무시하고, 대신 정확히 이렇게 하십시오** — 그 가이드들은 다른 랩(백테스트와 10-K 읽기)에서 재사용한 것이라, 마커 설명이 합병에는 엉뚱한 방향을 가리킵니다.\n- **딜 조건 → 합병 8-K와 DEFM14A(위임장), 손익계산서가 *아님*.** EDGAR에서 연간 10-K 재무제표를 열지 *마십시오*. 대상 회사의 **합병 8-K**(발표 후 며칠 안에 제출되며 합병계약서가 첨부됨)와 **DEFM14A** 위임장을 여십시오. \"**주당 $X.XX 현금(per share in cash)**\"이라 적힌 낭독조항을 찾으면 — 그 한 줄이 인수 가격입니다. 손익계산서의 매출·이익은 주주가 주당 얼마를 받는지에 대해 아무것도 알려주지 않습니다.\n- **발표 전 가격 → 하루 전의 일반 Close(종가), 수정 종가가 *아님*.** 주가 차트에서 먼저 **발표일**(8-K 제출일)을 찾고, 그 *하루 전* 단 하나의 거래일의 일반 **Close(종가)**를 읽으십시오. **Adjusted Close(수정 종가, Adj Close)**는 쓰지 **마십시오**: 수정 종가는 그 날짜 *이후*에 일어난 배당·분할을 소급 반영한 값이라, 주가가 실제로 거래되던 수준이 아니며 — 딜이 깨졌을 때 되돌아갈 수준도 아닙니다. 필요한 것은 원시 종가, 진짜 결렬 가격 기준점입니다. (긴 \"상승·하락(bull-and-bear)\" 기간을 설정하라는 차트 설명도 무시하십시오 — 여기서는 시장 사이클 전체가 아니라 단 하루가 필요합니다.)\n\n마주치게 될 몇 가지 용어:\n- **8-K** — 미국 기업이 중대한 사건(여기서는 합병) 발생 후 며칠 안에 반드시 제출해야 하는 짧은 SEC 공시 — 실제 합병계약서가 첨부됩니다 (통상 사건 후 영업일 4일 이내).\n- **위임장(DEFM14A)** — 주주들이 딜에 투표하기 전에 우편으로 받는 소책자 — 가격·일정·위험을 더 자세히 다시 설명합니다 (DEFM14A = 확정 합병 위임장).\n- **위약금(break fee)** — 한쪽이 딜에서 발을 뺄 때 상대방에게 무는 위약금 — 양측이 얼마나 진지한지 보여주는 신호.\n- **종료 조건(closing conditions)** — 딜이 완료되기 전에 채워져야 하는 항목들 — 주로 규제당국 승인과 주주 투표.\n\n인수 가격은 보도자료 첫 한두 페이지와 합병계약서 맨 앞의 낭독조항(recitals)에 적혀 있습니다 — \"주당 $X.XX 현금(per share in cash)\" 같은 문구를 찾으면 됩니다.\n\n**현금이냐 주식이냐.** 전액 현금(all-cash) 딜에서는 인수 가격이 고정된 금액(예: 주당 $50.00)이라 간단합니다. 주식(stock) 딜에서는 인수자가 자기 회사 주식으로 지불하므로, 실효 딜 가격이 인수자 주가를 따라 오르내려 확정하기 어렵습니다. 이 랩은 전액 현금 딜(고정 딜 가격)을 가정합니다 — 주식 딜은 여기서 다루지 않는 추가 단계가 필요합니다.\n\n한 숫자만은 어떤 공시에도 *없습니다*: **발표 전 가격**입니다. 그저 과거 주가일 뿐이라 — 주가 차트(아래 두 번째 출처 참조)를 열어 발표일을 찾고, 그 하루 전 거래일의 종가를 읽으면 됩니다. 이 한 숫자가 결렬 가격(break price)의 기준점입니다. 이 랩은 예시 딜 두 개 — 깔끔하게 성사된 것과 깨진 것 — 를 미리 불러오고, 어떤 항목이든 편집해 실제 딜을 모델링하게 해줍니다.",
+        en: "For a real deal, the terms aren't rumor — they're filed. The moment a merger is announced, the target files an **8-K** with SEC EDGAR, followed by a **proxy statement** for the shareholder vote. Those, plus the company's own press release, are your primary sources. The two source guides below walk you to exactly the right place for each number:\n- **Deal terms → the merger 8-K / DEFM14A (first guide).** Open the target's **merger 8-K** (filed within days of the announcement, with the merger agreement attached) and the **DEFM14A** proxy — *not* the annual 10-K financial statements. Hunt for the recital that reads \"**$X.XX per share in cash**\" — that single line is your offer price. Revenue and earnings tell you nothing about what a shareholder gets paid per share.\n- **Pre-announcement price → the plain prior-day Close (second guide).** Find the **announcement date** (the 8-K filing date), then read the ordinary **Close** of the single trading day *before* it. Use the raw close, **not Adjusted Close** — Adj Close is back-adjusted for later dividends/splits, so it isn't the level the stock actually traded at, nor the level it reverts to if the deal breaks. You need one single day, not a range.\n\nA few terms you'll meet:\n- **8-K** — a short SEC filing a US company must publish within days of any major event (here, the merger); it attaches the actual merger agreement.\n- **Proxy statement (DEFM14A)** — the booklet mailed to shareholders before they vote on the deal; it restates the price, timeline, and risks in more detail.\n- **Break fee** — a penalty one side pays the other if it walks away from the deal; a signal of how committed the parties are.\n- **Closing conditions** — the boxes that must be ticked before the deal can complete, mainly regulator approvals and the shareholder vote.\n\n**Cash vs. stock.** In an **all-cash** deal the offer is a fixed dollar figure (e.g. $50.00/share) — simple. In a **stock** deal the buyer pays in its own shares, so the effective deal price floats up and down with the buyer's stock price and is harder to pin down. This lab assumes an **all-cash** deal (a fixed deal price); stock deals need an extra step we don't cover here.\n\nThe **pre-announcement price** is the one input not in any filing — it's just a historical quote (second source). This lab pre-loads two illustrative deals — one that closed cleanly and one that broke — and lets you edit any field to model a live deal.",
+        ko: "실제 딜의 조건은 소문이 아니라 공시됩니다. 합병이 발표되는 순간, 피인수 기업은 **8-K**를 SEC EDGAR에 제출하고, 이어서 주주총회 표결을 위한 **위임장(proxy)**을 냅니다. 이것들과 기업의 보도자료가 1차 출처입니다. 아래 두 출처 가이드가 각 숫자를 정확히 어디서 찾는지 안내합니다.\n- **딜 조건 → 합병 8-K / DEFM14A(첫 번째 가이드).** 대상 회사의 **합병 8-K**(발표 후 며칠 안에 제출되며 합병계약서가 첨부됨)와 **DEFM14A** 위임장을 엽니다 — 연간 10-K 재무제표가 *아닙니다*. \"**주당 $X.XX 현금(per share in cash)**\"이라 적힌 낭독조항을 찾으면 그 한 줄이 인수 가격입니다. 매출·이익은 주주가 주당 얼마를 받는지 알려주지 않습니다.\n- **발표 전 가격 → 하루 전의 일반 종가(두 번째 가이드).** **발표일**(8-K 제출일)을 찾고, 그 *하루 전* 거래일의 일반 **Close(종가)**를 읽습니다. **수정 종가(Adj Close)가 아니라** 원시 종가를 쓰세요 — 수정 종가는 이후의 배당·분할을 소급 반영한 값이라 실제 거래 수준도, 딜이 깨질 때 되돌아갈 수준도 아닙니다. 기간이 아니라 단 하루가 필요합니다.\n\n마주치게 될 몇 가지 용어:\n- **8-K** — 미국 기업이 중대한 사건(여기서는 합병) 발생 후 며칠 안에 반드시 제출해야 하는 짧은 SEC 공시 — 실제 합병계약서가 첨부됩니다 (통상 사건 후 영업일 4일 이내).\n- **위임장(DEFM14A)** — 주주들이 딜에 투표하기 전에 우편으로 받는 소책자 — 가격·일정·위험을 더 자세히 다시 설명합니다 (DEFM14A = 확정 합병 위임장).\n- **위약금(break fee)** — 한쪽이 딜에서 발을 뺄 때 상대방에게 무는 위약금 — 양측이 얼마나 진지한지 보여주는 신호.\n- **종료 조건(closing conditions)** — 딜이 완료되기 전에 채워져야 하는 항목들 — 주로 규제당국 승인과 주주 투표.\n\n**현금이냐 주식이냐.** 전액 현금(all-cash) 딜에서는 인수 가격이 고정된 금액(예: 주당 $50.00)이라 간단합니다. 주식(stock) 딜에서는 인수자가 자기 회사 주식으로 지불하므로, 실효 딜 가격이 인수자 주가를 따라 오르내려 확정하기 어렵습니다. 이 랩은 전액 현금 딜(고정 딜 가격)을 가정합니다 — 주식 딜은 여기서 다루지 않는 추가 단계가 필요합니다.\n\n어떤 공시에도 *없는* 유일한 입력값은 **발표 전 가격**입니다 — 그저 과거 시세입니다(두 번째 출처). 이 랩은 예시 딜 두 개 — 깔끔하게 성사된 것과 깨진 것 — 를 미리 불러오고, 어떤 항목이든 편집해 실제 딜을 모델링하게 해줍니다.",
       },
       sources: [
         {
@@ -1320,14 +1352,14 @@ export const deal: Walkthrough = {
           what: { en: "The primary deal terms: offer price, cash-vs-stock structure, closing conditions, regulatory approvals needed, break fees, and the expected close date.", ko: "1차 딜 조건: 인수 가격, 현금/주식 구조, 종료 조건, 필요한 규제 승인, 위약금, 예상 종료일." },
           why: { en: "It's the legally binding source — not a headline. Everything you plug into the analyzer should trace back to a filing, not a tweet.", ko: "헤드라인이 아니라 법적 구속력이 있는 출처입니다. 분석기에 넣는 모든 값은 트윗이 아니라 공시 문서로 거슬러 올라가야 합니다." },
           url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany",
-          steps: EDGAR_STEPS,
+          steps: MERGER_8K_STEPS,
         },
         {
           name: { en: "Price chart (Yahoo/Google Finance or broker)", ko: "주가 차트 (Yahoo/Google Finance 또는 증권사)" },
           what: { en: "The historical closing price on the trading day before the announcement — your break-price anchor.", ko: "발표 하루 전 거래일 종가 — 결렬 가격 기준점." },
           why: { en: "A broken deal reverts toward this level, so it sets your downside; no filing contains it — it's just a historical quote.", ko: "딜이 깨지면 주가가 이 수준으로 되돌아가므로 하방 손실을 결정합니다 — 어떤 공시에도 없고, 그저 과거 시세일 뿐입니다." },
           url: "https://finance.yahoo.com",
-          shot: YAHOO_SHOT,
+          steps: PRIOR_DAY_CLOSE_STEPS,
         },
         {
           name: { en: "Company press releases", ko: "기업 보도자료" },
