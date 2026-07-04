@@ -202,23 +202,59 @@ export const CBOE_SHOT: SourceShot = {
   ],
 };
 
-/** SEC EDGAR blocks automated capture, so we give a written navigation guide. */
+/** DART_SHOT shows only the OpenDART landing page + 연결/별도 toggle. This written
+ *  guide continues from there INTO the actual statement tables, so a beginner
+ *  isn't left at the front door. Shown alongside the screenshot. */
+export const DART_STEPS: L[] = [
+  {
+    en: "From the search results, open the latest 사업보고서 (annual business report). In its left-hand table of contents, click into 'III. 재무에 관한 사항' → '재무제표' (or '연결재무제표').",
+    ko: "검색 결과에서 가장 최근 사업보고서를 엽니다. 왼쪽 목차에서 'III. 재무에 관한 사항' → '재무제표'(또는 '연결재무제표')를 클릭합니다.",
+  },
+  {
+    en: "손익계산서 (income statement): 매출액 (revenue) at the top, 영업이익 (operating income / EBIT) in the middle, 당기순이익 (net income) at the bottom.",
+    ko: "손익계산서: 맨 위 매출액, 중간 영업이익(EBIT), 맨 아래 당기순이익.",
+  },
+  {
+    en: "현금흐름표 (cash-flow statement), three sections: 영업활동현금흐름 (operating cash flow, OCF); under 투자활동 find 유형자산의 취득 (CAPEX, shown negative); under 재무활동 find 배당금의 지급 (dividends paid). FCF = 영업활동현금흐름 − 유형자산의 취득.",
+    ko: "현금흐름표(3부분): 영업활동현금흐름(OCF); 투자활동의 '유형자산의 취득'(CAPEX, 음수); 재무활동의 '배당금의 지급'. FCF = 영업활동현금흐름 − 유형자산의 취득.",
+  },
+  {
+    en: "재무상태표 (balance sheet): total debt = 단기차입금 + 장기차입금 + 사채; cash = 현금및현금성자산. (For a REIT, the 배당가능이익 and distribution detail are in the 주석 (notes), not the main statements.)",
+    ko: "재무상태표: 총부채 = 단기차입금 + 장기차입금 + 사채; 현금 = 현금및현금성자산. (리츠는 배당가능이익과 분배 내역이 본 재무제표가 아니라 주석에 있습니다.)",
+  },
+  {
+    en: "Read the exact line — that is the figure the analyzer should match. Keep the basis consistent (연결 vs 별도) with what you selected on the search page.",
+    ko: "필요한 줄을 정확히 읽습니다 — 분석기 값과 일치해야 합니다. 검색 페이지에서 고른 기준(연결/별도)과 동일하게 유지하세요.",
+  },
+];
+
+/** SEC EDGAR blocks automated capture, so we give a written navigation guide.
+ *  Deliberately walks INTO the specific statement + line (not just "find the
+ *  financial statements") so a beginner can actually locate each number. */
 export const EDGAR_STEPS: L[] = [
   {
-    en: "Go to the EDGAR full-text search and enter the company name or ticker.",
-    ko: "EDGAR 전체 텍스트 검색으로 가서 회사명이나 티커를 입력합니다.",
+    en: "Go to EDGAR full-text search (sec.gov/edgar/search), type the company name or ticker, and open its filings page.",
+    ko: "EDGAR 전체 텍스트 검색(sec.gov/edgar/search)에서 회사명이나 티커를 입력하고, 그 회사의 공시 목록 페이지를 엽니다.",
   },
   {
-    en: "Filter the form type to 10-K (annual report) and open the most recent one.",
-    ko: "공시 유형을 10-K(연차보고서)로 걸러, 가장 최근 것을 엽니다.",
+    en: "Filter Form Type to 10-K (the annual report) and open the most recent one. Inside, jump to the section titled 'Item 8. Financial Statements and Supplementary Data' (or click the 'Financial Statements' tab in EDGAR's viewer).",
+    ko: "공시 유형(Form Type)을 10-K(연차보고서)로 걸러 가장 최근 것을 엽니다. 문서 안에서 'Item 8. Financial Statements and Supplementary Data' 섹션으로 이동합니다(또는 EDGAR 뷰어의 'Financial Statements' 탭 클릭).",
   },
   {
-    en: "In the filing, open the financial statements and find the income statement, balance sheet, and cash-flow statement.",
-    ko: "공시 문서에서 재무제표를 열어 손익계산서·재무상태표·현금흐름표를 찾습니다.",
+    en: "The three statements appear in order. INCOME STATEMENT (\"Consolidated Statements of Operations\"): top line = Revenue/Net sales; near the top = Operating income (EBIT); bottom line = Net income.",
+    ko: "세 재무제표가 순서대로 나옵니다. 손익계산서(\"Consolidated Statements of Operations\"): 맨 윗줄 = 매출(Revenue/Net sales), 위쪽 = 영업이익(Operating income, EBIT), 맨 아랫줄 = 당기순이익(Net income).",
   },
   {
-    en: "Read the line item you need (e.g. Net income, Cash from operations) — this is the figure the analyzer's number should match.",
-    ko: "필요한 항목(예: 당기순이익, 영업활동현금흐름)을 읽습니다 — 분석기 숫자가 일치해야 할 값입니다.",
+    en: "CASH-FLOW STATEMENT (\"Consolidated Statements of Cash Flows\") has three sections: OPERATING (find 'Net cash provided by operating activities' = OCF); INVESTING (find 'Purchases of property, plant and equipment' = CAPEX, shown negative); FINANCING (find 'Dividends paid'). FCF = OCF − CAPEX.",
+    ko: "현금흐름표(\"Consolidated Statements of Cash Flows\")는 세 부분입니다: 영업활동('Net cash provided by operating activities' = 영업활동현금흐름 OCF); 투자활동('Purchases of property, plant and equipment' = CAPEX, 음수로 표시); 재무활동('Dividends paid' = 지급배당금). FCF = OCF − CAPEX.",
+  },
+  {
+    en: "BALANCE SHEET (\"Consolidated Balance Sheets\"): total debt = short-term + long-term borrowings/debt; cash = 'Cash and cash equivalents'. You need both for EV = market cap + debt − cash.",
+    ko: "재무상태표(\"Consolidated Balance Sheets\"): 총부채 = 단기 + 장기 차입금/사채, 현금 = 'Cash and cash equivalents'. 기업가치 EV = 시가총액 + 부채 − 현금에 둘 다 필요합니다.",
+  },
+  {
+    en: "Read the exact line you need — that figure is what the analyzer's number should match. (For a REIT, the FFO/AFFO reconciliation is NOT here — it's in the earnings-release 8-K exhibit or the 10-K's MD&A/supplemental, starting from net income and adding back depreciation.)",
+    ko: "필요한 항목을 정확히 읽습니다 — 그 값이 분석기 숫자와 일치해야 합니다. (리츠의 FFO/AFFO 조정표는 여기 없습니다 — 실적발표 8-K 첨부자료나 10-K의 MD&A/보충자료에 있으며, 순이익에서 출발해 감가상각을 다시 더합니다.)",
   },
 ];
 

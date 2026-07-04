@@ -102,7 +102,10 @@ function SourceCard({ s, locale }: { s: SourceRef; locale: Locale }) {
 
       {s.shot && <ShotGuide shot={s.shot} locale={locale} />}
 
-      {!s.shot && s.steps && (
+      {/* A written step guide can accompany a screenshot (the shot shows the
+          landing page; the steps walk INTO the statement/table the shot can't
+          reach) or stand alone when there's no shot. */}
+      {s.steps && (
         <ol className="mt-3 space-y-2">
           {s.steps.map((st, i) => (
             <li key={i} className="flex gap-3 text-sm text-gray-300">
