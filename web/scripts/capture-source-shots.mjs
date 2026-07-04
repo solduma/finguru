@@ -54,6 +54,41 @@ const SHOTS = [
     },
   },
   {
+    // DART income statement (2-2. 연결 손익계산서): revenue / operating income /
+    // net income / EPS — what growth analysis reads. Same filing as dart-cashflow.
+    name: "dart-income",
+    ua: CHROME_UA,
+    viewport: { width: 1280, height: 1100 },
+    async run(page) {
+      await page.goto(
+        "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240312000736",
+        { waitUntil: "domcontentloaded" },
+      );
+      await page.waitForTimeout(3500);
+      await page.locator('a:has-text("연결 손익계산서")').first().click();
+      await page.waitForTimeout(3500);
+    },
+  },
+  {
+    // EDGAR income statement (Consolidated Statements of Operations, R3.htm).
+    // firefox + declared UA, low volume — same SEC fair-access rationale as
+    // edgar-cashflow.
+    name: "edgar-income",
+    engine: "firefox",
+    ua: "finguru-educational-capture contact@example.com",
+    viewport: { width: 1280, height: 900 },
+    async run(page) {
+      await page.goto(
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/R3.htm",
+        { waitUntil: "domcontentloaded" },
+      );
+      await page.waitForTimeout(1200);
+      const h = await page.evaluate(() => document.documentElement.scrollHeight);
+      await page.setViewportSize({ width: 1280, height: Math.min(h + 20, 900) });
+      await page.waitForTimeout(300);
+    },
+  },
+  {
     // The US counterpart of dart-cashflow: a real 10-K Consolidated Statements
     // of Cash Flows (Apple FY2023 XBRL R-page). Uses the firefox engine + a
     // descriptive UA because SEC blocks headless chromium on its human pages.

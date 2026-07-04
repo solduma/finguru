@@ -106,6 +106,74 @@ export const DART_CASHFLOW_SHOT: SourceShot = {
   ],
 };
 
+/** OpenDART — the 연결 손익계산서 (consolidated income statement): revenue, operating
+ *  income, net income, and EPS — what growth (and any earnings-based) analysis
+ *  reads. Companion to the cash-flow shot. (Samsung 2023; frame 1280×1100.) */
+export const DART_INCOME_SHOT: SourceShot = {
+  img: "/walkthroughs/dart-income.png",
+  alt: {
+    en: "A real DART consolidated income statement (Samsung 2023), with revenue, operating income, net income and EPS lines",
+    ko: "실제 DART 연결 손익계산서(삼성전자 2023) — 매출·영업이익·당기순이익·주당이익 항목",
+  },
+  markers: [
+    {
+      n: 1,
+      x: 3.0,
+      y: 57.0,
+      w: 18.5,
+      h: 1.7,
+      label: {
+        en: "Left menu: III. 재무에 관한 사항 → 2. 연결재무제표 → 2-2. 연결 손익계산서.",
+        ko: "왼쪽 목차: III. 재무에 관한 사항 → 2. 연결재무제표 → 2-2. 연결 손익계산서.",
+      },
+    },
+    {
+      n: 2,
+      x: 27.2,
+      y: 33.4,
+      w: 48.3,
+      h: 2.4,
+      label: {
+        en: "영업수익 / 매출액 = revenue (the top line). Its year-over-year trend is the 'is the growth real?' check.",
+        ko: "영업수익 / 매출액 = 매출(맨 윗줄). 연도별 추세가 '성장이 진짜인가' 점검의 핵심.",
+      },
+    },
+    {
+      n: 3,
+      x: 27.2,
+      y: 44.6,
+      w: 48.3,
+      h: 2.7,
+      label: {
+        en: "영업이익 = operating income (EBIT) — profit from the core business before financing and tax.",
+        ko: "영업이익 = 영업이익(EBIT) — 금융비용·세금 전 본업 이익.",
+      },
+    },
+    {
+      n: 4,
+      x: 27.2,
+      y: 70.0,
+      w: 48.3,
+      h: 2.7,
+      label: {
+        en: "당기순이익 = net income (the bottom line). ROE = net income ÷ equity; also the payout-ratio denominator.",
+        ko: "당기순이익 = 순이익(맨 아랫줄). ROE = 순이익 ÷ 자기자본; 배당성향의 분모이기도 함.",
+      },
+    },
+    {
+      n: 5,
+      x: 27.2,
+      y: 84.1,
+      w: 48.3,
+      h: 2.7,
+      label: {
+        en: "기본주당이익 = basic EPS (in won). Its trend is the per-share growth the PEG uses.",
+        ko: "기본주당이익 = 기본 EPS(원). 그 추세가 PEG가 쓰는 주당 성장률.",
+      },
+    },
+  ],
+};
+
 /** SEC EDGAR — the actual rendered Consolidated Statements of Cash Flows from a
  *  10-K (Apple FY2023, XBRL R-page), with the three lines FCF and dividend
  *  coverage are built from. The US counterpart to DART_CASHFLOW_SHOT: EDGAR's
@@ -161,6 +229,75 @@ export const EDGAR_CASHFLOW_SHOT: SourceShot = {
       label: {
         en: "Payments for dividends and dividend equivalents = dividends paid (in the Financing section). The payout-ratio numerator.",
         ko: "Payments for dividends and dividend equivalents = 지급배당(재무활동 구간). 배당성향의 분자.",
+      },
+    },
+  ],
+};
+
+/** SEC EDGAR — the Consolidated Statements of Operations (income statement) from
+ *  a 10-K (Apple FY2023 R3.htm): net sales, operating income, net income, EPS —
+ *  the earnings lines growth analysis reads. US counterpart of DART_INCOME_SHOT.
+ *  (Frame 1280×714; markers are % of that.) */
+export const EDGAR_INCOME_SHOT: SourceShot = {
+  img: "/walkthroughs/edgar-income.png",
+  alt: {
+    en: "A real SEC EDGAR Consolidated Statements of Operations (Apple FY2023) with net sales, operating income, net income and earnings-per-share lines",
+    ko: "실제 SEC EDGAR 연결 손익계산서(애플 FY2023) — 매출·영업이익·순이익·주당이익 항목",
+  },
+  markers: [
+    {
+      n: 1,
+      x: 0.9,
+      y: 3.9,
+      w: 42.2,
+      h: 12.0,
+      label: {
+        en: "You're in Item 8 → Consolidated Statements of Operations (the income statement).",
+        ko: "Item 8 → 연결 손익계산서(Consolidated Statements of Operations).",
+      },
+    },
+    {
+      n: 2,
+      x: 0.9,
+      y: 18.9,
+      w: 64.1,
+      h: 3.1,
+      label: {
+        en: "Net sales = revenue (the top line). Its year-over-year trend is the 'is the growth real?' check.",
+        ko: "Net sales = 매출(맨 윗줄). 연도별 추세가 '성장이 진짜인가' 점검의 핵심.",
+      },
+    },
+    {
+      n: 3,
+      x: 0.9,
+      y: 41.6,
+      w: 64.1,
+      h: 3.1,
+      label: {
+        en: "Operating income = EBIT — profit from the core business before financing and tax.",
+        ko: "Operating income = 영업이익(EBIT) — 금융비용·세금 전 본업 이익.",
+      },
+    },
+    {
+      n: 4,
+      x: 0.9,
+      y: 54.6,
+      w: 64.1,
+      h: 3.1,
+      label: {
+        en: "Net income (the bottom line). ROE = net income ÷ equity; also the payout-ratio denominator.",
+        ko: "Net income = 순이익(맨 아랫줄). ROE = 순이익 ÷ 자기자본; 배당성향의 분모이기도 함.",
+      },
+    },
+    {
+      n: 5,
+      x: 0.9,
+      y: 61.1,
+      w: 64.1,
+      h: 3.1,
+      label: {
+        en: "Basic (earnings per share). Its trend is the per-share growth the PEG uses.",
+        ko: "Basic(기본 주당이익, EPS). 그 추세가 PEG가 쓰는 주당 성장률.",
       },
     },
   ],
