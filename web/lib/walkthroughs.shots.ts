@@ -48,6 +48,64 @@ export const DART_SHOT: SourceShot = {
   ],
 };
 
+/** OpenDART — INSIDE a filing: the actual 연결 현금흐름표 (consolidated cash-flow
+ *  statement), with the three lines FCF and dividend-safety are built from.
+ *  This is the "into the room" companion to DART_SHOT's front-door view.
+ *  (Real 삼성전자 2023 사업보고서; frame 1280×1500, markers are % of that.) */
+export const DART_CASHFLOW_SHOT: SourceShot = {
+  img: "/walkthroughs/dart-cashflow.png",
+  alt: {
+    en: "A real DART consolidated cash-flow statement (Samsung 2023), with the document table-of-contents on the left and the operating/investing/financing lines on the right",
+    ko: "실제 DART 연결 현금흐름표(삼성전자 2023) — 왼쪽 문서목차와 오른쪽 영업·투자·재무활동 항목",
+  },
+  markers: [
+    {
+      n: 1,
+      x: 3.0,
+      y: 46.5,
+      w: 18.5,
+      h: 1.8,
+      label: {
+        en: "In the filing's left menu: III. 재무에 관한 사항 → 2. 연결재무제표 → 2-5. 연결 현금흐름표. (2-2 손익계산서 has net income; 2-1 재무상태표 has debt & cash.)",
+        ko: "공시 왼쪽 목차: III. 재무에 관한 사항 → 2. 연결재무제표 → 2-5. 연결 현금흐름표. (2-2 손익계산서에 순이익, 2-1 재무상태표에 부채·현금.)",
+      },
+    },
+    {
+      n: 2,
+      x: 27.2,
+      y: 24.5,
+      w: 48.3,
+      h: 2.0,
+      label: {
+        en: "영업활동현금흐름 = operating cash flow (OCF). The first term of FCF.",
+        ko: "영업활동현금흐름 = OCF. FCF의 첫 번째 항.",
+      },
+    },
+    {
+      n: 3,
+      x: 27.2,
+      y: 69.9,
+      w: 48.3,
+      h: 2.0,
+      label: {
+        en: "유형자산의 취득 = CAPEX (in the 투자활동 / investing section, shown negative). FCF = 영업활동현금흐름 − 유형자산의 취득.",
+        ko: "유형자산의 취득 = CAPEX(투자활동 부분, 음수). FCF = 영업활동현금흐름 − 유형자산의 취득.",
+      },
+    },
+    {
+      n: 4,
+      x: 27.2,
+      y: 90.6,
+      w: 48.3,
+      h: 2.0,
+      label: {
+        en: "배당금의 지급 = dividends paid (in the 재무활동 / financing section). This is the numerator of the payout ratios.",
+        ko: "배당금의 지급(재무활동 부분). 배당성향 계산의 분자입니다.",
+      },
+    },
+  ],
+};
+
 /** FRED — the yield-curve-spread series page (search + Max range + the chart). */
 export const FRED_SHOT: SourceShot = {
   img: "/walkthroughs/fred-spread.png",
