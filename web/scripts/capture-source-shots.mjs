@@ -9,7 +9,13 @@
 // regardless of User-Agent. Capturing it would fight SEC's stated access
 // policy, so the EDGAR source step uses a written navigation guide instead of a
 // screenshot. All other sources capture cleanly.
-import { chromium } from "playwright";
+//
+// EDGAR statement pages: the human-facing browse/search HTML blocks headless
+// chromium, but the ARCHIVED filing statement pages (the XBRL R-*.htm renders)
+// serve fine to the firefox engine. We capture ONE such page (a real 10-K cash-
+// flow statement) at low volume with a descriptive, contactable User-Agent, per
+// SEC's fair-access guidance. Keep it that way — one page, rarely, declared UA.
+import { chromium, firefox } from "playwright";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -45,6 +51,26 @@ const SHOTS = [
       await page.waitForTimeout(3500);
       await page.locator('a:has-text("연결 현금흐름표")').first().click();
       await page.waitForTimeout(3500);
+    },
+  },
+  {
+    // The US counterpart of dart-cashflow: a real 10-K Consolidated Statements
+    // of Cash Flows (Apple FY2023 XBRL R-page). Uses the firefox engine + a
+    // descriptive UA because SEC blocks headless chromium on its human pages.
+    // Low volume, declared UA — respect SEC fair access.
+    name: "edgar-cashflow",
+    engine: "firefox",
+    ua: "finguru-educational-capture contact@example.com",
+    viewport: { width: 1280, height: 1000 },
+    async run(page) {
+      await page.goto(
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/R8.htm",
+        { waitUntil: "domcontentloaded" },
+      );
+      await page.waitForTimeout(1200);
+      const h = await page.evaluate(() => document.documentElement.scrollHeight);
+      await page.setViewportSize({ width: 1280, height: Math.min(h + 20, 1000) });
+      await page.waitForTimeout(300);
     },
   },
   {
@@ -97,11 +123,15 @@ const SHOTS = [
 ];
 
 const only = process.argv[2]; // optional: capture just one by name
-const browser = await chromium.launch();
+const ENGINES = { chromium, firefox }; // most shots use chromium; EDGAR uses firefox
+const launched = {}; // lazily launch each engine once
 let ok = 0;
 for (const shot of SHOTS) {
   if (only && shot.name !== only) continue;
-  const ctx = await browser.newContext({ viewport: shot.viewport ?? VIEWPORT, userAgent: shot.ua });
+  const engineName = shot.engine ?? "chromium";
+  const engine = ENGINES[engineName];
+  launched[engineName] ??= await engine.launch();
+  const ctx = await launched[engineName].newContext({ viewport: shot.viewport ?? VIEWPORT, userAgent: shot.ua });
   const page = await ctx.newPage();
   try {
     await shot.run(page);
@@ -113,5 +143,5 @@ for (const shot of SHOTS) {
   }
   await ctx.close();
 }
-await browser.close();
+for (const b of Object.values(launched)) await b.close();
 console.log(`\n${ok}/${only ? 1 : SHOTS.length} captured → ${OUT}`);
