@@ -11,7 +11,13 @@
 
 import type { Locale } from "./i18n";
 import type { LabId } from "./practicals";
-import { DART_SHOT, DART_STEPS, EDGAR_STEPS } from "./walkthroughs.shots";
+import {
+  DART_SHOT,
+  DART_STEPS,
+  DART_INCOME_SHOT,
+  EDGAR_STEPS,
+  EDGAR_INCOME_SHOT,
+} from "./walkthroughs.shots";
 
 /** A localized string pair. */
 export interface L {
@@ -137,7 +143,7 @@ const growth: Walkthrough = {
             ko: "법정 공시 시스템입니다 — 회사가 법적으로 책임지는 바로 그 재무제표입니다.",
           },
           url: "https://dart.fss.or.kr",
-          shot: DART_SHOT,
+          shot: DART_INCOME_SHOT,
           steps: DART_STEPS,
         },
         {
@@ -151,6 +157,7 @@ const growth: Walkthrough = {
             ko: "미국 규제당국의 1차 공시 저장소 — 중간 벤더가 없습니다.",
           },
           url: "https://www.sec.gov/edgar/search/",
+          shot: EDGAR_INCOME_SHOT,
           steps: EDGAR_STEPS,
         },
       ],
