@@ -309,8 +309,8 @@ export const STRATEGIES: Strategy[] = [
     riskRank: 6,
     label: { en: "Event-Driven / Special Situations", ko: "이벤트 드리븐 / 특수 상황" },
     blurb: {
-      en: "Profit from corporate events — spin-offs, mergers, distress, activism — where a catalyst unlocks value.",
-      ko: "기업 이벤트에서 수익을 낸다 — 스핀오프·합병·부실·행동주의 — 촉매가 가치를 푸는 곳.",
+      en: "Profit from corporate events — a catalyst unlocks value independent of the market. You'll understand the whole family (spin-offs, distress, activism) and learn to fully execute the most accessible one for an individual: all-cash merger arbitrage.",
+      ko: "기업 이벤트에서 수익을 낸다 — 촉매가 시장과 무관하게 가치를 푼다. 이 계열 전체(스핀오프·부실·행동주의)를 이해하고, 개인이 가장 접근하기 쉬운 하나 — 전액 현금 합병 차익거래 — 를 끝까지 실행하는 법을 배운다.",
     },
     schools: ["fundamental"],
     steps: [
@@ -321,7 +321,7 @@ export const STRATEGIES: Strategy[] = [
       guru("seth-klarman", "Distressed debt, bankruptcies, and complex workouts paired with deep risk discipline.", "부실채권, 파산, 복잡한 워크아웃을 깊은 위험 규율과 결합."),
       guru("howard-marks", "The distressed-debt master: cycle timing and second-level thinking for credit events.", "부실채권의 거장: 신용 이벤트를 위한 사이클 타이밍과 2차적 사고."),
       guru("mohnish-pabrai", "Event-driven bets as asymmetric wagers, with Kelly-style sizing.", "이벤트 드리븐 베팅을 비대칭 베팅으로, 켈리식 사이징과 함께."),
-      concept("merger-arbitrage", "The one mechanic the strategy is named for: deal spread, break risk, and annualized return.", "전략 이름의 바로 그 메커니즘: 딜 스프레드, 무산 위험, 그리고 연환산 수익률.", { en: "Merger Arbitrage — Betting on the Deal Closing", ko: "합병 차익거래 — 딜 성사에 베팅하기" }),
+      concept("merger-arbitrage", "The one you'll fully execute (the others above are concepts to understand, not yet run): deal spread, break risk, and annualized return, end-to-end on a real deal.", "여기서 끝까지 실행할 하나(위의 나머지는 이해할 개념이지 아직 실행하는 것이 아님): 딜 스프레드, 무산 위험, 연환산 수익률을 실제 딜로 처음부터 끝까지.", { en: "Merger Arbitrage — Betting on the Deal Closing", ko: "합병 차익거래 — 딜 성사에 베팅하기" }),
       concept("placing-your-first-trade", "The last mile: open and fund the account, then size and place the trade — knowing the break risk you accept when you do.", "마지막 단계: 계좌를 열고 자금을 넣은 뒤, 감수하는 딜 무산 위험을 알고 거래를 크기 조절해 넣기."),
     ],
     practical: "deal",
