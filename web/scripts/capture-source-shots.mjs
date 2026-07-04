@@ -30,6 +30,24 @@ const SHOTS = [
     },
   },
   {
+    // INSIDE a filing: navigate the document TOC to the consolidated cash-flow
+    // statement, where FCF (영업활동현금흐름 − 유형자산의 취득) and dividends paid
+    // (배당금의 지급) actually live. Uses a real, public Samsung 2023 사업보고서.
+    // Tall viewport so the operating + investing + financing lines all fit.
+    name: "dart-cashflow",
+    ua: CHROME_UA,
+    viewport: { width: 1280, height: 1500 },
+    async run(page) {
+      await page.goto(
+        "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20240312000736",
+        { waitUntil: "domcontentloaded" },
+      );
+      await page.waitForTimeout(3500);
+      await page.locator('a:has-text("연결 현금흐름표")').first().click();
+      await page.waitForTimeout(3500);
+    },
+  },
+  {
     name: "fred-spread",
     ua: CHROME_UA,
     async run(page) {
@@ -83,7 +101,7 @@ const browser = await chromium.launch();
 let ok = 0;
 for (const shot of SHOTS) {
   if (only && shot.name !== only) continue;
-  const ctx = await browser.newContext({ viewport: VIEWPORT, userAgent: shot.ua });
+  const ctx = await browser.newContext({ viewport: shot.viewport ?? VIEWPORT, userAgent: shot.ua });
   const page = await ctx.newPage();
   try {
     await shot.run(page);

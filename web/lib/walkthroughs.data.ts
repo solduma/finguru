@@ -4,6 +4,7 @@ import type { Walkthrough } from "./walkthroughs";
 import {
   DART_SHOT,
   DART_STEPS,
+  DART_CASHFLOW_SHOT,
   FRED_SHOT,
   YAHOO_SHOT,
   FRENCH_SHOT,
@@ -50,6 +51,13 @@ export const dividend: Walkthrough = {
           url: "https://opendart.fss.or.kr/",
           shot: DART_SHOT,
           steps: DART_STEPS,
+        },
+        {
+          name: { en: "OpenDART — inside the cash-flow statement", ko: "OpenDART — 현금흐름표 속으로" },
+          what: { en: "The real 연결 현금흐름표 (consolidated cash-flow statement) from a filing — this is exactly where the three numbers sit, shown on an actual page instead of described.", ko: "공시 속 실제 연결 현금흐름표 — 세 숫자가 정확히 어디 있는지를 설명이 아니라 실제 페이지로 보여줍니다." },
+          why: { en: "The front-door search gets you to the company; this shows you the exact rows to read once you're in the filing.", ko: "첫 화면 검색은 회사까지 데려다주고, 이 화면은 공시 안에서 읽어야 할 정확한 줄을 보여줍니다." },
+          url: "https://dart.fss.or.kr/",
+          shot: DART_CASHFLOW_SHOT,
         },
         {
           name: { en: "SEC EDGAR (US)", ko: "SEC EDGAR (미국)" },
@@ -169,6 +177,13 @@ export const value: Walkthrough = {
           url: "https://opendart.fss.or.kr/",
           shot: DART_SHOT,
           steps: DART_STEPS,
+        },
+        {
+          name: { en: "OpenDART — inside the cash-flow statement", ko: "OpenDART — 현금흐름표 속으로" },
+          what: { en: "The real 연결 현금흐름표 (consolidated cash-flow statement) from a filing — this is exactly where the three numbers sit, shown on an actual page instead of described.", ko: "공시 속 실제 연결 현금흐름표 — 세 숫자가 정확히 어디 있는지를 설명이 아니라 실제 페이지로 보여줍니다." },
+          why: { en: "The front-door search gets you to the company; this shows you the exact rows to read once you're in the filing.", ko: "첫 화면 검색은 회사까지 데려다주고, 이 화면은 공시 안에서 읽어야 할 정확한 줄을 보여줍니다." },
+          url: "https://dart.fss.or.kr/",
+          shot: DART_CASHFLOW_SHOT,
         },
         {
           name: { en: "SEC EDGAR (US)", ko: "SEC EDGAR (미국)" },
