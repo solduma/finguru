@@ -1,9 +1,11 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import Walkthrough from "@/components/practicals/Walkthrough";
 import { renderAnalyzer } from "@/components/practicals/renderAnalyzer";
 import { LOCALES, getStrings, isLocale } from "@/lib/i18n";
 import { STRATEGIES, getStrategy } from "@/lib/strategies";
 import { getWalkthrough } from "@/lib/walkthroughs";
+import { getCheatsheet } from "@/lib/cheatsheets";
 
 // A strategy's hands-on capstone at /[locale]/practice/[id] (id = strategy id).
 // This is the guided WALKTHROUGH (실습) — teaching that embeds the analyzer tool
@@ -39,16 +41,35 @@ export default async function PracticePage({
   const walk = getWalkthrough(strategy.practical);
   if (!walk) return analyzer; // no walkthrough yet → show the tool alone
 
+  // The path's cheatsheet is the tool-free recall card — surface it right here
+  // at the moment of practice, not only from the strategy index.
+  const hasCheatsheet = Boolean(getCheatsheet(strategy.id));
+
   return (
-    <Walkthrough
-      locale={locale}
-      walk={walk}
-      analyzer={analyzer}
-      toolHref={`/${locale}/tools/${strategy.id}`}
-      strategyId={strategy.id}
-      strategyLabel={strategy.label[locale]}
-      strategyHref={common.strategyHref}
-      disclaimer={t.practical.disclaimer}
-    />
+    <div className="space-y-6">
+      <Walkthrough
+        locale={locale}
+        walk={walk}
+        analyzer={analyzer}
+        toolHref={`/${locale}/tools/${strategy.id}`}
+        strategyId={strategy.id}
+        strategyLabel={strategy.label[locale]}
+        strategyHref={common.strategyHref}
+        disclaimer={t.practical.disclaimer}
+      />
+      {hasCheatsheet && (
+        <Link
+          href={`/${locale}/cheatsheet/${strategy.id}`}
+          className="block rounded-lg border border-white/10 bg-[#131722] p-4 text-sm no-underline transition hover:border-teal-400/50"
+        >
+          <span className="font-semibold text-teal-300">
+            {t.strategyPage.cheatsheetHeading}
+          </span>
+          <span className="mt-1 block text-gray-400">
+            {t.strategyPage.cheatsheetCta}
+          </span>
+        </Link>
+      )}
+    </div>
   );
 }
