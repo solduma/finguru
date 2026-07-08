@@ -216,7 +216,11 @@ export const QUESTIONS: Question[] = [
       ko: "투자금은 당신의 전체 저축에서 대략 어느 정도인가요?",
     },
     options: [
-      { id: "a", label: { en: "Almost all of it", ko: "거의 전부" }, dims: { C: 0 }, fragile: true },
+      // Concentration risk, NOT financial fragility: putting most of one's savings
+      // here still leaves C:0 (so the capacity gate/hardFloor engage), but it does
+      // NOT trigger the "build your foundation first" warning — that's reserved for
+      // genuine fragility (high-interest debt / no emergency fund), asked in q11.
+      { id: "a", label: { en: "Almost all of it", ko: "거의 전부" }, dims: { C: 0 } },
       { id: "b", label: { en: "More than half", ko: "절반 이상" }, dims: { C: 25 } },
       { id: "c", label: { en: "A modest slice — most of my savings are elsewhere", ko: "일부일 뿐 — 저축 대부분은 다른 곳에 있다" }, dims: { C: 70 }, strategies: { "factor-quant": 1, "event-driven": 1, "options-income": 1 } },
       { id: "d", label: { en: "A small amount I'm comfortable putting at risk", ko: "위험에 둬도 괜찮은 적은 금액" }, dims: { C: 100 }, strategies: { "active-trading": 2, "trend-momentum": 1, "global-macro": 1 } },
@@ -464,7 +468,24 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
   const displaySuit = (id: StrategyId) =>
     Math.round(100 * Math.pow(toSuit(id) / 100, DISPLAY_GAMMA));
   const rankedAll = ranked.map((id) => ({ id, suitability: displaySuit(id) }));
-  const runnersUp = ranked.filter((s) => s !== primary).slice(0, 2);
+  // Runners-up: the two next-best fits by suitability. When the PRIMARY is a
+  // risky/active strategy, the conservative core's nudge (above) tends to fill the
+  // "also worth exploring" row with index/diversified/etc., which reads as ignoring
+  // the user's fit — so behind a non-safe-core primary we allow at most ONE safe
+  // core runner and take the next-best strategy for the second slot. Behind a
+  // safe-core primary we don't cap (conservative peers are the honest neighbors).
+  const capSafeCore = !SAFE_CORE.includes(primary);
+  const runnersUp: StrategyId[] = [];
+  let safeCoreUsed = 0;
+  for (const s of ranked) {
+    if (runnersUp.length >= 2) break;
+    if (s === primary) continue;
+    if (capSafeCore && SAFE_CORE.includes(s)) {
+      if (safeCoreUsed >= 1) continue;
+      safeCoreUsed += 1;
+    }
+    runnersUp.push(s);
+  }
 
   // Conflicting-signals note: the strategies we actually SHOW (primary + runners)
   // span a wide risk gap only when the user gave self-contradictory answers. We
