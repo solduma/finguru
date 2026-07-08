@@ -329,6 +329,7 @@ export type Dict = {
     dayGatedNote: string;
     dayWarning: string;
     foundationNote: string;
+    experienceNote: string;
     suitabilityLabel: string;
     suitabilityShort: string;
     seeAll: string;
@@ -796,6 +797,8 @@ export const STRINGS: Record<Locale, Dict> = {
         "Day trading is the highest-risk path. Studies consistently find most day traders lose money, and it demands full-time attention, real experience, and money you can afford to lose. Master the fundamentals before risking capital.",
       foundationNote:
         "First, the foundation: your answers suggest high-interest debt, little emergency savings, or most of your money on the line. Before any active strategy, pay down costly debt and build a cash cushion — then invest. We're starting you with the safest, simplest approach.",
+      experienceNote:
+        "This is a genuine fit for how you think — we're not steering you elsewhere just because you're newer to investing. But this approach rewards experience, so ease in: work through the learning path first, start with a small position while you build confidence, and keep the bulk in a simple index/all-weather core until you've been through a full market cycle.",
       suitabilityLabel: "{score}% match",
       suitabilityShort: "{score}% match",
       seeAll: "See all strategies ranked →",
@@ -1302,6 +1305,8 @@ export const STRINGS: Record<Locale, Dict> = {
         "데이 트레이딩은 가장 위험한 길입니다. 여러 연구는 대부분의 데이 트레이더가 손실을 본다는 것을 일관되게 보여줍니다. 또한 종일 집중, 실제 경험, 그리고 잃어도 되는 자금이 필요합니다. 자본을 위험에 두기 전에 기초부터 숙달하세요.",
       foundationNote:
         "먼저 기초부터: 당신의 답변은 고금리 부채, 부족한 비상금, 또는 거의 전 재산이 걸려 있음을 시사합니다. 어떤 능동적 전략에 앞서, 고비용 부채를 갚고 현금 완충을 마련한 뒤 투자하세요. 가장 안전하고 단순한 접근법부터 시작하도록 안내합니다.",
+      experienceNote:
+        "이 전략은 당신의 사고방식에 실제로 잘 맞습니다 — 투자 경험이 짧다는 이유만으로 다른 전략으로 넘기지 않았습니다. 다만 이 접근법은 경험이 쌓일수록 유리하니, 서서히 시작하세요: 먼저 학습 경로를 끝까지 따라가고, 확신이 붙을 때까지는 작은 비중으로 시작하며, 한 번의 시장 사이클을 겪기 전까지는 자금의 대부분을 단순한 인덱스/올웨더 코어에 두세요.",
       suitabilityLabel: "적합도 {score}%",
       suitabilityShort: "적합도 {score}%",
       seeAll: "전체 전략 적합도 보기 →",
