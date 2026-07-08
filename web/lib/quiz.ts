@@ -267,6 +267,12 @@ export interface QuizResult {
    * tool, not investment advice — we honor the fit rather than force a passive
    * default, but the UI MUST carry an explicit, stronger risk disclosure. */
   fragileRiskyPrimary: boolean;
+  /** True when the strategies actually shown (primary + the two runners-up) span
+   * a very wide risk range — the honest sign of self-contradictory answers (e.g.
+   * day-trading signals alongside "I want safe, hands-off returns"). We keep the
+   * ranking as-is (it faithfully reflects what they said) but the UI surfaces a
+   * note inviting them to revisit or aim for balance. */
+  conflictingSignals: boolean;
   /** EVERY strategy in descending fit order, each with an ABSOLUTE 0–100
    * suitability score (its own fit against its attainable max — NOT renormalized
    * so the winner hits 100). The primary is ranked[0]; the UI shows the top few
@@ -449,6 +455,18 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
   const rankedAll = ranked.map((id) => ({ id, suitability: toSuit(id) }));
   const runnersUp = ranked.filter((s) => s !== primary).slice(0, 2);
 
+  // Conflicting-signals note: the strategies we actually SHOW (primary + runners)
+  // span a wide risk gap only when the user gave self-contradictory answers. We
+  // measure the spread in RISK_ORDER, but only count a runner that scored high
+  // enough to really be presented (>=20) — a near-zero token pick isn't a conflict.
+  const RISK_SPREAD_THRESHOLD = 8;
+  const shownForSpread = [primary, ...runnersUp].filter(
+    (id) => id === primary || toSuit(id) >= 20,
+  );
+  const tiers = shownForSpread.map((id) => RISK_ORDER.indexOf(id));
+  const conflictingSignals =
+    Math.max(...tiers) - Math.min(...tiers) >= RISK_SPREAD_THRESHOLD;
+
   // Surface the gated day-trading flag only when it actually would have won.
   return {
     primary,
@@ -458,6 +476,7 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
     buildFoundationFirst: fragile,
     experienceCaution,
     fragileRiskyPrimary,
+    conflictingSignals,
     ranked: rankedAll,
     scores: score,
   };

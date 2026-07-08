@@ -33,6 +33,7 @@ interface QuizStrings {
   dayWarning: string;
   foundationNote: string;
   fragileRiskyNote: string;
+  conflictNote: string;
   experienceNote: string;
   suitabilityLabel: string;
   suitabilityShort: string;
@@ -234,6 +235,13 @@ export default function StrategyQuiz({
         <Reveal delayMs={640}>
           <p className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-gray-300">
             {t.activeNote}
+          </p>
+        </Reveal>
+      )}
+      {result.conflictingSignals && (
+        <Reveal delayMs={700}>
+          <p className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-gray-300">
+            {t.conflictNote}
           </p>
         </Reveal>
       )}
