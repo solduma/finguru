@@ -185,7 +185,11 @@ export const QUESTIONS: Question[] = [
     options: [
       { id: "a", label: { en: "I couldn't accept that — I need this money to stay safe", ko: "받아들일 수 없다 — 투자금은 안전하게 지켜야 한다" }, dims: { R: 10 }, strategies: { "index-passive": 3, "dividend-income": 2 } },
       { id: "b", label: { en: "Stressful, but it wouldn't change my life plans", ko: "스트레스는 받겠지만, 인생 계획이 바뀌진 않는다" }, dims: { R: 50 }, strategies: { "factor-quant": 1, "event-driven": 1, "options-income": 1, growth: 1 } },
-      { id: "c", label: { en: "Fine — I'd treat it as a normal part of investing", ko: "괜찮다 — 투자의 정상적인 과정으로 여긴다" }, dims: { R: 90 }, strategies: { "trend-momentum": 1, "global-macro": 1 } },
+      // Highest risk tolerance is a SUPERSET of the moderate answer's drawdown-prone
+      // picks (plus trend/macro): otherwise lowering tolerance b->c would paradoxically
+      // RAISE growth/factor-quant/event-driven/options-income. Each stays at 1 point so
+      // STRAT_MAX is unchanged — this only restores monotonicity along the risk axis.
+      { id: "c", label: { en: "Fine — I'd treat it as a normal part of investing", ko: "괜찮다 — 투자의 정상적인 과정으로 여긴다" }, dims: { R: 90 }, strategies: { "factor-quant": 1, "event-driven": 1, "options-income": 1, growth: 1, "trend-momentum": 1, "global-macro": 1 } },
     ],
   },
   // --- Risk-CAPACITY questions (financial ability to absorb loss). These are
