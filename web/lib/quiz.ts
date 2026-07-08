@@ -253,6 +253,11 @@ export interface QuizResult {
    * debt / nearly all savings at stake) — they should build a foundation before
    * an active strategy. The UI shows a "foundations first" note. */
   buildFoundationFirst: boolean;
+  /** True when the primary pick is an active/advanced strategy but the user's
+   * self-reported experience is still low. We no longer auto-divert such users to
+   * a safe default — we keep their best-fit pick and surface a caution + suggestion
+   * note (learn the basics, start small) instead. */
+  experienceCaution: boolean;
   /** EVERY strategy in descending fit order, each with an ABSOLUTE 0–100
    * suitability score (its own fit against its attainable max — NOT renormalized
    * so the winner hits 100). The primary is ranked[0]; the UI shows the top few
@@ -349,9 +354,15 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
     raw["trend-momentum"] *= 0.5;
     raw["options-income"] *= 0.5;
   }
-  // Inexperience demotes (but doesn't erase) the active strategies as a group.
+  // Inexperience GRADUATES the active strategies down rather than flattening them
+  // with one blunt multiplier. A near-beginner (Xn≈5) is damped hard; someone
+  // "comfortable with funds and long-term investing" (Xn≈42) is barely touched, so
+  // their genuinely active-leaning answers can still surface as the honest pick
+  // instead of being auto-diverted to the safe core. The result UI then carries an
+  // experience CAUTION note (see experienceCaution) rather than swapping the pick.
   if (!expHigh) {
-    for (const s of ACTIVE) raw[s] *= 0.75;
+    const expFactor = 0.55 + 0.45 * (Xn / 65);
+    for (const s of ACTIVE) raw[s] *= expFactor;
   }
   // Soft FIT penalties: strategies with a natural minimum profile shouldn't win
   // for users well below it (suboptimal-fit, not harm — so a damp, not a gate).
@@ -412,6 +423,9 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
   // the honest "we steered you toward the evidence-based core" story.
   const rawWasRisky = ACTIVE.includes(rawWinner) || rawWinner === "real-assets";
   const flooredToPassive = SAFE_CORE.includes(primary) && rawWasRisky && primary !== rawWinner;
+  // Low experience + an active best-fit: keep the honest pick, warn instead of
+  // diverting. active-trading is excluded here — it has its own stronger gate/notes.
+  const experienceCaution = !expHigh && ACTIVE.includes(primary) && primary !== "active-trading";
 
   // Full ranking with ABSOLUTE suitability (0–100): each strategy's own fit, not
   // renormalized to the winner. A lukewarm best-fit honestly reads below 100, and
@@ -428,6 +442,7 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
     dayTradingGated: dayTradingGated && rawWinner === "active-trading",
     flooredToPassive,
     buildFoundationFirst: fragile,
+    experienceCaution,
     ranked: rankedAll,
     scores: score,
   };

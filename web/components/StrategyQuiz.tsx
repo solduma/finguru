@@ -32,6 +32,7 @@ interface QuizStrings {
   dayGatedNote: string;
   dayWarning: string;
   foundationNote: string;
+  experienceNote: string;
   suitabilityLabel: string;
   suitabilityShort: string;
   seeAll: string;
@@ -214,8 +215,15 @@ export default function StrategyQuiz({
           </p>
         </Reveal>
       )}
+      {result.experienceCaution && (
+        <Reveal delayMs={580}>
+          <p className="rounded-lg border border-amber-400/40 bg-amber-500/10 p-4 text-sm text-amber-200">
+            {t.experienceNote}
+          </p>
+        </Reveal>
+      )}
       {isActive && !result.flooredToPassive && (
-        <Reveal delayMs={610}>
+        <Reveal delayMs={640}>
           <p className="rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-gray-300">
             {t.activeNote}
           </p>
