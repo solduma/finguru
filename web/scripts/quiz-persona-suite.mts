@@ -24,7 +24,7 @@ const PERSONAS: P[] = [
   { name: "index: deliberate broad-market indexer", expect: "index-passive",
     a: {q1:"d",q2:"b",q3:"b",q4:"b",q5:"c",q6:"a",q7:"b",q8:"b",q9:"a",q10:"b",q11:"d",q12:"c"} },
   { name: "index: busy pro, broad market", expect: "index-passive",
-    a: {q1:"d",q2:"b",q3:"c",q4:"b",q5:"c",q6:"a",q7:"c",q8:"b",q9:"a",q10:"b",q11:"d",q12:"c"} },
+    a: {q1:"d",q2:"b",q3:"b",q4:"b",q5:"c",q6:"a",q7:"b",q8:"b",q9:"a",q10:"b",q11:"d",q12:"c"} },
   { name: "index: active-skeptic moderate", expect: "index-passive",
     a: {q1:"c",q2:"b",q3:"b",q4:"b",q5:"c",q6:"a",q7:"b",q8:"b",q9:"a",q10:"a",q11:"d",q12:"c"} },
   { name: "index: young low-cost indexer", expect: "index-passive",
@@ -41,14 +41,16 @@ const PERSONAS: P[] = [
     a: {q1:"d",q2:"a",q3:"b",q4:"a",q5:"b",q6:"a",q7:"b",q8:"a",q9:"a",q10:"b",q11:"d",q12:"c"} },
 
   // ---------------- diversified / all-weather ----------------
+  // The distinguishing want is a balanced all-weather mix (q5=e), vs index's
+  // "broad market returns" (q5=c). Otherwise these are moderate, low-effort cores.
   { name: "diversified: fence-sitter moderate", expect: "diversified",
-    a: {q1:"c",q2:"b",q3:"b",q4:"b",q5:"c",q6:"a",q7:"b",q8:"b",q9:"b",q10:"b",q11:"c",q12:"c"} },
+    a: {q1:"c",q2:"b",q3:"b",q4:"b",q5:"e",q6:"a",q7:"b",q8:"b",q9:"b",q10:"b",q11:"c",q12:"c"} },
   { name: "diversified: short-horizon low-risk", expect: "diversified",
-    a: {q1:"b",q2:"a",q3:"a",q4:"a",q5:"c",q6:"a",q7:"b",q8:"a",q9:"a",q10:"a",q11:"c",q12:"b"} },
+    a: {q1:"b",q2:"a",q3:"a",q4:"a",q5:"e",q6:"a",q7:"b",q8:"a",q9:"a",q10:"a",q11:"c",q12:"b"} },
   { name: "diversified: wants balance, few tweaks", expect: "diversified",
-    a: {q1:"c",q2:"b",q3:"b",q4:"a",q5:"c",q6:"a",q7:"b",q8:"b",q9:"a",q10:"b",q11:"d",q12:"c"} },
+    a: {q1:"c",q2:"b",q3:"b",q4:"a",q5:"e",q6:"a",q7:"b",q8:"b",q9:"a",q10:"b",q11:"d",q12:"c"} },
   { name: "diversified: cautious all-weather", expect: "diversified",
-    a: {q1:"c",q2:"a",q3:"b",q4:"d",q5:"c",q6:"a",q7:"b",q8:"b",q9:"a",q10:"a",q11:"c",q12:"c"} },
+    a: {q1:"c",q2:"a",q3:"b",q4:"d",q5:"e",q6:"a",q7:"b",q8:"b",q9:"a",q10:"a",q11:"c",q12:"c"} },
 
   // ---------------- dividend-income ----------------
   { name: "dividend: retiree living off portfolio", expect: "dividend-income",
