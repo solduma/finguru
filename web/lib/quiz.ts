@@ -303,6 +303,12 @@ const STRAT_MAX: Record<StrategyId, number> = (() => {
   return max;
 })();
 
+// DISPLAY-only gamma for the shown suitability %. <1 lifts mid/low fit ratios
+// (which naturally cluster ~55 for a real best-fit) so the number reads as a
+// confident match, while staying strictly monotonic (0→0, 100→100) so it never
+// changes ranking or bar-length order. Internal logic uses the raw ratio, not this.
+const DISPLAY_GAMMA = 0.55;
+
 /** answers: map of questionId -> chosen optionId. Unanswered questions are ignored. */
 export function scoreQuiz(answers: Record<string, string>): QuizResult {
   const raw = Object.fromEntries(
@@ -447,12 +453,17 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
   const fragileRiskyPrimary =
     fragile && (ACTIVE.includes(primary) || primary === "real-assets");
 
-  // Full ranking with ABSOLUTE suitability (0–100): each strategy's own fit, not
-  // renormalized to the winner. A lukewarm best-fit honestly reads below 100, and
-  // the "see all" view shows every strategy in descending order.
+  // Absolute internal fit (0–100), used for logic decisions (e.g. the conflict
+  // spread below) — NOT what we display. Kept raw so thresholds stay meaningful.
   const toSuit = (id: StrategyId) =>
     Math.round(Math.max(0, Math.min(100, score[id])));
-  const rankedAll = ranked.map((id) => ({ id, suitability: toSuit(id) }));
+  // DISPLAY-only scaling: the raw fit ratios cluster low (a genuine best-fit often
+  // reads ~55), which erodes user trust in the number. A gamma curve (<1) lifts
+  // mid/low values while pinning 0→0 and 100→100, so it's strictly monotonic —
+  // ranking and bar-length ORDER are untouched, only the shown number changes.
+  const displaySuit = (id: StrategyId) =>
+    Math.round(100 * Math.pow(toSuit(id) / 100, DISPLAY_GAMMA));
+  const rankedAll = ranked.map((id) => ({ id, suitability: displaySuit(id) }));
   const runnersUp = ranked.filter((s) => s !== primary).slice(0, 2);
 
   // Conflicting-signals note: the strategies we actually SHOW (primary + runners)
