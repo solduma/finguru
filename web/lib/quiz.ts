@@ -121,7 +121,8 @@ export const QUESTIONS: Question[] = [
     options: [
       { id: "a", label: { en: "Steady cash/income I can use now", ko: "지금 쓸 수 있는 꾸준한 현금/인컴" }, strategies: { "dividend-income": 4, "options-income": 2, "real-assets": 2, value: 1 } },
       { id: "b", label: { en: "Long-term growth; I'll reinvest everything", ko: "장기 성장; 전부 재투자하겠다" }, strategies: { growth: 3, value: 2, "index-passive": 2, lifecycle: 1, "factor-quant": 1 } },
-      { id: "c", label: { en: "Broad, reliable market returns without surprises", ko: "놀랄 일 없는, 넓고 안정적인 시장 수익" }, strategies: { "index-passive": 4, diversified: 2, lifecycle: 1, "dividend-income": 1 } },
+      { id: "c", label: { en: "Broad, reliable market returns without surprises", ko: "놀랄 일 없는, 넓고 안정적인 시장 수익" }, strategies: { "index-passive": 4, lifecycle: 1, "dividend-income": 1 } },
+      { id: "e", label: { en: "A balanced mix that holds up in any market", ko: "어떤 시장에서도 버티는 균형 잡힌 자산 배분" }, strategies: { diversified: 4, "real-assets": 1, "dividend-income": 1 } },
       { id: "d", label: { en: "Big gains from active trades, and I accept the risk", ko: "능동적 매매로 큰 수익, 위험은 감수" }, strategies: { "active-trading": 3, "trend-momentum": 2 } },
     ],
   },
@@ -157,8 +158,8 @@ export const QUESTIONS: Question[] = [
       ko: "얼마나 직접 관여하고 싶나요?",
     },
     options: [
-      { id: "a", label: { en: "Fully hands-off — automate it", ko: "완전히 손 떼기 — 자동화한다" }, strategies: { "index-passive": 3, lifecycle: 4, diversified: 1 } },
-      { id: "b", label: { en: "Mostly automated, occasional tweaks", ko: "대부분 자동화, 가끔 조정" }, strategies: { "factor-quant": 3, "index-passive": 3, diversified: 2, "dividend-income": 1 } },
+      { id: "a", label: { en: "Fully hands-off — automate it", ko: "완전히 손 떼기 — 자동화한다" }, strategies: { lifecycle: 5, "index-passive": 2, diversified: 1 } },
+      { id: "b", label: { en: "Mostly automated, occasional tweaks", ko: "대부분 자동화, 가끔 조정" }, strategies: { "factor-quant": 3, "index-passive": 3, diversified: 1, "dividend-income": 1 } },
       { id: "c", label: { en: "I want to pick my own investments", ko: "내 투자는 내가 고르고 싶다" }, strategies: { value: 2, growth: 2, "options-income": 1 } },
       { id: "d", label: { en: "I want full control over every trade", ko: "모든 거래를 완전히 통제하고 싶다" }, strategies: { "active-trading": 4, "trend-momentum": 2 } },
     ],
@@ -170,7 +171,7 @@ export const QUESTIONS: Question[] = [
       ko: "보유 종목이 뚜렷한 뉴스 없이 2주 만에 25% 급등했습니다. 당신은…",
     },
     options: [
-      { id: "a", label: { en: "Don't really track it day-to-day", ko: "사실 매일 들여다보지 않는다" }, strategies: { "index-passive": 3, "dividend-income": 1 } },
+      { id: "a", label: { en: "Don't really track it day-to-day", ko: "사실 매일 들여다보지 않는다" }, strategies: { "index-passive": 3, lifecycle: 2, "dividend-income": 1 } },
       { id: "b", label: { en: "Hold based on the company's long-term value", ko: "기업의 장기 가치를 믿고 보유" }, strategies: { value: 3 } },
       { id: "c", label: { en: "Hold while the upward trend continues, exit if it breaks", ko: "상승 추세가 이어지는 동안 보유하고, 꺾이면 빠져나온다" }, strategies: { "trend-momentum": 4, "active-trading": 2 } },
       { id: "d", label: { en: "Look to take the quick profit", ko: "빠른 차익 실현을 노린다" }, strategies: { "active-trading": 3, "options-income": 1 } },
