@@ -69,7 +69,7 @@ export const QUESTIONS: Question[] = [
     options: [
       { id: "a", label: { en: "Within weeks — or even the same day", ko: "몇 주 안에 — 심지어 당일" }, dims: { H: 5 }, strategies: { "active-trading": 4 } },
       { id: "b", label: { en: "Months to a couple of years", ko: "몇 달에서 1~2년" }, dims: { H: 25 }, strategies: { "active-trading": 2, "trend-momentum": 2, "event-driven": 2 } },
-      { id: "c", label: { en: "About 3–10 years", ko: "약 3~10년" }, dims: { H: 60 }, strategies: { value: 2, growth: 2, "factor-quant": 2, "global-macro": 2, "real-assets": 2, diversified: 1 } },
+      { id: "c", label: { en: "About 3–10 years", ko: "약 3~10년" }, dims: { H: 60 }, strategies: { value: 2, "factor-quant": 2, "global-macro": 2, "real-assets": 2, diversified: 1 } },
       { id: "d", label: { en: "10+ years (retirement, long-term wealth)", ko: "10년 이상 (은퇴, 장기 자산)" }, dims: { H: 95 }, strategies: { "index-passive": 3, lifecycle: 3, "dividend-income": 2, value: 2, diversified: 1, growth: 1 } },
     ],
   },
@@ -95,7 +95,7 @@ export const QUESTIONS: Question[] = [
     options: [
       { id: "a", label: { en: "Sell most of it — I can't sleep with losses like that", ko: "대부분 판다 — 그런 손실로는 잠을 못 잔다" }, dims: { R: 10 }, strategies: { "index-passive": 2 } },
       { id: "b", label: { en: "Feel uneasy but hold and wait", ko: "불안하지만 버티고 기다린다" }, dims: { R: 40 }, strategies: { "index-passive": 2, "dividend-income": 2, value: 1 } },
-      { id: "c", label: { en: "Hold, and maybe buy more at lower prices", ko: "버티고, 더 싼 가격에 추가 매수할 수도" }, dims: { R: 70 }, strategies: { value: 3, growth: 2, "index-passive": 1 } },
+      { id: "c", label: { en: "Hold, and maybe buy more at lower prices", ko: "버티고, 더 싼 가격에 추가 매수할 수도" }, dims: { R: 70 }, strategies: { value: 3, growth: 1, "index-passive": 1 } },
       { id: "d", label: { en: "Stay calm and look for trades to make in the swings", ko: "침착하게, 그 변동 속에서 매매 기회를 찾는다" }, dims: { R: 95 }, strategies: { "active-trading": 4, "trend-momentum": 2 } },
     ],
   },
@@ -109,7 +109,7 @@ export const QUESTIONS: Question[] = [
       { id: "a", label: { en: "Crunching data, rules, and back-tested systems", ko: "데이터·규칙·백테스트된 시스템 다루기" }, strategies: { "factor-quant": 4, "trend-momentum": 2 } },
       { id: "b", label: { en: "Judging whether a business is good and fairly priced", ko: "기업이 좋은지, 가격이 적정한지 판단하기" }, strategies: { value: 3, growth: 2, "dividend-income": 1 } },
       { id: "c", label: { en: "Reading price charts and spotting patterns", ko: "가격 차트를 읽고 패턴을 찾기" }, strategies: { "active-trading": 4, "trend-momentum": 2 } },
-      { id: "d", label: { en: "Following the economy, rates, and world events", ko: "경제·금리·세계 정세를 따라가기" }, strategies: { "global-macro": 4, "real-assets": 2, "event-driven": 1 } },
+      { id: "d", label: { en: "Following the economy, rates, and world events", ko: "경제·금리·세계 정세를 따라가기" }, strategies: { "global-macro": 5, "real-assets": 3 } },
     ],
   },
   {
@@ -120,7 +120,7 @@ export const QUESTIONS: Question[] = [
     },
     options: [
       { id: "a", label: { en: "Steady cash/income I can use now", ko: "지금 쓸 수 있는 꾸준한 현금/인컴" }, strategies: { "dividend-income": 4, "options-income": 2, "real-assets": 2, value: 1 } },
-      { id: "b", label: { en: "Long-term growth; I'll reinvest everything", ko: "장기 성장; 전부 재투자하겠다" }, strategies: { growth: 3, "index-passive": 2, lifecycle: 1, "factor-quant": 1 } },
+      { id: "b", label: { en: "Long-term growth; I'll reinvest everything", ko: "장기 성장; 전부 재투자하겠다" }, strategies: { growth: 3, value: 2, "index-passive": 2, lifecycle: 1, "factor-quant": 1 } },
       { id: "c", label: { en: "Broad, reliable market returns without surprises", ko: "놀랄 일 없는, 넓고 안정적인 시장 수익" }, strategies: { "index-passive": 4, diversified: 2, lifecycle: 1, "dividend-income": 1 } },
       { id: "d", label: { en: "Big gains from active trades, and I accept the risk", ko: "능동적 매매로 큰 수익, 위험은 감수" }, strategies: { "active-trading": 3, "trend-momentum": 2 } },
     ],
@@ -132,8 +132,8 @@ export const QUESTIONS: Question[] = [
       ko: "당신의 기질을 가장 잘 설명하는 것은?",
     },
     options: [
-      { id: "a", label: { en: "Patient — happy to wait years for a thesis to play out", ko: "인내심 있음 — 논리가 실현되기까지 몇 년도 기다린다" }, strategies: { value: 3, "index-passive": 2, "real-assets": 2, diversified: 1, "dividend-income": 1 } },
-      { id: "b", label: { en: "Steady but engaged — I like a catalyst or a plan", ko: "차분하지만 적극적 — 촉매나 계획을 좋아한다" }, strategies: { "event-driven": 3, "options-income": 1, growth: 1, "global-macro": 1 } },
+      { id: "a", label: { en: "Patient — happy to wait years for a thesis to play out", ko: "인내심 있음 — 논리가 실현되기까지 몇 년도 기다린다" }, strategies: { value: 4, "index-passive": 2, "real-assets": 2, diversified: 1, "dividend-income": 1 } },
+      { id: "b", label: { en: "Steady but engaged — I like a catalyst or a plan", ko: "차분하지만 적극적 — 촉매나 계획을 좋아한다" }, strategies: { "event-driven": 4, "options-income": 1, "global-macro": 1 } },
       { id: "c", label: { en: "Decisive and quick — I act fast on new information", ko: "결단력 있고 빠름 — 새 정보에 신속히 행동한다" }, strategies: { "active-trading": 4, "trend-momentum": 1 } },
     ],
   },
@@ -146,7 +146,7 @@ export const QUESTIONS: Question[] = [
     options: [
       { id: "a", label: { en: "Brand new — still learning the basics", ko: "완전 초보 — 아직 기초를 배우는 중" }, dims: { X: 5 }, strategies: { "index-passive": 4, lifecycle: 3, diversified: 1, "dividend-income": 1 } },
       { id: "b", label: { en: "Comfortable with funds and long-term investing", ko: "펀드와 장기 투자에 익숙함" }, dims: { X: 40 }, strategies: { "index-passive": 2, lifecycle: 1, diversified: 2, "dividend-income": 2, value: 2, growth: 1 } },
-      { id: "c", label: { en: "I research individual stocks / use strategies", ko: "개별 종목을 분석하거나 전략을 쓴다" }, dims: { X: 70 }, strategies: { value: 2, growth: 2, "factor-quant": 2, "options-income": 2, "real-assets": 1, "event-driven": 1 } },
+      { id: "c", label: { en: "I research individual stocks / use strategies", ko: "개별 종목을 분석하거나 전략을 쓴다" }, dims: { X: 70 }, strategies: { value: 2, growth: 1, "factor-quant": 2, "options-income": 2, "real-assets": 1, "event-driven": 1 } },
       { id: "d", label: { en: "I actively trade and understand orders, leverage, risk", ko: "능동적으로 매매하며 주문·레버리지·위험을 이해한다" }, dims: { X: 95 }, strategies: { "active-trading": 3, "trend-momentum": 2, "options-income": 1, "global-macro": 1 } },
     ],
   },
@@ -158,8 +158,8 @@ export const QUESTIONS: Question[] = [
     },
     options: [
       { id: "a", label: { en: "Fully hands-off — automate it", ko: "완전히 손 떼기 — 자동화한다" }, strategies: { "index-passive": 3, lifecycle: 4, diversified: 1 } },
-      { id: "b", label: { en: "Mostly automated, occasional tweaks", ko: "대부분 자동화, 가끔 조정" }, strategies: { "dividend-income": 2, "factor-quant": 3, diversified: 2, "index-passive": 1 } },
-      { id: "c", label: { en: "I want to pick my own investments", ko: "내 투자는 내가 고르고 싶다" }, strategies: { value: 2, growth: 2, "options-income": 1, "dividend-income": 1 } },
+      { id: "b", label: { en: "Mostly automated, occasional tweaks", ko: "대부분 자동화, 가끔 조정" }, strategies: { "factor-quant": 3, "index-passive": 3, diversified: 2, "dividend-income": 1 } },
+      { id: "c", label: { en: "I want to pick my own investments", ko: "내 투자는 내가 고르고 싶다" }, strategies: { value: 2, growth: 2, "options-income": 1 } },
       { id: "d", label: { en: "I want full control over every trade", ko: "모든 거래를 완전히 통제하고 싶다" }, strategies: { "active-trading": 4, "trend-momentum": 2 } },
     ],
   },
@@ -170,9 +170,9 @@ export const QUESTIONS: Question[] = [
       ko: "보유 종목이 뚜렷한 뉴스 없이 2주 만에 25% 급등했습니다. 당신은…",
     },
     options: [
-      { id: "a", label: { en: "Don't really track it day-to-day", ko: "사실 매일 들여다보지 않는다" }, strategies: { "index-passive": 2, "dividend-income": 1 } },
-      { id: "b", label: { en: "Hold based on the company's long-term value", ko: "기업의 장기 가치를 믿고 보유" }, strategies: { value: 3, growth: 1 } },
-      { id: "c", label: { en: "Hold while the upward trend continues, exit if it breaks", ko: "상승 추세가 이어지는 동안 보유하고, 꺾이면 빠져나온다" }, strategies: { "trend-momentum": 3, "active-trading": 2 } },
+      { id: "a", label: { en: "Don't really track it day-to-day", ko: "사실 매일 들여다보지 않는다" }, strategies: { "index-passive": 3, "dividend-income": 1 } },
+      { id: "b", label: { en: "Hold based on the company's long-term value", ko: "기업의 장기 가치를 믿고 보유" }, strategies: { value: 3 } },
+      { id: "c", label: { en: "Hold while the upward trend continues, exit if it breaks", ko: "상승 추세가 이어지는 동안 보유하고, 꺾이면 빠져나온다" }, strategies: { "trend-momentum": 4, "active-trading": 2 } },
       { id: "d", label: { en: "Look to take the quick profit", ko: "빠른 차익 실현을 노린다" }, strategies: { "active-trading": 3, "options-income": 1 } },
     ],
   },
