@@ -329,6 +329,7 @@ export type Dict = {
     dayGatedNote: string;
     dayWarning: string;
     foundationNote: string;
+    fragileRiskyNote: string;
     experienceNote: string;
     suitabilityLabel: string;
     suitabilityShort: string;
@@ -796,7 +797,9 @@ export const STRINGS: Record<Locale, Dict> = {
       dayWarning:
         "Day trading is the highest-risk path. Studies consistently find most day traders lose money, and it demands full-time attention, real experience, and money you can afford to lose. Master the fundamentals before risking capital.",
       foundationNote:
-        "First, the foundation: your answers suggest high-interest debt, little emergency savings, or most of your money on the line. Before any active strategy, pay down costly debt and build a cash cushion — then invest. We're starting you with the safest, simplest approach.",
+        "First, the foundation: your answers suggest high-interest debt, little emergency savings, or most of your money on the line. This quiz reads your investing temperament — it isn't advice to buy anything. Before putting this money into any strategy, pay down costly debt and build a cash cushion; that groundwork matters more than which strategy you pick.",
+      fragileRiskyNote:
+        "Heads-up: the strategy below fits how you think, but it can suffer large, lasting losses — and your answers suggest you may not yet be able to absorb that. We're not steering you away from your style, but with fragile finances this is money you likely can't afford to lose. Build your safety net first, then consider easing in with only a small amount.",
       experienceNote:
         "This is a genuine fit for how you think — we're not steering you elsewhere just because you're newer to investing. But this approach rewards experience, so ease in: work through the learning path first, start with a small position while you build confidence, and keep the bulk in a simple index/all-weather core until you've been through a full market cycle.",
       suitabilityLabel: "{score}% match",
@@ -1304,7 +1307,9 @@ export const STRINGS: Record<Locale, Dict> = {
       dayWarning:
         "데이 트레이딩은 가장 위험한 길입니다. 여러 연구는 대부분의 데이 트레이더가 손실을 본다는 것을 일관되게 보여줍니다. 또한 종일 집중, 실제 경험, 그리고 잃어도 되는 자금이 필요합니다. 자본을 위험에 두기 전에 기초부터 숙달하세요.",
       foundationNote:
-        "먼저 기초부터: 당신의 답변은 고금리 부채, 부족한 비상금, 또는 거의 전 재산이 걸려 있음을 시사합니다. 어떤 능동적 전략에 앞서, 고비용 부채를 갚고 현금 완충을 마련한 뒤 투자하세요. 가장 안전하고 단순한 접근법부터 시작하도록 안내합니다.",
+        "먼저 기초부터: 당신의 답변은 고금리 부채, 부족한 비상금, 또는 거의 전 재산이 걸려 있음을 시사합니다. 이 퀴즈는 당신의 투자 성향을 읽어 주는 도구일 뿐, 무언가를 사라는 권유가 아닙니다. 이 돈을 어떤 전략에 넣기 전에 먼저 고비용 부채를 갚고 현금 완충을 마련하세요 — 어떤 전략을 고르느냐보다 이 기초가 더 중요합니다.",
+      fragileRiskyNote:
+        "유의하세요: 아래 전략은 당신의 사고방식에는 맞지만, 크고 오래가는 손실을 낼 수 있습니다 — 그리고 당신의 답변은 아직 그 손실을 감당하기 어려울 수 있음을 시사합니다. 성향과 다른 전략으로 밀어내는 것은 아니지만, 재정이 취약한 상태에서는 이 돈이 잃어선 안 되는 자금일 가능성이 큽니다. 먼저 안전망을 갖춘 뒤, 소액으로만 서서히 시작하는 것을 고려하세요.",
       experienceNote:
         "이 전략은 당신의 사고방식에 실제로 잘 맞습니다 — 투자 경험이 짧다는 이유만으로 다른 전략으로 넘기지 않았습니다. 다만 이 접근법은 경험이 쌓일수록 유리하니, 서서히 시작하세요: 먼저 학습 경로를 끝까지 따라가고, 확신이 붙을 때까지는 작은 비중으로 시작하며, 한 번의 시장 사이클을 겪기 전까지는 자금의 대부분을 단순한 인덱스/올웨더 코어에 두세요.",
       suitabilityLabel: "적합도 {score}%",

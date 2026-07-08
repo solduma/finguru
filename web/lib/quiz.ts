@@ -258,6 +258,11 @@ export interface QuizResult {
    * a safe default — we keep their best-fit pick and surface a caution + suggestion
    * note (learn the basics, start small) instead. */
   experienceCaution: boolean;
+  /** True when the user is financially fragile AND their best-fit pick is a
+   * drawdown-prone strategy (any ACTIVE one, or real-assets). This is a profiling
+   * tool, not investment advice — we honor the fit rather than force a passive
+   * default, but the UI MUST carry an explicit, stronger risk disclosure. */
+  fragileRiskyPrimary: boolean;
   /** EVERY strategy in descending fit order, each with an ABSOLUTE 0–100
    * suitability score (its own fit against its attainable max — NOT renormalized
    * so the winner hits 100). The primary is ranked[0]; the UI shows the top few
@@ -426,6 +431,11 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
   // Low experience + an active best-fit: keep the honest pick, warn instead of
   // diverting. active-trading is excluded here — it has its own stronger gate/notes.
   const experienceCaution = !expHigh && ACTIVE.includes(primary) && primary !== "active-trading";
+  // Fragile user whose honest best-fit is drawdown-prone: we keep the pick (this
+  // reads the user's temperament, it doesn't prescribe a portfolio) but the UI
+  // owes them a blunt risk disclosure on top of the foundation note.
+  const fragileRiskyPrimary =
+    fragile && (ACTIVE.includes(primary) || primary === "real-assets");
 
   // Full ranking with ABSOLUTE suitability (0–100): each strategy's own fit, not
   // renormalized to the winner. A lukewarm best-fit honestly reads below 100, and
@@ -443,6 +453,7 @@ export function scoreQuiz(answers: Record<string, string>): QuizResult {
     flooredToPassive,
     buildFoundationFirst: fragile,
     experienceCaution,
+    fragileRiskyPrimary,
     ranked: rankedAll,
     scores: score,
   };
