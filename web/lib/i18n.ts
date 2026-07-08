@@ -330,6 +330,7 @@ export type Dict = {
     dayWarning: string;
     foundationNote: string;
     fragileRiskyNote: string;
+    conflictNote: string;
     experienceNote: string;
     suitabilityLabel: string;
     suitabilityShort: string;
@@ -800,6 +801,8 @@ export const STRINGS: Record<Locale, Dict> = {
         "First, the foundation: your answers suggest high-interest debt, little emergency savings, or most of your money on the line. This quiz reads your investing temperament — it isn't advice to buy anything. Before putting this money into any strategy, pay down costly debt and build a cash cushion; that groundwork matters more than which strategy you pick.",
       fragileRiskyNote:
         "Heads-up: the strategy below fits how you think, but it can suffer large, lasting losses — and your answers suggest you may not yet be able to absorb that. We're not steering you away from your style, but with fragile finances this is money you likely can't afford to lose. Build your safety net first, then consider easing in with only a small amount.",
+      conflictNote:
+        "Your answers point in quite different directions — the strategies below range from very steady to high-risk. That's completely normal, but it means no single one is a clear-cut fit. It's worth retaking the quiz to see what you truly prioritize, or blending a stable core with a smaller slice of a more active approach.",
       experienceNote:
         "This is a genuine fit for how you think — we're not steering you elsewhere just because you're newer to investing. But this approach rewards experience, so ease in: work through the learning path first, start with a small position while you build confidence, and keep the bulk in a simple index/all-weather core until you've been through a full market cycle.",
       suitabilityLabel: "{score}% match",
@@ -1310,6 +1313,8 @@ export const STRINGS: Record<Locale, Dict> = {
         "먼저 기초부터: 당신의 답변은 고금리 부채, 부족한 비상금, 또는 거의 전 재산이 걸려 있음을 시사합니다. 이 퀴즈는 당신의 투자 성향을 읽어 주는 도구일 뿐, 무언가를 사라는 권유가 아닙니다. 이 돈을 어떤 전략에 넣기 전에 먼저 고비용 부채를 갚고 현금 완충을 마련하세요 — 어떤 전략을 고르느냐보다 이 기초가 더 중요합니다.",
       fragileRiskyNote:
         "유의하세요: 아래 전략은 당신의 사고방식에는 맞지만, 크고 오래가는 손실을 낼 수 있습니다 — 그리고 당신의 답변은 아직 그 손실을 감당하기 어려울 수 있음을 시사합니다. 성향과 다른 전략으로 밀어내는 것은 아니지만, 재정이 취약한 상태에서는 이 돈이 잃어선 안 되는 자금일 가능성이 큽니다. 먼저 안전망을 갖춘 뒤, 소액으로만 서서히 시작하는 것을 고려하세요.",
+      conflictNote:
+        "당신의 답변이 서로 꽤 다른 방향을 가리킵니다 — 아래 전략들은 매우 안정적인 것부터 고위험까지 폭넓게 걸쳐 있습니다. 지극히 정상적인 일이지만, 그만큼 딱 하나로 명확하게 맞는 전략은 없다는 뜻입니다. 무엇을 진짜 우선하는지 확인하기 위해 퀴즈를 다시 풀어 보거나, 안정적인 핵심에 더 능동적인 접근을 소액으로 섞는 방법을 고려해 보세요.",
       experienceNote:
         "이 전략은 당신의 사고방식에 실제로 잘 맞습니다 — 투자 경험이 짧다는 이유만으로 다른 전략으로 넘기지 않았습니다. 다만 이 접근법은 경험이 쌓일수록 유리하니, 서서히 시작하세요: 먼저 학습 경로를 끝까지 따라가고, 확신이 붙을 때까지는 작은 비중으로 시작하며, 한 번의 시장 사이클을 겪기 전까지는 자금의 대부분을 단순한 인덱스/올웨더 코어에 두세요.",
       suitabilityLabel: "적합도 {score}%",
